@@ -1,0 +1,187 @@
+/*
+    The MIT License(MIT)
+
+    Copyright (c) 2016 - 2017 Kurylko Maxim Igorevich
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+*/
+
+using System.Drawing;
+
+namespace CWA.Printing.Macro
+{
+    /// <summary>
+    /// Описывает элемент макроса.
+    /// </summary>
+    public struct MacroElem
+    {
+        /// <summary>
+        /// Преобразует MacroElemType в MacroElemTypeShorted.
+        /// </summary>
+        /// <param name="t">Экземпляр класса MacroElemType.</param>
+        public static MacroElemTypeShorted NormalToShorted(MacroElemType t)
+        {
+            switch (t)
+            {
+                case (MacroElemType.Tool): return MacroElemTypeShorted.T;
+                case (MacroElemType.MoveToPoint): return MacroElemTypeShorted.MTP;
+                case (MacroElemType.MoveRelative): return MacroElemTypeShorted.MR;
+                case (MacroElemType.Delay): return MacroElemTypeShorted.D;
+                case (MacroElemType.None): return MacroElemTypeShorted.N;
+                case (MacroElemType.ToolAndDelay): return MacroElemTypeShorted.TAD;
+                case (MacroElemType.MoveToPointAndDelay): return MacroElemTypeShorted.MTPAD;
+                case (MacroElemType.MoveRelativeAndDelay): return MacroElemTypeShorted.MRAD;
+                default: return MacroElemTypeShorted.T;
+            }
+        }
+
+        /// <summary>
+        /// Преобразует MacroElemTypeShorted в MacroElemType.
+        /// </summary>
+        /// <param name="t">Экземпляр класса MacroElemTypeShorted.</param>
+        public static MacroElemType ShortedTypeToNormal(MacroElemTypeShorted t)
+        {
+            switch (t)
+            {
+                case (MacroElemTypeShorted.T): return MacroElemType.Tool;
+                case (MacroElemTypeShorted.MTP): return MacroElemType.MoveToPoint;
+                case (MacroElemTypeShorted.MR): return MacroElemType.MoveRelative;
+                case (MacroElemTypeShorted.D): return MacroElemType.Delay;
+                case (MacroElemTypeShorted.N): return MacroElemType.None;
+                case (MacroElemTypeShorted.TAD): return MacroElemType.ToolAndDelay;
+                case (MacroElemTypeShorted.MTPAD): return MacroElemType.MoveToPointAndDelay;
+                case (MacroElemTypeShorted.MRAD): return MacroElemType.MoveRelativeAndDelay;
+                default: return MacroElemType.None;
+            }
+        }
+
+        /// <summary>
+        /// Приватный параметр.Тип элемента.
+        /// </summary>
+        private MacroElemType _type;
+
+        /// <summary>
+        /// Приватный параметр. Перемещение в конкретную точку.
+        /// </summary>
+        private int _toolMove;
+
+        /// <summary>
+        /// Приватный параметр. Перемещение в конкретную точку.
+        /// </summary>
+        private PointF _moveToPoint;
+
+
+        /// <summary>
+        /// Приватный параметр. Относительное смещение.
+        /// </summary>
+        private PointF _moveRelative;
+
+        /// <summary>
+        /// Приватный параметр. Задержка после выполнения основного действия в МС.
+        /// </summary>
+        private float _delay;
+
+        /// <summary>
+        /// Форматированное имя элемента.
+        /// </summary>
+        public string StringType
+        {
+            get
+            {
+                switch (Type)
+                {
+                    case (MacroElemType.Delay): return "Wait " + Delay + " ms";
+                    case (MacroElemType.MoveRelative): return string.Format("Offset Tool on [X: {0}, Y: {1}]", MoveRelative.X, MoveRelative.Y);
+                    case (MacroElemType.MoveRelativeAndDelay): return string.Format("Offset Tool on [X: {0}, Y: {1}] and Wait {2}", MoveRelative.X, MoveRelative.Y, Delay);
+                    case (MacroElemType.MoveToPoint): return string.Format("Move tool on point [X: {0}, Y: {1}]", MoveToPoint.X, MoveToPoint.Y);
+                    case (MacroElemType.MoveToPointAndDelay): return string.Format("Move tool on point [X: {0}, Y: {1}] and Wait {2} ms", MoveToPoint.X, MoveToPoint.Y, Delay);
+                    case (MacroElemType.None): return "Empty Event";
+                    case (MacroElemType.Tool):
+                        if (ToolMove == GlobalOptions.StepHeightConst) return "Tool Up";
+                        else if (ToolMove == -GlobalOptions.StepHeightConst) return "Tool Down";
+                        if (ToolMove > 0) return string.Format("Move Tool Up to {0} steps", ToolMove);
+                        else if (ToolMove < 0) return string.Format("Move Tool Down to {0} steps", -ToolMove);
+                        else return "Empty Event";
+                    case (MacroElemType.ToolAndDelay):
+                        if (ToolMove == GlobalOptions.StepHeightConst) return "Tool Up and Wait " + Delay + "ms";
+                        else if (ToolMove == -GlobalOptions.StepHeightConst) return "Tool Down and Wait " + Delay + "ms";
+                        if (ToolMove > 0) return string.Format("Move Tool Up to {0} steps and Wait {1} ms", ToolMove, Delay);
+                        else if (ToolMove < 0) return string.Format("Move Tool Down to {0} steps and Wait {1} ms", -ToolMove, Delay);
+                        else return "Wait " + Delay + " ms";
+                    default: return "Something goes Wrong :\"";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Тип элемента.
+        /// </summary>
+        public MacroElemType Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        /// <summary>
+        /// Перемещение в конкретную точку.
+        /// </summary>
+        public int ToolMove
+        {
+            get { return _toolMove; }
+            set { _toolMove = value; }
+        }
+
+        /// <summary>
+        /// Перемещение в конкретную точку.
+        /// </summary>
+        public PointF MoveToPoint
+        {
+            get { return _moveToPoint; }
+            set { _moveToPoint = value; }
+        }
+
+        /// <summary>
+        /// Относительное смещение.
+        /// </summary>
+        public PointF MoveRelative
+        {
+            get { return _moveRelative; }
+            set { _moveRelative = value; }
+        }
+
+        /// <summary>
+        /// Задержка после выполнения основного действия в МС.
+        /// </summary>
+        public float Delay
+        {
+            get { return _delay; }
+            set { _delay = value; }
+        }
+
+        /// <summary>
+        /// Преобразует экземпляр к строковому представлению (возвращает свойство StringType).
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return StringType;
+        }
+    }
+}

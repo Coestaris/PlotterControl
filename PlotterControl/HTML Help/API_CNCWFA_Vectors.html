@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Справка по библиотеке CWA_Vectors</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+  <div class="title">Библиотека CWA_Vectors</div>
+  <p>Библиотека <b>CWA_Vectors</b> - основная библиотека, которая хранит основные классы для работы с векторами. Состоит из:</p>
+  <ul>
+    <li>Структура <a href="#1">VPointEx</a>.</li>
+	<li>Структура <a href="#2">VPoint</a>.</li>
+	<li>Класс <a href="#3">VectHeader</a>.</li>
+	<li>Класс <a href="#4">Vect</a>.</li>
+	<li>Класс <a href="#5">RaterParameters</a>.</li>
+	<li>Перечисление <a href="#6">RaterParameters</a>.</li>
+	<li>Структура <a href="#7">PrStausChangedParameters</a>.</li>
+  </ul>
+  <a name="1"></a>
+  <div class="subtitle">Структура VPointEx</div>
+  <p>Структура идентична классу System.Drawing.Point, но с дополнительным числовым полем</p>
+  <p>Содержит следующие конструкторы: </p>
+  <ul>
+  	  <li>VPointEx(<span style="color:#0000A0">double</span> x, <span style="color:#0000A0">double</span> y, <span style="color:#0000A0">double</span> a, System.Drawing.<span style="color:#8000FF">Color</span> c), где <b>X</b>, <b>Y</b> - координаты точки, <b>A</b> - дополнительное поле, используется при векторизации.</li>
+  	  <li>VPointEx()</li>
+  </ul>
+  <p>Содержит следующие поля: </p>
+  <ul>
+  	  <li><span style="color:#0000A0">public double</span> bordwith  - доп. параметр.</li>
+  	  <li><span style="color:#0000A0">public</span> <span style="color:#8000FF">VPoint</span> pnt - сама точка, класса <b>VPoint</b>.</li>
+  </ul>
+  
+  <p>Имеет возможность неявного приведения в:</p>
+  <ul>
+  	  <li>System.Drawing.<span style="color:#8000FF">Point</span> </li>
+	  <li>System.Drawing.<span style="color:#8000FF">PointF</span> </li>
+	  <li><span style="color:#8000FF">VPoint</span> </li>
+  </ul>
+  <a name="2"></a>
+  <div class="subtitle" >Структура VPoint</div>
+  <p>Структура идентична классу System.Drawing.Point</p>
+  <p>Содержит следующие конструкторы: </p>
+  <ul>
+  	  <li>VPoint(<span style="color:#0000A0">double</span> x, <span style="color:#0000A0">double</span> y, System.Drawing.<span style="color:#8000FF">Color</span> c), где <b>X</b>, <b>Y</b> - координаты точки.</li>
+  	  <li>VPoint()</li>
+  </ul>
+  <p>Содержит следующие поля: </p>
+  <ul>
+  	  <li><span style="color:#0000A0">public double</span> x  - <b>X</b> точки.</li>
+  	   <li><span style="color:#0000A0">public double</span> y  - <b>Y</b> точки.</li>
+	  <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Color</span> c - цвет точки.</li>
+  </ul>
+  <p>Имеет возможность неявного приведения в:</p>
+  <ul>
+  	  <li>System.Drawing.<span style="color:#8000FF">Point</span> </li>
+	  <li>System.Drawing.<span style="color:#8000FF">PointF</span> </li>
+	  <li><span style="color:#8000FF">VPointEx</span> </li>
+  </ul>
+  <a name="3"></a>
+  <div class="subtitle">Класс VectHeader</div>
+  <p>Хранит информацию о векторе.</p>
+  <p>Содержит следующие поля: </p></p>
+   <ul>
+  	  <li><span style="color:#0000A0">public int</span> CountOfCont <b>(readonly)</b> - количество контуров в векторе.</li>
+      <li><span style="color:#0000A0">public int</span> Height <b>(readonly)</b> - высота вектора.</li>
+ 	  <li><span style="color:#0000A0">public int</span> Width <b>(readonly)</b> - ширина вектора.</li>
+	  <li><span style="color:#0000A0">public</span>  <span style="color:#8000FF">RaterParameters</span> ParamsRaster <b>(readonly)</b> - данные о векторизированом растре.</li>
+	  <li><span style="color:#0000A0">public</span> <span style="color:#8000FF">PrType</span> VectType <b>(readonly)</b> - тип вектора.</li>
+  </ul>
+  <a name="4"></a>
+  <div class="subtitle">Класс Vect</div>
+  <p>Основной класс библиотеки, или даже всей программы.</p>
+  <p>Содержит следующие конструкторы: </p>
+   <ul> 
+   	  <li>Vect()</li>
+  	  <li>Vect(<span style="color:#0000A0">string</span> name), где <b>name</b> - имя файла сохраненного вектора  формате <b>.CVF</b>.</li>
+  	  <li>Vect(System.Drawing.<span style="color:#8000FF">SizeF</span> Size), где <b>Size</b> - размер вектора.</li>
+  	  <li>Vect(System.Drawing.<span style="color:#8000FF">SizeF</span> Size, <span style="color:#8000FF">VPoineEx</span>[] Points), где <b>Size</b> - размер вектора, а <b>Points</b> - его точки.</li>
+  </ul>
+  <p>Содержит следующие методы: </p>
+  <ul>
+    <li><span style="color:#0000A0">void</span> DeleteSingle() - удаляет повроряющиейся полосы (чистит вектор от мусора векторизации).</li>
+	<li><span style="color:#0000A0">object</span> Clone()</li>
+	<li><span style="color:#0000A0">string</span> ToString()</li>
+	<li><span style="color:#0000A0">string</span> GetResolutionByFormat(<span style="color:#0000A0">string</span> format) - приводит разрешение к формату. Например <b>"({0}x{1})" = (100x100)</b>.</li> 
+	<li><span style="color:#0000A0">void</span> Pr(System.Drawing.<span style="color:#8000FF">Bitmap</span> Source, <span style="color:#0000A0">bool</span> Say, <span style="color:#0000A0">int</span> StrCnt) - запускает процесс векторизаии изображения <b>Source</b>. <b>Say</b> - выводить дебаг информацию в консоль. <b>StrCnt</b> - количество потоков выполнения операции.</li> 
+    <li><span style="color:#0000A0">void</span> SaveVect(<span style="color:#0000A0">string</span> FileName, <span style="color:#0000A0">string</span> Ori,<span style="color:#0000A0"> string</span> ResName) - сохраняет файл по имени <b>FileName</b>.</li>
+	<li><span style="color:#0000A0">void</span> SaveVectNew(<span style="color:#0000A0">string</span> FileName) - сохраняет файл по имени <b>FileName</b>.</li>
+    <li><span style="color:#0000A0">void</span> SortContoursByLength() - отсортировать контуры по длине.</li>
+	
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmap() - растерезировать вектор.</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmap(System.Drawing.<span style="color:#8000FF">Color</span> DrawColor, <span style="color:#0000A0">int</span> A) - растеризировать вектор, нарисовать цветом <b>DrawColor</b>.</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmap(System.Drawing.<span style="color:#8000FF">Color</span> DrawColor, System.Drawing.<span style="color:#8000FF">Color</span> BackColor) - растеризировать вектор, нарисовать цветом <b>DrawColor</b>, фон - <b>BackColor</b>.</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmap(System.Drawing.<span style="color:#8000FF">Color</span> BackColor)  - растеризировать вектор, фон - <b>BackColor</b>.</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmapByGrPath(System.Drawing.<span style="color:#8000FF">Color</span> BackColor, System.Drawing.<span style="color:#8000FF">Color</span> PenColor)</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmapByGrPath(System.Drawing.<span style="color:#8000FF">Color</span> BackColor, System.Drawing.<span style="color:#8000FF">Color</span> PenColor, System.Drawing.<span style="color:#8000FF">Color</span> SelectedColor, <span style="color:#0000A0">int</span> SelIdex)</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmapByGrPath(System.Drawing.<span style="color:#8000FF">Color</span> BackColor, System.Drawing.<span style="color:#8000FF">Color</span> PenColor, System.Drawing.Drawing2D.<span style="color:#8000FF">GraphicsPath</span> gp)</li>
+	<li>System.Drawing.<span style="color:#8000FF">Bitmap</span> ToBitmapByGrPath(System.Drawing.<span style="color:#8000FF">SizeF</span> Size, System.Drawing.<span style="color:#8000FF">Color</span> BackColor, System.Drawing.<span style="color:#8000FF">Color</span> PenColor, System.Drawing.Drawing2D.<span style="color:#8000FF">GraphicsPath</span> gp, <span style="color:#8000FF">VPointEX</span>[] Points)</li>
+ </ul>
+  <p>Содержит следующие статические методы: </p>
+  <ul>
+     <li><span style="color:#0000A0">bool</span> IsCorrectVectFile(<span style="color:#0000A0">string</span> FileName) - проверка на корректный ли файл вектора.</li>
+     <li>System.Drawing.Drawing2D.<span style="color:#8000FF">GraphicsPath</span> VectToGP(<span style="color:#8000FF">Vect</span> v) - преобразовать в <b>GraphicsPath</b>.</li>
+  </ul>
+  <p>Содержит следующие поля: </p>
+   <ul>
+     <li><span style="color:#0000A0">public string</span> FileName - имя загруженного вектора.</li>
+	 <li><span style="color:#0000A0">public</span> System.Drawing.Drawing2D.<span style="color:#8000FF">GraphicsPath</span> GrPath <b>(readonly)</b> - преобразовать в <b>GraphicsPath</b>.</li>
+	 <li><span style="color:#0000A0">public</span> <span style="color:#8000FF">VectHeader</span> Header <b>(readonly)</b> - информация о векторе.</li>
+	 <li><span style="color:#0000A0">public bool</span> IsEmpty <b>(readonly)</b> - пустой ли вектор.</li>
+	 <li><span style="color:#0000A0">public longint</span> Points <b>(readonly)</b> - количество точек.</li>
+	 <li><span style="color:#0000A0">public string</span> Resolution <b>(readonly)</b> - разрешение с форматом "({0}x{1})".</li>
+	 <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Size</span> Size <b>(readonly)</b> - размер вектора.</li>
+	 <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">SizeF</span> SizeF <b>(readonly)</b> - размер вектора.</li>
+	 <li><span style="color:#0000A0">public</span> <span style="color:#8000FF">VPointEx</span>[][] RawData - массив точек вектора.</li>
+   </ul>
+   
+   <p>Содержит следующие ивенты: </p>
+   <ul>
+     <li>
+	 	 <span style="color:#8000FF">PrStausChangedParameters</span> VectChanged - срабатывает когда сменяется статус векторизации (для мониторинга процесса).
+	 </li>
+   </ul>
+   <a name="5"></a>
+   <div class="subtitle">Класс RaterParameters</div>
+ <p>Содержит следующие поля: </p>
+   <ul>
+     <li><span style="color:#0000A0">public double</span> ComTime - время векторизации в мс.</li>
+     <li><span style="color:#0000A0">public string</span> ImageName - имя оригинальной картинки.</li>
+     <li><span style="color:#0000A0">public string</span> ResName - не используется в последней версии.</li>
+   </ul>
+   <a name = "6"></a>
+   <div class="subtitle"> Перечисление PrType</div>
+      <ul>
+	   <li><b>Curve</b> - кривая.</li>
+	   <li><b>Func</b> - функция.</li>
+	   <li><b>Rastr</b> - бывший растр.</li>
+	   <li><b>SvgVector</b> - свг вектор.</li>
+	  </ul>
+    <a  name="7" ></a>
+   <div class="subtitle" >Структура PrStausChangedParameters</div>
+   <p>Содержит следующие поля: </p>
+   <ul>
+     <li><span style="color:#0000A0">public int</span> Percentage <b>(readonly)</b> - процент выполнения векторизации.</li>
+     <li><span style="color:#0000A0">public int</span> MaxValue <b>(readonly)</b> - общее количество операций.</li>
+     <li><span style="color:#0000A0">public int</span> Value <b>(readonly)</b> - количество выполненных операций.</li>
+   </ul>
+  <div class="subtitle">Примеры использования</div>
+  <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid;">
+  1 
+  2
+  3</div>
+  </pre></td><td><pre style= " padding-left:5px; margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">&nbsp; var</span> a = <span style="color: #008800; font-weight: bold">new</span> Vect();
+  a.pr(<span style="color: #008800; font-weight: bold">new</span> System.Drawing.Bitmap(<span style="background-color: #fff0f0">&quot;test.png&quot;</span>),<span style="color: #008800; font-weight: bold">false</span>,<span style="color: #6600EE; font-weight: bold">1</span>);
+  a.ToBitmap.Save(<span style="background-color: #fff0f0">&quot;vectorized_test.png&quot;</span>);
+  </pre></td></tr></table></div>
+  </div>
+  &nbsp; 
+  <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid;">
+  1 
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  </div></pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">&nbsp;  var</span> a = <span style="color: #0000ff">new</span> vect(<span style="color: #a31515">&quot;filename.cvf&quot;</span>);
+  <span style="color: #0000ff">&nbsp;if</span>(a.VectHeader.Type==PrType.Rastr) MessageBox.Show(<span style="color: #a31515">&quot;Its a vectorized rastr&quot;</span>);
+   <span style="color: #0000ff">else</span> MessageBox.Show(<span style="color: #a31515">&quot;Enother type&quot;</span>);
+   <span style="color: #2b91af">var</span> bmp = <span style="color: #0000ff">new</span> Bitamp(a.Size);
+   using(Graphics A = Graphics.FromImage(bmp))
+   {
+      A.DrawPath(a.GrPath, Pens.Black);
+   }
+   bmp.Save(<span style="color: #a31515">&quot;output.png&quot;</span>);
+  </pre></td></tr></table></div></div>
+  &nbsp; 
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Don`t EDIT this FILE! -->
+<Options>
+  <Option id="StepHeightConst">1650</Option>
+  <Option id="MaxDisConst">100</Option>
+  <Option id="UseAutoSpeed">False</Option>
+  <Option id="XMM">0.013</Option>
+  <Option id="YMM">0.013</Option>
+  <Option id="Mainbd">115200</Option>
+  <Option id="Mainport">COM0</Option>
+  <Option id="Def_SPO">None</Option>
+  <Option id="Def_RBO">ReturnToZero</Option>
+  <Option id="Def_print_back">#FFFFFF</Option>
+  <Option id="Def_print_draw">#000000</Option>
+  <Option id="Def_view_back">#000000</Option>
+  <Option id="Def_view_draw">#FFFFFF</Option>
+  <Option id="MaxWidthSteps">15500</Option>
+  <Option id="MaxHeightSteps">22100</Option>
+  <Option id="ignoreRegisterExtentions">False</Option>
+  <Option id="PathToArduino"></Option>
+  <Option id="def_board">arduino:avr:mega</Option>
+  <Option id="UpKoof">0</Option>
+  <Option id="Language">Russian - Русский</Option>
+  <Option id="PreloadPlugins">true</Option>
+</Options>

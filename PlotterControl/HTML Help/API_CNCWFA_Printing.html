@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Справка по библиотеке CWA_Printing</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+   <script type="text/jscript" src="Source/top_colont.js"></script>
+   <div class="title">Библиотека CWA_Printing</div>
+   	<p>Библиотека CWA_Printing - основная библиотека для построения векторов. Состоит из:</p>
+    <ul>
+      <li>Перечисление <a href="#1">StartPrintOption</a>.</li>
+   	  <li>Перечисление <a href="#2">ReturnBackOption</a>.</li>
+	  <li>Перечисление <a href="#3">ErrorEventArgs</a>.</li>
+	  <li>Класс <a href="#4">ProceedStatusChangedArgs</a>.</li>
+	  <li>Класс <a href="#5">PrintedEventArgs</a>.</li>
+	  <li>Класс <a href="#6">TimeEventArgs</a>.</li>
+	  <li>Класс <a href="#7">PrintOptions</a>.</li>
+	  <li>Класс <a href="#8">Print</a>.</li>
+    </ul>
+    <a name="1"></a>
+   <div class="subtitle">Перечисление StartPrintOption</div>
+   <p>Описывает действие на начале печати. Содержит следующие варианты:</p>
+   <ul>
+   	   <li><b>None</b> - ничего не делать.</li>
+   	   <li><b>ToolUp</b> - поднять перо.</li>
+   	   <li><b>ToolDown</b> - опустить перо.</li>
+   	   <li><b>ToolUpDown</b> - сначала поднять, потом опустить перо.</li>
+   	   <li><b>ToolDownUp</b> - сначала опустить, потом поднять перо.</li>
+   </ul>
+       <a name="2"></a>
+   <div class="subtitle">Перечисление ReturnBackOption</div>
+   <p>Описывает действие в конце печати. Содержит следующие варианты:</p>
+   <ul>
+   	   <li><b>ReturnToZero</b> - вернутся в ноль (изначальна позиция).</li>
+   	   <li><b>StayAtEnd</b> - ничего не делать.</li>
+   </ul>
+       <a name="3"></a>
+   <div class="subtitle">Перечисление ErrorEventArgs</div>
+   <p>Описывает тип ошибки. Содержит следующие варианты:</p>
+   <ul>
+   	   <li><b>FirstSendDataError</b> - невозможно в первый раз отправить данные. Может означать, что подключено не правильное устройство (ошибочно выбранный порт) или оно недоступно.</li>
+   	   <li><b>SendDataError</b> - ошибка при отправке данных. Может означать, что соединение было разорвано.</li>
+	   <li><b>UnAvailablePortError</b> - невозможно открыть порт. Может означать, что он уже открыт кем-то другим, у Вас не установлен правильный драйвер или он битый.</li>
+	   <li><b>TimeOutError</b> - Превышено время ожидания. Может означать, что соединение было разорвано со стороны устройства, т.е. оно перестало отвечать.</li>
+   </ul>
+       <a name="4"></a>
+   <div class="subtitle">Класс ProceedStatusChangedArgs</div>
+   <p>Используется в ивенте изменения статуса обработки данных. Содержит следующие поля:</p>
+   <ul>
+   	   <li><span style="color:#0000A0">public float</span> percentage - процент выполнения операции.</li>
+   </ul>
+       <a name="5"></a>
+   <div class="subtitle">Класс PrintedEventArgs</div>
+      <p>Используется в ивенте изменения статуса печати. Содержит следующие поля:</p>
+   <ul>
+   	   <li><span style="color:#0000A0">public long</span> count_total - общее количество построений.</li>
+       <li><span style="color:#0000A0">public long</span> count_done - выполненное количество построений.</li>
+       <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Point</span> drawed_point - текущая точка рисования.</li>
+   </ul>
+       <a name="6"></a>
+   <div class="subtitle">Класс TimeEventArgs</div>
+      <p>Используется в ивенте, который срабатывает каждую секунду во время печати. Содержит следующие поля:</p>
+   <ul>
+       <li><span style="color:#0000A0">public float</span> time_spend - затраченное время в мс.</li>
+       <li><span style="color:#0000A0">public float</span> time_left - примерное оставшиеся время в мс.</li>
+       <li><span style="color:#0000A0">public</span> System.<span style="color:#8000FF">DateTime</span> start_time - время начала печати.</li>
+   </ul>
+       <a name="7"></a>
+   <div class="subtitle">Класс PrintOptions</div>
+   <p>Передается основному классу <b>Print</b> для описания нужных параметров. Содержит следующие поля:</p>
+   <ul>
+       <li><span style="color:#0000A0">public float</span> xoffset - смещение при печати в мм по оси <b>Х</b>.</li>
+       <li><span style="color:#0000A0">public float</span> yoffset - смещение при печати в мм по оси <b>Y</b>.</li>
+       <li><span style="color:#0000A0">public float</span> xmm - количество мм в шаге по оси <b>Х</b>.</li>
+       <li><span style="color:#0000A0">public float</span> ymm - количество мм в шаге по оси <b>Y</b>.</li>
+       <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">SizeF</span> PrintSize - размер печати в мм.</li>
+	   <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Size</span> ImageSize - размер вектора в условных единицах (пикселях).</li>
+   </ul>
+       <a name="8"></a>
+   <div class="subtitle">Класс Print</div>
+   <p>Основной класс библиотеки. Обслуживает печать на утсройcтве. Содержит следующие конструкторы:</p>
+   <ul>
+       <li>Print(<span style="color:#8000FF">Vect</span> data, <span style="color:#8000FF">PrintOptions</span> options, <span style="color:#8000FF">StartPrintOption</span> spo, <span style="color:#8000FF">ReturnBackOption</span> rbo, System.IO.Ports.<span style="color:#8000FF">SerialPort</span> sp), где <b>Vect</b> - вектор для печати, <b>options</b> - параметры печати, <b>spo</b> и <b>rbo</b> - параметры конца и начала печати, <b>sp</b> - ненулевой(созданный, с заданными именем порта и скоростью) порт.</li>
+   </ul>
+   <p>Содержит следующие методы:</p>
+   <ul>
+       <li><span style="color:#0000A0">public void</span> ComputeCommands() - на отдельном потоке запускает процесс подготовки заданных данных к печати. С помощью ивентов <b>ProceedStatusChanged</b> и <b>ProceedEnd</b> - этот процесс можно мониторить.</li>
+       <li><span style="color:#0000A0">public void</span> PrintVector() - на отдельном потоке запускает процесс печати с заданными ранее параметрами. С помощью ивентов <b>PrintChanged</b>, <b>PrintingDone</b>, <b>TimeChanged</b> и <b>PrintError</b>   - этот процесс можно мониторить.</li>
+	   <li><span style="color:#0000A0">public void</span> Abort() - прерывает процесс печати. При этом сработает ивент <b>PrintingDone</b></li>
+   </ul>   
+    <p>Содержит следующие поля:</p>
+	<ul>
+		<li><span style="color:#0000A0">public  float</span> PenWidth - ширина пера при отрисовке состояния.</li>
+		<li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Color</span> DrawColor - цвет рисования при отрисовке состояния.</li>
+        <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Color</span> BackColor - цвет фона при отрисовке состояния.</li>
+     	<li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Bitmap</span> ProcessBmp - изображение состояния. Имеет вид 2х цветного изображения, где цветом <b>DrawColor</b> рисуется то, что в уже нарисовано устройством. Рекомендуется использовать в паре с ивентом <b>TimeChanged</b>.</li>
+	</ul>
+	<p>Содержит следующие события:</p>
+	<ul>
+      <li><span style="color:#0000A0">public event</span> PrintChanged - срабатывает, когда меняется статус печати.</li>
+      <li><span style="color:#0000A0">public event</span> TimeChanged - срабатывает каждую секунду во время печати.</li>
+      <li><span style="color:#0000A0">public event</span> PrintingDone - срабатывает, когда печать окончена (или прервана).</li>
+      <li><span style="color:#0000A0">public event</span> ProceedStatusChanged - срабатывает, когда меняется статус обработки данных.</li>
+      <li><span style="color:#0000A0">public event</span> ProceedEnd - срабатывает, когда процесс обработки данных окончен.</li>
+      <li><span style="color:#0000A0">public event</span> PrintError - срабатывает в случае ошибки при печати.</li>
+	</ul>  
+	<div class="subtitle">Пример использования</div>
+ <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid; float:left;">
+   1 
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+  20
+  21
+  22
+  23
+  24
+  25
+  26
+  27
+  28
+  29
+  30
+  31
+  32
+  </div></pre></td><td><pre style="margin: 0; line-height: 125%">    <span style="color: #0000ff">class</span> <span style="color: #2b91af">Printer</span>
+    {
+        <span style="color: #0000ff">void</span> Main()
+        {
+            <span style="color: #2b91af">var</span> a = <span style="color: #0000ff">new</span> PrintOptions();
+            <span style="color: #2b91af">var</span> vect = <span style="color: #0000ff">new</span> Vect(<span style="color: #a31515">&quot;filename.cvf&quot;</span>);
+            a.xmm = 0.013f;
+            a.ymm = 0.013f;
+            a.ImageSize = vect.Size;
+            a.PrintSize = <span style="color: #0000ff">new</span> SizeF(100, 100); <span style="color: #008000">//Output image 100x100mm</span>
+            <span style="color: #2b91af">var</span> pm = <span style="color: #0000ff">new</span> Print(vect, a, StartPrintOption.None, ReturnBackOption.ReturnToZero, <span style="color: #0000ff">new</span> SerialPort(<span style="color: #a31515">&quot;COM0&quot;</span>, 115200));
+            pm.PrintError += Error;
+            pm.PrintingDone += Done;
+            pm.TimeChanged += Time;
+            pm.PrintVector();
+        }
+
+        <span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span> Time(<span style="color: #2b91af">object</span> sender, TimeEventArgs e)
+        {
+            Console.WriteLine(<span style="color: #a31515">&quot;Left&quot;</span> + e.time_left.ToString() + <span style="color: #a31515">&quot;ms&quot;</span>);
+        }
+
+        <span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span> Done(<span style="color: #2b91af">object</span> sender, EventArgs e)
+        {
+            Console.WriteLine(<span style="color: #a31515">&quot;Printing Done!&quot;</span>);
+        }
+
+        <span style="color: #0000ff">private</span> <span style="color: #0000ff">void</span> Error(<span style="color: #2b91af">object</span> sender, ErrorEventArgs e)
+        {
+            Console.WriteLine(<span style="color: #a31515">&quot;Error! Type:&quot;</span> + e.ToString());
+        }
+    }
+	</pre></td></tr></table></div></div>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

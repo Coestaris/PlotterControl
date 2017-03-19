@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Документация по API</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+  <div class="title">Документация по API</div>
+  <p style="color:red">Внимание! Полностью прочтите эту документацию, перед тем как начинать что-то делать!</p>
+  <p>CnC_WFA(CNCWFA)(CnC Windows Forms Aplication) - кодовое имя программы <b>Plotter Control</b>.</p>
+  <div class="subtitle">Устройство</div>
+  <p>&nbsp; </p>
+  <div class="subsubtitle">Взаемодейсвтие с устройством</div>
+  <p>Управление устройством происходит через простой <b>Serial Port</b>, библиотека для работы такого есть фактически под любой язык. Стандартная скорость передачи данных (BDRATE) - <b>115200</b> бод, хотя ее можно
+  заменить перепрошив контроллер с помощью стандартной <b>Arduino IDE</b>. Доступные команды управления вы можете найти <a href="ListOfDirectComands.html">тут</a>. </p>
+  <div class="subsubtitle">Работа с памятью</div>
+  <p>Команды задачи памяти (процедуры) имеют следующий синтаксис: <b>[command] + "значение" + ';'</b>, при этом, в случае успешной задачи, он вернет <b>OK;</b>, иначе <b>FL;</b>. Считывания: <b>[command] + ';'</b>, при этом устройство отошлет по порту значение переменной.</p>
+  <p>Вид команды задачи выглядит таким образом: <b>"set" + "имя переменной"</b>, о считывания <b>"get" + "имя переменной"</b>. Список доступных переменных читайте <a href="ListOfVars.html">тут</a>.</p>
+  <p>Более подробно читайте на странице про "<a href="DirectComands.html">Прямые команды</a>".</p>
+  <div class="subsubtitle">Скетч для Arduino</div>
+  <p>Если вам захочется вносить изменения в скетч, а после перепрошивать устройство то его вы можете найти <a href="ArdSketch.html">тут</a>.</p> 
+  <div class="subtitle">API для ПК</div>
+  <p>CWA - CNCWFA API. В данное API входят следующий набор <b>.NET</b> библиотек:</p>
+  <ol style="padding-left:60px;" type="1">
+   <li><b>CWA_Printing.DLL</b> - содержит основные методы печати на устройстве. Более детально читайте <a href="API_CNCWFA_Printing.html">тут</a>.</li>
+   <li><b>CWA_Vectors.DLL </b> - содержит основные методы работы с векторами, векторизации. Более детально читайте <a href="API_CNCWFA_Vectors.html">тут</a>.</li>
+   <li><b>CWA_MathParser.DLL</b> - содержит методы парсинга строки, как мат. выражения. Более детально читайте <a href="API_CNCWFA_MathParser.html">тут</a>.</li>
+   <li><b>CWA_VectorHM.DLL</b> - содержит дополнительные методы работы с векторами. Более детально читайте <a href="API_CNCWFA_VectorHM.html">тут</a>.</li>
+   <li><b>CWA_Connection.DLL</b> - содержит основные программные, полуавтоматические методы работы с памятью устройства. Более детально читайте <a href="API_CNCWFA_Connection.html">тут</a>.</li>
+   <li><b>CWA_ManualControl.DLL</b> - содержит методы ручного управления устройством. Более детально читайте <a href="API_CNCWFA_ManualControl.html">тут</a>.</li>
+   <li><b>CWA_VectEditorEnvironment.DLL</b> - содержит методы для работы с <a href="">веторными документами</a>. Более детально читайте <a href="API_CNCWFA_VectEditorEnvironment.html">тут</a>.</li>
+  </ol>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

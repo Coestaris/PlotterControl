@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Справка по библиотеке CWA_ManualControl</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+   <script type="text/jscript" src="Source/top_colont.js"></script>
+   <div class="title">Библиотека CWA_ManualControl</div>
+      <p>Библиотека CWA_MathParser - специфическая библиотека для ручного управления устройством. Состоит из:</p>
+    <ul>
+      <li>Класс <a href="#1">ManualControl</a>.</li>
+    </ul>
+	<a name="1"></a>
+   <div class="subtitle">Класс ManualControl</div>
+   <p>Имеет конструктор:</p>
+   <ul> <li>ManualControl(<span style="color:#0000A0">string</span> pname, <span style="color:#0000A0">int</span> bd), где <b>pname</b> и <b>bd</b> - параметры порта.</li> </ul>
+   <p>Имеет следующие методы: </p>
+   <ul>
+     <li><span style="color:#0000A0">public void</span> ToolUp() - поднять перо.</li> 
+     <li><span style="color:#0000A0">public void</span> Close() - закрыть порт.</li> 
+     <li><span style="color:#0000A0">public void</span> ReOpen() - открыть порт.</li> 
+     <li><span style="color:#0000A0">public void</span> ToolDown() - опустить перо.</li> 
+     <li><span style="color:#0000A0">public void</span> MakeStep(System.<span style="color:#8000FF">ConsoleKeyInfo</span> k) - сделать шаг.</li>  
+    </ul>
+	<p>Поле <b>Step</b> означает сколько шагов сделает метод <b>MakeStep</b>.</p>
+	<p>Пример применения</p>
+ <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid; float:left;">
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8 
+   9
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+  20
+  21
+  22
+  23
+  24
+  25
+  26
+  27
+  28
+  29</div></pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">void</span> ManualControl()
+{
+   ManualControl a;
+   <span style="color: #0000ff">try</span>
+   {
+      args = args[0].Split(<span style="color: #a31515">&#39;,&#39;</span>);
+      <span style="color: #2b91af">string</span> port = args[0];
+      <span style="color: #2b91af">int</span> bd = <span style="color: #2b91af">int</span>.Parse(args[1]);
+      <span style="color: #2b91af">int</span> step = <span style="color: #2b91af">int</span>.Parse(args[2]);
+      Console.CursorVisible = <span style="color: #0000ff">false</span>;
+      a = <span style="color: #0000ff">new</span> ManualControl(port,  bd);
+      a.Step = step;
+      Console.Clear();
+      Console.WriteLine(<span style="color: #a31515">&quot;Press ESC to exit&quot;</span>);
+   }
+     <span style="color: #0000ff">catch</span>
+   {
+      MessageBox.Show(<span style="color: #a31515">&quot;Launch with wrong arguments&quot;</span>,<span style="color: #a31515">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);
+      <span style="color: #0000ff">return</span>;
+   }
+   <span style="color: #0000ff">while</span> (<span style="color: #0000ff">true</span>)
+   {
+      <span style="color: #2b91af">var</span> c = Console.ReadKey();
+      <span style="color: #0000ff">if</span> (c.Key == ConsoleKey.Escape) Environment.Exit(0);
+      a.MakeStep(c);
+      Console.Clear();
+      Console.WriteLine(<span style="color: #a31515">&quot;Press ESC to exit&quot;</span>);
+   }
+}
+  </pre></td></tr></table></div>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

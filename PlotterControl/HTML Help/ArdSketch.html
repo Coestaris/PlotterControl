@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Скетч для контроллера</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+  <div class="title">Скетч для контроллера</div>
+  <p>Актуальная прошивка версии 2.1. Последнее изменение 1.1.2017; 8:54 PM</p>
+ <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid; float:left;">    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
+   55
+   56
+   57
+   58
+   59
+   60
+   61
+   62
+   63
+   64
+   65
+   66
+   67
+   68
+   69
+   70
+   71
+   72
+   73
+   74
+   75
+   76
+   77
+   78
+   79
+   80
+   81
+   82
+   83
+   84
+   85
+   86
+   87
+   88
+   89
+   90
+   91
+   92
+   93
+   94
+   95
+   96
+   97
+   98
+   99
+  100
+  101
+  102
+  103
+  104
+  105
+  106
+  107
+  108
+  109
+  110
+  111
+  112
+  113
+  114
+  115
+  116
+  117
+  118
+  119
+  120
+  121
+  122
+  123
+  124
+  125
+  126
+  127
+  128
+  129
+  130
+  131
+  132
+  133
+  134
+  135
+  136
+  137
+  138
+  139
+  140
+  141
+  142
+  143
+  144
+  145
+  146
+  147
+  148
+  149
+  150
+  151
+  152
+  153
+  154
+  155
+  156
+  157
+  158
+  159
+  160
+  161
+  162
+  163
+  164
+  165
+  166
+  167
+  168
+  169
+  170
+  171
+  172
+  173
+  174
+  175
+  176
+  177
+  178
+  179
+  180
+  181
+  182
+  183
+  184
+  185
+  186
+  187
+  188
+  189
+  190
+  191
+  192
+  193
+  194
+  195
+  196
+  197
+  198
+  199
+  200
+  201
+  202
+  203
+  204
+  205
+  206
+  207
+  208
+  209
+  210
+  211
+  212
+  213
+  214
+  215
+  216
+  217
+  218
+  219
+  220
+  221
+  222
+  223
+  224
+  225
+  226
+  227
+  228
+  229
+  230
+  231
+  232
+  233
+  234
+  235
+  236
+  237
+  238
+  239
+  240
+  241
+  242
+  243
+  244
+  245
+  246
+  247
+  248
+  249
+  250
+  251
+  252
+  253
+  254
+  255
+  256
+  257
+  258
+  259
+  260
+  261
+  262
+  263
+  264
+  265
+  266
+  267
+  268
+  269
+  270
+  271
+  272
+  273
+  274
+  275
+  276
+  277
+  278
+  279
+  280
+  281
+  282
+  283
+  284
+  285
+  286
+  287
+  288
+  289
+  290
+  291
+  292
+  293
+  294
+  295
+  296
+  297
+  298
+  299
+  300
+  301
+  302
+  303
+  304
+  305
+  306
+  307
+  308
+  309 
+  310
+  311
+  312
+  313
+  314
+  315
+  316
+  317
+  318
+  319
+  320
+  321
+  322
+  323
+  324
+  325
+  326
+  327
+  328
+  329
+  330
+  331
+  332
+  333
+  334
+  335
+  336
+  337
+  338
+  339
+  340
+  341
+  342
+  343
+  344
+  345
+  346
+  347
+  348
+  349
+  350
+  351
+  352
+  353
+  354
+  355
+  356
+  357
+  358
+  359
+  360
+  361
+  362
+  363</div></pre></td><td style="padding-left:3px;"><pre style="margin: 0; line-height: 125%";><span style="color: #0000ff">#define PauseLed 8</span>
+<span style="color: #0000ff">#define PauseCom 9</span>
+<span style="color: #0000ff">#define ButtonStop A2</span>
+<span style="color: #0000ff">#define PauseLed 8</span>
+<span style="color: #0000ff">#define PauseCom 9</span>
+<span style="color: #0000ff">#define ButtonStop A2</span>
+<span style="color: #0000ff">#define ButtonPause A1</span>
+<span style="color: #0000ff">#define Analog A0</span>
+
+<span style="color: #0000ff">#define XDIR 4</span>
+<span style="color: #0000ff">#define YDIR 2</span>
+<span style="color: #0000ff">#define ZDIR 6</span>
+<span style="color: #0000ff">#define XSTEP 5</span>
+<span style="color: #0000ff">#define YSTEP 3</span>
+<span style="color: #0000ff">#define ZSTEP 7</span>
+<span style="color: #0000ff">#define WORK_ 50 </span>
+<span style="color: #0000ff">#define IDLE_ 40</span>
+
+<span style="color: #0000ff">#define ADRESS_PAUSE 10</span>
+<span style="color: #0000ff">#define ADRESS_IDLE 12</span>
+<span style="color: #0000ff">#define ADRESS_WORK 14</span>
+<span style="color: #0000ff">#define ADRESS_COM 28</span>
+<span style="color: #0000ff">#define ADRESS_MP_P00 16</span>
+<span style="color: #0000ff">#define ADRESS_MP_P01 18</span>
+<span style="color: #0000ff">#define ADRESS_MP_P10 20</span>
+<span style="color: #0000ff">#define ADRESS_MP_P11 22</span>
+<span style="color: #0000ff">#define ADRESS_MP_P20 24</span>
+<span style="color: #0000ff">#define ADRESS_MP_P21 26</span>
+
+<span style="color: #0000ff">#include &lt;EEPROM.h&gt;</span>
+
+<span style="color: #2b91af">int</span> motorPins[3][2] = {{5,4},   <span style="color: #008000">// p00 p01</span>
+                       {3,2},   <span style="color: #008000">// p10 p11</span>
+                       {7,6}};  <span style="color: #008000">// p20 p21</span>
+                       
+<span style="color: #2b91af">int</span> idle, work, com, count=0, rot=0, incomingByte=0, sign=1, pause=0;
+<span style="color: #2b91af">int</span> count2[3] = {0,0,0};
+<span style="color: #2b91af">long</span> delayTime;
+String comm;
+<span style="color: #2b91af">bool</span> isCom;
+
+<span style="color: #0000ff">void</span> EEPROMWriteInt(<span style="color: #2b91af">int</span> p_address, <span style="color: #2b91af">int</span> p_value)
+{
+  <span style="color: #2b91af">byte</span> lowByte = ((p_value &gt;&gt; 0) &amp; 0xFF);
+  <span style="color: #2b91af">byte</span> highByte = ((p_value &gt;&gt; 8) &amp; 0xFF);
+  EEPROM.write(p_address, lowByte);
+  EEPROM.write(p_address + 1, highByte);
+}
+
+<span style="color: #0000ff">void</span> software_Reset()
+{
+  asm volatile (<span style="color: #a31515">&quot;  jmp 0&quot;</span>);  
+}  
+
+<span style="color: #0000ff">void</span> ResetToDefault()
+{
+  motorPins[0][0] = XSTEP;
+  motorPins[0][1] = XDIR;
+  motorPins[1][0] = YSTEP;
+  motorPins[1][1] = YDIR;
+  motorPins[2][0] = ZSTEP;
+  motorPins[2][1] = ZDIR;
+  work = WORK_;  
+  idle = IDLE_;  
+  pause = 0;
+  com = 0;
+  EEPROMWriteInt(ADRESS_MP_P00,motorPins[0][0]);
+  EEPROMWriteInt(ADRESS_MP_P01,motorPins[0][1]);
+  EEPROMWriteInt(ADRESS_MP_P10,motorPins[1][0]);
+  EEPROMWriteInt(ADRESS_MP_P11,motorPins[1][1]);
+  EEPROMWriteInt(ADRESS_MP_P20,motorPins[2][0]);
+  EEPROMWriteInt(ADRESS_MP_P21,motorPins[2][1]);
+  EEPROMWriteInt(ADRESS_WORK,work);
+  EEPROMWriteInt(ADRESS_IDLE,idle);
+  EEPROMWriteInt(ADRESS_COM,com);
+  EEPROMWriteInt(ADRESS_PAUSE,pause);
+}
+
+unsigned <span style="color: #2b91af">int</span> EEPROMReadInt(<span style="color: #2b91af">int</span> p_address)
+{
+  <span style="color: #2b91af">byte</span> lowByte = EEPROM.read(p_address);
+  <span style="color: #2b91af">byte</span> highByte = EEPROM.read(p_address + 1);
+  <span style="color: #0000ff">return</span> ((lowByte &lt;&lt; 0) &amp; 0xFF) + ((highByte &lt;&lt; 8) &amp; 0xFF00);
+}
+
+<span style="color: #0000ff">void</span> setup() {
+  motorPins[0][0] = EEPROMReadInt(ADRESS_MP_P00);  
+  motorPins[0][1] = EEPROMReadInt(ADRESS_MP_P01);  
+  motorPins[1][0] = EEPROMReadInt(ADRESS_MP_P10);  
+  motorPins[1][1] = EEPROMReadInt(ADRESS_MP_P11);  
+  motorPins[2][0] = EEPROMReadInt(ADRESS_MP_P20);  
+  motorPins[2][1] = EEPROMReadInt(ADRESS_MP_P21);  
+  work = EEPROMReadInt(ADRESS_WORK);
+  idle = EEPROMReadInt(ADRESS_IDLE);
+  pause = EEPROMReadInt(ADRESS_PAUSE);
+  com = EEPROMReadInt(ADRESS_COM);
+  pinMode(PauseLed,OUTPUT);
+  pinMode(PauseCom,OUTPUT);
+  Serial.begin(115200); 
+  <span style="color: #0000ff">for</span> (<span style="color: #2b91af">int</span> i=0; i&lt;3; i++) 
+  {
+    <span style="color: #0000ff">for</span> (count = 0; count &lt; 2; count++)
+    {
+      pinMode(motorPins[i][count], OUTPUT);
+    }
+  }
+ delayTime=50;
+ digitalWrite(PauseLed, pause);
+ digitalWrite(PauseCom, com);
+}
+
+<span style="color: #0000ff">void</span> moveForward(<span style="color: #2b91af">int</span> sm) 
+{
+  digitalWrite(motorPins[sm][1], HIGH); 
+  digitalWrite(motorPins[sm][0], HIGH);
+  digitalWrite(motorPins[sm][0], LOW);
+}
+
+<span style="color: #0000ff">void</span> moveBackward(<span style="color: #2b91af">int</span> sm) 
+{
+  digitalWrite(motorPins[sm][1], LOW);
+  digitalWrite(motorPins[sm][0], HIGH);
+  digitalWrite(motorPins[sm][0], LOW);
+}
+
+<span style="color: #0000ff">void</span> delayMicros(<span style="color: #2b91af">long</span> wt)
+{
+  unsigned <span style="color: #2b91af">long</span> mls;
+  unsigned <span style="color: #2b91af">int</span> mks;
+  mls=(unsigned <span style="color: #2b91af">long</span>)(wt / 1000);
+  mks=(unsigned <span style="color: #2b91af">int</span>)(wt % 1000);
+  <span style="color: #0000ff">if</span> (mls&gt;0) delay(mls);
+  <span style="color: #0000ff">if</span> (mks&gt;0) delayMicroseconds(mks);
+}
+
+<span style="color: #0000ff">void</span> MoveSM(<span style="color: #2b91af">long</span> x, <span style="color: #2b91af">long</span> y, <span style="color: #2b91af">long</span> z)
+{
+  <span style="color: #2b91af">long</span> c[3], c2[3];
+  <span style="color: #2b91af">double</span> c1[3], d[3];
+  <span style="color: #2b91af">long</span> m, i;
+  boolean flg;
+  c[0] = x;
+  c[1] = y;
+  c[2] = z;
+  m = 1;
+  <span style="color: #0000ff">for</span> (i=0; i&lt;3; i++)
+  {
+    <span style="color: #0000ff">if</span> (m &lt; abs(c[i])) m = abs(c[i]);
+  }
+  <span style="color: #0000ff">for</span> (i=0; i&lt;3; i++)
+  {
+    c1[i] = 0;
+    d[i] = 1.0 * c[i] / m;
+    c2[i] = 0;
+  }
+  flg = <span style="color: #0000ff">false</span>;
+  <span style="color: #0000ff">for</span> (i=0; i&lt;3; i++)
+  {
+    <span style="color: #0000ff">if</span> (abs(c1[i]) &lt; abs(c[i])) flg=<span style="color: #0000ff">true</span>;
+  }
+  <span style="color: #0000ff">while</span> (flg) 
+  {
+    flg=<span style="color: #0000ff">false</span>;
+    <span style="color: #0000ff">for</span> (i=0; i&lt;3; i++) 
+    {
+      <span style="color: #0000ff">if</span> (abs(c1[i]) &lt; abs(c[i]))
+      c1[i] += d[i];
+      <span style="color: #0000ff">if</span> (abs(c1[i]) - abs(c2[i]) &gt;= 0.5)
+      {
+        <span style="color: #0000ff">if</span> (c[i]&gt;0) 
+        {
+          c2[i]++;
+          moveForward(i);
+        }
+        <span style="color: #0000ff">else</span>
+        {
+          c2[i]--;
+          moveBackward(i);
+        }
+      }
+      <span style="color: #0000ff">if</span> (abs(c1[i]) &lt; abs(c[i])) flg=<span style="color: #0000ff">true</span>;
+    }
+  delayMicros(delayTime);
+  }
+}
+
+<span style="color: #0000ff">void</span> loop() 
+{
+  <span style="color: #0000ff">if</span> (Serial.available() &gt; 0) 
+  { 
+    comm = <span style="color: #a31515">&quot;&quot;</span>;
+    <span style="color: #2b91af">long</span> c[4]={0,0,0,0};
+    <span style="color: #2b91af">int</span> i;
+    sign=1;
+    i=0;
+    isCom = <span style="color: #0000ff">false</span>;
+    incomingByte = Serial.read();
+    <span style="color: #0000ff">while</span> (incomingByte!=<span style="color: #a31515">&#39;;&#39;</span>) 
+    {
+      <span style="color: #0000ff">if</span> (c[i]==0) 
+      {
+        <span style="color: #0000ff">if</span> (incomingByte==<span style="color: #a31515">&#39;-&#39;</span>)
+        sign=-1;
+      }
+      <span style="color: #0000ff">if</span> (incomingByte==<span style="color: #a31515">&#39;,&#39;</span>) 
+      {
+        c[i]*=sign;
+        sign=1;
+        i++;
+      }
+      <span style="color: #0000ff">else</span> if (incomingByte&gt;=<span style="color: #a31515">&#39;0&#39;</span> &amp;&amp; incomingByte&lt;=<span style="color: #a31515">&#39;9&#39;</span>) 
+      {
+        c[i]=c[i]*10+incomingByte-<span style="color: #a31515">&#39;0&#39;</span>;
+      } <span style="color: #0000ff">else</span>
+      {
+        <span style="color: #0000ff">if</span> (incomingByte!=<span style="color: #a31515">&#39;-&#39;</span>)
+        {
+          <span style="color: #2b91af">char</span> c = incomingByte;
+          comm+=c;
+          isCom = <span style="color: #0000ff">true</span>;
+        }
+      }
+      <span style="color: #0000ff">while</span> (Serial.available() == 0) 
+      {
+        delayMicroseconds(1); 
+      }
+      incomingByte = Serial.read();
+    } 
+    <span style="color: #0000ff">if</span>(isCom)
+    {
+      comm += String(c[0]); 
+      String fs = comm.substring(0,6);
+      <span style="color: #008000">//Serial.println(&quot;Get commands nums &quot; + String(c[0])) ; </span>
+      <span style="color: #0000ff">if</span>     (fs==<span style="color: #a31515">&quot;getidl&quot;</span>) Serial.println(String(idle)); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getwor&quot;</span>) Serial.println(String(idle)); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getcom&quot;</span>) Serial.println(String(com)); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getp99&quot;</span>) Serial.println(String(motorPins[0][0])); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getp91&quot;</span>) Serial.println(String(motorPins[0][1])); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getp19&quot;</span>) Serial.println(String(motorPins[1][0])); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getp11&quot;</span>) Serial.println(String(motorPins[1][1])); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getp29&quot;</span>) Serial.println(String(motorPins[2][0])); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getp21&quot;</span>) Serial.println(String(motorPins[2][1])); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;resetd&quot;</span>)
+      {
+        ResetToDefault();
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+       <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;resets&quot;</span>)
+      {
+        software_Reset();
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getspe&quot;</span>) 
+      {
+        Serial.println(String(analogRead(Analog)));
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getpin&quot;</span>) 
+      {
+        Serial.println(String(motorPins[0][0]) + <span style="color: #a31515">&quot;, &quot;</span> + String(motorPins[0][1])); 
+        Serial.println(String(motorPins[1][0]) + <span style="color: #a31515">&quot;, &quot;</span> + String(motorPins[1][1])); 
+        Serial.println(String(motorPins[2][0]) + <span style="color: #a31515">&quot;, &quot;</span> + String(motorPins[2][1])); 
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;testcc&quot;</span>)
+      { 
+        Serial.println(<span style="color: #a31515">&quot;OK&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getdat&quot;</span>)
+      {    
+        Serial.println(<span style="color: #a31515">&quot;Motor pins: &quot;</span>);
+        Serial.println(String(motorPins[0][0]) + <span style="color: #a31515">&quot;, &quot;</span> + String(motorPins[0][1])); 
+        Serial.println(String(motorPins[1][0]) + <span style="color: #a31515">&quot;, &quot;</span> + String(motorPins[1][1])); 
+        Serial.println(String(motorPins[2][0]) + <span style="color: #a31515">&quot;, &quot;</span> + String(motorPins[2][1])); 
+        Serial.println(<span style="color: #a31515">&quot;&#39;work&#39; = &quot;</span> + String(work));
+        Serial.println(<span style="color: #a31515">&quot;&#39;idle&#39; = &quot;</span> + String(idle));
+        Serial.println(<span style="color: #a31515">&quot;&#39;pause&#39; = &quot;</span> + String(pause));  
+        Serial.println(<span style="color: #a31515">&quot;&#39;com&#39; = &quot;</span> + String(com));  
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;getpau&quot;</span>) Serial.println(String(pause)); 
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setcom&quot;</span>)
+      {     
+        com = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_COM,com);
+        digitalWrite(PauseCom, com);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setidl&quot;</span>)
+      {     
+        idle = comm.substring(7, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_IDLE,idle);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setwor&quot;</span>)
+      {            
+        work = comm.substring(7, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_WORK,work);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setpau&quot;</span>)
+      {    
+        pause = comm.substring(8, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_PAUSE,pause);
+        digitalWrite(PauseLed, pause);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setp99&quot;</span>)
+      {     
+        motorPins[0][0] = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_MP_P00,motorPins[0][0]);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setp91&quot;</span>)
+      {      
+        motorPins[0][1] = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_MP_P01,motorPins[0][1]);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setp19&quot;</span>)
+      { 
+        motorPins[1][0] = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_MP_P10,motorPins[1][0]);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setp11&quot;</span>)
+      {     
+        motorPins[1][1] = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_MP_P11,motorPins[1][1]);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setp29&quot;</span>)
+      {       
+        motorPins[2][0] = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_MP_P20,motorPins[2][0]);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;setp21&quot;</span>)
+      {       
+        motorPins[2][1] = comm.substring(6, comm.length()).toInt();
+        EEPROMWriteInt(ADRESS_MP_P21,motorPins[2][1]);
+        Serial.println(<span style="color: #a31515">&quot;done&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> if(fs==<span style="color: #a31515">&quot;gethel&quot;</span>)
+      {
+        Serial.println(<span style="color: #a31515">&quot;Returns commands: getidle, getcom, getwork, getp99, getp91, getp19, getp11, getp29, getp21, getpin, getdata, getpause, gethelp.&quot;</span>);
+        Serial.println(<span style="color: #a31515">&quot;Sett commands: setidle, setcom, setwork, setpause, setp99, setp91, setp19, setp11, setp29, setp21.&quot;</span>);
+      }
+      <span style="color: #0000ff">else</span> Serial.println(<span style="color: #a31515">&quot;Wrong command: &quot;</span> + comm);
+    } 
+    <span style="color: #0000ff">else</span>
+    {
+      c[i]*=sign;
+      <span style="color: #0000ff">if</span> (c[3]&gt;0) delayTime=c[3];
+      <span style="color: #0000ff">if</span> (c[0]==0&amp;&amp;c[1]==0) 
+      {
+        <span style="color: #0000ff">if</span> (c[2]&gt;0) {delayTime=30;}
+        <span style="color: #0000ff">else</span> delayTime=20;
+      }
+      MoveSM(c[0],c[1],c[2]);
+      Serial.println(<span style="color: #a31515">&quot;OK&quot;</span>); 
+    }
+  }
+  <span style="color: #0000ff">else</span> delayMicroseconds(1); 
+}
+ 
+</pre></td></tr></table></div>
+</div>
+
+
+</div>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

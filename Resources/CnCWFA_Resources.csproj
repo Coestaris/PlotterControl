@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8E3A87A-490A-4701-9D1B-83BC6AC2B568}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CnCWFA_Resources</RootNamespace>
+    <AssemblyName>CnCWFA_Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\CnC_WFA\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_cvf.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_macro.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_prres.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_vd.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\add.gif" />
+    <Content Include="Resources\bezier.png" />
+    <None Include="Resources\spiral.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\ico.jpg" />
+    <Content Include="Resources\loadcircle.png" />
+    <Content Include="Resources\scroll.png" />
+    <None Include="Resources\view-eye-interface-symbol.png" />
+    <None Include="Resources\vector.png" />
+    <None Include="Resources\vect.png" />
+    <None Include="Resources\vctr.png" />
+    <None Include="Resources\triangle.png" />
+    <None Include="Resources\shapes.png" />
+    <None Include="Resources\setup.png" />
+    <None Include="Resources\settings1.gif" />
+    <None Include="Resources\settings.gif" />
+    <None Include="Resources\save.gif" />
+    <None Include="Resources\rotatec.png" />
+    <None Include="Resources\rotate.png" />
+    <None Include="Resources\resize.png" />
+    <None Include="Resources\rename.png" />
+    <None Include="Resources\rectangle.png" />
+    <None Include="Resources\print1.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\paste.gif" />
+    <None Include="Resources\palette.png" />
+    <None Include="Resources\options.png" />
+    <None Include="Resources\open1.gif" />
+    <None Include="Resources\open.gif" />
+    <None Include="Resources\ok2.png" />
+    <None Include="Resources\ok1.png" />
+    <None Include="Resources\ok.png" />
+    <None Include="Resources\offset.png" />
+    <None Include="Resources\newfile.gif" />
+    <None Include="Resources\merge.png" />
+    <None Include="Resources\memory.png" />
+    <None Include="Resources\mc.png" />
+    <None Include="Resources\macro.png" />
+    <None Include="Resources\line.png" />
+    <None Include="Resources\invisible.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\inclined-pencil.png" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\home1.png" />
+    <None Include="Resources\home.png" />
+    <None Include="Resources\help_.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\font2.png" />
+    <None Include="Resources\font1.png" />
+    <None Include="Resources\font.png" />
+    <None Include="Resources\flip.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\enxt3.png" />
+    <None Include="Resources\enxt2.png" />
+    <None Include="Resources\enxt1.png" />
+    <None Include="Resources\enxt.png" />
+    <None Include="Resources\ellipse.png" />
+    <None Include="Resources\editimage.gif" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\device.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\cons1.png" />
+    <None Include="Resources\cons.png" />
+    <None Include="Resources\cansel.png" />
+    <None Include="Resources\addimage.gif" />
+    <None Include="Resources\addfile.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

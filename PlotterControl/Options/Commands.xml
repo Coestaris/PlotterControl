@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<commands>
+  <command>
+   <GeneralName>print_vector</GeneralName>
+   <Flag Name ="port" Type="System.String" Id="vect.print.port" Req="false" DefValue="COM3"/>
+   <Flag Name ="bdrate" Type="System.Int32" Id="vect.print.rate" Req="false" DefValue="115200"/>
+   <Flag Name ="size" Type="System.String" Id="vect.print.size" Req="false" DefValue="100x100"/>
+   <Flag Name ="auto" Type="System.Boolean" Id="vect.print.auto" Req="false" DefValue="false"/>
+  </command>
+  <command>
+   <GeneralName>open_vector</GeneralName>
+  </command>
+  <command>
+   <GeneralName>edit_vector</GeneralName>
+   <Flag Name ="documentname" Type="System.String" Id="vect.edit.name" Req="false" DefValue="UnTitled"/>
+   <Flag Name ="openedit" Type="System.Boolean" Id="vect.edit.edit" Req="false" DefValue="false"/>
+  </command>
+  <command>
+   <GeneralName>render_vector</GeneralName>
+   <Flag Name ="backcolor" Type="System.String" Id="vect.render.back" Req="false" DefValue="black"/>
+   <Flag Name ="drawcolor" Type="System.String" Id="vect.render.draw" Req="false" DefValue="orange"/>
+  </command>
+    <command>
+   <GeneralName>open_doc</GeneralName>
+  </command>
+</commands>

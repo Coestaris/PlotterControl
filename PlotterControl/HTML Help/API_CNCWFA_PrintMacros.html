@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Справка по библиотеке CWA_VectorHM</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+    <script type="text/jscript" src="Source/top_colont.js"></script>
+    <div class="title">Библиотека CWA_VectorHM</div>
+	<p class="subtitle">Перечисление MacrElemType</p>
+	<p>Описывает тип действия элемента. Содержит следующие варианты:</p>
+	<ul>
+		<li><b>Tool</b> - перемещение инструмента.</li>
+		<li><b>MoveToPoint</b> - перемещение в конкретную точку.</li>
+		<li><b>MoveRelative</b> - относительно смешение.</li>
+		<li><b>ToolAndDelay</b> - перемещение инструмента с задержкой после.</li>
+		<li><b>Delay</b> - задержка.</li>
+		<li><b>None</b> - ничего не делать.</li>
+		<li><b>MoveToPointAndDelay</b> - перемещение в конкретную точку с задержкой после.</li>
+		<li><b>MoveRelativeAndDelay</b> - относительно смешение с задержкой после.</li>
+	</ul>
+	<p class="subtitle">Перечисление MacrElemTypeShorted</p>
+	<p>Содержит сокращенные эквиваленты перечислению <b>MacrElemType</b> для сохранения. Содержит следующие варианты:</p>
+	<ul>
+		<li><b>T</b> = Tool.</li>
+		<li><b>MTP</b> = MoveToPoint.</li>
+		<li><b>MR</b> = MoveRelative.</li>
+		<li><b>D</b> = Delay.</li>
+		<li><b>N</b> = None.</li>
+		<li><b>TAD</b> = ToolAndDelay.</li>
+		<li><b>MTPAD</b> = MoveToPointAndDelay.</li>
+		<li><b>MRAD</b> = MoveRelativeAndDelay.</li>												
+	</ul>
+	<p class="subtitle">Структура MacrElem</p>
+	<p>Содержит статические методы:</p>
+	<ul>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">MacrElemTypeShorted</span> NormalToShorted(<span style="color:#8000FF">MacrElemType</span> t) - приведение обычного типа к короткому.
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">MacrElemType</span> ShortedToNormal(<span style="color:#8000FF">MacrElemTypeShorted</span> t) - приведение коротого типа к обычному.
+		</li>	
+	</ul>
+   <p>Содержит следующие поля:</p>
+	<ul>
+		<li><span style="color:#0000A0">public </span> <span style="color:#8000FF">MacrElemType</span> Type - тип элемента.</li>												
+		<li><span style="color:#0000A0">public int</span> ToolMove - количество шагов перемещения инструмента (вверх или вниз).</li>	
+		<li><span style="color:#0000A0">public </span> System.Drawing.<span style="color:#8000FF">PointF</span> MoveToPoint - перемещение в точку.</li>	
+		<li><span style="color:#0000A0">public </span> System.Drawing.<span style="color:#8000FF">PointF</span> MoveRelative - относительное смещение.</li>	
+	    <li><span style="color:#0000A0">public int</span> Delay - задержка в мс.</li>	
+		<li><span style="color:#0000A0">public string</span> StringType - красивое описание данного элемента.</li>	
+	</ul>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

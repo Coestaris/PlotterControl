@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <title>Справка по библиотеке CWA_VectorHM</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+    <div class="title">Библиотека CWA_VectorHM</div>
+	<p>Библиотека VectorHM (Vector Help Methods) - дополнительная библиотека для обработки векторов. Состоит из:</p>
+    <ul>
+      <li>Класс <a href="#1">VectProcessor</a>.</li>
+   	  <li>Структура <a href="#2">VectLibOptions</a>.</li>
+	  <li>Класс <a href="#3">VectLib</a>.</li>
+    </ul>
+    <a name="1"></a>
+	<p class="subtitle">Класс VectProcessor</p>
+	<p>Основной класс библиотеки</p>
+	<p>Содержит следующие статические методы: </p>
+	<ul>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">Vect</span> FlipX(<span style="color:#8000FF">Vect</span> v) - отражение по оси <b>X</b>.</li>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">Vect</span> FlipY(<span style="color:#8000FF">Vect</span> v) - отражение по оси <b>Y</b>.</li>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">Vect</span> Resize(<span style="color:#8000FF">Vect</span> v, System.Drawing.<span style="color:#8000FF">SizeF</span> NewSize) - ресайз вектора в новый размер <b>NewSize</b>.</li>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">Vect</span> RotateBy(<span style="color:#8000FF">Vect</span> v, <span style="color:#0000A0">int</span> angle) - поворот вектора на 90,180,270 градусов (остальные будет игнорировать).</li>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">Vect</span> RotateByCAngle(<span style="color:#8000FF">Vect</span> v, <span style="color:#0000A0">float</span> angle, System.Drawing.<span style="color:#8000FF">PointF</span> RelPoint) - поворот на любой угол <b>Angle</b> относительно точки <b>RelPoint</b>.</li>
+		<li><span style="color:#0000A0">public static</span> <span style="color:#8000FF">Vect</span> SmDelete(<span style="color:#8000FF">Vect</span> v, <span style="color:#0000A0">int</span> threshold) - удаление мусора с вектора, удаление векторов меньших чем <b>threshold</b>.</li>				
+	</ul>
+	<p>Пример применения</p>
+  <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid; float:left;"> 
+  1 
+  2
+  3
+  4
+  </div></pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">&nbsp; var</span> a = <span style="color: #0000ff">new</span> Vect(<span style="color: #a31515">&quot;file.cvf&quot;</span>);
+  a = VectProcessor.FlipX(a);
+  a = VectProcessor.RotateByCAngle(a, 33, <span style="color: #0000ff">new</span> PointF(20,30.5f);
+  a.SaveVect_new(<span style="color: #a31515">&quot;newvect.cvf&quot;</span>);
+  </pre></td></tr></table></div> </div>
+  <a name="2"></a>
+  <p class="subtitle">Структура VectLibOptions</p>
+  <p>Содержит набор опций для класса <b>VectLib</b>. Содержит следующие поля:</p>
+  <ul>
+  	  <li><span style="color:#0000A0">public float</span> GrayConvert_Rcof - коэффициент преобразования в черно-белый формат красного цвета. По умолчанию - <b>0.299f</b>.</li>
+  	  <li><span style="color:#0000A0">public float</span> GrayConvert_Gcof - коэффициент преобразования в черно-белый формат зеленого цвета. По умолчанию - <b>0.587f</b>.</li>
+  	  <li><span style="color:#0000A0">public float</span> GrayConvert_Bcof - коэффициент преобразования в черно-белый формат синего цвета. По умолчанию - <b>0.114f</b>.</li>
+  	  <li><span style="color:#0000A0">public float</span> GaussBlur_Sigma - сигма размытия по Гаусу. Определяет "силу" размытия изображения. По умолчанию - <b>1.2f</b>.</li>
+  	  <li><span style="color:#0000A0">public short</span> GaussBlur_KCof - коэффициент в формуле размытия по Гаусу. Рекомендовано не изменять. По умолчанию - <b>7</b>.</li>
+  	  <li><span style="color:#0000A0">public bool</span> GaussBlur_Use - использовать ли размытие при выполнении метода <b>GetVector()</b>. По умолчанию - <b>true</b>.</li>
+  	  <li><span style="color:#0000A0">public int</span> SobelOperator_LimFonf - предел оператора Собеля. Определяет "чувствительность" алгоритма. Должен находится в пределах от 1 до 255. По умолчанию - <b>80</b>.</li>
+  	  <li><span style="color:#0000A0">public int</span> Hqx_Scale - масштабирование входящего изображения алгоритмом HQXN. 0 - без масштабирования, варианты масштабирования - 2,3,4.  По умолчанию - <b>2</b>.</li>	  
+  	  <li><span style="color:#0000A0">public int</span> Pr_StreamsCount - количество потоков выполнения векторизации. По умолчанию - <b>2</b>. Рекомендовано - <b>1</b>, хотя скорость выполнения будет раза в 3 меньше.</li>	  
+  	  <li><span style="color:#0000A0">public bool</span> Debug_Pr_Say - вывод дебаг информации метода <b>Vect.Pr()</b> о завершении и статусе выполнения потоков процесса векторизации в консоль. По умолчанию - <b>false</b>.</li>	
+  	  <li><span style="color:#0000A0">public bool</span> Debug_Save_MergedResult - определяет, будет ли метод <b>GetVector()</b> при завершении работы сохранять объединенные промежуточные результаты в одно изображение в корень с программой. По умолчанию - <b>false</b>.</li>	
+  	  <li><span style="color:#0000A0">public bool</span> Debug_Save_PrticalResults - определяет, будет ли метод <b>GetVector()</b> сохранять промежуточные этапы как изображения в корень программы с соответствующими именами ("1.png","2.png"...).  По умолчанию - <b>false</b>.</li>		  
+  </ul>
+   <a name="3"></a>
+  <p class="subtitle">Класс VectLib</p>
+  <p>Имеет ридонли поле <b>Options</b> класса <b>VectLibOptions</b>, которое определяет параметры выполнения операций. Содержит следующие методы: </p>
+  <ul>
+  	  <li><span style="color:#0000A0">public void</span> Sobel(<span style="color:#0000A0">ref</span> System.Drawing.<span style="color:#8000FF">Bitmap</span> ori) - применяет оператор Собеля к изображению <b>ori</b>. Оператор собеля - детектор границ, применяемый к черно-белым изобржениям, с целью получения 2х цветного изображения, которое можно векторизировать. В связке с преобразованием в черно-белый формат (методы <b>AverageGrayForm()</b> и <b>ToGrayMultStream()</b>) позволяет векторизировать любую, не 2х цветную картинку.</li>
+  	  <li><span style="color:#0000A0">public void</span> Gauss(<span style="color:#0000A0">ref</span> System.Drawing.<span style="color:#8000FF">Bitmap</span> ori) - применяет размытие по Гаусу. Используется до применения оператора Собеля с целью уберания цифрового шума с изображения.</li>
+  	  <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Bitmap</span> AverageGrayForm(System.Drawing.<span style="color:#8000FF">Bitmap</span> ori) - медленное и дающее не всегда хороший результат преобразование в черно-белый формат. Хотя на некоторых изображениях он смотрится лучше чем <b>ToGrayMultStream()</b>.</li>
+  	  <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Bitmap</span> HardBW(System.Drawing.<span style="color:#8000FF">Bitmap</span> ori, <span style="color:#0000A0">int</span> threshold) - преобразование изображения в 2х цветный формат с порогом <b>threshold</b>.</li>
+  	  <li><span style="color:#0000A0">public</span> System.Drawing.<span style="color:#8000FF">Bitmap</span> ToGrayMultStream(System.Drawing.<span style="color:#8000FF">Bitmap</span> ori, <span style="color:#0000A0">int</span> strcount) - много поточный черно-белый фильтр.</li>	  
+ 	  <li><span style="color:#0000A0">public</span> <span style="color:#8000FF">Vect</span> GetVector(System.Drawing.<span style="color:#8000FF">Bitmap</span> bmp) - векторизация изображения c применением масштабирования, черно-белого фильтра, размытия по Гаусу и оператора Собеля.</li>	  
+  </ul>
+  <p>Пример применения</p>
+  <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid; float:left;"> 
+  1 
+  2
+  3
+  4
+  5
+  6</div></pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">string</span> ori = <span style="color: #a31515">&quot;image.jpeg&quot;</span>;
+<span style="color: #2b91af">var</span> a = <span style="color: #0000ff">new</span> VectLib();
+a.Options.Hqx_Scale = 2;
+a.Options.GaussBlur_Sigma = 10;
+a.GetVector(<span style="color: #0000ff">new</span> Bitmap(ori)).ToBitmap().Save(<span style="color: #a31515">&quot;VectCorrection.png&quot;</span>);
+<span style="color: #0000ff">new</span> Vect().Pr(<span style="color: #0000ff">new</span> Bitmap(ori)).ToBitmap().Save(<span style="color: #a31515">&quot;VectWithoutCorrection.png&quot;</span>);
+</pre></td></tr></table></div></div>
+&nbsp;
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

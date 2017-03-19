@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Список данных устройства</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+	<link rel="stylesheet" type="text/css" href="Source/Table.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+   <div class=title>Список данных устройства</div>
+   &nbsp; 
+   <div style="padding-left:20px;">
+   <table class="table_blur" width="98%" border="2" cellspacing="0" cellpadding="5" align="left" >
+   <tr>
+    <th>№</th>
+    <th>Имя</th>
+	<th>Тип</th>
+    <th>Описание</th>
+	<th>Значение по умолчанию</th>
+   </tr>
+   <tr><td style="text-align:center;" valign="top" width="30"><b>1</b></td><td  width="100">IDLE</td><td width="120">Целочисленная</td><td>Задержка в МС при холостом перемещении пера</td><td width="100" style="text-align:center;">40</td></tr>
+   <tr><td style="text-align:center;"><b>3</b></td><td>COM</td><td>Булевая (Целочисленная)</td><td>Значение этой переменной отвечает за состояние светодиода на устройстве, отвечающиго за наличие задание. Светодиод греть не будет в случае, когда <b>COM</b> = 0</td><td style="text-align:center;">0 (false)</td></tr>
+   <tr><td style="text-align:center;"><b>4</b></td><td>WORK</td><td>Целочисленная</td><td>Задержка в МС при рабочем перемещении пера</td><td style="text-align:center;">20</td></tr>
+   <tr><td style="text-align:center;"><b>5</b></td><td>P99</td><td>Целочисленная</td><td>Пин <b>шага</b> по оси <b>Х</b> (<b>ХSTEP</b>)</td><td style="text-align:center;">5</td></tr>
+   <tr><td style="text-align:center;"><b>6</b></td><td>P91</td><td>Целочисленная</td><td>Пин <b>направления</b> по оси <b>Х</b> (<b>XDIR</b>)</td><td style="text-align:center;">4</td></tr>
+   <tr><td style="text-align:center;"><b>7</b></td><td>P19</td><td>Целочисленная</td><td>Пин <b>шага</b> по оси <b>Y</b> (<b>YSTEP</b>)</td><td style="text-align:center;">3</td></tr>
+   <tr><td style="text-align:center;"><b>8</b></td><td>P11</td><td>Целочисленная</td><td>Пин <b>направления</b> по оси <b>Y</b> (<b>YDIR</b>)</td><td style="text-align:center;">2</td></tr>
+   <tr><td style="text-align:center;"><b>9</b></td><td>P29</td><td>Целочисленная</td><td>Пин <b>шага</b> по оси <b>Z</b> (<b>ZSTEP</b>)</td><td style="text-align:center;">7</td></tr>
+   <tr><td style="text-align:center;"><b>10</b></td><td>P21</td><td>Целочисленная</td><td>Пин <b>направления</b> по оси <b>Z</b> (<b>ZDIR</b>)</td><td style="text-align:center;">6</td></tr>
+   <tr><td style="text-align:center;"><b>11</b></td><td>Pause </td><td>Булевая (Целочисленная)</td><td>Значение этой переменной отвечает за состояние светодиода на устройстве, отвечающиго за паузу в выполнении задания. Светодиод греть не будет в случае, когда <b>PAUSE</b> = 0</td><td style="text-align:center;">0 (false)</td></tr>
+  </table></div>
+  <p>&nbsp;</p> 
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

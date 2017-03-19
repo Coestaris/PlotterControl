@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Don`t EDIT this FILE! -->
+<Options>
+  <Option id="SavePrintLog">True</Option>
+  <Option id="SaveSerialMonitorLog">True</Option>
+  <Option id="SaveManualControlLog">True</Option>
+  <Option id="SaveMacroLog">True</Option>
+  <Option id="SaveGlobalPrintLog">True</Option>
+  <Option id="SaveGlobalVectLog">True</Option>
+  <Option id="PrintLogNameFormat">PrintLog_{y}.{m}.{d}_{h}.{min}.log</Option>
+  <Option id="SerialMonitorLogNameFormat">SerialMonitorLog_{y}.{m}.{d}_{h}.{min}.log</Option>
+  <Option id="ManualControlLogNameFormat">ManualControlLog_{y}.{m}.{d}_{h}.{min}.log</Option>
+  <Option id="MacroLogNameFormat">MacroLog_{y}.{m}.{d}_{h}.{min}.log</Option>
+  <Option id="GlobalPrintLogNameFormat">PrintLog.log</Option>
+  <Option id="GlobalVectLogNameFormat">VectLog.log</Option>
+</Options>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <title>Прямые команды</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+  <div class="title">Прямые команды</div>
+  <p>Устройство контролируется с помощью команд. Их общий вид таков: [command];. ';'(точка с запятой) - обязательный символ, знак конца команды. Без него устройство не воспримит строку как команду.</p>
+  <p>Команды делятся на 2 типа:</p>
+  <ul>
+    <li><b>Процедуры</b> - команды, которые просто выполняются, не возвращая значений;</li>
+    <li><b>Функции</b> - команды, которые выполняются, возвращая какое-то значение.</li>
+  </ul>
+  <p>Большинство команд направлены на работу с памятью устройства, хотя основными являются 2 команды перемещения пера.</p>
+  <p>Прошивка работает с данными - переменными которые хранятся  постоянной памяти <b>EEPROM</b>. Со списком и назначением их Вы можете ознакомится <a href="ListOfVars.html">тут</a>.</p>
+  <p>С полным списком доступных на данный момент команд вы можете ознакомится <a href="ListOfDirectComands.html">тут</a>.</p>
+  <p>Пример взаемодейстия с устройством:</p>
+  
+  <div style="font-family: Curier New; padding-left:40px; font-size:16px; line-height: 0.2em; float:left;">
+  	   <p style="font-family:inherit; font-size:inherit; line-height:length;">|  <b style="color:#0000A0">[PC]</b>:     resetd;</p>
+  	   <p style="font-family:inherit; font-size:inherit; line-height:length;">|  <b style="color:#804040">[Device]</b>: OK;</p>
+  	   <p style="font-family:inherit; font-size:inherit; line-height:length;">| <b style="color:#0000A0">[PC]</b>:     setidle30; setwork20; setp293;</p>
+	   <p style="font-family:inherit; font-size:inherit; line-height:length;">| <b style="color:#804040">[Device]</b>: OK; OK; OK; </p>
+	   <p style="font-family:inherit; font-size:inherit; line-height:length;">| <b style="color:#0000A0">[PC]</b>:     settte; </p>
+	   <p style="font-family:inherit; font-size:inherit; line-height:length;">| <b style="color:#804040">[Device]</b>: Unknown Command "settte"; </p>
+  </div>
+  <div style="color:#808080; font-family: Curier New; padding-left:40px; font-size:16px; line-height: 0.2em; float:left;">
+     <p style="font-family:inherit; font-size:inherit; line-height:length;">// Отправка команды "Установки параметров по умолчанию";</p>
+     <p style="font-family:inherit; font-size:inherit; line-height:length;">// Отчет о удачном выполнении команды;</p>
+     <p style="font-family:inherit; font-size:inherit; line-height:length;">// Задача параметров <b>IDLE</b> = 30, <b>WORK</b> = 20 и <b>P29</b> = 3;<p>
+     <p style="font-family:inherit; font-size:inherit; line-height:length;">// 3 ответа устройства о успехе;</p>
+     <p style="font-family:inherit; font-size:inherit; line-height:length;">// Неправильная команда</p>
+     <p style="font-family:inherit; font-size:inherit; line-height:length;">// Ответ устройства о неправильности команды</p>
+  </div> 
+  <p>&nbsp; </p>  <p>&nbsp; </p>
+  <p>&nbsp; </p>  <p>&nbsp; </p>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+</body>
+</html>

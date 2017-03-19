@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Справка по библиотеке CWA_MathParser</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+   <script type="text/jscript" src="Source/top_colont.js"></script>
+   <div class="title">Библиотека CWA_MathParser</div>
+   <p>Библиотека CWA_MathParser - библиотека для парсинга мат. выражений, с целью построения графиков или фигур. Состоит из:</p>
+    <ul>
+      <li>Перечисление <a href="#1">SyntaxErrorType</a>.</li>
+   	  <li>Перечисление <a href="#2">ResultType</a>.</li>
+	  <li>Класс <a href="#3">SyntaxException</a>.</li>
+	  <li>Класс <a href="#4">MathParser</a>.</li>
+    </ul>
+	<a name="1"></a>
+   <div class="subtitle">Перечисление SyntaxErrorType</div>
+   <p>Описывает тип ошибки. Содержит следующие варианты:</p>
+   <ul>
+   	   <li><b>UnexistsVariable</b> - несуществующая переменная.</li>
+	   <li><b>CantFullParse</b> - невозможно полностью разобрать строку.</li>
+	   <li><b>UnClosedBracket</b> - незакрытая скобка.</li>
+	   <li><b>NotValidNumber</b> - неверное число.</li>
+	   <li><b>CantGetValidNumber</b> - невозможно получить число.</li>
+	   <li><b>UnDefinedFunction</b> - неуказанная функция.</li>
+   </ul>
+   	<a name="2"></a>
+   <div class="subtitle">Перечисление ResultType</div>
+   <p>Описывает тип ошибки. Содержит следующие варианты:</p>
+   <ul>
+   	   <li><b>Ok</b> - все хорошо.</li>
+	   <li><b>Null</b> - ответ нулевой. Причина неизвестна.</li>
+	   <li><b>MathError</b> - мат. ошибка.</li>
+	   <li><b>SyntaxError</b> - синтаксическая ошибка.</li>
+   </ul>
+   	<a name="3"></a>
+   <div class="subtitle">Класс SyntaxException</div> 
+   <p>Для получения всей известной информации юзайте метод ToString(). Имеет следующие поля: </p>
+      <ul>
+   	   <li><span style="color:#0000A0">public</span> <span style="color:#8000FF">SyntaxErrorType</span> type - тип ошибки.</li>
+   	   <li><span style="color:#0000A0">public string</span> data - информация об ошибке.</li> 
+   </ul>
+   	<a name="4"></a>
+    <div class="subtitle">Класс MathParser</div>
+	<p>Основной класс библиотеки.</p>
+	<p>Имеет следующие методы: </p>
+   <ul>
+   	   <li><span style="color:#0000A0">public void</span> setVariable(<span style="color:#0000A0">string</span> variableName, <span style="color:#0000A0">double</span> variableValue) - задает переменную. Если такая уже есть, заменяет ее значение.</li>
+       <li><span style="color:#0000A0">public double</span> Solve(<span style="color:#0000A0">string</span> expression, <span style="color:#0000A0">out</span> <span style="color:#8000FF">ResultType</span> res, <span style="color:#0000A0">out</span> <span style="color:#8000FF">SyntaxException</span> se) - парсит и считает значение строки <b>expression</b> с учетом переменных. Возвращает <b>res</b> - отсчет о том, смог ли он ее решить, и <b>se</b> - данные об ошибке. Если ошибки нет, то <b>se</b> = <b>null</b>.</li>
+   </ul>
+ <div class="subtitle">Пример применения</div>
+  <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid; float:left;">
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13 
+ 14</div></pre></td><td><pre style="margin: 0; line-height: 125%">ResultType rt;
+SyntaxException se;
+<span style="color: #2b91af">var</span> a = <span style="color: #0000ff">new</span> MathParser();
+a.setVariable(x,100);
+<span style="color: #2b91af">string</span>[] expressions = {<span style="color: #a31515">&quot;100&quot;</span>, <span style="color: #a31515">&quot;60-90/6&quot;</span>, <span style="color: #a31515">&quot;90*x-9&quot;</span>, <span style="color: #a31515">&quot;698/x*x-3&quot;</span>, <span style="color: #a31515">&quot;y-6&quot;</span>, <span style="color: #a31515">&quot;&quot;</span> }
+<span style="color: #0000ff">foreach</span>(<span style="color: #2b91af">var</span> b <span style="color: #0000ff">in</span> expressions)
+{
+   <span style="color: #2b91af">double</span> c = a.Solve(b, <span style="color: #0000ff">out</span> rt, <span style="color: #0000ff">out</span> se);
+   Console.Write(<span style="color: #a31515">&quot;Solving: &quot;</span> + b + <span style="color: #a31515">&quot; | &quot;</span>);
+   <span style="color: #0000ff">if</span>(rt == ResultType.Ok) Console.WriteLine(<span style="color: #a31515">&quot;Result Is: &quot;</span> + c);
+   <span style="color: #0000ff">else</span> if(rt == ResultType.SyntaxError) Console.WriteLine(<span style="color: #a31515">&quot;Syntax Error: &quot;</span> se.ToString());
+   <span style="color: #0000ff">else</span> if(rt == ResultType.MathError) Console.WirteLine(<span style="color: #a31515">&quot;Math Error&quot;</span>);
+   <span style="color: #0000ff">else</span> Console.WriteLine(<span style="color: #a31515">&quot;Unknown Error&quot;</span>);
+}
+</pre></td></tr></table></div></div>
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

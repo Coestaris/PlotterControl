@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Список Команд устройства</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+	<link rel="stylesheet" type="text/css" href="Source/Table.css">
+  <script type="text/jscript" src="Source/top_colont.js"></script>
+  <div class=title>Список Команд устройства</div>
+  &nbsp; 
+  <div style="padding-left:20px;">
+  <table class="table_blur" width="98%" border="2" cellspacing="0" cellpadding="5" align="left" >
+   <tr>
+    <th>№</th>
+    <th>Имя</th>
+    <th>Тип</th>
+    <th>Описание</th>
+	<th>Формат ответа</th>
+   </tr>
+   <tr><td style="text-align:center;" valign="top" width="30"><b>1</b></td><td  width="100">GetIdle </td><td width="100">Функция</td><td>Возвращает параметр <b>IDLE</b></td><td width=400>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>2</b></td><td>GetCom </td><td>Функция</td><td>Возвращает параметр <b>COM</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>3</b></td><td>GetWork</td><td>Функция</td><td>Возвращает параметр <b>WORK</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>4</b></td><td>GetP99</td><td>Функция</td><td>Возвращает параметр <b>P99</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>5</b></td><td>GetP91</td><td>Функция</td><td>Возвращает параметр <b>P91</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>6</b></td><td>GetP19</td><td>Функция</td><td>Возвращает параметр <b>P19</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>7</b></td><td>GetP11</td><td>Функция</td><td>Возвращает параметр <b>P11</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>8</b></td><td>GetP29</td><td>Функция</td><td>Возвращает параметр <b>P29</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>9</b></td><td>GetP21</td><td>Функция</td><td>Возвращает параметр <b>P21</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>10</b></td><td>GetPin </td><td>Функция</td><td>Возвращает в виде таблице все значения всех 6и пинов</td><td>6 пинов в виде простой таблицы</td></tr>
+   <tr><td style="text-align:center;"><b>11</b></td><td>GetData </td><td>Функция</td><td>Возвращает все хранящиеся в памяти данные</td><td>Таблица пинов, <b>WORK</b>, <b>IDLE</b>, <b>PAUSE</b>, <b>COM</b></td></tr>
+   <tr><td style="text-align:center;"><b>12</b></td><td>GetPause </td><td>Функция</td><td>Возвращает параметр <b>PAUSE</b></td><td>Цифра в пределах от 0 до 32767</td></tr>
+   <tr><td style="text-align:center;"><b>13</b></td><td>GetHelp</td><td>Функция</td><td>Возвращает параметр <b>HELP</b></td><td>Список команд</td></tr>
+   <tr><td style="text-align:center;"><b>14</b></td><td>Setidle</td><td>Процедура</td><td>Задает параметр <b>Idle</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>15</b></td><td>SetCom </td><td>Процедура</td><td>Задает параметр <b>COM</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>16</b></td><td>SetWork </td><td>Процедура</td><td>Задает параметр <b>WORK</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>17</b></td><td>SetPause</td><td>Процедура</td><td>Задает параметр <b>PAUSE</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>18</b></td><td>SetP99</td><td>Процедура</td><td>Задает параметр <b>P99</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>19</b></td><td>SetP91</td><td>Процедура</td><td>Задает параметр <b>P91</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>20</b></td><td>SetP19</td><td>Процедура</td><td>Задает параметр <b>P19</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>21</b></td><td>SetP11</td><td>Процедура</td><td>Задает параметр <b>P11</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>22</b></td><td>SetP29</td><td>Процедура</td><td>Задает параметр <b>P29</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>23</b></td><td>SetP21</td><td>Процедура</td><td>Задает параметр <b>P21</b></td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>24</b></td><td>ResetS</td><td>Процедура</td><td>Перезагружает устройство</td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>25</b></td><td>ResetD </td><td>Процедура</td><td>Устанавливает значения данных по умолчанию</td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>26</b></td><td>A<sub>X</sub>,A<sub>Y</sub>,A<sub>Z</sub>;</td><td>Функция</td><td>Команда перемещения пера по прямой, где A<sub>X</sub>,A<sub>Y</sub>,A<sub>Z</sub> - смещения пера по каждой из координат</td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td></tr>
+   <tr><td style="text-align:center;"><b>27</b></td><td>A<sub>X</sub>,A<sub>Y</sub>,B<sub>X</sub>,B<sub>Y</sub>,R; </td><td>Функция</td><td>Команда перемещения пера по дуге, где A<sub>X</sub>,A<sub>Y</sub>,B<sub>X</sub>,B<sub>Y</sub> - координаты 2х точек, задающие дугу, R - радиус дуги</td><td><b style="color:#008000">OK</b> - в случае успеха, <b style="color:#C84040">FL</b> - в случае ошибки</td>
+  </table> </div>
+  <p>&nbsp;</p> 
+   <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>

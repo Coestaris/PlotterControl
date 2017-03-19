@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Справка по библиотеке CWA_Connection</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Source/MainStyleSheet.css">
+	<link rel="stylesheet" type="text/css" href="Source/Table.css">
+   <script type="text/jscript" src="Source/top_colont.js"></script>
+  <div class=title>Библиотека CWA_Connection</div>
+     <p>Библиотека CWA_Connection - безопасного взаемодейстия с устройством (очень рекомендуемо использовать данную либу), а также содержит класс для обслуживания параметров программы(можно не использовать). Состоит из:</p>
+    <ul>
+	  <li>Класс <a href="#1">DeviceSetup</a>.</li>
+	  <li>Класс <a href="#2">GlobalOptions</a>.</li>
+    </ul>
+	<a name="1"></a>
+  <p class="subtitle">Класс DeviceSetup</p>
+  <p>Проводит контролироанные взаемодейстия с подключенным устройством. Соединение является безопасным.</p>
+  <p>Содержит следующие конструкторы: </p>
+  <ul> 
+   <li>DeviceSetup(<span style="color:#0000A0">string</span> PortName, <span style="color:#0000A0">int</span> BdRate)</li>
+   <li>DeviceSetup(System.IO.Ports.<span style="color:#8000FF">SerialPort</span> port)</li>
+  </ul>
+  <p>Содержит следующии методы: </p>
+  <ul> 
+   <li><span style="color:#0000A0">void</span> ResetData() - устанавливает данные как по умолчанию.</li>
+   <li><span style="color:#0000A0">void</span> Reset() - перезагружает устройство (разорвет связь).</li>
+   <li><span style="color:#0000A0">void</span> Load() - загружает внесенные изменения.</li>
+   <li><span style="color:#0000A0">void</span> ComVal(<span style="color:#0000A0">bool</span> value) - задает параметр <b>COM</b>.</li>
+   <li><span style="color:#0000A0">void</span> PauseVal(<span style="color:#0000A0">bool</span> value) - задает параметр <b>PAUSE</b>.</li>
+  </ul>
+  <p>Содержит следующие поля (при внесении изменений они заносятся в стек. Стек поочередно отправляется командой <b>Load</b>): </p>
+  <ul>
+   <li><span style="color:#0000A0">public int </span> XDir</li>
+   <li><span style="color:#0000A0">public int </span> XStep</li>
+   <li><span style="color:#0000A0">public int </span> YDir</li>
+   <li><span style="color:#0000A0">public int </span> YStep</li>
+   <li><span style="color:#0000A0">public int </span> ZDir</li>
+   <li><span style="color:#0000A0">public int </span> ZStep</li>
+   <li><span style="color:#0000A0">public int </span> Speed</li>
+   <li><span style="color:#0000A0">public int </span> WorkDelay</li>
+   <li><span style="color:#0000A0">public int </span> IdleDelay</li>
+   <li><span style="color:#0000A0">public int </span> Speed  -  показания потенциометра на пульте.</li>
+  </ul>
+  
+  <p>При считывании переменных они будут запрашивать устройства актульаные данные. В случае неудачи будет выкинут <b>Exception("Error")</b>, а случае превышения времени ожидания <b>Exception("TimeOutExcepton")</b>. Чтобы понять назначение этих переменных читайте <a href="DirectComands.html">про прямые команды</a>.</p>
+  <p>Ниже приведен пример использование данного класса.</p>
+  <div style="padding-left:20px">
+  <div style="background: #ffffff; overflow:auto;width:95%;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+  <div style="background: #DBE5E2; border-right: 1px solid;">
+  1 
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  </div>
+  </pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #333399; font-weight: bold">&nbsp; var</span> a = <span style="color: #008800; font-weight: bold">new</span> DeviceSetup(<span style="background-color: #fff0f0">&quot;COM16&quot;</span>,<span style="color: #6600EE; font-weight: bold">115200</span>);
+  <span style="color: #008800; font-weight: bold">if</span>(a.Com) a.ComVal(<span style="color: #008800; font-weight: bold">false</span>);
+  <span style="color: #008800; font-weight: bold">if</span>(a.Pause) a.ComVal(<span style="color: #008800; font-weight: bold">false</span>);
+  a.IdleDelay = <span style="color: #6600EE; font-weight: bold">40</span>;
+  a.WorkDelay = <span style="color: #6600EE; font-weight: bold">60</span>;
+  a.XDir = <span style="color: #6600EE; font-weight: bold">3</span>;
+  a.Load();
+  a = <span style="color: #008800; font-weight: bold">null</span>;
+  </pre></td></tr></table></div>
+  </div>
+  	<a name="2"></a>
+  <p class="subtitle">Класс GlobalOptions</p>
+  <p>Данная библиотека хранит в себе класс <b>GlobalOptions</b>. Это класс который обслуживает загрузку\сохранение параметров программы. Но помимо прочего там хранятся и необходимые другим библиотекам параметры. Например константы для <b>Printing</b> или <b>Vectors</b>.</p>
+  <p>Статический метод <b>Load()</b> загрузит необходимые данные из <b>options.xml</b></p>
+  <p><b>Save()</b> - сохранит данные в <b>options.xml</b></p>
+  <p><b>Reset()</b> - установит данные по умолчанию (не забудьте сохранится)</p>
+  <p>Список хранимых параметров:</p>
+   <div style="padding-left:20px;">
+   <table class="table_blur" border="2" cellspacing="0" cellpadding="5">
+   <tr>
+    <th>№</th>
+    <th>Имя</th>
+	<th>Тип</th>
+    <th>Описание</th>
+	<th>Значение по умолчанию</th>
+	<th>Где используется</th>
+   </tr>
+   <tr><td style="text-align:center;" valign="top" width="30"><b>1</b></td><td  width="100">StepHeightConst</td><td width="120"><span style="color:#0000A0">int</span></td><td width="400">Количество шагов, которое необходимо сделать, чтобы поднять\опустить перо.</td><td width="100" style="text-align:center;">2000</td><td><b>CNCWFA_Printing</b>.DLL, <b>CNCWFA_ManualControl</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>2</b></td><td>MaxDisConst</td><td><span style="color:#0000A0">int</span></td><td>Предельная длина(в условных единицах) при котором алгоритм печати разорвет контур на 2 (нужно т. к. при векторизации иногда некоторые контура сливаются в один.</td><td style="text-align:center;">100</td><td><b>CNCWFA_Printing</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>3</b></td><td>Mainbd</td><td><span style="color:#0000A0">int</span></td><td>Скорость соединения, используемая программой по умолчанию.</td><td style="text-align:center;">115200</td><td>В программе (в каждом окне, где есть выбор порта и скорости).</td></tr>
+   <tr><td style="text-align:center;"><b>4</b></td><td>Mainport</td><td><span style="color:#0000A0">string</span></td><td>Имя порта, используемый программой по умолчанию.</td><td style="text-align:center;">COM0</td><td>В программе (в каждом окне, где есть выбор порта и скорости.)</td></tr>
+   <tr><td style="text-align:center;"><b>5</b></td><td>MaxHeightSteps</td><td><span style="color:#0000A0">int</span></td><td>Максимальное количество шагов по высоте.</td><td style="text-align:center;">22100</td><td>В программе (в векторном редакторе, редакторе макросов).</td></tr>
+   <tr><td style="text-align:center;"><b>6</b></td><td>MaxWidthSteps</td><td><span style="color:#0000A0">int</span></td><td>Максимальное количество шагов по ширине.</td><td style="text-align:center;">15500</td><td>В программе (в векторном редакторе, редакторе макросов).</td></tr>
+   <tr><td style="text-align:center;"><b>7</b></td><td>UseAutoSpeed</td><td><span style="color:#0000A0">bool</span></td><td>Автоматически задавать параметры <b>IdleDelay</b> и <b>WorkDelay</b> исходя с значений на потенциометре.</td><td style="text-align:center;">false</td><td><b>CNCWFA_Printing</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>8</b></td><td>Def_print_back</td><td>System.Drawing.<span style="color:#8000FF">Color</span></td><td>Фон привью окна в диалоге печати.</td><td style="text-align:center;"><b>Color</b>.White</td><td>В программе (окно печати).</td></tr>
+   <tr><td style="text-align:center;"><b>9</b></td><td>Def_print_draw</td><td>System.Drawing.<span style="color:#8000FF">Color</span></td><td>Цвет рисования привью окна в диалоге печати.</td><td style="text-align:center;"><b>Color</b>.Black</td><td>В программе (окно печати).</td></tr>
+   <tr><td style="text-align:center;"><b>10</b></td><td>Def_view_back</td><td>System.Drawing.<span style="color:#8000FF">Color</span></td><td>Фон привью окна в диалоге просмотра вектора.</td><td style="text-align:center;"><b>Color</b>.White</td><td>В программе (вьювер векторов).</td></tr>
+   <tr><td style="text-align:center;"><b>11</b></td><td>Def_view_draw</td><td>System.Drawing.<span style="color:#8000FF">Color</span></td><td>Цвет рисования привью окна в диалоге просмотра вектора.</td><td style="text-align:center;"><b>Color</b>.Black</td><td>В программе (вьювер векторов).</td></tr>
+   <tr><td style="text-align:center;"><b>12</b></td><td>Def_SPO</td><td><a href="API_CNCWFA_Printing.html#1">StartPrintOption</a></td><td>Параметр, который определяет, что делать при начале печати.</td><td style="text-align:center;"><b>StartPrintOption</b>.None</td><td><b>CNCWFA_Printing</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>13</b></td><td>Def_RBO</td><td><a href="API_CNCWFA_Printing.html#2">ReturnBackOption</a></td><td>Параметр, который определяет, что делать при конце печати.</td><td style="text-align:center;"><b>ReturnBackOption</b>.ReturnToZero</td><td><b>CNCWFA_Printing</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>14</b></td><td>XMM</td><td><span style="color:#0000A0">float</span></td><td>Сколько мм в одном шаге по оси <b>Х</b>.</td><td style="text-align:center;">0.013f</td><td><b>CNCWFA_Printing</b>.DLL, <b>CNCWFA_ManualControl</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>15</b></td><td>YMM</td><td><span style="color:#0000A0">float</span></td><td>Сколько мм в одном шаге по оси <b>Y</b>.</td><td style="text-align:center;">0.013f</td><td><b>CNCWFA_Printing</b>.DLL, <b>CNCWFA_ManualControl</b>.DLL.</td></tr>
+   <tr><td style="text-align:center;"><b>16</b></td><td>IgnoreRegisterExtentions</td><td><span style="color:#0000A0">bool</span></td><td>Игнорировать незаригестрированые расширения программы в системе</td><td style="text-align:center;">false</td><td>В программе.</td></tr>
+   <tr><td style="text-align:center;"><b>17</b></td><td>Build</td><td><span style="color:#0000A0">int</span></td><td>Билд программы</td><td style="text-align:center;">0 (установится при запуске)</td><td>В программе.</td></tr>
+  </table>
+  </div>
+  &nbsp;
+  <script type="text/jscript" src="Source/bot_colont.js"></script>
+  </body>
+</html>
