@@ -128,7 +128,7 @@ namespace CWA.Connection
             }
 
             /// <summary>
-            /// Создает новый экземпляр класса MemorySetupBadRespondException.
+            /// Создает новый экземпляр класса <see cref="MemorySetupBadRespondException"/>.
             /// </summary>
             /// <param name="excepted">Значение, что ожидалось.</param>
             /// <param name="recived">Значение, что было полученно.</param>

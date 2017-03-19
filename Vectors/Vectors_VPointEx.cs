@@ -33,40 +33,22 @@ namespace CWA.Vectors
     public class VPointEx
     {
         /// <summary>
-        /// Приватный параметр. Основные данные о точке. Координаты Х и Y.
-        /// </summary>
-        private VPoint _pnt;
-
-        /// <summary>
-        /// Приватный параметр. Параметр указывающий на то, с каким контуром граничит точка.
-        /// </summary>
-        private int _bordWith;
-
-        /// <summary>
         /// Основные данные о точке. Координаты Х и Y.
         /// </summary>
-        public VPoint Pnt
-        {
-            get { return _pnt;  }
-            set { _pnt = value; }
-        }
+        public VPoint BasePoint { get; set; }
 
         /// <summary>
         /// Параметр указывающий на то, с каким контуром граничит точка.
         /// </summary>
-        public int BordWith
-        {
-            get { return _bordWith;  }
-            set { _bordWith = value; }
-        }
+        public int BordWith { get; set; }
 
         /// <summary>
-        /// Нулевая точка, с координатами (0;0), цветом Color.Empty и BordWith равным 0.
+        /// Нулевая точка, с координатами (0;0), цветом <see cref="Color.Empty"/> и <see cref="BordWith"/> равным 0.
         /// </summary>
         public static readonly VPointEx ZeroPoint = new VPointEx(0, 0, 0, Color.Empty);
 
         /// <summary>
-        /// Создает новый екземпляр объекта VPointEx. С координатами (Х,Y) параметром n и цветом С.
+        /// Создает новый екземпляр объекта <see cref="VPointEx"/>. С координатами (Х,Y) параметром n и цветом С.
         /// </summary>
         /// <param name="x">Х точки.</param>
         /// <param name="y">Y точки.</param>
@@ -74,12 +56,12 @@ namespace CWA.Vectors
         /// <param name="c">Цвет точки (нигде не используется).</param>
         public VPointEx(double x, double y, double n, Color c)
         {
-            Pnt = new VPoint(x, y, c);
+            BasePoint = new VPoint(x, y, c);
             BordWith = (int)n;
         }
 
         /// <summary>
-        /// Создает новый екземпляр объекта VPointEx.
+        /// Создает новый екземпляр объекта <see cref="VPointEx"/>.
         /// </summary>
         public VPointEx()
         {
@@ -90,19 +72,19 @@ namespace CWA.Vectors
         /// </summary>
         public override string ToString()
         {
-            return string.Format("[{0}x{1}.{2}]", this.Pnt.X, this.Pnt.Y, this.BordWith);
+            return string.Format("[{0}x{1}.{2}]", this.BasePoint.X, this.BasePoint.Y, this.BordWith);
         }
 
         /// <summary>
-        /// Приведение экземпляра VPointEx к классу Point.
+        /// Приведение экземпляра <see cref="VPointEx"/> к классу <see cref="Point"/>.
         /// </summary>
         public static explicit operator Point(VPointEx c)
         {
-            return new Point((int)(c.Pnt.X), (int)(c.Pnt.Y));
+            return new Point((int)(c.BasePoint.X), (int)(c.BasePoint.Y));
         }
 
         /// <summary>
-        /// Приведение экземпляра PointF к классу VPointEx.
+        /// Приведение экземпляра <see cref="PointF"/> к классу <see cref="VPointEx"/>.
         /// </summary>
         public static explicit operator VPointEx(PointF c)
         {
@@ -110,20 +92,20 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Приведение экземпляра VPointEx к классу PointF.
+        /// Приведение экземпляра <see cref="VPointEx"/> к классу <see cref="PointF"/>.
         /// </summary>
         public static explicit operator PointF(VPointEx c)
         {
-            return new PointF((float)c.Pnt.X, (float)c.Pnt.Y);
+            return new PointF((float)c.BasePoint.X, (float)c.BasePoint.Y);
         }
 
 
         /// <summary>
-        /// Приведение экземпляра VPointEx к классу VPoint.
+        /// Приведение экземпляра <see cref="VPointEx"/> к классу <see cref="VPoint"/>.
         /// </summary>
         public static explicit operator VPoint(VPointEx c)
         {
-            return c.Pnt;
+            return c.BasePoint;
         }
 
         /// <summary>
@@ -131,7 +113,7 @@ namespace CWA.Vectors
         /// </summary>
         public static bool operator ==(VPointEx a, VPointEx b)
         {
-            return a.Pnt == b.Pnt && a.BordWith == b.BordWith;
+            return a.BasePoint == b.BasePoint && a.BordWith == b.BordWith;
         }
 
         /// <summary>
@@ -139,7 +121,7 @@ namespace CWA.Vectors
         /// </summary>
         public static bool operator !=(VPointEx a, VPointEx b)
         {
-            return a.Pnt != b.Pnt || a.BordWith != b.BordWith;
+            return a.BasePoint != b.BasePoint || a.BordWith != b.BordWith;
         }
 
         /// <summary>

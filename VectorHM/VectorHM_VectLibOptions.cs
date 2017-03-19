@@ -31,174 +31,65 @@ namespace CWA.Vectors
     public class VectLibOptions
     {
         /// <summary>
-        /// Приватный параметр. Коофициент преобразования в черно-белый формат красного каныала.
-        /// </summary>
-        private float _grayConvertRCof;
-
-        /// <summary>
-        /// Приватный параметр. Коофициент преобразования в черно-белый формат зеленого канала.
-        /// </summary>
-        private float _grayConvertGCof;
-
-        /// <summary>
-        /// Приватный параметр. Коофициент преобразования в черно-белый формат синего канала.
-        /// </summary>
-        private float _grayConvertBCof;
-
-        /// <summary>
-        /// Приватный параметр. Определяет значение интенсивности размытия по Гаусу.
-        /// </summary>
-        private float _gaussBlurSigma;
-
-        /// <summary>
-        /// Приватный параметр. Определяет значение коофициента в формуле размытия по Гаусу.
-        /// </summary>
-        private short _gaussBlurKCof;
-
-        /// <summary>
-        /// Приватный параметр. Указывает на то, будет ли использоватся размытие по Гауссу.
-        /// </summary>
-        private bool _useGaussBlur;
-
-        /// <summary>
-        /// Приватный параметр. Определяет предел обнаружения оператора Собеля.
-        /// </summary>
-        private int _sobelOperatorLimFonf;
-
-        /// <summary>
-        /// Приватный параметр. Указывает множитель увеличения изображения алгоритмом HQNX. 
-        /// Может принемать значения: 1 (не увеличевать), 2 (увеличить в 2 раза), 3 и 4. Остальные значения будут игнорироватся.
-        /// </summary>
-        private int _hqxScaleMult;
-
-        /// <summary>
-        /// Приватный параметр. Количество потоков выполнения векторизации.
-        /// </summary>
-        private int _prStreamsCount;
-
-        /// <summary>
-        /// Приватный параметр. Определяет, будет ли выводится в консоль отладочная информация о процессе векторизации.
-        /// </summary>
-        private bool _debugPrSay;
-
-        /// <summary>
-        /// Приватный параметр. Определяет, сохранится ли при окончании векторизации обьедененный файл с промежуточными результатами.
-        /// </summary>
-        private bool _debugSaveMergedResult;
-
-        /// <summary>
-        /// Приватный параметр. Определяет, будут ли сохранятся промежуточные этапы векторизации.
-        /// </summary>
-        private bool _debugSavePrticalResults;
-
-        /// <summary>
         /// Коофициент преобразования в черно-белый формат красного каныала.
         /// </summary>
-        public float GrayConvertRCof
-        {
-            get { return _grayConvertRCof; }
-            set { _grayConvertRCof = value; }
-        }
+        public float GrayConvertRCof { get; set; }
 
         /// <summary>
         /// Коофициент преобразования в черно-белый формат зеленого канала.
         /// </summary>
-        public float GrayConvertGCof
-        {
-            get { return _grayConvertGCof; }
-            set { _grayConvertGCof = value; }
-        }
+        public float GrayConvertGCof { get; set; }
 
         /// <summary>
         /// Коофициент преобразования в черно-белый формат синего канала.
         /// </summary>
-        public float GrayConvertBCof
-        {
-            get { return _grayConvertBCof; }
-            set { _grayConvertBCof = value; }
-        }
-        
+        public float GrayConvertBCof { get; set; }
+
         /// <summary>
         /// Определяет значение интенсивности размытия по Гаусу.
         /// </summary>
-        public float GaussBlurSigma
-        {
-            get { return _gaussBlurSigma; }
-            set { _gaussBlurSigma = value; }
-        }
+        public float GaussBlurSigma { get; set; }
 
         /// <summary>
         /// Определяет значение коофициента в формуле размытия по Гаусу.
         /// </summary>
-        public short GaussBlurKCof
-        {
-            get { return _gaussBlurKCof; }
-            set { _gaussBlurKCof = value; }
-        }
+        public short GaussBlurKCof { get; set; }
 
         /// <summary>
         /// Указывает на то, будет ли использоватся размытие по Гауссу.
         /// </summary>
-        public bool UseGaussBlur
-        {
-            get { return _useGaussBlur; }
-            set { _useGaussBlur = value; }
-        }
+        public bool UseGaussBlur { get; set; }
 
         /// <summary>
         /// Определяет предел обнаружения оператора Собеля.
         /// </summary>
-        public int SobelOperatorLimFonf
-        {
-            get { return _sobelOperatorLimFonf; }
-            set { _sobelOperatorLimFonf = value; }
-        }
+        public int SobelOperatorLimFonf { get; set; }
 
         /// <summary>
         /// Указывает множитель увеличения изображения алгоритмом HQNX. 
         /// Может принемать значения: 1 (не увеличевать), 2 (увеличить в 2 раза), 3 и 4. Остальные значения будут игнорироватся.
         /// </summary>
-        public int HqxScaleMult
-        {
-            get { return _hqxScaleMult; }
-            set { _hqxScaleMult = value; }
-        }
+        public int HqxScaleMult { get; set; }
 
         /// <summary>
         /// Количество потоков выполнения векторизации.
         /// </summary>
-        public int PrStreamsCount
-        {
-            get { return _prStreamsCount; }
-            set { _prStreamsCount = value; }
-        }
+        public int PrStreamsCount { get; set; }
 
         /// <summary>
         /// Определяет, будет ли выводится в консоль отладочная информация о процессе векторизации.
         /// </summary>
-        public bool DebugPrSay
-        {
-            get { return _debugPrSay; }
-            set { _debugPrSay = value; }
-        }
+        public bool DebugPrSay { get; set; }
 
         /// <summary>
         /// Определяет, сохранится ли при окончании векторизации обьедененный файл с промежуточными результатами.
         /// </summary>
-        public bool DebugSaveMergedResult
-        {
-            get { return _debugSaveMergedResult; }
-            set { _debugSaveMergedResult = value; }
-        }
+        public bool DebugSaveMergedResult { get; set; }
 
         /// <summary>
         /// Определяет, будут ли сохранятся промежуточные этапы векторизации.
         /// </summary>
-        public bool DebugSavePrticalResults
-        {
-            get { return _debugSavePrticalResults; }
-            set { _debugSavePrticalResults = value; }
-        }
+        public bool DebugSavePrticalResults { get; set; }
 
         /// <summary>
         /// Создает новый экземпляр класса VectLibOptions. 

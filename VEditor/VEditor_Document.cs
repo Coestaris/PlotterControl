@@ -42,147 +42,64 @@ namespace CWA.Vectors.Document
     /// </summary>
     public class Document
     {
-        /// <summary>
-        /// Приватный параметр. Информация о границе документа.
-        /// </summary>
-        private DocumentBorder _border;
-
-        /// <summary>
-        /// Приватный параметр. Визуальный параметр рендера. Перо отрисовки границы документа.
-        /// </summary>
-        private Pen _borderPen;
-
-        /// <summary>
-        /// Приватный параметр. Версия программы, в которой был создан документ.
-        /// </summary>
-        private Version _createdVersion;
-
-        /// <summary>
-        /// Приватный параметр. Имя автора документа.
-        /// </summary>
-        private string _fileAutor;
-
-        /// <summary>
-        /// Приватный параметр. Список объектов документа.
-        /// </summary>
-        private List<DocumentItem> _items;
-
-        /// <summary>
-        /// Приватный параметр. Имя документа. 
-        /// Например, если Name = "tableofvals", то FileName предположительно должен быть равен "Table of Values of Temperature.". 
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// Приватный параметр. Размер документа.
-        /// </summary>
-        private SizeF _size;
-
-        /// <summary>
-        /// Приватный параметр. Описание документа.
-        /// </summary>
-        private string _fileDescr;
-
-        /// <summary>
-        /// Приватный параметр. Полное имя документа. 
-        /// Например, если Name = "tableofvals", то FileName предположительно должен быть равен "Table of Values of Temperature.". 
-        /// </summary>
-        private string _fileName;
-
-        /// <summary>
-        /// Информация о границе документа.
-        /// </summary>
-        public DocumentBorder Border
-        {
-            get { return _border; }
-            internal set { _border = value; }
-        }
+        public DocumentBorder Border { get; internal set; }
 
         /// <summary>
         /// Визуальный параметр рендера. Перо отрисовки границы документа.
         /// </summary>
-        public Pen BorderPen
-        {
-            get { return _borderPen; }
-            set { _borderPen = value; }
-        }
+        public Pen BorderPen { get; internal set; }
 
         /// <summary>
         /// Версия программы, в которой был создан документ.
         /// </summary>
-        public Version CreatedVersion
-        {
-            get { return _createdVersion; }
-            set{ _createdVersion = value; }
-        }
+        public Version CreatedVersion { get; internal set; }
 
         /// <summary>
         /// Описание документа.
         /// </summary>
-        public string FileDescr
-        {
-            get { return _fileDescr; }
-            set { _fileDescr = value; }
-        }
+        public string FileDescr { get; internal set; }
 
         /// <summary>
         /// Полное имя документа.
         /// Например, если Name = "tableofvals", то FileName предположительно должен быть равен "Table of Values of Temperature.". 
         /// </summary>
-        public string FileName
-        {
-            get { return _fileName; }
-            set { _fileName = value; }
-        }
+        public string FileName { get; internal set; }
 
         /// <summary>
         /// Имя автора документа.
         /// </summary>
-        public string FileAutor
-        {
-            get { return _fileAutor; }
-            set { _fileAutor = value; }
-        }
+        public string FileAutor { get; internal set; }
 
         /// <summary>
         /// Список объектов документа.
         /// </summary>
-        public List<DocumentItem> Items
-        {
-            get { return _items; }
-            internal set { _items = value; }
-        }
+        public List<DocumentItem> Items { get; internal set; }
 
         /// <summary>
         /// Имя документа. 
         /// Например, если Name = "tableofvals", то FileName предположительно должен быть равен "Table of Values of Temperature.". 
         /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; internal set; }
 
         /// <summary>
         /// Размер документа.
         /// </summary>
-        public SizeF Size
-        {
-            get { return _size; }
-            set { _size = value; }
-        }
+        public SizeF Size { get; internal set; }
 
-
+        /// <summary>
+        /// Создает новый экземпляр класса <see cref="Document"/>.
+        /// </summary>
+        /// <param name="size">Размер документа.</param>
         public Document(SizeF size)
         {
             Size = size;
             Items = new List<DocumentItem>();
-            _border = new DocumentBorder();
+            Border = new DocumentBorder();
             FileName = "AwesomeFile";
             FileDescr = "ItsTrulyAwesomeFile";
             FileAutor = "AwesomeMe";
             CreatedVersion = Version.Parse(Application.ProductVersion);
-            _borderPen = Pens.Black;
+            BorderPen = Pens.Black;
         }
 
         /// <summary>
@@ -244,9 +161,9 @@ namespace CWA.Vectors.Document
             var bord_style = document.CreateAttribute("style");
             var bord_offset = document.CreateAttribute("offset");
             var bord_use = document.CreateAttribute("use");
-            bord_style.Value = _border.Style.ToString();
-            bord_offset.Value = _border.Offset.ToString(CultureInfo.InvariantCulture);
-            bord_use.Value = _border.Use.ToString();
+            bord_style.Value = Border.Style.ToString();
+            bord_offset.Value = Border.Offset.ToString(CultureInfo.InvariantCulture);
+            bord_use.Value = Border.Use.ToString();
             ;
             bord.Attributes.Append(bord_style);
             bord.Attributes.Append(bord_offset);
@@ -374,7 +291,7 @@ namespace CWA.Vectors.Document
                         document.ChildNodes[1].ChildNodes[1].ChildNodes[0].Attributes[0].Value);
                 var bord_offset = float.Parse(document.ChildNodes[1].ChildNodes[1].ChildNodes[0].Attributes[1].Value, CultureInfo.InvariantCulture);
                 var bord_use = bool.Parse(document.ChildNodes[1].ChildNodes[1].ChildNodes[0].Attributes[2].Value);
-                result._border = new DocumentBorder(bord_offset, bord_style, bord_use);
+                result.Border = new DocumentBorder(bord_offset, bord_style, bord_use);
                 var fn = document.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[0].Value;
                 var fd = document.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value;
                 var fa = document.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[2].Value;
@@ -403,7 +320,7 @@ namespace CWA.Vectors.Document
                     var angle = float.Parse(node.Attributes[8].Value, CultureInfo.InvariantCulture);
                     if (type == DocumentItemType.Image)
                     {
-                        var v = new Vect(filename + "\\" + node.ChildNodes[1].InnerText.Replace('|', '\\'));
+                        var v = new Vector(filename + "\\" + node.ChildNodes[1].InnerText.Replace('|', '\\'));
                         v.Filename = node.ChildNodes[0].InnerText.Replace('|', '\\');
                         var d = new DocumentData(new PointF(posx, posy), v);
                         d.DispColor = c;
@@ -440,7 +357,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// Рендерит докумет с дополнительными параметрами..
+        /// Рендерит докумет с дополнительными параметрами.
         /// </summary>
         /// <param name="zoom">Множитель увеличения. Например: 1 - без увеличения, 0.5 - уменьшить в 2 раза.</param>
         /// <param name="im">Выходное изображение.</param>
@@ -462,13 +379,13 @@ namespace CWA.Vectors.Document
                 {
                     gr.FillRectangle(Brushes.White, rec);
                     gr.DrawRectangle(p, rec1);
-                    if (_border.Use)
+                    if (Border.Use)
                     {
-                        var g = DocumentBorderRender.Render((DocumentBorder) _border.Clone(), Size);
+                        var g = DocumentBorderRender.Render((DocumentBorder) Border.Clone(), Size);
                         var m = new Matrix();
                         m.Scale(zoom, zoom);
                         g.Transform(m);
-                        gr.DrawPath(_borderPen, g);
+                        gr.DrawPath(BorderPen, g);
                     }
                     foreach (var a in Items)
                     {
@@ -497,7 +414,6 @@ namespace CWA.Vectors.Document
                     }
                 }
                 im = bmp;
-                //bmp.Dispose();
             }
             catch
             {
@@ -526,18 +442,17 @@ namespace CWA.Vectors.Document
                 {
                     gr.FillRectangle(Brushes.White, rec);
                     gr.DrawRectangle(p, rec1);
-                    if (_border.Use)
+                    if (Border.Use)
                     {
-                        var g = DocumentBorderRender.Render((DocumentBorder) _border.Clone(), Size);
+                        var g = DocumentBorderRender.Render((DocumentBorder)Border.Clone(), Size);
                         var m = new Matrix();
                         m.Scale(zoom, zoom);
                         g.Transform(m);
-                        gr.DrawPath(_borderPen, g);
+                        gr.DrawPath(BorderPen, g);
                     }
                     foreach (var a in Items)
                     {
                         var g = (GraphicsPath) a.Render().Clone();
-                        //GraphicsPath scaled = Scale(g, a.Size.Width, a.Size.Height);
                         var m = new Matrix();
                         m.Scale(zoom, zoom);
                         g.Transform(m);

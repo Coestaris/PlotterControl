@@ -76,7 +76,7 @@ namespace CnC_WFA
                 treeView_points.Nodes.Add(string.Format("Cnt#{0}, {1}pnts", c, dat.BaseData.RawData[c].Length));
                 for (int i = 0; i <= dat.BaseData.RawData[c].Length - 1; i++)
                 {
-                    treeView_points.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, dat.BaseData.RawData[c][i].Pnt.X, dat.BaseData.RawData[c][i].Pnt.Y));
+                    treeView_points.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, dat.BaseData.RawData[c][i].BasePoint.X, dat.BaseData.RawData[c][i].BasePoint.Y));
                 }
             }
             treeView_points.CollapseAll();
@@ -99,14 +99,14 @@ namespace CnC_WFA
                 for (int c = 0; c <= dat.BaseData.RawData.Length - 1; c++)
                 {
                     treeView_pointsex.Nodes.Add(string.Format("Cnt#{0}, {1}pnts", c, dat.BaseData.RawData[c].Length));
-                    for (int i = 0; i <= dat.BaseData.RawData[c].Length - 1; i++) treeView_pointsex.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, dat.BaseData.RawData[c][i].Pnt.X, dat.BaseData.RawData[c][i].Pnt.Y));
+                    for (int i = 0; i <= dat.BaseData.RawData[c].Length - 1; i++) treeView_pointsex.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, dat.BaseData.RawData[c][i].BasePoint.X, dat.BaseData.RawData[c][i].BasePoint.Y));
                 }
                 treeView_pointsex.CollapseAll();
                 gr2 = dat.BaseData.GrPath;
                 sndvect = dat.BaseData;
                 label_ndresol.Text = "Resolution: " + dat.BaseData.Resolution;
                 label_2ndname.Text = "Name (Currect): " +  new FileInfo(dat.BaseData.Filename).Directory.Name + "\\" + new FileInfo(dat.BaseData.Filename).Name;
-                pictureBox1.Image = Vect.ToBitmapByGrPath(dat.BaseData.Size, Color.White, Color.Black, Color.Blue, 0, gr2, dat.BaseData.RawData);
+                pictureBox1.Image = Vector.ToBitmapByGrPath(dat.BaseData.Size, Color.White, Color.Black, Color.Blue, 0, gr2, dat.BaseData.RawData);
 
             } else { Width = 906; }
         }
@@ -117,7 +117,7 @@ namespace CnC_WFA
             for (int c = 0; c <= sndvect.RawData.Length - 1; c++)
             {
                 treeView_pointsex.Nodes.Add(string.Format("Cnt#{0}, {1}pnts", c, sndvect.RawData[c].Length));
-                for (int i = 0; i <= sndvect.RawData[c].Length - 1; i++) treeView_pointsex.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, sndvect.RawData[c][i].Pnt.X, sndvect.RawData[c][i].Pnt.Y));
+                for (int i = 0; i <= sndvect.RawData[c].Length - 1; i++) treeView_pointsex.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, sndvect.RawData[c][i].BasePoint.X, sndvect.RawData[c][i].BasePoint.Y));
             }
             treeView_pointsex.CollapseAll();
         }
@@ -127,7 +127,7 @@ namespace CnC_WFA
             var a = openFileDialog1.ShowDialog();
             if(a== DialogResult.OK)
             {
-                sndvect = new Vect(openFileDialog1.FileName);
+                sndvect = new Vector(openFileDialog1.FileName);
                 sndvect.RawData = sndvect.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
                 loadingCircle1.Visible = true;
                 label_ndresol.Text = "Resolution: " + sndvect.Resolution;
@@ -138,7 +138,7 @@ namespace CnC_WFA
             }
         }
 
-        private Vect sndvect;
+        private Vector sndvect;
 
         private void button_ok_Click(object sender, EventArgs e)
         {
@@ -155,7 +155,7 @@ namespace CnC_WFA
                 if (e.Node.Text.StartsWith("Cnt"))
                 {
                     var a = new GraphicsPath(FillMode.Winding);
-                    a.AddPolygon(Vect.PointexToPoint(dat.BaseData.RawData[e.Node.Index]));
+                    a.AddPolygon(Vector.PointexToPoint(dat.BaseData.RawData[e.Node.Index]));
                     SelectedContour = e.Node.Index;
                     parent.RenderEX(Color.Violet, a);
                 }
@@ -163,7 +163,7 @@ namespace CnC_WFA
                 {
                     SelectedContour = -1;
                     var a = new GraphicsPath(FillMode.Winding);
-                    VPoint pnt = dat.BaseData.RawData[e.Node.Parent.Index][e.Node.Index].Pnt;
+                    VPoint pnt = dat.BaseData.RawData[e.Node.Parent.Index][e.Node.Index].BasePoint;
                     a.AddEllipse((float)pnt.Y, (float)pnt.X, 5, 5);
                     parent.RenderEX(Color.Blue, a);
                 }
@@ -191,13 +191,13 @@ namespace CnC_WFA
             parent.Render();
             SelectedContour = -1;
             gr2 = (GraphicsPath) dat.BaseData.GrPath.Clone();
-            pictureBox1.Image = Vect.ToBitmapByGrPath(dat.BaseData.Size, Color.White, Color.Black, Color.Blue, 0, gr2, dat.BaseData.RawData); 
+            pictureBox1.Image = Vector.ToBitmapByGrPath(dat.BaseData.Size, Color.White, Color.Black, Color.Blue, 0, gr2, dat.BaseData.RawData); 
         }
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
             int li = parent.main.Items.FindIndex(p => p.Name == dat.Name);
-            (parent.main.Items[li] as DocumentData).BaseData = new Vect("Temp\\backup0.cvf");
+            (parent.main.Items[li] as DocumentData).BaseData = new Vector("Temp\\backup0.cvf");
             parent.main.Items[li].PreRender();
             parent.Render();
             Close();
@@ -232,7 +232,7 @@ namespace CnC_WFA
                 {
                     var a = new GraphicsPath(FillMode.Winding);
                     SelectedContour1 = e.Node.Index;
-                    pictureBox1.Image = Vect.ToBitmapByGrPath(sndvect.Size, Color.White, Color.Black, Color.Blue, SelectedContour1, gr2, sndvect.RawData);
+                    pictureBox1.Image = Vector.ToBitmapByGrPath(sndvect.Size, Color.White, Color.Black, Color.Blue, SelectedContour1, gr2, sndvect.RawData);
                 }
             }
             catch { }
@@ -267,15 +267,15 @@ namespace CnC_WFA
         }
 
         private int type_ = 0;
-        private Vect res;
-        private Vect data;
+        private Vector res;
+        private Vector data;
 
         private void ProceedVect(int type, params object[] parms)
         {
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             type_ = type;
-            data = (Vect)dat.BaseData.Clone();
+            data = (Vector)dat.BaseData.Clone();
             backgroundWorker_proceed.RunWorkerAsync(parms);
         }
 

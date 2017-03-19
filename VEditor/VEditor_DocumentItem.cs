@@ -35,118 +35,45 @@ namespace CWA.Vectors.Document
     public abstract class DocumentItem : ICloneable
     {
         /// <summary>
-        /// Приватный параметр. Угол наклона объекта относительно центра в градусах.
-        /// </summary>
-        private float _angle;
-
-        /// <summary>
-        /// Приватный параметр. Цвет отображения в редакторе.
-        /// </summary>
-        private Color _dispcolor;
-
-        /// <summary>
-        /// Приватный параметр. Представления объекта в виде класса GraphicsPath.
-        /// </summary>
-        private GraphicsPath _grPath;
-
-        /// <summary>
-        /// Приватный параметр.  Имя объекта. В документе обязано быть уникально!
-        /// Так как ни кто за этим не следит (ни какой класс), то будьте внимательны.
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// Приватный параметр.  Позиция объекта в документе.
-        /// </summary>
-        private PointF _position;
-
-        /// <summary>
-        /// Приватный параметр. Размер объекта (в большинсте случаях устанавливается сам).
-        /// </summary>
-        private SizeF _size;
-
-        /// <summary>
-        /// Приватный параметр.  Размер объекта (в большинсте случаях устанавливается сам).
-        /// </summary>
-        private DocumentItemType _type;
-
-        /// <summary>
-        /// Приватный параметр.  Рисовать ли в редакторе данный объект цветом DispColor.
-        /// </summary>
-        private bool _usecdispcolor = false;
-
-        /// <summary>
         /// Угол наклона объекта относительно центра в градусах.
         /// </summary>
-        public float Angle
-        {
-            get { return _angle; }
-            set { _angle = value; }
-        }
+        public float Angle { get; internal set; }
 
         /// <summary>
         /// Цвет отображения в редакторе.
         /// </summary>
-        public Color DispColor
-        {
-            get { return _dispcolor; }
-            set { _dispcolor = value; }
-        }
+        public Color DispColor { get; internal set; }
 
         /// <summary>
-        /// Представления объекта в виде класса GraphicsPath.
+        /// Представления объекта в виде класса <see cref="GraphicsPath"/>.
         /// </summary>
-        public GraphicsPath GrPath
-        {
-            get { return _grPath; }
-            set { _grPath = value; }
-        }
+        public GraphicsPath GrPath { get; internal set; }
 
         /// <summary>
         /// Имя объекта. В документе обязано быть уникально!
         /// Так как ни кто за этим не следит (ни какой класс), то будьте внимательны.
         /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; internal set; }
 
         /// <summary>
         /// Позиция объекта в документе.
         /// </summary>
-        public PointF Position
-        {
-            get { return _position; }
-            set { _position = value; }
-        }
+        public PointF Position { get; internal set; }
 
         /// <summary>
         /// Размер объекта (в большинсте случаях устанавливается сам).
         /// </summary>
-        public SizeF Size
-        {
-            get { return _size; }
-            set { _size = value; }
-        }
+        public SizeF Size { get; internal set; }
 
         /// <summary>
         /// Тип объекта.
         /// </summary>
-        public DocumentItemType Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
+        public DocumentItemType Type { get; internal set; }
 
         /// <summary>
-        /// Рисовать ли в редакторе данный объект цветом DispColor.
+        /// Рисовать ли в редакторе данный объект цветом <see cref="DispColor"/>.
         /// </summary>
-        public bool UseDispColor
-        {
-            get { return _usecdispcolor; }
-            set { _usecdispcolor = value; }
-        }
+        public bool UseDispColor { get; internal set; }
 
         /// <summary>
         /// Клонирует объект.
@@ -164,15 +91,15 @@ namespace CWA.Vectors.Document
             PreRenderPath();
             var m = new Matrix();
             m.RotateAt(Angle / 2, new PointF(Size.Width / 2 + Position.X, Size.Height / 2 + Position.Y));
-            _grPath.Transform(m);
+            GrPath.Transform(m);
         }
 
         /// <summary>
-        /// Рендерит объект в виде GraphicsPath.
+        /// Рендерит объект в виде <see cref="GraphicsPath"/>.
         /// </summary>
         public virtual void PreRenderPath()
         {
-            _grPath = null;
+            GrPath = null;
         }
 
         /// <summary>
@@ -181,7 +108,7 @@ namespace CWA.Vectors.Document
         /// <returns></returns>
         public virtual GraphicsPath Render()
         {
-            return _grPath;
+            return GrPath;
         }
 
         /// <summary>
@@ -192,7 +119,7 @@ namespace CWA.Vectors.Document
         public override bool Equals(object obj)
         {
             var item = obj as DocumentItem;
-            if (_name == item._name && Position == item.Position && Type == item.Type && Size == item.Size &&
+            if (Name == item.Name && Position == item.Position && Type == item.Type && Size == item.Size &&
                 Angle == item.Angle) return true;
             return false;
         }

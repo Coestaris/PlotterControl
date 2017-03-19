@@ -29,22 +29,12 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// Описывает объект прямой, который наследуется от DocumentItem.
+    /// Описывает объект прямой, который наследуется от <see cref="DocumentItem"/>.
     /// </summary>
     public class DocumentLine : DocumentItem
     {
         /// <summary>
-        /// Приватный параметр. Первая точка прямой.
-        /// </summary>
-        private PointF _pos1;
-
-        /// <summary>
-        /// Приватный параметр. Вторая точка прямой.
-        /// </summary>
-        private PointF _pos2;
-
-        /// <summary>
-        /// Создает новый экземпляр класса DocumentLine.
+        /// Создает новый экземпляр класса <see cref="DocumentLine"/>.
         /// </summary>
         /// <param name="position">Позиция объекта.</param>
         /// <param name="p1">Первая точка прямой.</param>
@@ -52,28 +42,20 @@ namespace CWA.Vectors.Document
         public DocumentLine(PointF position, PointF p1, PointF p2)
         {
             Position = position;
-            _pos2 = p1;
-            _pos1 = p2;
+            Pos1 = p1;
+            Pos2 = p2;
             Type = DocumentItemType.Shape;
         }
 
         /// <summary>
         /// Первая точка прямой.
         /// </summary>
-        public PointF Pos1
-        {
-            get { return _pos1; }
-            set { _pos1 = value; }
-        }
+        public PointF Pos1 { get; internal set; }
 
         /// <summary>
         /// Вторая точка прямой.
         /// </summary>
-        public PointF Pos2
-        {
-            get { return _pos2; }
-            set { _pos2 = value; }
-        }
+        public PointF Pos2 { get; internal set; }
 
         /// <summary>
         /// Перерисовует объект.
@@ -81,7 +63,7 @@ namespace CWA.Vectors.Document
         public override void PreRenderPath()
         {
             GrPath = new GraphicsPath(FillMode.Winding);
-            GrPath.AddLine(_pos2, _pos1);
+            GrPath.AddLine(Pos1, Pos1);
         }
     }
 }

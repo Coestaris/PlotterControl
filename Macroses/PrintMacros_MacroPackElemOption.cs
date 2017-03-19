@@ -32,51 +32,23 @@ namespace CWA.Printing.Macro
     /// </summary>
     public struct MacroPackElemOption
     {
-
-        /// <summary>
-        /// Приватный параметр. Надпись (название) элемента.
-        /// </summary>
-        private string _caption;
-
-        /// <summary>
-        /// Приватный параметр. Символ запуска элемента в команде.
-        /// </summary>
-        private char _charBind;
-
-        /// <summary>
-        /// Приватный параметр. Горячая клавиша элемента.
-        /// </summary>
-        private Key _keyBind;
-
         /// <summary>
         /// Надпись (название) элемента.
         /// </summary>
-        public string Caption
-        {
-            get { return _caption; }
-            set { _caption = value; }
-        }
+        public string Caption { get; set; }
 
         /// <summary>
         /// Символ запуска элемента в команде.
         /// </summary>
-        public char CharBind
-        {
-            get { return _charBind; }
-            set { _charBind = value; }
-        }
+        public char CharBind { get; set; }
 
         /// <summary>
         /// Горячая клавиша элемента.
         /// </summary>
-        public Key KeyBind
-        {
-            get { return _keyBind; }
-            set { _keyBind = value; }
-        }
+        public Key KeyBind { get; set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса MacroPackElemOption.
+        /// Создает новый экземпляр класса <see cref="MacroPackElemOption"/>.
         /// </summary>
         /// <param name="caption">Надпись (название) элемента.</param>
         /// <param name="charBind">Символ запуска элемента в команде.</param>

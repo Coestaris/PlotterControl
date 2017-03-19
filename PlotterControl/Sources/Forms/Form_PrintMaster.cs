@@ -44,7 +44,7 @@ namespace CnC_WFA
     {
         int Index;
         ComponentResourceManager resources = new ComponentResourceManager(typeof(Form_PrintMaster));
-        private Vect buffpr, pr;
+        private Vector buffpr, pr;
         private VectHeader main_header;
         private SerialPort main_port;
         private Print print;
@@ -208,7 +208,7 @@ namespace CnC_WFA
 
         private void ImgPr()
         {
-            buffpr = new Vect((string)listBox_prlist.Items[Index]);
+            buffpr = new Vector((string)listBox_prlist.Items[Index]);
             ImgPr_end_set_text(false);
             pictureBox_prpreview.Image = buffpr.ToBitmap(Color.White,Color.Black);
             ImgPr_end_set(false);
@@ -311,7 +311,7 @@ namespace CnC_WFA
 
         private void button_next_tab1_Click_th()
         {
-            pr = new Vect(path);
+            pr = new Vector(path);
             pictureBox_prpreview.Image = pr.ToBitmap(2, Color.Black);
             button_next_tab1_Click_set(false);
         }
@@ -658,7 +658,7 @@ namespace CnC_WFA
             op.XMM = GlobalOptions.XMM;
             op.YMM = GlobalOptions.YMM;
             op.PrintSize = new SizeF(xsize, ysize);
-            pr = new Vect(path);
+            pr = new Vector(path);
             op.ImageSize = new Size((int)pr.Header.Width, (int)pr.Header.Height);
             print = new Print(pr, op, GlobalOptions.DefSpo, GlobalOptions.DefRbo, main_port);
             print.ProceedStatusChanged += Print_ProceedStatusChanged;

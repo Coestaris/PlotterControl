@@ -39,7 +39,7 @@ namespace CnC_WFA
     public partial class Form_ViewVect : Form
     {
         private string path;
-        private Vect pr;
+        private Vector pr;
         private Color backcolor;
         private Color drawcolor;
         private Thread draw_th;
@@ -112,7 +112,7 @@ namespace CnC_WFA
             label_status.Visible = true;
             label_status.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Loading"];
             path = fn;
-            pr = new Vect(path);
+            pr = new Vector(path);
             label_pathtofile.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.PathToFile"] + ": " + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length-1] ;
             toolStripStatusLabel_filename.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Filename"] + ": " + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length - 1];
             toolStripStatusLabel_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Resolution"] + ": " + pr.Header.Width + "x" + pr.Header.Height;
@@ -193,7 +193,7 @@ namespace CnC_WFA
                 if (!checkBox_randomcolor.Checked) c = drawcolor;
                 else c = Color.FromArgb(255, rnd.Next(100,255), rnd.Next(100,255), rnd.Next(100,255));
                 for (var ii = 0; ii <= pr.RawData[i].Length - 1; ii++)
-                    try { bmp.SetPixel((int)pr.RawData[i][ii].Pnt.Y, (int)pr.RawData[i][ii].Pnt.X, c); }
+                    try { bmp.SetPixel((int)pr.RawData[i][ii].BasePoint.Y, (int)pr.RawData[i][ii].BasePoint.X, c); }
                     catch { }
             }
             pictureBox_main.Image = bmp;
@@ -214,12 +214,12 @@ namespace CnC_WFA
                 if (!checkBox_randomcolor.Checked) c = drawcolor;
                 else c = Color.FromArgb(255, rnd.Next(100, 255), rnd.Next(100, 255), rnd.Next(100, 255));
                 for (var ii = 0; ii <= pr.RawData[lastsi].Length - 1; ii++)
-                    try { bmp.SetPixel((int)pr.RawData[lastsi][ii].Pnt.Y, (int)pr.RawData[lastsi][ii].Pnt.X, c); }
+                    try { bmp.SetPixel((int)pr.RawData[lastsi][ii].BasePoint.Y, (int)pr.RawData[lastsi][ii].BasePoint.X, c); }
                     catch { }
                 int nowsel = listBox1.SelectedIndex;
                 c = Color.Yellow;
                 for (var ii = 0; ii <= pr.RawData[nowsel].Length - 1; ii++)
-                    try { bmp.SetPixel((int)pr.RawData[nowsel][ii].Pnt.Y, (int)pr.RawData[nowsel][ii].Pnt.X, c); }
+                    try { bmp.SetPixel((int)pr.RawData[nowsel][ii].BasePoint.Y, (int)pr.RawData[nowsel][ii].BasePoint.X, c); }
                     catch { }
                 pictureBox_main.Image = bmp;
                 lastsi = nowsel;
@@ -315,7 +315,7 @@ namespace CnC_WFA
             points = new List<VPoint>();
             for (int i = 0; i <= pr.RawData.Length - 1; i++)
                 for (var ii = 0; ii <= pr.RawData[i].Length - 1; ii++)
-                    points.Add(pr.RawData[i][ii].Pnt);
+                    points.Add(pr.RawData[i][ii].BasePoint);
             trackBar1.Maximum = points.Count;
             DrawThr = new Thread(Draw);
             DrawThr.Start();

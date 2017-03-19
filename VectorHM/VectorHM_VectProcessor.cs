@@ -36,31 +36,22 @@ namespace CWA.Vectors
     public class VectProcessor
     {
         /// <summary>
-        /// Приватный параметр поля SMDeleteCof.
-        /// </summary>
-        private static float _sMDeleteCof = 0.66f;
-
-        /// <summary>
         /// Количество точек (коофициент) контура, при котором он будет считатся вертикальной линией. 
         /// По умолчанию 0,66 (или 2/3). То есть, если более чем 2/3 точек контура имеют одинаковую координату X и
         /// не значительно изменяющууся координату Y, то этот контур будет удален методом SMDelete().
         /// </summary>
-        public static float SMDeleteCof
-        {
-            get { return _sMDeleteCof; }
-            set { _sMDeleteCof = value; }
-        }
+        public static float SMDeleteCof { get; set; } = 0.66f;
         
         /// <summary>
         /// Отражает вектор по оси X.
         /// </summary>
         /// <param name="v">Вектор для выполнения операции.</param>
-        public static Vect FlipX(Vect v)
+        public static Vector FlipX(Vector v)
         {
             for (int i = 0; i <= v.RawData.Length - 1; i++)
                 for (int ii = 0; ii <= v.RawData[i].Length - 1; ii++)
                 {
-                    v.RawData[i][ii] = new VPointEx(v.Header.Height - v.RawData[i][ii].Pnt.X, v.RawData[i][ii].Pnt.Y, 0, Color.Empty);
+                    v.RawData[i][ii] = new VPointEx(v.Header.Height - v.RawData[i][ii].BasePoint.X, v.RawData[i][ii].BasePoint.Y, 0, Color.Empty);
                 }
             return v;
         }
@@ -69,12 +60,12 @@ namespace CWA.Vectors
         /// Отражает вектор по оси Y.
         /// </summary>
         /// <param name="v">Вектор для выполнения операции.</param>
-        public static Vect FlipY(Vect v)
+        public static Vector FlipY(Vector v)
         {
             for (int i = 0; i <= v.RawData.Length - 1; i++)
                 for (int ii = 0; ii <= v.RawData[i].Length - 1; ii++)
                 {
-                    v.RawData[i][ii] = new VPointEx(v.RawData[i][ii].Pnt.X, v.Header.Width - v.RawData[i][ii].Pnt.Y, 0, Color.Empty);
+                    v.RawData[i][ii] = new VPointEx(v.RawData[i][ii].BasePoint.X, v.Header.Width - v.RawData[i][ii].BasePoint.Y, 0, Color.Empty);
                 }
             return v;
         }
@@ -84,26 +75,26 @@ namespace CWA.Vectors
         /// </summary>
         /// <param name="v">Вектор для выполнения операции.</param>
         /// <param name="newsize">Новый размер вектора.</param>
-        public static Vect Resize(Vect v, SizeF newsize)
+        public static Vector Resize(Vector v, SizeF newsize)
         {
             double kx = v.Header.Width / newsize.Width;
             double ky = v.Header.Height / newsize.Height;
             for (int i = 0; i <= v.RawData.Length - 1; i++)
                 for (int ii = 0; ii <= v.RawData[i].Length - 1; ii++)
                 {
-                    v.RawData[i][ii] = new VPointEx(v.RawData[i][ii].Pnt.X * kx, v.RawData[i][ii].Pnt.Y * ky, 0, Color.Empty);
+                    v.RawData[i][ii] = new VPointEx(v.RawData[i][ii].BasePoint.X * kx, v.RawData[i][ii].BasePoint.Y * ky, 0, Color.Empty);
                 }
-            v = new Vect(newsize, v.RawData);
+            v = new Vector(newsize, v.RawData);
             return v;
         }
 
         /// <summary>
-        /// Поворачивает вектор на 90,180 ил 270 градусов.
+        /// Поворачивает вектор на 90°, 180° или 270°.
         /// </summary>
         /// <param name="v">Вектор для выполнения операции.</param>
-        /// <param name="deg">Количество градусов для поворота. Может принемать значения: 0, 90, 180, 270 или 360,
+        /// <param name="deg">Количество градусов для поворота. Может принемать значения: 0°, 90°, 180°, 270° или 360°.
         /// остальные будут игнорироватся. Для поворота на любой другой угол используйте метод RotateByCAngle.</param>
-        public static Vect RotateBy(Vect v, int deg)
+        public static Vector RotateBy(Vector v, int deg)
         {
             //TODO: WRITE DAT METHOD!
             /*for (int i = 0; i <= v.RawData.Length - 1; i++)
@@ -120,15 +111,15 @@ namespace CWA.Vectors
         /// <param name="v">Вектор для выполнения операции.</param>
         /// <param name="angle">Угол поворота (в градусах).</param>
         /// <param name="RC">Относительная точка поворота (не обязательно в пределах вектора).</param>
-        public static Vect RotateByCAngle(Vect v, double angle, PointF RC)
+        public static Vector RotateByCAngle(Vector v, double angle, PointF RC)
         {
             double Xp = RC.X;
             double Yp = RC.Y;
             for (int i = 0; i <= v.RawData.Length - 1; i++)
                 for (int ii = 0; ii <= v.RawData[i].Length - 1; ii++)
                 {
-                    double X = v.RawData[i][ii].Pnt.X;
-                    double Y = v.RawData[i][ii].Pnt.Y;
+                    double X = v.RawData[i][ii].BasePoint.X;
+                    double Y = v.RawData[i][ii].BasePoint.Y;
                     double r = Math.Sqrt((X - Xp) * (X - Xp) + (Y - Yp) * (Y - Yp));
                     X = Xp + r * Math.Cos(angle);
                     Y = Yp + r * Math.Sin(angle);
@@ -145,7 +136,7 @@ namespace CWA.Vectors
         /// </summary>
         /// <param name="v">Вектор для выполнения операции.</param>
         /// <param name="threshold">Порог удаления контуров.</param>
-        public static Vect SMDelete(Vect v, int threshold)
+        public static Vector SMDelete(Vector v, int threshold)
         {
             List<VPointEx[]> tm = new List<VPointEx[]>();
             tm = v.RawData.ToList();
@@ -156,8 +147,8 @@ namespace CWA.Vectors
             {
                 int b = 0;
                 for (int ii = 0; ii <= v.RawData[i].Length - 1; ii++)
-                    if (v.RawData[i][ii].Pnt.Y == 2) b++;
-                if (b > _sMDeleteCof * v.RawData[i].Length)
+                    if (v.RawData[i][ii].BasePoint.Y == 2) b++;
+                if (b > SMDeleteCof * v.RawData[i].Length)
                 {
                     ind = i;
                     break;

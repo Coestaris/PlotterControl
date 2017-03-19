@@ -29,40 +29,22 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// Описывает объект текстовой строки или абзаца, который наследуется от DocumentItem.
+    /// Описывает объект текстовой строки или абзаца, который наследуется от <see cref="DocumentItem"/>.
     /// </summary>
     public class DocumentText : DocumentItem
     {
         /// <summary>
-        /// Приватный параметр. Шрифт текста.
-        /// </summary>
-        private Font _font;
-
-        /// <summary>
-        /// Приватный параметр. Значение текста (сам текст).
-        /// </summary>
-        private string _caption;
-
-        /// <summary>
         /// Шрифт текста.
         /// </summary>
-        public Font Font
-        {
-            get { return _font; }
-            set { _font = value; }
-        }
+        public Font Font { get; internal set; }
 
         /// <summary>
         /// Значение текста (сам текст).
         /// </summary>
-        public string Caption
-        {
-            get { return _caption; }
-            set { _caption = value; }
-        }
+        public string Caption { get; internal set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса DocumentText.
+        /// Создает новый экземпляр класса <see cref="DocumentText"/>.
         /// </summary>
         /// <param name="position">Позиция объекта.</param>
         /// <param name="size">Размер объекта.</param>
@@ -72,8 +54,8 @@ namespace CWA.Vectors.Document
         {
             Position = position;
             Size = size;
-            _caption = text;
-            _font = f;
+            Caption = text;
+            Font = f;
             Type = DocumentItemType.Text;
         }
 
@@ -83,7 +65,7 @@ namespace CWA.Vectors.Document
         public override void PreRenderPath()
         {
             GrPath = new GraphicsPath(FillMode.Winding);
-            GrPath.AddString(_caption, _font.FontFamily, (int) _font.Style, _font.Size, Position, new StringFormat());
+            GrPath.AddString(Caption, Font.FontFamily, (int) Font.Style, Font.Size, Position, new StringFormat());
         }
     }
 }

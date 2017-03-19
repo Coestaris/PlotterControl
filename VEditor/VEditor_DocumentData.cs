@@ -29,23 +29,18 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// Описывает объект вектора, который наследуется от DocumentItem.
+    /// Описывает объект вектора, который наследуется от <see cref="DocumentItem"/>.
     /// </summary>
     public class DocumentData : DocumentItem
     {
         /// <summary>
-        /// Приватный параметр. Информация о векторе.
-        /// </summary>
-        private Vect _baseData;
-
-        /// <summary>
-        /// Создает новый экземпляр класса DocumentData.
+        /// Создает новый экземпляр класса <see cref="DocumentData"/>.
         /// </summary>
         /// <param name="position">Позиция объекта.</param>
         /// <param name="d">Данные о векторе.</param>
-        public DocumentData(PointF position, Vect d)
+        public DocumentData(PointF position, Vector d)
         {
-            _baseData = d;
+            BaseData = d;
             Position = position;
             Size = d.SizeF;
         }
@@ -53,11 +48,7 @@ namespace CWA.Vectors.Document
         /// <summary>
         /// Информация о векторе.
         /// </summary>
-        public Vect BaseData
-        {
-            get { return _baseData; }
-            set { _baseData = value; }
-        }
+        public Vector BaseData { get; internal set; }
 
         /// <summary>
         /// Перерисовует объект.
@@ -65,8 +56,8 @@ namespace CWA.Vectors.Document
         public override void PreRenderPath()
         {
             GrPath = new GraphicsPath(FillMode.Winding);
-            for (var i = 0; i <= _baseData.RawData.Length - 1; i++)
-                try { GrPath.AddPolygon(Vect.PointexToPoint(_baseData.RawData[i])); }
+            for (var i = 0; i <= BaseData.RawData.Length - 1; i++)
+                try { GrPath.AddPolygon(Vector.PointexToPoint(BaseData.RawData[i])); }
                 catch {
                     //ignored
                 }

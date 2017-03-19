@@ -37,7 +37,7 @@ namespace CWA.Vectors
     /// <summary>
     /// Векторное изображение. Предоставляет методы для работы с векторами.
     /// </summary>
-    public class Vect : ICloneable
+    public class Vector : ICloneable
     {
 
         #region Private Fileds
@@ -45,26 +45,6 @@ namespace CWA.Vectors
         /// Рандомайзер для метода ToBitmap().
         /// </summary>
         private Random _rand = new Random();
-
-        /// <summary>
-        /// Приватный параметр. Заголовок вектора.
-        /// </summary>
-        private VectHeader _header;
-
-        /// <summary>
-        /// Приватный параметр. Имя файла, с которого был загружен вектор.
-        /// </summary>
-        private string _filename;
-
-        /// <summary>
-        /// Приватный параметр. Базовая информация о векторе.
-        /// </summary>
-        private VPointEx[][] _rawData;
-
-        /// <summary>
-        /// Приватный параметр. Информация о мульти векторе.
-        /// </summary>
-        private VPointEx[][][] _rawdDataEx;
         #endregion
 
         #region Private Methods
@@ -73,8 +53,8 @@ namespace CWA.Vectors
         /// </summary>
         private void Init()
 		{
-            _header = new VectHeader();
-            if (string.IsNullOrEmpty(_filename)) _filename = "";
+            Header = new VectHeader();
+            if (string.IsNullOrEmpty(Filename)) Filename = "";
         }
 
         /// <summary>
@@ -126,8 +106,8 @@ namespace CWA.Vectors
                 }
             }
             Helper.DeleteFromArray(contours.Length, ref contours);
-            _header = head;
-            _rawData = contours;
+            Header = head;
+            RawData = contours;
             Compresser.Compresser.Compress(filename, false, "vectarch");
         }
 
@@ -168,15 +148,15 @@ namespace CWA.Vectors
             }
             else return;
             Header = headerr;
-            _rawData = contours;
+            RawData = contours;
         }
 
         /// <summary>
         /// Сохраняет базовую информацию о векторе в формате .CVF.
         /// </summary>
         /// <param name="filename">Имя файла для загрузки.</param>
-        /// <param name="_RawData_">Вектор для сохранения.</param>
-        public void SaveData(string filename, VPointEx[][] _RawData_)
+        /// <param name="RawData_">Вектор для сохранения.</param>
+        public void SaveData(string filename, VPointEx[][] RawData_)
         {
             var t = new StreamWriter(File.OpenWrite(filename));
             t.Write("vect,");
@@ -185,10 +165,10 @@ namespace CWA.Vectors
             t.Write(Header.VectType + ",");
             t.Write(RawData.Length + ",");
             t.Write(";");
-            for (int i = 0; i <= _rawData.Length - 1; i++)
+            for (int i = 0; i <= RawData.Length - 1; i++)
             {
-                for (int ii = 0; ii <= _rawData[i].Length - 1; ii++) t.Write(string.Format("{0},{1}:", _rawData[i][ii].Pnt.X.ToString(CultureInfo.InvariantCulture), _rawData[i][ii].Pnt.Y.ToString(CultureInfo.InvariantCulture)));
-                if(_rawData.Length-1 != i) t.Write("?");
+                for (int ii = 0; ii <= RawData[i].Length - 1; ii++) t.Write(string.Format("{0},{1}:", RawData[i][ii].BasePoint.X.ToString(CultureInfo.InvariantCulture), RawData[i][ii].BasePoint.Y.ToString(CultureInfo.InvariantCulture)));
+                if(RawData.Length-1 != i) t.Write("?");
             }
             t.Write("end");
             t.Close();
@@ -197,41 +177,26 @@ namespace CWA.Vectors
         #endregion
 
         #region Public Fields
+
         /// <summary>
         /// Заголовок вектора.
         /// </summary>
-        public VectHeader Header
-        {
-            get { return _header; }
-            internal set { _header = value; }
-        }
-
+        public VectHeader Header { get; internal set; }
+      
         /// <summary>
         /// Имя файла, с которого был загружен вектор.
         /// </summary>
-        public string Filename
-        {
-            get { return _filename;  }
-            set { _filename = value; }
-        }
+        public string Filename { get; internal set; }
 
         /// <summary>
         /// Базовая информация о векторе.
         /// </summary>
-        public VPointEx[][] RawData
-        {
-            get { return _rawData;  }
-            set { _rawData = value; }
-        }
+        public VPointEx[][] RawData { get; set; }
 
         /// <summary>
         /// Информация о мульти векторе.
         /// </summary>
-        public VPointEx[][][] RaswDataEX
-        {
-            get { return _rawdDataEx; }
-            set { _rawdDataEx = value; }
-        }
+        public VPointEx[][][] RaswDataEX { get; internal set; }
 
         /// <summary>
         /// Количество точек вектора.
@@ -241,53 +206,50 @@ namespace CWA.Vectors
             get
             {
                 int count = 0;
-                for (int i = 0; i <= _rawData.Length - 1; i++)
-                    count += _rawData[i].Length;
+                for (int i = 0; i <= RawData.Length - 1; i++)
+                    count += RawData[i].Length;
                 return count;
             }
         }
 
         /// <summary>
-        /// Размер вектора класса Size.
+        /// Размер вектора класса <see cref="System.Drawing.Size"/>.
         /// </summary>
         public Size Size
         {
-            get { return new Size((int)(_header.Width), (int)(_header.Height)); }
+            get { return new Size((int)(Header.Width), (int)(Header.Height)); }
         }
 
         /// <summary>
-        /// Размер вектора класса SizeF.
+        /// Размер вектора класса <see cref="System.Drawing.SizeF"/>.
         /// </summary>
         public SizeF SizeF
         {
-            get { return new SizeF((float)_header.Width, (float)_header.Height); }
+            get { return new SizeF((float)Header.Width, (float)Header.Height); }
         }
 
         /// <summary>
         /// Количество контуров вектора.
         /// </summary>
-        public int ContorurCount
-        {
-            get { return _rawData.Length; }
-        }
+        public int ContorurCount { get; internal set; }
 
         /// <summary>
         /// Разрешение ветктора в формате "{0}x{1}".
         /// </summary>
         public string Resolution
         {
-            get { return _header.Width.ToString() + "x" + _header.Height.ToString(); }
+            get { return Header.Width.ToString() + "x" + Header.Height.ToString(); }
         }
 
         /// <summary>
-        /// Представление вектора в виде класса GraphicsPath. 
+        /// Представление вектора в виде класса <see cref="GraphicsPath"/>. 
         /// </summary>
         public GraphicsPath GrPath
         {
             get
             {
                 GraphicsPath graphicsPath = new GraphicsPath(FillMode.Winding);
-                try { for (int i = 0; i <= _rawData.Length - 1; i++) graphicsPath.AddPolygon(PointexToPoint(_rawData[i])); }
+                try { for (int i = 0; i <= RawData.Length - 1; i++) graphicsPath.AddPolygon(PointexToPoint(RawData[i])); }
                 catch { }
                 return graphicsPath;
             }
@@ -314,18 +276,18 @@ namespace CWA.Vectors
         {
             var text = new StreamWriter(File.OpenWrite(name));
             text.Write( "prres;");
-            text.Write(_header.Width + ";");
-            text.Write(_header.Height + ";");
-            text.Write(_header.VectType);
+            text.Write(Header.Width + ";");
+            text.Write(Header.Height + ";");
+            text.Write(Header.VectType);
             text.Write(Ori + ";");
             text.Write(0 + ";");
             text.Write(Resname + ";");
-            text.Write(_rawData.Length + ";");
-            for (int i = 0; i <= _rawData.Length - 1; i++) 
+            text.Write(RawData.Length + ";");
+            for (int i = 0; i <= RawData.Length - 1; i++) 
             {
                 text.Write("$");
-                text.Write(_rawData[i].Length + "?");
-                for (int ii = 0; ii <= _rawData[i].Length - 1; ii++) text.Write("(" + _rawData[i][ii].Pnt.X + "," + _rawData[i][ii].Pnt.Y + ");");
+                text.Write(RawData[i].Length + "?");
+                for (int ii = 0; ii <= RawData[i].Length - 1; ii++) text.Write("(" + RawData[i][ii].BasePoint.X + "," + RawData[i][ii].BasePoint.Y + ");");
                 text.Write("#");
             }
             text.Close();
@@ -338,7 +300,7 @@ namespace CWA.Vectors
         /// <param name="ExParams">Дополнительный параметры сохранения (опционально).</param>
         public void Save(string name, Dictionary<string, string> ExParams = null)
         {
-            SaveData(name, _rawData);
+            SaveData(name, RawData);
         } //TODO 
 
         /// <summary>
@@ -354,12 +316,12 @@ namespace CWA.Vectors
         /// </summary>
         public Bitmap ToBitmap()
         {
-            Bitmap bitmap = new Bitmap((int)(_header.Width), (int)(_header.Height));
-            for (int x = 0; x <= _rawData.Length-1; x++)
+            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
+            for (int x = 0; x <= RawData.Length-1; x++)
             {
                 Color drcolor = Color.FromArgb(_rand.Next(50, 255), _rand.Next(50, 255), _rand.Next(50, 255));
-                for (int y = 0; y <= _rawData[x].Length-1; y++)
-                    bitmap.SetPixel((int)_rawData[x][y].Pnt.Y, (int)_rawData[x][y].Pnt.X, drcolor);
+                for (int y = 0; y <= RawData[x].Length-1; y++)
+                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
             }
             return bitmap;
         }
@@ -370,17 +332,17 @@ namespace CWA.Vectors
         /// <param name="backcolor">Цвет фона.</param>
         public Bitmap ToBitmap(Color backcolor)
         {
-            Bitmap bitmap = new Bitmap((int)(_header.Width), (int)(_header.Height));
-            Rectangle rec = new Rectangle(0, 0, (int)(_header.Width), (int)(_header.Height));
+            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
+            Rectangle rec = new Rectangle(0, 0, (int)(Header.Width), (int)(Header.Height));
             using (Graphics gr = Graphics.FromImage(bitmap))
             {
                 gr.FillRectangle(new SolidBrush(backcolor), rec);
             }
-            for (int x = 0; x <= _rawData.Length - 1; x++)
+            for (int x = 0; x <= RawData.Length - 1; x++)
             {
                 Color drcolor = Color.FromArgb(_rand.Next(50, 255), _rand.Next(50, 255), _rand.Next(50, 255));
-                for (int y = 0; y <= _rawData[x].Length - 1; y++)
-                    bitmap.SetPixel((int)_rawData[x][y].Pnt.Y, (int)_rawData[x][y].Pnt.X, drcolor);
+                for (int y = 0; y <= RawData[x].Length - 1; y++)
+                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
             }
             return bitmap;
         }
@@ -392,15 +354,15 @@ namespace CWA.Vectors
         /// <param name="drcolor">Цвет рисования.</param>
         public Bitmap ToBitmap(Color backcolor, Color drcolor)
         {
-            Bitmap bitmap = new Bitmap((int)(_header.Width), (int)(_header.Height));
-            Rectangle rec = new Rectangle(0, 0, (int)(_header.Width), (int)(_header.Height));
+            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
+            Rectangle rec = new Rectangle(0, 0, (int)(Header.Width), (int)(Header.Height));
             using (Graphics gr = Graphics.FromImage(bitmap))
             {
                 gr.FillRectangle(new SolidBrush(backcolor), rec);
             }
-            for (int x = 0; x <= _rawData.Length - 1; x++)
-                for (int y = 0; y <= _rawData[x].Length - 1; y++)
-                    bitmap.SetPixel((int)_rawData[x][y].Pnt.Y, (int)_rawData[x][y].Pnt.X, drcolor);
+            for (int x = 0; x <= RawData.Length - 1; x++)
+                for (int y = 0; y <= RawData[x].Length - 1; y++)
+                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
             return bitmap;
         }
 
@@ -411,10 +373,10 @@ namespace CWA.Vectors
         /// <param name="drcolor">Цвет рисования линий.</param>
         public Bitmap ToBitmap(int e, Color drcolor)
         {
-            Bitmap bitmap = new Bitmap((int)(_header.Width), (int)(_header.Height));
-            for (int x = 0; x <= _rawData.Length - 1; x++)
-                for (int y = 0; y <= _rawData[x].Length - 1; y++)
-                    bitmap.SetPixel((int)_rawData[x][y].Pnt.Y, (int)_rawData[x][y].Pnt.X, drcolor);
+            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
+            for (int x = 0; x <= RawData.Length - 1; x++)
+                for (int y = 0; y <= RawData[x].Length - 1; y++)
+                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
             return bitmap;
         }
 
@@ -426,7 +388,7 @@ namespace CWA.Vectors
         {
             try
             {
-                return string.Format(fstring, _header.Width, _header.Height);
+                return string.Format(fstring, Header.Width, Header.Height);
             }
             catch { return Resolution; }
         }
@@ -437,7 +399,7 @@ namespace CWA.Vectors
         /// <param name="filename">Имя файла.</param>
         public static bool IsCorrectVectFile(string filename)
         {
-            Vect vect = new Vect();
+            Vector vect = new Vector();
             try
             {
                 if (File.ReadLines(filename).First().StartsWith("prres"))  vect.LoadVectCvf(filename);
@@ -448,7 +410,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Рендерит изображение с заданными параметрами с помощию класса GraphicsPath.
+        /// Рендерит изображение с заданными параметрами с помощию класса <see cref="GraphicsPath"/>.
         /// </summary>
         /// <param name="c">Цвет фона.</param>
         /// <param name="pencol">Цвет линий.</param>
@@ -463,7 +425,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Рендерит изображение с заданными параметрами с помощию класса GraphicsPath.
+        /// Рендерит изображение с заданными параметрами с помощию класса <see cref="GraphicsPath"/>.
         /// </summary>
         /// <param name="c">Цвет фона.</param>
         /// <param name="pencol">Цфет линий.</param>ram>
@@ -477,17 +439,17 @@ namespace CWA.Vectors
             graphics.FillRectangle(new SolidBrush(c), rect);
             graphics.DrawPath(new Pen(pencol), GrPath);
             GraphicsPath graphicsPath = new GraphicsPath();
-            graphicsPath.AddPolygon(PointexToPoint(_rawData[selected]));
+            graphicsPath.AddPolygon(PointexToPoint(RawData[selected]));
             graphics.DrawPath(new Pen(selectedcol), graphicsPath);
             return bitmap;
         }
 
         /// <summary>
-        /// Рендерит изображение с заданными параметрами с помощию класса GraphicsPath.
+        /// Рендерит изображение с заданными параметрами с помощию класса <see cref="GraphicsPath"/>.
         /// </summary>
         /// <param name="c">Цвет фона.</param>
         /// <param name="pencol">Цфет линий.</param>
-        /// <param name="gp">Информация о векторе в формате класса GraphicsPath.</param>
+        /// <param name="gp">Информация о векторе в формате класса <see cref="GraphicsPath"/>..</param>
         public Bitmap ToBitmapByGrPath(Color c, Color pencol, GraphicsPath gp)
         {
             Bitmap bitmap = new Bitmap(Size.Width, Size.Height);
@@ -504,16 +466,16 @@ namespace CWA.Vectors
         /// <summary>
         /// Создает новый экземпляр класса.
         /// </summary>
-        public Vect()
+        public Vector()
         {
             Init();
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса.
+        /// Создает новый экземпляр класса <see cref="Vector"/>.
         /// </summary>
         /// <param name="filename">Файл, с которого будет загружен вектор.</param>
-        public Vect(string filename)
+        public Vector(string filename)
         {
             Init();
             string ind =  File.ReadLines(filename).First();
@@ -524,37 +486,37 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса.
+        /// Создает новый экземпляр класса <see cref="Vector"/>.
         /// </summary>
         /// <param name="size">Размер вектора.</param>
-        public Vect(SizeF size)
+        public Vector(SizeF size)
         {
             Init();
-            _header.Width= size.Width;
-            _header.Height = size.Height;
+            Header.Width= size.Width;
+            Header.Height = size.Height;
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса.
+        /// Создает новый экземпляр класса <see cref="Vector"/>.
         /// </summary>
         /// <param name="size">Размер вектора.</param>
         /// <param name="data">Данные о векторе.</param>
-        public Vect(SizeF size, VPointEx[][] data)
+        public Vector(SizeF size, VPointEx[][] data)
         {
             Init();
-            _header.Width = size.Width;
-            _header.Height = size.Height;
-            _rawData = data;
+            Header.Width = size.Width;
+            Header.Height = size.Height;
+            RawData = data;
         }
         #endregion
 
         #region Static And Other Methods
         /// <summary>
-        /// Приводит экземпляр к типу String.
+        /// Приводит экземпляр к типу <see cref="string"/>.
         /// </summary>
         public override string ToString()
         {
-            return string.Format("Vector: [Is Empty: {0}, Width: {1}, Heigth: {2}, Contours: {3}]", IsEmpty, _header.Width, _header.Height, _rawData.Length);
+            return string.Format("Vector: [Is Empty: {0}, Width: {1}, Heigth: {2}, Contours: {3}]", IsEmpty, Header.Width, Header.Height, RawData.Length);
         }
 
         /// <summary>
@@ -565,7 +527,7 @@ namespace CWA.Vectors
         /// <param name="pencol">Цвет линий вектора.</param>
         /// <param name="selectedcol">Цвет выбранного.</param>
         /// <param name="selected">Индекс выбранного.</param>
-        /// <param name="gp">Информация о векторе класса GraphicsPath.</param>
+        /// <param name="gp">Информация о векторе класса <see cref="GraphicsPath"/>.</param>
         /// <param name="arr">Информация о векторе.</param>
         public static Bitmap ToBitmapByGrPath(Size size, Color c, Color pencol, Color selectedcol, int selected, GraphicsPath gp, VPointEx[][] arr)
         {
@@ -575,20 +537,20 @@ namespace CWA.Vectors
             graphics.FillRectangle(new SolidBrush(c), rect);
             graphics.DrawPath(new Pen(pencol), gp);
             GraphicsPath graphicsPath = new GraphicsPath();
-            graphicsPath.AddPolygon(Vect.PointexToPoint(arr[selected]));
+            graphicsPath.AddPolygon(Vector.PointexToPoint(arr[selected]));
             graphics.DrawPath(new Pen(selectedcol), graphicsPath);
             return bitmap;
         }
 
         /// <summary>
-        /// Приводит массив VPointEx к массиву PointF.
+        /// Приводит массив <see cref="VPointEx"/> к массиву <see cref="PointF"/>.
         /// </summary>
         /// <param name="Arr">Массив для приведения.</param>
         public static PointF[] PointexToPoint(VPointEx[] Arr)
         {
             List<PointF> list = new List<PointF>();
             for (int i = 0; i <= Arr.Length - 1; i++)
-                if (Arr[i].Pnt != VPointEx.ZeroPoint.Pnt) list.Add((PointF)VPoint.SwapCoordinates(Arr[i].Pnt));
+                if (Arr[i].BasePoint != VPointEx.ZeroPoint.BasePoint) list.Add((PointF)VPoint.SwapCoordinates(Arr[i].BasePoint));
             return list.ToArray<PointF>();
         }
 

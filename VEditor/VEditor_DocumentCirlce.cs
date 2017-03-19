@@ -29,40 +29,22 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// Описывает объект эллипса, который наследуется от DocumentItem.
+    /// Описывает объект эллипса, который наследуется от <see cref="DocumentItem"/>.
     /// </summary>
     public class DocumentCirlce : DocumentItem
     {
         /// <summary>
-        /// Приватный параметр. Центр круга.
-        /// </summary>
-        private PointF _center;
-
-        /// <summary>
-        /// Приватный параметр. Радиус круга.
-        /// </summary>
-        private float _radius;
-
-        /// <summary>
         /// Центр круга.
         /// </summary>
-        public PointF Center
-        {
-            get { return _center; }
-            set { _center = value; }
-        }
+        public PointF Center { get; internal set; }
 
         /// <summary>
         /// Радиус круга.
         /// </summary>
-        public float Radius
-        {
-            get { return _radius; }
-            set { _radius = value; }
-        }
+        public float Radius { get; internal set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса DocumentCirlce.
+        /// Создает новый экземпляр класса <see cref="DocumentCirlce"/>.
         /// </summary>
         /// <param name="position">Позиция объекта.</param>
         /// <param name="p1">Центр круга.</param>

@@ -31,7 +31,7 @@ using System.Windows.Forms;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// Предоставляет дополнительные методы для библиотеки ExOperators.
+    /// Предоставляет дополнительные методы для библиотеки <see cref="Document"/>.
     /// </summary>
     public class ExOperators
     {

@@ -44,7 +44,7 @@ namespace CnC_WFA
 
         private Bitmap buffimg, resof_1_stage, res_uit2, uit_res;
         private Point scroll_right_relativepoint, scroll_left_relativepoint, scroll_up_relativepoint, scroll_down_relativepoint;
-        private Vect pr = new Vect();
+        private Vector pr = new Vector();
         private string path;
         private bool scroll_right_down, scroll_left_down, scroll_up_down, scroll_down_down,  AllowScroll = false, ui2t_a, allow_uit2, allow_uit, Repeat;
         private int ui2t_b, ui2t_c, uit_c, num, c;
@@ -860,7 +860,7 @@ namespace CnC_WFA
             tabControl1.SelectedIndex = 5;
             c = 0;
             button_peview.Enabled = false; ;
-            pr = new Vect();
+            pr = new Vector();
             numericUpDown1.Enabled = false;
             timer1.Tick += Timer1_Tick;
             timer1.Start();

@@ -30,9 +30,8 @@ namespace CWA.Vectors
     /// <summary>
     /// Описывает дополнительные методы для библиотеки VectorHM.
     /// </summary>
-    internal abstract class Helper
+    internal static class Helper
     {
-
         /// <summary>
         /// Получает среднее значение каждого канала цвета.
         /// </summary>

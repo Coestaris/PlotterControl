@@ -45,7 +45,7 @@
     <Compile Include="Vectors_Helper.cs" />
     <Compile Include="Vectors_PrStausChangedParameters.cs" />
     <Compile Include="Vectors_VectType.cs" />
-    <Compile Include="Vectors_Vect.cs" />
+    <Compile Include="Vectors_Vector.cs" />
     <Compile Include="Vectors_VectHeader.cs" />
     <Compile Include="Vectors_Vectorizer.cs" />
     <Compile Include="Vectors_VPoint.cs" />

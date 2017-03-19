@@ -34,59 +34,29 @@ namespace CWA.Printing.Macro
     public struct MacroPackElem
     {
         /// <summary>
-        /// Приватный параметр. Базовый макрос.
-        /// </summary>
-        private Macro _macro;
-
-        /// <summary>
-        /// Приватный параметр. Дополнительные параметры элемента.
-        /// </summary>
-        private MacroPackElemOption _opts;
-
-        /// <summary>
-        /// Приватный параметр. Путь к файлу, с которого был загружен элемент.
-        /// </summary>
-        private string _path;
-
-        /// <summary>
-        /// Создает новый экземпляр класса MacroPackElem, загружая его из файла.
+        /// Создает новый экземпляр класса <see cref="MacroPackElem"/>, загружая его из файла.
         /// </summary>
         /// <param name="filename">Имя файла.</param>
         public MacroPackElem(string filename)
         {
-            _macro = new Macro(filename);
-            _opts = new MacroPackElemOption();
-            _opts.Caption = _macro.Name;
-            _opts.CharBind = _macro.Name.First();
-            _opts.KeyBind = Key.None;
-            _path = filename;
+            Macros = new Macro(filename);
+            Options = new MacroPackElemOption(Macros.Name, Macros.Name.First(), Key.None);
+            Path = filename;
         }
 
         /// <summary>
         /// Путь к файлу, с которого был загружен элемент.
         /// </summary>
-        public string Path
-        {
-            get { return _path; }
-            set { _path = value; }
-        }
+        public string Path { get; internal set; }
 
         /// <summary>
         /// Базовый макрос.
         /// </summary>
-        public Macro Macros
-        {
-            get { return _macro; }
-            set { _macro = value; }
-        }
+        public Macro Macros{ get; internal set; }
 
         /// <summary>
         /// Дополнительные параметры элемента.
         /// </summary>
-        public MacroPackElemOption Options
-        {
-            get { return _opts; }
-            set { _opts = value; }
-        }
+        public MacroPackElemOption Options { get; internal set; }
     }
 }

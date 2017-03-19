@@ -1,8 +1,5 @@
 #pragma once
 
-
-//#define PacketDebugInfo;
-
 #include "DTP.h"
 
 File WriteFile;

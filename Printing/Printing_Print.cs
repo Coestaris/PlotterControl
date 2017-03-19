@@ -71,7 +71,7 @@ namespace CWA.Printing
         /// </summary>
         public event ErrorEventHandler PrintError;
 
-        private Vect _data;
+        private Vector _data;
         private PrintOptions _opts;
         private List<string> _commands;
         private List<Point> _pntlist;
@@ -100,7 +100,7 @@ namespace CWA.Printing
         /// <param name="spo">Опция начала печати.</param>
         /// <param name="rbo">Опция конца печати.</param>
         /// <param name="sp">Порт для соеденения с устройством.</param>
-        public Print(Vect data, PrintOptions options, StartPrintOption spo, ReturnBackOption rbo, SerialPort sp)
+        public Print(Vector data, PrintOptions options, StartPrintOption spo, ReturnBackOption rbo, SerialPort sp)
         {
             Log("Создан Экземпляр класса");
             Log("Устанока параметров");
@@ -312,14 +312,14 @@ namespace CWA.Printing
             for (var i = 0; i <= _data.RawData.Length - 1; i++)
                 for (var ii = 0; ii <= _data.RawData[i].Length - 1; ii++)
                 {
-                    _pntlist.Add(new Point((int)_data.RawData[i][ii].Pnt.Y, (int)_data.RawData[i][ii].Pnt.X));
+                    _pntlist.Add(new Point((int)_data.RawData[i][ii].BasePoint.Y, (int)_data.RawData[i][ii].BasePoint.X));
                     _totalcount += 1;
                 }
             Log("Количество расчитано");
             for (int i = 0; i <= _data.RawData.Length - 1; i++)
                 for (int ii = 0; ii <= _data.RawData[i].Length - 1; ii++)
                 {
-                    var tm = PrintHm.toStep(new Point((int)_data.RawData[i][ii].Pnt.X + (int)_opts.XOffset, (int)_data.RawData[i][ii].Pnt.Y + (int)_opts.YOffset), _opts);
+                    var tm = PrintHm.toStep(new Point((int)_data.RawData[i][ii].BasePoint.X + (int)_opts.XOffset, (int)_data.RawData[i][ii].BasePoint.Y + (int)_opts.YOffset), _opts);
                     _data.RawData[i][ii] = new VPointEx(_data.Header.Width - tm.X, tm.Y, 0, Color.Black);
                 }
             Log("Шаги преобразованны");
@@ -341,7 +341,7 @@ namespace CWA.Printing
                     _commands.Add("down");
                     break;
             }
-            _commands.Add(PrintHm.GetDc(new VPoint(0, 0, Color.Black), _data.RawData[0][0].Pnt));
+            _commands.Add(PrintHm.GetDc(new VPoint(0, 0, Color.Black), _data.RawData[0][0].BasePoint));
             for (var i = 0; i <= _data.RawData.Length - 1; i++)
             {
                 if (i % 10 == 0) OnProceedStatusChanged(new ProceedStatusChangedArgs((((float)i + 1) / _data.RawData.Length) * 100));
@@ -349,21 +349,21 @@ namespace CWA.Printing
                 _commands.Add("down");
                 for (var ii = 0; ii <= _data.RawData[i].Length - 2; ii++)
                 {
-                    if (PrintHm.Distance(_data.RawData[i][ii].Pnt, _data.RawData[i][ii + 1].Pnt) >= GlobalOptions.MaxDisConst)
+                    if (PrintHm.Distance(_data.RawData[i][ii].BasePoint, _data.RawData[i][ii + 1].BasePoint) >= GlobalOptions.MaxDisConst)
                     {
-                        Log(string.Format("Разрыв. Номера [{0}]. Длина контура: {2}. Distance: {1}. Точка т.: ({3}:{4}). Точка сл.: ({5}:{6}).", i.ToString() +';'+ ii, PrintHm.Distance(_data.RawData[i][ii].Pnt, _data.RawData[i][ii + 1].Pnt), _data.RawData[i].Length, _data.RawData[i][ii].Pnt.X, _data.RawData[i][ii].Pnt.Y, _data.RawData[i][ii + 1].Pnt.X, _data.RawData[i][ii + 1].Pnt.Y));
+                        Log(string.Format("Разрыв. Номера [{0}]. Длина контура: {2}. Distance: {1}. Точка т.: ({3}:{4}). Точка сл.: ({5}:{6}).", i.ToString() +';'+ ii, PrintHm.Distance(_data.RawData[i][ii].BasePoint, _data.RawData[i][ii + 1].BasePoint), _data.RawData[i].Length, _data.RawData[i][ii].BasePoint.X, _data.RawData[i][ii].BasePoint.Y, _data.RawData[i][ii + 1].BasePoint.X, _data.RawData[i][ii + 1].BasePoint.Y));
                         _commands.Add("up");
-                        _commands.Add(PrintHm.GetDc(_data.RawData[i][ii].Pnt, _data.RawData[i][ii + 1].Pnt));
+                        _commands.Add(PrintHm.GetDc(_data.RawData[i][ii].BasePoint, _data.RawData[i][ii + 1].BasePoint));
                         _commands.Add("down");
                         continue;
                     }
-                    _commands.Add(PrintHm.GetDc(_data.RawData[i][ii].Pnt, _data.RawData[i][ii + 1].Pnt));
+                    _commands.Add(PrintHm.GetDc(_data.RawData[i][ii].BasePoint, _data.RawData[i][ii + 1].BasePoint));
                 }
                 _commands.Add("up");
                 try
                 {
-                    _commands.Add(PrintHm.GetDc(_data.RawData[i][_data.RawData[i].Length - 1].Pnt,
-                        _data.RawData[i + 1][0].Pnt));
+                    _commands.Add(PrintHm.GetDc(_data.RawData[i][_data.RawData[i].Length - 1].BasePoint,
+                        _data.RawData[i + 1][0].BasePoint));
                 }
                 catch
                 {
@@ -371,7 +371,7 @@ namespace CWA.Printing
                 }
             }
             Log("Разрывы обнаружены");
-            if (_rbo == ReturnBackOption.ReturnToZero) _commands.Add(PrintHm.GetDc(_data.RawData[_data.RawData.Length - 1][_data.RawData[_data.RawData.Length - 1].Length - 1].Pnt, new VPoint(0, 0, Color.Black)));
+            if (_rbo == ReturnBackOption.ReturnToZero) _commands.Add(PrintHm.GetDc(_data.RawData[_data.RawData.Length - 1][_data.RawData[_data.RawData.Length - 1].Length - 1].BasePoint, new VPoint(0, 0, Color.Black)));
             for (var i = 0; i <= _commands.Count - 1; i++)
                 if (_commands[i] == "up")
                     _commands[i] = "0,0,-" + (GlobalOptions.StepHeightConst + GlobalOptions.UpKoof) + ';';

@@ -110,7 +110,7 @@ namespace CnC_WFA
         public Func<CurveInfo> GetInfo;
         public Func<Size, double, object, double, Image> PreviewImage;
         public Func<GifImage> PreviewImageGif;
-        public Func<ToVectorParams, Vect> GetVector;
+        public Func<ToVectorParams, Vector> GetVector;
 
         public CurveScript(string Filename)
         {
@@ -150,7 +150,7 @@ namespace CnC_WFA
                     GetInfo = (Func<CurveInfo>)Delegate.CreateDelegate(typeof(Func<CurveInfo>), _baseType.GetMethod("GetInfo"));
                     PreviewImage = (Func<Size, double, object, double, Image>)Delegate.CreateDelegate(typeof(Func<Size, double, object, double, Image>), _baseType.GetMethod("PreviewImage"));
                     PreviewImageGif = (Func<GifImage>)Delegate.CreateDelegate(typeof(Func<GifImage>), _baseType.GetMethod("PreviewImageGif"));
-                    GetVector = (Func<ToVectorParams, Vect>)Delegate.CreateDelegate(typeof(Func<ToVectorParams, Vect>), _baseType.GetMethod("GetVector"));
+                    GetVector = (Func<ToVectorParams, Vector>)Delegate.CreateDelegate(typeof(Func<ToVectorParams, Vector>), _baseType.GetMethod("GetVector"));
                     Exmpl1 = (Func<CurveExample>)Delegate.CreateDelegate(typeof(Func<CurveExample>), _baseType.GetMethod("Exmpl1"));
                     Exmpl2 = (Func<CurveExample>)Delegate.CreateDelegate(typeof(Func<CurveExample>), _baseType.GetMethod("Exmpl2"));
                     //Console.WriteLine("Done.");

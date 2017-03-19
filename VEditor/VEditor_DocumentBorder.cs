@@ -33,66 +33,37 @@ namespace CWA.Vectors.Document
     public class DocumentBorder : ICloneable
     {
         /// <summary>
-        /// Сдвиг границы от краев документа.
+        /// Сдвиг границы от края документа.
         /// </summary>
-        private float offset;
+        public float Offset { get; internal set; }
 
         /// <summary>
         /// Стиль границы.
         /// </summary>
-        private DocumentBorderStyle style;
-   
+        public DocumentBorderStyle Style { get; internal set; }
+
         /// <summary>
         /// Использовать ли границу.
         /// </summary>
-        private bool use;
+        public bool Use { get; internal set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса DocumentBorder.
+        /// Создает новый экземпляр класса <see cref="DocumentBorder"/>.
         /// </summary>
         /// <param name="offset">Сдвиг границы от краев документа.</param>
         /// <param name="style"> Стиль границы.</param>
         /// <param name="use">Использовать ли границу.</param>
         public DocumentBorder(float offset, DocumentBorderStyle style, bool use)
         {
-            this.offset = offset;
-            this.style = style;
-            this.use = use;
+            Offset = offset;
+            Style = style;
+            Use = use;
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса DocumentBorder.
+        /// Создает новый экземпляр класса <see cref="DocumentBorder"/>.
         /// </summary>
-        public DocumentBorder()
-        {
-        }
-
-        /// <summary>
-        /// Сдвиг границы от края документа.
-        /// </summary>
-        public float Offset
-        {
-            get { return offset; }
-            set { offset = value; }
-        }
-
-        /// <summary>
-        /// Стиль границы.
-        /// </summary>
-        public DocumentBorderStyle Style
-        {
-            get { return style; }
-            set { style = value; }
-        }
-
-        /// <summary>
-        /// Использовать ли границу.
-        /// </summary>
-        public bool Use
-        {
-            get { return use; }
-            set { use = value; }
-        }
+        public DocumentBorder() { }
 
         /// <summary>
         /// Клонирует данный экземпляр.

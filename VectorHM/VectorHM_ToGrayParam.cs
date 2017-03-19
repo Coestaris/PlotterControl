@@ -44,14 +44,14 @@ namespace CWA.Vectors
         public @Dictionary<int, Bitmap> Res;
 
         /// <summary>
-        /// Создает новый экземпляр класса ToGrayParam.
+        /// Создает новый экземпляр класса <see cref="ToGrayParam"/>.
         /// </summary>
         /// <param name="b">Изображение для выполнения операций.</param>
         /// <param name="res">Ссылка на словарь остальных значений.</param>
         public ToGrayParam(Bitmap b, @Dictionary<int, Bitmap> res)
         {
             Bmp = b;
-            this.Res = res;
+            Res = res;
         }
     }
 }

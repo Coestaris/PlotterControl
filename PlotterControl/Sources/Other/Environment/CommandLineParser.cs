@@ -96,7 +96,7 @@ namespace CnC_WFA
                 try
                 {
                     if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
-                    new Vect(res.Filename).ToBitmap(Color.FromName(res.Flags["backcolor"]), Color.FromName(res.Flags["drawcolor"])).Save(new FileInfo(Application.ExecutablePath).Directory.FullName + "\\Temp\\_contex_render_.png");
+                    new Vector(res.Filename).ToBitmap(Color.FromName(res.Flags["backcolor"]), Color.FromName(res.Flags["drawcolor"])).Save(new FileInfo(Application.ExecutablePath).Directory.FullName + "\\Temp\\_contex_render_.png");
                     System.Diagnostics.Process.Start(new FileInfo(Application.ExecutablePath).Directory.FullName + "\\Temp\\_contex_render_.png");
                     System.Threading.Thread.Sleep(2000);
                 }

@@ -31,48 +31,32 @@ namespace CWA.Vectors
     public class PrStausChangedParameters
     {
         /// <summary>
-        /// Приватный параметр. Общее количество операций.
-        /// </summary>
-        private int _maxvalue;
-
-        /// <summary>
-        /// Приватный параметр. Выполненное количество операций.
-        /// </summary>
-        private int _value;
-
-        /// <summary>
         /// Общее количество операций.
         /// </summary>
-        public int MaxValue
-        {
-            get { return _maxvalue; }
-        }
+        public int MaxValue { get; internal set; }
 
         /// <summary>
         /// Выполненное количество операций.
         /// </summary>
-        public int Value
-        {
-            get { return _value; }
-        }
+        public int Value { get; internal set; }
 
         /// <summary>
         /// Процент выполнения векторизации.
         /// </summary>
         public int Percentage
         {
-            get { return (int)(_maxvalue / 100.0 * _value); }
+            get { return (int)(MaxValue / 100.0 * Value); }
         }
 
         /// <summary>
-        /// Создает новый екземпляр класса PrStausChangedParameters.
+        /// Создает новый екземпляр класса <see cref="PrStausChangedParameters"/>.
         /// </summary>
         /// <param name="maxvalue">Общее количество операций</param>
         /// <param name="value">Количество выполненных операций</param>
         internal PrStausChangedParameters(int maxvalue, int value)
         {
-            _maxvalue = maxvalue;
-            _value = value;
+            MaxValue = maxvalue;
+            Value = value;
         }
     }
 }

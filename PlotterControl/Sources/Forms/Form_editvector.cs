@@ -475,7 +475,7 @@ namespace CnC_WFA
             }
             else
             {
-                tmpv = new Vect(path);
+                tmpv = new Vector(path);
                 main = new Document(new SizeF((float)tmpv.Header.Width,( float) tmpv.Header.Height));
                 main.Name = textBox_newdoc_name.Text;
                 panel_zoom.Enabled = true;
@@ -609,14 +609,14 @@ namespace CnC_WFA
             new Form_VectorMaster().Show();
         }
 
-        private Vect tmpv;
+        private Vector tmpv;
 
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var a = openFileDialog1.ShowDialog();
             if (a == DialogResult.OK)
             {
-                tmpv = new Vect(openFileDialog1.FileName);
+                tmpv = new Vector(openFileDialog1.FileName);
                 prbitmap = tmpv.ToBitmap(0, Color.Black);
 
                 pictureBox_loaddata_preview.Image = prbitmap;

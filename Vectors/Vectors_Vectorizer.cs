@@ -120,11 +120,6 @@ namespace CWA.Vectors
         private DateTime _dt;
 
         /// <summary>
-        /// Приватный параметр. Изображение над которым будут проводится операции.
-        /// </summary>
-        private Bitmap _bmpToProceed;
-
-        /// <summary>
         /// Количество миллисекунд, которое прошло с момента векторизации.
         /// </summary>
         private int Milliseconds
@@ -149,11 +144,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Изображение над которым будут проводится операции.
         /// </summary>
-        public Bitmap ImageToProceed
-        {
-            get { return _bmpToProceed;  }
-            set { _bmpToProceed = value; }
-        }
+        public Bitmap ImageToProceed { get; set; }
         #endregion
 
         #region Private Methods
@@ -229,7 +220,7 @@ namespace CWA.Vectors
                 int num = 0;
                 for(int i =0;i<=Arr.Length-1;i++) if(!uncheckedmask[i])
                 {
-                    var dist = Distance(checked_[checked_.Length - 1].Pnt, Arr[i][0].Pnt);
+                    var dist = Distance(checked_[checked_.Length - 1].BasePoint, Arr[i][0].BasePoint);
                     if (dist < mostshort) { mostshort = dist; num = i; }
                 }
                 checked_ = Arr[num];
@@ -404,9 +395,9 @@ namespace CWA.Vectors
             for(int ii=0; ii<=contours.Length-1; ii++)
             {
                 VPoint[] aaa = new VPoint[0];
-                for (int i = 0; i <= contours[ii].Length - 1; i++) Helper.InsertToArray(ref aaa, contours[ii][i].Pnt);
+                for (int i = 0; i <= contours[ii].Length - 1; i++) Helper.InsertToArray(ref aaa, contours[ii][i].BasePoint);
                 PointSort(ref aaa);
-                for (int i = 0; i <= contours[ii].Length - 1; i++) contours[ii][i].Pnt = aaa[i];
+                for (int i = 0; i <= contours[ii].Length - 1; i++) contours[ii][i].BasePoint = aaa[i];
                 aaa = null;
             }
             if (_say) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Sorting Contours", (Milliseconds / 1000)));
@@ -496,7 +487,7 @@ namespace CWA.Vectors
                 var tmVect = _imgVect[bitmaps[ii]];
                 for (int a = 0; a <= tmVect.Length - 1; a++)
                     for (int b = 0; b <= tmVect[a].Length - 1; b++)
-                        tmVect[a][b].Pnt = new VPoint(tmVect[a][b].Pnt.X, tmVect[a][b].Pnt.Y + ii * W - ii, tmVect[a][b].Pnt.Color);
+                        tmVect[a][b].BasePoint = new VPoint(tmVect[a][b].BasePoint.X, tmVect[a][b].BasePoint.Y + ii * W - ii, tmVect[a][b].BasePoint.Color);
                 Helper.ConcatArrays(ref _rawData, ref tmVect);
                 tmVect = null;
             }
@@ -526,13 +517,13 @@ namespace CWA.Vectors
 
         #region Public Methods
         /// <summary>
-        /// Запускает процесс векторизации для изображения Image.
+        /// Запускает процесс векторизации для изображения <see cref="Image"></see>.
         /// </summary>
         /// <param name="Image">Изображени, которое будет обробатыватся.</param>
         /// <param name="WriteDebugInfo">Параметр, который определяет, будет ли выводится дебаг-информация в консоль</param>
         /// <param name="StreamCount">Количество потоков выполнения операции.</param>
         /// <returns>Возвращает вектор.</returns>
-        public Vect Proceed(Bitmap Image, bool WriteDebugInfo = false, int StreamCount = 1)
+        public Vector Proceed(Bitmap Image, bool WriteDebugInfo = false, int StreamCount = 1)
         {
             _say = WriteDebugInfo;
             _num = StreamCount;
@@ -543,7 +534,7 @@ namespace CWA.Vectors
             _header.Width = Image.Width;
             _header.Height = Image.Height;
             _header.VectType = VectType.Rastr;
-            var l = new Vect();
+            var l = new Vector();
             l.Header = _header;
             l.RawData = _rawData;
             return l;
@@ -555,19 +546,19 @@ namespace CWA.Vectors
         /// <param name="WriteDebugInfo">Параметр, который определяет, будет ли выводится дебаг-информация в консоль.</param>
         /// <param name="StreamCount">Количество потоков выполнения операции.</param>
         /// <returns>Возвращает вектор.</returns>
-        public Vect Proceed(bool WriteDebugInfo = false, int StreamCount = 1)
+        public Vector Proceed(bool WriteDebugInfo = false, int StreamCount = 1)
         {
             _dt = DateTime.Now;
             _say = WriteDebugInfo;
             _num = StreamCount;
-            _proceedBitmap = _bmpToProceed;
+            _proceedBitmap = ImageToProceed;
             ImagePr();
             _header = new VectHeader();
             _header.CountOfCont = _rawData.Length;
-            _header.Width = _bmpToProceed.Width;
-            _header.Height = _bmpToProceed.Height;
+            _header.Width = ImageToProceed.Width;
+            _header.Height = ImageToProceed.Height;
             _header.VectType = VectType.Rastr;
-            var l = new Vect();
+            var l = new Vector();
             l.Header = _header;
             l.RawData = _rawData;
             return l;
@@ -577,7 +568,7 @@ namespace CWA.Vectors
         #region Ctors
 
         /// <summary>
-        /// Создает новый экземпляр класса Vectorizer.
+        /// Создает новый экземпляр класса <see cref="Vectorizer"/>.
         /// </summary>
         public Vectorizer()
         {
@@ -585,13 +576,13 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса Vectorizer, заранее задавая изображение для векторизации.
+        /// Создает новый экземпляр класса <see cref="Vectorizer"/>, заранее задавая изображение для векторизации.
         /// </summary>
-        /// <param name="Image">Изображение, которое может быть использовано методом Proceed()</param>
+        /// <param name="Image">Изображение, которое может быть использовано методом Proceed().</param>
         public Vectorizer(Bitmap Image)
         {
             Init();
-            _bmpToProceed = Image;   
+            ImageToProceed = Image;   
         }
         #endregion
     }

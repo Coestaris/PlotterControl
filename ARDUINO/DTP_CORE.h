@@ -35,6 +35,7 @@ const int DirectoryBufferSize PROGMEM = 40;
 #include "DS1307\DS1307RTC.h"
 #include "Board.h"
 
+//#define PacketDebugInfo;
 //#define OptimizeSendrerBytes
 //#define PacketFileDebug
 //#define SimpleCRC

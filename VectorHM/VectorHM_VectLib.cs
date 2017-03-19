@@ -40,17 +40,9 @@ namespace CWA.Vectors
     public class VectLib
     {
         /// <summary>
-        /// Приватный параметр опций.
-        /// </summary>
-        private VectLibOptions _options = new VectLibOptions();
-
-        /// <summary>
         /// Опции для методов данного экземпляра.
         /// </summary>
-        public VectLibOptions Options
-        {
-            get { return _options; }
-        }
+        public VectLibOptions Options { get; internal set; } = new VectLibOptions();
 
         /// <summary>
         /// Переводит экземпляр к 2й цветовой модели преобразования.
@@ -186,7 +178,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Урезает и округляет значение к пределам типа byte.
+        /// Урезает и округляет значение к пределам типа <see cref="byte"/>.
         /// </summary>
         private byte Border(float x)
         {
@@ -265,7 +257,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Многопоточная операция. Выполняет преобразование в формат "оттенки серого".
         /// </summary>
-        /// <param name="ob">Данные для выполнения операции (класса ToGrayParam).</param>
+        /// <param name="ob">Данные для выполнения операции (класса <see cref="ToGrayParam"/>).</param>
         private void ToGray(object ob)
         {
             Bitmap a = (ob as ToGrayParam).Bmp;
@@ -301,7 +293,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Объеденяет части изображения (полученные методом GetVertCutImage()) в одно.
+        /// Объеденяет части изображения (полученные методом <see cref="GetVertCutImage"/>) в одно.
         /// </summary>
         /// <param name="bmps">Массив частей.</param>
         private Image GetConcatImage(Image[] bmps)
@@ -328,10 +320,10 @@ namespace CWA.Vectors
         /// Векторизирует изображение с заданными параметрами.
         /// </summary>
         /// <param name="bmp">Изображение для векторизации.</param>
-        public Vect GetVector(Bitmap bmp)
+        public Vector GetVector(Bitmap bmp)
         {
             {
-                Vect e = new Vect();
+                Vector e = new Vector();
                 Bitmap k = bmp;
                 /*
                 switch (Options.Hqx_Scale)

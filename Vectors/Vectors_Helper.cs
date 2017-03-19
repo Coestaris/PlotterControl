@@ -32,7 +32,7 @@ namespace CWA.Vectors
     /// <summary>
     /// Предоставляет дополнительные методы для библиотеки.
     /// </summary>
-    internal class Helper
+    internal static class Helper
     {
         /// <summary>
         /// Удаляет из строки заданное количество символов.

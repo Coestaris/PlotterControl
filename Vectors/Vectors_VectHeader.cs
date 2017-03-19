@@ -33,80 +33,36 @@ namespace CWA.Vectors
     public class VectHeader
     {
         /// <summary>
-        /// Приватный параметр. Тип получения вектора.
-        /// </summary>
-        private VectType _type;
-
-        /// <summary>
-        /// Приватный параметр. Ширина вектора.
-        /// </summary>
-        private double _width;
-
-        /// <summary>
-        /// Приватный параметр. Высота вектора.
-        /// </summary>
-        private double _height;
-
-        /// <summary>
-        /// Приватный параметр. Количество контуров вектора.
-        /// </summary>
-        private int _cnum;
-
-        /// <summary>
-        /// Приватный параметр. Дополнительные параметеры вектора.
-        /// </summary>
-        private Dictionary<string, string> _exparams;
-
-        /// <summary>
         /// Ширина вектора.
         /// </summary>
-        public double Width
-        {
-            get { return _width; }
-            internal set { _width = value; }
-        }
+        public double Width { get; internal set; }
 
         /// <summary>
         /// Высота вектора.
         /// </summary>
-        public double Height
-        {
-            get { return _height; }
-            internal set { _height = value; }
-        }
+        public double Height { get; internal set; }
 
         /// <summary>
         /// Тип получения вектора.
         /// </summary>
-        public VectType VectType
-        {
-            get { return _type; }
-            internal set { _type = value; }
-        }
+        public VectType VectType { get; internal set; }
 
         /// <summary>
         /// Количество контуров вектора.
         /// </summary>
-        public int CountOfCont
-        {
-            get { return _cnum; }
-            internal set { _cnum = value; }
-        }
+        public int CountOfCont { get; internal set; }
 
         /// <summary>
         /// Дополнительные параметеры вектора.
         /// </summary>
-        public Dictionary<string, string> ExParams
-        {
-            get { return _exparams; }
-        }
+        public Dictionary<string, string> ExParams { get; internal set; }
 
         /// <summary>
         /// Оператор сравнения хедеров.
         /// </summary>
         public static bool operator ==(VectHeader a, VectHeader b)
         {
-            return a._type == b._type && a._width == b._width && a._height == b._height && a._cnum == b._cnum && a._exparams == b._exparams;
+            return a.VectType == b.VectType && a.Width == b.Width && a.Height == b.Height && a.CountOfCont == b.CountOfCont && a.ExParams == b.ExParams;
         }
 
         /// <summary>
@@ -114,7 +70,7 @@ namespace CWA.Vectors
         /// </summary>
         public static bool operator !=(VectHeader a, VectHeader b)
         {
-            return a._type != b._type || a._width != b._width || a._height != b._height || a._cnum != b._cnum || a._exparams != b._exparams;
+            return a.VectType != b.VectType || a.Width != b.Width || a.Height != b.Height || a.CountOfCont != b.CountOfCont || a.ExParams != b.ExParams;
         }
 
         /// <summary>

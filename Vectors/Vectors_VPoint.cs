@@ -34,49 +34,23 @@ namespace CWA.Vectors
     public class VPoint
     {
         /// <summary>
-        /// Приватный параметр. Х точки.
+        /// Х координата точки.
         /// </summary>
-        private double _x;
+        public double X { set; get; }
 
         /// <summary>
-        /// Приватный параметр. Y точки.
+        /// Y координата точки.
         /// </summary>
-        private double _y;
+        public double Y { set; get; }
 
-        /// <summary>
-        /// Приватный параметр. Цвет точки.
-        /// </summary>
-        private Color _color;
-
-        /// <summary>
-        /// Х точки.
-        /// </summary>
-        public double X
-        {
-            get { return _x;  }
-            set { _x = value; }
-        }
-
-        /// <summary>
-        /// Y точки.
-        /// </summary>
-        public double Y
-        {
-            get { return _y;  }
-            set { _y = value; }
-        }
 
         /// <summary>
         /// Цвет точки.
         /// </summary>
-        public Color Color
-        {
-            get { return _color;  }
-            set { _color = value; }
-        }
+        public Color Color { set; get; }
 
         /// <summary>
-        /// Создает новый экземпляр класса VPoint. Где (x,y) - координаты точки, с - ее цвет.
+        /// Создает новый экземпляр класса <see cref="VPoint"/>. Где (x,y) - координаты точки, с - ее цвет.
         /// </summary>
         /// <param name="x">Х точки.</param>
         /// <param name="y">Y точки.</param>
@@ -89,14 +63,14 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса VPoint.
+        /// Создает новый экземпляр класса <see cref="VPoint"/>.
         /// </summary>
         public VPoint()
         {
         }
 
         /// <summary>
-        /// Оператор приведения к классу Point.
+        /// Оператор приведения к классу <see cref="Point"/>.
         /// </summary>
         public static explicit operator Point(VPoint c)
         {
@@ -104,7 +78,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Оператор приведения к классу VPointEx.
+        /// Оператор приведения к классу <see cref="VPointEx"/>.
         /// </summary>
         public static explicit operator VPointEx(VPoint c)
         {
@@ -156,7 +130,9 @@ namespace CWA.Vectors
         /// </summary>
         public void SwapCoordinates()
         {
-            Helper.Swap(ref _x,ref _y);
+            double _x = X, _y = Y;
+            Helper.Swap(ref _x, ref _y);
+            X = _x; Y = _y;
         }
 
         /// <summary>
