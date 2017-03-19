@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="SDFAT">
+      <UniqueIdentifier>{3b1b8712-d390-4f05-b1a2-a774be567f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDFAT\Headers">
+      <UniqueIdentifier>{9155953e-fcdd-4c06-bb6e-ada582a343eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DS1307">
+      <UniqueIdentifier>{b23ca90d-3061-44a2-86f7-36673e5d37ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DS1307\Headers">
+      <UniqueIdentifier>{705cf1f0-4cfd-426d-b8d8-694db11050be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FastCRC">
+      <UniqueIdentifier>{435e28ef-7a71-433b-baf7-ac15f97d93c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FastCRC\Headers">
+      <UniqueIdentifier>{c2234c15-9399-4cb3-817e-57f2a2195f96}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DTP.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DTP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatApiConstants.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\ArduinoStream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\AvrDevelopersGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\BobuinoGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\bufstream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\DigitalPin.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\ArduinoFiles.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatFile.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatFileSystem.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatLib.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatLibConfig.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatStructs.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FatVolume.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\FmtNumber.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FreeStack.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\fstream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\GpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\ios.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\iostream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\istream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\LeonardoGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\MegaGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdFatConfig.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdFat.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\MinimumSerial.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\ostream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdFatUtil.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\SdInfo.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\SdSpi.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\SdSpiCard.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\SleepingBeautyGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\SoftSPI.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\Standard1284GpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\UnoGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\StdioStream.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\FatLib\SysCall.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SystemInclude.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\Teensy2GpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SDFAT\SdSpiCard\boards\Teensy2ppGpioPinMap.h">
+      <Filter>SDFAT\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DS1307\DS1307RTC.h">
+      <Filter>DS1307\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DS1307\Time.h">
+      <Filter>DS1307\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DS1307\TimeLib.h">
+      <Filter>DS1307\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FastCRC\FastCRC_tables.h">
+      <Filter>FastCRC\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FastCRC\FastCRC.h">
+      <Filter>FastCRC\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FastCRC\FastCRC_cpu.h">
+      <Filter>FastCRC\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DTP_CORE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.DTP.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.ARDUINO.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SDFAT\FatLib\FatFile.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\FatFileLFN.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\FatFilePrint.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\FatFileSFN.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\FatVolume.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\FmtNumber.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\fstream.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\istream.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\MinimumSerial.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\ostream.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdFat.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdFatUtil.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdSpiCard\SdSpiCard.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdSpiCard\SdSpiESP8266.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdSpiCard\SdSpiParticle.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdSpiCard\SdSpiSAM3X.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdSpiCard\SdSpiSTM32F1.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\SdSpiCard\SdSpiTeensy3.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="SDFAT\FatLib\StdioStream.cpp">
+      <Filter>SDFAT</Filter>
+    </ClCompile>
+    <ClCompile Include="DS1307\DateStrings.cpp">
+      <Filter>DS1307</Filter>
+    </ClCompile>
+    <ClCompile Include="DS1307\DS1307RTC.cpp">
+      <Filter>DS1307</Filter>
+    </ClCompile>
+    <ClCompile Include="DS1307\Time.cpp">
+      <Filter>DS1307</Filter>
+    </ClCompile>
+    <ClCompile Include="FastCRC\FastCRChw.cpp">
+      <Filter>FastCRC</Filter>
+    </ClCompile>
+    <ClCompile Include="FastCRC\FastCRCsw.cpp">
+      <Filter>FastCRC</Filter>
+    </ClCompile>
+    <ClCompile Include="DTP_CORE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
