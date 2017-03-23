@@ -53,10 +53,10 @@ namespace CWA.Connection
         /// <summary>
         /// Номер порта.
         /// </summary>
-        private readonly int _num;
+        private int _num;
 
         /// <summary>
-        /// Оператор явного приведения класса ComPortName к string.
+        /// Оператор явного приведения класса <see cref="ComPortName"/> к <see cref="string"/>.
         /// </summary>
         /// <param name="a">Операнд приведения.</param>
         public static implicit operator string(ComPortName a)
@@ -65,7 +65,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Преобразует экземпляр ComPortName к соотвествующему string.
+        /// Преобразует экземпляр <see cref="ComPortName"/> к <see cref="string"/>.
         /// </summary>
         public override string ToString()
         {
@@ -73,7 +73,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса ComPortName. 
+        /// Создает новый экземпляр класса <see cref="ComPortName"/>. 
         /// </summary>
         /// <param name="s">Имя порта в строковом представлении.</param>
         public ComPortName(string s)
@@ -85,7 +85,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса ComPortName. 
+        /// Создает новый экземпляр класса <see cref="ComPortName"/>. 
         /// </summary>
         /// <param name="s">Номер порта.</param>
         public ComPortName(int s)

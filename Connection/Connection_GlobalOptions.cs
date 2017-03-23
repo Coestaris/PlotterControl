@@ -36,20 +36,10 @@ using CWA.Connection;
 namespace CWA
 {
     /// <summary>
-    /// Предоставляет и обслуживает параметры для всех библиотек пространства имен CNCWFA_API.
+    /// Предоставляет и обслуживает параметры для всех библиотек пространства имен CWA.
     /// </summary>
     public static class GlobalOptions
     {
-        private static int _stepHeightConst, _maxDisConst, _maxHeightSteps, _maxWidthSteps, _build, _mainbd, _upKoof;
-        private static string _mainport = "", _pathToArduino, _ver;
-        private static Color _defPrintBack, _defViewDraw, _defPrintDraw, _defViewBack;
-        private static bool _ignoreRegisterExtentions, _useAutoSpeed, _preloadPlugins;
-        private static StartPrintOption _defSpo;
-        private static ReturnBackOption _defRbo;
-        private static ArduinoBoard _defBoard;
-        private static float _yMm, _xMm;
-        private static string _lang;
-        
         /// <summary>
         /// Имя Рабочего файла опций.
         /// </summary>
@@ -63,213 +53,124 @@ namespace CWA
         /// <summary>
         /// Путь к Arduino IDE.
         /// </summary>
-        public static string PathToArduino
-        {
-            get { return _pathToArduino; }
-            set { _pathToArduino = value; }
-        }
+        public static string PathToArduino { get; set; }
 
         /// <summary>
         /// Количество шагов по оси Z, которое будет выполнятся при поднятии\опускании пера.
         /// </summary>
-        public static int StepHeightConst
-        {
-            get { return _stepHeightConst; }
-            set { _stepHeightConst = value; }
-        }
+        public static int StepHeightConst { get; set; }
 
         /// <summary>
         /// Константа разрыва вектора.
         /// </summary>
-        public static int MaxDisConst
-        {
-            get { return _maxDisConst; }
-            set { _maxDisConst = value; }
-        }
+        public static int MaxDisConst { get; set; }
 
         /// <summary>
         /// Скорость соеденения по умолчанию.
         /// </summary>
-        public static int Mainbd
-        {
-            get { return _mainbd; }
-            set { _mainbd = value; }
-        }
+        public static int Mainbd { get; set; }
 
         /// <summary>
         /// Имя порта по умолчанию.
         /// </summary>
-        public static string Mainport
-        {
-            get { return _mainport; }
-            set { _mainport = value; }
-        }
+        public static string Mainport { get; set; }
 
         /// <summary>
         /// Количество шагов (всего) по высоте.
         /// </summary>
-        public static int MaxHeightSteps
-        {
-            get { return _maxHeightSteps; }
-            set { _maxHeightSteps = value; }
-        }
+        public static int MaxHeightSteps { get; set; }
 
         /// <summary>
         /// Количество шагов (всего) по ширине.
         /// </summary>
-        public static int MaxWidthSteps
-        {
-            get { return _maxWidthSteps; }
-            set { _maxWidthSteps = value; }
-        }
+        public static int MaxWidthSteps { get; set; }
 
         /// <summary>
         /// Определяет, будут ли загружатся плагины при старте программы.
         /// </summary>
-        public static bool PreloadPlugins
-        {
-            get { return _preloadPlugins; }
-            set { _preloadPlugins = value; }
-        }
+        public static bool PreloadPlugins { get; set; }
 
         /// <summary>
         /// Автоматически устанавливать задержки, в зависимости от значения потенциометра.
         /// </summary>
-        public static bool UseAutoSpeed
-        {
-            get { return _useAutoSpeed; }
-            set { _useAutoSpeed = value; }
-        }
+        public static bool UseAutoSpeed { get; set; }
 
         /// <summary>
         /// Цвет фона превью мастера печати.
         /// </summary>
-        public static Color DefPrintBack
-        {
-            get { return _defPrintBack; }
-            set { _defPrintBack = value; }
-        }
+        public static Color DefPrintBack { get; set; }
 
         /// <summary>
         /// Цвет линий превью мастера печати.
         /// </summary>
-        public static Color DefPrintDraw
-        {
-            get { return _defPrintDraw; }
-            set { _defPrintDraw = value; }
-        }
+        public static Color DefPrintDraw { get; set; }
 
         /// <summary>
         /// Цвет фона просмотрщика.
         /// </summary>
-        public static Color DefViewBack
-        {
-            get { return _defViewBack; }
-            set { _defViewBack = value; }
-        }
+        public static Color DefViewBack { get; set; }
 
         /// <summary>
         /// Цвет линий превью просмотрщика.
         /// </summary>
-        public static Color DefViewDraw
-        {
-            get { return _defViewDraw; }
-            set { _defViewDraw = value; }
-        }
+        public static Color DefViewDraw { get; set; }
 
         /// <summary>
         /// Действие при начале печати.
         /// </summary>
-        public static StartPrintOption DefSpo
-        {
-            get { return _defSpo; }
-            set { _defSpo = value; }
-        }
+        public static StartPrintOption DefSpo { get; set; }
 
         /// <summary>
         /// Действие при конце печати.
         /// </summary>
-        public static ReturnBackOption DefRbo
-        {
-            get { return _defRbo; }
-            set { _defRbo = value; }
-        }
+        public static ReturnBackOption DefRbo { get; set; }
 
         /// <summary>
         /// Миллиметров в одном шаге по оси Х.
         /// </summary>
-        public static float XMM
-        {
-            get { return _xMm; }
-            set { _xMm = value; }
-        }
+        public static float XMM { get; set; }
 
         /// <summary>
         /// Миллиметров в одном шаге по оси Y.
         /// </summary>
-        public static float YMM
-        {
-            get { return _yMm; }
-            set { _yMm = value; }
-        }
+        public static float YMM { get; set; }
 
         /// <summary>
         /// Игнорировать не зарегистрированные разширения.
         /// </summary>
-        public static bool IgnoreRegisterExtentions
-        {
-            get { return _ignoreRegisterExtentions; }
-            set { _ignoreRegisterExtentions = value; }
-        }
+        public static bool IgnoreRegisterExtentions { get; set; }
 
         /// <summary>
         /// Версия программы.
         /// </summary>
-        public static string Ver
-        {
-            get { return _ver; }
-            set { _ver = value; }
-        }
+        public static string Ver { get; set; }
 
         /// <summary>
         /// Сборка программы.
         /// </summary>
-        public static int Build
-        {
-            get { return _build; }
-            set { _build = value; }
-        }
+        public static int Build { get; set; }
 
         /// <summary>
         /// Плата Arduino по умолчанию.
         /// </summary>
-        public static ArduinoBoard DefBoard
-        {
-            get { return _defBoard; }
-            set { _defBoard = value; }
-        }
+        public static ArduinoBoard DefBoard { get; set; }
 
         /// <summary>
         /// Количество дополнительных шагов, которые будут выполнятся при поднятии пера (может быть и отрицательным).
         /// </summary>
-        public static int UpKoof
-        {
-            get { return _upKoof; }
-            set { _upKoof = value; }
-        }
+        public static int UpKoof { get; set; }
 
-        public static string Lang
-        {
-            get { return _lang; }
-            set { _lang = value; }
-        }
+        /// <summary>
+        /// Язык приложения поумолчанию.
+        /// </summary>
+        public static string Lang { get; set; }
 
         /// <summary>
         /// Останавливает значения переменным по умолчанию.
         /// </summary>
         public static void Reset()
         {
-            _pathToArduino = "";
+            PathToArduino = "";
             XMM = 0.013f;
             YMM = 0.013f;
             DefBoard = ArduinoBoard.Boards.ToList().Find(p => p.ProgramName == "arduino:avr:mega");
@@ -285,7 +186,7 @@ namespace CWA
             DefViewDraw = Color.White;
             MaxHeightSteps = 22100;
             MaxWidthSteps = 15500;
-            _defRbo = ReturnBackOption.ReturnToZero;
+            DefRbo = ReturnBackOption.ReturnToZero;
             DefSpo = StartPrintOption.None;
             Lang = "";
         }
@@ -299,7 +200,7 @@ namespace CWA
             try
             {
                 Build = int.Parse(File.ReadAllLines(BuildFilename)[1]);
-                File.WriteAllText(BuildFilename, "<!--Don`t EDIT this FILE!-->\n" + ++_build);
+                File.WriteAllText(BuildFilename, "<!--Don`t EDIT this FILE!-->\n" + ++Build);
             }
             catch { MessageBox.Show("Can`t find build file.\n'" + BuildFilename + "' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); };
             if (!File.Exists(Filename))
@@ -311,27 +212,27 @@ namespace CWA
                 return;
             }
             var data = ExOperators.Load(Filename);
-            _stepHeightConst = int.Parse(data["StepHeightConst"]);
-            _maxDisConst = int.Parse(data["MaxDisConst"]);
-            _useAutoSpeed = bool.Parse(data["UseAutoSpeed"]);
-            _xMm = float.Parse(data["XMM"], CultureInfo.InvariantCulture);
-            _yMm = float.Parse(data["YMM"], CultureInfo.InvariantCulture);
-            _mainbd = int.Parse(data["Mainbd"]);
-            _mainport = data["Mainport"];
-            _defSpo = ExOperators.GetEnum<StartPrintOption>(data["Def_SPO"]);
-            _defRbo = ExOperators.GetEnum<ReturnBackOption>(data["Def_RBO"]);
-            _defPrintBack = ExOperators.ColorFromHex(data["Def_print_back"]);
-            _defPrintDraw = ExOperators.ColorFromHex(data["Def_print_draw"]);
-            _defViewBack = ExOperators.ColorFromHex(data["Def_view_back"]);
-            _defViewDraw = ExOperators.ColorFromHex(data["Def_view_draw"]);
-            _maxHeightSteps = int.Parse(data["MaxHeightSteps"]);
-            _maxWidthSteps = int.Parse(data["MaxWidthSteps"]);
-            _ignoreRegisterExtentions = bool.Parse(data["ignoreRegisterExtentions"]);
-            _pathToArduino = data["PathToArduino"];
-            _defBoard = ArduinoBoard.Boards.ToList().Find(p => p.ProgramName == data["def_board"]); 
-            _upKoof = int.Parse(data["UpKoof"]);
-            _lang = data["Language"];
-            _preloadPlugins = bool.Parse(data["PreloadPlugins"]);
+            StepHeightConst = int.Parse(data["StepHeightConst"]);
+            MaxDisConst = int.Parse(data["MaxDisConst"]);
+            UseAutoSpeed = bool.Parse(data["UseAutoSpeed"]);
+            XMM = float.Parse(data["XMM"], CultureInfo.InvariantCulture);
+            YMM = float.Parse(data["YMM"], CultureInfo.InvariantCulture);
+            Mainbd = int.Parse(data["Mainbd"]);
+            Mainport = data["Mainport"];
+            DefSpo = ExOperators.GetEnum<StartPrintOption>(data["Def_SPO"]);
+            DefRbo = ExOperators.GetEnum<ReturnBackOption>(data["Def_RBO"]);
+            DefPrintBack = ExOperators.ColorFromHex(data["Def_print_back"]);
+            DefPrintDraw = ExOperators.ColorFromHex(data["Def_print_draw"]);
+            DefViewBack = ExOperators.ColorFromHex(data["Def_view_back"]);
+            DefViewDraw = ExOperators.ColorFromHex(data["Def_view_draw"]);
+            MaxHeightSteps = int.Parse(data["MaxHeightSteps"]);
+            MaxWidthSteps = int.Parse(data["MaxWidthSteps"]);
+            IgnoreRegisterExtentions = bool.Parse(data["ignoreRegisterExtentions"]);
+            PathToArduino = data["PathToArduino"];
+            DefBoard = ArduinoBoard.Boards.ToList().Find(p => p.ProgramName == data["def_board"]); 
+            UpKoof = int.Parse(data["UpKoof"]);
+            Lang = data["Language"];
+            PreloadPlugins = bool.Parse(data["PreloadPlugins"]);
         }
 
         /// <summary>
@@ -341,27 +242,27 @@ namespace CWA
         {
             var a = new Dictionary<string, string>
             {
-                { "StepHeightConst", _stepHeightConst.ToString() },
-                { "MaxDisConst", _maxDisConst.ToString() },
-                { "UseAutoSpeed", _useAutoSpeed.ToString() },
-                { "XMM", _xMm.ToString(CultureInfo.InvariantCulture) },
-                { "YMM", _yMm.ToString(CultureInfo.InvariantCulture) },
-                { "Mainbd", _mainbd.ToString() },
-                { "Mainport", _mainport },
-                { "Def_SPO", _defSpo.ToString() },
-                { "Def_RBO", _defRbo.ToString() },
-                { "Def_print_back", ExOperators.ColorToHex(_defPrintBack) },
-                { "Def_print_draw", ExOperators.ColorToHex(_defPrintDraw) },
-                { "Def_view_back", ExOperators.ColorToHex(_defViewBack) },
-                { "Def_view_draw", ExOperators.ColorToHex(_defViewDraw) },
-                { "MaxWidthSteps", _maxWidthSteps.ToString() },
-                { "MaxHeightSteps", _maxHeightSteps.ToString() },
-                { "ignoreRegisterExtentions", _ignoreRegisterExtentions.ToString() },
-                { "PathToArduino", _pathToArduino},
-                { "def_board", _defBoard.ToString() },
-                { "UpKoof", _upKoof.ToString() },
-                { "Language", _lang.ToString() },
-                { "PreloadPlugins", _preloadPlugins.ToString() }
+                { "StepHeightConst", StepHeightConst.ToString() },
+                { "MaxDisConst", MaxDisConst.ToString() },
+                { "UseAutoSpeed", UseAutoSpeed.ToString() },
+                { "XMM", XMM.ToString(CultureInfo.InvariantCulture) },
+                { "YMM", YMM.ToString(CultureInfo.InvariantCulture) },
+                { "Mainbd", Mainbd.ToString() },
+                { "Mainport", Mainport },
+                { "Def_SPO", DefSpo.ToString() },
+                { "Def_RBO", DefRbo.ToString() },
+                { "Def_print_back", ExOperators.ColorToHex(DefPrintBack) },
+                { "Def_print_draw", ExOperators.ColorToHex(DefPrintDraw) },
+                { "Def_view_back", ExOperators.ColorToHex(DefViewBack) },
+                { "Def_view_draw", ExOperators.ColorToHex(DefViewDraw) },
+                { "MaxWidthSteps", MaxWidthSteps.ToString() },
+                { "MaxHeightSteps", MaxHeightSteps.ToString() },
+                { "ignoreRegisterExtentions", IgnoreRegisterExtentions.ToString() },
+                { "PathToArduino", PathToArduino},
+                { "def_board", DefBoard.ToString() },
+                { "UpKoof", UpKoof.ToString() },
+                { "Language", Lang.ToString() },
+                { "PreloadPlugins", PreloadPlugins.ToString() }
             };
             ExOperators.Save(Filename, a, "Don`t EDIT this FILE!");
         }

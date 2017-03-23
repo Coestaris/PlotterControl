@@ -33,7 +33,7 @@ using System.Xml;
 namespace CWA.Connection
 {
     /// <summary>
-    /// Предоставляет дополнительные методы для библиотеки CWA_Connection.
+    /// Предоставляет дополнительные методы для библиотеки <see cref="Connection"/>.
     /// </summary>
     internal class ExOperators
     {

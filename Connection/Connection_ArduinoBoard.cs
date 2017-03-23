@@ -59,37 +59,19 @@ namespace CWA.Connection
             new ArduinoBoard() { DisplayName="Linino One", ProgramName= "arduino:avr:one" },
             new ArduinoBoard() { DisplayName="Arduino Uno WiFi", ProgramName= "arduino:avr:unowifi" },
         };
-
-        /// <summary>
-        /// Приватный параметр. Отображаеммое имя платы.
-        /// </summary>
-        private string _displayName;
-
-        /// <summary>
-        /// Приватный параметр. Программное имя платы.
-        /// </summary>
-        private string _programName;
-
+        
         /// <summary>
         /// Отображаеммое имя платы.
         /// </summary>
-        public string DisplayName
-        {
-            get { return _displayName;  }
-            set { _displayName = value; }
-        }
+        public string DisplayName { get; internal set; }
 
         /// <summary>
         /// Программное имя платы.
         /// </summary>
-        public string ProgramName
-        {
-            get { return _programName;  }
-            set { _programName = value; }
-        }
+        public string ProgramName { get; internal set; }
 
         /// <summary>
-        /// Преобразует экземпляр ArduinoBoard к соотвествующему string.
+        /// Преобразует экземпляр <see cref="ArduinoBoard"/> к соотвествующему <see cref="string"/>.
         /// </summary>
         public override string ToString()
         {

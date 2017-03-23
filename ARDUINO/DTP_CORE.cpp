@@ -83,9 +83,7 @@ void Error(String Pattern) {
 			analogWrite(ErrorLedPower, 0);
 			tone(SpeakerPin, SpeakerFrequency);
 			delay(SpeakerShortDelay);
-			bool b = false;
-			if (Pattern[i + 1] != '0') b = true;
-			if (!b) {
+			if (Pattern[i + 1] == '0') {
 				noTone(SpeakerPin);
 				analogWrite(ErrorLedPower, ErrorLedHighThreshold);
 			}
@@ -96,9 +94,7 @@ void Error(String Pattern) {
 			analogWrite(ErrorLedPower, 0);
 			tone(SpeakerPin, SpeakerFrequency);
 			delay(SpeakerLongDelay);
-			bool b = false;
-			if (Pattern[i + 1] != '0') b = true;
-			if (!b) {
+			if (Pattern[i + 1] == '0') {
 				noTone(SpeakerPin);
 				analogWrite(ErrorLedPower, ErrorLedHighThreshold);
 			}

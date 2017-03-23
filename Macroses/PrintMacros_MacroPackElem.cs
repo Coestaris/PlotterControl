@@ -47,16 +47,16 @@ namespace CWA.Printing.Macro
         /// <summary>
         /// Путь к файлу, с которого был загружен элемент.
         /// </summary>
-        public string Path { get; internal set; }
+        public string Path { get; set; }
 
         /// <summary>
         /// Базовый макрос.
         /// </summary>
-        public Macro Macros{ get; internal set; }
+        public Macro Macros{ get; set; }
 
         /// <summary>
         /// Дополнительные параметры элемента.
         /// </summary>
-        public MacroPackElemOption Options { get; internal set; }
+        public MacroPackElemOption Options { get; set; }
     }
 }

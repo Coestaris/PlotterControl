@@ -33,91 +33,37 @@ namespace CWA.Printing
     public struct PrintOptions
     {
         /// <summary>
-        /// Приватный параметр. Смещение по оси Y в ММ.
-        /// </summary>
-        private float _yOffset;
-
-        /// <summary>
-        /// Приватный параметр. Смещение по оси Х в ММ.
-        /// </summary>
-        private float _xOffset;
-
-        /// <summary>
-        /// Приватный параметр. Желаемый размер изображения в ММ.
-        /// </summary>
-        private SizeF _printSize;
-
-        /// <summary>
-        /// Приватный параметр. Размер изображения (вектора) в пикселях.
-        /// </summary>
-        private Size _imageSize;
-
-        /// <summary>
-        /// Приватный параметр. ММ в одном шаге по оси Y.
-        /// </summary>
-        private float _yMm;
-
-        /// <summary>
-        /// Приватный параметр. ММ в одном шаге по оси X.
-        /// </summary>
-        private float _xMm;
-
-        /// <summary>
         /// Смещение по оси Х в ММ.
         /// </summary>
-        public float XOffset
-        {
-            get { return _xOffset;  }
-            set { _xOffset = value; }
-        }
+        public float XOffset { get; set; }
 
         /// <summary>
         /// Смещение по оси Y в ММ.
         /// </summary>
-        public float YOffset
-        {
-            get { return _yOffset;  }
-            set { _yOffset = value; }
-        }
+        public float YOffset { get; set; }
 
         /// <summary>
         /// ММ в одном шаге по оси X.
         /// </summary>
-        public float XMM
-        {
-            get { return _xMm;  }
-            set { _xMm = value; }
-        }
+        public float XMM { get; set; }
 
         /// <summary>
         /// ММ в одном шаге по оси Y.
         /// </summary>
-        public float YMM
-        {
-            get { return _yMm;  }
-            set { _yMm = value; }
-        }
+        public float YMM { get; set; }
 
         /// <summary>
         /// Желаемый размер изображения в ММ.
         /// </summary>
-        public SizeF PrintSize
-        {
-            get { return _printSize;  }
-            set { _printSize = value; }
-        }
+        public SizeF PrintSize { get; set; }
 
         /// <summary>
         /// Размер изображения (вектора) в пикселях.
         /// </summary>
-        public Size ImageSize
-        {
-            get { return _imageSize;  }
-            set { _imageSize = value; }
-        }
+        public Size ImageSize { get; set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса PrintOptions.
+        /// Создает новый экземпляр класса <see cref="PrintOptions"/>.
         /// </summary>
         /// <param name="xOffset">Смещение по оси Х в мм.</param>
         /// <param name="yOffset">Смещение по оси Y в мм.</param>
@@ -127,12 +73,12 @@ namespace CWA.Printing
         /// <param name="imageSize">Размер изображения (вектора) в пикселях.</param>
         public PrintOptions(float xOffset, float yOffset, float xMm, float yMm, SizeF printSize, Size imageSize)
         {
-            _yOffset = yOffset;
-            _yMm = yMm;
-            _printSize = printSize;
-            _imageSize = imageSize;
-            _xOffset = xOffset;
-            _xMm = xMm;
+            YOffset = yOffset;
+            YMM = yMm;
+            PrintSize = printSize;
+            ImageSize = imageSize;
+            XOffset = xOffset;
+            XMM = xMm;
         }
     }
 }

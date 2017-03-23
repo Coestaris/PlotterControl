@@ -42,7 +42,7 @@
     <Compile Include="PrintMacros_MacroElem.cs" />
     <Compile Include="PrintMacros_MacroElemType.cs" />
     <Compile Include="PrintMacros_MacroElemTypeShorted.cs" />
-    <Compile Include="PrintMacros_MacroPack__.cs" />
+    <Compile Include="PrintMacros_MacroPack.cs" />
     <Compile Include="PrintMacros_MacroPackElem.cs" />
     <Compile Include="PrintMacros_MacroPackElemOption.cs" />
     <Compile Include="PrintMacros_Macro.cs" />

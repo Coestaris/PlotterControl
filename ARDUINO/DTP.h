@@ -8,13 +8,13 @@
 *         ========== STRUCTURE ==========
 *
 *  +---------+--------------------+-------------------------------------------------------------------------------------------+
-*  | NAME    |  SIZE              |   DISCRIPTION																			  |	
+*  | NAME    |  SIZE              |   DISCRIPTION									      |	
 *  +---------+--------------------+-------------------------------------------------------------------------------------------+
-*  | Size  	 |  2 Bytes           |  Bytes Total size of the packet in bytes INCLUDING the 4-byte CRC appended to the data.   |
-*  | Command |  2 Bytes           |  Bytes Command id or status id.															  |
-*  | Address |  8 Bytes           |  Bytes Client address (unit name) or SERIAL_COMMAND_BROADCAST_ADDRESS.					  |
+*  | Size    |  2 Bytes           |  Bytes Total size of the packet in bytes INCLUDING the 4-byte CRC appended to the data.   |
+*  | Command |  2 Bytes           |  Bytes Command id or status id.							      |
+*  | Address |  8 Bytes           |  Bytes Client address (unit name) or SERIAL_COMMAND_BROADCAST_ADDRESS.		      |
 *  | Data    |  <variable length> |  Packet data, zero or more bytes with the caveat that it must be in multiples of 4 bytes. |
-*  | CRC     |  2 Bytes           |  16-bit CRC of entire packet.															  |
+*  | CRC     |  2 Bytes           |  16-bit CRC of entire packet.						              |
 *  +---------+--------------------+-------------------------------------------------------------------------------------------+
 *
 *

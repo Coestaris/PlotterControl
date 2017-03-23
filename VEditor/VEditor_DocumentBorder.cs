@@ -35,17 +35,17 @@ namespace CWA.Vectors.Document
         /// <summary>
         /// Сдвиг границы от края документа.
         /// </summary>
-        public float Offset { get; internal set; }
+        public float Offset { get; set; }
 
         /// <summary>
         /// Стиль границы.
         /// </summary>
-        public DocumentBorderStyle Style { get; internal set; }
+        public DocumentBorderStyle Style { get; set; }
 
         /// <summary>
         /// Использовать ли границу.
         /// </summary>
-        public bool Use { get; internal set; }
+        public bool Use { get; set; }
 
         /// <summary>
         /// Создает новый экземпляр класса <see cref="DocumentBorder"/>.

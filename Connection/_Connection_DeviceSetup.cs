@@ -41,35 +41,17 @@ namespace CWA.Connection
         public class MemorySetupTimeoutException : Exception
         {
             /// <summary>
-            /// Приватный параметр. Команда, котороя была отправленна последняя и скорее всего она привела к ошибке.
-            /// </summary>
-            private string _command;
-
-            /// <summary>
-            /// Приватный параметр.  Время, сколько прошло спустя запроса.
-            /// </summary>
-            private int _time;
-
-            /// <summary>
             /// Время, сколько прошло спустя запроса.
             /// </summary>
-            public int Time
-            {
-                get { return _time; }
-                set { _time = value; }
-            }
+            public int Time { get; internal set; }
 
             /// <summary>
             /// Команда, котороя была отправленна последняя и скорее всего она привела к ошибке.
             /// </summary>
-            public string Command
-            {
-                get { return _command; }
-                set { _command = value; }
-            }
+            public string Command { get; internal set; }
 
             /// <summary>
-            /// Создает новый экземпляр класса MemorySetupTimeoutException.
+            /// Создает новый экземпляр класса <see cref="MemorySetupTimeoutException"/>.
             /// </summary>
             /// <param name="command">Команда, котороя была отправленна последняя и скорее всего она привела к ошибке.</param>
             /// <param name="time">Время, сколько прошло спустя запроса.</param>
@@ -86,46 +68,19 @@ namespace CWA.Connection
         public class MemorySetupBadRespondException : Exception
         {
             /// <summary>
-            /// Приватный параметр. Значение, что ожидалось.
-            /// </summary>
-            private string _excepted;
-
-            /// <summary>
-            /// Приватный параметр. Значение, что было полученно.
-            /// </summary>
-            private string _recived;
-
-            /// <summary>
-            /// Приватный параметр. Команда, котороя была отправленна последняя и скорее всего она привела к ошибке.
-            /// </summary>
-            private string _command;
-
-            /// <summary>
             /// Значение, что ожидалось.
             /// </summary>
-            public string Excepted
-            {
-                get { return _excepted; }
-                set { _excepted = value; }
-            }
+            public string Excepted { get; internal set; }
 
             /// <summary>
             /// Значение, что было полученно.
             /// </summary>
-            public string Recived
-            {
-                get { return _recived; }
-                set { _recived = value; }
-            }
+            public string Recived { get; internal set; }
 
             /// <summary>
             /// Команда, котороя была отправленна последняя и скорее всего она привела к ошибке.
             /// </summary>
-            public string Command
-            {
-                get { return _command; }
-                set { _command = value; }
-            }
+            public string Command { get; internal set; }
 
             /// <summary>
             /// Создает новый экземпляр класса <see cref="MemorySetupBadRespondException"/>.
@@ -252,7 +207,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Без очереди, сразу задает значеине Pause на устройстве.
+        /// Без очереди, сразу задает значеине <see cref="Pause"/> на устройстве.
         /// </summary>
         /// <param name="value">Значение параметра.</param>
         public void PauseVal(bool value)
@@ -271,7 +226,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Без очереди, сразу задает значеине Com на устройстве.
+        /// Без очереди, сразу задает значеине <see cref="Com"/> на устройстве.
         /// </summary>
         /// <param name="value">Значение параметра.</param>
         public void ComVal(bool value)
@@ -295,13 +250,14 @@ namespace CWA.Connection
         private List<string> _qnToSend;
 
         /// <summary>
-        /// Создает новый экземпляр класса DeviceMemorySetup.
+        /// Создает новый экземпляр класса <see cref="DeviceMemorySetup"/>.
         /// </summary>
         /// <param name="pname">Имя порта.</param>
         /// <param name="bdtate">Скорость соеденения.</param>
         public DeviceMemorySetup(string pname, int bdtate)
         {
             _qnToSend = new List<string>();
+            if (_sp?.IsOpen == true) _sp.Close();
             _sp = new SerialPort(pname, bdtate);
             _sp.Open();
             var s = GetVal(Check, null);
@@ -309,7 +265,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса DeviceMemorySetup.
+        /// Создает новый экземпляр класса <see cref="DeviceMemorySetup"/>.
         /// </summary>
         /// <param name="ss">Порт для подключения.</param>
         public DeviceMemorySetup(SerialPort ss)

@@ -42,49 +42,49 @@ namespace CWA.Vectors.Document
     /// </summary>
     public class Document
     {
-        public DocumentBorder Border { get; internal set; }
+        public DocumentBorder Border { get; set; }
 
         /// <summary>
         /// Визуальный параметр рендера. Перо отрисовки границы документа.
         /// </summary>
-        public Pen BorderPen { get; internal set; }
+        public Pen BorderPen { get; set; }
 
         /// <summary>
         /// Версия программы, в которой был создан документ.
         /// </summary>
-        public Version CreatedVersion { get; internal set; }
+        public Version CreatedVersion { get; set; }
 
         /// <summary>
         /// Описание документа.
         /// </summary>
-        public string FileDescr { get; internal set; }
+        public string FileDescr { get; set; }
 
         /// <summary>
         /// Полное имя документа.
         /// Например, если Name = "tableofvals", то FileName предположительно должен быть равен "Table of Values of Temperature.". 
         /// </summary>
-        public string FileName { get; internal set; }
+        public string FileName { get; set; }
 
         /// <summary>
         /// Имя автора документа.
         /// </summary>
-        public string FileAutor { get; internal set; }
+        public string FileAutor { get;  set; }
 
         /// <summary>
         /// Список объектов документа.
         /// </summary>
-        public List<DocumentItem> Items { get; internal set; }
+        public List<DocumentItem> Items { get; set; }
 
         /// <summary>
         /// Имя документа. 
         /// Например, если Name = "tableofvals", то FileName предположительно должен быть равен "Table of Values of Temperature.". 
         /// </summary>
-        public string Name { get; internal set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Размер документа.
         /// </summary>
-        public SizeF Size { get; internal set; }
+        public SizeF Size { get; set; }
 
         /// <summary>
         /// Создает новый экземпляр класса <see cref="Document"/>.

@@ -77,23 +77,19 @@ namespace CWA.Printing
         private List<Point> _pntlist;
         private SerialPort _sp;
         private DateTime _dtn;
-        private Color _drawColor, _backColor;
         private Bitmap _processBmp;
         private Thread _proceedTh;
         private System.Timers.Timer _tm;
         private StartPrintOption _spo;
         private ReturnBackOption _rbo;
         private int _prcounter, _totalcount, _s, _countOfPrData, _lProgress, _oneSProgress, _lastpr;
-        private bool _end;
-        private float _left, _penWidth;
-        private bool _paused;
-        private bool _firstLog = true;
+        private bool _firstLog = true, _isAborted, _end;
+        private float _left;
         private DateTime _crdate;
         public bool IsCorrectEnd;
-        private bool _isAborted;
 
         /// <summary>
-        /// Создает новый экземпляр класса Print.
+        /// Создает новый экземпляр класса <see cref="Print"/>.
         /// </summary>
         /// <param name="data">Вектор для печати.</param>
         /// <param name="options">Опции для печати.</param>
@@ -104,8 +100,8 @@ namespace CWA.Printing
         {
             Log("Создан Экземпляр класса");
             Log("Устанока параметров");
-            _backColor = Color.White;
-            _drawColor = Color.Black;
+            BackColor = Color.White;
+            DrawColor = Color.Black;
             PenWidth = 2;
             sp.DataReceived += PrintData;
             _tm = new System.Timers.Timer(1000);
@@ -132,7 +128,7 @@ namespace CWA.Printing
             _rbo = rbo;
             _processBmp = new Bitmap((int)data.Header.Width, (int)data.Header.Height);
             Rectangle rect = new Rectangle(0, 0, (int)data.Header.Width, (int)data.Header.Height);
-            using (Graphics g = Graphics.FromImage(_processBmp)) g.FillRectangle(new SolidBrush(_backColor), rect);
+            using (Graphics g = Graphics.FromImage(_processBmp)) g.FillRectangle(new SolidBrush(BackColor), rect);
             Log("Инициализация оконченна");
         }
 
@@ -193,7 +189,7 @@ namespace CWA.Printing
         /// </summary>
         private void PrintData(object sender, SerialDataReceivedEventArgs e)
         {
-            if (_paused) return;
+            if (IsPaused) return;
             string rxstring;
             try
             {
@@ -226,7 +222,7 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Метод вызова ивента ProceedStatusChanged.
+        /// Метод вызова ивента <see cref="ProceedStatusChanged"/>.
         /// </summary>
         /// <param name="e">Параметр вызова.</param>
         private void OnProceedStatusChanged(ProceedStatusChangedArgs e)
@@ -253,7 +249,7 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Метод вызова ивента PrintError.
+        /// Метод вызова ивента <see cref="PrintError"/>.
         /// </summary>
         /// <param name="e">Параметр вызова.</param>
         private void OnPrintError(PrintErrorEventArgs e)
@@ -263,7 +259,7 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Метод вызова ивента PrintChanged.
+        /// Метод вызова ивента <see cref="PrintChanged"/>.
         /// </summary>
         /// <param name="e">Параметр вызова.</param>
         private void OnPrintChanged(PrintedEventArgs e)
@@ -272,7 +268,7 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Метод вызова ивента TimeChanged.
+        /// Метод вызова ивента <see cref="TimeChanged"/>.
         /// </summary>
         /// <param name="e">Параметр вызова.</param>
         private void OnTimeChanged(TimeEventArgs e)
@@ -281,7 +277,7 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Метод вызова ивента PrintingDone.
+        /// Метод вызова ивента <see cref="PrintingDone"/>.
         /// </summary>
         /// <param name="e">Параметр вызова.</param>
         private void OnPrintingDone(EventArgs e)
@@ -292,7 +288,7 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Метод вызова ивента ProceedEnd.
+        /// Метод вызова ивента <see cref="ProceedEnd"/>.
         /// </summary>
         /// <param name="e">Параметр вызова.</param>
         private void OnProceedEnd(EventArgs e)
@@ -493,29 +489,26 @@ namespace CWA.Printing
         /// </summary>
         public void Pause()
         {
-            _paused = !_paused;
-            Log("Пауза печати, установленна как: "+ (_paused));
-            Log("Установка пауз леда как: " + _paused);
+            IsPaused = !IsPaused;
+            Log("Пауза печати, установленна как: "+ (IsPaused));
+            Log("Установка пауз леда как: " + IsPaused);
             Log("-- Закрытие порта");
             _sp.Close();
             Log("-- Создание Экземпляра DeviceSetup");
             DeviceMemorySetup a = new DeviceMemorySetup(_sp.PortName, _sp.BaudRate);
             Log("-- Задача параметра");
-            a.PauseVal(_paused);
+            a.PauseVal(IsPaused);
             Log("-- Закрытие порта");
             a.Stop();
             Log("-- Открытие порта");
             _sp.Open();
-            if (_paused) TryToRetry();
+            if (IsPaused) TryToRetry();
         }
 
         /// <summary>
         /// Приостановлена ли печать.
         /// </summary>
-        public bool IsPaused
-        {
-            get { return _paused; }
-        }
+        public bool IsPaused { get; internal set; }
 
         /// <summary>
         /// Изображнеие вектора, на котором отображен текущий процесс печати.
@@ -530,7 +523,7 @@ namespace CWA.Printing
                     _lastpr = _prcounter;
                     for (var i = 0; i <= arr.Length - 1; i++)
                     {
-                        _processBmp.SetPixel(arr[i].X, arr[i].Y, _drawColor);
+                        _processBmp.SetPixel(arr[i].X, arr[i].Y, DrawColor);
                     }
                 }
                 catch { }
@@ -539,30 +532,18 @@ namespace CWA.Printing
         }
 
         /// <summary>
-        /// Цвет фона изображения ProcessBmp.
+        /// Цвет фона изображения <see cref="ProcessBmp"/>.
         /// </summary>
-        public Color BackColor
-        {
-            get { return _backColor;  }
-            set { _backColor = value; }
-        }
+        public Color BackColor { get; set; }
 
         /// <summary>
-        /// Цвет линий изображения ProcessBmp.
+        /// Цвет линий изображения <see cref="ProcessBmp"/>.
         /// </summary>
-        public Color DrawColor
-        {
-            get { return _drawColor;  }
-            set { _drawColor = value; }
-        }
+        public Color DrawColor { get; set; }
 
         /// <summary>
-        /// Ширина линий изображения ProcessBmp.
+        /// Ширина линий изображения <see cref="ProcessBmp"/>.
         /// </summary>
-        public float PenWidth
-        {
-            get { return _penWidth;  }
-            set { _penWidth = value; }
-        }
+        public float PenWidth { get; set; }
     }
 }

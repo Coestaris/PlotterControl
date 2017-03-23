@@ -33,25 +33,17 @@ namespace CWA.Printing
     public class ProceedStatusChangedArgs : EventArgs
     {
         /// <summary>
-        /// Приватный параметр. Процент выполнения операции. Percentage = [0:100]  
-        /// </summary>
-        private float _percentage;
-
-        /// <summary>
         /// Процент выполнения операции. Percentage = [0:100]
         /// </summary>
-        public float Percentage
-        {
-            get { return _percentage; }
-        }
+        public float Percentage { get; internal set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса ProceedStatusChangedArgs.
+        /// Создает новый экземпляр класса <see cref="ProceedStatusChangedArgs"/>.
         /// </summary>
         /// <param name="percentage">Процен выполнения операции.</param>
         public ProceedStatusChangedArgs(float percentage)
         {
-            _percentage = percentage;
+            Percentage = percentage;
         }
 
     }

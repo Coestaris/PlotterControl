@@ -73,32 +73,6 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// Приватный параметр.Тип элемента.
-        /// </summary>
-        private MacroElemType _type;
-
-        /// <summary>
-        /// Приватный параметр. Перемещение в конкретную точку.
-        /// </summary>
-        private int _toolMove;
-
-        /// <summary>
-        /// Приватный параметр. Перемещение в конкретную точку.
-        /// </summary>
-        private PointF _moveToPoint;
-
-
-        /// <summary>
-        /// Приватный параметр. Относительное смещение.
-        /// </summary>
-        private PointF _moveRelative;
-
-        /// <summary>
-        /// Приватный параметр. Задержка после выполнения основного действия в МС.
-        /// </summary>
-        private float _delay;
-
-        /// <summary>
         /// Форматированное имя элемента.
         /// </summary>
         public string StringType
@@ -133,50 +107,30 @@ namespace CWA.Printing.Macro
         /// <summary>
         /// Тип элемента.
         /// </summary>
-        public MacroElemType Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
+        public MacroElemType Type { get; set; }
 
         /// <summary>
         /// Перемещение в конкретную точку.
         /// </summary>
-        public int ToolMove
-        {
-            get { return _toolMove; }
-            set { _toolMove = value; }
-        }
+        public int ToolMove { get; set; }
 
         /// <summary>
         /// Перемещение в конкретную точку.
         /// </summary>
-        public PointF MoveToPoint
-        {
-            get { return _moveToPoint; }
-            set { _moveToPoint = value; }
-        }
+        public PointF MoveToPoint { get; set; }
 
         /// <summary>
         /// Относительное смещение.
         /// </summary>
-        public PointF MoveRelative
-        {
-            get { return _moveRelative; }
-            set { _moveRelative = value; }
-        }
+        public PointF MoveRelative { get; set; }
 
         /// <summary>
         /// Задержка после выполнения основного действия в МС.
         /// </summary>
-        public float Delay
-        {
-            get { return _delay; }
-            set { _delay = value; }
-        }
+        public float Delay { get; set; }
 
         /// <summary>
-        /// Преобразует экземпляр к строковому представлению (возвращает свойство StringType).
+        /// Преобразует экземпляр к строковому представлению (возвращает свойство  <see cref="StringType"/>).
         /// </summary>
         /// <returns></returns>
         public override string ToString()

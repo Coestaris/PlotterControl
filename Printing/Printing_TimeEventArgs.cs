@@ -33,49 +33,22 @@ namespace CWA.Printing
     public class TimeEventArgs : EventArgs
     {
         /// <summary>
-        /// Приватный параметр. Времени прошло с начала печати.
-        /// </summary>
-        private float _timeSpend;
-
-        /// <summary>
-        /// Приватный параметр. Примерно осталось времени до конца печати.
-        /// </summary>
-        private float _timeLeft;
-
-        /// <summary>
-        /// Приватный параметр. Время начала печати.
-        /// </summary>
-        private DateTime _startTime;
-        
-        /// <summary>
         /// Времени прошло с начала печати.
         /// </summary>
-        public float TimeSpend
-        {
-            get { return _timeSpend; }
-            set { _timeSpend = value; }
-        }
+        public float TimeSpend { get; set; }
 
         /// <summary>
         /// Примерно осталось времени до конца печати.
         /// </summary>
-        public float TimeLeft
-        {
-            get { return _timeLeft; }
-            set { _timeLeft = value; }
-        }
+        public float TimeLeft { get; set; }
 
         /// <summary>
         /// Время начала печати.
         /// </summary>
-        public DateTime StartTime
-        {
-            get { return _startTime; }
-            set { _startTime = value; }
-        }
+        public DateTime StartTime { get; set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса TimeEventArgs.
+        /// Создает новый экземпляр класса <see cref="TimeEventArgs"/>.
         /// </summary>
         /// <param name="timeLeft">Прошло времени с начала печати.</param>
         /// <param name="timeSpend">Осталось времени до конца печати.</param>

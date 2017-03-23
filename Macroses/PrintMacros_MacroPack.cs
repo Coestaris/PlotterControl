@@ -35,107 +35,43 @@ namespace CWA.Printing.Macro
     /// </summary>
     public class MacroPack
     {
-
-        /// <summary>
-        /// Приватный параметр. Список элементов пака.
-        /// </summary>
-        private List<MacroPackElem> _elems;
-
-        /// <summary>
-        /// Приватный параметр. Имя пака.
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// Приватный параметр. Описание пака.
-        /// </summary>
-        private string _discr;
-
-        /// <summary>
-        /// Приватный параметр. Отображаемое имя пака.
-        /// </summary>
-        private string _caption;
-
-        /// <summary>
-        /// Приватный параметр. Список "семплов" пака.
-        /// </summary>
-        private List<string> _samples;
-
-        /// <summary>
-        /// Приватный параметр. Стандартное имя порта.
-        /// </summary>
-        private ComPortName _portName;
-
-        /// <summary>
-        /// Приватный параметр. Стандартная скорость соеденеия с портом.
-        /// </summary>
-        private BdRate _portBD;
-
         /// <summary>
         /// Имя пака.
         /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Описание пака.
         /// </summary>
-        public string Discr
-        {
-            get { return _discr; }
-            set { _discr = value; }
-        }
+        public string Discr { get; set; }
 
         /// <summary>
         /// Отображаемое имя пака.
         /// </summary>
-        public string Caption
-        {
-            get { return _caption; }
-            set { _caption = value; }
-        }
+        public string Caption { get; set; }
 
         /// <summary>
         /// Список "семплов" пака.
         /// </summary>
-        public List<string> Samples
-        {
-            get { return _samples; }
-            set { _samples = value; }
-        }
+        public List<string> Samples { get; set; }
 
         /// <summary>
         /// Стандартное имя порта.
         /// </summary>
-        public ComPortName PortName
-        {
-            get { return _portName; }
-            set { _portName = value; }
-        }
+        public ComPortName PortName { get; set; }
 
         /// <summary>
         /// Стандартная скорость соеденеия с портом.
         /// </summary>
-        public BdRate PortBD
-        {
-            get { return _portBD; }
-            set { _portBD = value; }
-        }
+        public BdRate PortBD { get; set; }
 
         /// <summary>
         /// Список элементов пака.
         /// </summary>
-        public List<MacroPackElem> Elems
-        {
-            get { return _elems; }
-            set { _elems = value; }
-        }
+        public List<MacroPackElem> Elems { get; set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса MacroPack.
+        /// Создает новый экземпляр класса <see cref="MacroPack"/>.
         /// </summary>
         /// <param name="name">Имя пака.</param>
         /// <param name="discr">Описание пака.</param>
@@ -145,7 +81,7 @@ namespace CWA.Printing.Macro
             Name = name;
             Discr = discr;
             Caption = caption;
-            _elems = new List<MacroPackElem>();
+            Elems = new List<MacroPackElem>();
             PortName = new ComPortName(GlobalOptions.Mainport);
             Samples = new List<string>();
             PortBD = new BdRate(GlobalOptions.Mainbd);
@@ -178,7 +114,7 @@ namespace CWA.Printing.Macro
                 el1.AppendChild(smpl);
             }
             XmlNode el2 = document.CreateElement("macroses");
-            foreach (var a in _elems)
+            foreach (var a in Elems)
             {
                 XmlElement smpl = document.CreateElement("macro");
                 XmlAttribute at1 = document.CreateAttribute("capt"); at1.Value = a.Options.Caption; smpl.Attributes.Append(at1);

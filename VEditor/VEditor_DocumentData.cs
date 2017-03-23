@@ -48,7 +48,7 @@ namespace CWA.Vectors.Document
         /// <summary>
         /// Информация о векторе.
         /// </summary>
-        public Vector BaseData { get; internal set; }
+        public Vector BaseData { get; set; }
 
         /// <summary>
         /// Перерисовует объект.

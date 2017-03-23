@@ -186,7 +186,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Имя файла, с которого был загружен вектор.
         /// </summary>
-        public string Filename { get; internal set; }
+        public string Filename { get; set; }
 
         /// <summary>
         /// Базовая информация о векторе.

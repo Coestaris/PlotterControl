@@ -40,63 +40,27 @@ namespace CWA.Printing.Macro
     public class Macro
     {
         /// <summary>
-        /// Приватный параметр. Версия программы, в которой был создан макрос.
-        /// </summary>
-        private Version _createdVersion;
-
-        /// <summary>
-        /// Приватный параметр. Имя макроса.
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// Приватный параметр. Описание макроса.
-        /// </summary>
-        private string _discr;
-
-        /// <summary>
-        /// Приватный параметр. Список элементов макроса.
-        /// </summary>
-        private List<MacroElem> _elems;
-
-        /// <summary>
         /// Имя макроса.
         /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Описание макроса.
         /// </summary>
-        public string Discr
-        {
-            get { return _discr; }
-            set { _discr = value; }
-        }
+        public string Discr { get; set; }
 
         /// <summary>
         /// Версия программы, в которой был создан макрос.
         /// </summary>
-        public Version CreatedVersion
-        {
-            get { return _createdVersion; }
-            set { _createdVersion = value; }
-        }
+        public Version CreatedVersion { get; set; }
 
         /// <summary>
         /// Список элементов макроса.
         /// </summary>
-        public List<MacroElem> Elems
-        {
-            get { return _elems; }
-            set { _elems = value; }
-        }
+        public List<MacroElem> Elems { get; set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса PrintMacros.
+        /// Создает новый экземпляр класса  <see cref="Macro"/>.
         /// </summary>
         /// <param name="name">Имя макроса.</param>
         /// <param name="discr">Описание макроса.</param>
@@ -109,7 +73,7 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса PrintMacros, загружая его из файла.
+        /// Создает новый экземпляр класса <see cref="Macro"/>, загружая его из файла.
         /// </summary>
         /// <param name="filename">Имя файла.</param>
         public Macro(string filename)
@@ -126,8 +90,8 @@ namespace CWA.Printing.Macro
                 int bn = int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[2].Value);
                 int rev = int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[3].Value);
                 CreatedVersion = new Version(mav, miv, bn, rev);
-                _name = neme;
-                _discr = d;
+                Name = neme;
+                Discr = d;
                 Elems = new List<MacroElem>();
                 for (int i = 2; i <= document.ChildNodes[1].ChildNodes.Count - 1; i++)
                 {
@@ -162,8 +126,8 @@ namespace CWA.Printing.Macro
             document.Load(filename);
             XmlNode el = document.CreateElement("S");
             document.DocumentElement.AppendChild(el);
-            XmlAttribute name = document.CreateAttribute("N"); name.Value = this._name; el.Attributes.Append(name);
-            XmlAttribute discr = document.CreateAttribute("D"); discr.Value = this._discr; el.Attributes.Append(discr);
+            XmlAttribute name = document.CreateAttribute("N"); name.Value = Name; el.Attributes.Append(name);
+            XmlAttribute discr = document.CreateAttribute("D"); discr.Value = Discr; el.Attributes.Append(discr);
             XmlNode vers = document.CreateElement("V");
             XmlAttribute mav = document.CreateAttribute("MV"); mav.Value = CreatedVersion.Major.ToString(); vers.Attributes.Append(mav);
             XmlAttribute miv = document.CreateAttribute("MnrV"); miv.Value = CreatedVersion.Minor.ToString(); vers.Attributes.Append(miv);

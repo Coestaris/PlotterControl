@@ -37,43 +37,43 @@ namespace CWA.Vectors.Document
         /// <summary>
         /// Угол наклона объекта относительно центра в градусах.
         /// </summary>
-        public float Angle { get; internal set; }
+        public float Angle { get; set; }
 
         /// <summary>
         /// Цвет отображения в редакторе.
         /// </summary>
-        public Color DispColor { get; internal set; }
+        public Color DispColor { get; set; }
 
         /// <summary>
         /// Представления объекта в виде класса <see cref="GraphicsPath"/>.
         /// </summary>
-        public GraphicsPath GrPath { get; internal set; }
+        public GraphicsPath GrPath { get; set; }
 
         /// <summary>
         /// Имя объекта. В документе обязано быть уникально!
         /// Так как ни кто за этим не следит (ни какой класс), то будьте внимательны.
         /// </summary>
-        public string Name { get; internal set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Позиция объекта в документе.
         /// </summary>
-        public PointF Position { get; internal set; }
+        public PointF Position { get; set; }
 
         /// <summary>
         /// Размер объекта (в большинсте случаях устанавливается сам).
         /// </summary>
-        public SizeF Size { get; internal set; }
+        public SizeF Size { get; set; }
 
         /// <summary>
         /// Тип объекта.
         /// </summary>
-        public DocumentItemType Type { get; internal set; }
+        public DocumentItemType Type { get; set; }
 
         /// <summary>
         /// Рисовать ли в редакторе данный объект цветом <see cref="DispColor"/>.
         /// </summary>
-        public bool UseDispColor { get; internal set; }
+        public bool UseDispColor { get; set; }
 
         /// <summary>
         /// Клонирует объект.

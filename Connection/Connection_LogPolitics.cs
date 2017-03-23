@@ -32,7 +32,7 @@ using System.Windows.Forms;
 namespace CWA
 {
     /// <summary>
-    /// Предоставляет и обслуживает параметры ведения логов всех библиотек пространства имен CNCWFA_API.
+    /// Предоставляет и обслуживает параметры ведения логов всех библиотек пространства имен CWA.
     /// </summary>
     public abstract class GlobalOptionsLogPolitics
     {
@@ -45,15 +45,6 @@ namespace CWA
         /// Имя выходной папки, куда будут складыватся все логи.
         /// </summary>
         public static string OutPutDir;
-
-        private static bool _savePrintLog, _saveSerialMonitorLog, _saveManualControlLog, _saveMacroLog;
-        private static bool _saveGlobalPrintLog, _saveGlobalVectLog;
-        private static string _printLogNameFormat = "PrintLog_{y}.{m}.{d}_{h}.{min}.log";
-        private static string _serialMonitorLogNameFormat = "SerialMonitorLog_{y}.{m}.{d}_{h}.{min}.log";
-        private static string _manualControlLogNameFormat = "ManualControlLog_{y}.{m}.{d}_{h}.{min}.log";
-        private static string _macroLogNameFormat = "MacroLog_{y}.{m}.{d}_{h}.{min}.log";
-        private static string _globalPrintLogNameFormat = "PrintLog.log";
-        private static string _globalVectLogNameFormat = "VectLog.log";
 
         /// <summary>
         /// Форматирует строку заданного формата соответсвующим экземяром DateTime.
@@ -73,110 +64,62 @@ namespace CWA
         /// <summary>
         /// Указывает на то, будут вестись логи печати.
         /// </summary>
-        public static bool SavePrintLog
-        {
-            get { return _savePrintLog; }
-            set { _savePrintLog = value; }
-        }
+        public static bool SavePrintLog { get; set; }
 
         /// <summary>
         /// Указывает на то, будут вестись логи сериал монитора.
         /// </summary>
-        public static bool SaveSerialMonitorLog
-        {
-            get { return _saveSerialMonitorLog; }
-            set { _saveSerialMonitorLog = value; }
-        }
+        public static bool SaveSerialMonitorLog { get; set; }
 
         /// <summary>
         /// Указывает на то, будут вестись логи ручного управления.
         /// </summary>
-        public static bool SaveManualControlLog
-        {
-            get { return _saveManualControlLog; }
-            set { _saveManualControlLog = value; }
-        }
+        public static bool SaveManualControlLog { get; set; }
 
         /// <summary>
         /// Указывает на то, будут вестись логи макросов.
         /// </summary>
-        public static bool SaveMacroLog
-        {
-            get { return _saveMacroLog; }
-            set { _saveMacroLog = value; }
-        }
+        public static bool SaveMacroLog { get; set; }
 
         /// <summary>
         /// Указывает на то, будут вестись глобальные логи печати (1 сборный файл с общей информацие про каждую печать).
         /// </summary>
-        public static bool SaveGlobalPrintLog
-        {
-            get { return _saveGlobalPrintLog; }
-            set { _saveGlobalPrintLog = value; }
-        }
-
+        public static bool SaveGlobalPrintLog { get; set; }
+        
         /// <summary>
         /// Указывает на то, будут вестись глобальные логи векторизации (1 сборный файл с общей информацие про каждую векторизацию).
         /// </summary>
-        public static bool SaveGlobalVectLog
-        {
-            get { return _saveGlobalVectLog; }
-            set { _saveGlobalVectLog = value; }
-        }
+        public static bool SaveGlobalVectLog { get; set; }
 
         /// <summary>
         /// Формат имени лога печати.
         /// </summary>
-        public static string PrintLogNameFormat
-        {
-            get { return _printLogNameFormat; }
-            set { _printLogNameFormat = value; }
-        }
+        public static string PrintLogNameFormat { get; set; } = "PrintLog_{y}.{m}.{d}_{h}.{min}.log";
 
         /// <summary>
         /// Формат имени лога сриал монитора.
         /// </summary>
-        public static string SerialMonitorLogNameFormat
-        {
-            get { return _serialMonitorLogNameFormat; }
-            set { _serialMonitorLogNameFormat = value; }
-        }
+        public static string SerialMonitorLogNameFormat { get; set; } = "SerialMonitorLog_{y}.{m}.{d}_{h}.{min}.log";
 
         /// <summary>
         /// Формат имени лога ручного управления.
         /// </summary>
-        public static string ManualControlLogNameFormat
-        {
-            get { return _manualControlLogNameFormat; }
-            set { _manualControlLogNameFormat = value; }
-        }
+        public static string ManualControlLogNameFormat { get; set; } = "ManualControlLog_{y}.{m}.{d}_{h}.{min}.log";
 
         /// <summary>
         /// Формат имени лога печати.
         /// </summary>
-        public static string MacroLogNameFormat
-        {
-            get { return _macroLogNameFormat; }
-            set { _macroLogNameFormat = value; }
-        }
+        public static string MacroLogNameFormat { get; set; } = "MacroLog_{y}.{m}.{d}_{h}.{min}.log";
 
         /// <summary>
         /// Формат имени глобального лога печати.
         /// </summary>
-        public static string GlobalPrintLogNameFormat
-        {
-            get { return _globalPrintLogNameFormat; }
-            set { _globalPrintLogNameFormat = value; }
-        }
+        public static string GlobalPrintLogNameFormat { get; set; } = "PrintLog.log";
 
         /// <summary>
         /// Формат имени глобального лога векторизации.
         /// </summary>
-        public static string GlobalVectLogNameFormat
-        {
-            get { return _globalVectLogNameFormat; }
-            set { _globalVectLogNameFormat = value; }
-        }
+        public static string GlobalVectLogNameFormat { get; set; } = "VectLog.log";
 
         /// <summary>
         /// Удалить все логи в папке OutPutDir.

@@ -44,7 +44,7 @@ namespace CWA.Connection
         private static readonly string[] _names = { "110", "300", "600", "1200", "2400", "4800", "9600", "14400", "19200", "28800", "38400", "56000", "57600", "115200" };
         
         /// <summary>
-        /// Преобразует экземпляр BdRate к соотвествующему string.
+        /// Преобразует экземпляр BdRate к соотвествующему <see cref="string"/>.
         /// </summary>
         public override string ToString()
         {
@@ -76,7 +76,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Оператор явного приведения класса BdRate к int.
+        /// Оператор явного приведения класса <see cref="BdRate"/> к <see cref="int"/>.
         /// </summary>
         /// <param name="a">Операнд для приведения.</param>
         public static implicit operator int(BdRate a)
@@ -85,7 +85,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Оператор явного приведения класса BdRate к string.
+        /// Оператор явного приведения класса <see cref="BdRate"/> к <see cref="string"/>.
         /// </summary>
         /// <param name="a">Операнд для приведения.</param>
         public static implicit operator string(BdRate a)
@@ -94,7 +94,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Оператор явного приведения класса string к BdRate.
+        /// Оператор явного приведения класса string к <see cref="BdRate"/>.
         /// </summary>
         /// <param name="a">Операнд для приведения.</param>
         public static implicit operator BdRate(string a)
@@ -103,7 +103,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Создает новый езмемпляр класса BdRate.
+        /// Создает новый езмемпляр класса <see cref="BdRate"/>.
         /// </summary>
         /// <param name="num">Скорость соеденения.</param>
         public BdRate(int num)
@@ -112,7 +112,7 @@ namespace CWA.Connection
         }
 
         /// <summary>
-        /// Создает новый езмемпляр класса BdRate.
+        /// Создает новый езмемпляр класса <see cref="BdRate"/>.
         /// </summary>
         /// <param name="num">Скорость соеденения в строковом формате.</param>
         public BdRate(string num)

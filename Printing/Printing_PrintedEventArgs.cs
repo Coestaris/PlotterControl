@@ -34,49 +34,22 @@ namespace CWA.Printing
     public class PrintedEventArgs : EventArgs
     {
         /// <summary>
-        /// Приватный параметр. Общее количество построений.
-        /// </summary>
-        private long _countTotal;
-
-        /// <summary>
-        /// Приватный параметр. Выполненно построений.
-        /// </summary>
-        private long _countDone;
-
-        /// <summary>
-        /// Приватный параметр. Обработанная точка.
-        /// </summary>
-        private Point _drawedPoint;
-
-        /// <summary>
         /// Общее количество построений.
         /// </summary>
-        public long CountTotal
-        {
-            get { return _countTotal;  }
-            set { _countTotal = value; }
-        }
+        public long CountTotal { get; set; }
 
         /// <summary>
         /// Выполненно построений.
         /// </summary>
-        public long CountDone
-        {
-            get { return _countDone;  }
-            set { _countDone = value; }
-        }
+        public long CountDone { get; set; }
 
         /// <summary>
         /// Обработанная точка.
         /// </summary>
-        public Point DrawedPoint
-        {
-            get { return _drawedPoint;  }
-            set { _drawedPoint = value; }
-        }
+        public Point DrawedPoint { get; set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса PrintedEventArgs.
+        /// Создает новый экземпляр класса <see cref="PrintedEventArgs"/>.
         /// </summary>
         /// <param name="to">Общее кол-во построений.</param>
         /// <param name="done">Выолненно построений.</param>
