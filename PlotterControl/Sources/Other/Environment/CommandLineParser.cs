@@ -43,10 +43,8 @@ namespace CnC_WFA
         {
             if (data.Length == 1) { Application.Run(FormTranslator.Translate(new MainWindow())); return; }
             {
-                //MessageBox.Show(string.Join(" ", data));
                 var data1 = string.Join(" ", data);
                 var data2 = data1.Split(' ').ToList().GetRange(1, data1.Split(' ').Length - 1);
-                //MessageBox.Show(string.Join(" ", data2));
                 CommandParseResult a = null;
                 try { a = CommandManagment.Parse(string.Join(" ", data2)); } catch (Exception e) { MessageBox.Show("\"" + string.Join(" ", data2) + "\" - " + TranslateBase.CurrentLang.Error["Core.WrongInputCommand"] + e.Message); }
                 MakeAction(a);
@@ -246,9 +244,6 @@ namespace CnC_WFA
         public string Id;
         public bool Req;
         public object DefValue;
-
-        public Flag()
-        {
-        }
+        public Flag() { }
     }
 }

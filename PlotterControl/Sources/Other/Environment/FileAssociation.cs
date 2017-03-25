@@ -34,7 +34,7 @@ namespace CnC_WFA
 {
     static class FileAssociation
     {
-        private static bool IsCanWriteRegistry()
+        internal static bool CanWriteRegistry()
         {
             try
             {
@@ -60,19 +60,19 @@ namespace CnC_WFA
             Icon_Contex_Run = 11
         }
 
-        public static string Path_toProgram, PathToIcons;
+        public static string PathToProgram, PathToIcons;
 
         private static void AssociateVerb(string ProgID, string Command, string Name, IconIndex IconIndex)
         {
             ProgramAssociationInfo a = new ProgramAssociationInfo(ProgID);
-            a.AddVerb(new ProgramVerb(Name, Path_toProgram + Command));
+            a.AddVerb(new ProgramVerb(Name, PathToProgram + Command));
             Registry.LocalMachine.OpenSubKey("SOFTWARE", true).OpenSubKey("Classes", true).OpenSubKey(ProgID, true).OpenSubKey("shell", true).OpenSubKey(Name, true).SetValue("Icon", PathToIcons + ',' + (int)IconIndex);
         }
 
         private static void AssociateVerb(string ProgID, string Command, string Name, IconIndex IconIndex, string Position)
         {
             ProgramAssociationInfo a = new ProgramAssociationInfo(ProgID);
-            a.AddVerb(new ProgramVerb(Name, Path_toProgram + Command));
+            a.AddVerb(new ProgramVerb(Name, PathToProgram + Command));
             Registry.LocalMachine.OpenSubKey("SOFTWARE", true).OpenSubKey("Classes", true).OpenSubKey(ProgID, true).OpenSubKey("shell", true).OpenSubKey(Name, true).SetValue("Icon", PathToIcons + ',' + (int)IconIndex);
             Registry.LocalMachine.OpenSubKey("SOFTWARE", true).OpenSubKey("Classes", true).OpenSubKey(ProgID, true).OpenSubKey("shell", true).OpenSubKey(Name, true).SetValue("Position", Position);
         }
@@ -117,7 +117,7 @@ namespace CnC_WFA
                 else if (a == DialogResult.No) return;
             }
             else return;
-            if(!IsCanWriteRegistry())
+            if(!CanWriteRegistry())
             {
                 var a = MessageBox.Show(TranslateBase.CurrentLang.Phrase["Core.RequiredAdministrator"], TranslateBase.CurrentLang.Phrase["Core.Word.Association"], MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;

@@ -39,7 +39,6 @@ namespace CWA.Vectors
     /// </summary>
     public class Vector : ICloneable
     {
-
         #region Private Fileds
         /// <summary>
         /// Рандомайзер для метода ToBitmap().

@@ -23,6 +23,7 @@
 
 */
 
+using CWA;
 using CWA.Vectors;
 using System;
 using System.CodeDom.Compiler;
@@ -31,6 +32,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace CnC_WFA
@@ -41,10 +43,34 @@ namespace CnC_WFA
 
         public static List<CurveScript> LoadedPlugins;
 
+        private static string DLLNameFormat;
+
         public static void Init()
         {
+            DLLNameFormat = PluginDir + "Compiled\\{0}.dll";
+
+            if (!Directory.Exists(PluginDir + "Compiled"))
+                Directory.CreateDirectory(PluginDir + "Compiled");
+
+            //if (File.Exists(PluginDir + "Compiled\\Compiled.zip"))
+            //ZipFile.ExtractToDirectory(PluginDir + "Compiled\\Compiled.zip", PluginDir + "Compiled");
+
             LoadedPlugins = new List<CurveScript>();
-            foreach (string s in Directory.GetFiles(PluginDir, "Curve_*.cs")) LoadedPlugins.Add(new CurveScript(s));
+            foreach (string s in Directory.GetFiles(PluginDir, "Curve_*.cs"))
+            {
+                if (!File.Exists(string.Format(DLLNameFormat, new FileInfo(s).Name)))
+                    LoadedPlugins.Add(new CurveScript(s));
+                else
+                {
+                    if (new FileInfo(string.Format(DLLNameFormat, new FileInfo(s).Name)).CreationTime < new FileInfo(s).CreationTime)
+                        LoadedPlugins.Add(new CurveScript(s));
+                    else LoadedPlugins.Add(new CurveScript(string.Format(DLLNameFormat, new FileInfo(s).Name), true));
+                }
+            }
+            //File.Delete(PluginDir + "Compiled\\Compiled.zip");
+            //File.Delete(PluginDir + "Compiled.zip");
+            //ZipFile.CreateFromDirectory(PluginDir + "Compiled\\", PluginDir + "Compiled.zip");
+            //File.Move(PluginDir + "Compiled.zip", PluginDir + "\\Compiled\\Compiled.zip");
         }
     }
 
@@ -114,22 +140,64 @@ namespace CnC_WFA
 
         public CurveScript(string Filename)
         {
+            FileName = Filename;
             ExecuteScript(File.ReadAllText(Filename));
             Init();
             Info = GetInfo();
+            Name = Info.Name;
+        }
+
+        public CurveScript(string Filename, bool v)
+        {
             FileName = Filename;
+            Assembly dll = Assembly.LoadFile(FileName);
+            try
+            {
+                _baseType = dll.GetType("Plugins.CurvePlugin");
+                Init = (Action)Delegate.CreateDelegate(typeof(Action), _baseType.GetMethod("Init"));
+                GetInfo = (Func<CurveInfo>)Delegate.CreateDelegate(typeof(Func<CurveInfo>), _baseType.GetMethod("GetInfo"));
+                PreviewImage = (Func<Size, double, object, double, Image>)Delegate.CreateDelegate(typeof(Func<Size, double, object, double, Image>), _baseType.GetMethod("PreviewImage"));
+                PreviewImageGif = (Func<GifImage>)Delegate.CreateDelegate(typeof(Func<GifImage>), _baseType.GetMethod("PreviewImageGif"));
+                GetVector = (Func<ToVectorParams, Vector>)Delegate.CreateDelegate(typeof(Func<ToVectorParams, Vector>), _baseType.GetMethod("GetVector"));
+                Exmpl1 = (Func<CurveExample>)Delegate.CreateDelegate(typeof(Func<CurveExample>), _baseType.GetMethod("Exmpl1"));
+                Exmpl2 = (Func<CurveExample>)Delegate.CreateDelegate(typeof(Func<CurveExample>), _baseType.GetMethod("Exmpl2"));
+                //Console.WriteLine("Done.");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message + "\n============\n" + e.StackTrace);
+                Environment.Exit(0);
+            }
+            Init();
+            Info = GetInfo();
             Name = Info.Name;
         }
 
         private Type _baseType;
 
+        const string CompileInfo  = 
+@"[assembly: AssemblyTitle({0})] 
+[assembly: AssemblyDescription({1})]
+[assembly: AssemblyConfiguration({2})] 
+[assembly: AssemblyCompany({3})]
+[assembly: AssemblyProduct({4})] 
+[assembly: AssemblyCopyright({5})]
+[assembly: AssemblyTrademark({6})] 
+[assembly: AssemblyCulture({7})] 
+[assembly: ComVisible({8})] 
+[assembly: AssemblyVersion({9})]
+[assembly: AssemblyFileVersion({10})]";
+
         private void ExecuteScript(string program)
         {
+
+
             var CSHarpProvider = CodeDomProvider.CreateProvider("CSharp");
             CompilerParameters compilerParams = new CompilerParameters()
             {
                 GenerateExecutable = false,
                 GenerateInMemory = true,
+                OutputAssembly = CurvePluginHandler.PluginDir + "Compiled\\" + new FileInfo(FileName).Name + ".dll"
             };
             compilerParams.ReferencedAssemblies.AddRange(new string[]
             {
@@ -140,6 +208,25 @@ namespace CnC_WFA
                  "Lib\\CWA_Vectors.dll",
                  Application.ExecutablePath
             });
+
+            compilerParams.IncludeDebugInformation = true;
+            compilerParams.CompilerOptions = "/debug:pdbonly";
+
+            string compInfo = string.Format(CompileInfo, 
+                "\"Plugin: " + new FileInfo(FileName).Name.Split('.').First().Split('_').Last() + '\"',
+                "\"Compiled Plugin For Plotter Control\"",
+                "\"Debug\"",
+                "\"Coestaris\"",
+                "\"Plotter Control\"",
+                "\"Copyright ©  2016-2017\"",
+                "\"\"",
+                "\"\"",
+                "false",
+                '\"' + GlobalOptions.Ver + '\"',
+                '\"' + GlobalOptions.Ver + '\"'
+                );
+
+            program = program.Replace("/*ASSEMBLY INFO*/", compInfo);
             var compilerResult = CSHarpProvider.CompileAssemblyFromSource(compilerParams, program);
             if (compilerResult.Errors.Count == 0)
             {

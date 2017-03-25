@@ -43,8 +43,8 @@ namespace BrendanGrant.FileAssociation
       /// <param name="dwItem2">Second event-dependent value.</param>
       [DllImport("shell32.dll")]
       private static extern void SHChangeNotify(
-          UInt32 wEventId,
-          UInt32 uFlags,
+          uint wEventId,
+          uint uFlags,
           IntPtr dwItem1,
           IntPtr dwItem2);
 

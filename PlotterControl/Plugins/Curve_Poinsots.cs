@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CnC_WFA;
 using CWA.Vectors;
+using System;
 using System.Drawing;
-using CnC_WFA;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
+    /*ASSEMBLY INFO*/
 namespace Plugins
 {
     static class CurvePlugin
@@ -69,7 +72,7 @@ namespace Plugins
             return null;
         }
 
-        public static Vect GetVector(ToVectorParams param)
+        public static Vector GetVector(ToVectorParams param)
         {
             return null;
         }
