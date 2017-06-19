@@ -75,12 +75,15 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\admin.png" />
     <Content Include="Resources\add.gif" />
     <Content Include="Resources\bezier.png" />
     <None Include="Resources\spiral.png" />
     <None Include="Resources\Image1.bmp" />
     <None Include="Resources\ico.jpg" />
+    <None Include="Resources\graph.png" />
     <Content Include="Resources\loadcircle.png" />
+    <None Include="Resources\other.png" />
     <Content Include="Resources\scroll.png" />
     <None Include="Resources\view-eye-interface-symbol.png" />
     <None Include="Resources\vector.png" />

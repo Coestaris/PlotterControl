@@ -92,10 +92,10 @@ namespace Plugins
                 double k = (i < 0)?knegative: kpositive;
                 if (i == 0) p = double.MaxValue;
                 else
-		{
-		     if(Math.Sin(alpha * (double)ob) < 0)  p = - k * Math.Pow(Math.Sin(alpha * (double)ob), 1/(double)ob);
-                     else p = k * Math.Pow(Math.Sin(alpha * (double)ob), 1/(double)ob);
-		}
+		        {
+		                if(Math.Sin(alpha * (double)ob) < 0)  p = - k * Math.Pow(Math.Sin(alpha * (double)ob), 1/(double)ob);
+                                else p = k * Math.Pow(Math.Sin(alpha * (double)ob), 1/(double)ob);
+		        }
                 var x = (int)(p * Math.Cos(i)) + centerX;
                 var y = -(int)(p * Math.Sin(i)) + centerY;
                 try { graphics.DrawLine(pen, oldX, oldY, x, y); } catch { };

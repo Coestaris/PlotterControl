@@ -99,36 +99,64 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditElement.Designer.cs">
+      <DependentUpon>Form_Dialog_EditElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditGraph.Designer.cs">
+      <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Assoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Assoc.Designer.cs">
+      <DependentUpon>Form_Dialog_Assoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Graph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Graph.Designer.cs">
+      <DependentUpon>Form_Graph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Other\Grapher.cs" />
     <Compile Include="Sources\Other\TaskbarState.cs" />
-    <None Include="Plugins\Curve_ArchimedeanSpiral.cs">
+    <None Include="Plugins\_Curve_ArchimedeanSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Cochleoid.cs">
+    <None Include="Plugins\_Curve_Cochleoid.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Epicycloid.cs">
+    <None Include="Plugins\_Curve_Epicycloid.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Fermats.cs">
+    <None Include="Plugins\_Curve_Fermats.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_HyperbolicSpiral.cs">
+    <None Include="Plugins\_Curve_HyperbolicSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Lituus.cs">
+    <None Include="Plugins\_Curve_Lituus.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Logarithmic.cs">
+    <None Include="Plugins\_Curve_Logarithmic.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Poinsots.cs">
+    <None Include="Plugins\_Curve_Poinsots.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Sinusoidal.cs">
+    <None Include="Plugins\_Curve_Sinusoidal.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -142,42 +170,36 @@
     <Compile Include="Sources\Forms\Form_CurvePlugins.Designer.cs">
       <DependentUpon>Form_CurvePlugins.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Form_Dialog_MacroPackEdit.cs">
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Form_Dialog_MacroPackEdit.Designer.cs">
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.Designer.cs">
       <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Form_Help.cs">
+    <Compile Include="Sources\Forms\Macro\Form_Macros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Form_Help.Designer.cs">
-      <DependentUpon>Form_Help.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Sources\Forms\Form_Macros.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sources\Forms\Form_Macros.Designer.cs">
+    <Compile Include="Sources\Forms\Macro\Form_Macros.Designer.cs">
       <DependentUpon>Form_Macros.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\Other\Environment\CommandLineParser.cs" />
     <Compile Include="Sources\Other\FastBitmap.cs" />
-    <Compile Include="Sources\Forms\Form_Dialog_Edit.cs">
+    <Compile Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Form_Dialog_Edit.Designer.cs">
-      <DependentUpon>Form_Dialog_Edit.cs</DependentUpon>
+    <Compile Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.Designer.cs">
+      <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Form_EditVector.cs">
+    <Compile Include="Sources\Forms\VEdit\Form_EditVector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Form_EditVector.Designer.cs">
+    <Compile Include="Sources\Forms\VEdit\Form_EditVector.Designer.cs">
       <DependentUpon>Form_EditVector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Form_FromVector.cs">
+    <Compile Include="Sources\Forms\Macro\Form_FromVector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Form_FromVector.Designer.cs">
+    <Compile Include="Sources\Forms\Macro\Form_FromVector.Designer.cs">
       <DependentUpon>Form_FromVector.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\Forms\Form_ManualControl.cs">
@@ -213,10 +235,10 @@
     <Compile Include="Sources\Other\Environment\FileAssociation.cs" />
     <Compile Include="Sources\Other\Environment\FormTranslator.cs" />
     <Compile Include="Sources\Other\Helper.cs" />
-    <Compile Include="Sources\Forms\MainWindow.cs">
+    <Compile Include="Sources\Forms\MainForm\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\MainWindow.Designer.cs">
+    <Compile Include="Sources\Forms\MainForm\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\CnC_WFA.cs" />
@@ -230,22 +252,31 @@
     <EmbeddedResource Include="Sources\Forms\Form_CurvePlugins.resx">
       <DependentUpon>Form_CurvePlugins.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_Dialog_Edit.resx">
-      <DependentUpon>Form_Dialog_Edit.cs</DependentUpon>
+    <EmbeddedResource Include="Sources\Forms\Graph\Form_Dialog_EditElement.resx">
+      <DependentUpon>Form_Dialog_EditElement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_Dialog_MacroPackEdit.resx">
+    <EmbeddedResource Include="Sources\Forms\Graph\Form_Dialog_EditGraph.resx">
+      <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Assoc.resx">
+      <DependentUpon>Form_Dialog_Assoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.resx">
+      <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.resx">
       <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_EditVector.resx">
+    <EmbeddedResource Include="Sources\Forms\VEdit\Form_EditVector.resx">
       <DependentUpon>Form_EditVector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_FromVector.resx">
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_FromVector.resx">
       <DependentUpon>Form_FromVector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_Help.resx">
-      <DependentUpon>Form_Help.cs</DependentUpon>
+    <EmbeddedResource Include="Sources\Forms\Graph\Form_Graph.resx">
+      <DependentUpon>Form_Graph.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_Macros.resx">
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Macros.resx">
       <DependentUpon>Form_Macros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Form_ManualControl.resx">
@@ -263,7 +294,7 @@
     <EmbeddedResource Include="Sources\Forms\Form_ViewVect.resx">
       <DependentUpon>Form_ViewVect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\MainWindow.resx">
+    <EmbeddedResource Include="Sources\Forms\MainForm\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\CNCWFA.manifest">
@@ -427,6 +458,7 @@
     </Content>
     <Content Include="Options\Lang_Russian\LangContent_Sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Options\Lang_Russian\LangContent_VectEditor.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -448,6 +480,7 @@
     </Content>
     <Content Include="Options\LogPolitics.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -492,7 +525,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir $(TargetDir)\Lib\

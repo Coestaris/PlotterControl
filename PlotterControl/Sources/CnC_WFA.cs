@@ -46,15 +46,13 @@ namespace CnC_WFA
             // ---====  CREATING NECESSARY DIRECTORIES  ===---
             foreach (string s in NecessaryDirectrories.Select(p=>p = execDirectory + p)) if (!Directory.Exists(s)) Directory.CreateDirectory(s);
 
-
             // ---====  SETUP APPLICATION  ===---
 
             //    ==GlobalOptions==
             GlobalOptions.Filename = execDirectory + "\\Options\\Options.xml";
             GlobalOptions.BuildFilename = execDirectory + "\\Options\\Build";
             GlobalOptions.Load();
-
-
+            
             //    ==TranslateBase==
             TranslateBase.LangDirectory = execDirectory + "\\Options\\";
             TranslateBase.Init();
@@ -75,12 +73,13 @@ namespace CnC_WFA
             if (GlobalOptions.PreloadPlugins) CurvePluginHandler.Init();
 
             //    ==Association==
-            //FileAssociation.DeleteAssociation();
+            //FileAssociation.DeleteAllAssociations();
+            FileAssociation.DiscoverRegistryAccessibility();
             if (!GlobalOptions.IgnoreRegisterExtentions)
             {
                 FileAssociation.PathToIcons = execDirectory + "\\Lib\\IconSet.dll";
                 FileAssociation.PathToProgram = execDirectory + "\\CNC_WFA.exe";
-                FileAssociation.Associate();
+                FileAssociation.AssociateAll();
             }
 
             //    ==Application==

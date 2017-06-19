@@ -53,10 +53,10 @@ namespace CnC_WFA
             this.button_rot_cancel = new System.Windows.Forms.Button();
             this.button_rot_ok = new System.Windows.Forms.Button();
             this.panel_resize = new System.Windows.Forms.Panel();
+            this.textBox_newwith = new System.Windows.Forms.TextBox();
             this.label_newwidth = new System.Windows.Forms.Label();
             this.label_newheight = new System.Windows.Forms.Label();
             this.textBox_newheight = new System.Windows.Forms.TextBox();
-            this.textBox_newwith = new System.Windows.Forms.TextBox();
             this.checkBox_keepratio = new System.Windows.Forms.CheckBox();
             this.button_resize_cansel = new System.Windows.Forms.Button();
             this.button_resize_ok = new System.Windows.Forms.Button();
@@ -144,9 +144,10 @@ namespace CnC_WFA
             this.tabPage1.Controls.Add(this.treeView_points);
             this.tabPage1.Controls.Add(this.button_cancel);
             this.tabPage1.Controls.Add(this.button_ok);
+            this.tabPage1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(879, 325);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
@@ -173,7 +174,7 @@ namespace CnC_WFA
             this.label_rotatecenter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_rotatecenter.Location = new System.Drawing.Point(4, 41);
             this.label_rotatecenter.Name = "label_rotatecenter";
-            this.label_rotatecenter.Size = new System.Drawing.Size(112, 19);
+            this.label_rotatecenter.Size = new System.Drawing.Size(100, 17);
             this.label_rotatecenter.TabIndex = 11;
             this.label_rotatecenter.Text = "Rotate Center: ";
             // 
@@ -192,7 +193,7 @@ namespace CnC_WFA
             "Right Bottom  Corner"});
             this.comboBox_rotatecenter.Location = new System.Drawing.Point(15, 61);
             this.comboBox_rotatecenter.Name = "comboBox_rotatecenter";
-            this.comboBox_rotatecenter.Size = new System.Drawing.Size(118, 27);
+            this.comboBox_rotatecenter.Size = new System.Drawing.Size(118, 25);
             this.comboBox_rotatecenter.TabIndex = 10;
             this.comboBox_rotatecenter.SelectedIndexChanged += new System.EventHandler(this.comboBox_rotatecenter_SelectedIndexChanged);
             // 
@@ -202,7 +203,7 @@ namespace CnC_WFA
             this.label_angle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_angle.Location = new System.Drawing.Point(4, 12);
             this.label_angle.Name = "label_angle";
-            this.label_angle.Size = new System.Drawing.Size(56, 19);
+            this.label_angle.Size = new System.Drawing.Size(50, 17);
             this.label_angle.TabIndex = 9;
             this.label_angle.Text = "Angle: ";
             // 
@@ -212,7 +213,7 @@ namespace CnC_WFA
             this.textBox_anglec.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textBox_anglec.Location = new System.Drawing.Point(65, 8);
             this.textBox_anglec.Name = "textBox_anglec";
-            this.textBox_anglec.Size = new System.Drawing.Size(60, 26);
+            this.textBox_anglec.Size = new System.Drawing.Size(60, 25);
             this.textBox_anglec.TabIndex = 9;
             // 
             // button_rotc_cancel
@@ -269,7 +270,7 @@ namespace CnC_WFA
             this.label_sd_threshold.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_sd_threshold.Location = new System.Drawing.Point(4, 3);
             this.label_sd_threshold.Name = "label_sd_threshold";
-            this.label_sd_threshold.Size = new System.Drawing.Size(136, 19);
+            this.label_sd_threshold.Size = new System.Drawing.Size(122, 17);
             this.label_sd_threshold.TabIndex = 9;
             this.label_sd_threshold.Text = "Delete Threshold: ";
             // 
@@ -279,7 +280,7 @@ namespace CnC_WFA
             this.textBox_sd_threshold.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textBox_sd_threshold.Location = new System.Drawing.Point(11, 24);
             this.textBox_sd_threshold.Name = "textBox_sd_threshold";
-            this.textBox_sd_threshold.Size = new System.Drawing.Size(100, 26);
+            this.textBox_sd_threshold.Size = new System.Drawing.Size(100, 25);
             this.textBox_sd_threshold.TabIndex = 9;
             this.textBox_sd_threshold.Text = "0";
             // 
@@ -340,7 +341,7 @@ namespace CnC_WFA
             this.radioButton_270deg.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioButton_270deg.Location = new System.Drawing.Point(4, 52);
             this.radioButton_270deg.Name = "radioButton_270deg";
-            this.radioButton_270deg.Size = new System.Drawing.Size(153, 23);
+            this.radioButton_270deg.Size = new System.Drawing.Size(138, 21);
             this.radioButton_270deg.TabIndex = 6;
             this.radioButton_270deg.TabStop = true;
             this.radioButton_270deg.Text = "Rotate by 270 deg";
@@ -352,7 +353,7 @@ namespace CnC_WFA
             this.radioButton_180deg.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioButton_180deg.Location = new System.Drawing.Point(4, 29);
             this.radioButton_180deg.Name = "radioButton_180deg";
-            this.radioButton_180deg.Size = new System.Drawing.Size(153, 23);
+            this.radioButton_180deg.Size = new System.Drawing.Size(138, 21);
             this.radioButton_180deg.TabIndex = 5;
             this.radioButton_180deg.TabStop = true;
             this.radioButton_180deg.Text = "Rotate by 180 deg";
@@ -364,7 +365,7 @@ namespace CnC_WFA
             this.radioButton_90deg.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioButton_90deg.Location = new System.Drawing.Point(4, 6);
             this.radioButton_90deg.Name = "radioButton_90deg";
-            this.radioButton_90deg.Size = new System.Drawing.Size(144, 23);
+            this.radioButton_90deg.Size = new System.Drawing.Size(130, 21);
             this.radioButton_90deg.TabIndex = 4;
             this.radioButton_90deg.TabStop = true;
             this.radioButton_90deg.Text = "Rotate by 90 deg";
@@ -421,13 +422,22 @@ namespace CnC_WFA
             this.panel_resize.TabIndex = 41;
             this.panel_resize.Visible = false;
             // 
+            // textBox_newwith
+            // 
+            this.textBox_newwith.BackColor = System.Drawing.Color.White;
+            this.textBox_newwith.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox_newwith.Location = new System.Drawing.Point(21, 45);
+            this.textBox_newwith.Name = "textBox_newwith";
+            this.textBox_newwith.Size = new System.Drawing.Size(100, 25);
+            this.textBox_newwith.TabIndex = 5;
+            // 
             // label_newwidth
             // 
             this.label_newwidth.AutoSize = true;
             this.label_newwidth.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_newwidth.Location = new System.Drawing.Point(3, 24);
             this.label_newwidth.Name = "label_newwidth";
-            this.label_newwidth.Size = new System.Drawing.Size(91, 19);
+            this.label_newwidth.Size = new System.Drawing.Size(84, 17);
             this.label_newwidth.TabIndex = 8;
             this.label_newwidth.Text = "New width: ";
             // 
@@ -437,7 +447,7 @@ namespace CnC_WFA
             this.label_newheight.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_newheight.Location = new System.Drawing.Point(3, 69);
             this.label_newheight.Name = "label_newheight";
-            this.label_newheight.Size = new System.Drawing.Size(95, 19);
+            this.label_newheight.Size = new System.Drawing.Size(86, 17);
             this.label_newheight.TabIndex = 7;
             this.label_newheight.Text = "New height: ";
             // 
@@ -447,17 +457,8 @@ namespace CnC_WFA
             this.textBox_newheight.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textBox_newheight.Location = new System.Drawing.Point(21, 90);
             this.textBox_newheight.Name = "textBox_newheight";
-            this.textBox_newheight.Size = new System.Drawing.Size(100, 26);
+            this.textBox_newheight.Size = new System.Drawing.Size(100, 25);
             this.textBox_newheight.TabIndex = 6;
-            // 
-            // textBox_newwith
-            // 
-            this.textBox_newwith.BackColor = System.Drawing.Color.White;
-            this.textBox_newwith.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox_newwith.Location = new System.Drawing.Point(21, 45);
-            this.textBox_newwith.Name = "textBox_newwith";
-            this.textBox_newwith.Size = new System.Drawing.Size(100, 26);
-            this.textBox_newwith.TabIndex = 5;
             // 
             // checkBox_keepratio
             // 
@@ -467,7 +468,7 @@ namespace CnC_WFA
             this.checkBox_keepratio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.checkBox_keepratio.Location = new System.Drawing.Point(6, 7);
             this.checkBox_keepratio.Name = "checkBox_keepratio";
-            this.checkBox_keepratio.Size = new System.Drawing.Size(153, 23);
+            this.checkBox_keepratio.Size = new System.Drawing.Size(139, 21);
             this.checkBox_keepratio.TabIndex = 4;
             this.checkBox_keepratio.Text = "Keep Aspect Ratio";
             this.checkBox_keepratio.UseVisualStyleBackColor = true;
@@ -564,7 +565,7 @@ namespace CnC_WFA
             this.radioButton_yflip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioButton_yflip.Location = new System.Drawing.Point(3, 32);
             this.radioButton_yflip.Name = "radioButton_yflip";
-            this.radioButton_yflip.Size = new System.Drawing.Size(66, 23);
+            this.radioButton_yflip.Size = new System.Drawing.Size(62, 21);
             this.radioButton_yflip.TabIndex = 1;
             this.radioButton_yflip.TabStop = true;
             this.radioButton_yflip.Text = "Y Flip";
@@ -576,7 +577,7 @@ namespace CnC_WFA
             this.radioButton_xflip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioButton_xflip.Location = new System.Drawing.Point(3, 9);
             this.radioButton_xflip.Name = "radioButton_xflip";
-            this.radioButton_xflip.Size = new System.Drawing.Size(66, 23);
+            this.radioButton_xflip.Size = new System.Drawing.Size(62, 21);
             this.radioButton_xflip.TabIndex = 0;
             this.radioButton_xflip.TabStop = true;
             this.radioButton_xflip.Text = "X Flip";
@@ -610,7 +611,7 @@ namespace CnC_WFA
             this.button1.FlatAppearance.BorderSize = 2;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Image = Resources.image;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(130, 6);
             this.button1.Name = "button1";
@@ -627,7 +628,7 @@ namespace CnC_WFA
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label4.Location = new System.Drawing.Point(743, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 19);
+            this.label4.Size = new System.Drawing.Size(117, 17);
             this.label4.TabIndex = 37;
             this.label4.Text = "2nd Vect preview";
             // 
@@ -637,7 +638,7 @@ namespace CnC_WFA
             this.label_ndresol.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_ndresol.Location = new System.Drawing.Point(520, 301);
             this.label_ndresol.Name = "label_ndresol";
-            this.label_ndresol.Size = new System.Drawing.Size(91, 19);
+            this.label_ndresol.Size = new System.Drawing.Size(82, 17);
             this.label_ndresol.TabIndex = 36;
             this.label_ndresol.Text = "Resolution: ";
             // 
@@ -647,7 +648,7 @@ namespace CnC_WFA
             this.label_2ndname.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_2ndname.Location = new System.Drawing.Point(520, 282);
             this.label_2ndname.Name = "label_2ndname";
-            this.label_2ndname.Size = new System.Drawing.Size(57, 19);
+            this.label_2ndname.Size = new System.Drawing.Size(51, 17);
             this.label_2ndname.TabIndex = 35;
             this.label_2ndname.Text = "Name: ";
             // 
@@ -736,7 +737,7 @@ namespace CnC_WFA
             this.button_merge.FlatAppearance.BorderSize = 2;
             this.button_merge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_merge.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_merge.Image = Resources.merge;
+            this.button_merge.Image = ((System.Drawing.Image)(resources.GetObject("button_merge.Image")));
             this.button_merge.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_merge.Location = new System.Drawing.Point(95, 18);
             this.button_merge.Name = "button_merge";
@@ -768,7 +769,7 @@ namespace CnC_WFA
             this.button_flip.FlatAppearance.BorderSize = 2;
             this.button_flip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_flip.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_flip.Image = Resources.flip;
+            this.button_flip.Image = ((System.Drawing.Image)(resources.GetObject("button_flip.Image")));
             this.button_flip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_flip.Location = new System.Drawing.Point(6, 19);
             this.button_flip.Name = "button_flip";
@@ -785,7 +786,7 @@ namespace CnC_WFA
             this.button_rotate.FlatAppearance.BorderSize = 2;
             this.button_rotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_rotate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_rotate.Image = Resources.rotate;
+            this.button_rotate.Image = ((System.Drawing.Image)(resources.GetObject("button_rotate.Image")));
             this.button_rotate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_rotate.Location = new System.Drawing.Point(6, 105);
             this.button_rotate.Name = "button_rotate";
@@ -801,7 +802,7 @@ namespace CnC_WFA
             this.button_resize.FlatAppearance.BorderSize = 2;
             this.button_resize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_resize.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_resize.Image = Resources.resize;
+            this.button_resize.Image = ((System.Drawing.Image)(resources.GetObject("button_resize.Image")));
             this.button_resize.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_resize.Location = new System.Drawing.Point(6, 62);
             this.button_resize.Name = "button_resize";
@@ -819,7 +820,7 @@ namespace CnC_WFA
             this.button_rotatec.FlatAppearance.BorderSize = 2;
             this.button_rotatec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_rotatec.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_rotatec.Image = Resources.rotatec;
+            this.button_rotatec.Image = ((System.Drawing.Image)(resources.GetObject("button_rotatec.Image")));
             this.button_rotatec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_rotatec.Location = new System.Drawing.Point(6, 210);
             this.button_rotatec.Name = "button_rotatec";
@@ -853,7 +854,7 @@ namespace CnC_WFA
             this.button_vectinfo.FlatAppearance.BorderSize = 2;
             this.button_vectinfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_vectinfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_vectinfo.Image = Resources.info;
+            this.button_vectinfo.Image = ((System.Drawing.Image)(resources.GetObject("button_vectinfo.Image")));
             this.button_vectinfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_vectinfo.Location = new System.Drawing.Point(293, 278);
             this.button_vectinfo.Name = "button_vectinfo";
@@ -870,7 +871,7 @@ namespace CnC_WFA
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 19);
+            this.label1.Size = new System.Drawing.Size(100, 17);
             this.label1.TabIndex = 8;
             this.label1.Text = "Current Vector";
             // 
@@ -902,7 +903,7 @@ namespace CnC_WFA
             "Other"});
             this.comboBox1.Location = new System.Drawing.Point(215, 8);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(96, 27);
+            this.comboBox1.Size = new System.Drawing.Size(96, 25);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -936,7 +937,7 @@ namespace CnC_WFA
             this.button_cancel.FlatAppearance.BorderSize = 2;
             this.button_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_cancel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_cancel.Image = Resources.exit;
+            this.button_cancel.Image = ((System.Drawing.Image)(resources.GetObject("button_cancel.Image")));
             this.button_cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_cancel.Location = new System.Drawing.Point(374, 266);
             this.button_cancel.Name = "button_cancel";
@@ -966,10 +967,10 @@ namespace CnC_WFA
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(882, 325);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(879, 331);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Info";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -978,8 +979,8 @@ namespace CnC_WFA
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage3.Size = new System.Drawing.Size(882, 325);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(879, 325);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Help";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -999,7 +1000,7 @@ namespace CnC_WFA
             this.backgroundWorker_proceed.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_proceed_DoWork);
             this.backgroundWorker_proceed.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_proceed_RunWorkerCompleted);
             // 
-            // Dialog_Edit
+            // Form_Dialog_Edit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
@@ -1010,7 +1011,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Dialog_Edit";
+            this.Name = "Form_Dialog_Edit";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit";

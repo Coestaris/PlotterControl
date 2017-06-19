@@ -50,6 +50,9 @@ namespace CnC_WFA
             this.button_about = new System.Windows.Forms.Button();
             this.tabControl_about = new System.Windows.Forms.TabControl();
             this.tabPage_device = new System.Windows.Forms.TabPage();
+            this.label_main_config_vertCorrection_dicsr = new System.Windows.Forms.Label();
+            this.textBox_main_config_vertCorrection = new System.Windows.Forms.TextBox();
+            this.label_main_config_vertCorrection = new System.Windows.Forms.Label();
             this.button_main_device_def = new System.Windows.Forms.Button();
             this.label_main_device_5 = new System.Windows.Forms.Label();
             this.comboBox_main_device_port = new System.Windows.Forms.ComboBox();
@@ -80,6 +83,10 @@ namespace CnC_WFA
             this.label_xmm = new System.Windows.Forms.Label();
             this.textBox_xmm = new System.Windows.Forms.TextBox();
             this.tabPage_config = new System.Windows.Forms.TabPage();
+            this.checkBox_main_config_preload = new System.Windows.Forms.CheckBox();
+            this.button_main_config_lang = new System.Windows.Forms.Button();
+            this.button_main_config_assoc = new System.Windows.Forms.Button();
+            this.button_main_config_clearcache = new System.Windows.Forms.Button();
             this.button_main_config_def = new System.Windows.Forms.Button();
             this.button_main_config_help = new System.Windows.Forms.Button();
             this.button_main_config_save = new System.Windows.Forms.Button();
@@ -197,6 +204,8 @@ namespace CnC_WFA
             this.label_print_mc_title = new System.Windows.Forms.Label();
             this.tabPage_main_vect = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_main_other = new System.Windows.Forms.Button();
+            this.button_main_graph = new System.Windows.Forms.Button();
             this.button_main_curve = new System.Windows.Forms.Button();
             this.button_main_editor = new System.Windows.Forms.Button();
             this.button_main_vectview = new System.Windows.Forms.Button();
@@ -223,6 +232,12 @@ namespace CnC_WFA
             this.label_vect_curve_discr = new System.Windows.Forms.Label();
             this.button_vect_curve_start = new System.Windows.Forms.Button();
             this.label_vect_curve_title = new System.Windows.Forms.Label();
+            this.tabPage_vect_graph = new System.Windows.Forms.TabPage();
+            this.button_vect_graph_help = new System.Windows.Forms.Button();
+            this.label_vect_graph_discr = new System.Windows.Forms.Label();
+            this.button_vect_graph_open = new System.Windows.Forms.Button();
+            this.label_vect_graph_title = new System.Windows.Forms.Label();
+            this.tabPage_vect_other = new System.Windows.Forms.TabPage();
             this.tabPage_main_help = new System.Windows.Forms.TabPage();
             this.panel_main_help_tools = new System.Windows.Forms.Panel();
             this.label_help_title = new System.Windows.Forms.Label();
@@ -255,6 +270,7 @@ namespace CnC_WFA
             this.tabPage_vect_viewer.SuspendLayout();
             this.tabPage_vect_editor.SuspendLayout();
             this.tabPage_vect_curve.SuspendLayout();
+            this.tabPage_vect_graph.SuspendLayout();
             this.tabPage_main_help.SuspendLayout();
             this.panel_main_help_tools.SuspendLayout();
             this.SuspendLayout();
@@ -516,6 +532,9 @@ namespace CnC_WFA
             // tabPage_device
             // 
             this.tabPage_device.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_device.Controls.Add(this.label_main_config_vertCorrection_dicsr);
+            this.tabPage_device.Controls.Add(this.textBox_main_config_vertCorrection);
+            this.tabPage_device.Controls.Add(this.label_main_config_vertCorrection);
             this.tabPage_device.Controls.Add(this.button_main_device_def);
             this.tabPage_device.Controls.Add(this.label_main_device_5);
             this.tabPage_device.Controls.Add(this.comboBox_main_device_port);
@@ -553,6 +572,36 @@ namespace CnC_WFA
             this.tabPage_device.TabIndex = 0;
             this.tabPage_device.Text = "tabPage1";
             // 
+            // label_main_config_vertCorrection_dicsr
+            // 
+            this.label_main_config_vertCorrection_dicsr.AutoSize = true;
+            this.label_main_config_vertCorrection_dicsr.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_main_config_vertCorrection_dicsr.Location = new System.Drawing.Point(500, 265);
+            this.label_main_config_vertCorrection_dicsr.Name = "label_main_config_vertCorrection_dicsr";
+            this.label_main_config_vertCorrection_dicsr.Size = new System.Drawing.Size(53, 17);
+            this.label_main_config_vertCorrection_dicsr.TabIndex = 157;
+            this.label_main_config_vertCorrection_dicsr.Text = "шагов.";
+            // 
+            // textBox_main_config_vertCorrection
+            // 
+            this.textBox_main_config_vertCorrection.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_main_config_vertCorrection.Location = new System.Drawing.Point(354, 262);
+            this.textBox_main_config_vertCorrection.Name = "textBox_main_config_vertCorrection";
+            this.textBox_main_config_vertCorrection.Size = new System.Drawing.Size(140, 25);
+            this.textBox_main_config_vertCorrection.TabIndex = 156;
+            this.textBox_main_config_vertCorrection.Text = "20";
+            this.textBox_main_config_vertCorrection.TextChanged += new System.EventHandler(this.textBox_main_config_vertCorrection_TextChanged);
+            // 
+            // label_main_config_vertCorrection
+            // 
+            this.label_main_config_vertCorrection.AutoSize = true;
+            this.label_main_config_vertCorrection.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_main_config_vertCorrection.Location = new System.Drawing.Point(24, 265);
+            this.label_main_config_vertCorrection.Name = "label_main_config_vertCorrection";
+            this.label_main_config_vertCorrection.Size = new System.Drawing.Size(226, 17);
+            this.label_main_config_vertCorrection.TabIndex = 155;
+            this.label_main_config_vertCorrection.Text = "Коррекция вертикального хода:";
+            // 
             // button_main_device_def
             // 
             this.button_main_device_def.BackColor = System.Drawing.Color.White;
@@ -572,7 +621,7 @@ namespace CnC_WFA
             // 
             this.label_main_device_5.AutoSize = true;
             this.label_main_device_5.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_device_5.Location = new System.Drawing.Point(28, 477);
+            this.label_main_device_5.Location = new System.Drawing.Point(24, 519);
             this.label_main_device_5.Name = "label_main_device_5";
             this.label_main_device_5.Size = new System.Drawing.Size(78, 16);
             this.label_main_device_5.TabIndex = 105;
@@ -585,7 +634,7 @@ namespace CnC_WFA
             this.comboBox_main_device_port.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox_main_device_port.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_main_device_port.FormattingEnabled = true;
-            this.comboBox_main_device_port.Location = new System.Drawing.Point(307, 472);
+            this.comboBox_main_device_port.Location = new System.Drawing.Point(303, 514);
             this.comboBox_main_device_port.Name = "comboBox_main_device_port";
             this.comboBox_main_device_port.Size = new System.Drawing.Size(167, 25);
             this.comboBox_main_device_port.TabIndex = 104;
@@ -595,7 +644,7 @@ namespace CnC_WFA
             // 
             this.label_main_device_board.AutoSize = true;
             this.label_main_device_board.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_device_board.Location = new System.Drawing.Point(28, 433);
+            this.label_main_device_board.Location = new System.Drawing.Point(24, 475);
             this.label_main_device_board.Name = "label_main_device_board";
             this.label_main_device_board.Size = new System.Drawing.Size(158, 17);
             this.label_main_device_board.TabIndex = 103;
@@ -608,7 +657,7 @@ namespace CnC_WFA
             this.comboBox_main_device_board.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox_main_device_board.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_main_device_board.FormattingEnabled = true;
-            this.comboBox_main_device_board.Location = new System.Drawing.Point(307, 430);
+            this.comboBox_main_device_board.Location = new System.Drawing.Point(303, 472);
             this.comboBox_main_device_board.Name = "comboBox_main_device_board";
             this.comboBox_main_device_board.Size = new System.Drawing.Size(167, 25);
             this.comboBox_main_device_board.TabIndex = 102;
@@ -621,7 +670,7 @@ namespace CnC_WFA
             this.button_main_device_pick.FlatAppearance.BorderSize = 2;
             this.button_main_device_pick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_device_pick.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_main_device_pick.Location = new System.Drawing.Point(31, 380);
+            this.button_main_device_pick.Location = new System.Drawing.Point(27, 422);
             this.button_main_device_pick.Name = "button_main_device_pick";
             this.button_main_device_pick.Size = new System.Drawing.Size(112, 35);
             this.button_main_device_pick.TabIndex = 101;
@@ -636,7 +685,7 @@ namespace CnC_WFA
             this.button_main_device_ide.FlatAppearance.BorderSize = 2;
             this.button_main_device_ide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_device_ide.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_main_device_ide.Location = new System.Drawing.Point(359, 284);
+            this.button_main_device_ide.Location = new System.Drawing.Point(355, 326);
             this.button_main_device_ide.Name = "button_main_device_ide";
             this.button_main_device_ide.Size = new System.Drawing.Size(160, 57);
             this.button_main_device_ide.TabIndex = 100;
@@ -648,7 +697,7 @@ namespace CnC_WFA
             // 
             this.label_main_device_pathto.AutoSize = true;
             this.label_main_device_pathto.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_device_pathto.Location = new System.Drawing.Point(149, 392);
+            this.label_main_device_pathto.Location = new System.Drawing.Point(145, 434);
             this.label_main_device_pathto.Name = "label_main_device_pathto";
             this.label_main_device_pathto.Size = new System.Drawing.Size(131, 16);
             this.label_main_device_pathto.TabIndex = 99;
@@ -658,7 +707,7 @@ namespace CnC_WFA
             // 
             this.label_main_device_isinstall.AutoSize = true;
             this.label_main_device_isinstall.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_device_isinstall.Location = new System.Drawing.Point(48, 344);
+            this.label_main_device_isinstall.Location = new System.Drawing.Point(44, 386);
             this.label_main_device_isinstall.Name = "label_main_device_isinstall";
             this.label_main_device_isinstall.Size = new System.Drawing.Size(117, 16);
             this.label_main_device_isinstall.TabIndex = 98;
@@ -668,7 +717,7 @@ namespace CnC_WFA
             // 
             this.label_main_device_indev.AutoSize = true;
             this.label_main_device_indev.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_device_indev.Location = new System.Drawing.Point(219, 344);
+            this.label_main_device_indev.Location = new System.Drawing.Point(215, 386);
             this.label_main_device_indev.Name = "label_main_device_indev";
             this.label_main_device_indev.Size = new System.Drawing.Size(101, 16);
             this.label_main_device_indev.TabIndex = 97;
@@ -682,7 +731,7 @@ namespace CnC_WFA
             this.button_main_device_col.FlatAppearance.BorderSize = 2;
             this.button_main_device_col.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_device_col.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_device_col.Location = new System.Drawing.Point(193, 284);
+            this.button_main_device_col.Location = new System.Drawing.Point(189, 326);
             this.button_main_device_col.Name = "button_main_device_col";
             this.button_main_device_col.Size = new System.Drawing.Size(160, 57);
             this.button_main_device_col.TabIndex = 95;
@@ -696,7 +745,7 @@ namespace CnC_WFA
             this.button_main_device_driver.FlatAppearance.BorderSize = 2;
             this.button_main_device_driver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_device_driver.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_device_driver.Location = new System.Drawing.Point(27, 284);
+            this.button_main_device_driver.Location = new System.Drawing.Point(23, 326);
             this.button_main_device_driver.Name = "button_main_device_driver";
             this.button_main_device_driver.Size = new System.Drawing.Size(160, 57);
             this.button_main_device_driver.TabIndex = 94;
@@ -711,7 +760,7 @@ namespace CnC_WFA
             this.button_main_device_scetch.FlatAppearance.BorderSize = 2;
             this.button_main_device_scetch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_device_scetch.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_device_scetch.Location = new System.Drawing.Point(31, 513);
+            this.button_main_device_scetch.Location = new System.Drawing.Point(27, 555);
             this.button_main_device_scetch.Name = "button_main_device_scetch";
             this.button_main_device_scetch.Size = new System.Drawing.Size(160, 57);
             this.button_main_device_scetch.TabIndex = 93;
@@ -844,7 +893,7 @@ namespace CnC_WFA
             // 
             this.checkBox_usedevicespeed.AutoSize = true;
             this.checkBox_usedevicespeed.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_usedevicespeed.Location = new System.Drawing.Point(27, 257);
+            this.checkBox_usedevicespeed.Location = new System.Drawing.Point(23, 299);
             this.checkBox_usedevicespeed.Name = "checkBox_usedevicespeed";
             this.checkBox_usedevicespeed.Size = new System.Drawing.Size(381, 21);
             this.checkBox_usedevicespeed.TabIndex = 78;
@@ -895,6 +944,10 @@ namespace CnC_WFA
             // tabPage_config
             // 
             this.tabPage_config.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_config.Controls.Add(this.checkBox_main_config_preload);
+            this.tabPage_config.Controls.Add(this.button_main_config_lang);
+            this.tabPage_config.Controls.Add(this.button_main_config_assoc);
+            this.tabPage_config.Controls.Add(this.button_main_config_clearcache);
             this.tabPage_config.Controls.Add(this.button_main_config_def);
             this.tabPage_config.Controls.Add(this.button_main_config_help);
             this.tabPage_config.Controls.Add(this.button_main_config_save);
@@ -938,6 +991,64 @@ namespace CnC_WFA
             this.tabPage_config.TabIndex = 1;
             this.tabPage_config.Text = " ";
             // 
+            // checkBox_main_config_preload
+            // 
+            this.checkBox_main_config_preload.AutoSize = true;
+            this.checkBox_main_config_preload.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_main_config_preload.Location = new System.Drawing.Point(28, 551);
+            this.checkBox_main_config_preload.Name = "checkBox_main_config_preload";
+            this.checkBox_main_config_preload.Size = new System.Drawing.Size(277, 21);
+            this.checkBox_main_config_preload.TabIndex = 157;
+            this.checkBox_main_config_preload.Text = "Предварительная загрузка плагинов";
+            this.checkBox_main_config_preload.UseVisualStyleBackColor = true;
+            this.checkBox_main_config_preload.CheckedChanged += new System.EventHandler(this.checkBox_main_config_preload_CheckedChanged);
+            // 
+            // button_main_config_lang
+            // 
+            this.button_main_config_lang.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button_main_config_lang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button_main_config_lang.FlatAppearance.BorderSize = 2;
+            this.button_main_config_lang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_main_config_lang.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_main_config_lang.Location = new System.Drawing.Point(336, 582);
+            this.button_main_config_lang.Name = "button_main_config_lang";
+            this.button_main_config_lang.Size = new System.Drawing.Size(149, 60);
+            this.button_main_config_lang.TabIndex = 156;
+            this.button_main_config_lang.Text = "Язык\r\nLanguage";
+            this.button_main_config_lang.UseVisualStyleBackColor = false;
+            // 
+            // button_main_config_assoc
+            // 
+            this.button_main_config_assoc.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button_main_config_assoc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button_main_config_assoc.FlatAppearance.BorderSize = 2;
+            this.button_main_config_assoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_main_config_assoc.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_main_config_assoc.Image = ((System.Drawing.Image)(resources.GetObject("button_main_config_assoc.Image")));
+            this.button_main_config_assoc.Location = new System.Drawing.Point(181, 582);
+            this.button_main_config_assoc.Name = "button_main_config_assoc";
+            this.button_main_config_assoc.Size = new System.Drawing.Size(149, 60);
+            this.button_main_config_assoc.TabIndex = 155;
+            this.button_main_config_assoc.Text = "Асоциации";
+            this.button_main_config_assoc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_main_config_assoc.UseVisualStyleBackColor = false;
+            this.button_main_config_assoc.Click += new System.EventHandler(this.button_main_config_assoc_Click);
+            // 
+            // button_main_config_clearcache
+            // 
+            this.button_main_config_clearcache.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button_main_config_clearcache.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button_main_config_clearcache.FlatAppearance.BorderSize = 2;
+            this.button_main_config_clearcache.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_main_config_clearcache.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_main_config_clearcache.Location = new System.Drawing.Point(26, 582);
+            this.button_main_config_clearcache.Name = "button_main_config_clearcache";
+            this.button_main_config_clearcache.Size = new System.Drawing.Size(149, 60);
+            this.button_main_config_clearcache.TabIndex = 154;
+            this.button_main_config_clearcache.Text = "Очистить кэш плагинов";
+            this.button_main_config_clearcache.UseVisualStyleBackColor = false;
+            this.button_main_config_clearcache.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // button_main_config_def
             // 
             this.button_main_config_def.BackColor = System.Drawing.Color.White;
@@ -960,7 +1071,7 @@ namespace CnC_WFA
             this.button_main_config_help.FlatAppearance.BorderSize = 2;
             this.button_main_config_help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_config_help.Font = new System.Drawing.Font("Cambria", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_main_config_help.Location = new System.Drawing.Point(28, 548);
+            this.button_main_config_help.Location = new System.Drawing.Point(28, 674);
             this.button_main_config_help.Name = "button_main_config_help";
             this.button_main_config_help.Size = new System.Drawing.Size(112, 35);
             this.button_main_config_help.TabIndex = 116;
@@ -2345,6 +2456,8 @@ namespace CnC_WFA
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.panel2.Controls.Add(this.button_main_other);
+            this.panel2.Controls.Add(this.button_main_graph);
             this.panel2.Controls.Add(this.button_main_curve);
             this.panel2.Controls.Add(this.button_main_editor);
             this.panel2.Controls.Add(this.button_main_vectview);
@@ -2354,6 +2467,44 @@ namespace CnC_WFA
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(226, 723);
             this.panel2.TabIndex = 7;
+            // 
+            // button_main_other
+            // 
+            this.button_main_other.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_main_other.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.button_main_other.FlatAppearance.BorderSize = 0;
+            this.button_main_other.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_main_other.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_main_other.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_main_other.Image = ((System.Drawing.Image)(resources.GetObject("button_main_other.Image")));
+            this.button_main_other.Location = new System.Drawing.Point(-9, 461);
+            this.button_main_other.Name = "button_main_other";
+            this.button_main_other.Size = new System.Drawing.Size(237, 81);
+            this.button_main_other.TabIndex = 14;
+            this.button_main_other.Text = " Остальное";
+            this.button_main_other.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_main_other.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_main_other.UseVisualStyleBackColor = true;
+            this.button_main_other.Click += new System.EventHandler(this.button_main_other_Click);
+            // 
+            // button_main_graph
+            // 
+            this.button_main_graph.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_main_graph.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.button_main_graph.FlatAppearance.BorderSize = 0;
+            this.button_main_graph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_main_graph.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_main_graph.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_main_graph.Image = ((System.Drawing.Image)(resources.GetObject("button_main_graph.Image")));
+            this.button_main_graph.Location = new System.Drawing.Point(-5, 383);
+            this.button_main_graph.Name = "button_main_graph";
+            this.button_main_graph.Size = new System.Drawing.Size(237, 81);
+            this.button_main_graph.TabIndex = 13;
+            this.button_main_graph.Text = "  График      ";
+            this.button_main_graph.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_main_graph.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_main_graph.UseVisualStyleBackColor = true;
+            this.button_main_graph.Click += new System.EventHandler(this.button_main_graph_Click);
             // 
             // button_main_curve
             // 
@@ -2447,6 +2598,8 @@ namespace CnC_WFA
             this.tabControl_vect.Controls.Add(this.tabPage_vect_viewer);
             this.tabControl_vect.Controls.Add(this.tabPage_vect_editor);
             this.tabControl_vect.Controls.Add(this.tabPage_vect_curve);
+            this.tabControl_vect.Controls.Add(this.tabPage_vect_graph);
+            this.tabControl_vect.Controls.Add(this.tabPage_vect_other);
             this.tabControl_vect.Location = new System.Drawing.Point(233, -10);
             this.tabControl_vect.Name = "tabControl_vect";
             this.tabControl_vect.SelectedIndex = 0;
@@ -2715,6 +2868,78 @@ namespace CnC_WFA
             this.label_vect_curve_title.TabIndex = 123;
             this.label_vect_curve_title.Text = "Кривые";
             // 
+            // tabPage_vect_graph
+            // 
+            this.tabPage_vect_graph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_vect_graph.Controls.Add(this.button_vect_graph_help);
+            this.tabPage_vect_graph.Controls.Add(this.label_vect_graph_discr);
+            this.tabPage_vect_graph.Controls.Add(this.button_vect_graph_open);
+            this.tabPage_vect_graph.Controls.Add(this.label_vect_graph_title);
+            this.tabPage_vect_graph.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_vect_graph.Name = "tabPage_vect_graph";
+            this.tabPage_vect_graph.Size = new System.Drawing.Size(848, 731);
+            this.tabPage_vect_graph.TabIndex = 4;
+            this.tabPage_vect_graph.Text = "tabPage_vect_graph";
+            // 
+            // button_vect_graph_help
+            // 
+            this.button_vect_graph_help.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button_vect_graph_help.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button_vect_graph_help.FlatAppearance.BorderSize = 2;
+            this.button_vect_graph_help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_vect_graph_help.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_vect_graph_help.Location = new System.Drawing.Point(659, 586);
+            this.button_vect_graph_help.Name = "button_vect_graph_help";
+            this.button_vect_graph_help.Size = new System.Drawing.Size(169, 47);
+            this.button_vect_graph_help.TabIndex = 131;
+            this.button_vect_graph_help.Text = "Справка";
+            this.button_vect_graph_help.UseVisualStyleBackColor = false;
+            // 
+            // label_vect_graph_discr
+            // 
+            this.label_vect_graph_discr.AutoSize = true;
+            this.label_vect_graph_discr.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_vect_graph_discr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_vect_graph_discr.Location = new System.Drawing.Point(57, 77);
+            this.label_vect_graph_discr.Name = "label_vect_graph_discr";
+            this.label_vect_graph_discr.Size = new System.Drawing.Size(717, 133);
+            this.label_vect_graph_discr.TabIndex = 130;
+            this.label_vect_graph_discr.Text = resources.GetString("label_vect_graph_discr.Text");
+            // 
+            // button_vect_graph_open
+            // 
+            this.button_vect_graph_open.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button_vect_graph_open.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button_vect_graph_open.FlatAppearance.BorderSize = 2;
+            this.button_vect_graph_open.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_vect_graph_open.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_vect_graph_open.Location = new System.Drawing.Point(593, 639);
+            this.button_vect_graph_open.Name = "button_vect_graph_open";
+            this.button_vect_graph_open.Size = new System.Drawing.Size(235, 73);
+            this.button_vect_graph_open.TabIndex = 129;
+            this.button_vect_graph_open.Text = "Открыть мастер графиков";
+            this.button_vect_graph_open.UseVisualStyleBackColor = false;
+            // 
+            // label_vect_graph_title
+            // 
+            this.label_vect_graph_title.AutoSize = true;
+            this.label_vect_graph_title.Font = new System.Drawing.Font("Cambria", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_vect_graph_title.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label_vect_graph_title.Location = new System.Drawing.Point(10, 10);
+            this.label_vect_graph_title.Name = "label_vect_graph_title";
+            this.label_vect_graph_title.Size = new System.Drawing.Size(390, 43);
+            this.label_vect_graph_title.TabIndex = 128;
+            this.label_vect_graph_title.Text = "Построение графиков";
+            // 
+            // tabPage_vect_other
+            // 
+            this.tabPage_vect_other.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_vect_other.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_vect_other.Name = "tabPage_vect_other";
+            this.tabPage_vect_other.Size = new System.Drawing.Size(848, 731);
+            this.tabPage_vect_other.TabIndex = 5;
+            this.tabPage_vect_other.Text = "tabPage2";
+            // 
             // tabPage_main_help
             // 
             this.tabPage_main_help.Controls.Add(this.panel_main_help_tools);
@@ -2761,6 +2986,7 @@ namespace CnC_WFA
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Window";
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Shown += new System.EventHandler(this.MainWindow_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel_main_tools.ResumeLayout(false);
@@ -2806,6 +3032,8 @@ namespace CnC_WFA
             this.tabPage_vect_editor.PerformLayout();
             this.tabPage_vect_curve.ResumeLayout(false);
             this.tabPage_vect_curve.PerformLayout();
+            this.tabPage_vect_graph.ResumeLayout(false);
+            this.tabPage_vect_graph.PerformLayout();
             this.tabPage_main_help.ResumeLayout(false);
             this.panel_main_help_tools.ResumeLayout(false);
             this.panel_main_help_tools.PerformLayout();
@@ -3009,6 +3237,21 @@ namespace CnC_WFA
         internal System.Windows.Forms.Label label_vect_curve_discr;
         internal System.Windows.Forms.Button button_vect_curve_start;
         internal System.Windows.Forms.Label label_vect_curve_title;
+        internal System.Windows.Forms.Button button_main_config_lang;
+        internal System.Windows.Forms.Button button_main_config_assoc;
+        internal System.Windows.Forms.Button button_main_config_clearcache;
+        internal System.Windows.Forms.Label label_main_config_vertCorrection_dicsr;
+        internal System.Windows.Forms.TextBox textBox_main_config_vertCorrection;
+        internal System.Windows.Forms.Label label_main_config_vertCorrection;
+        internal System.Windows.Forms.CheckBox checkBox_main_config_preload;
+        internal System.Windows.Forms.Button button_main_other;
+        internal System.Windows.Forms.Button button_main_graph;
+        private System.Windows.Forms.TabPage tabPage_vect_graph;
+        private System.Windows.Forms.TabPage tabPage_vect_other;
+        internal System.Windows.Forms.Button button_vect_graph_help;
+        internal System.Windows.Forms.Label label_vect_graph_discr;
+        internal System.Windows.Forms.Button button_vect_graph_open;
+        internal System.Windows.Forms.Label label_vect_graph_title;
     }
 }
 

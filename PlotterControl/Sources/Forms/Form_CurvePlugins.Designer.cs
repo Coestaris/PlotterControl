@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_CurvePlugins));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel_main = new System.Windows.Forms.Panel();
-            this.panel_wait = new System.Windows.Forms.Panel();
-            this.label_load = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label_usage_content = new System.Windows.Forms.Label();
@@ -46,15 +44,20 @@
             this.label_Title = new System.Windows.Forms.Label();
             this.pictureBox_prev_1 = new System.Windows.Forms.PictureBox();
             this.pictureBox_prev_2 = new System.Windows.Forms.PictureBox();
+            this.panel_wait = new System.Windows.Forms.Panel();
+            this.loadingCircle_tab1 = new MRG.Controls.UI.LoadingCircle();
+            this.label_load = new System.Windows.Forms.Label();
             this.panel_content = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
-            this.loadingCircle_tab1 = new MRG.Controls.UI.LoadingCircle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel_cantFindPlugins = new System.Windows.Forms.Panel();
+            this.label_cantFindPlugins = new System.Windows.Forms.Label();
             this.panel_main.SuspendLayout();
-            this.panel_wait.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_prev_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_prev_2)).BeginInit();
+            this.panel_wait.SuspendLayout();
             this.panel_content.SuspendLayout();
+            this.panel_cantFindPlugins.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -66,7 +69,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 19;
-            this.listBox1.Location = new System.Drawing.Point(8, 10);
+            this.listBox1.Location = new System.Drawing.Point(28, 41);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(240, 627);
             this.listBox1.TabIndex = 15;
@@ -74,7 +77,6 @@
             // 
             // panel_main
             // 
-            this.panel_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_main.Controls.Add(this.button2);
             this.panel_main.Controls.Add(this.button1);
             this.panel_main.Controls.Add(this.label_usage_content);
@@ -94,29 +96,6 @@
             this.panel_main.Size = new System.Drawing.Size(1022, 707);
             this.panel_main.TabIndex = 14;
             this.panel_main.Visible = false;
-            // 
-            // panel_wait
-            // 
-            this.panel_wait.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
-            this.panel_wait.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_wait.Controls.Add(this.loadingCircle_tab1);
-            this.panel_wait.Controls.Add(this.label_load);
-            this.panel_wait.Font = new System.Drawing.Font("Cambria", 12F);
-            this.panel_wait.Location = new System.Drawing.Point(317, 356);
-            this.panel_wait.Name = "panel_wait";
-            this.panel_wait.Size = new System.Drawing.Size(361, 164);
-            this.panel_wait.TabIndex = 15;
-            // 
-            // label_load
-            // 
-            this.label_load.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_load.Location = new System.Drawing.Point(-1, 89);
-            this.label_load.Name = "label_load";
-            this.label_load.Size = new System.Drawing.Size(361, 73);
-            this.label_load.TabIndex = 0;
-            this.label_load.Text = "Подождите, пока компилируются и\r\nподготавливаются плагины. Это может занять\r\nодно" +
-    "й до минуты.";
-            this.label_load.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button2
             // 
@@ -245,29 +224,17 @@
             this.pictureBox_prev_2.TabIndex = 1;
             this.pictureBox_prev_2.TabStop = false;
             // 
-            // panel_content
+            // panel_wait
             // 
-            this.panel_content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(77)))));
-            this.panel_content.Controls.Add(this.button3);
-            this.panel_content.Location = new System.Drawing.Point(-23, -30);
-            this.panel_content.Name = "panel_content";
-            this.panel_content.Size = new System.Drawing.Size(282, 738);
-            this.panel_content.TabIndex = 15;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button3.FlatAppearance.BorderSize = 2;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Cambria", 12F);
-            this.button3.Location = new System.Drawing.Point(31, 686);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 38);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Обновить";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.panel_wait.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.panel_wait.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_wait.Controls.Add(this.loadingCircle_tab1);
+            this.panel_wait.Controls.Add(this.label_load);
+            this.panel_wait.Font = new System.Drawing.Font("Cambria", 12F);
+            this.panel_wait.Location = new System.Drawing.Point(317, 356);
+            this.panel_wait.Name = "panel_wait";
+            this.panel_wait.Size = new System.Drawing.Size(361, 164);
+            this.panel_wait.TabIndex = 15;
             // 
             // loadingCircle_tab1
             // 
@@ -289,10 +256,66 @@
             this.loadingCircle_tab1.Text = "loadingCircle2";
             this.loadingCircle_tab1.UseWaitCursor = true;
             // 
+            // label_load
+            // 
+            this.label_load.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label_load.Location = new System.Drawing.Point(-1, 89);
+            this.label_load.Name = "label_load";
+            this.label_load.Size = new System.Drawing.Size(361, 73);
+            this.label_load.TabIndex = 0;
+            this.label_load.Text = "Подождите, пока компилируются и\r\nподготавливаются плагины. Это может занять\r\nдо п" +
+    "ары минут.";
+            this.label_load.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel_content
+            // 
+            this.panel_content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(32)))), ((int)(((byte)(77)))));
+            this.panel_content.Controls.Add(this.listBox1);
+            this.panel_content.Location = new System.Drawing.Point(-20, -28);
+            this.panel_content.Name = "panel_content";
+            this.panel_content.Size = new System.Drawing.Size(282, 738);
+            this.panel_content.TabIndex = 15;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button3.FlatAppearance.BorderSize = 2;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Cambria", 12F);
+            this.button3.Location = new System.Drawing.Point(6, 659);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(91, 38);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Обновить";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // panel_cantFindPlugins
+            // 
+            this.panel_cantFindPlugins.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.panel_cantFindPlugins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_cantFindPlugins.Controls.Add(this.label_cantFindPlugins);
+            this.panel_cantFindPlugins.Font = new System.Drawing.Font("Cambria", 12F);
+            this.panel_cantFindPlugins.Location = new System.Drawing.Point(544, 103);
+            this.panel_cantFindPlugins.Name = "panel_cantFindPlugins";
+            this.panel_cantFindPlugins.Size = new System.Drawing.Size(361, 164);
+            this.panel_cantFindPlugins.TabIndex = 32;
+            // 
+            // label_cantFindPlugins
+            // 
+            this.label_cantFindPlugins.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label_cantFindPlugins.Location = new System.Drawing.Point(-1, 47);
+            this.label_cantFindPlugins.Name = "label_cantFindPlugins";
+            this.label_cantFindPlugins.Size = new System.Drawing.Size(361, 73);
+            this.label_cantFindPlugins.TabIndex = 0;
+            this.label_cantFindPlugins.Text = "Не найдено плагинов";
+            this.label_cantFindPlugins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form_CurvePlugins
             // 
@@ -300,9 +323,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1274, 704);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.panel_cantFindPlugins);
             this.Controls.Add(this.panel_wait);
             this.Controls.Add(this.panel_main);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel_content);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -312,10 +336,11 @@
             this.Load += new System.EventHandler(this.Form_CurvePlugins_Load);
             this.panel_main.ResumeLayout(false);
             this.panel_main.PerformLayout();
-            this.panel_wait.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_prev_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_prev_2)).EndInit();
+            this.panel_wait.ResumeLayout(false);
             this.panel_content.ResumeLayout(false);
+            this.panel_cantFindPlugins.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -340,8 +365,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel_wait;
-        private System.Windows.Forms.Label label_load;
         private MRG.Controls.UI.LoadingCircle loadingCircle_tab1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panel_cantFindPlugins;
+        private System.Windows.Forms.Label label_cantFindPlugins;
+        private System.Windows.Forms.Label label_load;
     }
 }

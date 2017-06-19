@@ -28,6 +28,7 @@ using CWA.Connection;
 using CWA.Printing;
 using CWA.Vectors.Document;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -53,19 +54,23 @@ namespace CnC_WFA
         private float device_xmm, device_ymm;
         private bool device_use;
         private string device_path, device_ard;
+        private int device_vertCorrection;
         private bool[] devicechanged;
         private bool IsDevicegChanged;
         private Bitmap pb, pd, vb, vd;
         private bool DriverInstalled;
         private DeviceMemorySetup a;
-        private string ls6, ls5, ls4, ls3, ls2, ls1;
+        private string ls7, ls6, ls5, ls4, ls3, ls2, ls1;
         private Form_ManualControl fm;
         private Form_PrintMaster fp;
         private Form_VectorMaster fv;
         private Form_ViewVect fvw;
         private Form_SerialMonitor fs;
         private Form_EditVector fe;
+        private Form_Dialog_Assoc fda;
         private Form_CurvePlugins fc;
+        private bool config_preload;
+        private bool FirstConfigPreloadChange = true;
 
         public MainWindow()
         {
@@ -221,7 +226,7 @@ namespace CnC_WFA
             GlobalOptions.DefViewBack = colors[2];
             GlobalOptions.DefViewDraw = colors[3];
             FillColors();
-            configchanged = new bool[10];
+            configchanged = new bool[11];
             CheckChanged();
         }
        
@@ -285,13 +290,14 @@ namespace CnC_WFA
                 MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            configchanged = new bool[10];
+            configchanged = new bool[11];
             colors = new Color[4];
             colors[0] = GlobalOptions.DefPrintBack;
             colors[1] = GlobalOptions.DefPrintDraw;
             colors[3] = GlobalOptions.DefViewBack;
             colors[3] = GlobalOptions.DefViewDraw;
             _configDefport = comboBox_mainport.Text;
+            config_preload = checkBox_main_config_preload.Checked;
             config_defspeed = int.Parse(comboBox_mainrate.Text);
             config_maxdis = int.Parse(textBox_md.Text);
             config_maxsc = int.Parse(textBox_sh.Text);
@@ -321,7 +327,8 @@ namespace CnC_WFA
                 MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            devicechanged = new bool[7];
+            devicechanged = new bool[8];
+            device_vertCorrection = int.Parse(textBox_main_config_vertCorrection.Text);
             device_ard = GlobalOptions.DefBoard.ToString();
             device_maxh = int.Parse(textBox_maxstepheight.Text);
             device_maxw = int.Parse(textBox_MaxStepWidth.Text);
@@ -701,6 +708,7 @@ namespace CnC_WFA
 
         private void button_main_device_save_Click(object sender, EventArgs e)
         {
+            GlobalOptions.UpKoof = int.Parse(textBox_main_config_vertCorrection.Text);
             GlobalOptions.Mainbd = int.Parse(comboBox_mainrate.Text);
             GlobalOptions.Mainport = comboBox_mainport.Text;
             GlobalOptions.XMM = float.Parse(textBox_xmm.Text, CultureInfo.InvariantCulture);
@@ -718,6 +726,7 @@ namespace CnC_WFA
             GlobalOptions.Mainport = comboBox_mainport.Text;
             GlobalOptions.MaxDisConst = int.Parse(textBox_md.Text);
             GlobalOptions.StepHeightConst = int.Parse(textBox_sh.Text);
+            GlobalOptions.PreloadPlugins = checkBox_main_config_preload.Checked;
             GlobalOptions.DefRbo = ExOperators.GetEnum<ReturnBackOption>(comboBox_peo.Text);
             GlobalOptions.DefSpo = ExOperators.GetEnum<StartPrintOption>(comboBox_pso.Text);
             GlobalOptions.Save();
@@ -841,6 +850,8 @@ namespace CnC_WFA
         private void button_main_vect_Click(object sender, EventArgs e)
         {
             tabControl_vect.SelectedIndex = 0;
+            button_main_graph.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_other.BackColor = Color.FromArgb(4, 60, 130);
             button_main_vect.BackColor = Color.FromArgb(5, 92, 199);
             button_main_vectview.BackColor = Color.FromArgb(4, 60, 130);
             button_main_editor.BackColor = Color.FromArgb(4, 60, 130);
@@ -850,6 +861,8 @@ namespace CnC_WFA
         private void button_main_vectview_Click(object sender, EventArgs e)
         {
             tabControl_vect.SelectedIndex = 1;
+            button_main_graph.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_other.BackColor = Color.FromArgb(4, 60, 130);
             button_main_vectview.BackColor = Color.FromArgb(5, 92, 199);
             button_main_vect.BackColor = Color.FromArgb(4, 60, 130);
             button_main_editor.BackColor = Color.FromArgb(4, 60, 130);
@@ -859,6 +872,8 @@ namespace CnC_WFA
         private void button_main_editor_Click(object sender, EventArgs e)
         {
             tabControl_vect.SelectedIndex = 2;
+            button_main_graph.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_other.BackColor = Color.FromArgb(4, 60, 130);
             button_main_editor.BackColor = Color.FromArgb(5, 92, 199);
             button_main_vectview.BackColor = Color.FromArgb(4, 60, 130);
             button_main_vect.BackColor = Color.FromArgb(4, 60, 130);
@@ -885,6 +900,8 @@ namespace CnC_WFA
 
         private void button_main_curve_Click(object sender, EventArgs e)
         {
+            button_main_graph.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_other.BackColor = Color.FromArgb(4, 60, 130);
             tabControl_vect.SelectedIndex = 3;
             button_main_curve.BackColor = Color.FromArgb(5, 92, 199);
             button_main_vectview.BackColor = Color.FromArgb(4, 60, 130);
@@ -896,6 +913,92 @@ namespace CnC_WFA
         {
             if (fc == null) fc = new Form_CurvePlugins();
             if (!fc.Visible) { fc = new Form_CurvePlugins(); fc.Show(); }
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            int count = Directory.GetFiles(CurvePluginHandler.PluginDir + "Compiled\\").Length;
+            if (MessageBox.Show("Кэш служит для ускорения загрузки плагинов, при его удалении программа будет вынуждена повторно их обработать.\nВы действительно хотите удалить "+ count + " кэшированных (скомпилированных) плагинов?", "Подверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                if(fc != null && fc.Visible) { MessageBox.Show("Для этого необходимо закрыть мастер кривых", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+                if(GlobalOptions.PreloadPlugins) { MessageBox.Show("Невозможно очистить кэш, когда включена функция предварительной загрузки плагинов. Отключите ее и перезагрузите прогамму", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+                List<string> cantDelete = new List<string>();
+
+                foreach(var a in Directory.GetFiles(CurvePluginHandler.PluginDir + "Compiled\\"))
+                {
+                    try { File.Delete(a); } catch { cantDelete.Add(a); }
+                }
+                if (cantDelete.Count != 0) MessageBox.Show(string.Format("Успешно удалено {0} элементов\nНевозможно удалить следующии ({1}):\n{2}", count - cantDelete.Count, cantDelete.Count, string.Join("\n  -", cantDelete)),"Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show(string.Format("Успешно удалено {0} элементов", count), "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void textBox_main_config_vertCorrection_TextChanged(object sender, EventArgs e)
+        {
+            var a = 0;
+            var g = textBox_main_config_vertCorrection;
+            string s = g.Text;
+            if (s != "" && !int.TryParse(s, out a))
+            {
+                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                g.Text = ls7;
+                return;
+            }
+            if (s == "") return;
+            devicechanged[7] = (int.Parse(s) != device_vertCorrection);
+            CheckChangedDevice();
+            ls7 = s;
+        }
+
+        private void checkBox_main_config_preload_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FirstConfigPreloadChange) FirstConfigPreloadChange = false;
+            else
+            {
+                MessageBox.Show("Необходимо перезапустить программу для того, чтобы изменения вступили в силу", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                configchanged[10] = (config_preload != checkBox_main_config_preload.Checked);
+                CheckChanged();
+            }
+        }
+
+        private void MainWindow_Shown(object sender, EventArgs e)
+        {
+            if (FileAssociation.CanWriteRegistry) Text += '*';
+        }
+
+        private void button_main_graph_Click(object sender, EventArgs e)
+        {
+            tabControl_vect.SelectedIndex = 4;
+            button_main_graph.BackColor  = Color.FromArgb(5, 92, 199);
+            button_main_other.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_curve.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_vectview.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_vect.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_editor.BackColor = Color.FromArgb(4, 60, 130);
+        }
+
+        private void button_main_other_Click(object sender, EventArgs e)
+        {
+            tabControl_vect.SelectedIndex = 5;
+            button_main_graph.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_other.BackColor = Color.FromArgb(5, 92, 199);
+            button_main_curve.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_vectview.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_vect.BackColor = Color.FromArgb(4, 60, 130);
+            button_main_editor.BackColor = Color.FromArgb(4, 60, 130);
+        }
+
+        private void button_main_config_assoc_Click(object sender, EventArgs e)
+        {
+            if (!FileAssociation.CanWriteRegistry)
+            {
+                FileAssociation.AllertAboutAdmin();
+                return;
+            } else
+            {
+                if (fda == null) fda = new Form_Dialog_Assoc();
+                if (!fda.Visible) { fda = new Form_Dialog_Assoc(); fda.Show(); }
+            }
         }
 
         private void textBox_MaxStepWidth_TextChanged(object sender, EventArgs e)
@@ -1056,8 +1159,16 @@ namespace CnC_WFA
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            configchanged = new bool[10];
-            devicechanged = new bool[7];
+
+
+
+            new Form_Graph().ShowDialog();
+            Close();
+            
+
+
+            configchanged = new bool[11];
+            devicechanged = new bool[8];
             comboBox_main_device_port.Items.AddRange(SerialPort.GetPortNames());
             comboBox_main_device_port.Text = GlobalOptions.Mainport.ToString();
             comboBox_main_device_board.Items.Clear();
@@ -1082,8 +1193,10 @@ namespace CnC_WFA
             textBox_md.Text = GlobalOptions.MaxDisConst.ToString();
             comboBox_mainrate.Text = GlobalOptions.Mainbd.ToString();
             comboBox_mainport.Text = GlobalOptions.Mainport.ToString();
+            textBox_main_config_vertCorrection.Text = GlobalOptions.UpKoof.ToString();
             comboBox_peo.Text = GlobalOptions.DefRbo.ToString();
             comboBox_pso.Text = GlobalOptions.DefSpo.ToString();
+            checkBox_main_config_preload.Checked = GlobalOptions.PreloadPlugins;
             checkBox_usedevicespeed.Checked = GlobalOptions.UseAutoSpeed;
             comboBox_main_memory_bd.Text = GlobalOptions.Mainbd.ToString();
             comboBox_main_memory_ports.Items.AddRange(SerialPort.GetPortNames());
@@ -1108,8 +1221,9 @@ namespace CnC_WFA
             button_home.BackColor = Color.FromArgb(4, 60, 130);
             tabControl_about.SelectedIndex = 2;
             button_about.BackColor = Color.FromArgb(5, 92, 199);
-            configchanged = new bool[10];
-            devicechanged = new bool[7];
+            configchanged = new bool[11];
+            devicechanged = new bool[8];
+            FirstConfigPreloadChange = false;
             CheckChangedDevice();
             CheckChanged();
         }

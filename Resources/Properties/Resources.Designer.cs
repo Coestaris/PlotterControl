@@ -103,6 +103,16 @@ namespace CnCWFA_Resources.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap admin {
+            get {
+                object obj = ResourceManager.GetObject("admin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap bezier {
             get {
                 object obj = ResourceManager.GetObject("bezier", resourceCulture);
@@ -286,6 +296,16 @@ namespace CnCWFA_Resources.Properties {
         public static System.Drawing.Bitmap font2 {
             get {
                 object obj = ResourceManager.GetObject("font2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap graph {
+            get {
+                object obj = ResourceManager.GetObject("graph", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -586,6 +606,16 @@ namespace CnCWFA_Resources.Properties {
         public static System.Drawing.Bitmap options {
             get {
                 object obj = ResourceManager.GetObject("options", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap other {
+            get {
+                object obj = ResourceManager.GetObject("other", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -23,7 +23,6 @@
 
 */
 
-using CWA;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,6 +41,12 @@ namespace CnC_WFA
 
         private void Reload()
         {
+            if(backgroundWorker1.IsBusy)
+            {
+                MessageBox.Show("Не спеши, он еще занят...");
+                return;
+            }
+            CurvePluginHandler.Dispose();
             listBox1.Items.Clear();
             panel_wait.Visible = true;
             panel_main.Enabled = false;
@@ -54,8 +59,11 @@ namespace CnC_WFA
             loadingCircle_tab1.InnerCircleRadius = 25;
             loadingCircle_tab1.OuterCircleRadius = 26;
             loadingCircle_tab1.NumberSpoke = 100;
-            panel_wait.Top = Height/2 - panel_wait.Height / 2 - 40;
-            panel_wait.Left = Width/2 - panel_wait.Width / 2;
+            panel_wait.Top = Height /2 - panel_wait.Height / 2 - 40;
+            panel_wait.Left = Width /2 - panel_wait.Width / 2;
+            panel_cantFindPlugins.Top = Height / 2 - panel_cantFindPlugins.Height / 2 - 40;
+            panel_cantFindPlugins.Left = Width / 2 - panel_cantFindPlugins.Width / 2;
+            panel_cantFindPlugins.Visible = false;
             loadingCircle_tab1.Top = panel_wait.Height / 2 - loadingCircle_tab1.Height / 2 - 40;
             loadingCircle_tab1.Left = panel_wait.Width / 2 - loadingCircle_tab1.Width / 2;
             Reload();
@@ -203,14 +211,59 @@ namespace CnC_WFA
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (!GlobalOptions.PreloadPlugins) CurvePluginHandler.Init();
+            //TODO: разобратся с этим условием
+            //if (!GlobalOptions.PreloadPlugins) CurvePluginHandler.Init();
+            CurvePluginHandler.Init();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             listBox1.Items.AddRange(CurvePluginHandler.LoadedPlugins.Select(p => p.Name).Cast<object>().ToArray());
-            if (lastindex != -1) listBox1.SelectedIndex = lastindex;
-            else listBox1.SelectedIndex = 0;
+            if (listBox1.Items.Count == 0)
+            {
+                panel_cantFindPlugins.Visible = true;
+                label_usage_content.Visible = false;
+                label_usage_discr.Visible = false;
+                label_creator_content.Visible = false;
+                label_creator_name.Visible = false;
+                label_discr_content.Visible = false;
+                label_discr_title.Visible = false;
+                label_Title.Visible = false;
+                button1.Visible = false;
+                button2.Visible = false;
+                label_prev_1.Visible = false;
+                label_prev_2.Visible = false;
+                panel_content.Visible = false;
+                var ex1 = new Bitmap(1, 1);
+                var im1 = pictureBox_prev_1.Image;
+                try { im1.Dispose(); } catch { };
+                pictureBox_prev_1.Image = ex1;
+                var ex2 = new Bitmap(1, 1);
+                var im2 = pictureBox_prev_2.Image;
+                try { im2.Dispose(); } catch { };
+                pictureBox_prev_2.Image = ex2;
+            }
+            else
+            {
+                listBox1.SelectedIndex = lastindex;
+                panel_cantFindPlugins.Visible = false;
+                label_usage_content.Visible = true;
+                label_usage_discr.Visible = true;
+                label_creator_content.Visible = true;
+                label_creator_name.Visible = true;
+                label_discr_content.Visible = true;
+                label_discr_title.Visible = true;
+
+                panel_content.Visible = true;
+
+                label_Title.Visible = true;
+                button1.Visible = true;
+                button2.Visible = true;
+                label_prev_1.Visible = true;
+                label_prev_2.Visible = true;
+                if (lastindex != -1) Set(CurvePluginHandler.LoadedPlugins[lastindex]);
+                else Set(CurvePluginHandler.LoadedPlugins[0]);
+            }
             panel_wait.Visible = false;
             panel_main.Enabled = true;
             panel_content.Enabled = true;

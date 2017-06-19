@@ -57,20 +57,21 @@ namespace CnC_WFA
 
             LoadedPlugins = new List<CurveScript>();
             foreach (string s in Directory.GetFiles(PluginDir, "Curve_*.cs"))
-            {
                 if (!File.Exists(string.Format(DLLNameFormat, new FileInfo(s).Name)))
+                     LoadedPlugins.Add(new CurveScript(s));
+                else if (new FileInfo(string.Format(DLLNameFormat, new FileInfo(s).Name)).CreationTime < new FileInfo(s).CreationTime)
                     LoadedPlugins.Add(new CurveScript(s));
-                else
-                {
-                    if (new FileInfo(string.Format(DLLNameFormat, new FileInfo(s).Name)).CreationTime < new FileInfo(s).CreationTime)
-                        LoadedPlugins.Add(new CurveScript(s));
-                    else LoadedPlugins.Add(new CurveScript(string.Format(DLLNameFormat, new FileInfo(s).Name), true));
-                }
-            }
+                else LoadedPlugins.Add(new CurveScript(string.Format(DLLNameFormat, new FileInfo(s).Name), true));
+            
             //File.Delete(PluginDir + "Compiled\\Compiled.zip");
             //File.Delete(PluginDir + "Compiled.zip");
             //ZipFile.CreateFromDirectory(PluginDir + "Compiled\\", PluginDir + "Compiled.zip");
             //File.Move(PluginDir + "Compiled.zip", PluginDir + "\\Compiled\\Compiled.zip");
+        }
+
+        public static void Dispose()
+        {
+            LoadedPlugins = new List<CurveScript>();
         }
     }
 
@@ -190,8 +191,6 @@ namespace CnC_WFA
 
         private void ExecuteScript(string program)
         {
-
-
             var CSHarpProvider = CodeDomProvider.CreateProvider("CSharp");
             CompilerParameters compilerParams = new CompilerParameters()
             {
@@ -261,14 +260,28 @@ namespace CnC_WFA
 
     }
 
+    [Serializable]
     public class CurveInfo
     {
-        public string LearnMore;
-        public Language Language;
-        public string Discription;
-        public string Name;
-        public string Creator;
-        public string Usage;
-        public string MathematicalBasis;
+        public string LearnMore { get; set; } 
+        public string Language { get; set; }
+        public string Discription { get; set; }
+        public string Name { get; set; }
+        public string Creator { get; set; }
+        public string Usage { get; set; }
+        public string MathematicalBasis { get; set; }
+
+        public CurveInfo() { }
+
+        public CurveInfo(string learnMore, string language, string discription, string name, string creator, string usage, string mathematicalBasis)
+        {
+            LearnMore = learnMore;
+            Language = language;
+            Discription = discription;
+            Name = name;
+            Creator = creator;
+            Usage = usage;
+            MathematicalBasis = mathematicalBasis;
+        }
     }
 }
