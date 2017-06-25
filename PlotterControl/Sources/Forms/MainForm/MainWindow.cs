@@ -1162,8 +1162,8 @@ namespace CnC_WFA
 
 
 
-            new Form_Graph().ShowDialog();
-            Close();
+          //  new Form_Graph().ShowDialog();
+            //Close();
             
 
 

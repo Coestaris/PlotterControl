@@ -60,7 +60,7 @@ namespace CnC_WFA
             dat = (DocumentData)d.Clone();
             bkp = (DocumentData)d.Clone();
             Text = "Editing '" + dat.Name + "'";
-            dat.BaseData.Save("Temp\\backup" + cc.ToString() + ".cvf");
+            dat.BaseData.Save("Temp\\backup" + cc.ToString() + ".pcv");
             d.BaseData.RawData = d.BaseData.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
             RefillTree();
             gr2 = dat.BaseData.GrPath;
@@ -197,7 +197,7 @@ namespace CnC_WFA
         private void button_cancel_Click(object sender, EventArgs e)
         {
             int li = parent.main.Items.FindIndex(p => p.Name == dat.Name);
-            (parent.main.Items[li] as DocumentData).BaseData = new Vector("Temp\\backup0.cvf");
+            (parent.main.Items[li] as DocumentData).BaseData = new Vector("Temp\\backup0.pcv");
             parent.main.Items[li].PreRender();
             parent.Render();
             Close();

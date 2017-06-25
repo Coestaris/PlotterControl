@@ -57,16 +57,30 @@ namespace CnC_WFA
             this.label_zoom = new System.Windows.Forms.Label();
             this.timer_redraw = new System.Windows.Forms.Timer(this.components);
             this.panel_tools = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label_y = new System.Windows.Forms.Label();
             this.label_x = new System.Windows.Forms.Label();
+            this.panel_wait = new System.Windows.Forms.Panel();
+            this.loadingCircle_tab1 = new MRG.Controls.UI.LoadingCircle();
+            this.label_load = new System.Windows.Forms.Label();
+            this.panel_loaderr = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_loaderr_close = new System.Windows.Forms.Button();
+            this.button_loaderr_more = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel_tools.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel_wait.SuspendLayout();
+            this.panel_loaderr.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox_Main
@@ -396,6 +410,8 @@ namespace CnC_WFA
             // 
             // panel_tools
             // 
+            this.panel_tools.Controls.Add(this.button3);
+            this.panel_tools.Controls.Add(this.button2);
             this.panel_tools.Controls.Add(this.button1);
             this.panel_tools.Controls.Add(this.label_zoom);
             this.panel_tools.Controls.Add(this.groupBox2);
@@ -405,6 +421,36 @@ namespace CnC_WFA
             this.panel_tools.Name = "panel_tools";
             this.panel_tools.Size = new System.Drawing.Size(270, 661);
             this.panel_tools.TabIndex = 11;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button3.FlatAppearance.BorderSize = 2;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(113, 529);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(88, 40);
+            this.button3.TabIndex = 16;
+            this.button3.Text = "Загр";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(19, 529);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 40);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Сохр";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -452,12 +498,129 @@ namespace CnC_WFA
             this.label_x.TabIndex = 0;
             this.label_x.Text = "label1";
             // 
+            // panel_wait
+            // 
+            this.panel_wait.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.panel_wait.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_wait.Controls.Add(this.loadingCircle_tab1);
+            this.panel_wait.Controls.Add(this.label_load);
+            this.panel_wait.Font = new System.Drawing.Font("Cambria", 12F);
+            this.panel_wait.Location = new System.Drawing.Point(390, 255);
+            this.panel_wait.Name = "panel_wait";
+            this.panel_wait.Size = new System.Drawing.Size(361, 164);
+            this.panel_wait.TabIndex = 16;
+            this.panel_wait.Visible = false;
+            // 
+            // loadingCircle_tab1
+            // 
+            this.loadingCircle_tab1.Active = true;
+            this.loadingCircle_tab1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.loadingCircle_tab1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loadingCircle_tab1.BackgroundImage")));
+            this.loadingCircle_tab1.Color = System.Drawing.SystemColors.MenuHighlight;
+            this.loadingCircle_tab1.ForeColor = System.Drawing.Color.Transparent;
+            this.loadingCircle_tab1.InnerCircleRadius = 5;
+            this.loadingCircle_tab1.Location = new System.Drawing.Point(137, 11);
+            this.loadingCircle_tab1.Name = "loadingCircle_tab1";
+            this.loadingCircle_tab1.NumberSpoke = 12;
+            this.loadingCircle_tab1.OuterCircleRadius = 11;
+            this.loadingCircle_tab1.RotationSpeed = 100;
+            this.loadingCircle_tab1.Size = new System.Drawing.Size(75, 75);
+            this.loadingCircle_tab1.SpokeThickness = 2;
+            this.loadingCircle_tab1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircle_tab1.TabIndex = 31;
+            this.loadingCircle_tab1.Text = "loadingCircle2";
+            this.loadingCircle_tab1.UseWaitCursor = true;
+            // 
+            // label_load
+            // 
+            this.label_load.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label_load.Location = new System.Drawing.Point(-1, 89);
+            this.label_load.Name = "label_load";
+            this.label_load.Size = new System.Drawing.Size(361, 73);
+            this.label_load.TabIndex = 0;
+            this.label_load.Text = "Подождите, пока идет загрузка и \r\nобработка данных. Это может занять\r\nдо пары мин" +
+    "ут.";
+            this.label_load.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel_loaderr
+            // 
+            this.panel_loaderr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(60)))), ((int)(((byte)(130)))));
+            this.panel_loaderr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_loaderr.Controls.Add(this.button_loaderr_more);
+            this.panel_loaderr.Controls.Add(this.button_loaderr_close);
+            this.panel_loaderr.Controls.Add(this.label1);
+            this.panel_loaderr.Font = new System.Drawing.Font("Cambria", 12F);
+            this.panel_loaderr.Location = new System.Drawing.Point(99, 70);
+            this.panel_loaderr.Name = "panel_loaderr";
+            this.panel_loaderr.Size = new System.Drawing.Size(361, 164);
+            this.panel_loaderr.TabIndex = 32;
+            this.panel_loaderr.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(-1, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(361, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Обнаружены ошибки при загрузке документа.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button_loaderr_close
+            // 
+            this.button_loaderr_close.BackColor = System.Drawing.Color.White;
+            this.button_loaderr_close.Enabled = false;
+            this.button_loaderr_close.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_loaderr_close.FlatAppearance.BorderSize = 2;
+            this.button_loaderr_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_loaderr_close.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_loaderr_close.Location = new System.Drawing.Point(186, 117);
+            this.button_loaderr_close.Name = "button_loaderr_close";
+            this.button_loaderr_close.Size = new System.Drawing.Size(106, 40);
+            this.button_loaderr_close.TabIndex = 5;
+            this.button_loaderr_close.Text = "Закрiть";
+            this.button_loaderr_close.UseVisualStyleBackColor = false;
+            // 
+            // button_loaderr_more
+            // 
+            this.button_loaderr_more.BackColor = System.Drawing.Color.White;
+            this.button_loaderr_more.Enabled = false;
+            this.button_loaderr_more.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_loaderr_more.FlatAppearance.BorderSize = 2;
+            this.button_loaderr_more.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_loaderr_more.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_loaderr_more.Location = new System.Drawing.Point(74, 117);
+            this.button_loaderr_more.Name = "button_loaderr_more";
+            this.button_loaderr_more.Size = new System.Drawing.Size(106, 40);
+            this.button_loaderr_more.TabIndex = 6;
+            this.button_loaderr_more.Text = "Подробнее";
+            this.button_loaderr_more.UseVisualStyleBackColor = false;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "pcgraph";
+            this.saveFileDialog1.FileName = "graph";
+            this.saveFileDialog1.Filter = "PC Graph|*.pcgraph|XML File|*.xml";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "pcgraph";
+            this.openFileDialog1.FileName = "graph";
+            this.openFileDialog1.Filter = "PC Graph|*.pcgraph|XML File|*.xml";
+            // 
             // Form_Graph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1140, 675);
+            this.Controls.Add(this.panel_loaderr);
+            this.Controls.Add(this.panel_wait);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_tools);
             this.Controls.Add(this.labelHint);
@@ -478,6 +641,8 @@ namespace CnC_WFA
             this.panel_tools.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel_wait.ResumeLayout(false);
+            this.panel_loaderr.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,5 +679,17 @@ namespace CnC_WFA
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label_y;
         private System.Windows.Forms.Label label_x;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel_wait;
+        private MRG.Controls.UI.LoadingCircle loadingCircle_tab1;
+        private System.Windows.Forms.Label label_load;
+        private System.Windows.Forms.Panel panel_loaderr;
+        private System.Windows.Forms.Button button_loaderr_more;
+        private System.Windows.Forms.Button button_loaderr_close;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

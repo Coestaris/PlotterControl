@@ -2708,7 +2708,7 @@ namespace CnC_WFA
             this.label_vect_viewr_discr.Name = "label_vect_viewr_discr";
             this.label_vect_viewr_discr.Size = new System.Drawing.Size(712, 38);
             this.label_vect_viewr_discr.TabIndex = 125;
-            this.label_vect_viewr_discr.Text = "Просмотрщик векторов - инструмент для просмотра векторных файлов формата .CVF и ." +
+            this.label_vect_viewr_discr.Text = "Просмотрщик векторов - инструмент для просмотра векторных файлов формата .PCV и ." +
     "PRRES.\r\nАвтоматически открывается при асоциации с такими файлами.";
             // 
             // button_vect_viewer_start

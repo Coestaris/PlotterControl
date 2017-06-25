@@ -53,11 +53,11 @@ namespace CnC_WFA
 
         public enum FileFormats 
         {
-            CVF = 1,
-            VDOC = 2,
-            PRRES = 3,
-            PCMACROS = 4,
-            PCMPACK = 5
+            PCV = 0,
+            PCVDOC = 1,
+            PRRES = 2,
+            PCMACROS = 3,
+            PCMPACK = 4
         }
 
         [Flags]
@@ -71,11 +71,11 @@ namespace CnC_WFA
 
         private enum IconIndex
         {
-            Icon_CVF = 1,
+            Icon_PCV = 1,
             Icon_MacroPack = 12,
             Icon_Macros = 2,
             Icon_PRRES = 3,
-            Icon_VDOC = 4,
+            Icon_PCVDOC = 4,
             Icon_Program = 5,
             Icon_Contex_Edit = 6,
             Icon_Contex_Info = 7,
@@ -123,14 +123,14 @@ namespace CnC_WFA
 
         public static List<bool> GetUnidentifiedAssoc()
         {
-            FileAssociationInfo fai_cvf = new FileAssociationInfo(".cvf");
-            FileAssociationInfo fai_vdoc = new FileAssociationInfo(".vdoc");
+            FileAssociationInfo fai_pcv = new FileAssociationInfo(".pcv");
+            FileAssociationInfo fai_pcvdoc = new FileAssociationInfo(".pcvdoc");
             FileAssociationInfo fai_prres = new FileAssociationInfo(".prres");
             FileAssociationInfo fai_pcmacros = new FileAssociationInfo(".pcmacros");
             FileAssociationInfo fai_pcmpack = new FileAssociationInfo(".pcmpack");
             List<bool> Unidentified = new List<bool>();
-            Unidentified.Add(!fai_cvf.Exists);
-            Unidentified.Add(!fai_vdoc.Exists);
+            Unidentified.Add(!fai_pcv.Exists);
+            Unidentified.Add(!fai_pcvdoc.Exists);
             Unidentified.Add(!fai_prres.Exists);
             Unidentified.Add(!fai_pcmacros.Exists);
             Unidentified.Add(!fai_pcmpack.Exists);
@@ -149,8 +149,8 @@ namespace CnC_WFA
             if (Unidentified.Contains(true))
             {
                 List<string> ErrorList = new List<string>();
-                if (Unidentified[(int)FileFormats.CVF]) ErrorList.Add(".CVF ("+TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] +")");
-                if (Unidentified[(int)FileFormats.VDOC]) ErrorList.Add(".VDOC ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.VectorDocument"] + ")");
+                if (Unidentified[(int)FileFormats.PCV]) ErrorList.Add(".PCV ("+TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] +")");
+                if (Unidentified[(int)FileFormats.PCVDOC]) ErrorList.Add(".VDOC ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.VectorDocument"] + ")");
                 if (Unidentified[(int)FileFormats.PRRES]) ErrorList.Add(".PRRES ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.OldVectorFiles"] + ")");
                 if (Unidentified[(int)FileFormats.PCMACROS]) ErrorList.Add(".PCMACROS ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.Macros"] + ")");
                 if (Unidentified[(int)FileFormats.PCMPACK]) ErrorList.Add(".PCMPACK ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.MacroPacks"] + ")");
@@ -164,8 +164,8 @@ namespace CnC_WFA
                 AllertAboutAdmin();
                 return;
             }
-            if (Unidentified[(int)FileFormats.CVF]) RegCVF();
-            if (Unidentified[(int)FileFormats.VDOC]) RegVDOC();
+            if (Unidentified[(int)FileFormats.PCV]) RegPCV();
+            if (Unidentified[(int)FileFormats.PCVDOC]) RegPCVDOC();
             if (Unidentified[(int)FileFormats.PRRES]) RegPRRES();
             if (Unidentified[(int)FileFormats.PCMACROS]) RegPCMACROS();
             if (Unidentified[(int)FileFormats.PCMPACK]) RegPCMPACK();
@@ -176,17 +176,17 @@ namespace CnC_WFA
         {
             switch (format)
             {
-                case FileFormats.CVF:
+                case FileFormats.PCV:
                     try
                     {
-                        RegCVF();
+                        RegPCV();
                         return true;
                     }
                     catch { return false; }
-                case FileFormats.VDOC:
+                case FileFormats.PCVDOC:
                     try
                     {
-                        RegVDOC();
+                        RegPCVDOC();
                         return true;
                     }
                     catch { return false; }
@@ -216,24 +216,24 @@ namespace CnC_WFA
             }
         }
 
-        private static void RegCVF()
+        private static void RegPCV()
         {
-            AssociateMain("CNCWFAOPENER.CVF", ".cvf", PerceivedTypes.Image, "vect\\cvf");
-            AssociateMainData("CNCWFAOPENER.CVF", TranslateBase.CurrentLang.Phrase["Core.CVF"], EditFlags.None, IconIndex.Icon_CVF);
-            AssociateVerb("CNCWFAOPENER.CVF", @" --open_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
-            AssociateVerb("CNCWFAOPENER.CVF", @" --edit_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
-            AssociateVerb("CNCWFAOPENER.CVF", @" --render_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
-            AssociateVerb("CNCWFAOPENER.CVF", @" --print_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateMain("CNCWFAOPENER.PCV", ".pcv", PerceivedTypes.Image, "vect\\pcv");
+            AssociateMainData("CNCWFAOPENER.PCV", TranslateBase.CurrentLang.Phrase["Core.PCV"], EditFlags.None, IconIndex.Icon_PCV);
+            AssociateVerb("CNCWFAOPENER.PCV", @" --open_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PCV", @" --edit_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PCV", @" --render_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PCV", @" --print_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
         }
 
-        private static void RegVDOC()
+        private static void RegPCVDOC()
         {
-            AssociateMain("CNCWFAOPENER.VDOC", ".vdoc", PerceivedTypes.Image, "vect\\vdoc");
-            AssociateMainData("CNCWFAOPENER.VDOC", TranslateBase.CurrentLang.Phrase["Core.VDOC"], EditFlags.None, IconIndex.Icon_VDOC);
-            AssociateVerb("CNCWFAOPENER.VDOC", @" --open_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
-            AssociateVerb("CNCWFAOPENER.VDOC", @" --render_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
-            AssociateVerb("CNCWFAOPENER.VDOC", @" --print_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
-            AssociateVerb("CNCWFAOPENER.VDOC", @" --convert_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsVector"], IconIndex.Icon_Contex_Read);
+            AssociateMain("CNCWFAOPENER.PCVDOC", ".pcvdoc", PerceivedTypes.Image, "vect\\pcvdoc");
+            AssociateMainData("CNCWFAOPENER.PCVDOC", TranslateBase.CurrentLang.Phrase["Core.PCVDOC"], EditFlags.None, IconIndex.Icon_PCVDOC);
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --open_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --render_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --print_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --convert_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsVector"], IconIndex.Icon_Contex_Read);
         }
 
         private static void RegPRRES()
@@ -282,9 +282,9 @@ namespace CnC_WFA
             string DataKey = "";
             switch (index)
             {
-                case (FileFormats.CVF):
-                    Key = ".cvf";
-                    DataKey = ".CVF";
+                case (FileFormats.PCV):
+                    Key = ".pcv";
+                    DataKey = ".PCV";
                     break;
 
                 case (FileFormats.PRRES):
@@ -292,9 +292,9 @@ namespace CnC_WFA
                     DataKey = ".PRRES";
                     break;
 
-                case (FileFormats.VDOC):
-                    Key = ".vdoc";
-                    DataKey = ".VDOC";
+                case (FileFormats.PCVDOC):
+                    Key = ".pcvdoc";
+                    DataKey = ".PCVDOC";
                     break;
 
                 case (FileFormats.PCMPACK):

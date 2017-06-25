@@ -175,6 +175,26 @@
   <metadata name="timer_redraw.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="loadingCircle_tab1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAARRJREFUeF7t0DEBgDAAwDA8IRKhEzLejoNuf48YyHU/c2ZPWQfKOrBkjTHywZ+y
+        BH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzBn7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvw
+        pyzBn7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzBn7IEf8oS/ClL8KcswZ+yBH/K
+        EvwpS/CnLMGfsgR/yhL8KUvwpyzBn7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzB
+        n7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzBnyUr/8o6UNa2OV9XWjDseKQnQQAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>140, 17</value>
+  </metadata>
+  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>304, 17</value>
+  </metadata>
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>440, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>83</value>
   </metadata>

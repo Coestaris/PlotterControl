@@ -57,10 +57,10 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Загружает вектор формата .CVF.
+        /// Загружает вектор формата .PCV.
         /// </summary>
         /// <param name="filename">Имя файла для загрузки</param>
-        private void LoadVectCvf(string filename)
+        private void LoadVectPCV(string filename)
         {
             VPointEx[][] contours = new VPointEx[0][];
             string s = File.ReadAllText(filename);
@@ -151,7 +151,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Сохраняет базовую информацию о векторе в формате .CVF.
+        /// Сохраняет базовую информацию о векторе в формате .PCV.
         /// </summary>
         /// <param name="filename">Имя файла для загрузки.</param>
         /// <param name="RawData_">Вектор для сохранения.</param>
@@ -401,7 +401,7 @@ namespace CWA.Vectors
             Vector vect = new Vector();
             try
             {
-                if (File.ReadLines(filename).First().StartsWith("prres"))  vect.LoadVectCvf(filename);
+                if (File.ReadLines(filename).First().StartsWith("prres"))  vect.LoadVectPCV(filename);
                 else if (File.ReadLines(filename).First().StartsWith("vect") || File.ReadLines(filename).First().StartsWith("vectarch")) vect.LoadVectPrres(filename);
             }
             catch { return false; }
@@ -479,7 +479,7 @@ namespace CWA.Vectors
             Init();
             string ind =  File.ReadLines(filename).First();
             if (ind.StartsWith("prres")) LoadVectPrres(filename);
-            else if (ind.StartsWith("vect") || ind.StartsWith("vectarch")) LoadVectCvf(filename);
+            else if (ind.StartsWith("vect") || ind.StartsWith("vectarch")) LoadVectPCV(filename);
             else throw new FileFormatException();
             Filename = filename;
         }

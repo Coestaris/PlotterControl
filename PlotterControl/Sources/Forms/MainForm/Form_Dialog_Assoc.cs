@@ -14,8 +14,8 @@ namespace CnC_WFA
 
         private string[] Discr =
         {
-            ".CVF - основной формат векторных рисунков. Его можно получить либо с помощью векторизации изображения, либо с помощью редактора",
-            ".VDOC - формат векторных документов, которые в последствии можно преобразовать в вектор.",
+            ".PCV - основной формат векторных рисунков. Его можно получить либо с помощью векторизации изображения, либо с помощью редактора",
+            ".PCVDOC - формат векторных документов, которые в последствии можно преобразовать в вектор.",
             ".PRRES",
             ".PCMACROS",
             ".PCMPACK"
@@ -31,7 +31,7 @@ namespace CnC_WFA
         {
             int diff = 0;
             List<string> log = new List<string>();
-            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            for (int i = 0; i < checkedListBox.Items.Count-1; i++)
             {
                 if (current[i] != startStatus[i])
                 {
@@ -39,8 +39,8 @@ namespace CnC_WFA
                     FileAssociation.AssocDeleteFailReason err;
                     if (current[i])
                     {
-                        if(!FileAssociation.DeleteAssociation((FileAssociation.FileFormats)(i + 1), out err)) log.Add("Невозможно удалить ассоциацию. Причина: " + err.ToString());
-                    } else if (!FileAssociation.RegisterAssociation((FileAssociation.FileFormats)(i + 1))) log.Add("Невохможно установить ассоцииацию");
+                        if(!FileAssociation.DeleteAssociation((FileAssociation.FileFormats)(i), out err)) log.Add("Невозможно удалить ассоциацию. Причина: " + err.ToString());
+                    } else if (!FileAssociation.RegisterAssociation((FileAssociation.FileFormats)(i))) log.Add("Невохможно установить ассоцииацию");
                 }
             }
             if (log.Count != 0) MessageBox.Show(string.Join("\n", log), "Ассоциации", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -61,11 +61,11 @@ namespace CnC_WFA
             loadingCircle_tab1.NumberSpoke = 100;
             panel_wait.Top = Height /2 - panel_wait.Height / 2 - 40;
             panel_wait.Left = Width /2 - panel_wait.Width / 2;
+            loadingCircle_tab1.Top = panel_wait.Height / 2 - loadingCircle_tab1.Height / 2 - 40;
+            loadingCircle_tab1.Left = panel_wait.Width / 2 - loadingCircle_tab1.Width / 2;
             panel_cantFindPlugins.Top = Height / 2 - panel_cantFindPlugins.Height / 2 - 40;
             panel_cantFindPlugins.Left = Width / 2 - panel_cantFindPlugins.Width / 2;
             panel_cantFindPlugins.Visible = false;
-            loadingCircle_tab1.Top = panel_wait.Height / 2 - loadingCircle_tab1.Height / 2 - 40;
-            loadingCircle_tab1.Left = panel_wait.Width / 2 - loadingCircle_tab1.Width / 2;
             Reload();
         }
 

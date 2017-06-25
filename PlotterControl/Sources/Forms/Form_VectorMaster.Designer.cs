@@ -1370,7 +1370,7 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "Vect Files|*.cvf|Old Vect Format|*.prres";
+            this.saveFileDialog1.Filter = "Vect Files|*.pcv|Old Vect Format|*.prres";
             // 
             // label_1
             // 

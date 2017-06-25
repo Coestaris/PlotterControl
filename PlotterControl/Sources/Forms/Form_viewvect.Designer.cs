@@ -343,8 +343,8 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "VectFile.cvf";
-            this.openFileDialog1.Filter = "PrRes Files(*.cvf)|*.cvf|PrRes Files(*.prres)|*.prres";
+            this.openFileDialog1.FileName = "VectFile.pcv";
+            this.openFileDialog1.Filter = "PrRes Files(*.pcv)|*.pcv|PrRes Files(*.prres)|*.prres";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // loadingCircle1

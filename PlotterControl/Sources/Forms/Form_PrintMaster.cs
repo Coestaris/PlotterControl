@@ -162,7 +162,7 @@ namespace CnC_WFA
                 listBox_prlist.Items.Clear();
                 string[] paths = Directory.GetFiles("Data\\Vect\\", "*.prres");
                 listBox_prlist.Items.AddRange(paths);
-                paths = Directory.GetFiles("Data\\Vect\\", "*.cvf");
+                paths = Directory.GetFiles("Data\\Vect\\", "*.pcv");
                 listBox_prlist.Items.AddRange(paths);
             } else
             {
@@ -241,7 +241,7 @@ namespace CnC_WFA
                 listBox_prlist.Items.Clear();
                 string[] paths = Directory.GetFiles("Data\\Vect\\", "*.prres");
                 listBox_prlist.Items.AddRange(paths);
-                paths = Directory.GetFiles("Data\\Vect\\", "*.cvf");
+                paths = Directory.GetFiles("Data\\Vect\\", "*.pcv");
                 listBox_prlist.Items.AddRange(paths);
             }
         }

@@ -780,7 +780,7 @@ namespace CnC_WFA
         {
             if(saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (new FileInfo(saveFileDialog1.FileName).Extension == ".cvf") pr.Save(saveFileDialog1.FileName);
+                if (new FileInfo(saveFileDialog1.FileName).Extension == ".pcv") pr.Save(saveFileDialog1.FileName);
                 else pr.SaveOld(saveFileDialog1.FileName, path);
             }
         }
@@ -797,15 +797,15 @@ namespace CnC_WFA
         private void button_show_Click_1(object sender, EventArgs e)
         {
             vect_saved++;
-            pr.Save("Temp\\" + vect_saved + ".cvf");
-            FormTranslator.Translate(new Form_ViewVect("Temp\\" + vect_saved + ".cvf", true)).Show(); ;
+            pr.Save("Temp\\" + vect_saved + ".pcv");
+            FormTranslator.Translate(new Form_ViewVect("Temp\\" + vect_saved + ".pcv", true)).Show(); ;
         }
 
         private void button_print_Click_1(object sender, EventArgs e)
         {
             vect_saved++;
-            pr.Save("Temp\\" + vect_saved + ".cvf");
-            new Form_PrintMaster("Temp\\" + vect_saved + ".cvf", true).Show();
+            pr.Save("Temp\\" + vect_saved + ".pcv");
+            new Form_PrintMaster("Temp\\" + vect_saved + ".pcv", true).Show();
         }
 
         private void button_next_tab4_Click_1(object sender, EventArgs e)
@@ -923,18 +923,18 @@ namespace CnC_WFA
 
         private void button_savepr_Click(object sender, EventArgs e)
         {
-           /* textBox_prresname.Text = ((string)listBox1.Items[listBox1.SelectedIndex]).Split('.')[0].Split('\\')[1];
-            if (button_savepr.Text == "Accept")
-            {
-                pr.SaveVect_new("Data\\Vect\\" + textBox_prresname.Text + ".cvf");
-                Compresser.Compresser.Compress("Data\\Vect\\" + textBox_prresname.Text + ".cvf", false,"vectarch");
-                button_savepr.Text = "Save";
-                textBox_prresname.Visible = false;
-                textBox_prresname.Clear();
-                return;
-            }
-            textBox_prresname.Visible = true;
-            button_savepr.Text = "Accept";*/
+            /* textBox_prresname.Text = ((string)listBox1.Items[listBox1.SelectedIndex]).Split('.')[0].Split('\\')[1];
+             if (button_savepr.Text == "Accept")
+             {
+                 pr.SaveVect_new("Data\\Vect\\" + textBox_prresname.Text + ".pcv");
+                 Compresser.Compresser.Compress("Data\\Vect\\" + textBox_prresname.Text + ".pcv", false,"vectarch");
+                 button_savepr.Text = "Save";
+                 textBox_prresname.Visible = false;
+                 textBox_prresname.Clear();
+                 return;
+             }
+             textBox_prresname.Visible = true;
+             button_savepr.Text = "Accept";*/
         }
 
         private void button_next_tab4_Click(object sender, EventArgs e)

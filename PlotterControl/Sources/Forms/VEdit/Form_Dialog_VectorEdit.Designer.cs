@@ -987,8 +987,8 @@ namespace CnC_WFA
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "VectFile.cvf";
-            this.openFileDialog1.Filter = "PrRes Files(*.cvf)|*.cvf|PrRes Files(*.prres)|*.prres";
+            this.openFileDialog1.FileName = "VectFile.pcv";
+            this.openFileDialog1.Filter = "PrRes Files(*.pcv)|*.pcv|PrRes Files(*.prres)|*.prres";
             // 
             // backgroundWorker1
             // 

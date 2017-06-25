@@ -1387,20 +1387,20 @@ namespace CnC_WFA
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "VectFile.cvf";
-            this.openFileDialog1.Filter = "PrRes Files(*.cvf)|*.cvf|PrRes Files(*.prres)|*.prres";
+            this.openFileDialog1.FileName = "VectFile.pcv";
+            this.openFileDialog1.Filter = "PrRes Files(*.pcv)|*.pcv|PrRes Files(*.prres)|*.prres";
             this.openFileDialog1.InitialDirectory = "//Data//Vect";
             // 
             // openFileDialog2
             // 
-            this.openFileDialog2.FileName = "VectDocument.vdoc";
-            this.openFileDialog2.Filter = "Vect Document File(*.vdoc)|*.vdoc";
+            this.openFileDialog2.FileName = "VectDocument.pcvdoc";
+            this.openFileDialog2.Filter = "Vect Document File(*.pcvdoc)|*.pcvdoc";
             // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "cvd";
-            this.saveFileDialog1.FileName = "VectDocument.vdoc";
-            this.saveFileDialog1.Filter = "Vect Document File(*.vdoc)|*.vdoc";
+            this.saveFileDialog1.FileName = "VectDocument.pcvdoc";
+            this.saveFileDialog1.Filter = "Vect Document File(*.pcvdoc)|*.pcvdoc";
             // 
             // contextMenuStrip_object_edit
             // 

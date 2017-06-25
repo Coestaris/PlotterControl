@@ -74,11 +74,11 @@ namespace CnC_WFA
 
             //    ==Association==
             //FileAssociation.DeleteAllAssociations();
+            FileAssociation.PathToIcons = execDirectory + "\\Lib\\IconSet.dll";
+            FileAssociation.PathToProgram = execDirectory + "\\CNC_WFA.exe";
             FileAssociation.DiscoverRegistryAccessibility();
             if (!GlobalOptions.IgnoreRegisterExtentions)
             {
-                FileAssociation.PathToIcons = execDirectory + "\\Lib\\IconSet.dll";
-                FileAssociation.PathToProgram = execDirectory + "\\CNC_WFA.exe";
                 FileAssociation.AssociateAll();
             }
 

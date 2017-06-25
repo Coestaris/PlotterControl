@@ -115,7 +115,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// Сохранить документ в файл с разширением .vdoc.
+        /// Сохранить документ в файл с разширением .pcvdoc.
         /// </summary>
         /// <param name="filename">Имя файла для сохранения.</param>
         public void Save(string filename)
@@ -241,17 +241,17 @@ namespace CWA.Vectors.Document
                 }
             }
             document.Save(filename + "\\" + new DirectoryInfo(filename).Name + ".xml");
-            try { File.Delete(filename + ".vdoc");}
+            try { File.Delete(filename + ".pcvdoc");}
             catch { //ignored 
             }
-            ZipFile.CreateFromDirectory(filename, filename + ".vdoc");
+            ZipFile.CreateFromDirectory(filename, filename + ".pcvdoc");
             foreach (var a in Directory.GetFiles(filename))
                 File.Delete(a);
             Directory.Delete(filename);
         }
 
         /// <summary>
-        /// Загружает документ с файла с разширением .vdoc.
+        /// Загружает документ с файла с разширением .pcvdoc.
         /// </summary>
         /// <param name="filename">Имя файла, с которого будет грузится документ.</param>
         /// <returns>Экземпляр класса Document, загруженный с файла.</returns>
@@ -263,7 +263,7 @@ namespace CWA.Vectors.Document
                 try
                 {
                     Directory.CreateDirectory(filename);
-                    ZipFile.ExtractToDirectory(filename + ".vdoc", filename);
+                    ZipFile.ExtractToDirectory(filename + ".pcvdoc", filename);
                 }
                 catch
                 {
@@ -271,7 +271,7 @@ namespace CWA.Vectors.Document
                     {
                         foreach (var a in Directory.GetFiles(filename)) File.Delete(a);
                         Directory.Delete(filename);
-                        ZipFile.ExtractToDirectory(filename + ".vdoc", filename);
+                        ZipFile.ExtractToDirectory(filename + ".pcvdoc", filename);
                     }
                     catch
                     {

@@ -191,7 +191,7 @@
   </menu>
   <menu id="MainWindow.label_vect_vect_title">Векторизация</menu>
   <menu id="MainWindow.label_vect_viewer_title">Просмотрщик векторов</menu>
-  <menu id="MainWindow.label_vect_viewr_discr">  Просмотрщик векторов - инструмент для просмотра векторных файлов формата .CVF и .PRRES.
+  <menu id="MainWindow.label_vect_viewr_discr">  Просмотрщик векторов - инструмент для просмотра векторных файлов формата .PCV и .PRRES.
 Автоматически открывается при асоциации с такими файлами.
   </menu>
   <menu id="MainWindow.label_xmm">ММ в одном шаге по оси Y:</menu>

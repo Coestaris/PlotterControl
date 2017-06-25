@@ -22,8 +22,8 @@
   <phrase id="Core.Word.Run">Запустить</phrase>
   <phrase id="Core.Word.Info">Инфомация</phrase>
   <phrase id="Core.Word.Options">Параметры </phrase>
-  <phrase id="Core.CVF">Векторное изображение</phrase>
-  <phrase id="Core.VDOC">Векторный документ</phrase>
+  <phrase id="Core.PCV">Векторное изображение</phrase>
+  <phrase id="Core.PCVDOC">Векторный документ</phrase>
   <phrase id="Core.PRRES">Векторное изображение</phrase>
   <phrase id="Core.PCMACROS">Векторный макрос</phrase>
   <phrase id="Core.PCMPACK">Векторный макро-пак</phrase>

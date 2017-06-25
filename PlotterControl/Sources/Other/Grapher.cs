@@ -3,13 +3,57 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Xml.Serialization;
 
 namespace CnC_WFA
 {
+  /*  public abstract class IGraphDataSource
+    {
+        public SizeF GetInterval();
+        public float GetValue(float arg);
+    }*/
+
+    public class SerializablePen
+    {
+        public SerializableColor Color { get; set; }
+        public float Width { get; set; }
+
+        public SerializablePen() { }
+
+        public static implicit operator Pen(SerializablePen pen)
+        {
+            return new Pen(pen.Color, pen.Width);
+        }
+        
+        public static implicit operator SerializablePen(Pen pen)
+        {
+            return new SerializablePen() { Color = pen.Color, Width = pen.Width };
+        }
+    }
+
+    public class SerializableColor
+    {
+        public float A { get; set; }
+        public float R { get; set; }
+        public float G { get; set; }
+        public float B { get; set; }
+
+        public SerializableColor() { }
+
+        public static implicit operator Color(SerializableColor col)
+        {
+            return Color.FromArgb((int)col.A, (int)col.R, (int)col.G, (int)col.B);
+        }
+
+        public static implicit operator SerializableColor(Color col)
+        {
+            return new SerializableColor() { A = col.A, R = col.R, B = col.B, G = col.G };
+        }
+    }
+
+
     public enum PenStyles
     {
         Solid,
@@ -22,51 +66,59 @@ namespace CnC_WFA
         File
     }
 
-    public interface IGraphDataSource
+    public enum MarkerType
     {
-        SizeF GetInterval();
-        float GetValue(float arg);
+        Circle,
+        Square,
     }
 
-    public class FormulaDataSource: IGraphDataSource
+    [Serializable]
+    public class FormulaDataSource
     {
-        public string lowLimFormula, highLimFormula;
-        public string formula;
-        public float LowLim, HighLim;
-        private Func<float, float> func;
+        #region CompStrings
         internal const string CompRangeEnvironment =
-@"
-using System;
-//using static System.Math;
+        @"
+        using System;
+        //using static System.Math;
 
-namespace Func
-{
-    public static class Function
-    {
-        public static float MainFunction()
+        namespace Func
         {
-            double val = {formula};
-            return (float)val;
-        }
-    }
-}";
+            public static class Function
+            {
+                public static float MainFunction()
+                {
+                    double val = {formula};
+                    return (float)val;
+                }
+            }
+        }";
 
         private const string CompEnvironment =
-@"
-using System;
-//using static System.Math;
+        @"
+        using System;
+        //using static System.Math;
 
-namespace Func
-{
-    public static class Function
-    {
-        public static float MainFunction(float x)
+        namespace Func
         {
-            double val = {formula};
-            return (float)val;
-        }
-    }
-}";
+            public static class Function
+            {
+                public static float MainFunction(float x)
+                {
+                    double val = {formula};
+                    return (float)val;
+                }
+            }
+        }";
+        #endregion
+
+        private Func<float, float> func;
+        public string LowLimFormula { get; set; }
+        public string HighLimFormula { get; set; }
+        public string Formula { get; set; }
+        public float LowLim { get; set; }
+        public float HighLim { get; set; }
+
+        public FormulaDataSource() { }
 
         public List<string> CompileRange()
         {
@@ -81,8 +133,8 @@ namespace Func
                 "System.dll",
             });
             compilerParams.IncludeDebugInformation = false;
-            var compilerResultLow = CSHarpProvider.CompileAssemblyFromSource(compilerParams, CompRangeEnvironment.Replace("{formula}", lowLimFormula));
-            var compilerResultHigh = CSHarpProvider.CompileAssemblyFromSource(compilerParams, CompRangeEnvironment.Replace("{formula}", highLimFormula));
+            var compilerResultLow = CSHarpProvider.CompileAssemblyFromSource(compilerParams, CompRangeEnvironment.Replace("{formula}", LowLimFormula));
+            var compilerResultHigh = CSHarpProvider.CompileAssemblyFromSource(compilerParams, CompRangeEnvironment.Replace("{formula}", HighLimFormula));
 
             if (compilerResultLow.Errors.Count == 0 && compilerResultHigh.Errors.Count == 0)
             {
@@ -138,7 +190,7 @@ namespace Func
                 "System.dll",
             });
             compilerParams.IncludeDebugInformation = false;
-            var compilerResult = CSHarpProvider.CompileAssemblyFromSource(compilerParams, CompEnvironment.Replace("{formula}", formula));
+            var compilerResult = CSHarpProvider.CompileAssemblyFromSource(compilerParams, CompEnvironment.Replace("{formula}", Formula));
             if (compilerResult.Errors.Count == 0)
             {
                 try
@@ -177,22 +229,28 @@ namespace Func
         }
     }
 
-    public enum MarkerType
-    {
-        Circle,
-        Square,
-    }
-
+    [Serializable]
     public class GraphMarkers
     {
-        public bool Use;
-        
-        public bool UsePeriodic;
-
+        public bool Use { get; set; }
+        public bool UsePeriodic { get; set; }
+        //***Display
+        public List<float> Points { get; set; }
+        public float Size { get; set; }
+        public MarkerType Type { get; set; }
+        public SerializableColor Color { get; set; }
         //***Periodic Members
-        public bool AutoLims;
-        public string LowLimFormula, HighLimFormula, PeriodFormula;
-        public float Period, LowLim, HighLim;
+        public bool AutoLims { get; set; }
+        public string LowLimFormula { get; set; }
+        public string HighLimFormula { get; set; }
+        public string PeriodFormula { get; set; }
+        public float Period { get; set; }
+        public float LowLim { get; set; }
+        public float HighLim { get; set; }
+        //***Non-Periodic Members
+        public List<string> PointFormulas { get; set; }
+
+        public GraphMarkers() { }
 
         public List<string> CompilePeriod()
         {
@@ -262,43 +320,44 @@ namespace Func
             }
             return null;
         }
+
         public void GetPoints()
         {
             Points = new List<float>();
             for (float i = LowLim; i<=HighLim; i += Period) Points.Add(i);
         }
-
-        //***Non-Periodic Members
-        public List<string> PointFormulas;
-        //*** 
-
-        public List<float> Points;
-        public float Size;
-        public MarkerType Type;
-        public Color Color;
     }
 
-    public struct GraphDocAxis
+    [Serializable]
+    public class GraphDocAxis
     {
-        public bool Show;
-        public Color Color;
-        public float Width;
-        public bool UseUnlimited;
-        public float XOffset, YOffset;
+        public bool Show { get; set; }
+        public SerializableColor Color { get; set; }
+        public float Width { get; set; }
+        public bool UseUnlimited { get; set; }
+        public float XOffset { get; set; }
+        public float YOffset{ get; set; }
+
+        public GraphDocAxis() { }
     }
 
+    [Serializable]
     public class Graph: ICloneable
     {
-        public Pen MainPen;
-        public PenStyles PStyle;
-        public bool Display;
+        private GraphicsPath preRenderedGraph;
+        private GraphicsPath prerenderedMarkers;
+        public SerializablePen MainPen { get; set; }
+        public PenStyles PStyle { get; set; }
+        public bool Display { get; set; }
+        public GraphMarkers Markers { get; set; }
+        public string Name { get; set; }
+        public FormulaDataSource DataSource { get; set; }
+        public float MaxValue { get; set; }
+        public float MinValue { get; set; }
 
-        public GraphMarkers Markers;
-
+        const float Step = .01f;
+        const float Delta = .01f;
         //SharpDX
-
-        public string Name;
-        public IGraphDataSource dataSource { get; set; }
         
         public Graph()
         {
@@ -307,22 +366,50 @@ namespace Func
             ResetPreRender();
         }
 
-        public Graph(IGraphDataSource DataSource, string Name)
+        public Graph(FormulaDataSource DataSource, string Name)
         {
             Display = true;
             MainPen = Pens.Black;
-            dataSource = DataSource;
+            this.DataSource = DataSource;
             this.Name = Name;
             ResetPreRender();
         }
 
-        public float MaxValue, MinValue;
+        private void BuildGraph()
+        {
+            if (Display)
+            {
+                GraphicsPath a = new GraphicsPath();
+                SizeF Lims = DataSource.GetInterval();
+                List<PointF> points = new List<PointF>();
 
-        private GraphicsPath preRenderedGraph;
-        private GraphicsPath prerenderedMarkers;
+                MinValue = float.MaxValue;
+                MaxValue = float.MinValue;
 
-        const float Step = .01f;
-        const float Delta = .01f;
+                for (float i = Lims.Width; i <= Lims.Height; i += Step)
+                {
+                    var val = DataSource.GetValue(i);
+                    if(float.IsInfinity(val))
+                    {
+                        var v = float.IsPositiveInfinity(val) ? float.MinValue : float.MaxValue;
+
+                        // points.Add(new PointF(i, float.IsPositiveInfinity(val) ? -float.MaxValue : float.MaxValue));
+                        points.Add(new PointF(i, v));
+                        if (v > MaxValue) MaxValue = v;
+                        if (v < MinValue) MinValue = v;
+                    }
+                    if (!float.IsNaN(val))
+                    {
+                        points.Add(new PointF(i, -val));
+                        if (val > MaxValue) MaxValue = val;
+                        if (val < MinValue) MinValue = val;
+                    }
+                }
+                a.AddLines(points.ToArray());
+                preRenderedGraph = a;
+            }
+            else preRenderedGraph = new GraphicsPath();
+        }
 
         public void ResetPreRender()
         {
@@ -352,42 +439,6 @@ namespace Func
             return (GraphicsPath)prerenderedMarkers.Clone();
         }
 
-        private void BuildGraph()
-        {
-            if (Display)
-            {
-                GraphicsPath a = new GraphicsPath();
-                SizeF Lims = dataSource.GetInterval();
-                List<PointF> points = new List<PointF>();
-
-                MinValue = float.MaxValue;
-                MaxValue = float.MinValue;
-
-                for (float i = Lims.Width; i <= Lims.Height; i += Step)
-                {
-                    var val = dataSource.GetValue(i);
-                    if(float.IsInfinity(val))
-                    {
-                        var v = float.IsPositiveInfinity(val) ? float.MinValue : float.MaxValue;
-
-                        // points.Add(new PointF(i, float.IsPositiveInfinity(val) ? -float.MaxValue : float.MaxValue));
-                        points.Add(new PointF(i, v));
-                        if (v > MaxValue) MaxValue = v;
-                        if (v < MinValue) MinValue = v;
-                    }
-                    if (!float.IsNaN(val))
-                    {
-                        points.Add(new PointF(i, -val));
-                        if (val > MaxValue) MaxValue = val;
-                        if (val < MinValue) MinValue = val;
-                    }
-                }
-                a.AddLines(points.ToArray());
-                preRenderedGraph = a;
-            }
-            else preRenderedGraph = new GraphicsPath();
-        }
-
         public GraphicsPath Build()
         {
             if (preRenderedGraph == null) BuildGraph();
@@ -398,23 +449,23 @@ namespace Func
         {
             return MemberwiseClone();
         }
-    }
 
+    }
+    
+
+    [Serializable]
     public class GraphDoc
     {
-        private GraphicsPath preRenderedXAxis, preRenderedYAxis;
+        internal const float GraphDocVers = 1.1f;
+        public float LocalGraphDocVers { get; set; }
 
-        public List<Graph> Graphs;
+        private GraphicsPath preRenderedXAxis, preRenderedYAxis;
+        public List<Graph> Graphs { get; set; }
+        public GraphDocAxis AxisParams { get; set; }
 
         public GraphDoc()
         {
             Graphs = new List<Graph>();
-        }
-
-        public void ResetPrerender()
-        {
-            preRenderedXAxis = null;
-            preRenderedYAxis = null;
         }
 
         private void PreRenderXAxis()
@@ -422,8 +473,8 @@ namespace Func
             if (!AxisParams.UseUnlimited)
             {
                 GraphicsPath a = new GraphicsPath();
-                float min = Graphs.Select(p => p.dataSource.GetInterval().Width).Min();
-                float max = Graphs.Select(p => p.dataSource.GetInterval().Height).Max();
+                float min = Graphs.Select(p => p.DataSource.GetInterval().Width).Min();
+                float max = Graphs.Select(p => p.DataSource.GetInterval().Height).Max();
                 a.AddLine(new PointF(min - AxisParams.XOffset, 0), new PointF(max + AxisParams.YOffset, 0));
                 preRenderedXAxis = a;
             }
@@ -434,8 +485,6 @@ namespace Func
                 preRenderedXAxis = a;
             }
         }
-
-        public GraphDocAxis AxisParams;
 
         private void PreRenderYAxis()
         {
@@ -455,6 +504,12 @@ namespace Func
             }
         }
 
+        public void ResetPrerender()
+        {
+            preRenderedXAxis = null;
+            preRenderedYAxis = null;
+        }
+
         public GraphicsPath GetXAxis()
         {
             if (preRenderedXAxis == null) PreRenderXAxis();
@@ -465,6 +520,34 @@ namespace Func
         {
             if (preRenderedYAxis == null) PreRenderYAxis();
             return (GraphicsPath)preRenderedYAxis.Clone();
+        }
+
+        public void Save(string FileName)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(GraphDoc));
+            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, this);
+            }
+        }
+
+        public static GraphDoc Load(string FileName)
+        {
+            GraphDoc result;
+            XmlSerializer formatter = new XmlSerializer(typeof(GraphDoc));
+            using (FileStream fs = new FileStream(FileName, FileMode.Open))
+            {
+                result = (GraphDoc)formatter.Deserialize(fs);
+                foreach (var item in result.Graphs)
+                {
+                    item.DataSource.Compile();
+                    item.DataSource.CompileRange();
+                    if (item.Markers.Use)
+                        if (item.Markers.UsePeriodic) item.Markers.CompilePeriod();
+                }
+            }
+            if (result.LocalGraphDocVers == 0 || result.LocalGraphDocVers < GraphDocVers) throw new InvalidDataException(string.Format("Обнаружена проблема несовместимости версий. Вы пытаетесь загрузить файл версии {0}, когда актуальная - {1}. Загрузка была прервана с целью предотвращения дальнейших ошибок.\nВы можете попробовать решить проблему, изменив версию формата в файле, что может привести только к большим ошибкам. Желаю удачи ;)", result.LocalGraphDocVers, GraphDocVers));
+            return result;
         }
     }
 }

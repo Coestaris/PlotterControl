@@ -38,16 +38,16 @@ namespace CnC_WFA
         private void Form_Dialog_EditGraph_Load(object sender, EventArgs e)
         {
             textBox_name.Text = Object.Name;
-            if (Object.dataSource.GetType() == typeof(FormulaDataSource))
+            if (Object.DataSource.GetType() == typeof(FormulaDataSource))
             {
                 radioButton_data_formula.Checked = true;
-                var ds = Object.dataSource as FormulaDataSource;
-                textBox_data_formula_formula.Text = ds.formula;
-                textBox_data_formula_start.Text = ds.lowLimFormula;
-                textBox_data_formula_end.Text = ds.highLimFormula;
-                CurrentCompString = ds.formula;
-                CurrentCompStringHigh = ds.highLimFormula;
-                CurrentCompStringLow = ds.lowLimFormula;
+                var ds = Object.DataSource as FormulaDataSource;
+                textBox_data_formula_formula.Text = ds.Formula;
+                textBox_data_formula_start.Text = ds.LowLimFormula;
+                textBox_data_formula_end.Text = ds.HighLimFormula;
+                CurrentCompString = ds.Formula;
+                CurrentCompStringHigh = ds.HighLimFormula;
+                CurrentCompStringLow = ds.LowLimFormula;
             }
 
             comboBox_display_penstyle.Items.AddRange(Enum.GetNames(typeof(PenStyles)));
@@ -108,14 +108,14 @@ namespace CnC_WFA
 
         private void button_data_formula_compile_Click(object sender, EventArgs e)
         {
-            var ds = Object.dataSource as FormulaDataSource;
-            string LastCompString = ds.formula;
-            string LastCompStringLow = ds.lowLimFormula;
-            string LastCompStringHigh = ds.highLimFormula;
+            var ds = Object.DataSource as FormulaDataSource;
+            string LastCompString = ds.Formula;
+            string LastCompStringLow = ds.LowLimFormula;
+            string LastCompStringHigh = ds.HighLimFormula;
 
-            ds.formula = CurrentCompString;
-            ds.highLimFormula = CurrentCompStringHigh;
-            ds.lowLimFormula = CurrentCompStringLow;
+            ds.Formula = CurrentCompString;
+            ds.HighLimFormula = CurrentCompStringHigh;
+            ds.LowLimFormula = CurrentCompStringLow;
             startTime = DateTime.Now;
             GlobalErrors = ds.Compile();
             GlobalErrorsLims = ds.CompileRange();
@@ -125,10 +125,10 @@ namespace CnC_WFA
                 panel_data_formula_status.BackColor = Color.FromArgb(255, 74, 74);
                 label_data_formula_status.Text = string.Format("Найдено {0} ошибок.", (GlobalErrors?.Count == null ? 0 : GlobalErrors?.Count) + (GlobalErrorsLims?.Count == null ? 0 : GlobalErrorsLims?.Count));
                 button_data_formula_status_more.Visible = true;
-                ds.formula = LastCompString;
-                ds.formula = LastCompString;
-                ds.lowLimFormula = LastCompStringLow;
-                ds.highLimFormula = LastCompStringHigh;
+                ds.Formula = LastCompString;
+                ds.Formula = LastCompString;
+                ds.LowLimFormula = LastCompStringLow;
+                ds.HighLimFormula = LastCompStringHigh;
                 ds.Compile();
                 ds.CompileRange();
                 endTime = DateTime.Now;
@@ -142,19 +142,19 @@ namespace CnC_WFA
                 Object.ResetPreRender();
                 if (Object.Markers.UsePeriodic && Object.Markers.AutoLims)
                 {
-                    Object.Markers.LowLimFormula = ds.lowLimFormula;
-                    Object.Markers.HighLimFormula = ds.highLimFormula;
+                    Object.Markers.LowLimFormula = ds.LowLimFormula;
+                    Object.Markers.HighLimFormula = ds.HighLimFormula;
                     textBox_markers_period.Text = Object.Markers.PeriodFormula;
                     textBox_markers_period_start.Text = Object.Markers.LowLimFormula;
                 }
             }
             timer_data_forumla_expire.Enabled = true;
-            Object.dataSource = ds;
+            Object.DataSource = ds;
         }
 
         private void button_data_formula_status_more_Click(object sender, EventArgs e)
         {
-            var ds = Object.dataSource as FormulaDataSource;
+            var ds = Object.DataSource as FormulaDataSource;
             string[] messages = new string[] {
                 "Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:\n",
                 "\n1.Ошибок при компиляции формулы не было найдено.\n",
@@ -165,7 +165,7 @@ namespace CnC_WFA
             string res = "";
             res += string.Format(messages[0], startTime, endTime, (endTime - startTime).TotalSeconds, (GlobalErrors?.Count == null ? 0 : GlobalErrors?.Count) + (GlobalErrorsLims?.Count == null ? 0 : GlobalErrorsLims?.Count));
             if (GlobalErrors == null) res += messages[1];
-            else res += string.Format(messages[2], GlobalErrors.Count, CurrentCompString, string.Join("\n", GlobalErrors.Select(p => "   - " + p)), ds.formula);
+            else res += string.Format(messages[2], GlobalErrors.Count, CurrentCompString, string.Join("\n", GlobalErrors.Select(p => "   - " + p)), ds.Formula);
 
             if (GlobalErrorsLims == null)
             {
@@ -178,13 +178,13 @@ namespace CnC_WFA
                 else
                 {
                     var a = GlobalErrorsLims.FindAll(p => p.StartsWith("/")).ToArray();
-                    res += string.Format(messages[4], a.Length, "нижнего", CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('/'))), ds.lowLimFormula, 2);
+                    res += string.Format(messages[4], a.Length, "нижнего", CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('/'))), ds.LowLimFormula, 2);
                 }
                 if (GlobalErrorsLims.FindAll(p => p.StartsWith("\\")).Count() == 0) res += string.Format(messages[3], "верхнего" ,3);
                 else
                 {
                     var a = GlobalErrorsLims.FindAll(p => p.StartsWith("\\")).ToArray();
-                    res += string.Format(messages[4], a.Length, "верхнего", CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('\\'))), ds.highLimFormula, 3);
+                    res += string.Format(messages[4], a.Length, "верхнего", CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('\\'))), ds.HighLimFormula, 3);
                 }
             }
             MessageBox.Show(res, "Отчет об ошибках", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -228,9 +228,9 @@ namespace CnC_WFA
 
         private void Form_Dialog_EditGraph_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Object.dataSource.GetType() == typeof(FormulaDataSource))
+            if (Object.DataSource.GetType() == typeof(FormulaDataSource))
             {
-                var ds = Object.dataSource as FormulaDataSource;
+                var ds = Object.DataSource as FormulaDataSource;
                 /*
                 float outNum1, outNum2 = 0;
                 if (outNum1 >= outNum2)
@@ -242,9 +242,9 @@ namespace CnC_WFA
                 
                 string res = "";
 
-                if (CurrentCompString != ds.formula) res += string.Format("Введенная формула \"{0}\" не совпадает с удачной \"{1}\"", CurrentCompString, ds.formula);
-                if (CurrentCompStringHigh != ds.highLimFormula) res += string.Format("Введенная формула нижнего правого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringLow, ds.highLimFormula);
-                if (CurrentCompStringLow != ds.lowLimFormula) res += string.Format("Введенная формула нижнего левого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringHigh, ds.lowLimFormula);
+                if (CurrentCompString != ds.Formula) res += string.Format("Введенная формула \"{0}\" не совпадает с удачной \"{1}\"", CurrentCompString, ds.Formula);
+                if (CurrentCompStringHigh != ds.HighLimFormula) res += string.Format("Введенная формула нижнего правого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringLow, ds.HighLimFormula);
+                if (CurrentCompStringLow != ds.LowLimFormula) res += string.Format("Введенная формула нижнего левого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringHigh, ds.LowLimFormula);
 
                 if (textBox_markers_period.Text != Object.Markers.PeriodFormula) res += string.Format("Введенная формула периода маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period.Text, Object.Markers.PeriodFormula);
                 if (textBox_markers_period_start.Text != Object.Markers.LowLimFormula) res += string.Format("Введенная формула левого предела маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period_start.Text, Object.Markers.LowLimFormula);
@@ -252,7 +252,7 @@ namespace CnC_WFA
 
                 if(res.Length != 0) MessageBox.Show(res, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                Object.dataSource = ds;
+                Object.DataSource = ds;
             }
             Object.MainPen = new Pen(colorDialog1.Color, float.Parse(textBox_display_width.Text));
             Object.Display = checkBox_display_display.Checked;
@@ -333,7 +333,7 @@ namespace CnC_WFA
             var highErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("\\"));
             var lowErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("/"));
 
-            var ds = Object.dataSource as FormulaDataSource;
+            var ds = Object.DataSource as FormulaDataSource;
             string[] messages = new string[] {
                 "Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:\n",
                 "\n1.Ошибок при компиляции периода не было найдено.\n",

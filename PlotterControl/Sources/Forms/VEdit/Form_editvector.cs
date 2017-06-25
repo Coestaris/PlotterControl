@@ -75,7 +75,7 @@ namespace CnC_WFA
             }
             if (main.CreatedVersion < new Version(GlobalOptions.Ver))
             {
-                var h = MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.OldVdocVersion"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var h = MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.OldPCVdocVersion"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (h == DialogResult.Yes)
                 {
                     main.CreatedVersion = new Version(GlobalOptions.Ver);
@@ -759,7 +759,7 @@ namespace CnC_WFA
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             saveFileDialog1.InitialDirectory = "Data\\VDocs";
-            saveFileDialog1.FileName = main.Name + ".vdoc";
+            saveFileDialog1.FileName = main.Name + ".pcvdoc";
             var a = saveFileDialog1.ShowDialog();
             if (a == DialogResult.OK)
             {
@@ -780,7 +780,7 @@ namespace CnC_WFA
                 }
                 if(main.CreatedVersion < new Version(GlobalOptions.Ver))
                 {
-                    var h = MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.OldVdocVersion"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var h = MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.OldPCVdocVersion"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if(h == DialogResult.Yes)
                     {
                         main.CreatedVersion = new Version(GlobalOptions.Ver);

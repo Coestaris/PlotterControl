@@ -159,11 +159,11 @@ namespace CnC_WFA
 
         private void Form_viewvect_Load(object sender, EventArgs e)
         {
-           //listBox2.Items.Clear();
-           //string[] paths = Directory.GetFiles("prres\\", "*.prres");
-           //listBox2.Items.AddRange(paths);
-           //paths = Directory.GetFiles("prres\\", "*.cvf");
-           //listBox2.Items.AddRange(paths);
+            //listBox2.Items.Clear();
+            //string[] paths = Directory.GetFiles("prres\\", "*.prres");
+            //listBox2.Items.AddRange(paths);
+            //paths = Directory.GetFiles("prres\\", "*.pcv");
+            //listBox2.Items.AddRange(paths);
         }
         private void ChangeLabelTextProc(string s)
         {
@@ -261,7 +261,7 @@ namespace CnC_WFA
         private void statusStrip1_DragDrop(object sender, DragEventArgs e)
         {
             string[] fn =  (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            if(fn[0].EndsWith(".cvf")) proceed(fn[0]);
+            if(fn[0].EndsWith(".pcv")) proceed(fn[0]);
             FillListBox();
         }
 

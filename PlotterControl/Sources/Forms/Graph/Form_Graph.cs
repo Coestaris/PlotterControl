@@ -1,13 +1,16 @@
-﻿using System;
+﻿using CWA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace CnC_WFA
 {
@@ -58,7 +61,7 @@ namespace CnC_WFA
                         {
                             foreach (var c in b.Markers.Points)
                             {
-                                gr.FillEllipse(new SolidBrush(b.Markers.Color), Zoom * c + dx - b.Markers.Size / 2, (-Zoom) * (b.dataSource.GetValue(c)) + dy - b.Markers.Size / 2, b.Markers.Size, b.Markers.Size);
+                                gr.FillEllipse(new SolidBrush(b.Markers.Color), Zoom * c + dx - b.Markers.Size / 2, (-Zoom) * (b.DataSource.GetValue(c)) + dy - b.Markers.Size / 2, b.Markers.Size, b.Markers.Size);
                             }
                         }
                     }
@@ -95,6 +98,7 @@ namespace CnC_WFA
         }
 
         private float Zoom;
+        private const int DefZoom = 15;
 
         private void UpdateListBox()
         {
@@ -109,13 +113,13 @@ namespace CnC_WFA
         {
             var el = new Graph()
             {
-                dataSource = new FormulaDataSource()
+                DataSource = new FormulaDataSource()
                 {
                     LowLim = -(float)Math.PI * 2,
                     HighLim = (float)Math.PI * 2,
-                    formula = "Math.Cos(x)",
-                    highLimFormula = "Math.PI * 2",
-                    lowLimFormula = "-Math.PI * 2"
+                    Formula = "Math.Cos(x)",
+                    HighLimFormula = "Math.PI * 2",
+                    LowLimFormula = "-Math.PI * 2"
 
                 },
                 Markers = new GraphMarkers()
@@ -135,7 +139,7 @@ namespace CnC_WFA
             el.Name = "graph" + Main.Graphs.Count;
             
             el.Markers.CompilePeriod();
-            (el.dataSource as FormulaDataSource).Compile();
+            (el.DataSource as FormulaDataSource).Compile();
 
             new Form_Dialog_EditGraph(el) { FormParent = this }.ShowDialog();
             Main.Graphs.Add(el);
@@ -159,10 +163,18 @@ namespace CnC_WFA
                     Width = 1,
                     XOffset = 0,
                     YOffset = 0
-                }
-          };
-            Zoom = 1;
+                },
+                LocalGraphDocVers = GraphDoc.GraphDocVers
+            };
+            Zoom = DefZoom;
+            trackBar1.Value = DefZoom;
             MouseWheel += PictureBox1_MouseWheel;
+            loadingCircle_tab1.Top = panel_wait.Height / 2 - loadingCircle_tab1.Height / 2 - 40;
+            loadingCircle_tab1.Left = panel_wait.Width / 2 - loadingCircle_tab1.Width / 2;
+            panel_wait.Top = Height / 2 - panel_wait.Height / 2 - 40;
+            panel_wait.Left = Width / 2 - panel_wait.Width / 2;
+            panel_loaderr.Top = Height / 2 - panel_loaderr.Height / 2 - 40;
+            panel_loaderr.Left = Width / 2 - panel_loaderr.Width / 2;
         }
 
         private int Map(int value, int max, int min)
@@ -308,6 +320,12 @@ namespace CnC_WFA
             pictureBox1.Width = Width - 298;
             pictureBox1.Height = Height - 61;
             panel1.Top = Height - 48 - panel1.Height;
+            panel_wait.Top = Height / 2 - panel_wait.Height / 2 - 40;
+            panel_wait.Left = Width / 2 - panel_wait.Width / 2;
+            panel_loaderr.Top = Height / 2 - panel_loaderr.Height / 2 - 40;
+            panel_loaderr.Left = Width / 2 - panel_loaderr.Width / 2;
+
+            RedrawHigh(pictureBox1.Width / 2 - dx, pictureBox1.Height / 2 - dy);
         }
 
         private void listBox_Main_SelectedIndexChanged(object sender, EventArgs e)
@@ -330,6 +348,48 @@ namespace CnC_WFA
             new Form_Dialog_EditElement(Main, 0).ShowDialog();
             Main.ResetPrerender();
             RedrawHigh(pictureBox1.Width / 2 - dx, pictureBox1.Height / 2 - dy);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = new FileInfo(Application.ExecutablePath).DirectoryName;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Main.Save(saveFileDialog1.FileName);
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = new FileInfo(Application.ExecutablePath).DirectoryName;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileName = openFileDialog1.FileName;
+                panel_wait.Visible = true;
+                panel_tools.Enabled = false;
+                pictureBox1.Visible = false;
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        string FileName;
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Main = GraphDoc.Load(FileName);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            UpdateListBox();
+            dx = 0; dy = 0;
+            oldDeltas = new Point(0, 0);
+            Zoom = DefZoom;
+            trackBar1.Value = DefZoom;
+            RedrawHigh(pictureBox1.Width / 2, pictureBox1.Height / 2);
+            panel_wait.Visible = false;
+            panel_tools.Enabled = true;
+            pictureBox1.Visible = true;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
