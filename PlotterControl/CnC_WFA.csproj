@@ -132,6 +132,7 @@
     </Compile>
     <Compile Include="Sources\Other\Grapher.cs" />
     <Compile Include="Sources\Other\TaskbarState.cs" />
+    <None Include="packages.config" />
     <None Include="Plugins\_Curve_ArchimedeanSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
