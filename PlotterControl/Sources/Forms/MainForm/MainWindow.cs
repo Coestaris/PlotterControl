@@ -1159,13 +1159,10 @@ namespace CnC_WFA
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
-
-
-          //  new Form_Graph().ShowDialog();
+            
+            //new Form_Graph().ShowDialog();
             //Close();
             
-
 
             configchanged = new bool[11];
             devicechanged = new bool[8];

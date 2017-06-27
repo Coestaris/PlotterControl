@@ -49,10 +49,11 @@
             ".PCVDOC",
             ".PRRES",
             ".PCMACROS",
-            ".PCMPACK"});
+            ".PCMPACK",
+            ".PCGRAPH"});
             this.checkedListBox.Location = new System.Drawing.Point(12, 12);
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(402, 104);
+            this.checkedListBox.Size = new System.Drawing.Size(402, 124);
             this.checkedListBox.TabIndex = 0;
             this.checkedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_ItemCheck);
             this.checkedListBox.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
@@ -106,17 +107,17 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label_discr);
-            this.panel1.Location = new System.Drawing.Point(12, 122);
+            this.panel1.Location = new System.Drawing.Point(12, 141);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(401, 88);
+            this.panel1.Size = new System.Drawing.Size(401, 69);
             this.panel1.TabIndex = 120;
             // 
             // label_discr
             // 
             this.label_discr.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_discr.Location = new System.Drawing.Point(0, 2);
+            this.label_discr.Location = new System.Drawing.Point(0, 0);
             this.label_discr.Name = "label_discr";
-            this.label_discr.Size = new System.Drawing.Size(401, 86);
+            this.label_discr.Size = new System.Drawing.Size(401, 72);
             this.label_discr.TabIndex = 0;
             this.label_discr.Text = "Выделете элемент для просмотра описания";
             // 

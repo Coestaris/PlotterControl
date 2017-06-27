@@ -18,7 +18,8 @@ namespace CnC_WFA
             ".PCVDOC - формат векторных документов, которые в последствии можно преобразовать в вектор.",
             ".PRRES",
             ".PCMACROS",
-            ".PCMPACK"
+            ".PCMPACK",
+            ".PCGRAPH"
         };
 
 
@@ -31,7 +32,7 @@ namespace CnC_WFA
         {
             int diff = 0;
             List<string> log = new List<string>();
-            for (int i = 0; i < checkedListBox.Items.Count-1; i++)
+            for (int i = 0; i <= checkedListBox.Items.Count-1; i++)
             {
                 if (current[i] != startStatus[i])
                 {
