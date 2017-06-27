@@ -488,6 +488,10 @@
       <Project>{04b8e3c1-4d43-4751-883e-6f9a2156f2a1}</Project>
       <Name>CWA_Connection</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IconExtractor\IconExtractor.csproj">
+      <Project>{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}</Project>
+      <Name>IconExtractor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Printing\CWA_Printing.csproj">
       <Project>{d61845df-338f-4529-a83e-65a01efd3f20}</Project>
       <Name>CWA_Printing</Name>

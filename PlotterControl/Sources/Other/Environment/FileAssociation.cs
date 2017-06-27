@@ -70,7 +70,7 @@ namespace CnC_WFA
             unknown = 8,
         }
 
-        private enum IconIndex
+        internal enum IconIndex
         {
             Icon_PCV = 1,
             Icon_MacroPack = 12,
@@ -84,7 +84,7 @@ namespace CnC_WFA
             Icon_Contex_OpenPicture = 9,
             Icon_Contex_Print = 10,
             Icon_Contex_Run = 11,
-            Icon_PCGraph = 12
+            Icon_PCGraph = 13
         }
 
         public static string PathToProgram, PathToIcons;
@@ -242,7 +242,7 @@ namespace CnC_WFA
         private static void RegPCGRAPH()
         {
             AssociateMain("CNCWFAOPENER.PCGRAPH", ".pcgraph", PerceivedTypes.Image, "vect\\pcgraph");
-            AssociateMainData("CNCWFAOPENER.PCGRAPH", TranslateBase.CurrentLang.Phrase["Core.PCV"], EditFlags.None, IconIndex.Icon_PCGraph);
+            AssociateMainData("CNCWFAOPENER.PCGRAPH", TranslateBase.CurrentLang.Phrase["Core.PCGRAPH"], EditFlags.None, IconIndex.Icon_PCGraph);
             AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
             AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
             AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --render_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
