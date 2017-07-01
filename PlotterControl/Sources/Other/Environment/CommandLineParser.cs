@@ -216,10 +216,10 @@ namespace CnC_WFA
             {
                 Commands.Add(new Command());
                 Commands[i].Name = a.ChildNodes[2].ChildNodes[i].ChildNodes[0].InnerText;
-                Commands[i].Flags = new List<Flag>();
+                Commands[i].Flags = new List<CommandFlag>();
                 for (int ii = 1; ii <= a.ChildNodes[2].ChildNodes[i].ChildNodes.Count - 1; ii++)
                 {
-                    Flag fl = new Flag();
+                    CommandFlag fl = new CommandFlag();
                     fl.Name = a.ChildNodes[2].ChildNodes[i].ChildNodes[ii].Attributes[0].Value;
                     fl.Type = Type.GetType(a.ChildNodes[2].ChildNodes[i].ChildNodes[ii].Attributes[1].Value);
                     fl.Id = a.ChildNodes[2].ChildNodes[i].ChildNodes[ii].Attributes[2].Value;
@@ -234,16 +234,16 @@ namespace CnC_WFA
     internal class Command
     {
         public string Name;
-        public List<Flag> Flags;
+        public List<CommandFlag> Flags;
     }
 
-    internal class Flag
+    internal class CommandFlag
     {
         public Type Type;
         public string Name;
         public string Id;
         public bool Req;
         public object DefValue;
-        public Flag() { }
+        public CommandFlag() { }
     }
 }

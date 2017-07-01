@@ -167,6 +167,7 @@ namespace CnC_WFA
 
         protected override void OnDrawItem(DrawItemEventArgs e)
         {
+            if (Items.Count == 0) return;
             string s = Items[e.Index].ToString();
             int nX = e.Bounds.X + 2;
             int nY = e.Bounds.Y + 2;

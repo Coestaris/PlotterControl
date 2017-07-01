@@ -31,8 +31,9 @@ namespace CWA.Connection
 {
     /// <summary>
     /// Предоставляет информацию о имени порта.
-    /// </summary>
-    public struct ComPortName
+    /// </summary>   
+    [Serializable]
+    public class ComPortName
     {
         /// <summary>
         /// Возвращает имена портов, подключенные в данный момент, в стоковом формате.
@@ -53,7 +54,7 @@ namespace CWA.Connection
         /// <summary>
         /// Номер порта.
         /// </summary>
-        private int _num;
+        public int Num { get; set; }
 
         /// <summary>
         /// Оператор явного приведения класса <see cref="ComPortName"/> к <see cref="string"/>.
@@ -61,7 +62,7 @@ namespace CWA.Connection
         /// <param name="a">Операнд приведения.</param>
         public static implicit operator string(ComPortName a)
         {
-            return "COM" + a._num;
+            return "COM" + a.Num;
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace CWA.Connection
         /// </summary>
         public override string ToString()
         {
-            return "COM" + _num;
+            return "COM" + Num;
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace CWA.Connection
             if (!s.ToLower().StartsWith("com"))
                 throw new ArgumentException("Чтото не так с именем порта", nameof(s));
             var d = s.ToLower().Remove(0, 3);
-            _num = int.Parse(d);
+            Num = int.Parse(d);
         }
 
         /// <summary>
@@ -90,7 +91,13 @@ namespace CWA.Connection
         /// <param name="s">Номер порта.</param>
         public ComPortName(int s)
         {
-            _num = s;
+            Num = s;
         }
+
+        /// <summary>
+        /// Создает новый экземпляр класса <see cref="ComPortName"/>. 
+        /// </summary>
+        /// <param name="s">Номер порта.</param>
+        public ComPortName() { }
     }
 }

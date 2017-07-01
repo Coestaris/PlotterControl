@@ -32,6 +32,7 @@ using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace CnC_WFA
 {
@@ -40,13 +41,19 @@ namespace CnC_WFA
         private const int scrw = 1180;
         private const int scrh = 720;
 
+        private PointF LastPoint;
+        private bool IsUpped;
         private bool ForcePaint;
         private PointF ForcePaintPoint;
         private Macro main;
         private Pen PenRectangle;
-        private GraphicsPath GrUpped, GrNormal;
+        private GraphicsPath[] GrUpped, GrNormal;
         private Matrix Matrix;
         private float Zoom;
+
+        private bool IsLoad;
+        private string LastFilePath;
+
 
         public Form_Macro(string filename)
         {
@@ -67,6 +74,8 @@ namespace CnC_WFA
             PenRectangle.DashStyle = DashStyle.Dash;
             Zoom = (float)trackBar_zoom.Value / 100;
             label_zoom.Text = trackBar_zoom.Value + "%";
+            IsLoad = true;
+            LastFilePath = filename;
             RenderGR();
             Render();
             UpDateListBox();
@@ -80,12 +89,12 @@ namespace CnC_WFA
 
         private void RenderGR()
         {
-            GraphicsPath grUpped = new GraphicsPath(FillMode.Alternate);
-            GraphicsPath grNormal = new GraphicsPath(FillMode.Alternate);
+            List<GraphicsPath> grUpped = new List<GraphicsPath>();
+            List<GraphicsPath> grNormal = new List<GraphicsPath>();
             if (main.Elems.Count == 0)
             {
-                GrUpped = new GraphicsPath();
-                GrNormal = new GraphicsPath();
+                GrUpped = new GraphicsPath[0];
+                GrNormal = new GraphicsPath[0];
                 return;
             }
             float CurXPos = 0, CurYPos = 0;
@@ -98,33 +107,40 @@ namespace CnC_WFA
             CurXPos = b.MoveToPoint.X;
             CurYPos = b.MoveToPoint.Y;
             bool isUpped = true;
+            grUpped.Add(new GraphicsPath());
             foreach (var a in main.Elems)
             {
                 if(a.Type == MacroElemType.Tool || a.Type == MacroElemType.ToolAndDelay)
                 {
-                    if (a.ToolMove > 50) isUpped = true;
-                    if(a.ToolMove <-50) isUpped = false;
-                    if(grUpped.PointCount != 0) grUpped.PathTypes[grUpped.PathPoints.Length - 1] = 1;
-                    if(grNormal.PointCount != 0) grNormal.PathTypes[grNormal.PathPoints.Length - 1] = 1;
+                    if (a.ToolMove > 50)
+                    {
+                        isUpped = true;
+                        grUpped.Add(new GraphicsPath());
+                    }
+                    if (a.ToolMove < -50)
+                    {
+                        grNormal.Add(new GraphicsPath());
+                        isUpped = false;
+                    }
                 }
                 if (a.Type == MacroElemType.MoveRelative || a.Type == MacroElemType.MoveRelativeAndDelay)
                 {
-                    if (isUpped) grUpped.AddLine(CurXPos, CurYPos, CurXPos + a.MoveRelative.X, CurYPos + a.MoveRelative.Y);
-                    else grNormal.AddLine(CurXPos, CurYPos, CurXPos + a.MoveRelative.X, CurYPos + a.MoveRelative.Y);
+                    if (isUpped) grUpped.Last().AddLine(CurXPos, CurYPos, CurXPos + a.MoveRelative.X, CurYPos + a.MoveRelative.Y);
+                    else grNormal.Last().AddLine(CurXPos, CurYPos, CurXPos + a.MoveRelative.X, CurYPos + a.MoveRelative.Y);
                     CurXPos += a.MoveRelative.X;
                     CurYPos += a.MoveRelative.Y;
                 }
                 if (a.Type == MacroElemType.MoveToPoint || a.Type == MacroElemType.MoveToPointAndDelay)
                 {
-                    if (isUpped) grUpped.AddLine(CurXPos, CurYPos, a.MoveToPoint.X, a.MoveToPoint.Y);
-                    else grNormal.AddLine(CurXPos, CurYPos, a.MoveToPoint.X, a.MoveToPoint.Y);
+                    if (isUpped) grUpped.Last().AddLine(CurXPos, CurYPos, a.MoveToPoint.X, a.MoveToPoint.Y);
+                    else grNormal.Last().AddLine(CurXPos, CurYPos, a.MoveToPoint.X, a.MoveToPoint.Y);
                     CurXPos = a.MoveToPoint.X;
                     CurYPos = a.MoveToPoint.Y;
                 }
-           }
-           lastpoint = new PointF(CurXPos, CurYPos);
-           GrUpped = (GraphicsPath)grUpped.Clone();
-           GrNormal = (GraphicsPath)grNormal.Clone();
+            }
+            LastPoint = new PointF(CurXPos, CurYPos);
+            GrUpped = grUpped.ToArray();
+            GrNormal = grNormal.ToArray();
         }
 
         private void Render()
@@ -134,15 +150,18 @@ namespace CnC_WFA
             Bitmap bmp = new Bitmap((int)(scrw * Zoom), (int)(scrh * Zoom));
             Matrix = new Matrix();
             Matrix.Scale(Zoom, Zoom);
-            var grUp = (GraphicsPath)GrUpped.Clone();
-            var grNo = (GraphicsPath)GrNormal.Clone();
-            grUp.Transform(Matrix);
+            List<GraphicsPath> grUp = new List<GraphicsPath>();
+            GrUpped.ToList().ForEach(p=> grUp.Add((GraphicsPath)p.Clone()));
+            List<GraphicsPath> grNo = new List<GraphicsPath>();
+            GrNormal.ToList().ForEach(p => grNo.Add((GraphicsPath)p.Clone()));
+            foreach (var item in grUp) item.Transform(Matrix);
+            foreach (var item in grNo) item.Transform(Matrix);
             using (Graphics gr = Graphics.FromImage(bmp))
             {
                 gr.FillRectangle(Brushes.White, new RectangleF(0, 0, wight, height));
                 gr.DrawRectangle(PenRectangle, 2,2, wight-4, height-4);
-                gr.DrawPath(new Pen(Color.Black, 1 * Zoom), grUp);
-                gr.DrawPath(new Pen(Color.Green, 1 * Zoom), grNo);
+                foreach (var item in grUp) gr.DrawPath(new Pen(Color.Gray, 1 * Zoom) { DashStyle = DashStyle.Dash }, item);
+                foreach (var item in grNo) gr.DrawPath(new Pen(Color.Black, 1 * Zoom), item);
             }
             Image img = pictureBox1.Image;
             pictureBox1.Image = bmp;
@@ -151,10 +170,13 @@ namespace CnC_WFA
 
         private void UpDateListBox()
         {
+            if (IsLoad) toolStripMenuItem_saveas.Enabled = true;
+            Text = string.Format("Макрос: \"{0}\"", main.Name);
             listBox_elements.Items.Clear();
-            textBox_descr.Text = main.Discr;
-            textBox_name.Text = main.Name;
+            toolStripTextBox_discr.Text = main.Discr;
+            toolStripTextBox_name.Text = main.Name;
             foreach (var a in main.Elems) listBox_elements.Items.Add(a.StringType);
+            label_elements.Text = string.Format("Элементов: {0}", listBox_elements.Items.Count);
         }
 
         private void Form_macroses_Load(object sender, EventArgs e)
@@ -179,6 +201,7 @@ namespace CnC_WFA
 
         private void button_addel_Click(object sender, EventArgs e)
         {
+            IsUpped = CheckIsUpped();
             if (radioButton_elt_move.Checked)
             {
                 if (tabControl1.SelectedIndex == 0)
@@ -192,7 +215,7 @@ namespace CnC_WFA
                     int y = pictureBox1.PointToClient(MousePosition).Y;
                     float locx = (x / Zoom);
                     float locy = (y / Zoom);
-                    if (lastpoint.X == 0&& lastpoint.Y == 0)
+                    if (LastPoint.X == 0&& LastPoint.Y == 0)
                     {
                         if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPoint, MoveToPoint = new PointF(locx, locy) });
                         else if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPointAndDelay, MoveToPoint = new PointF(locx, locy) , Delay = (float)numericUpDown_delay.Value});
@@ -200,13 +223,13 @@ namespace CnC_WFA
                     {
                         if (!radioButton_move_hor.Checked)
                         {
-                            if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPoint, MoveToPoint = new PointF(lastpoint.X - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture), lastpoint.Y) });
-                            else if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPointAndDelay, MoveToPoint = new PointF(lastpoint.X - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture), lastpoint.Y), Delay = (float)numericUpDown_delay.Value });
+                            if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPoint, MoveToPoint = new PointF(LastPoint.X - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture), LastPoint.Y) });
+                            else if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPointAndDelay, MoveToPoint = new PointF(LastPoint.X - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture), LastPoint.Y), Delay = (float)numericUpDown_delay.Value });
                         }
                         else
                         {
-                            if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPoint, MoveToPoint = new PointF(lastpoint.X, lastpoint.Y - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture)) });
-                            else if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPointAndDelay, MoveToPoint = new PointF(lastpoint.X, lastpoint.Y - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture)), Delay = (float)numericUpDown_delay.Value });
+                            if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPoint, MoveToPoint = new PointF(LastPoint.X, LastPoint.Y - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture)) });
+                            else if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.MoveToPointAndDelay, MoveToPoint = new PointF(LastPoint.X, LastPoint.Y - float.Parse(textBox_move_offhorvertlength.Text, CultureInfo.InvariantCulture)), Delay = (float)numericUpDown_delay.Value });
                         }
                     }   
                 }
@@ -216,10 +239,22 @@ namespace CnC_WFA
                 else main.Elems.Add(new MacroElem() { Type = MacroElemType.Delay, Delay = (float)numericUpDown_delay.Value });
             } else if(radioButton_elt_tup.Checked)
             {
+                if(IsUpped)
+                {
+                    MessageBox.Show("Уже поднято, куда еще поднимать?");
+                    return;
+                }
+                IsUpped = false;
                 if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.Tool, ToolMove = GlobalOptions.StepHeightConst });
                 else main.Elems.Add(new MacroElem() { Type = MacroElemType.ToolAndDelay, ToolMove = GlobalOptions.StepHeightConst , Delay = (float)numericUpDown_delay.Value});
             } else if(radioButton_elt_tdown.Checked)
             {
+                if(!IsUpped)
+                {
+                    MessageBox.Show("Уже опущено, куда еще опускать?");
+                    return;
+                }
+                IsUpped = true;
                 if (numericUpDown_delay.Value == 0) main.Elems.Add(new MacroElem() { Type = MacroElemType.Tool, ToolMove = - GlobalOptions.StepHeightConst });
                 else main.Elems.Add(new MacroElem() { Type = MacroElemType.ToolAndDelay, ToolMove = - GlobalOptions.StepHeightConst, Delay = (float)numericUpDown_delay.Value });
             }
@@ -228,7 +263,19 @@ namespace CnC_WFA
             UpDateListBox();
         }
 
-        PointF lastpoint;
+        private bool CheckIsUpped()
+        {
+            bool isUpped = true;
+            foreach (var a in main.Elems)
+            {
+                if (a.Type == MacroElemType.Tool || a.Type == MacroElemType.ToolAndDelay)
+                {
+                    if (a.ToolMove > 50) isUpped = true;
+                    if (a.ToolMove < -50) isUpped = false;
+                }
+            }
+            return isUpped;
+        }
 
         private void Form_macroses_Resize(object sender, EventArgs e)
         {
@@ -248,9 +295,9 @@ namespace CnC_WFA
             string s = "GLobalX: {0}, GlobalY: {1};   LocalX: {2:0.##}, LocalY: {3:0.##};   XMM: {4:0.###}, YMM: {5:0.###};   XSteps: {6:0.##}, YSteps: {7:0.##};";
             float locx = (pictureBox1.PointToClient(MousePosition).X / Zoom);
             float locy = (pictureBox1.PointToClient(MousePosition).Y / Zoom);
-            float xmm = locx * GlobalOptions.MaxWidthSteps / scrw;
-            float ymm = locy * GlobalOptions.MaxHeightSteps / scrh;
-            toolStripStatusLabel_xglobal.Text = string.Format(s, (e == null ? "-" : e.X.ToString()), (e == null ? "-" : e.X.ToString()), locx,  locy, xmm * 0.01323f,  ymm * 0.01323f, xmm, ymm);
+            float xmm = locx * GlobalOptions.MaxHeightSteps / scrw;
+            float ymm = locy * GlobalOptions.MaxWidthSteps / scrh;
+            toolStripStatusLabel_xglobal.Text = string.Format(s, (e == null ? "-" : e.X.ToString()), (e == null ? "-" : e.Y.ToString()), locx,  locy, xmm * 0.01323f,  ymm * 0.01323f, xmm, ymm);
         }
 
         private void Form_macroses_MouseMove(object sender, MouseEventArgs e)
@@ -268,7 +315,7 @@ namespace CnC_WFA
         {
             if(ForcePaint)
             {
-                e.Graphics.DrawLine(Pens.Gray, lastpoint.X * Zoom, lastpoint.Y * Zoom, ForcePaintPoint.X, ForcePaintPoint.Y);
+                e.Graphics.DrawLine(Pens.Gray, LastPoint.X * Zoom, LastPoint.Y * Zoom, ForcePaintPoint.X, ForcePaintPoint.Y);
             } else if (PointToClient(MousePosition).X < Width - 240)
             {
                 if (radioButton_elt_move.Checked)
@@ -279,17 +326,17 @@ namespace CnC_WFA
                     float locy = (y / Zoom);
                     if(tabControl1.SelectedIndex == 3)
                     {
-                        if (lastpoint.X != 0 && lastpoint.Y != 0)
+                        if (LastPoint.X != 0 && LastPoint.Y != 0)
                         {
                             if (radioButton_move_vetr.Checked)
                             {
-                                textBox_move_offhorvertlength.Text = (lastpoint.X - locx).ToString(CultureInfo.InvariantCulture);
-                                e.Graphics.DrawLine(Pens.Gray, lastpoint.X * Zoom, lastpoint.Y * Zoom, x, lastpoint.Y * Zoom);
+                                textBox_move_offhorvertlength.Text = (LastPoint.X - locx).ToString(CultureInfo.InvariantCulture);
+                                e.Graphics.DrawLine(Pens.Gray, LastPoint.X * Zoom, LastPoint.Y * Zoom, x, LastPoint.Y * Zoom);
                             }
                             else
                             {
-                                textBox_move_offhorvertlength.Text = (lastpoint.Y - locy).ToString(CultureInfo.InvariantCulture);
-                                e.Graphics.DrawLine(Pens.Gray, lastpoint.X * Zoom, lastpoint.Y * Zoom, lastpoint.X * Zoom, y);
+                                textBox_move_offhorvertlength.Text = (LastPoint.Y - locy).ToString(CultureInfo.InvariantCulture);
+                                e.Graphics.DrawLine(Pens.Gray, LastPoint.X * Zoom, LastPoint.Y * Zoom, LastPoint.X * Zoom, y);
                             }
                         }
                     } else
@@ -297,7 +344,11 @@ namespace CnC_WFA
                     {
                         textBox_move_topointx.Text = locx.ToString(CultureInfo.InvariantCulture);
                         textBox_move_topointy.Text = locy.ToString(CultureInfo.InvariantCulture);
-                        if (lastpoint.X != 0 && lastpoint.Y != 0) e.Graphics.DrawLine(Pens.Gray, lastpoint.X * Zoom, lastpoint.Y * Zoom, x, y);
+                        if (LastPoint.X != 0 && LastPoint.Y != 0)
+                        {
+                            if(IsUpped) e.Graphics.DrawLine(new Pen(Color.Blue, 1) { DashStyle = DashStyle.Dash }, LastPoint.X * Zoom, LastPoint.Y * Zoom, x, y);
+                            else e.Graphics.DrawLine(new Pen(Color.Blue, 1), LastPoint.X * Zoom, LastPoint.Y * Zoom, x, y);
+                        }
                     }
                 }
             }
@@ -310,6 +361,10 @@ namespace CnC_WFA
 
         private void button_save_Click(object sender, EventArgs e)
         {
+            if(IsLoad)
+            {
+                main.Save(LastFilePath);
+            } else
             if(saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 main.Save(saveFileDialog1.FileName);
@@ -335,6 +390,8 @@ namespace CnC_WFA
                 PenRectangle = new Pen(Color.Black, 1);
                 PenRectangle.DashStyle = DashStyle.Dash;
                 Zoom = 1;
+                IsLoad = true;
+                LastFilePath = openFileDialog1.FileName;
                 Zoom = (float)trackBar_zoom.Value / 100;
                 label_zoom.Text = trackBar_zoom.Value + "%";
                 RenderGR();
@@ -352,7 +409,7 @@ namespace CnC_WFA
             toolTip1.SetToolTip(listBox_elements, strTip);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ToCorner()
         {
             float minx = scrw;
             float miny = scrh;
@@ -454,7 +511,7 @@ namespace CnC_WFA
         private void button_clear_Click(object sender, EventArgs e)
         {
             main = new Macro("noname", "nodiscr");
-            main.Elems = new System.Collections.Generic.List<MacroElem>();
+            main.Elems = new List<MacroElem>();
             UpDateListBox();
             radioButton_elt_none.Checked = true;
             Form_macroses_Resize(null, null);
@@ -470,17 +527,27 @@ namespace CnC_WFA
 
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
-            main.Name = textBox_name.Text;
+            main.Name = toolStripTextBox_name.Text;
+            Text = string.Format("Макрос: \"{0}\"", main.Name);
         }
 
         private void textBox_descr_TextChanged(object sender, EventArgs e)
         {
-            main.Discr = textBox_descr.Text;
+            main.Discr = toolStripTextBox_discr.Text;
+            Text = string.Format("Макрос: \"{0}\"", main.Name);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void toolStripMenuItem_saveas_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                main.Save(saveFileDialog1.FileName);
+            }
         }
 
         private void button_100percent_Click(object sender, EventArgs e)

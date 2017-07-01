@@ -24,21 +24,25 @@
 */
 
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using CWA.Connection;
+using System.Xml.Serialization;
+using System.IO;
+using System.Drawing;
+using System;
 
 namespace CWA.Printing.Macro
 {
     /// <summary>
     /// Описывает макро пак - контейнер макросов, объедененных в один общий документ, для более удобного использования.
     /// </summary>
+    [Serializable]
     public class MacroPack
     {
         /// <summary>
         /// Имя пака.
         /// </summary>
-        public string Name { get; set; }
+        //public string Name { get; set; }
+        public string Name;
 
         /// <summary>
         /// Описание пака.
@@ -54,11 +58,15 @@ namespace CWA.Printing.Macro
         /// Список "семплов" пака.
         /// </summary>
         public List<string> Samples { get; set; }
-
         /// <summary>
         /// Стандартное имя порта.
         /// </summary>
         public ComPortName PortName { get; set; }
+
+        /// <summary>
+        /// Размер окна пака.
+        /// </summary>
+        public Size WindowSize { get; set; }
 
         /// <summary>
         /// Стандартная скорость соеденеия с портом.
@@ -66,9 +74,24 @@ namespace CWA.Printing.Macro
         public BdRate PortBD { get; set; }
 
         /// <summary>
-        /// Список элементов пака.
+        /// Список имен элементов пака.
         /// </summary>
         public List<MacroPackElem> Elems { get; set; }
+
+        /// <summary>
+        ///  Возвращает дочерные элементы.
+        /// </summary>
+        /// <param name="CantLoadList">Возвращает список элементов, которые не получилось загрузить.</param>
+        /// <returns></returns>
+        public List<Macro> GetElems(out List<string> CantLoadList)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Создает новый экземпляр класса <see cref="MacroPack"/>.
+        /// </summary>
+        public MacroPack() { }
 
         /// <summary>
         /// Создает новый экземпляр класса <see cref="MacroPack"/>.
@@ -86,47 +109,33 @@ namespace CWA.Printing.Macro
             Samples = new List<string>();
             PortBD = new BdRate(GlobalOptions.Mainbd);
         }
-
+        
         /// <summary>
         /// Сохраняет макро пак в файл.
         /// </summary>
-        /// <param name="filename">Имя файла для сохранения.</param>
-        public void Save(string filename)
+        /// <param name="FileName">Имя файла для сохранения.</param>
+        public void Save(string FileName)
         {
-            XmlTextWriter textWritter = new XmlTextWriter(filename, Encoding.UTF8);
-            textWritter.WriteStartDocument();
-            textWritter.WriteStartElement("macropack");
-            textWritter.WriteEndElement();
-            textWritter.Close();
-            XmlDocument document = new XmlDocument();
-            document.Load(filename);
-            XmlNode el = document.CreateElement("packsetup");
-            XmlElement name = document.CreateElement("name"); name.InnerText = Name; el.AppendChild(name);
-            XmlElement disc = document.CreateElement("disc"); disc.InnerText = Discr; el.AppendChild(disc);
-            XmlElement capt = document.CreateElement("capt"); capt.InnerText = Caption; el.AppendChild(capt);
-            XmlElement portnm = document.CreateElement("portnm"); portnm.InnerText = PortName; el.AppendChild(portnm);
-            XmlElement portbd = document.CreateElement("portbd"); portbd.InnerText = PortBD.ToString(); el.AppendChild(portbd);
-            XmlNode el1 = document.CreateElement("samples");
-            foreach (string s in Samples)
+            XmlSerializer formatter = new XmlSerializer(typeof(MacroPack));
+            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
             {
-                XmlElement smpl = document.CreateElement("saple");
-                smpl.InnerText = s;
-                el1.AppendChild(smpl);
+                formatter.Serialize(fs, this);
             }
-            XmlNode el2 = document.CreateElement("macroses");
-            foreach (var a in Elems)
+        }
+
+        /// <summary>
+        /// Создает новый экземпляр класса <see cref="MacroPack"/>, загружая его с файла.
+        /// </summary>
+        /// <param name="filename">Имя файла для сохранения.</param>
+        public static MacroPack Load(string FileName)
+        {
+            MacroPack result;
+            XmlSerializer formatter = new XmlSerializer(typeof(MacroPack));
+            using (FileStream fs = new FileStream(FileName, FileMode.Open))
             {
-                XmlElement smpl = document.CreateElement("macro");
-                XmlAttribute at1 = document.CreateAttribute("capt"); at1.Value = a.Options.Caption; smpl.Attributes.Append(at1);
-                XmlAttribute at2 = document.CreateAttribute("CharBind"); at1.Value = a.Options.CharBind.ToString(); smpl.Attributes.Append(at2);
-                XmlAttribute at3 = document.CreateAttribute("KeyBind"); at1.Value = a.Options.KeyBind.ToString(); smpl.Attributes.Append(at3);
-                XmlAttribute at4 = document.CreateAttribute("path"); at1.Value = a.Path; smpl.Attributes.Append(at4);
-                el2.AppendChild(smpl);
+                result = (MacroPack)formatter.Deserialize(fs);
             }
-            document.AppendChild(el);
-            document.AppendChild(el1);
-            document.AppendChild(el2);
-            document.Save(filename);
+            return result;
         }
     }
 }

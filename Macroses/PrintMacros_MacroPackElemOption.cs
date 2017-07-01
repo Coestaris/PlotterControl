@@ -23,6 +23,7 @@
 
 */
 
+using System;
 using System.Windows.Input;
 
 namespace CWA.Printing.Macro
@@ -30,7 +31,8 @@ namespace CWA.Printing.Macro
     /// <summary>
     /// Описывает параметры элемента макро пака. 
     /// </summary>
-    public struct MacroPackElemOption
+    [Serializable]
+    public class MacroPackElemOption
     {
         /// <summary>
         /// Надпись (название) элемента.
@@ -46,6 +48,11 @@ namespace CWA.Printing.Macro
         /// Горячая клавиша элемента.
         /// </summary>
         public Key KeyBind { get; set; }
+
+        /// <summary>
+        /// Создает новый экземпляр класса <see cref="MacroPackElemOption"/>.
+        /// </summary>
+        public MacroPackElemOption() { }
 
         /// <summary>
         /// Создает новый экземпляр класса <see cref="MacroPackElemOption"/>.

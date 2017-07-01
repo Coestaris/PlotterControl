@@ -74,6 +74,7 @@ namespace CnC_WFA
         private Form_Dialog_Lang fdl;
         private Form_Graph fg;
         private Form_Macro fme;
+        private Form_MacroPack fmm;
 
         public MainWindow()
         {
@@ -1012,6 +1013,13 @@ namespace CnC_WFA
             else fme.Focus();
         }
 
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            if (fmm == null) fmm = new Form_MacroPack();
+            if (!fmm.Visible) { fmm = new Form_MacroPack(); fmm.Show(); }
+            else fmm.Focus();
+        }
+
         private void button_main_config_assoc_Click(object sender, EventArgs e)
         {
             if (!FileAssociation.CanWriteRegistry)
@@ -1184,11 +1192,6 @@ namespace CnC_WFA
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            
-            //new Form_Graph().ShowDialog();
-            //Close();
-            
-
             configchanged = new bool[11];
             devicechanged = new bool[8];
             comboBox_main_device_port.Items.AddRange(SerialPort.GetPortNames());
