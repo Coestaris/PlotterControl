@@ -191,6 +191,10 @@ namespace CnC_WFA
             this.button_print_print_start = new System.Windows.Forms.Button();
             this.label_print_print_title = new System.Windows.Forms.Label();
             this.tabPage_print_macro = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.label_print_macro_title = new System.Windows.Forms.Label();
             this.tabPage_print_serial = new System.Windows.Forms.TabPage();
             this.button_print_help = new System.Windows.Forms.Button();
@@ -1016,6 +1020,7 @@ namespace CnC_WFA
             this.button_main_config_lang.TabIndex = 156;
             this.button_main_config_lang.Text = "Язык\r\nLanguage";
             this.button_main_config_lang.UseVisualStyleBackColor = false;
+            this.button_main_config_lang.Click += new System.EventHandler(this.button_main_config_lang_Click);
             // 
             // button_main_config_assoc
             // 
@@ -2291,6 +2296,10 @@ namespace CnC_WFA
             // tabPage_print_macro
             // 
             this.tabPage_print_macro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_print_macro.Controls.Add(this.label2);
+            this.tabPage_print_macro.Controls.Add(this.button1);
+            this.tabPage_print_macro.Controls.Add(this.label1);
+            this.tabPage_print_macro.Controls.Add(this.button2);
             this.tabPage_print_macro.Controls.Add(this.label_print_macro_title);
             this.tabPage_print_macro.Location = new System.Drawing.Point(4, 22);
             this.tabPage_print_macro.Name = "tabPage_print_macro";
@@ -2298,6 +2307,53 @@ namespace CnC_WFA
             this.tabPage_print_macro.Size = new System.Drawing.Size(848, 731);
             this.tabPage_print_macro.TabIndex = 1;
             this.tabPage_print_macro.Text = "tabPage2";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(136, 199);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(671, 81);
+            this.label2.TabIndex = 156;
+            this.label2.Text = resources.GetString("label2.Text");
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Cambria", 14.25F);
+            this.button1.Location = new System.Drawing.Point(18, 199);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 81);
+            this.button1.TabIndex = 155;
+            this.button1.Text = "Поумолчанию";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(136, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(671, 81);
+            this.label1.TabIndex = 154;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Cambria", 14.25F);
+            this.button2.Location = new System.Drawing.Point(18, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 81);
+            this.button2.TabIndex = 153;
+            this.button2.Text = "Поумолчанию";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_4);
             // 
             // label_print_macro_title
             // 
@@ -2919,6 +2975,7 @@ namespace CnC_WFA
             this.button_vect_graph_open.TabIndex = 129;
             this.button_vect_graph_open.Text = "Открыть мастер графиков";
             this.button_vect_graph_open.UseVisualStyleBackColor = false;
+            this.button_vect_graph_open.Click += new System.EventHandler(this.button_vect_graph_open_Click);
             // 
             // label_vect_graph_title
             // 
@@ -3252,6 +3309,10 @@ namespace CnC_WFA
         internal System.Windows.Forms.Label label_vect_graph_discr;
         internal System.Windows.Forms.Button button_vect_graph_open;
         internal System.Windows.Forms.Label label_vect_graph_title;
+        private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.Button button2;
     }
 }
 

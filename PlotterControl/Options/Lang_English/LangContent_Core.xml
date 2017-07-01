@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== CORE ===- -->
+
+  <!-- Core Phrases -->
+  
+  <phrase id="Core.UnSetted.MainVectorFiles">Основные векторный формат</phrase>
+  <phrase id="Core.UnSetted.VectorDocument">Векторный документ</phrase>
+  <phrase id="Core.UnSetted.OldVectorFiles">Устаревший векторный формат</phrase>
+  <phrase id="Core.UnSetted.Macros">Макрос</phrase>
+  <phrase id="Core.UnSetted.MacroPacks">Макропаки</phrase>
+  <phrase id="Core.SetAssociation">Установить асоциации с файлами (в данный момент не установленно): {0}. Cansel (Отмена) - не спрашивать больше."</phrase>
+  <phrase id="Core.Word.Association">Асоциации</phrase>
+  <phrase id="Core.RequiredAdministrator">Для установки асоциаций необхдимы права администратора</phrase>
+  <phrase id="Core.Word.Open">Открыть</phrase>
+  <phrase id="Core.Word.Edit">Редактировать</phrase>
+  <phrase id="Core.Word.OpenAsImage">Открыть как изображение</phrase>
+  <phrase id="Core.Word.OpenAsVector">Открыть как вектор</phrase>
+  <phrase id="Core.Word.Print">Печать</phrase>
+  <phrase id="Core.Word.Run">Запустить</phrase>
+  <phrase id="Core.Word.Info">Инфомация</phrase>
+  <phrase id="Core.Word.Options">Параметры </phrase>
+  <phrase id="Core.PCV">PC - Векторное изображение</phrase>
+  <phrase id="Core.PCGRAPH">PC - Файл графиков</phrase>
+  <phrase id="Core.PCVDOC">PC - Векторный документ</phrase>
+  <phrase id="Core.PRRES">PC - Векторное изображение</phrase>
+  <phrase id="Core.PCMACROS">PC - Векторный макрос</phrase>
+  <phrase id="Core.PCMPACK">PC - Векторный макро-пак</phrase>
+  <phrase id="Core.ProgID">ProgID расширения</phrase>
+  <phrase id="Core.DataTree">Дерево данных расширения</phrase>
+  
+  <!-- Core Errors -->
+  <error id="Core.CantDeleteNextElems">Неудалось удалить следующии элементы: </error>
+  <error id="Core.CantFindCommandsSetupFile">Невозможно найти файл ({0}) настроек командной строки программы.</error>
+  <error id="Core.CantFindFile">Невозможно найти файл "{0}"</error>
+  <error id="Core.WrongInputCommand">входная строка. Ошибка при парсе строки. Проверте что команда указана правильно.</error>
+  <error id="Core.MoreThan1FilenameTags">Задано более чем 1 тег с именем файла (предположительно), отмеченного как "~~"</error>
+  <error id="Core.UnknownCommand">Указана неизвестная команда</error>
+  <error id="Core.WrongAnyFlags">Указан(ы) неверный(е) параметр(ы). В данном контексе недопустимы параметры</error>
+  <error id="Core.WrongFlag">Указан(ы) неверный(е) параметр(ы). В этом контесте уместны только: </error>
+  <error id="Core.OpenError.Print">Ошибка при открытии формы печати. Ошибка: </error>
+  <error id="Core.OpenError.ViewVect">Ошибка при открытии формы просмотра векторов. Ошибка: </error>
+  <error id="Core.OpenError.Render">Ошибка при рендере вектора. Ошибка: </error>
+  <error id="Core.OpenError.VectEditor">"Ошибка при открытии формы векторного редактора. Ошибка: </error>
+
+</content>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+ 
+  <!-- -=== VECTOR MASTER ===- -->
+
+  <!-- Vector Master Phrases -->
+  <phrase id="VectorMaster.Word.Name">Имя</phrase>
+  <phrase id="VectorMaster.Word.Resolution">Разрешение</phrase>
+  <phrase id="VectorMaster.Word.Bytes">Байт</phrase>
+  <phrase id="VectorMaster.Word.KBytes">КБ</phrase>
+  <phrase id="VectorMaster.Word.MBytes">МБ</phrase>
+  <phrase id="VectorMaster.Word.Size">Размеры</phrase>
+  <phrase id="VectorMaster.Word.Dpi">DPI</phrase>
+  <phrase id="VectorMaster.CantCalculateDPI">Невозможно расчитать.</phrase>
+  <phrase id="VectorMaster.Word.PixelFormat">Формат пикс.: </phrase>
+  <phrase id="VectorMaster.Word.TimeSpend">Прошло времени:</phrase>
+  <phrase id="VectorMaster.Word.Complete">Завершено!</phrase>
+  <phrase id="VectorMaster.Word.Update">Обновить</phrase>
+  <phrase id="VectorMaster.Word.Scale">Scale</phrase>
+  <phrase id="VectorMaster.Word.Stop">Стоп</phrase>
+  <phrase id="VectorMaster.Word.Threshold">Порог</phrase>
+  <phrase id="VectorMaster.Word.Sigma">Сигма</phrase>
+  <phrase id="VectorMaster.AllImageFiles">Все форматы изображений</phrase>
+  <phrase id="VectorMaster.AllFiles">Все файлы</phrase>
+
+  <!-- Vector Master Menus -->
+  <menu id="Form_VectorMaster.label_colormod">Цвет. модель:</menu>
+  <menu id="Form_VectorMaster.label_1"> Приветствие</menu>
+  <menu id="Form_VectorMaster.label_2">  Выбор файла</menu>
+  <menu id="Form_VectorMaster.label_3">     Первичная&#009;&#xA;     обработка</menu>
+  <menu id="Form_VectorMaster.label_4">     Черно-белый &#009;&#xA;     формат</menu>
+  <menu id="Form_VectorMaster.label_5">    Детектор границ</menu>
+  <menu id="Form_VectorMaster.label_6"> Подготовка</menu>
+  <menu id="Form_VectorMaster.label_7">     Векторизация   </menu>
+  <menu id="Form_VectorMaster.label_gauss_scale">Scale:  7</menu>
+  <menu id="Form_VectorMaster.label_gauss_sigma">Сигма: 1.2</menu>
+  <menu id="Form_VectorMaster.label_harbw">Порог: 128</menu>
+  <menu id="Form_VectorMaster.label_imgname">Имя: </menu>
+  <menu id="Form_VectorMaster.label_instr">Следуйте интрукциям...&#009;&#xA;</menu>
+  <menu id="Form_VectorMaster.label_path">Изображение: not set</menu>
+  <menu id="Form_VectorMaster.label_percentage">--</menu>
+  <menu id="Form_VectorMaster.label_resolution">Разрешение: not set</menu>
+  <menu id="Form_VectorMaster.label_resolution_">Разрешение: </menu>
+  <menu id="Form_VectorMaster.label_size">Размер: not set</menu>
+  <menu id="Form_VectorMaster.label_sobel">Порог: 125</menu>
+  <menu id="Form_VectorMaster.label_strcount">Кол-во потоков:</menu>
+  <menu id="Form_VectorMaster.label_timespend">Time:</menu>
+  <menu id="Form_VectorMaster.label_title">Векторизация&#009;&#xA;растра</menu>
+  <menu id="Form_VectorMaster.label_titlle1">Вас приветствует векторизации изображений&#009;&#xA;</menu>
+  <menu id="Form_VectorMaster.button_back_img">Назад</menu>
+  <menu id="Form_VectorMaster.button_back_pr">Назад</menu>
+  <menu id="Form_VectorMaster.button_back_tab2">Назад</menu>
+  <menu id="Form_VectorMaster.button_back_tab3">Назад</menu>
+  <menu id="Form_VectorMaster.button_back_tab4">Назад</menu>
+  <menu id="Form_VectorMaster.button_exit">Выйти</menu>
+  <menu id="Form_VectorMaster.button_exit_tab0">Назад</menu>
+  <menu id="Form_VectorMaster.button_help">Справка</menu>
+  <menu id="Form_VectorMaster.button_loadimage">Открыть</menu>
+  <menu id="Form_VectorMaster.button_next">Далее</menu>
+  <menu id="Form_VectorMaster.button_next1">Далее</menu>
+  <menu id="Form_VectorMaster.button_next_tab0">Далее</menu>
+  <menu id="Form_VectorMaster.button_next_tab2">Далее</menu>
+  <menu id="Form_VectorMaster.button_next_tab3">Далее</menu>
+  <menu id="Form_VectorMaster.button_next_tab4">Выйти</menu>
+  <menu id="Form_VectorMaster.button_openfolder">Открыть папку</menu>
+  <menu id="Form_VectorMaster.button_peview">+</menu>
+  <menu id="Form_VectorMaster.button_pr">Векторизировать</menu>
+  <menu id="Form_VectorMaster.button_print">На печать</menu>
+  <menu id="Form_VectorMaster.button_remove">Удалить</menu>
+  <menu id="Form_VectorMaster.button_savepr">Сохранить</menu>
+  <menu id="Form_VectorMaster.button_show">Показать</menu>
+  <menu id="Form_VectorMaster.button_update">Обновить</menu>
+  <menu id="Form_VectorMaster.button_update_tab2">Обновить</menu>
+  <menu id="Form_VectorMaster.button_update_tab3">Обновить</menu>
+  <menu id="Form_VectorMaster.checkBox_useflip">Использовать&#009;&#xA;</menu>
+  <menu id="Form_VectorMaster.groupBox_colormod">2х цветный формат</menu>
+  <menu id="Form_VectorMaster.groupBox_flip">Отражение</menu>
+  <menu id="Form_VectorMaster.groupBox_gauss">Размытие по Гауссу</menu>
+  <menu id="Form_VectorMaster.groupBox_grayform">Оттенки серого</menu>
+  <menu id="Form_VectorMaster.groupBox_rotate">Поворот</menu>
+  <menu id="Form_VectorMaster.groupBox_sobel">Оператор Собеля</menu>
+  <menu id="Form_VectorMaster.radioButton_0deg">0</menu>
+  <menu id="Form_VectorMaster.radioButton_180deg">180</menu>
+  <menu id="Form_VectorMaster.radioButton_270deg">270</menu>
+  <menu id="Form_VectorMaster.radioButton_90deg">90</menu>
+  <menu id="Form_VectorMaster.radioButton_flipx">По оси Х</menu>
+  <menu id="Form_VectorMaster.radioButton_flipy">По оси Y</menu>
+  <menu id="Form_VectorMaster.radioButton_grayform">Оттенки серого</menu>
+  <menu id="Form_VectorMaster.radioButton_hardbw">2х цветный формат</menu>
+
+</content>

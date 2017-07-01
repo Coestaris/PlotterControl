@@ -194,7 +194,9 @@ namespace CWA.Vectors
             for (int x = 0; x <= bmp.Width - 1; x++)
                 for (int y = 0; y <= bmp.Height - 1; y++)
                 {
-                    bmp.SetPixel(x, y, Helper.NewOneChColor(Helper.GetAverageColor(bmp.GetPixel(x, y))));
+                    Color Pixel = bmp.GetPixel(x, y);
+                    byte b = Helper.GetAverageColor(Pixel);
+                    bmp.SetPixel(x, y, Color.FromArgb(Pixel.A, b, b, b));
                 }
             return bmp;
         }

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MAIN WINDOW ===- -->
+
+  <!-- Main Widnow Phrases-->
+  <phrase id="MainWindow.Word.Main"> Главная</phrase>
+  <phrase id="MainWindow.Word.Disconnect">Отключится</phrase>
+  <phrase id="MainWindow.Word.Connect">Подключится</phrase>
+  <phrase id="MainWindow.Word.GoAway">Перейти</phrase>
+  <phrase id="MainWindow.Word.Drivers">Драйверы</phrase>
+  <phrase id="MainWindow.Word.Error">Перейти</phrase>
+  <phrase id="MainWindow.Version">Версия программы</phrase>
+  <phrase id="MainWindow.Build">Номер сборки</phrase>
+  <phrase id="MainWindow.TargetDotNet">Целевая версия .NET</phrase>
+  <phrase id="MainWindow.PathToArduino">Путь к Arduino IDE</phrase>
+  <phrase id="MainWindow.DeviceTitle">  Настройки&#xA;  устройтсва </phrase>
+  <phrase id="MainWindow.OptionsTitle">  Настройки&#xA;  программы </phrase>
+  <phrase id="MainWindow.RGB">RGB ({0}, {1}, {2})</phrase>
+  <phrase id="MainWindow.IdleAndWorkDelays">{0}, Idle: {1:0.#}, Work: {2:0.#}</phrase>
+
+  <!-- Main Widnow Messages-->
+  <message id="MainWindow.DontSaveChanges">Перейти без сохранения?</message>
+  <message id="MainWindow.OriArduino">Вы используете оригинальный Ардуино?</message>
+  <message id="MainWindow.YouDontNeedToInstallDrivers">Установка драйверов не нужна, IDE уже имеет нужный набор. Хотите сделать данную кнопку не активную более?</message>
+  <message id="MainWindow.VisitDeveloperSize">Перейти на оффициальную страницу разработчика в веб-браузере?</message>
+
+  <!-- Main Widnow Errors-->
+  <error id="MainWindow.CloseConnectionSession">Закройте сессию подключения!</error>
+  <error id="MainWindow.EnterPortName">Укажите имя порта!</error>
+  <error id="MainWindow.EnterBD">Укажите скорость подключения!</error>
+  <error id="MainWindow.WasSetWrongPathOrFileNotFound">Указан не верный путь, или файл "arduino_debug.exe" отсутсует!</error>
+  <error id="MainWindow.TimeOut">Время ожидание истекло, попробуйте позже!</error>
+  <error id="MainWindow.ContConnectOrOpenTo">Невозможно открыть или подключится к порту </error>
+  <error id="MainWindow.WrongNumber">"{0}" - неверное число!</error>
+
+
+  <!-- Main Widnow Menus -->
+  <menu id="MainWindow.button_about">  О программе  </menu>
+  <menu id="MainWindow.button_config"> Настройки&#009;&#xA;   программы</menu>
+  <menu id="MainWindow.button_device">  Настройки&#009;&#xA;   устройтсва&#009;&#xA; </menu>
+  <menu id="MainWindow.button_help"> Справка      </menu>
+  <menu id="MainWindow.button_home"> Главная       </menu>
+  <menu id="MainWindow.button_main_about_help">Читать справку</menu>
+  <menu id="MainWindow.button_main_config_def">Поумолчанию</menu>
+  <menu id="MainWindow.button_main_config_help">Справка</menu>
+  <menu id="MainWindow.button_main_config_save">Сохранить</menu>
+  <menu id="MainWindow.button_main_device_col">Калибровка устройства</menu>
+  <menu id="MainWindow.button_main_device_def">По умолчанию</menu>
+  <menu id="MainWindow.button_main_device_driver">Установить драйверы</menu>
+  <menu id="MainWindow.button_main_device_help">Справка</menu>
+  <menu id="MainWindow.button_main_device_ide">Скачать &#009;&#xA;Arduino IDE </menu>
+  <menu id="MainWindow.button_main_device_pick">Выбрать</menu>
+  <menu id="MainWindow.button_main_device_save">Сохранить</menu>
+  <menu id="MainWindow.button_main_device_scetch">Записать сектч</menu>
+  <menu id="MainWindow.button_main_editor">  Векторный     &#xA;  редактор     </menu>
+  <menu id="MainWindow.button_main_macro">  Макросы   </menu>
+  <menu id="MainWindow.button_main_manual">   Полуавтомат.&#009;&#xA;управление</menu>
+  <menu id="MainWindow.button_main_memory_connect">Подключиться</menu>
+  <menu id="MainWindow.button_main_memory_def">Поумолчанию</menu>
+  <menu id="MainWindow.button_main_memory_get">Обновить</menu>
+  <menu id="MainWindow.button_main_memory_help">Справка</menu>
+  <menu id="MainWindow.button_main_memory_load">Отправить</menu>
+  <menu id="MainWindow.button_main_print">  Печать                </menu>
+  <menu id="MainWindow.button_main_ser">  Консольное         &#xA;  управление         &#xA;</menu>
+  <menu id="MainWindow.button_main_vect">  Векторизация </menu>
+  <menu id="MainWindow.button_main_vectview">   Просмотрщик&#009;&#xA;   векторов</menu>
+  <menu id="MainWindow.button_memory">            Память&#009;&#xA;            устройства</menu>
+  <menu id="MainWindow.button_pb">Выбрать</menu>
+  <menu id="MainWindow.button_pd">Выбрать</menu>
+  <menu id="MainWindow.button_print"> Печать         </menu>
+  <menu id="MainWindow.button_print_help">Справка</menu>
+  <menu id="MainWindow.button_print_mc_help">Справка</menu>
+  <menu id="MainWindow.button_print_mc_start">Открыть консоль</menu>
+  <menu id="MainWindow.button_print_mc_start1">Открыть панель</menu>
+  <menu id="MainWindow.button_print_print_help">Справка</menu>
+  <menu id="MainWindow.button_print_print_start">Запустить &#009;&#xA;мастер печати</menu>
+  <menu id="MainWindow.button_print_viewer_help">Справка</menu>
+  <menu id="MainWindow.button_vb">Выбрать</menu>
+  <menu id="MainWindow.button_vd">Выбрать</menu>
+  <menu id="MainWindow.button_vect"> Вектора      </menu>
+  <menu id="MainWindow.button_vect_editor_help">Справка</menu>
+  <menu id="MainWindow.button_vect_editor_start">Открыть редактор</menu>
+  <menu id="MainWindow.button_vect_pr_start">Открыть мастер векторизации</menu>
+  <menu id="MainWindow.button_vect_vect_help">Справка</menu>
+  <menu id="MainWindow.button_vect_viewer_start">Открыть просмотрщик</menu>
+  <menu id="MainWindow.checkBox_main_memory_com">Значение: "Есть задание"</menu>
+  <menu id="MainWindow.checkBox_main_memory_pause">Значение: "Приостановлен"</menu>
+  <menu id="MainWindow.checkBox_main_memory_readonly">Только для чтения</menu>
+  <menu id="MainWindow.checkBox_main_memory_val">Значение потонциометра:</menu>
+  <menu id="MainWindow.checkBox_usedevicespeed">Использовать автоматическую установку скорости</menu>
+  <menu id="MainWindow.label_help_title">Главная</menu>
+  <menu id="MainWindow.label_main_about_about">Про программу</menu>
+  <menu id="MainWindow.label_main_about_build">Номер сборки: 1000</menu>
+  <menu id="MainWindow.label_main_about_con">Версия CWA_Connection: </menu>
+  <menu id="MainWindow.label_main_about_discr">  Plotter Control - много функциональная программа для управления самодельными
+(аматорскими) устройствами типа ЧПУ, собранных на основе контроллера Arduino В ее,
+функционал, кроме построений, также входят:
+ - Настройка, прошивка, задача параметров, калибровка устройства;
+ - Создание и обработка векторных рисунков;
+ - Создание последовательностей команд для устройства (макросов) и многое другое.
+
+Имеет возможность построения:
+ - Растровых изображений;
+ - Веторных изображений формата .SVG;
+ - Математических графиков, кривых.
+  </menu>
+  <menu id="MainWindow.label_main_about_dotnet">Использыванная версия .NET: 4.5.1</menu>
+  <menu id="MainWindow.label_main_about_hm">Версия CWA_VectorHM: </menu>
+  <menu id="MainWindow.label_main_about_mc">Версия CWA_ManualControl: </menu>
+  <menu id="MainWindow.label_main_about_mp">Версия CWA_MathParser: </menu>
+  <menu id="MainWindow.label_main_about_pm">Версия CWA_PrintMacros: </menu>
+  <menu id="MainWindow.label_main_about_pr">Версия CWA_Printing: </menu>
+  <menu id="MainWindow.label_main_about_v">Версия CWA_Vectors: </menu>
+  <menu id="MainWindow.label_main_about_ve">Версия CWA_VEditor: </menu>
+  <menu id="MainWindow.label_main_about_version">Версия программы: 2.2.0.1</menu>
+  <menu id="MainWindow.label_main_config_1">RGB (100, 100, 100)</menu>
+  <menu id="MainWindow.label_main_config_2">RGB (100, 100, 100)</menu>
+  <menu id="MainWindow.label_main_config_3">RGB (100, 100, 100)</menu>
+  <menu id="MainWindow.label_main_config_4">RGB (100, 100, 100)</menu>
+  <menu id="MainWindow.label_main_config_5">мм.</menu>
+  <menu id="MainWindow.label_main_config_6">шагов.</menu>
+  <menu id="MainWindow.label_main_config_7">бод.</menu>
+  <menu id="MainWindow.label_main_config_title">Настройки программы</menu>
+  <menu id="MainWindow.label_main_device_1">ММ/шаг.</menu>
+  <menu id="MainWindow.label_main_device_2">ММ/шаг.</menu>
+  <menu id="MainWindow.label_main_device_3">шагов.</menu>
+  <menu id="MainWindow.label_main_device_4">шагов.</menu>
+  <menu id="MainWindow.label_main_device_5">Имя порта:</menu>
+  <menu id="MainWindow.label_main_device_board">Выберете вашу плату:</menu>
+  <menu id="MainWindow.label_main_device_indev">(в разработке)</menu>
+  <menu id="MainWindow.label_main_device_isinstall">(уже установлен)</menu>
+  <menu id="MainWindow.label_main_device_pathto">Путь к Arduino IDE:</menu>
+  <menu id="MainWindow.label_main_device_title">Настройки устройства</menu>
+  <menu id="MainWindow.label_main_memory_1">мс.</menu>
+  <menu id="MainWindow.label_main_memory_2">мс.</menu>
+  <menu id="MainWindow.label_main_memory_bd">Скорость соеденения:</menu>
+  <menu id="MainWindow.label_main_memory_idle">Задержка между шагами при холостом ходе:</menu>
+  <menu id="MainWindow.label_main_memory_port">Порт:</menu>
+  <menu id="MainWindow.label_main_memory_title">Память устройства</menu>
+  <menu id="MainWindow.label_main_memory_work">Задержка между шагами при рабочем ходе:</menu>
+  <menu id="MainWindow.label_main_memory_xd">Пин направления по оси X (XDir):</menu>
+  <menu id="MainWindow.label_main_memory_xs">Пин шага по оси X (XStep):</menu>
+  <menu id="MainWindow.label_main_memory_yd">Пин направления по оси Y (YDir):</menu>
+  <menu id="MainWindow.label_main_memory_ys">Пин шага по оси Y (YStep):</menu>
+  <menu id="MainWindow.label_main_memory_zd">Пин направления по оси Z (ZDir):</menu>
+  <menu id="MainWindow.label_main_memory_zs">Пин шага по оси Z (ZStep):</menu>
+  <menu id="MainWindow.label_main_table">Главная</menu>
+  <menu id="MainWindow.label_mainport">Использовать как порт по умолчанию: </menu>
+  <menu id="MainWindow.label_mainrate">Использовать как скорость соеденения &#009;&#xA;по умолчанию: </menu>
+  <menu id="MainWindow.label_maxstepheight">Максимальное количесвто шагов по высоте: </menu>
+  <menu id="MainWindow.label_MaxStepWidth">Максимальное количесвто шагов по ширине: </menu>
+  <menu id="MainWindow.label_md">Предел разрыва вектора:</menu>
+  <menu id="MainWindow.label_pb">Стандартный цвет фона просмотра в &#009;&#xA;диалоговом окне печати:</menu>
+  <menu id="MainWindow.label_pd">Стандартный цвет линий просмотра в &#009;&#xA;диалоговом окне печати:</menu>
+  <menu id="MainWindow.label_peo">Действие при конце печати: </menu>
+  <menu id="MainWindow.label_print_macro_title">Управление макросами</menu>
+  <menu id="MainWindow.label_print_mc_discr">Данный инструмент позволит вам перемещать перо в полуавтоматическом режиме.&#009;&#xA;</menu>
+  <menu id="MainWindow.label_print_mc_title">Полуавтоматическое управление</menu>
+  <menu id="MainWindow.label_print_print_discr">  Нажав на кнопку "Запустить мастер печати" октроется мастер, в котором вы
+пошагово, следуя инструкциям сможете без труда распечатать любой,
+уже имеющийся вектор на вашем устройстве.
+  </menu>
+  <menu id="MainWindow.label_print_print_title">Печать вектора&#009;&#xA;</menu>
+  <menu id="MainWindow.label_print_ser_discr">  С помощью консоли вы сможете напрямую взаемодействовать с утсройством с помощью
+"Прямых команд" (Читайте об это справку).
+  </menu>
+  <menu id="MainWindow.label_print_ser_title">Консольное управление&#009;&#xA;&#009;&#xA;</menu>
+  <menu id="MainWindow.label_print_title">Печать</menu>
+  <menu id="MainWindow.label_pso">Действие при начале печати: </menu>
+  <menu id="MainWindow.label_sh">Константа шагов по высоте:</menu>
+  <menu id="MainWindow.label_title">Plotter Control&#009;&#xA;</menu>
+  <menu id="MainWindow.label_title2">or CnC WFA</menu>
+  <menu id="MainWindow.label_title3">By Coestaris</menu>
+  <menu id="MainWindow.label_vb">Стандартный цвет фона в векторном &#009;&#xA;просмоторщике:</menu>
+  <menu id="MainWindow.label_vd">Стандартный цвет линий в векторном &#009;&#xA;просмоторщике:</menu>
+  <menu id="MainWindow.label_vect_editor_discr">  Благадоря векторному редактора вы сможете редактировать полученные вектора.
+В его функционал входят:
+- Обрезка, удаление конкретных контуров вектора.
+- Повор, сжатие, растягивание.
+- Оптимизация и сглаживание вектора.
+- Добавление на вектор текста, примитивов, других векторов.
+  </menu>
+  <menu id="MainWindow.label_vect_editor_title">Векторный редактор</menu>
+  <menu id="MainWindow.label_vect_title">Вектора</menu>
+  <menu id="MainWindow.label_vect_vect_discr">  Векторизация - инструмент для преобразование растроых изображений (обычных, привычных)
+картинок в вектора, которые после возможно будет построить на устройсте. В процессе вы
+виберете необходимое изображение и указав некоторые параметры, спустя время получите
+вектор.
+  </menu>
+  <menu id="MainWindow.label_vect_vect_title">Векторизация</menu>
+  <menu id="MainWindow.label_vect_viewer_title">Просмотрщик векторов</menu>
+  <menu id="MainWindow.label_vect_viewr_discr">  Просмотрщик векторов - инструмент для просмотра векторных файлов формата .PCV и .PRRES.
+Автоматически открывается при асоциации с такими файлами.
+  </menu>
+  <menu id="MainWindow.label_xmm">ММ в одном шаге по оси Y:</menu>
+  <menu id="MainWindow.label_ymm">ММ в одном шаге по оси X:</menu>
+  <menu id="MainWindow.Text">Plotter Control</menu>
+  <menu id="MainWindow.textBox_maxstepheight">21000</menu>
+  <menu id="MainWindow.textBox_MaxStepWidth">15000</menu>
+  <menu id="MainWindow.textBox_md">200</menu>
+  <menu id="MainWindow.textBox_sh">1000</menu>
+  <menu id="MainWindow.textBox_xmm">0,013</menu>
+  <menu id="MainWindow.textBox_ymm">0,013</menu>
+
+</content>

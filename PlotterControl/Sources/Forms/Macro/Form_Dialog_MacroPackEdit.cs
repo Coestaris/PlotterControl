@@ -140,7 +140,7 @@ namespace CnC_WFA
         {
             if (listBox_macroses.SelectedIndex != -1)
             {
-                new Form_macroses(main.Elems[listBox_macroses.SelectedIndex].Path).Show();
+                new Form_Macro(main.Elems[listBox_macroses.SelectedIndex].Path).Show();
             }
             else MessageBox.Show("Select Macros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

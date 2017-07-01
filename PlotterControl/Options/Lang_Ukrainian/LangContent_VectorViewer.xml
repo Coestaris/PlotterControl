@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== VECTOR VIEWER ===- -->
+
+  <!-- Vector Viewer phrases -->
+  <phrase id="VectorViewer.Word.Resolution">Разрешение</phrase>
+  <phrase id="VectorViewer.Word.Points">Точек</phrase>
+  <phrase id="VectorViewer.Word.Loading">Загрузка....</phrase>
+  <phrase id="VectorViewer.Word.Filename">Имя файла</phrase>
+  <phrase id="VectorViewer.Word.Contours">Контуров</phrase>
+  <phrase id="VectorViewer.Word.Drawing">Отрисовка...</phrase>
+  <phrase id="VectorViewer.PathToFile">Путь к файлу</phrase>
+  <phrase id="VectorViewer.ContourDiscr">Контур№{0}, {1} точек.</phrase>
+  <phrase id="VectorViewer.Label">Просмотрщик векторов | Просмотр</phrase>
+  <phrase id="VectorViewer.OldVectorFormat">Устаревший формат вектора</phrase>
+
+  <!-- Vector Viewer Menus -->
+  <menu id="Form_ViewVect.Caption">Просмотрщик векторов</menu>
+  <menu id="Form_ViewVect.button_begindraw">Начать</menu>
+  <menu id="Form_ViewVect.button_exit">Выйти</menu>
+  <menu id="Form_ViewVect.button_load">Загрузить</menu>
+  <menu id="Form_ViewVect.button_outter">Вн. просмотр</menu>
+  <menu id="Form_ViewVect.button_pause">Пауза</menu>
+  <menu id="Form_ViewVect.button_pick2ndcolor">Фон</menu>
+  <menu id="Form_ViewVect.button_pickcolor">Линии</menu>
+  <menu id="Form_ViewVect.button_pick_onecolordraw">...</menu>
+  <menu id="Form_ViewVect.button_print">Печать</menu>
+  <menu id="Form_ViewVect.button_redraw">Перерисовать</menu>
+  <menu id="Form_ViewVect.groupBox_contours">Контуры</menu>
+  <menu id="Form_ViewVect.groupBox_main">Отрисовка</menu>
+  <menu id="Form_ViewVect.groupBox_realtime">Отрисовка в реальном времени</menu>
+  <menu id="Form_ViewVect.label_latency">Задержка: </menu>
+  <menu id="Form_ViewVect.label_ms">мс.</menu>
+  <menu id="Form_ViewVect.label_pathtofile">Путь к файлу: </menu>
+  <menu id="Form_ViewVect.checkBox_randomcolor">Случайный цвет линий</menu>
+  <menu id="Form_ViewVect.checkBox_onecolor">Одно-цветная</menu>
+
+</content>

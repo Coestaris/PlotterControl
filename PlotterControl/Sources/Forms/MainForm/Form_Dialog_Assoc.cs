@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Resources;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using TsudaKageyu;
 
@@ -68,7 +65,7 @@ namespace CnC_WFA
                 Location = new Point(12, 12),
                 Size = new Size(404, 124),
                 ImageSize = new Size(15, 15),
-                Font = new Font("Cambria", 11.25f, FontStyle.Regular, GraphicsUnit.Point, 204),
+                Font = new Font("Arial", 11, FontStyle.Regular),
                 BackColor = Color.White
             };
 
@@ -152,68 +149,6 @@ namespace CnC_WFA
         {
             current[e.Index] = e.NewValue == CheckState.Unchecked;
             button_save.Enabled = !Enumerable.SequenceEqual(current, startStatus);
-        }
-    }
-
-    public class CheckedImageListBox : CheckedListBox
-    {
-        private void Init()
-        {
-            Images = new List<Image>();
-            MouseClick += ProccedMouse;
-            LostFocus += CheckedImageListBox_LostFocus;
-        }
-
-        private void CheckedImageListBox_LostFocus(object sender, EventArgs e)
-        {
-            SelectedIndex = -1;
-        }
-
-        public void AddItem(string Caption, Image img)
-        {
-            if (Images == null) Init();
-            Items.Add(Caption);
-            Images.Add(img);
-        }
-
-        public Size ImageSize { get; set; }
-        public List<Image> Images { get; set; }
-
-        public void ProccedMouse(object sender, MouseEventArgs e)
-        {
-            int LineIndex = -1;
-            int iHeight = GetItemHeight(0);
-            for (int i = 0; i < Items.Count; i++)
-                if (e.Y > iHeight * i && e.Y < iHeight * (i + 1))
-                    LineIndex = i;
-            SelectedItems.Clear();
-            if (e.X > 15)
-                if (LineIndex != -1) SetItemChecked(LineIndex, !GetItemChecked(LineIndex));
-            SelectedIndex = LineIndex;
-        }
-
-        protected override void OnDrawItem(DrawItemEventArgs e)
-        {
-            string s = Items[e.Index].ToString();
-            int nX = e.Bounds.X + 2;
-            int nY = e.Bounds.Y + 2;
-            Graphics g = e.Graphics;
-            Rectangle oCheckBoxRectangle = new Rectangle(nX, nY, 10, 10);
-            if (e.State.HasFlag(DrawItemState.Selected)) g.FillRectangle(new SolidBrush(SystemColors.Highlight), new RectangleF(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height - 4));
-            else g.FillRectangle(new SolidBrush(SystemColors.Control), e.Bounds);
-
-            g.DrawRectangle(new Pen(Color.Black, 2), oCheckBoxRectangle);
-            if (GetItemChecked(e.Index))
-            {
-                g.DrawString(s, Font, new SolidBrush(Color.Black), e.Bounds.X + ImageSize.Width + 15 + 5, e.Bounds.Y + 1);
-                g.FillRectangle(new SolidBrush(SystemColors.ActiveCaption), oCheckBoxRectangle.X + 2, oCheckBoxRectangle.Y + 2, 6, 6);
-            }
-            else
-            {
-                g.DrawString(s, Font, new SolidBrush(Color.Gray), e.Bounds.X + ImageSize.Width + 15 + 5, e.Bounds.Y + 1);
-                g.FillRectangle(new SolidBrush(Color.White), oCheckBoxRectangle.X + 2, oCheckBoxRectangle.Y + 2, 6, 6);
-            }
-            g.DrawImage(Images[e.Index], new Rectangle(new Point(e.Bounds.X + 15, e.Bounds.Y), ImageSize));
         }
     }
 }

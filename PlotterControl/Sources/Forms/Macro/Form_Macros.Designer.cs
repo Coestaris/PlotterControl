@@ -1,6 +1,6 @@
 ﻿namespace CnC_WFA
 {
-    partial class Form_macroses
+    partial class Form_Macro
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_macroses));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Macro));
             this.button_save = new System.Windows.Forms.Button();
             this.button_load = new System.Windows.Forms.Button();
             this.listBox_elements = new System.Windows.Forms.ListBox();
@@ -130,8 +130,6 @@
             this.listBox_elements.Name = "listBox_elements";
             this.listBox_elements.Size = new System.Drawing.Size(212, 121);
             this.listBox_elements.TabIndex = 2;
-            this.listBox_elements.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox_elements_MouseClick);
-            this.listBox_elements.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox_elements_MouseMove);
             // 
             // pictureBox1
             // 
@@ -142,7 +140,6 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
@@ -522,7 +519,6 @@
             this.textBox_move_offanglelength.Name = "textBox_move_offanglelength";
             this.textBox_move_offanglelength.Size = new System.Drawing.Size(134, 20);
             this.textBox_move_offanglelength.TabIndex = 7;
-            this.textBox_move_offanglelength.TextChanged += new System.EventHandler(this.textBox_move_offanglelength_TextChanged);
             // 
             // textBox_move_offangleangle
             // 
@@ -530,7 +526,6 @@
             this.textBox_move_offangleangle.Name = "textBox_move_offangleangle";
             this.textBox_move_offangleangle.Size = new System.Drawing.Size(134, 20);
             this.textBox_move_offangleangle.TabIndex = 6;
-            this.textBox_move_offangleangle.TextChanged += new System.EventHandler(this.textBox_move_offangleangle_TextChanged);
             // 
             // label_move_offanglelength
             // 
@@ -683,7 +678,7 @@
             this.openFileDialog1.Filter = "PC Macros | *.pcmacros";
             this.openFileDialog1.InitialDirectory = "macros\\";
             // 
-            // Form_macroses
+            // Form_Macro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -694,11 +689,8 @@
             this.Controls.Add(this.groupBox_addel);
             this.Controls.Add(this.groupBox_main);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1099, 726);
-            this.Name = "Form_macroses";
-            this.ShowIcon = false;
+            this.Name = "Form_Macro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_macroses";
             this.Load += new System.EventHandler(this.Form_macroses_Load);

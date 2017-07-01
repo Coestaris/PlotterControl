@@ -30,7 +30,7 @@ namespace CWA.Printing.Macro
     /// <summary>
     /// Описывает элемент макроса.
     /// </summary>
-    public struct MacroElem
+    public class MacroElem
     {
         /// <summary>
         /// Преобразует MacroElemType в MacroElemTypeShorted.
