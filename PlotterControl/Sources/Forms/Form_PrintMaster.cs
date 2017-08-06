@@ -312,7 +312,7 @@ namespace CnC_WFA
         private void button_next_tab1_Click_th()
         {
             pr = new Vector(path);
-            pictureBox_prpreview.Image = pr.ToBitmap(2, Color.Black);
+            pictureBox_prpreview.Image = pr.ToBitmap(Color.White, Color.Black);
             button_next_tab1_Click_set(false);
         }
 

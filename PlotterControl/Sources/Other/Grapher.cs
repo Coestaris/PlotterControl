@@ -53,7 +53,6 @@ namespace CnC_WFA
         }
     }
 
-
     public enum PenStyles
     {
         Solid,
@@ -452,7 +451,6 @@ namespace CnC_WFA
 
     }
     
-
     [Serializable]
     public class GraphDoc
     {

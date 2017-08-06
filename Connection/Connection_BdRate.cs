@@ -31,12 +31,13 @@ namespace CWA.Connection
     /// <summary>
     /// Предоставляет информацию о скорости соеденения с платой.
     /// </summary>
-    public struct BdRate
+    [Serializable]
+    public class BdRate
     {
         /// <summary>
         /// Скорость соеденения.
         /// </summary>
-        private readonly int _num;
+        public int Num { get; set; }
 
         /// <summary>
         /// Самые распространенные варианты скоростей.
@@ -48,7 +49,7 @@ namespace CWA.Connection
         /// </summary>
         public override string ToString()
         {
-            return "bd" + _num;
+            return "bd" + Num;
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace CWA.Connection
         /// <param name="a">Операнд для приведения.</param>
         public static implicit operator int(BdRate a)
         {
-            return a._num;
+            return a.Num;
         }
 
         /// <summary>
@@ -108,9 +109,14 @@ namespace CWA.Connection
         /// <param name="num">Скорость соеденения.</param>
         public BdRate(int num)
         {
-            _num = num;
+            Num = num;
         }
 
+        /// <summary>
+        /// Создает новый езмемпляр класса <see cref="BdRate"/>.
+        /// </summary>
+        public BdRate() { }
+        
         /// <summary>
         /// Создает новый езмемпляр класса <see cref="BdRate"/>.
         /// </summary>
@@ -118,7 +124,7 @@ namespace CWA.Connection
         public BdRate(string num)
         {
             if (!num.ToLower().StartsWith("bd")) throw new ArgumentException("Чтото не так с именем скорости", nameof(num));
-            _num = int.Parse(num.ToLower().Remove(0, 2));
+            Num = int.Parse(num.ToLower().Remove(0, 2));
         }
     }
 }

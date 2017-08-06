@@ -57,7 +57,8 @@ namespace CnC_WFA
             PCVDOC = 1,
             PRRES = 2,
             PCMACROS = 3,
-            PCMPACK = 4
+            PCMPACK = 4,
+            PCGRAPH = 5
         }
 
         [Flags]
@@ -69,7 +70,7 @@ namespace CnC_WFA
             unknown = 8,
         }
 
-        private enum IconIndex
+        internal enum IconIndex
         {
             Icon_PCV = 1,
             Icon_MacroPack = 12,
@@ -82,7 +83,8 @@ namespace CnC_WFA
             Icon_Contex_Read = 8,
             Icon_Contex_OpenPicture = 9,
             Icon_Contex_Print = 10,
-            Icon_Contex_Run = 11
+            Icon_Contex_Run = 11,
+            Icon_PCGraph = 13
         }
 
         public static string PathToProgram, PathToIcons;
@@ -124,6 +126,7 @@ namespace CnC_WFA
         public static List<bool> GetUnidentifiedAssoc()
         {
             FileAssociationInfo fai_pcv = new FileAssociationInfo(".pcv");
+            FileAssociationInfo fai_pcgraph = new FileAssociationInfo(".pcgraph");
             FileAssociationInfo fai_pcvdoc = new FileAssociationInfo(".pcvdoc");
             FileAssociationInfo fai_prres = new FileAssociationInfo(".prres");
             FileAssociationInfo fai_pcmacros = new FileAssociationInfo(".pcmacros");
@@ -134,6 +137,7 @@ namespace CnC_WFA
             Unidentified.Add(!fai_prres.Exists);
             Unidentified.Add(!fai_pcmacros.Exists);
             Unidentified.Add(!fai_pcmpack.Exists);
+            Unidentified.Add(!fai_pcgraph.Exists);
             return Unidentified;
         }
 
@@ -149,7 +153,8 @@ namespace CnC_WFA
             if (Unidentified.Contains(true))
             {
                 List<string> ErrorList = new List<string>();
-                if (Unidentified[(int)FileFormats.PCV]) ErrorList.Add(".PCV ("+TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] +")");
+                if (Unidentified[(int)FileFormats.PCV]) ErrorList.Add(".PCV (" + TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] + ")");
+                if (Unidentified[(int)FileFormats.PCGRAPH]) ErrorList.Add(".PCGRAPH (" + TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] +")");
                 if (Unidentified[(int)FileFormats.PCVDOC]) ErrorList.Add(".VDOC ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.VectorDocument"] + ")");
                 if (Unidentified[(int)FileFormats.PRRES]) ErrorList.Add(".PRRES ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.OldVectorFiles"] + ")");
                 if (Unidentified[(int)FileFormats.PCMACROS]) ErrorList.Add(".PCMACROS ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.Macros"] + ")");
@@ -164,6 +169,7 @@ namespace CnC_WFA
                 AllertAboutAdmin();
                 return;
             }
+            if (Unidentified[(int)FileFormats.PCGRAPH]) RegPCGRAPH();
             if (Unidentified[(int)FileFormats.PCV]) RegPCV();
             if (Unidentified[(int)FileFormats.PCVDOC]) RegPCVDOC();
             if (Unidentified[(int)FileFormats.PRRES]) RegPRRES();
@@ -176,6 +182,13 @@ namespace CnC_WFA
         {
             switch (format)
             {
+                case FileFormats.PCGRAPH:
+                    try
+                    {
+                        RegPCGRAPH();
+                        return true;
+                    }
+                    catch { return false; }
                 case FileFormats.PCV:
                     try
                     {
@@ -224,6 +237,16 @@ namespace CnC_WFA
             AssociateVerb("CNCWFAOPENER.PCV", @" --edit_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
             AssociateVerb("CNCWFAOPENER.PCV", @" --render_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
             AssociateVerb("CNCWFAOPENER.PCV", @" --print_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+        }
+
+        private static void RegPCGRAPH()
+        {
+            AssociateMain("CNCWFAOPENER.PCGRAPH", ".pcgraph", PerceivedTypes.Image, "vect\\pcgraph");
+            AssociateMainData("CNCWFAOPENER.PCGRAPH", TranslateBase.CurrentLang.Phrase["Core.PCGRAPH"], EditFlags.None, IconIndex.Icon_PCGraph);
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --render_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --print_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
         }
 
         private static void RegPCVDOC()
@@ -285,6 +308,11 @@ namespace CnC_WFA
                 case (FileFormats.PCV):
                     Key = ".pcv";
                     DataKey = ".PCV";
+                    break;
+
+                case (FileFormats.PCGRAPH):
+                    Key = ".pcgraph";
+                    DataKey = ".PCGRAPH";
                     break;
 
                 case (FileFormats.PRRES):

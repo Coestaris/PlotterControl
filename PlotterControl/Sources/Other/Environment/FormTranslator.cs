@@ -29,6 +29,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Xml;
 using System.IO.Compression;
+using System.Drawing;
 
 namespace CnC_WFA
 {
@@ -36,6 +37,7 @@ namespace CnC_WFA
     {
         public string Name;
 
+        public Image Icon; 
         public Dictionary<string, string> Menu;
         public Dictionary<string, string> Phrase;
         public Dictionary<string, string> Message;
@@ -376,6 +378,7 @@ namespace CnC_WFA
                 var doc = new XmlDocument();
                 doc.Load(a +'\\'+ new DirectoryInfo(a).Name+".xml");
                 g.Name = doc.LastChild.FirstChild.InnerXml;
+                g.Icon = new Bitmap(a + "\\Icon.png");
                 foreach (var file in Directory.GetFiles(a + "\\", "LangContent_*"))
                 {
                     var tmdoc = new XmlDocument();

@@ -486,7 +486,7 @@ namespace CnC_WFA
                 panel_properties.Visible = true;
                 button_dideprop.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
                 button_hidezoom.Enabled = true;
-                prbitmap = tmpv.ToBitmap(0, Color.Black);
+                prbitmap = tmpv.ToBitmap(Color.White, Color.Black);
                 pictureBox_loaddata_preview.Image = prbitmap;
                 panel_dataload.Visible = true;
                 pictureBox2.Visible = true;
@@ -617,7 +617,7 @@ namespace CnC_WFA
             if (a == DialogResult.OK)
             {
                 tmpv = new Vector(openFileDialog1.FileName);
-                prbitmap = tmpv.ToBitmap(0, Color.Black);
+                prbitmap = tmpv.ToBitmap(Color.White, Color.Black);
 
                 pictureBox_loaddata_preview.Image = prbitmap;
                 panel_dataload.Visible = true;

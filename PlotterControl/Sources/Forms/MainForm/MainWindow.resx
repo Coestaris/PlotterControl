@@ -374,6 +374,12 @@
         PkEUfQANCGu/KCIg5wAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="label_print_macro_mpack.Text" xml:space="preserve">
+    <value>МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОМАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_МАКРОПАКИ_ПАКИ_</value>
+  </data>
+  <data name="label_print_macro_new.Text" xml:space="preserve">
+    <value>НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОНОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_НОВЫЙМАКРОС_ВЫЙМАКРОС_</value>
+  </data>
   <data name="button_main_other.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6

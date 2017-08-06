@@ -23,6 +23,7 @@
 
 */
 
+using System;
 using System.Linq;
 using System.Windows.Input;
 
@@ -31,16 +32,21 @@ namespace CWA.Printing.Macro
     /// <summary>
     /// Описывает элемент макро пака.
     /// </summary>
-    public struct MacroPackElem
+    [Serializable]
+    public class MacroPackElem
     {
+        /// <summary>
+        /// Создает новый экземпляр класса <see cref="MacroPackElem"/>.
+        /// 
+        public MacroPackElem() { }
+
         /// <summary>
         /// Создает новый экземпляр класса <see cref="MacroPackElem"/>, загружая его из файла.
         /// </summary>
         /// <param name="filename">Имя файла.</param>
-        public MacroPackElem(string filename)
+        public MacroPackElem(string filename, string Name)
         {
-            Macros = new Macro(filename);
-            Options = new MacroPackElemOption(Macros.Name, Macros.Name.First(), Key.None);
+            Options = new MacroPackElemOption(Name, Name.First(), Key.None);
             Path = filename;
         }
 
@@ -52,7 +58,25 @@ namespace CWA.Printing.Macro
         /// <summary>
         /// Базовый макрос.
         /// </summary>
-        public Macro Macros{ get; set; }
+        private Macro basicMacro;
+
+
+        /// <summary>
+        /// Возвращает значение базового макроса.
+        /// </summary>
+        public Macro GetMacro()
+        {
+            return basicMacro;
+        }
+
+        /// <summary>
+        /// Устонавливает значения базовому макросу.
+        /// </summary>
+        /// <param name="val">Значение макрос</param>
+        public void SetMacro(Macro val)
+        {
+            basicMacro = val;
+        }
 
         /// <summary>
         /// Дополнительные параметры элемента.

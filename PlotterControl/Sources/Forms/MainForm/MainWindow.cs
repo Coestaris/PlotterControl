@@ -71,6 +71,10 @@ namespace CnC_WFA
         private Form_CurvePlugins fc;
         private bool config_preload;
         private bool FirstConfigPreloadChange = true;
+        private Form_Dialog_Lang fdl;
+        private Form_Graph fg;
+        private Form_Macro fme;
+        private Form_MacroPack fmm;
 
         public MainWindow()
         {
@@ -988,6 +992,34 @@ namespace CnC_WFA
             button_main_editor.BackColor = Color.FromArgb(4, 60, 130);
         }
 
+        private void button_main_config_lang_Click(object sender, EventArgs e)
+        {
+            if (fdl == null) fdl = new Form_Dialog_Lang();
+            if (!fdl.Visible) { fdl = new Form_Dialog_Lang(); fdl.ShowDialog(); }
+            else fdl.Focus();
+        }
+
+        private void button_vect_graph_open_Click(object sender, EventArgs e)
+        {
+            if (fg == null) fg = new Form_Graph();
+            if (!fg.Visible) { fg = new Form_Graph(); fg.Show(); }
+            else fg.Focus();
+        }
+
+        private void button2_Click_4(object sender, EventArgs e)
+        {
+            if (fme == null) fme = new Form_Macro();
+            if (!fme.Visible) { fme = new Form_Macro(); fme.Show(); }
+            else fme.Focus();
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            if (fmm == null) fmm = new Form_MacroPack();
+            if (!fmm.Visible) { fmm = new Form_MacroPack(); fmm.Show(); }
+            else fmm.Focus();
+        }
+
         private void button_main_config_assoc_Click(object sender, EventArgs e)
         {
             if (!FileAssociation.CanWriteRegistry)
@@ -997,7 +1029,8 @@ namespace CnC_WFA
             } else
             {
                 if (fda == null) fda = new Form_Dialog_Assoc();
-                if (!fda.Visible) { fda = new Form_Dialog_Assoc(); fda.Show(); }
+                if (!fda.Visible) { fda = new Form_Dialog_Assoc(); fda.ShowDialog(); }
+                else fda.Focus();
             }
         }
 
@@ -1159,14 +1192,6 @@ namespace CnC_WFA
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
-
-
-          //  new Form_Graph().ShowDialog();
-            //Close();
-            
-
-
             configchanged = new bool[11];
             devicechanged = new bool[8];
             comboBox_main_device_port.Items.AddRange(SerialPort.GetPortNames());

@@ -63,7 +63,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>main.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\main.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CnC_WFA.CNCWFA</StartupObject>
@@ -99,6 +99,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
@@ -130,9 +131,14 @@
     <Compile Include="Sources\Forms\Graph\Form_Graph.Designer.cs">
       <DependentUpon>Form_Graph.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Lang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Lang.Designer.cs">
+      <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Other\Grapher.cs" />
     <Compile Include="Sources\Other\TaskbarState.cs" />
-    <None Include="packages.config" />
     <None Include="Plugins\_Curve_ArchimedeanSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -197,11 +203,11 @@
     <Compile Include="Sources\Forms\VEdit\Form_EditVector.Designer.cs">
       <DependentUpon>Form_EditVector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_FromVector.cs">
+    <Compile Include="Sources\Forms\Macro\Form_MacroPack.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_FromVector.Designer.cs">
-      <DependentUpon>Form_FromVector.cs</DependentUpon>
+    <Compile Include="Sources\Forms\Macro\Form_MacroPack.Designer.cs">
+      <DependentUpon>Form_MacroPack.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\Forms\Form_ManualControl.cs">
       <SubType>Form</SubType>
@@ -262,6 +268,9 @@
     <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Assoc.resx">
       <DependentUpon>Form_Dialog_Assoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Lang.resx">
+      <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.resx">
       <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,8 +280,8 @@
     <EmbeddedResource Include="Sources\Forms\VEdit\Form_EditVector.resx">
       <DependentUpon>Form_EditVector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Macro\Form_FromVector.resx">
-      <DependentUpon>Form_FromVector.cs</DependentUpon>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_MacroPack.resx">
+      <DependentUpon>Form_MacroPack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Graph\Form_Graph.resx">
       <DependentUpon>Form_Graph.cs</DependentUpon>
@@ -332,6 +341,39 @@
     </Content>
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_Core.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_MainWindow.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_ManualControl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_SerialMonitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_VectEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_VectorMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_VectorViewer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\Lang_English.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_Russian\LangContent_Core.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -452,7 +494,7 @@
     <Content Include="HTML Help\Vectorization.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="main.ico" />
+    <Content Include="Properties\main.ico" />
     <Content Include="Options\Commands.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -479,6 +521,36 @@
     <Content Include="Options\Lang_Russian\LangContent_ManualControl.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Options\Lang_Ukrainian\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Core.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_MainWindow.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_ManualControl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_SerialMonitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectorMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectorViewer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\Lang_Ukrainian.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Options\LogPolitics.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -488,6 +560,10 @@
     <ProjectReference Include="..\Connection\CWA_Connection.csproj">
       <Project>{04b8e3c1-4d43-4751-883e-6f9a2156f2a1}</Project>
       <Name>CWA_Connection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IconExtractor\IconExtractor.csproj">
+      <Project>{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}</Project>
+      <Name>IconExtractor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Printing\CWA_Printing.csproj">
       <Project>{d61845df-338f-4529-a83e-65a01efd3f20}</Project>
