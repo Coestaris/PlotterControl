@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{897FE156-CCC2-4992-8144-ABB654EA92B9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CnC_WFA</RootNamespace>
+    <AssemblyName>Plotter Control</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Properties\main.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CnC_WFA.CNCWFA</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Compresser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\Compresser.dll</HintPath>
+    </Reference>
+    <Reference Include="FileAssociation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\vk_vm\Desktop\File_assoc\FileAssociationExample\bin\Debug\FileAssociation.dll</HintPath>
+    </Reference>
+    <Reference Include="MRG.Controls.UI, Version=1.0.2601.14400, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\MRG.WinForm.Test\bin\MRG.Controls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditElement.Designer.cs">
+      <DependentUpon>Form_Dialog_EditElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Dialog_EditGraph.Designer.cs">
+      <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Assoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Assoc.Designer.cs">
+      <DependentUpon>Form_Dialog_Assoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Graph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Graph\Form_Graph.Designer.cs">
+      <DependentUpon>Form_Graph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Lang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\Form_Dialog_Lang.Designer.cs">
+      <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Other\Grapher.cs" />
+    <Compile Include="Sources\Other\TaskbarState.cs" />
+    <None Include="Plugins\_Curve_ArchimedeanSpiral.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Cochleoid.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Epicycloid.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Fermats.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_HyperbolicSpiral.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Lituus.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Logarithmic.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Poinsots.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\_Curve_Sinusoidal.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_CurvePlugins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_CurvePlugins.Designer.cs">
+      <DependentUpon>Form_CurvePlugins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.Designer.cs">
+      <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Macros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Macros.Designer.cs">
+      <DependentUpon>Form_Macros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Other\Environment\CommandLineParser.cs" />
+    <Compile Include="Sources\Other\FastBitmap.cs" />
+    <Compile Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.Designer.cs">
+      <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\VEdit\Form_EditVector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\VEdit\Form_EditVector.Designer.cs">
+      <DependentUpon>Form_EditVector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_MacroPack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_MacroPack.Designer.cs">
+      <DependentUpon>Form_MacroPack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_ManualControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_ManualControl.Designer.cs">
+      <DependentUpon>Form_ManualControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_PrintMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_PrintMaster.Designer.cs">
+      <DependentUpon>Form_PrintMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_VectorMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_VectorMaster.Designer.cs">
+      <DependentUpon>Form_VectorMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_SerialMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_SerialMonitor.Designer.cs">
+      <DependentUpon>Form_SerialMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_ViewVect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Form_ViewVect.Designer.cs">
+      <DependentUpon>Form_ViewVect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Other\Environment\FileAssociation.cs" />
+    <Compile Include="Sources\Other\Environment\FormTranslator.cs" />
+    <Compile Include="Sources\Other\Helper.cs" />
+    <Compile Include="Sources\Forms\MainForm\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\MainForm\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\CnC_WFA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\Other\Plugins.cs" />
+    <Compile Include="Sources\Other\Environment\ShellNotification.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Form_CurvePlugins.resx">
+      <DependentUpon>Form_CurvePlugins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Graph\Form_Dialog_EditElement.resx">
+      <DependentUpon>Form_Dialog_EditElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Graph\Form_Dialog_EditGraph.resx">
+      <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Assoc.resx">
+      <DependentUpon>Form_Dialog_Assoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Lang.resx">
+      <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.resx">
+      <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.resx">
+      <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\VEdit\Form_EditVector.resx">
+      <DependentUpon>Form_EditVector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_MacroPack.resx">
+      <DependentUpon>Form_MacroPack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Graph\Form_Graph.resx">
+      <DependentUpon>Form_Graph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Macros.resx">
+      <DependentUpon>Form_Macros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Form_ManualControl.resx">
+      <DependentUpon>Form_ManualControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Form_PrintMaster.resx">
+      <DependentUpon>Form_PrintMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Form_VectorMaster.resx">
+      <DependentUpon>Form_VectorMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Form_SerialMonitor.resx">
+      <DependentUpon>Form_SerialMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Form_ViewVect.resx">
+      <DependentUpon>Form_ViewVect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\MainForm\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\CNCWFA.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Driver\install.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Driver\upload.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Options\Build">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Driver\CH341SER.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Driver\install64.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Driver\sketch.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLLs\FileAssociation.dll" />
+    <Content Include="Lib\IconSet.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_Core.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_MainWindow.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_ManualControl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_SerialMonitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_VectEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_VectorMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\LangContent_VectorViewer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_English\Lang_English.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_Core.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\Lang_Russian.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Options\Options.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="DLLs\Compresser.dll" />
+    <Content Include="DLLs\MRG.Controls.UI.dll" />
+    <Content Include="HTML Help\ApiManual.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_Connection.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_ManualControl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_MathParser.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_Printing.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_PrintMacros.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_VectEditorEnvironment.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_VectorHM.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\API_CNCWFA_Vectors.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\ArdSketch.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\DirectComands.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Format_CVF.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Format_List.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Format_PCMACROS.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Format_PCMPACK.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Format_PRRES.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Format_VDOC.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Home.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\ListOfDirectComands.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\ListOfVars.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Materials\window_vect_1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Materials\window_vect_2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Materials\window_vect_3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Materials\window_vect_4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Materials\window_vect_5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\blank.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\bot_colont.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\fileAPI.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\main.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\MainStyleSheet.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\Sample.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\Table.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\time.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\toc_former.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Source\top_colont.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HTML Help\Vectorization.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Properties\main.ico" />
+    <Content Include="Options\Commands.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_VectEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_VectorViewer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_VectorMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_MainWindow.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_SerialMonitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Russian\LangContent_ManualControl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Core.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_MainWindow.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_ManualControl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_SerialMonitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectorMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectorViewer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\Lang_Ukrainian.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\LogPolitics.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\CWA.Connection\CWA.Connection.csproj">
+      <Project>{04b8e3c1-4d43-4751-883e-6f9a2156f2a1}</Project>
+      <Name>CWA.Connection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.DTP.Plotter\CWA.DTP.Plotter.csproj">
+      <Project>{38004aaa-a3c7-4875-8918-63910bded423}</Project>
+      <Name>CWA.DTP.Plotter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.DTP\CWA.DTP.csproj">
+      <Project>{476a54ca-91a4-437e-8fac-2cfef15ec7be}</Project>
+      <Name>CWA.DTP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.Printing.Macro\CWA.Printing.Macro.csproj">
+      <Project>{02f59898-f418-4a9c-a33f-7cab70df8157}</Project>
+      <Name>CWA.Printing.Macro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.Printing\CWA.Printing.csproj">
+      <Project>{d61845df-338f-4529-a83e-65a01efd3f20}</Project>
+      <Name>CWA.Printing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.Vectors.Document\CWA.Vectors.Document.csproj">
+      <Project>{6fb9a28a-d2f1-49db-8a43-8023f6eab1d2}</Project>
+      <Name>CWA.Vectors.Document</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.Vectors.HM\CWA.Vectors.HM.csproj">
+      <Project>{04d058e1-3018-46ea-a939-e7351987b2c3}</Project>
+      <Name>CWA.Vectors.HM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\CWA.Vectors\CWA.Vectors.csproj">
+      <Project>{154dbf89-c8b7-488b-a8ef-9ccbe76a0c10}</Project>
+      <Name>CWA.Vectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\IconExtractor\IconExtractor.csproj">
+      <Project>{fdfd4eeb-c202-4d93-a6e9-d8984a12d014}</Project>
+      <Name>IconExtractor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lib\Resources\CWA_Resources.csproj">
+      <Project>{e8e3a87a-490a-4701-9d1b-83bc6ac2b568}</Project>
+      <Name>CWA_Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir $(TargetDir)\Lib\
+
+move /Y  $(TargetDir)\*.dll  $(TargetDir)\Lib\
+move /Y  $(TargetDir)\CNCWFA_*.pdb  $(TargetDir)\Lib\
+
+move /Y  $(TargetDir)\CWA*.pdb  $(TargetDir)\lib\
+chdir /d $(ProjectDir)
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

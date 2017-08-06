@@ -1236,12 +1236,12 @@ namespace CnC_WFA
             label_main_about_build.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Build"] + ": " + GlobalOptions.Build + '.';
             label_main_about_dotnet.Text = TranslateBase.CurrentLang.Phrase["MainWindow.TargetDotNet"] + ": " + "4.5.2" + '.';
             FileInfo fi = new FileInfo(Application.ExecutablePath);
-            label_main_about_hm.Text+= FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA_VectorHM.dll").FileVersion + '.';
-            label_main_about_pr.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA_Vectors.dll").FileVersion + '.';
-            label_main_about_v.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA_Printing.dll").FileVersion + '.';
-            label_main_about_ve.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA_VEditor.dll").FileVersion + '.';
-            label_main_about_pm.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA_PrintMacros.dll").FileVersion + '.';
-            label_main_about_con.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA_Connection.dll").FileVersion + '.';
+            label_main_about_hm.Text+= FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.HM.dll").FileVersion + '.';
+            label_main_about_pr.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.dll").FileVersion + '.';
+            label_main_about_v.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.dll").FileVersion + '.';
+            label_main_about_ve.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.Document.dll").FileVersion + '.';
+            label_main_about_pm.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.Macro.dll").FileVersion + '.';
+            label_main_about_con.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Connection.dll").FileVersion + '.';
             FillColors();
             button_home.BackColor = Color.FromArgb(4, 60, 130);
             tabControl_about.SelectedIndex = 2;

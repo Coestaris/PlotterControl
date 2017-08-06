@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{476A54CA-91A4-437E-8FAC-2CFEF15EC7BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CWA.DTP</RootNamespace>
+    <AssemblyName>CWA.DTP</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Base\CommandType.cs" />
+    <Compile Include="Core\Base\EnumsAndInterface.cs" />
+    <Compile Include="Core\Base\CrCHandler.cs" />
+    <Compile Include="Core\Base\HelpMethods.cs" />
+    <Compile Include="Core\Packet\Packet.cs" />
+    <Compile Include="Core\Packet\PacketAnswer.cs" />
+    <Compile Include="Core\Packet\PacketListener.cs" />
+    <Compile Include="Core\Base\Sender.cs" />
+    <Compile Include="Core\Packet\SerialPacketReader.cs" />
+    <Compile Include="Core\Packet\SerialPacketWriter.cs" />
+    <Compile Include="Core\Packet\WrongPacketInputException.cs" />
+    <Compile Include="Handlers\DeviceControl.cs" />
+    <Compile Include="Handlers\DTPMaster.cs" />
+    <Compile Include="Handlers\FileHandlers\FailOperationException.cs" />
+    <Compile Include="Handlers\FileHandlers\SdCardBinnaryFileReadResult.cs" />
+    <Compile Include="Handlers\FileHandlers\SdCardDirectory.cs" />
+    <Compile Include="Handlers\FileHandlers\SdCardFile.cs" />
+    <Compile Include="Handlers\FileHandlers\FileHandlerException.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileReceiver.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileReceiverError.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileRecieverErrorArgs.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileSender.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileSenderError.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileSenderErrorArgs.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileSenderSecurityFlags.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileTransferDelegates.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileTransferEndArgs.cs" />
+    <Compile Include="Handlers\FileHandlers\FileTransfer\FileTransferProcessArgs.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\AbstractPakcetHandler.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\CardInfo.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\DeviceInfo.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\ExtentionMethod.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\Enums.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\FileInfo.cs" />
+    <Compile Include="Handlers\LowLevelHandlers\GeneralPacketHandler.cs" />
+    <Compile Include="Handlers\FileHandlers\SdCardBinnaryFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -23,7 +23,7 @@
 
 */
 
-using CnCWFA_Resources.Properties;
+using CWA_Resources.Properties;
 using CWA;
 using CWA.Printing;
 using CWA.Vectors;

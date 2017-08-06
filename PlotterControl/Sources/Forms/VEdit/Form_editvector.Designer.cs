@@ -1,5 +1,5 @@
-﻿using CnCWFA_Resources;
-using CnCWFA_Resources.Properties;
+﻿using CWA_Resources;
+using CWA_Resources.Properties;
 
 namespace CnC_WFA
 {

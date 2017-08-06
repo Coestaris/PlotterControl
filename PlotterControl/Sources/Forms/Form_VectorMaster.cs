@@ -32,7 +32,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
-using CnCWFA_Resources.Properties;
+using CWA_Resources.Properties;
 using CWA.Vectors;
 using System.Globalization;
 
