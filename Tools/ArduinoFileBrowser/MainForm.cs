@@ -36,9 +36,9 @@ namespace FileBrowser
             var data = size.Split(' ');
             if (!float.TryParse(data[0], out float res)) return 0;
             return res * (data[1] == "B" ? 1f :
-                                           data[1] == "Kb" ? 1024f :
-                                           data[1] == "Mb" ? 1048576f :
-                                           1073741824f);
+                          data[1] == "Kb" ? 1024f :
+                          data[1] == "Mb" ? 1048576f :
+                          1073741824f);
         }
 
         private string ProccedSize(int size)
@@ -48,7 +48,7 @@ namespace FileBrowser
             else if (size < 1073741824f) return (size / 1048576f).ToString() + " Mb";
             else return (size / 1073741824f).ToString() + " Gb";
         }
-
+        
         private void TrySetupFolder()
         {
             try
@@ -273,7 +273,6 @@ namespace FileBrowser
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             if (listView1.SelectedItems.Count == 1)
             {
                 string path = string.Join("", CurrentPath);
@@ -292,7 +291,7 @@ namespace FileBrowser
                     }
                 } else
                 {
-                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text);
+                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[',']'));
                     try
                     {
                         a.Delete(true);
@@ -305,6 +304,66 @@ namespace FileBrowser
                 }
             }
             else System.Windows.Forms.MessageBox.Show("Select File or Dir","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                    contextMenuStrip1.Show(Cursor.Position);
+                else contextMenuStrip2.Show(Cursor.Position);
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1_MouseDoubleClick(null, null);
+        }
+
+        private void createDirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var d = new EnterNameDialog();
+            if(d.ShowDialog() == DialogResult.OK)
+            {
+                string path = string.Join("", CurrentPath);
+                var dir = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + d.Value);
+
+                try
+                {
+                    dir.Create(false);
+                }
+                catch
+                {
+                    System.Windows.Forms.MessageBox.Show("Unable to create dir" + dir.DirectoryPath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                TrySetupFolder();
+            }
+        }
+
+        private void createFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var d = new EnterNameDialog();
+            if (d.ShowDialog() == DialogResult.OK)
+            {
+                string path = string.Join("", CurrentPath);
+                var file = Master.CreateFileHandler(path + (path != "/" ? "/" : "") + d.Value);
+
+                try
+                {
+                    file.Create();
+                }
+                catch
+                {
+                    System.Windows.Forms.MessageBox.Show("Unable to create file" + file.FilePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                TrySetupFolder();
+            }
+        }
+
+        private void toolStripSeparator4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
@@ -357,6 +416,7 @@ namespace FileBrowser
             return returnVal;
         }
     }
+   
     /// <summary>
     /// Internals are mostly from here: http://www.codeproject.com/Articles/2532/Obtaining-and-managing-file-and-folder-icons-using
     /// Caches all results.

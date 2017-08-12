@@ -328,56 +328,22 @@ namespace CWA.Vectors
         /// <summary>
         /// Рендер вектора. С заданными параметрами.
         /// </summary>
-        /// <param name="backcolor">Цвет фона.</param>
-        public Bitmap ToBitmap(Color backcolor)
+        /// <param name="BackColor">Цвет фона.</param>
+        /// <param name="DrawColor">Цвет рисования.</param>
+        public Bitmap ToBitmap(Color BackColor, Color DrawColor)
         {
             Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
             Rectangle rec = new Rectangle(0, 0, (int)(Header.Width), (int)(Header.Height));
             using (Graphics gr = Graphics.FromImage(bitmap))
             {
-                gr.FillRectangle(new SolidBrush(backcolor), rec);
+                gr.FillRectangle(new SolidBrush(BackColor), rec);
             }
             for (int x = 0; x <= RawData.Length - 1; x++)
-            {
-                Color drcolor = Color.FromArgb(_rand.Next(50, 255), _rand.Next(50, 255), _rand.Next(50, 255));
                 for (int y = 0; y <= RawData[x].Length - 1; y++)
-                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
-            }
+                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, DrawColor);
             return bitmap;
         }
 
-        /// <summary>
-        /// Рендер вектора. С заданными параметрами.
-        /// </summary>
-        /// <param name="backcolor">Цвет фона.</param>
-        /// <param name="drcolor">Цвет рисования.</param>
-        public Bitmap ToBitmap(Color backcolor, Color drcolor)
-        {
-            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
-            Rectangle rec = new Rectangle(0, 0, (int)(Header.Width), (int)(Header.Height));
-            using (Graphics gr = Graphics.FromImage(bitmap))
-            {
-                gr.FillRectangle(new SolidBrush(backcolor), rec);
-            }
-            for (int x = 0; x <= RawData.Length - 1; x++)
-                for (int y = 0; y <= RawData[x].Length - 1; y++)
-                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
-            return bitmap;
-        }
-
-        /// <summary>
-        /// Рендер вектора. С заданными параметрами.
-        /// </summary>
-        /// <param name="e">(добавленно для совместимости).</param>
-        /// <param name="drcolor">Цвет рисования линий.</param>
-        public Bitmap ToBitmap(int e, Color drcolor)
-        {
-            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
-            for (int x = 0; x <= RawData.Length - 1; x++)
-                for (int y = 0; y <= RawData[x].Length - 1; y++)
-                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, drcolor);
-            return bitmap;
-        }
 
         /// <summary>
         /// Форматирует разешение согласно заданому формату. Например "[{0}-{1}]" = [100-200].
@@ -406,6 +372,81 @@ namespace CWA.Vectors
             }
             catch { return false; }
             return true;
+        }
+
+        /// <summary>
+        /// Находит разницу двух точек и возвращает результаты типа <see cref="Int16"/>, как массив 4х байтов.
+        /// </summary>
+        /// <param name="pn1">Первая точка.</param>
+        /// <param name="pn2">Вторая точка.</param>
+        private byte[] DeltaPoints(VPointEx p1, VPointEx p2)
+        {
+            var dx = BitConverter.GetBytes((Int16)( - p1.BasePoint.X + p2.BasePoint.X));
+            var dy = BitConverter.GetBytes((Int16)( - p1.BasePoint.Y + p2.BasePoint.Y));
+            var bytes = new byte[4];
+            Buffer.BlockCopy(dx, 0, bytes, 0, 2);
+            Buffer.BlockCopy(dy, 0, bytes, 2, 2);
+            return bytes;
+        }
+
+        /// <summary>
+        /// Находит дистанцию между двумя точками.
+        /// </summary>
+        /// <param name="pn1">Первая точка.</param>
+        /// <param name="pn2">Вторая точка.</param>
+        internal static float Distance(VPoint pn1, VPoint pn2)
+        {
+            return (float)Math.Sqrt((pn2.X - pn1.X) * (pn2.X - pn1.X) + (pn2.Y - pn1.Y) * (pn2.Y - pn1.Y));
+        }
+
+        private readonly static byte[] ByteDownPattern = new byte[4] { 100, 100, 100, 100 };
+        private readonly static byte[] ByteUpPattern = new byte[4] { 101, 101, 101, 101 };
+
+        public Vector ClearThisVector(UInt32 DeleteThreshold)
+        {
+            var temp = RawData.ToList();
+            for (int i = temp.Count-1; i >= 0; i--)
+                if (temp[i].Length <= DeleteThreshold)
+                    temp.RemoveAt(i);
+            RawData = temp.ToArray();
+            return this;
+        }
+
+        /// <summary>
+        /// Преобразует вектор в бинарно-примитивный формат, для отправки на утсройство.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] ToBinnaryVector()
+        {
+            var bytes = new List<byte>();
+            bytes.AddRange(DeltaPoints(new VPointEx(0, 0), RawData[0][0]));
+            bytes.AddRange(ByteDownPattern);
+            for (int i = 0; i < RawData.Length; i++) 
+            {
+                for (int ii = 0; ii < RawData[i].Length - 1; ii++)
+                {
+                    if (Distance(RawData[i][ii].BasePoint, RawData[i][ii + 1].BasePoint) >= 20)
+                    {
+                        if(RawData[i].Skip(ii).Count() <= 10)
+                            break;
+                        bytes.AddRange(ByteUpPattern);
+                        bytes.AddRange(DeltaPoints(RawData[i][ii], RawData[i][ii + 1]));
+                        bytes.AddRange(ByteDownPattern);
+                        continue;
+                    }
+                    bytes.AddRange(DeltaPoints(RawData[i][ii], RawData[i][ii + 1]));
+                }
+                bytes.AddRange(ByteUpPattern);
+                if (i != RawData.Length - 1)
+                {
+                    bytes.AddRange(DeltaPoints(RawData[i].Last(), RawData[i + 1].First()));
+                    bytes.AddRange(ByteDownPattern);
+                } else
+                {
+                    bytes.AddRange(DeltaPoints(RawData.Last().Last(), new VPointEx(0, 0)));
+                }
+            }
+            return bytes.ToArray();
         }
 
         /// <summary>

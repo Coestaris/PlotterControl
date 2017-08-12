@@ -137,6 +137,12 @@
     <Compile Include="Sources\Forms\MainForm\Form_Dialog_Lang.Designer.cs">
       <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Forms\Print\Form_Dialog_PrintEnterName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Print\Form_Dialog_PrintEnterName.Designer.cs">
+      <DependentUpon>Form_Dialog_PrintEnterName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Other\Grapher.cs" />
     <Compile Include="Sources\Other\TaskbarState.cs" />
     <None Include="Plugins\_Curve_ArchimedeanSpiral.cs">
@@ -215,10 +221,10 @@
     <Compile Include="Sources\Forms\Form_ManualControl.Designer.cs">
       <DependentUpon>Form_ManualControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Form_PrintMaster.cs">
+    <Compile Include="Sources\Forms\Print\Form_PrintMaster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sources\Forms\Form_PrintMaster.Designer.cs">
+    <Compile Include="Sources\Forms\Print\Form_PrintMaster.Designer.cs">
       <DependentUpon>Form_PrintMaster.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\Forms\Form_VectorMaster.cs">
@@ -271,6 +277,9 @@
     <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Lang.resx">
       <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Print\Form_Dialog_PrintEnterName.resx">
+      <DependentUpon>Form_Dialog_PrintEnterName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.resx">
       <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,7 +301,7 @@
     <EmbeddedResource Include="Sources\Forms\Form_ManualControl.resx">
       <DependentUpon>Form_ManualControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Form_PrintMaster.resx">
+    <EmbeddedResource Include="Sources\Forms\Print\Form_PrintMaster.resx">
       <DependentUpon>Form_PrintMaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Form_VectorMaster.resx">
@@ -339,7 +348,7 @@
     <Content Include="Lib\IconSet.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="LICENSE.txt">
+    <Content Include="Sources\LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_English\Icon.png">

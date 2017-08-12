@@ -98,7 +98,7 @@ namespace CWA.DTP.Plotter
             }
         }
 
-        public void BeginPrinting(UInt16 Index)
+        public void BeginPrinting(UInt16 Index, PlotterPenInfo Pen)
         {
 
             StatusRequestTimer = new Thread(StatusRequestTimerHandler);
@@ -120,17 +120,15 @@ namespace CWA.DTP.Plotter
             else YSize = GetYsize(metaData.Width, metaData.Height, XSize);
 
             GetCoefficients(new SizeF(metaData.Width, metaData.Height));
-
             try
             {
-                ph.StartPrinting((UInt16)XCoef, (UInt16)YCoef, Index);
+                ph.StartPrinting(Pen.ElevationDelta, Pen.ElevationCorrection, (UInt16)XCoef, (UInt16)YCoef, Index);
             }
             catch
             {
                 RaiseErrorEvent(PrintErrorType.CantFoundFileWithSpecifiedIndex);
                 return;
             }
-
             Printing = true;
         }
     }

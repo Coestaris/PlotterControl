@@ -44,12 +44,14 @@ namespace CWA.DTP.Plotter
             return !res.IsEmpty;
         }
 
-        public bool StartPrinting(UInt16 XCoef, UInt16 YCoef, UInt16 Index)
+        public bool StartPrinting(UInt16 ElevDelta, Int16 ElevCorr, UInt16 XCoef, UInt16 YCoef, UInt16 Index)
         {
-            byte[] ResBuff = new byte[6];
-            Buffer.BlockCopy(BitConverter.GetBytes(XCoef), 0, ResBuff, 0, 2);
-            Buffer.BlockCopy(BitConverter.GetBytes(YCoef), 0, ResBuff, 2, 2);
-            Buffer.BlockCopy(BitConverter.GetBytes(Index), 0, ResBuff, 4, 2);
+            byte[] ResBuff = new byte[10];
+            Buffer.BlockCopy(BitConverter.GetBytes(ElevDelta), 0, ResBuff, 0, 2);
+            Buffer.BlockCopy(BitConverter.GetBytes(ElevCorr), 0, ResBuff, 2, 2);
+            Buffer.BlockCopy(BitConverter.GetBytes(XCoef), 0, ResBuff, 4, 2);
+            Buffer.BlockCopy(BitConverter.GetBytes(YCoef), 0, ResBuff, 6, 2);
+            Buffer.BlockCopy(BitConverter.GetBytes(Index), 0, ResBuff, 8, 2);
             var res = GetResult((UInt16)CommandType.Plotter_Print_Run, ResBuff);
             return !res.IsEmpty;
         }

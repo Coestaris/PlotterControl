@@ -30,45 +30,45 @@ namespace CWA.DTP
 {
     public class SerialPacketReader : IPacketReader
     {
-        private byte[] _result;
-        private bool _getAnsw = false;
-        private SerialPort _port;
+        private byte[] Result;
+        private bool GetAnsw = false;
+        public SerialPort Port { get; private set; }
 
         public int TimeOutInterval { get; set; } = 5000;
         
         public SerialPacketReader(SerialPort port, int TimeOutInterval)
         {
             this.TimeOutInterval = TimeOutInterval;
-            _port = port;
+            Port = port;
             port.DataReceived += AsyncGetData;
             if (!port.IsOpen) port.Open();
         }
 
         public void Reset()
         {
-            _port.Close();
-            _port.Open();
+            Port.Close();
+            Port.Open();
         }
 
         public SerialPacketReader(SerialPort port)
         {
-            _port = port;
+            Port = port;
             port.DataReceived += AsyncGetData;
             if (!port.IsOpen) port.Open();
         }
 
         public byte[] Read()
         {
-            _getAnsw = false;
+            GetAnsw = false;
             int counter = 0;
             while (counter <= TimeOutInterval)
             {
                 counter += 1;
                 Thread.Sleep(1);
-                if (_getAnsw)
+                if (GetAnsw)
                 {
-                    _getAnsw = false;
-                    return _result;
+                    GetAnsw = false;
+                    return Result;
                 }
             }
             throw new WrongPacketInputException(TimeOutInterval);
@@ -91,8 +91,8 @@ namespace CWA.DTP
              }
              return buffer;*/
 
-            var a = (byte)_port.ReadByte();
-            var b = (byte)_port.ReadByte();
+            var a = (byte)Port.ReadByte();
+            var b = (byte)Port.ReadByte();
 
 
             var len = HelpMethods.GetNumber(a, b) - 255;
@@ -110,9 +110,9 @@ namespace CWA.DTP
             */
             for (int i = 0; i <= len - 3; i++)
             {
-                buffer[i + 2] = (byte)_port.ReadByte();
+                buffer[i + 2] = (byte)Port.ReadByte();
             }
-            _port.ReadExisting();
+            Port.ReadExisting();
             return buffer;
         }
 
@@ -145,8 +145,8 @@ namespace CWA.DTP
 
         private void AsyncGetData(object sender, SerialDataReceivedEventArgs e)
         {
-            _result = ReadAsync();
-            _getAnsw = true;
+            Result = ReadAsync();
+            GetAnsw = true;
         }
     }
 }

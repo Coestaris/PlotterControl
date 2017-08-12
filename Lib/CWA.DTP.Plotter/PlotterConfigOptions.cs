@@ -16,8 +16,6 @@ namespace CWA.DTP.Plotter
         public UInt16 IdleDelay { get; set; }
         public bool ComLed { get; set; }
         public bool PauseLed { get; set; }
-        public Int16 UpSteps { get; set; }
-        public Int16 UpCorrectSteps { get; set; }
 
         internal PlotterConfigOptions(byte[] data)
         {
@@ -33,8 +31,6 @@ namespace CWA.DTP.Plotter
             ComLed = data[11] == 1;
             PinMappingPauseLed = data[12];
             PinMappingComLed = data[13];
-            UpSteps = (Int16)(data[14] | (data[15] << 8));
-            UpCorrectSteps = (Int16)(data[16] | (data[17] << 8));
         }
 
         public override string ToString()
@@ -62,10 +58,6 @@ namespace CWA.DTP.Plotter
                 (byte)(PauseLed ? 1 : 0),
                 PinMappingPauseLed,
                 PinMappingComLed,
-                (byte)(UpSteps & 0xFF),
-                (byte)((UpSteps >> 8) & 0xFF),
-                (byte)(UpCorrectSteps & 0xFF),
-                (byte)((UpCorrectSteps >> 8) & 0xFF),
             };
         }
     }

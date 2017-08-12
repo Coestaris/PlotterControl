@@ -20,7 +20,7 @@ namespace CWA.DTP.Plotter
             get
             {
                 if (!LoadedPreview)
-                    UploadPreview();
+                    DownloadPreview();
                 return PreviewCache;
             }
         }
@@ -29,7 +29,7 @@ namespace CWA.DTP.Plotter
         private Bitmap PreviewCache;
         private PlotterContent Parrent;
 
-        public void UploadPreview()
+        public void DownloadPreview()
         {
             string pcName = string.Format("Data//Cache//{0}.p", Index);
             string dName = string.Format("{0}.p", Index);

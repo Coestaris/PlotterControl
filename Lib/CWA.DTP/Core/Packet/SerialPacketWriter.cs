@@ -29,17 +29,17 @@ namespace CWA.DTP
 {
     public class SerialPacketWriter : IPacketWriter
     {
-        private SerialPort _port;
+        public SerialPort Port { get; private set; }
 
         public SerialPacketWriter(SerialPort port)
         {
-            _port = port;
+            Port = port;
             if (!port.IsOpen) port.Open();
         }
 
         public bool Write(byte[] packet)
         {
-            _port.Write(packet, 0, packet.Length);
+            Port.Write(packet, 0, packet.Length);
             return true; //Always okay
         }
 

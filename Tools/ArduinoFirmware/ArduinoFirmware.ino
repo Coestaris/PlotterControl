@@ -5,8 +5,14 @@
 File WriteFile;
 uint16_t PrintFileName;
 bool isOpenFile;
+
 uint16_t XCoef;
 uint16_t YCoef;
+
+uint16_t ElevDelta;
+int16_t ElevCorr;
+uint16_t YCoef;
+
 bool ReqToStartPrint = false;
 int ii = 0;
 
@@ -57,9 +63,11 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			status = DTP_ANSWER_STATUS::OK;
 			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
 			dataByte = 0;
-			XCoef = (uint16_t)(data[0] | (data[1] << 8));
-			YCoef = (uint16_t)(data[2] | (data[3] << 8));
-			PrintFileName = (uint16_t)(data[4] | (data[5] << 8));
+			ElevDelta = (uint16_t)(data[0] | (data[1] << 8));
+			ElevCorr = (int16_t)(data[2] | (data[3] << 8));
+			XCoef = (uint16_t)(data[4] | (data[5] << 8));
+			YCoef = (uint16_t)(data[6] | (data[7] << 8));
+			PrintFileName = (uint16_t)(data[8] | (data[9] << 8));
 			ReqToStartPrint = true;
 			break;
 		}
@@ -848,7 +856,7 @@ void loop()
 
 	if (ReqToStartPrint)
 	{
-		PLOTTER_RUN(String(PrintFileName) + ".v", XCoef, YCoef);
+		PLOTTER_RUN(String(PrintFileName) + ".v", ElevDelta, ElevCorr, XCoef, YCoef);
 		ReqToStartPrint = false;
 	} 
 }

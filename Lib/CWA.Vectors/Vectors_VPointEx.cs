@@ -48,6 +48,17 @@ namespace CWA.Vectors
         public static readonly VPointEx ZeroPoint = new VPointEx(0, 0, 0, Color.Empty);
 
         /// <summary>
+        /// Создает новый екземпляр объекта <see cref="VPointEx"/>. С координатами (Х,Y).
+        /// </summary>
+        /// <param name="x">Х точки.</param>
+        /// <param name="y">Y точки.</param>
+        public VPointEx(double x, double y)
+        {
+            BasePoint = new VPoint(x, y, Color.Black);
+            BordWith = 0;
+        }
+
+        /// <summary>
         /// Создает новый екземпляр объекта <see cref="VPointEx"/>. С координатами (Х,Y) параметром n и цветом С.
         /// </summary>
         /// <param name="x">Х точки.</param>

@@ -1,4 +1,5 @@
 ﻿using CWA.DTP.FileTransfer;
+using CWA.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -106,12 +107,12 @@ namespace CWA.DTP.Plotter
             }
         }
 
-        public bool UploadVector(Vectors.Vector vector)
+        public bool UploadVector(Vector vector)
         {
             return UploadVector(vector, vector.Filename.Split('\\').Last().Split('.').First());
         }
 
-        public bool UploadVector(Vectors.Vector vector, string name)
+        public bool UploadVector(Vector vector, string name)
         {
             UInt16 index = (UInt16)(CountOfVectors + 1);
             string previewName =string.Format("{0}.p", index);
@@ -150,6 +151,11 @@ namespace CWA.DTP.Plotter
             ContentTable.VectorAdresses.Add(index);
             ContentTable.Upload();
             return true;
+        }
+
+        public void Refresh()
+        {
+            ContentTable = new PlotterContentTable(Master);
         }
     }
 }

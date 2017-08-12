@@ -233,9 +233,6 @@ bool PLOTTER_pause = false;
 bool PLOTTER_com = false;
 uint32_t PLOTTER_DelayTime = 50;
 
-int16_t PLOTTER_UpSteps = PLOTTER_UPSTEPS;
-int16_t PLOTTER_UpCorrectSteps = PLOTTER_UPCORRECTSTEPS;
-
 void PLOTTER_INIT()
 {
 	if (SD.exists(CONFIGNAME))
@@ -253,8 +250,6 @@ void PLOTTER_INIT()
 		PLOTTER_com = PLOTTER_CONFIG_FILE.read() == 1;
 		PLOTTER_PAUSELED = PLOTTER_CONFIG_FILE.read();
 		PLOTTER_PAUSECOM = PLOTTER_CONFIG_FILE.read();
-		PLOTTER_UpSteps = (int16_t)(PLOTTER_CONFIG_FILE.read() | (PLOTTER_CONFIG_FILE.read() << 8));
-		PLOTTER_UpCorrectSteps = (int16_t)(PLOTTER_CONFIG_FILE.read() | (PLOTTER_CONFIG_FILE.read() << 8));
 		PLOTTER_CONFIG_FILE.close();
 	}
 	else PLOTTER_ResetToDefault();
@@ -268,7 +263,7 @@ void PLOTTER_INIT()
 
 //#define DebugPrint
 
-void PLOTTER_RUN(String Path, uint16_t XCoef, uint16_t YCoef)
+void PLOTTER_RUN(String Path, uint16_t ElevationDelta, int16_t ElevationCorrection, uint16_t XCoef, uint16_t YCoef)
 {
 	digitalWrite(RelayPin, 0);
 	delay(20);
@@ -319,7 +314,7 @@ void PLOTTER_RUN(String Path, uint16_t XCoef, uint16_t YCoef)
 			DebugFILE.print(- PLOTTER_UpSteps);
 			DebugFILE.close();
 #endif
-			PLOTTER_MoveSM(0, 0, PLOTTER_UpSteps + PLOTTER_UpCorrectSteps);
+			PLOTTER_MoveSM(0, 0, ElevationDelta + ElevationCorrection);
 			counter += 4;
 			PLOTTER_DelayTime = PLOTTER_work;
 			delete[] Bytes;
@@ -333,7 +328,7 @@ void PLOTTER_RUN(String Path, uint16_t XCoef, uint16_t YCoef)
 			DebugFILE.print(PLOTTER_UpSteps + PLOTTER_UpCorrectSteps);
 			DebugFILE.close();
 #endif
-			PLOTTER_MoveSM(0, 0, -PLOTTER_UpSteps);
+			PLOTTER_MoveSM(0, 0, - (int16_t)ElevationDelta);
 			PLOTTER_DelayTime = PLOTTER_idle;
 			counter += 4;
 			delete[] Bytes;
@@ -361,7 +356,6 @@ void PLOTTER_RUN(String Path, uint16_t XCoef, uint16_t YCoef)
 		counter += 4;
 	}
 	PrintFile.close();
-
 	delay(20);
 	digitalWrite(RelayPin, 1);
 }
@@ -369,7 +363,7 @@ void PLOTTER_RUN(String Path, uint16_t XCoef, uint16_t YCoef)
 void PLOTTER_ResetToDefault()
 {
 	File PLOTTER_CONFIG_FILE = SD.open(CONFIGNAME, O_WRITE | O_CREAT);
-	byte* data = new byte[18]
+	byte* data = new byte[14]
 	{
 		PLOTTER_XSTEP,
 		PLOTTER_XDIR,
@@ -385,10 +379,6 @@ void PLOTTER_ResetToDefault()
 		0,
 		PLOTTER_PauseLed,
 		PLOTTER_PauseCom,
-		(byte)(PLOTTER_UPSTEPS & 0xFF),
-		(byte)((PLOTTER_UPSTEPS >> 8) & 0xFF),
-		(byte)(PLOTTER_UPCORRECTSTEPS & 0xFF),
-		(byte)((PLOTTER_UPCORRECTSTEPS >> 8) & 0xFF),
 	};
 	PLOTTER_CONFIG_FILE.write(data, 18);
 	PLOTTER_CONFIG_FILE.close();

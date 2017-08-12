@@ -36,7 +36,7 @@ namespace CnC_WFA
     [ProgId("CnCWFA")]
     static class CNCWFA
     {
-        static string[] NecessaryDirectrories = { "\\Data", "\\Data\\Images", "\\Data\\Vect", "\\Data\\Macros", "\\Temp", "\\Data\\Vdocs", "\\Logs", "\\Plugins" };
+        static string[] NecessaryDirectrories = { "\\Data", "\\Data\\Images", "\\Data\\Vect", "\\Data\\Macros", "\\Temp", "\\Data\\Vdocs", "\\Logs", "\\Plugins", "\\Data\\Cache" };
 
         [STAThread]
         static void Main()
@@ -75,7 +75,7 @@ namespace CnC_WFA
             //    ==Association==
             //FileAssociation.DeleteAllAssociations();
             FileAssociation.PathToIcons = execDirectory + "\\Lib\\IconSet.dll";
-            FileAssociation.PathToProgram = execDirectory + "\\CNC_WFA.exe";
+            FileAssociation.PathToProgram = execDirectory + "\\Plotter Control.exe";
             FileAssociation.DiscoverRegistryAccessibility();
             if (!GlobalOptions.IgnoreRegisterExtentions)
             {
