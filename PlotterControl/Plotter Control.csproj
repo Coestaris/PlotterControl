@@ -594,10 +594,6 @@
       <Project>{02f59898-f418-4a9c-a33f-7cab70df8157}</Project>
       <Name>CWA.Printing.Macro</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Lib\CWA.Printing\CWA.Printing.csproj">
-      <Project>{d61845df-338f-4529-a83e-65a01efd3f20}</Project>
-      <Name>CWA.Printing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lib\CWA.Vectors.Document\CWA.Vectors.Document.csproj">
       <Project>{6fb9a28a-d2f1-49db-8a43-8023f6eab1d2}</Project>
       <Name>CWA.Vectors.Document</Name>

@@ -1,11 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+/*
+	The MIT License(MIT)
+
+	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
+*/
+
+/*=================================\
+* CWA.DTP \ FileReceiver.cs
+*
+* Created: 06.08.2017 20:08
+* Last Edited: 18.08.2017 20:21:24
+*
+*=================================*/
+
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using CWA.DTP;
 
 namespace CWA.DTP.FileTransfer
 {
@@ -19,7 +48,6 @@ namespace CWA.DTP.FileTransfer
 
         internal GeneralPacketHandler BaseHandler;
 
-        //
         internal FileReceiver(int _packetLength, FileTransferSecurityFlags flags)
         {
             CheckSum = flags.HasFlag(FileTransferSecurityFlags.VerifyCheckSum);
@@ -27,7 +55,6 @@ namespace CWA.DTP.FileTransfer
             PacketLength = _packetLength;
         }
 
-        //
         internal FileReceiver(FileTransferSecurityFlags flags)
         {
             CheckSum = (flags & FileTransferSecurityFlags.VerifyCheckSum) != 0;
@@ -73,11 +100,12 @@ namespace CWA.DTP.FileTransfer
         }
 
         private int Counter, CountOfData, LasProgress, OnseSecondProgress;
+
         private long Total;
+
         private double Speed, lSpeed, LeftTime, LastLeftTime;
 
         private bool ForceStop = false;
-
 
         private void TimerThreadMethod()
         {
@@ -105,6 +133,7 @@ namespace CWA.DTP.FileTransfer
         }
 
         private Thread TimerThread, RecieverThread;
+
         private SdCardFile MainFile;
 
         public bool ReceiveFileSync(string pcName, string DeviceName)
@@ -195,8 +224,7 @@ namespace CWA.DTP.FileTransfer
             RaiseEndEvent(new FileTransferEndArgs((DateTime.Now - startTime).TotalSeconds, false));
             return true;
         }
-
-
+        
         public void ReceiveFileAsync(string pcName, string DeviceName)
         {
             RecieverThread = new Thread(p =>
@@ -205,6 +233,5 @@ namespace CWA.DTP.FileTransfer
             });
             RecieverThread.Start();
         }
-
     }
 }

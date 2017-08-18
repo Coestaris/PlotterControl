@@ -1,27 +1,36 @@
-﻿/*
-    The MIT License(MIT)
+/*
+	The MIT License(MIT)
 
-    Copyright (c) 2016 - 2017 Kurylko Maxim Igorevich
+	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
 
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
 */
+
+/*=================================\
+* CWA.Vectors \ Helper.cs
+*
+* Created: 17.06.2017 21:04
+* Last Edited: 18.08.2017 20:21:25
+*
+*=================================*/
 
 using System;
 using System.Linq;
@@ -115,25 +124,6 @@ namespace CWA.Vectors
         {
             arr = new t[a][];
             for (int i = 0; i <= a - 1; i++) arr[i] = new t[b];
-        }
-
-        /// <summary>
-        /// Регистрирует параметр в файле.
-        /// </summary>
-        /// <param name="type_">Тип параметра.</param>
-        /// <param name="value">Значение параметра.</param>
-        /// <param name="name">Имя файла</param>
-        public static void RegisterValue(string type_, string value, string name)
-        {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(name + "\\content.xml");
-            XmlElement xmlElement = xmlDocument.CreateElement("Include");
-            XmlAttribute xmlAttribute = xmlDocument.CreateAttribute("Type");
-            xmlAttribute.Value = type_;
-            xmlElement.Attributes.Append(xmlAttribute);
-            xmlElement.InnerText = value;
-            xmlDocument.LastChild.AppendChild(xmlElement);
-            xmlDocument.Save(name + "\\content.xml");
         }
     }
 }

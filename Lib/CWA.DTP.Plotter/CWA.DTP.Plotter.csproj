@@ -47,7 +47,10 @@
     <Compile Include="PlotterContent.cs" />
     <Compile Include="PlotterContentTable.cs" />
     <Compile Include="PlotterPenInfo.cs" />
+    <Compile Include="PrintErrorType.cs" />
     <Compile Include="PrintMaster.cs" />
+    <Compile Include="PrintStatus.cs" />
+    <Compile Include="PrintStatusTimeArgs.cs" />
     <Compile Include="VectorMetaData.cs" />
     <Compile Include="PlotterConfigOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

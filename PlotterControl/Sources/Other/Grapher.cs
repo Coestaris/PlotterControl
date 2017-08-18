@@ -15,6 +15,7 @@ namespace CnC_WFA
         public float GetValue(float arg);
     }*/
 
+    [Serializable]
     public class SerializablePen
     {
         public SerializableColor Color { get; set; }
@@ -33,6 +34,7 @@ namespace CnC_WFA
         }
     }
 
+    [Serializable]
     public class SerializableColor
     {
         public float A { get; set; }

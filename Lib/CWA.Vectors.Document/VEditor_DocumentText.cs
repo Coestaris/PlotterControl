@@ -1,27 +1,36 @@
 /*
-    The MIT License(MIT)
+	The MIT License(MIT)
 
-    Copyright (c) 2016 - 2017 Kurylko Maxim Igorevich
+	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
 
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
 */
+
+/*=================================\
+* CWA.Vectors.Document \ VEditor_DocumentText.cs
+*
+* Created: 17.06.2017 21:04
+* Last Edited: 18.08.2017 20:21:25
+*
+*=================================*/
 
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -29,27 +38,27 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// Описывает объект текстовой строки или абзаца, который наследуется от <see cref="DocumentItem"/>.
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ <see cref="DocumentItem"/>.
     /// </summary>
     public class DocumentText : DocumentItem
     {
         /// <summary>
-        /// Шрифт текста.
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
         /// </summary>
         public Font Font { get; internal set; }
 
         /// <summary>
-        /// Значение текста (сам текст).
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ).
         /// </summary>
         public string Caption { get; internal set; }
 
         /// <summary>
-        /// Создает новый экземпляр класса <see cref="DocumentText"/>.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="DocumentText"/>.
         /// </summary>
-        /// <param name="position">Позиция объекта.</param>
-        /// <param name="size">Размер объекта.</param>
-        /// <param name="text">Содержимое строки.</param>
-        /// <param name="f">Шрифт объекта.</param>
+        /// <param name="position">пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="size">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="text">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="f">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
         public DocumentText(PointF position, SizeF size, string text, Font f)
         {
             Position = position;
@@ -60,7 +69,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// Перерисовует объект.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
         /// </summary>
         public override void PreRenderPath()
         {

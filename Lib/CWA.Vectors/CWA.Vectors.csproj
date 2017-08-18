@@ -38,18 +38,26 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.XML" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Vectors_Helper.cs" />
-    <Compile Include="Vectors_PrStausChangedParameters.cs" />
-    <Compile Include="Vectors_VectType.cs" />
-    <Compile Include="Vectors_Vector.cs" />
-    <Compile Include="Vectors_VectHeader.cs" />
-    <Compile Include="Vectors_Vectorizer.cs" />
-    <Compile Include="Vectors_VPoint.cs" />
-    <Compile Include="Vectors_VPointEx.cs" />
+    <Compile Include="RawVector.cs" />
+    <Compile Include="VectorFileInfo.cs" />
+    <Compile Include="VectorFileType.cs" />
+    <Compile Include="VectorFileFormat.cs" />
+    <Compile Include="VectorIncludeFile.cs" />
+    <Compile Include="VectorIncludeFileItem.cs" />
+    <Compile Include="VectorPenInfo.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="PrStausChangedParameters.cs" />
+    <Compile Include="VectType.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="VectHeader.cs" />
+    <Compile Include="Vectorizer.cs" />
+    <Compile Include="VPoint.cs" />
+    <Compile Include="VPointEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

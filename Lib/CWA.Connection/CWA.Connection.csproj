@@ -44,12 +44,10 @@
     <Compile Include="Connection_ArduinoBoard.cs" />
     <Compile Include="Connection_BdRate.cs" />
     <Compile Include="Connection_ComPortName.cs" />
-    <Compile Include="_Connection_DirectCommands.cs" />
     <Compile Include="Connection_GlobalOptions.cs" />
     <Compile Include="Connection_LogPolitics.cs" />
     <Compile Include="Connection_ReturnBackOption.cs" />
     <Compile Include="Connection_StartPrintOption.cs" />
-    <Compile Include="_Connection_DeviceSetup.cs" />
     <Compile Include="Connection_Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

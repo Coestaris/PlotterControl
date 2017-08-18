@@ -44,9 +44,13 @@ namespace CnC_WFA
             if (data.Length == 1) { Application.Run(FormTranslator.Translate(new MainWindow())); return; }
             {
                 var data1 = string.Join(" ", data);
-                var data2 = data1.Split(' ').ToList().GetRange(1, data1.Split(' ').Length - 1);
+                var data2 = data1.Split(' ').ToList().Skip(2);
                 CommandParseResult a = null;
-                try { a = CommandManagment.Parse(string.Join(" ", data2)); } catch (Exception e) { MessageBox.Show("\"" + string.Join(" ", data2) + "\" - " + TranslateBase.CurrentLang.Error["Core.WrongInputCommand"] + e.Message); }
+                try
+                {
+                    a = CommandManagment.Parse(string.Join(" ", data2));
+                }
+                catch (Exception e) { MessageBox.Show("\"" + string.Join(" ", data2) + "\" - " + TranslateBase.CurrentLang.Error["Core.WrongInputCommand"] + e.Message); }
                 MakeAction(a);
             }
         }
@@ -120,6 +124,8 @@ namespace CnC_WFA
     {
         public Command BaseCmd;
         public string Name;
+        public string Filename;
+        public Dictionary<string, string> Flags;
 
         public bool isContain(string Flag)
         {
@@ -137,9 +143,6 @@ namespace CnC_WFA
             Flags = flags;
             Name = cmd.Name;
         }
-
-        public string Filename;
-        public Dictionary<string, string> Flags;
     }
 
     internal class CommandManagment

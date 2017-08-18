@@ -1,36 +1,46 @@
-﻿/*
-    The MIT License(MIT)
+/*
+	The MIT License(MIT)
 
-    Copyright (c) 2016 - 2017 Kurylko Maxim Igorevich
+	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
 
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
 */
 
-using Compresser;
+/*=================================\
+* CWA.Vectors \ Vector.cs
+*
+* Created: 17.06.2017 21:04
+* Last Edited: 18.08.2017 20:21:25
+*
+*=================================*/
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace CWA.Vectors
 {
@@ -155,7 +165,8 @@ namespace CWA.Vectors
         /// </summary>
         /// <param name="filename">Имя файла для загрузки.</param>
         /// <param name="RawData_">Вектор для сохранения.</param>
-        public void SaveData(string filename, VPointEx[][] RawData_)
+        [Obsolete]
+        public void SavePCV(string filename, VPointEx[][] RawData_)
         {
             var t = new StreamWriter(File.OpenWrite(filename));
             t.Write("vect,");
@@ -180,7 +191,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Заголовок вектора.
         /// </summary>
-        public VectHeader Header { get; internal set; }
+        public VectHeader Header { get; set; }
       
         /// <summary>
         /// Имя файла, с которого был загружен вектор.
@@ -195,7 +206,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Информация о мульти векторе.
         /// </summary>
-        public VPointEx[][][] RaswDataEX { get; internal set; }
+        public VPointEx[][][] RaswDataEX { get; set; }
 
         /// <summary>
         /// Количество точек вектора.
@@ -271,7 +282,8 @@ namespace CWA.Vectors
         /// <param name="name">Имя файла.</param>
         /// <param name="Ori">Имя оригинального изображения (оставленно для совместимости).</param>
         /// <param name="Resname">Имя промежуточного результата (оставленно для совместимости).</param>
-        public void SaveOld(string name, string Ori = "Not used", string Resname = "Not used")
+        [Obsolete]
+        public void SavePRRES(string name, string Ori = "Not used", string Resname = "Not used")
         {
             var text = new StreamWriter(File.OpenWrite(name));
             text.Write( "prres;");
@@ -292,14 +304,138 @@ namespace CWA.Vectors
             text.Close();
         }
 
+        private void LoadVectOPCV(string FileName)
+        {
+            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
+
+            ZipFile.ExtractToDirectory(FileName, DirectoryName);
+
+            VectorIncludeFile Include = null;
+            VectorFileInfo FileInfo = null;
+            RawVector Vector = null;
+            List<RawVector> VectorsEx = null;
+            Dictionary<string, string> ExParams = null;
+            XmlSerializer includeFormatter = new XmlSerializer(typeof(VectorIncludeFile));
+            using (FileStream fs = new FileStream(DirectoryName + "includes.xml", FileMode.Open))
+            {
+                Include = (VectorIncludeFile)includeFormatter.Deserialize(fs);
+            }
+            foreach (var item in Include.Items)
+            {
+                switch (item.Type)
+                {
+                    case VectorFileType.FileInfo:
+                        {
+                            XmlSerializer fileInfoFormatter = new XmlSerializer(typeof(VectorFileInfo));
+                            using (FileStream fs = new FileStream(DirectoryName + item.FileName, FileMode.Open))
+                            {
+                                FileInfo = (VectorFileInfo)fileInfoFormatter.Deserialize(fs);
+                            }
+                        }
+                        break;
+                    case VectorFileType.Vector:
+                        {
+                            if (Vector == null)
+                                Vector = new RawVector(File.ReadAllBytes(DirectoryName + item.FileName));
+                            else
+                            {
+                                if (VectorsEx == null)
+                                    VectorsEx = new List<RawVector>();
+                                VectorsEx.Add(new RawVector(File.ReadAllBytes(DirectoryName + item.FileName)));
+                            }
+                        }
+                        break;
+                    case VectorFileType.PenInfo:
+                        break;
+                    case VectorFileType.OtherData:
+                        {
+                            if (ExParams == null)
+                                ExParams = new Dictionary<string, string>();
+                            ExParams.Add(item.FileName.Split('|').First(), item.FileName.Split('|').Last());
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (var item in Directory.GetFiles(DirectoryName))
+                File.Delete(item);
+            Directory.Delete(DirectoryName);
+
+            if (Vector == null)
+                throw new ArgumentNullException(nameof(Vector));
+            if (FileInfo == null)
+                throw new ArgumentNullException(nameof(Vector));
+            var result = Vector.ToVector();
+            result.Header = FileInfo.ToHeader();
+            result.Header.CountOfCont = result.RawData.Length;
+            if (VectorsEx != null)
+                result.RaswDataEX = VectorsEx.Select(p => p.ToRawData()).ToArray();
+            if (ExParams != null)
+                result.Header.ExParams = ExParams;
+            //////////////////////////////////////////Не забуть доделать это -_-
+        }
+
+        private void SaveOPCV(String FileName)
+        {
+            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
+            Directory.CreateDirectory(DirectoryName);
+            var Include = new VectorIncludeFile() { Items = new List<VectorIncludeFileItem>() };
+            var fileInfo = new VectorFileInfo()
+            {
+                DisplayName = FileName,
+                Height = (UInt16)Header.Height,
+                VectType = Header.VectType,
+                Width = (UInt16)Header.Width
+            };
+            Include.Items.Add(new VectorIncludeFileItem() { FileName = "fileInfo.xml", Type = VectorFileType.FileInfo });
+            Include.Items.Add(new VectorIncludeFileItem() { FileName = "1.rawVect", Type = VectorFileType.Vector });
+            int vectCounter = 2;
+            if (RaswDataEX != null) foreach (var item in RaswDataEX)
+                {
+                    string locFileName = vectCounter++ + ".rawVect";
+                    Include.Items.Add(new VectorIncludeFileItem() { FileName = locFileName, Type = VectorFileType.Vector });
+                    using (FileStream fs = new FileStream(DirectoryName + locFileName, FileMode.OpenOrCreate))
+                    {
+                        var bytes = new RawVector(this, item).ToBytes();
+                        fs.Write(bytes, 0, bytes.Length);
+                    }
+                }
+            if (Header.ExParams != null) foreach (var item in Header.ExParams)
+                    Include.Items.Add(new VectorIncludeFileItem() { FileName = item.Key + "|" + item.Value, Type = VectorFileType.OtherData });
+
+            XmlSerializer fileInfoFormatter = new XmlSerializer(typeof(VectorFileInfo));
+            using (FileStream fs = new FileStream(DirectoryName + "fileInfo.xml", FileMode.OpenOrCreate))
+            {
+                fileInfoFormatter.Serialize(fs, fileInfo);
+            }
+            using (FileStream fs = new FileStream(DirectoryName + "1.rawVect", FileMode.OpenOrCreate))
+            {
+                var bytes = new RawVector(this).ToBytes();
+                fs.Write(bytes, 0, bytes.Length);
+            }
+            XmlSerializer includeFormatter = new XmlSerializer(typeof(VectorIncludeFile));
+            using (FileStream fs = new FileStream(DirectoryName + "includes.xml", FileMode.OpenOrCreate))
+            {
+                includeFormatter.Serialize(fs, Include);
+            }
+            if (File.Exists(FileName))
+                File.Delete(FileName);
+            ZipFile.CreateFromDirectory(DirectoryName, FileName);
+            foreach (var item in Directory.GetFiles(DirectoryName))
+                File.Delete(item);
+            Directory.Delete(DirectoryName);
+        }
+
         /// <summary>
         /// Сохраняет вектор.
         /// </summary>
         /// <param name="name">Имя файла.</param>
         /// <param name="ExParams">Дополнительный параметры сохранения (опционально).</param>
-        public void Save(string name, Dictionary<string, string> ExParams = null)
+        public void Save(string FileName)
         {
-            SaveData(name, RawData);
+           
         } //TODO 
 
         /// <summary>
@@ -521,7 +657,7 @@ namespace CWA.Vectors
             string ind =  File.ReadLines(filename).First();
             if (ind.StartsWith("prres")) LoadVectPrres(filename);
             else if (ind.StartsWith("vect") || ind.StartsWith("vectarch")) LoadVectPCV(filename);
-            else throw new FileFormatException();
+            else LoadVectOPCV(filename);
             Filename = filename;
         }
 

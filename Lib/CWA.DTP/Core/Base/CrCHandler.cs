@@ -1,29 +1,36 @@
-﻿/*
-    The MIT License(MIT)
+/*
+	The MIT License(MIT)
 
-    Copyright (c) 2016 - 2017 Kurylko Maxim Igorevich
+	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
 
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
 */
 
-#define SimpleCRC
+/*=================================\
+* CWA.DTP \ CrCHandler.cs
+*
+* Created: 06.08.2017 20:08
+* Last Edited: 18.08.2017 20:21:24
+*
+*=================================*/
 
 using System;
 using System.IO;
@@ -32,54 +39,35 @@ namespace CWA.DTP
 {
     public class CrCHandler
     {
-#if !SimpleCRC
-        const ushort poly = 4129;
-        ushort[] table = new ushort[256];
-        ushort initialValue = 0;
-#endif
-        public unsafe ushort ComputeChecksum(byte[] bytes)
+        public static unsafe int ComputeChecksum(byte* data_p, int length)
         {
-#if SimpleCRC
-            fixed (byte* bytes_ = bytes)
+            byte x;
+            ushort crc = 0xFFFF;
+            while (length-- != 0)
             {
-                return (ushort)HelpMethods.ComputeChecksum(bytes_, bytes.Length);
-            }
-#else
-            ushort crc = initialValue;
-            for (int i = 0; i < bytes.Length; ++i)
-            {
-                crc = (ushort)((crc << 8) ^ table[((crc >> 8) ^ (0xff & bytes[i]))]);
+                x = (byte)(crc >> 8 ^ *data_p++);
+                x ^= (byte)(x >> 4);
+                crc = (ushort)((crc << 8) ^ ((ushort)(x << 12)) ^ ((ushort)(x << 5)) ^ ((ushort)x));
             }
             return crc;
-#endif
         }
 
-        public byte[] ComputeChecksumBytes(byte[] bytes)
+        public unsafe ushort ComputeChecksum(byte[] bytes)
         {
-            ushort crc = ComputeChecksum(bytes);
-            return BitConverter.GetBytes(crc);
-        }
-#if !SimpleCRC
-        public DtpCrcHandler()
-        {
-            initialValue = 0xffff;
-            ushort temp, a;
-            for (int i = 0; i < table.Length; ++i)
+
+            fixed (byte* bytes_ = bytes)
             {
-                temp = 0;
-                a = (ushort)(i << 8);
-                for (int j = 0; j < 8; ++j)
-                {
-                    if (((temp ^ a) & 0x8000) != 0) temp = (ushort)((temp << 1) ^ poly);
-                    else temp <<= 1;
-                    a <<= 1;
-                }
-                table[i] = temp;
+                return (ushort)ComputeChecksum(bytes_, bytes.Length);
             }
         }
-#endif
 
-        private static UInt32[] crc_32_tab = new UInt32[]
+        public unsafe byte[] ComputeChecksumBytes(byte[] bytes)
+        {
+            UInt16 CRC = ComputeChecksum(bytes);
+            return BitConverter.GetBytes(CRC);
+        }
+
+        private static UInt32[] CRC32Tab = new UInt32[]
         {
             0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f,
             0xe963a535, 0x9e6495a3, 0x0edb8832, 0x79dcb8a4, 0xe0d5e91e, 0x97d2d988,
@@ -126,20 +114,31 @@ namespace CWA.DTP
             0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d
         };
 
-        private static UInt32 updateCRC32(byte ch, UInt32 crc)
+        private static UInt32 UpdateCRC32(byte ch, UInt32 crc)
         {
             UInt32 idx = ((crc) ^ (ch)) & 0xff;
-            UInt32 tab_value = crc_32_tab[idx];
+            UInt32 tab_value = CRC32Tab[idx];
             return tab_value ^ ((crc) >> 8);
         }
 
-       public static UInt32 CRC32(string FileName)
+        public static unsafe UInt32 CRC32(byte* data, UInt32 dataLen)
+        {
+            UInt32 oldcrc32 = 0xFFFFFFFF;
+            for (UInt32 i = 0; i < dataLen; i++)
+            {
+                byte c = data[i];
+                oldcrc32 = UpdateCRC32(c, oldcrc32);
+            }
+            return ~oldcrc32;
+        }
+
+        public static UInt32 CRC32(string FileName)
         {
             UInt32 oldcrc32 = 0xFFFFFFFF;
             byte[] bytes = File.ReadAllBytes(FileName);
             foreach (var c in bytes)
             {
-                oldcrc32 = updateCRC32(c, oldcrc32);
+                oldcrc32 = UpdateCRC32(c, oldcrc32);
             }
             return ~oldcrc32;
         }

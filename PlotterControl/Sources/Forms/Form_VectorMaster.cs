@@ -781,7 +781,7 @@ namespace CnC_WFA
             if(saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (new FileInfo(saveFileDialog1.FileName).Extension == ".pcv") pr.Save(saveFileDialog1.FileName);
-                else pr.SaveOld(saveFileDialog1.FileName, path);
+                else pr.SavePRRES(saveFileDialog1.FileName, path);
             }
         }
 

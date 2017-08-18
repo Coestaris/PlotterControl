@@ -28,6 +28,13 @@
 #define SpeakerShortDelay 200
 #define SpeakerDelay 400
 
+#define PLOTTER_BoundSensor_XF A3
+#define PLOTTER_BoundSensor_XB A4
+#define PLOTTER_BoundSensor_YL A5
+#define PLOTTER_BoundSensor_YR A6
+
+//ARDUINO = BACK
+
 const int DirectoryBufferSize PROGMEM = 40;
 
 #include "SPI.h"
@@ -69,7 +76,11 @@ const int DirectoryBufferSize PROGMEM = 40;
 	byte* SplitNumber(int num);
 
 #ifdef SimpleCRC
-	int ComputeChecksum(const byte* data_p, int length);
+	uint16_t ComputeChecksum(const byte* data_p, uint32_t length);
+	
+	inline uint32_t updateCRC32(uint8_t ch, uint32_t crc);
+
+	uint32_t crc32_ofFile(File &file, uint32_t &charcnt);
 #endif
 
 	byte* ComputeChecksumBytes(const byte* data_p, int length);
@@ -109,9 +120,13 @@ const int DirectoryBufferSize PROGMEM = 40;
 #define PLOTTER_IDLE 40
 #define CONFIGNAME "/config.cfg"
 	
+	bool PLOTTER_CheckBounds();
+
+	uint32_t PLOTTER_GetCurrentPosition();
+
 	void PLOTTER_INIT();
 
-	void PLOTTER_RUN(String Path, uint16_t ElevationDelta, int16_t ElevationCorrection,uint16_t XCoef, uint16_t YCoef);
+	void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrection, uint16_t XCoef, uint16_t YCoef);
 
 	void PLOTTER_ResetToDefault();
 
@@ -121,7 +136,11 @@ const int DirectoryBufferSize PROGMEM = 40;
 
 	void PLOTTER_delayMicros(uint32_t wt);
 
-	void PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z);
+	bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z);
+
+	void PLOTTER_LiftPen(uint16_t ElevationDelta, int16_t ElevationCorrection);
+
+	void PLOTTER_LowerPen(uint16_t ElevationDelta);
 
 #pragma endregion
 
