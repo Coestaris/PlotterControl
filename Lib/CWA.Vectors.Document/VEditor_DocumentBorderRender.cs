@@ -28,7 +28,7 @@
 * CWA.Vectors.Document \ VEditor_DocumentBorderRender.cs
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:21:25
+* Last Edited: 18.08.2017 20:23:27
 *
 *=================================*/
 

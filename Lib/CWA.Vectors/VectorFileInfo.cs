@@ -28,7 +28,7 @@
 * CWA.Vectors \ VectorFileInfo.cs
 *
 * Created: 18.08.2017 18:20
-* Last Edited: 18.08.2017 20:21:25
+* Last Edited: 18.08.2017 20:23:26
 *
 *=================================*/
 

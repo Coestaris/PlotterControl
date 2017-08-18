@@ -28,7 +28,7 @@
 * CWA.DTP.Plotter \ PlotterPenInfo.cs
 *
 * Created: 09.08.2017 15:56
-* Last Edited: 18.08.2017 20:21:25
+* Last Edited: 18.08.2017 20:23:25
 *
 *=================================*/
 
