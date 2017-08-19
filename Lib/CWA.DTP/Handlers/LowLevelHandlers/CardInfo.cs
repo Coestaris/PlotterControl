@@ -28,7 +28,7 @@
 * CWA.DTP \ CardInfo.cs
 *
 * Created: 06.08.2017 20:08
-* Last Edited: 18.08.2017 20:23:25
+* Last Edited: 18.08.2017 21:25:48
 *
 *=================================*/
 
@@ -67,26 +67,26 @@ namespace CWA.DTP
         public override string ToString()
         {
             string res = "";
-            res += string.Format("SD Type: {0}.\n", Type);
-            res += string.Format("Manufacturer ID: 0x{0}.\n", ManufacturerID.ToString("X"));
-            res += string.Format("OEM ID: {0}.\n", OEMID);
-            res += string.Format("Product: {0}.\n", string.Join("", ProductVersion.Select(p => (char)p)));
-            res += string.Format("Version: {0}.{1}.\n", MajorVersion, MinorVersion);
-            res += string.Format("Serial number: 0x{0}.\n", SerialNumber.ToString("X"));
-            res += string.Format("Manufacturing date: {0}/{1}.\n", ManufacturingDateMonth, ManufacturingDateYear);
-            res += string.Format("CardSize: {0} MB.\n", CardSize);
-            res += string.Format("FlashEraseSize: {0}.\n", FlashEraseSize);
-            res += string.Format("EraseSingleBlock: {0}.\n", EraseSingleBlock);
-            res += string.Format("Volume is FAT{0}.\n", (int)FatType);
-            res += string.Format("BlocksPerCluster: {0}.\n", BlocksPerCluster);
-            res += string.Format("ClusterCount: {0}.\n", ClusterCount);
-            res += string.Format("FreeClusters: {0}.\n", FreeClusters);
-            res += string.Format("FreeSpace: {0} MB.\n", FreeSpace);
-            res += string.Format("FatStartBlock: {0}.\n", FatStartBlock);
-            res += string.Format("FatCount: {0}.\n", FatCount);
-            res += string.Format("BlocksPerFat: {0}.\n", BlocksPerFat);
-            res += string.Format("RootDirStart: {0}.\n", RootDirStart);
-            res += string.Format("DataStartBlock: {0}.\n", DataStartBlock);
+            res += string.Format("SD Type: {0}\n", Type);
+            res += string.Format("Manufacturer ID: 0x{0}\n", ManufacturerID.ToString("X"));
+            res += string.Format("OEM ID: {0}\n", OEMID);
+            res += string.Format("Product: {0}\n", string.Join("", ProductVersion.Select(p => (char)p)));
+            res += string.Format("Version: {0}{1}\n", MajorVersion, MinorVersion);
+            res += string.Format("Serial number: 0x{0}\n", SerialNumber.ToString("X"));
+            res += string.Format("Manufacturing date: {0}/{1}\n", ManufacturingDateMonth, ManufacturingDateYear);
+            res += string.Format("CardSize: {0} MB\n", CardSize);
+            res += string.Format("FlashEraseSize: {0}\n", FlashEraseSize);
+            res += string.Format("EraseSingleBlock: {0}\n", EraseSingleBlock);
+            res += string.Format("Volume is FAT{0}\n", (int)FatType);
+            res += string.Format("BlocksPerCluster: {0}\n", BlocksPerCluster);
+            res += string.Format("ClusterCount: {0}\n", ClusterCount);
+            res += string.Format("FreeClusters: {0}\n", FreeClusters);
+            res += string.Format("FreeSpace: {0} MB\n", FreeSpace);
+            res += string.Format("FatStartBlock: {0}\n", FatStartBlock);
+            res += string.Format("FatCount: {0}\n", FatCount);
+            res += string.Format("BlocksPerFat: {0}\n", BlocksPerFat);
+            res += string.Format("RootDirStart: {0}\n", RootDirStart);
+            res += string.Format("DataStartBlock: {0}", DataStartBlock);
             return res;
         }
     }

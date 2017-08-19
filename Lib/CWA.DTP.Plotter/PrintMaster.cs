@@ -28,7 +28,7 @@
 * CWA.DTP.Plotter \ PrintMaster.cs
 *
 * Created: 06.08.2017 20:08
-* Last Edited: 18.08.2017 20:23:26
+* Last Edited: 19.08.2017 16:45:07
 *
 *=================================*/
 
@@ -203,6 +203,8 @@ namespace CWA.DTP.Plotter
                 return;
             }
             Printing = true;
+
+            Thread.Sleep(1000);
 
             StatusRequestTimer = new Thread(StatusRequestTimerHandler);
             StatusRequestTimer.Start();

@@ -64,7 +64,7 @@ void Wait() {
 	while (!Serial.available()) {};
 }
 
-void Error(String Pattern) {
+void Error(String Pattern, bool freeze) {
 	int counter = ErrorLedStartPos;
 	bool dir = true;
 	digitalWrite(SpeakerPinPower, HIGH);
@@ -103,7 +103,7 @@ void Error(String Pattern) {
 		}
 	}
 	digitalWrite(SpeakerPinPower, LOW);
-	while (true)
+	if(freeze) while (true)
 	{
 		if (dir) counter++;
 		else counter--;
@@ -211,7 +211,7 @@ void Read() {
 	delete[] buffer;
 	if (crc[0] != buffer[len - 2] || crc[1] != buffer[len - 1])
 	{
-		Error(ERROR_WRONG_SUM);
+		Error(ERROR_WRONG_SUM, true);
 		return;
 	}
 	HandlePacket(data, dataLen, command);
@@ -279,7 +279,7 @@ void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrectio
 	digitalWrite(RelayPin, 0);
 	delay(200);
 	if (!file)
-		Error(ERROR_SD_CARDINIT);
+		Error(ERROR_SD_CARDINIT, true);
 	uint32_t PrintFileSize = file.size();
 #ifdef DebugPrint
 	File DebugFILE = SD.open("printLog4.txt", O_CREAT | O_WRITE | O_APPEND);
@@ -297,7 +297,7 @@ void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrectio
 		byte* Bytes = new byte[4];
 		file.seek(counter);
 		if(file.readBytes(Bytes, 4) != 4)
-			Error(ERROR_SD_CARDINIT);;
+			Error(ERROR_SD_CARDINIT, true);
 		//if (Serial.available() != 0)
 //			Read();
 #ifdef DebugPrint
@@ -360,10 +360,14 @@ void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrectio
 		DebugFILE.close();
 #endif
 		delete[] Bytes;
-		if (!PLOTTER_MoveSM((int32_t)((int32_t)dx * (int32_t)XCoef), (int32_t)((int32_t)dy * (int32_t)YCoef), 0))
+		if (!PLOTTER_MoveSM((int32_t)((int32_t)dx * (int32_t)XCoef), 
+							(int32_t)((int32_t)dy * (int32_t)YCoef), 
+							0, 
+							true))
 		{
-			//if (drawing)
+			if (drawing)
 				PLOTTER_LiftPen(ElevationDelta, ElevationCorrection);
+			Error("002200", false);
 			break;
 		};
 		counter += 4;
@@ -421,7 +425,7 @@ void PLOTTER_delayMicros(uint32_t wt)
 	if (mks > 0) delayMicroseconds(mks);
 }
 
-bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z)
+bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z, bool checkBoundsAndComands)
 {
 	int32_t values[3], values1[3];
 	double deltas1[3], deltas[3];
@@ -448,7 +452,7 @@ bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z)
 	}
 	while (Flag)
 	{
-		if (Counter_++ % 500 == 0)
+		if(checkBoundsAndComands) if (Counter_++ % 500 == 0)
 		{
 			if (PLOTTER_CheckBounds())
 				return false;
@@ -481,13 +485,13 @@ bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z)
 
 void PLOTTER_LiftPen(uint16_t ElevationDelta, int16_t ElevationCorrection)
 {
-	PLOTTER_MoveSM(0, 0, -((int16_t)ElevationDelta + (int16_t)ElevationCorrection));
+	PLOTTER_MoveSM(0, 0, -((int16_t)ElevationDelta + (int16_t)ElevationCorrection), false);
 	PLOTTER_DelayTime = PLOTTER_idle;
 }
 
 void PLOTTER_LowerPen(uint16_t ElevationDelta)
 {
-	PLOTTER_MoveSM(0, 0, (int16_t)ElevationDelta);
+	PLOTTER_MoveSM(0, 0, (int16_t)ElevationDelta, false);
 	PLOTTER_DelayTime = PLOTTER_work;
 }
 

@@ -28,14 +28,12 @@
 * PlotterControl \ Form_ManualControl.cs
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
+* Last Edited: 18.08.2017 20:45:19
 *
 *=================================*/
 
 using CWA;
-using CWA.Connection;
 using System;
-using System.Diagnostics;
 using System.IO.Ports;
 using System.Windows.Forms;
 
@@ -43,7 +41,7 @@ namespace CnC_WFA
 {
     public partial class Form_ManualControl : Form
     {
-        private ManualControl mc;
+        //private ManualControl mc;
 
         public Form_ManualControl()
         {
@@ -70,13 +68,13 @@ namespace CnC_WFA
                 combobox_bdrate.Enabled = true;
                 combobox_com.Enabled = true;
                 Control.Enabled = false;
-                mc.Close();
+                //mc.Close();
                 button_mc.Text = "Подключится";
                 return;
             }
             try
             {
-                mc = new ManualControl(combobox_com.Text, int.Parse(combobox_bdrate.Text));
+                //mc = new ManualControl(combobox_com.Text, int.Parse(combobox_bdrate.Text));
                 Control.Enabled = true;
                 combobox_bdrate.Enabled = false;
                 combobox_com.Enabled = false;
@@ -107,20 +105,20 @@ namespace CnC_WFA
                 return;
             }
             command = string.Format("{0},{1},{2};",xmove , ymove , zmove);
-            try { mc.ToolMove(xmove, ymove, zmove);  }
-            catch
-            {
-                MessageBox.Show("Can`t write Serial Port");
-                Control.Enabled = false;
-                groupBox1.Enabled = true;
+            //try { mc.ToolMove(xmove, ymove, zmove);  }
+            //catch
+            //{
+            //    MessageBox.Show("Can`t write Serial Port");
+            //    Control.Enabled = false;
+            //    groupBox1.Enabled = true;
 
-            }
-            if (!checkBox_savemove.Checked)
-            {
-                textBox_xmove.Text = "0";
-                textBox_ymove.Text = "0";
-                textBox_zmove.Text = "0";
-            }
+            //}
+            //if (!checkBox_savemove.Checked)
+            //{
+            //    textBox_xmove.Text = "0";
+            //    textBox_ymove.Text = "0";
+            //    textBox_zmove.Text = "0";
+            //}
         }
 
         private void button_startmc_Click(object sender, EventArgs e)
@@ -136,10 +134,10 @@ namespace CnC_WFA
             label_y.Enabled = false;
             label_z.Enabled = false;
             textBox_step.Enabled = false;
-            try { mc.Close(); } catch { }
-            var a = Process.Start("McClient.exe", string.Format("{0},{1},{2},{3}", combobox_com.Text, combobox_bdrate.Text, textBox_step.Text, "6fb9a28a-d2f1-49db-8a43-8023f6eab1d2"));
-            a.WaitForExit();
-            mc.ReOpen();
+            //try { mc.Close(); } catch { }
+            //var a = Process.Start("McClient.exe", string.Format("{0},{1},{2},{3}", combobox_com.Text, combobox_bdrate.Text, textBox_step.Text, "6fb9a28a-d2f1-49db-8a43-8023f6eab1d2"));
+            //a.WaitForExit();
+            //mc.ReOpen();
             button_dmove.Enabled = true;
             textBox_xmove.Enabled = true;
             textBox_ymove.Enabled = true;
@@ -164,12 +162,12 @@ namespace CnC_WFA
 
         private void button_down_Click(object sender, EventArgs e)
         {
-            mc.ToolDown();
+            //mc.ToolDown();
         }
 
         private void button_up_Click(object sender, EventArgs e)
         {
-            mc.ToolUp();
+            //mc.ToolUp();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -185,7 +183,7 @@ namespace CnC_WFA
 
         private void Form_ManualControl_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try { mc.Close(); } catch { };
+            //try { mc.Close(); } catch { };
         }
     }
 }

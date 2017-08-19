@@ -91,7 +91,7 @@ const int DirectoryBufferSize PROGMEM = 40;
 
 	void Wait();
 
-	void Error(String Pattern);
+	void Error(String Pattern, bool freeze);
 
 	void dateTime(uint16_t* date, uint16_t* time);
 
@@ -136,7 +136,7 @@ const int DirectoryBufferSize PROGMEM = 40;
 
 	void PLOTTER_delayMicros(uint32_t wt);
 
-	bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z);
+	bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z, bool checkBoundsAndComands);
 
 	void PLOTTER_LiftPen(uint16_t ElevationDelta, int16_t ElevationCorrection);
 

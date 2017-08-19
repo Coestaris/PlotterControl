@@ -28,7 +28,7 @@
 * PlotterControl \ Form_PrintMaster.cs
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 12.08.2017 23:47:44
+* Last Edited: 19.08.2017 16:52:40
 *
 *=================================*/
 
@@ -375,7 +375,6 @@ namespace CnC_WFA
                 {
                     textBox_elev_corr.Text = configMaster.Pens[comboBox_pens.SelectedIndex].ElevationCorrection.ToString();
                     textBox_elev_delta.Text = configMaster.Pens[comboBox_pens.SelectedIndex].ElevationDelta.ToString();
-
                     var bmp = new Bitmap(pictureBox_color.Width, pictureBox_color.Height);
                     using (var gr = Graphics.FromImage(bmp))
                         gr.FillRectangle(new SolidBrush(configMaster.Pens[comboBox_pens.SelectedIndex].Color),
@@ -405,6 +404,72 @@ namespace CnC_WFA
         {
             tabControl1.SelectedIndex = 3;
             CheckState(3);
+            printMaster = new PrintMaster(master, 0.013f, 0.013f, 600);
+            printMaster.SetXSize(float.Parse(textBox_xsize.Text, NumberStyles.Float, CultureInfo.InvariantCulture));
+            printMaster.OnError += PrintMaster_OnError;
+            printMaster.PrintingEnd += PrintMaster_PrintingEnd;
+            printMaster.StatusRequest += PrintMaster_StatusRequest;
+            printMaster.BeginPrinting(SelectedMetadata.Index, configMaster.Pens[comboBox_pens.SelectedIndex]);
+        }
+
+        private void PrintMaster_PrintingEnd()
+        {
+            if (InvokeRequired)
+            {
+                var d = new PrintEndEventHandler(PrintMaster_PrintingEnd);
+                Invoke(d);
+            }
+            else
+            {
+                tabControl1.SelectedIndex = 4;
+                CheckState(4);
+            }
+        }
+
+        private void PrintMaster_StatusRequest(PrintStatus arg, UInt32 CurrentPosition, UInt32 MaxPosition, PrintStatusTimeArgs TimeArgs)
+        {
+            if(InvokeRequired)
+            {
+                var d = new PrintStatusEventHandler(PrintMaster_StatusRequest);
+                Invoke(d, arg, CurrentPosition, MaxPosition, TimeArgs);
+            } else
+            {
+                progressBar1.Maximum = (int)MaxPosition;
+                progressBar1.Value = (int)CurrentPosition;
+                label_spendTme.Text = string.Format("Затраченно времени: {0}", TimeArgs.SecondsSpend);
+                label_leftTime.Text = string.Format("Времени до завершения(примерно): {0}", TimeArgs.SecondsLeft);
+                label_speed.Text = string.Format("Скорость: {0}", TimeArgs.Speed);
+                label_progress.Text = string.Format("{0}/{1}", CurrentPosition, MaxPosition);
+                label_percentage.Text = string.Format("{0:0.##}%", (float)CurrentPosition / MaxPosition * 100f);
+            }
+        }
+
+        private void PrintMaster_OnError(PrintErrorType arg)
+        {
+            if (InvokeRequired)
+            {
+                var d = new PrintErrorEventHandler(PrintMaster_OnError);
+                Invoke(d, arg);
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Произошла ошибка {0}. Это не означает что печать была или будет прервана, но отслеживать процесс далее будет не возможно.", arg.ToString()), "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tabControl1.SelectedIndex = 4;
+                CheckState(4);
+            }
+        }
+
+        private PrintMaster printMaster;
+
+        private void button_deviceInfo_Click(object sender, EventArgs e)
+        {
+            new Form_DeviceInfo(master).ShowDialog();
+        }
+
+        private void button_tab3_back_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+            CheckState(1);
         }
     }
 }

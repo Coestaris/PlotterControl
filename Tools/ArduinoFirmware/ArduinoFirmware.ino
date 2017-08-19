@@ -338,7 +338,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			uint32_t newLength = WriteFile.readBytes(dataBytes, length);
 		
 			if (newLength != length)
-				Error(ERROR_SD_CARDINIT);
+				Error(ERROR_SD_CARDINIT, true);
 		
 			if (newLength == -1)
 			{
@@ -778,7 +778,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 	memcpy(TotalData + 12 + dataBytesLen, crc, 2);
 	if (Serial.write(TotalData, TotalDataLen) != TotalDataLen)
 	{
-		Error(ERROR_CANT_SEND_FULL_PACKET);
+		Error(ERROR_CANT_SEND_FULL_PACKET, true);
 #ifdef DEBUG
 		debugFILE.println("CANT SEND FULL PACKET");
 	}
@@ -837,14 +837,14 @@ void setup()
 	pinMode(SDCSPin, OUTPUT);
 	Serial.begin(115200);
 	if (!SD.begin(SDCSPin, SPI_FULL_SPEED)) {
-		Error(ERROR_SD_INITSDCARD);
+		Error(ERROR_SD_INITSDCARD, true);
 		return;
 	}
 	PLOTTER_INIT();
 	tmElements_t tm;
 	if (!RTC.read(tm))
 		if (!RTC.chipPresent()) {
-			Error(ERROR_TIMEMODULE_CANTINIT);
+			Error(ERROR_TIMEMODULE_CANTINIT, true);
 			return;
 		}
 	SdFile::dateTimeCallback(dateTime);
@@ -858,7 +858,7 @@ void loop()
 {
 	int before = FreeMemory();
 	Read();
-	if (before != FreeMemory()) Error(ERROR_LOST_MEMORY);
+	if (before != FreeMemory()) Error(ERROR_LOST_MEMORY, true);
 
 	if (ReqToStartPrint)
 	{

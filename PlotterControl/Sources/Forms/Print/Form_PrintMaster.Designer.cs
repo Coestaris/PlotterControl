@@ -28,7 +28,7 @@
 * PlotterControl \ Form_PrintMaster.Designer.cs
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 12.08.2017 23:47:43
+* Last Edited: 19.08.2017 16:21:58
 *
 *=================================*/
 
@@ -86,6 +86,7 @@ namespace CnC_WFA
             this.label_title = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_pickVect = new System.Windows.Forms.TabPage();
+            this.button_deviceInfo = new System.Windows.Forms.Button();
             this.loadingCircle_previewLoad = new MRG.Controls.UI.LoadingCircle();
             this.label_type = new System.Windows.Forms.Label();
             this.label_resol = new System.Windows.Forms.Label();
@@ -96,9 +97,10 @@ namespace CnC_WFA
             this.button_delete = new System.Windows.Forms.Button();
             this.listBox_fileList = new System.Windows.Forms.ListBox();
             this.pictureBox_preview = new System.Windows.Forms.PictureBox();
-            this.tabPage_setSize = new System.Windows.Forms.TabPage();
             this.tabPage_opts = new System.Windows.Forms.TabPage();
             this.groupBox_pens = new System.Windows.Forms.GroupBox();
+            this.pictureBox_color = new System.Windows.Forms.PictureBox();
+            this.label_color = new System.Windows.Forms.Label();
             this.comboBox_pens = new System.Windows.Forms.ComboBox();
             this.textBox_elev_corr = new System.Windows.Forms.TextBox();
             this.label_elev_corr_1 = new System.Windows.Forms.Label();
@@ -119,9 +121,16 @@ namespace CnC_WFA
             this.radioButton_ysize = new System.Windows.Forms.RadioButton();
             this.radioButton_xsize = new System.Windows.Forms.RadioButton();
             this.button_tab3_next = new System.Windows.Forms.Button();
+            this.tabPage_print = new System.Windows.Forms.TabPage();
+            this.label_progress = new System.Windows.Forms.Label();
+            this.label_speed = new System.Windows.Forms.Label();
+            this.label_leftTime = new System.Windows.Forms.Label();
+            this.label_spendTme = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label_color = new System.Windows.Forms.Label();
-            this.pictureBox_color = new System.Windows.Forms.PictureBox();
+            this.label_percentage = new System.Windows.Forms.Label();
             this.tabPage_main.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -129,8 +138,9 @@ namespace CnC_WFA
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_preview)).BeginInit();
             this.tabPage_opts.SuspendLayout();
             this.groupBox_pens.SuspendLayout();
-            this.groupBox_size.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).BeginInit();
+            this.groupBox_size.SuspendLayout();
+            this.tabPage_print.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_title_2
@@ -394,7 +404,7 @@ namespace CnC_WFA
             this.tabControl1.Controls.Add(this.tabPage_main);
             this.tabControl1.Controls.Add(this.tabPage_pickVect);
             this.tabControl1.Controls.Add(this.tabPage_opts);
-            this.tabControl1.Controls.Add(this.tabPage_setSize);
+            this.tabControl1.Controls.Add(this.tabPage_print);
             this.tabControl1.Font = new System.Drawing.Font("Cambria", 12F);
             this.tabControl1.Location = new System.Drawing.Point(161, -30);
             this.tabControl1.Name = "tabControl1";
@@ -405,6 +415,7 @@ namespace CnC_WFA
             // tabPage_pickVect
             // 
             this.tabPage_pickVect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_pickVect.Controls.Add(this.button_deviceInfo);
             this.tabPage_pickVect.Controls.Add(this.loadingCircle_previewLoad);
             this.tabPage_pickVect.Controls.Add(this.label_type);
             this.tabPage_pickVect.Controls.Add(this.label_resol);
@@ -420,6 +431,20 @@ namespace CnC_WFA
             this.tabPage_pickVect.Size = new System.Drawing.Size(531, 444);
             this.tabPage_pickVect.TabIndex = 5;
             this.tabPage_pickVect.Text = "tabPage1";
+            // 
+            // button_deviceInfo
+            // 
+            this.button_deviceInfo.BackColor = System.Drawing.Color.White;
+            this.button_deviceInfo.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_deviceInfo.FlatAppearance.BorderSize = 2;
+            this.button_deviceInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_deviceInfo.Location = new System.Drawing.Point(420, 328);
+            this.button_deviceInfo.Name = "button_deviceInfo";
+            this.button_deviceInfo.Size = new System.Drawing.Size(98, 34);
+            this.button_deviceInfo.TabIndex = 43;
+            this.button_deviceInfo.Text = "Инфо";
+            this.button_deviceInfo.UseVisualStyleBackColor = false;
+            this.button_deviceInfo.Click += new System.EventHandler(this.button_deviceInfo_Click);
             // 
             // loadingCircle_previewLoad
             // 
@@ -552,15 +577,6 @@ namespace CnC_WFA
             this.pictureBox_preview.TabIndex = 0;
             this.pictureBox_preview.TabStop = false;
             // 
-            // tabPage_setSize
-            // 
-            this.tabPage_setSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.tabPage_setSize.Location = new System.Drawing.Point(4, 31);
-            this.tabPage_setSize.Name = "tabPage_setSize";
-            this.tabPage_setSize.Size = new System.Drawing.Size(531, 444);
-            this.tabPage_setSize.TabIndex = 6;
-            this.tabPage_setSize.Text = "tabPage_setSize";
-            // 
             // tabPage_opts
             // 
             this.tabPage_opts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
@@ -591,6 +607,25 @@ namespace CnC_WFA
             this.groupBox_pens.TabIndex = 47;
             this.groupBox_pens.TabStop = false;
             this.groupBox_pens.Text = "Параметры пера";
+            // 
+            // pictureBox_color
+            // 
+            this.pictureBox_color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_color.Location = new System.Drawing.Point(149, 85);
+            this.pictureBox_color.Name = "pictureBox_color";
+            this.pictureBox_color.Size = new System.Drawing.Size(49, 25);
+            this.pictureBox_color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_color.TabIndex = 48;
+            this.pictureBox_color.TabStop = false;
+            // 
+            // label_color
+            // 
+            this.label_color.AutoSize = true;
+            this.label_color.Location = new System.Drawing.Point(95, 88);
+            this.label_color.Name = "label_color";
+            this.label_color.Size = new System.Drawing.Size(52, 19);
+            this.label_color.TabIndex = 47;
+            this.label_color.Text = "Цвет: ";
             // 
             // comboBox_pens
             // 
@@ -673,6 +708,7 @@ namespace CnC_WFA
             this.button_tab3_back.TabIndex = 42;
             this.button_tab3_back.Text = "Назад";
             this.button_tab3_back.UseVisualStyleBackColor = false;
+            this.button_tab3_back.Click += new System.EventHandler(this.button_tab3_back_Click);
             // 
             // groupBox_size
             // 
@@ -815,29 +851,98 @@ namespace CnC_WFA
             this.button_tab3_next.UseVisualStyleBackColor = false;
             this.button_tab3_next.Click += new System.EventHandler(this.button_tab3_next_Click);
             // 
+            // tabPage_print
+            // 
+            this.tabPage_print.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_print.Controls.Add(this.label_percentage);
+            this.tabPage_print.Controls.Add(this.label_progress);
+            this.tabPage_print.Controls.Add(this.label_speed);
+            this.tabPage_print.Controls.Add(this.label_leftTime);
+            this.tabPage_print.Controls.Add(this.label_spendTme);
+            this.tabPage_print.Controls.Add(this.button2);
+            this.tabPage_print.Controls.Add(this.button1);
+            this.tabPage_print.Controls.Add(this.progressBar1);
+            this.tabPage_print.Location = new System.Drawing.Point(4, 31);
+            this.tabPage_print.Name = "tabPage_print";
+            this.tabPage_print.Size = new System.Drawing.Size(531, 444);
+            this.tabPage_print.TabIndex = 6;
+            this.tabPage_print.Text = "tabPage_setSize";
+            // 
+            // label4
+            // 
+            this.label_progress.AutoSize = true;
+            this.label_progress.Location = new System.Drawing.Point(12, 283);
+            this.label_progress.Name = "label4";
+            this.label_progress.Size = new System.Drawing.Size(51, 19);
+            this.label_progress.TabIndex = 6;
+            this.label_progress.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label_speed.AutoSize = true;
+            this.label_speed.Location = new System.Drawing.Point(12, 27);
+            this.label_speed.Name = "label3";
+            this.label_speed.Size = new System.Drawing.Size(51, 19);
+            this.label_speed.TabIndex = 5;
+            this.label_speed.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label_leftTime.AutoSize = true;
+            this.label_leftTime.Location = new System.Drawing.Point(12, 56);
+            this.label_leftTime.Name = "label2";
+            this.label_leftTime.Size = new System.Drawing.Size(51, 19);
+            this.label_leftTime.TabIndex = 4;
+            this.label_leftTime.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label_spendTme.AutoSize = true;
+            this.label_spendTme.Location = new System.Drawing.Point(12, 8);
+            this.label_spendTme.Name = "label1";
+            this.label_spendTme.Size = new System.Drawing.Size(51, 19);
+            this.label_spendTme.TabIndex = 3;
+            this.label_spendTme.Text = "label1";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(311, 356);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 77);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(417, 356);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 77);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(16, 305);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(501, 45);
+            this.progressBar1.TabIndex = 0;
+            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // label_color
+            // label5
             // 
-            this.label_color.AutoSize = true;
-            this.label_color.Location = new System.Drawing.Point(95, 88);
-            this.label_color.Name = "label_color";
-            this.label_color.Size = new System.Drawing.Size(52, 19);
-            this.label_color.TabIndex = 47;
-            this.label_color.Text = "Цвет: ";
-            // 
-            // pictureBox_color
-            // 
-            this.pictureBox_color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_color.Location = new System.Drawing.Point(149, 85);
-            this.pictureBox_color.Name = "pictureBox_color";
-            this.pictureBox_color.Size = new System.Drawing.Size(49, 25);
-            this.pictureBox_color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_color.TabIndex = 48;
-            this.pictureBox_color.TabStop = false;
+            this.label_percentage.AutoSize = true;
+            this.label_percentage.Location = new System.Drawing.Point(254, 356);
+            this.label_percentage.Name = "label5";
+            this.label_percentage.Size = new System.Drawing.Size(51, 19);
+            this.label_percentage.TabIndex = 7;
+            this.label_percentage.Text = "label5";
+            this.label_percentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form_PrintMaster
             // 
@@ -870,9 +975,11 @@ namespace CnC_WFA
             this.tabPage_opts.ResumeLayout(false);
             this.groupBox_pens.ResumeLayout(false);
             this.groupBox_pens.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).EndInit();
             this.groupBox_size.ResumeLayout(false);
             this.groupBox_size.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).EndInit();
+            this.tabPage_print.ResumeLayout(false);
+            this.tabPage_print.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -901,7 +1008,7 @@ namespace CnC_WFA
         private System.Windows.Forms.Label label_title;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_pickVect;
-        private System.Windows.Forms.TabPage tabPage_setSize;
+        private System.Windows.Forms.TabPage tabPage_print;
         private System.Windows.Forms.Button button_refresh;
         private System.Windows.Forms.Button button_upload;
         private System.Windows.Forms.Button button_delete;
@@ -937,5 +1044,14 @@ namespace CnC_WFA
         private System.Windows.Forms.Label label_elev_delta;
         private System.Windows.Forms.Label label_color;
         private System.Windows.Forms.PictureBox pictureBox_color;
+        private System.Windows.Forms.Label label_progress;
+        private System.Windows.Forms.Label label_speed;
+        private System.Windows.Forms.Label label_leftTime;
+        private System.Windows.Forms.Label label_spendTme;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button_deviceInfo;
+        private System.Windows.Forms.Label label_percentage;
     }
 }

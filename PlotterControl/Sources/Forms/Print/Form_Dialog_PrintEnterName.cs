@@ -28,21 +28,15 @@
 * PlotterControl \ Form_Dialog_PrintEnterName.cs
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 09.08.2017 15:42:38
+* Last Edited: 18.08.2017 20:53:04
 *
 *=================================*/
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CWA.DTP;
 using CWA.DTP.Plotter;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace CnC_WFA
 {
@@ -112,7 +106,7 @@ namespace CnC_WFA
             {
                 PlotterContent contentMaster = new PlotterContent(master);
                 if (textBox_name.Text != "") contentMaster.UploadVector(new CWA.Vectors.Vector(textBox_pcName.Text), textBox_name.Text);
-                else contentMaster.UploadVector(new CWA.Vectors.Vector(textBox_pcName.Text));
+                else contentMaster.UploadVector(new CWA.Vectors.Vector(textBox_pcName.Text).ClearThisVector(2));
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

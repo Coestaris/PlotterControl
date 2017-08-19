@@ -137,6 +137,12 @@
     <Compile Include="Sources\Forms\MainForm\Form_Dialog_Lang.Designer.cs">
       <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Forms\Print\Form_DeviceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Print\Form_DeviceInfo.Designer.cs">
+      <DependentUpon>Form_DeviceInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Forms\Print\Form_Dialog_PrintEnterName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Lang.resx">
       <DependentUpon>Form_Dialog_Lang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Print\Form_DeviceInfo.resx">
+      <DependentUpon>Form_DeviceInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Print\Form_Dialog_PrintEnterName.resx">
       <DependentUpon>Form_Dialog_PrintEnterName.cs</DependentUpon>
@@ -624,6 +633,7 @@ move /Y  $(TargetDir)\CNCWFA_*.pdb  $(TargetDir)\Lib\
 
 move /Y  $(TargetDir)\CWA*.pdb  $(TargetDir)\lib\
 chdir /d $(ProjectDir)
+
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

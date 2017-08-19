@@ -28,7 +28,7 @@
 * PlotterControl \ MainWindow.cs
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 06.08.2017 20:54:06
+* Last Edited: 18.08.2017 20:41:44
 *
 *=================================*/
 
@@ -68,7 +68,6 @@ namespace CnC_WFA
         private bool IsDevicegChanged;
         private Bitmap pb, pd, vb, vd;
         private bool DriverInstalled;
-        private DeviceMemorySetup a;
         private string ls7, ls6, ls5, ls4, ls3, ls2, ls1;
         private Form_ManualControl fm;
         private Form_PrintMaster fp;
@@ -133,11 +132,11 @@ namespace CnC_WFA
                 }
                 else return;
             }
-            if (a != null && a.IsWorking)
-            {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (a != null && a.IsWorking)
+            //{
+            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             button5_Click_2(null, null);
             button_print.BackColor = Color.FromArgb(4, 60, 130);
             button_home.BackColor = Color.FromArgb(0, 32, 77);
@@ -164,11 +163,11 @@ namespace CnC_WFA
                 }
                 else return;
             }
-            if (a != null && a.IsWorking)
-            {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (a != null && a.IsWorking)
+            //{
+            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             tabControl_main.SelectedIndex = 2;
             button_vect.BackColor = Color.FromArgb(4, 60, 130);
             button_print.BackColor = Color.FromArgb(0, 32, 77);
@@ -195,11 +194,11 @@ namespace CnC_WFA
                 }
                 else return;
             }
-            if (a != null && a.IsWorking)
-            {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (a != null && a.IsWorking)
+            //{
+            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             button_help.BackColor = Color.FromArgb(4, 60, 130);
             button_print.BackColor = Color.FromArgb(0, 32, 77);
             button_vect.BackColor = Color.FromArgb(0, 32, 77);
@@ -274,11 +273,11 @@ namespace CnC_WFA
                 }
                 else return;
             }
-            if (a != null && a.IsWorking)
-            {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (a != null && a.IsWorking)
+            //{
+            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             pictureBox1.BackColor = Color.FromArgb(4, 60, 130);
             pictureBox2.BackColor = Color.FromArgb(4, 60, 130);
             tabControl_about.SelectedIndex = 2;
@@ -298,11 +297,11 @@ namespace CnC_WFA
                 }
                 else return;
             }
-            if (a != null && a.IsWorking)
-            {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (a != null && a.IsWorking)
+            //{
+            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             configchanged = new bool[11];
             colors = new Color[4];
             colors[0] = GlobalOptions.DefPrintBack;
@@ -335,11 +334,11 @@ namespace CnC_WFA
                 }
                 else return;
             }
-            if (a!=null && a.IsWorking)
-            {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (a!=null && a.IsWorking)
+            //{
+            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             devicechanged = new bool[8];
             device_vertCorrection = int.Parse(textBox_main_config_vertCorrection.Text);
             device_ard = GlobalOptions.DefBoard.ToString();
@@ -559,7 +558,7 @@ namespace CnC_WFA
 
         private void button_connect_Click(object sender, EventArgs e)
         {
-            if(button_main_memory_connect.Text == TranslateBase.CurrentLang.Phrase["MainWindow.Word.Disconnect"])
+            if (button_main_memory_connect.Text == TranslateBase.CurrentLang.Phrase["MainWindow.Word.Disconnect"])
             {
                 timer1.Stop();
                 checkBox_main_memory_readonly.Checked = true;
@@ -570,7 +569,7 @@ namespace CnC_WFA
                 checkBox_main_memory_val.Enabled = false;
                 button_main_memory_def.Enabled = false;
                 checkBox_main_memory_val.Checked = false;
-                a.Stop();
+                //a.Stop();
                 progressBar_main_memory_val.Value = 0;
                 label_high.Text = "";
                 label_low.Text = "";
@@ -586,34 +585,34 @@ namespace CnC_WFA
             {
                 MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.EnterBD"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                try
-                {
-                    a = new DeviceMemorySetup(comboBox_main_memory_ports.Text, int.Parse(comboBox_main_memory_bd.Text));
-                    button_get_Click(null, null);
-                    timer1.Start();
-                    checkBox_main_memory_readonly.Enabled = true;
-                    button_main_memory_load.Enabled = true;
-                    button_main_memory_get.Enabled = true;
-                    button_main_memory_def.Enabled = true;
-                    checkBox_main_memory_val.Enabled = true;
-                    button_main_memory_connect.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Word.Disconnect"];
-                    checkBox_main_memory_val_CheckedChanged(null, null);
-                }
-                catch(DeviceMemorySetup.MemorySetupBadRespondException g)
-                {
-                    //TODO: MAKE DAT EXCEPTION!
-                }
-                catch(DeviceMemorySetup.MemorySetupTimeoutException g)
-                {
-                    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.TimeOut"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    try { a.Stop(); } catch { };
-                    return;
-                }
-                catch(Exception g)
-                {
-                    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.ContConnectOrOpenTo"] + comboBox_main_memory_ports.Text + '!', TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            else;
+                //try
+                //{
+                //    //a = new DeviceMemorySetup(comboBox_main_memory_ports.Text, int.Parse(comboBox_main_memory_bd.Text));
+                //    button_get_Click(null, null);
+                //    timer1.Start();
+                //    checkBox_main_memory_readonly.Enabled = true;
+                //    button_main_memory_load.Enabled = true;
+                //    button_main_memory_get.Enabled = true;
+                //    button_main_memory_def.Enabled = true;
+                //    checkBox_main_memory_val.Enabled = true;
+                //    button_main_memory_connect.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Word.Disconnect"];
+                //    checkBox_main_memory_val_CheckedChanged(null, null);
+                //}
+                //catch(DeviceMemorySetup.MemorySetupBadRespondException g)
+                //{
+                //    //TODO: MAKE DAT EXCEPTION!
+                //}
+                //catch(DeviceMemorySetup.MemorySetupTimeoutException g)
+                //{
+                //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.TimeOut"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    try { a.Stop(); } catch { };
+                //    return;
+                //}
+                //catch(Exception g)
+                //{
+                //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.ContConnectOrOpenTo"] + comboBox_main_memory_ports.Text + '!', TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
         }
 
         private void button_get_Click(object p1, object p2)
@@ -621,16 +620,16 @@ namespace CnC_WFA
             Thread.Sleep(1000);
             Cursor = Cursors.WaitCursor;
             timer1.Stop();
-            textBox_main_memory_xd.Text = a.XDir.ToString();
-            textBox_main_memory_yd.Text = a.YDir.ToString();
-            textBox_main_memory_zd.Text = a.ZDir.ToString();
-            textBox_main_memory_xs.Text = a.XStep.ToString();
-            textBox_main_memory_ys.Text = a.YStep.ToString();
-            textBox_main_memory_zs.Text = a.ZStep.ToString();
-            textBox_main_memory_idle.Text = a.IdleDelay.ToString();
-            textBox_main_memory_work.Text = a.WorkDelay.ToString();
-            checkBox_main_memory_com.Checked = a.Com;
-            checkBox_main_memory_pause.Checked = a.Pause;
+            //textBox_main_memory_xd.Text = a.XDir.ToString();
+            //textBox_main_memory_yd.Text = a.YDir.ToString();
+            //textBox_main_memory_zd.Text = a.ZDir.ToString();
+            //textBox_main_memory_xs.Text = a.XStep.ToString();
+            //textBox_main_memory_ys.Text = a.YStep.ToString();
+            //textBox_main_memory_zs.Text = a.ZStep.ToString();
+            //textBox_main_memory_idle.Text = a.IdleDelay.ToString();
+            //textBox_main_memory_work.Text = a.WorkDelay.ToString();
+            //checkBox_main_memory_com.Checked = a.Com;
+            //checkBox_main_memory_pause.Checked = a.Pause;
             if(checkBox_main_memory_val.Checked) timer1.Start();
             Cursor = Cursors.Default;
             Thread.Sleep(500);
@@ -656,16 +655,16 @@ namespace CnC_WFA
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int d = a.Speed;
-            if (d > progressBar_main_memory_val.Maximum)
-            {
-                progressBar_main_memory_val.Maximum = d;
-                label_high.Text = d.ToString();
-            }
-            int l_idle = (int)(d * 0.10 + 10);
-            int l_work = (int)(d * 0.14 + 20);
-            label_val.Text = string.Format(TranslateBase.CurrentLang.Phrase["MainWindow.IdleAndWorkDelays"], d, l_idle, l_work);
-            progressBar_main_memory_val.Value = d;
+            //int d = a.Speed;
+            //if (d > progressBar_main_memory_val.Maximum)
+            //{
+            //    progressBar_main_memory_val.Maximum = d;
+            //    label_high.Text = d.ToString();
+            //}
+            //int l_idle = (int)(d * 0.10 + 10);
+            //int l_work = (int)(d * 0.14 + 20);
+            //label_val.Text = string.Format(TranslateBase.CurrentLang.Phrase["MainWindow.IdleAndWorkDelays"], d, l_idle, l_work);
+            //progressBar_main_memory_val.Value = d;
         }
 
         private void textBox_sh_TextChanged(object sender, EventArgs e)
@@ -1125,7 +1124,7 @@ namespace CnC_WFA
                 try
                 {
                     timer1.Stop();
-                    a.ResetData();
+                    //a.ResetData();
                     Thread.Sleep(1000);
                     button_get_Click(null, null);
 
@@ -1159,17 +1158,17 @@ namespace CnC_WFA
 
         private void button_load_Click(object sender, EventArgs e)
         {
-            a.XDir = int.Parse(textBox_main_memory_xd.Text);
-            a.YDir = int.Parse(textBox_main_memory_yd.Text);
-            a.ZDir = int.Parse(textBox_main_memory_zd.Text);
-            a.XStep = int.Parse(textBox_main_memory_xs.Text);
-            a.YStep = int.Parse(textBox_main_memory_ys.Text);
-            a.ZStep = int.Parse(textBox_main_memory_zs.Text);
-            a.IdleDelay = int.Parse(textBox_main_memory_idle.Text);
-            a.WorkDelay = int.Parse(textBox_main_memory_work.Text);
-            a.Pause = checkBox_main_memory_pause.Checked;
-            a.Com = checkBox_main_memory_com.Checked;
-            a.Load();
+            //a.XDir = int.Parse(textBox_main_memory_xd.Text);
+            //a.YDir = int.Parse(textBox_main_memory_yd.Text);
+            //a.ZDir = int.Parse(textBox_main_memory_zd.Text);
+            //a.XStep = int.Parse(textBox_main_memory_xs.Text);
+            //a.YStep = int.Parse(textBox_main_memory_ys.Text);
+            //a.ZStep = int.Parse(textBox_main_memory_zs.Text);
+            //a.IdleDelay = int.Parse(textBox_main_memory_idle.Text);
+            //a.WorkDelay = int.Parse(textBox_main_memory_work.Text);
+            //a.Pause = checkBox_main_memory_pause.Checked;
+            //a.Com = checkBox_main_memory_com.Checked;
+            //a.Load();
         }
 
         private void button_get_Click_(object sender, EventArgs e)
