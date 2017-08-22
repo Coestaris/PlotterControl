@@ -36,18 +36,23 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VectorHM_VectLibOptions.cs" />
-    <Compile Include="VectorHM_Helper.cs" />
-    <Compile Include="VectorHM_ToGrayParam.cs" />
-    <Compile Include="VectorHM_VectLib.cs" />
+    <Compile Include="ImageLib\ImageLibOptions.cs" />
+    <Compile Include="VectLib\Helper.cs" />
+    <Compile Include="ImageLib\ToGrayParam.cs" />
+    <Compile Include="ImageLib\ImageLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VectorHM_VectProcessor.cs" />
+    <Compile Include="VectLib\VectProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CWA.Vectors\CWA.Vectors.csproj">
       <Project>{154dbf89-c8b7-488b-a8ef-9ccbe76a0c10}</Project>
       <Name>CWA.Vectors</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

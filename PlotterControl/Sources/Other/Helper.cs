@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:48
+* Last Edited: 22.08.2017 20:40:24
 *=================================*/
 
 using System;
@@ -132,7 +132,7 @@ namespace CnC_WFA
             InactiveImages.Add(vl.AverageGrayForm(new Bitmap(Images.Last())));
         }
 
-        private CWA.Vectors.VectLib vl = new CWA.Vectors.VectLib();
+        private CWA.Vectors.ImageLib vl = new CWA.Vectors.ImageLib();
         public Size ImageSize { get; set; }
         public List<Image> Images { get; set; }
         public List<Image> InactiveImages { get; set; }

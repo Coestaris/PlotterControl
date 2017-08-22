@@ -41,18 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandType.cs" />
-    <Compile Include="PlotterPacketHandler.cs" />
-    <Compile Include="PlotterConfig.cs" />
-    <Compile Include="PlotterContent.cs" />
-    <Compile Include="PlotterContentTable.cs" />
-    <Compile Include="PlotterPenInfo.cs" />
-    <Compile Include="PrintErrorType.cs" />
-    <Compile Include="PrintMaster.cs" />
-    <Compile Include="PrintStatus.cs" />
-    <Compile Include="PrintStatusTimeArgs.cs" />
-    <Compile Include="VectorMetaData.cs" />
-    <Compile Include="PlotterConfigOptions.cs" />
+    <Compile Include="Handler\CommandType.cs" />
+    <Compile Include="Handler\PlotterPacketHandler.cs" />
+    <Compile Include="SDConfigs\PlotterConfig.cs" />
+    <Compile Include="SDContent\PlotterContent.cs" />
+    <Compile Include="SDContent\PlotterContentTable.cs" />
+    <Compile Include="SDConfigs\PlotterPenInfo.cs" />
+    <Compile Include="Printing\PrintErrorType.cs" />
+    <Compile Include="Printing\PrintMaster.cs" />
+    <Compile Include="Printing\PrintStatus.cs" />
+    <Compile Include="Printing\PrintStatusTimeArgs.cs" />
+    <Compile Include="SDContent\VectorMetaData.cs" />
+    <Compile Include="SDConfigs\PlotterConfigOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

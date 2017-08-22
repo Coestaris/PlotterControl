@@ -41,15 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection_ArduinoBoard.cs" />
-    <Compile Include="Connection_BdRate.cs" />
-    <Compile Include="Connection_ComPortName.cs" />
-    <Compile Include="Connection_GlobalOptions.cs" />
-    <Compile Include="Connection_LogPolitics.cs" />
-    <Compile Include="Connection_ReturnBackOption.cs" />
-    <Compile Include="Connection_StartPrintOption.cs" />
-    <Compile Include="Connection_Helper.cs" />
+    <Compile Include="Other\ArduinoBoard.cs" />
+    <Compile Include="Other\BdRate.cs" />
+    <Compile Include="Other\ComPortName.cs" />
+    <Compile Include="Options\GlobalOptions.cs" />
+    <Compile Include="Options\LogPolitics.cs" />
+    <Compile Include="Other\ReturnBackOption.cs" />
+    <Compile Include="Other\StartPrintOption.cs" />
+    <Compile Include="Other\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

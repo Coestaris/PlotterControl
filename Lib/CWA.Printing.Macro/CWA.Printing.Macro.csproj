@@ -39,13 +39,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PrintMacros_MacroElem.cs" />
-    <Compile Include="PrintMacros_MacroElemType.cs" />
-    <Compile Include="PrintMacros_MacroElemTypeShorted.cs" />
-    <Compile Include="PrintMacros_MacroPack.cs" />
-    <Compile Include="PrintMacros_MacroPackElem.cs" />
-    <Compile Include="PrintMacros_MacroPackElemOption.cs" />
-    <Compile Include="PrintMacros_Macro.cs" />
+    <Compile Include="Macro\MacroElem.cs" />
+    <Compile Include="Macro\MacroElemType.cs" />
+    <Compile Include="Macro\MacroElemTypeShorted.cs" />
+    <Compile Include="MPacks\MacroPack.cs" />
+    <Compile Include="MPacks\MacroPackElem.cs" />
+    <Compile Include="MPacks\MacroPackElemOption.cs" />
+    <Compile Include="Macro\Macro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,11 @@
       <Project>{154dbf89-c8b7-488b-a8ef-9ccbe76a0c10}</Project>
       <Name>CWA.Vectors</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

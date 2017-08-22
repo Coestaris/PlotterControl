@@ -44,18 +44,18 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VEditor_DocumentBorderRender.cs" />
-    <Compile Include="VEditor_DocumentBorderStyle.cs" />
-    <Compile Include="VEditor_DocumentCirlce.cs" />
-    <Compile Include="VEditor_DocumentData.cs" />
-    <Compile Include="VEditor_Document.cs" />
-    <Compile Include="VEditor_ExOperators.cs" />
-    <Compile Include="VEditor_DocumentItem.cs" />
-    <Compile Include="VEditor_DocumentItemType.cs" />
-    <Compile Include="VEditor_DocumentLine.cs" />
-    <Compile Include="VEditor_DocumentItemSubType.cs" />
-    <Compile Include="VEditor_DocumentText.cs" />
-    <Compile Include="VEditor_DocumentBorder.cs" />
+    <Compile Include="DocumentOptions\DocumentBorderRender.cs" />
+    <Compile Include="DocumentOptions\DocumentBorderStyle.cs" />
+    <Compile Include="DocumentItems\DocumentCirlce.cs" />
+    <Compile Include="DocumentItems\DocumentData.cs" />
+    <Compile Include="Document\Document.cs" />
+    <Compile Include="Document\ExOperators.cs" />
+    <Compile Include="DocumentItems\DocumentItem.cs" />
+    <Compile Include="DocumentItems\DocumentItemType.cs" />
+    <Compile Include="DocumentItems\DocumentLine.cs" />
+    <Compile Include="DocumentItems\DocumentItemSubType.cs" />
+    <Compile Include="DocumentItems\DocumentText.cs" />
+    <Compile Include="DocumentOptions\DocumentBorder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +63,11 @@
       <Project>{154dbf89-c8b7-488b-a8ef-9ccbe76a0c10}</Project>
       <Name>CWA.Vectors</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

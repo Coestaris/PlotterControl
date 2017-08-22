@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 19.08.2017 23:21:46
+* Last Edited: 22.08.2017 20:40:24
 *=================================*/
 
 using CWA;
@@ -439,7 +439,7 @@ namespace CnC_WFA
             if (resof_1_stage != null)
             {
                 Bitmap bmp = new Bitmap("Temp\\tmp"+ TEMP_NUM + ".png");
-                VectLib a = new VectLib();
+                ImageLib a = new ImageLib();
                 if (ui2t_a)
                 {
                     switch (ui2t_b)
@@ -588,7 +588,7 @@ namespace CnC_WFA
         private void UpdateImage_tab3_()
         {
             Bitmap bmp = (Bitmap)new Bitmap("Temp\\tmp"+TEMP_NUM+".png").Clone();
-            VectLib a = new VectLib();
+            ImageLib a = new ImageLib();
             a.Options.GaussBlurKCof = uit_a;
             a.Options.GaussBlurSigma = uit_b;
             a.Gauss(ref bmp);
