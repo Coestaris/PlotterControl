@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* CWA.Vectors.Document \ VEditor_DocumentItem.cs
+* CWA.Vectors.Document\VEditor_DocumentItem.cs
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:23:27
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
+* Created: 22.08.2017 20:09
+* Last Edited: 22.08.2017 20:22:36
 *=================================*/
 
 using System;
@@ -39,53 +15,53 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    /// Абстрактный класс объектов векторных документов.
     /// </summary>
     public abstract class DocumentItem : ICloneable
     {
         /// <summary>
-        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Угол наклона объекта относительно центра в градусах.
         /// </summary>
         public float Angle { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Цвет отображения в редакторе.
         /// </summary>
         public Color DispColor { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="GraphicsPath"/>.
+        /// Представления объекта в виде класса <see cref="GraphicsPath"/>.
         /// </summary>
         public GraphicsPath GrPath { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
-        /// пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ), пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Имя объекта. В документе обязано быть уникально!
+        /// Так как ни кто за этим не следит (ни какой класс), то будьте внимательны.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Позиция объекта в документе.
         /// </summary>
         public PointF Position { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ).
+        /// Размер объекта (в большинсте случаях устанавливается сам).
         /// </summary>
         public SizeF Size { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Тип объекта.
         /// </summary>
         public DocumentItemType Type { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="DispColor"/>.
+        /// Рисовать ли в редакторе данный объект цветом <see cref="DispColor"/>.
         /// </summary>
         public bool UseDispColor { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Клонирует объект.
         /// </summary>
         public object Clone()
         {
@@ -93,7 +69,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Рендерит объект. Метод обезательный к применению, после внесения изменений.
         /// </summary>
         public virtual void PreRender()
         {
@@ -104,7 +80,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ <see cref="GraphicsPath"/>.
+        /// Рендерит объект в виде <see cref="GraphicsPath"/>.
         /// </summary>
         public virtual void PreRenderPath()
         {
@@ -112,7 +88,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+        /// Возвращает єкливалентный 
         /// </summary>
         /// <returns></returns>
         public virtual GraphicsPath Render()
@@ -121,10 +97,10 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Сравнивает объект с данным.
         /// </summary>
-        /// <param name="obj">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
-        /// <returns>true пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</returns>
+        /// <param name="obj">Второй объект для сравнения.</param>
+        /// <returns>true елси они одинаковы.</returns>
         public override bool Equals(object obj)
         {
             var item = obj as DocumentItem;
@@ -134,7 +110,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
+        /// Возвращает хеш-код типа.
         /// </summary>
         public override int GetHashCode()
         {

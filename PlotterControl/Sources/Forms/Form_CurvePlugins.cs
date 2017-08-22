@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_CurvePlugins.cs
+* PlotterControl\Form_CurvePlugins.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:46
 *=================================*/
 
 using System;
@@ -52,7 +28,7 @@ namespace CnC_WFA
         {
             if(backgroundWorker1.IsBusy)
             {
-                MessageBox.Show("Не спеши, он еще занят...");
+                MessageBox.Show("???? ??????????, ???? ?????? ??????????...");
                 return;
             }
             CurvePluginHandler.Dispose();
@@ -133,7 +109,7 @@ namespace CnC_WFA
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Перейти по ссылке \"" + NormalizeLink(CurvePluginHandler.LoadedPlugins[listBox1.SelectedIndex].Info.LearnMore) + "\"", "Переход по ссылке", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(MessageBox.Show("?????????????? ???? ???????????? \"" + NormalizeLink(CurvePluginHandler.LoadedPlugins[listBox1.SelectedIndex].Info.LearnMore) + "\"", "?????????????? ???? ????????????", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 Process.Start(CurvePluginHandler.LoadedPlugins[listBox1.SelectedIndex].Info.LearnMore);
         }
 
@@ -149,78 +125,78 @@ namespace CnC_WFA
         #region russianLinkTable
         private readonly Dictionary<string, string> russianLinkTable = new Dictionary<string, string>()
         {
-            { "%D0%B0" , "а" },
-            { "%D0%B1" , "б" },
-            { "%D0%B2" , "в" },
-            { "%D0%B3" , "г" },
-            { "%D0%B4" , "д" },
-            { "%D0%B5" , "е" },
-            { "%D1%91" , "ё" },
-            { "%D0%B6" , "ж" },
-            { "%D0%B7" , "з" },
-            { "%D0%B8" , "и" },
-            { "%D0%B9" , "й" },
-            { "%D0%BA" , "к" },
-            { "%D0%BB" , "л" },
-            { "%D0%BC" , "м" },
-            { "%D0%BD" , "н" },
-            { "%D0%BE" , "о" },
-            { "%D0%BF" , "п" },
-            { "%D1%80" , "р" },
-            { "%D1%81" , "с" },
-            { "%D1%82" , "т" },
-            { "%D1%83" , "у" },
-            { "%D1%84" , "ф" },
-            { "%D1%85" , "х" },
-            { "%D1%86" , "ц" },
-            { "%D1%87" , "ч" },
-            { "%D1%88" , "ш" },
-            { "%D1%89" , "щ" },
-            { "%D1%8A" , "ъ" },
-            { "%D1%8B" , "ы" },
-            { "%D1%8C" , "ь" },
-            { "%D1%8D" , "э" },
-            { "%D1%8E" , "ю" },
-            { "%D1%8F" , "я" },
-            { "%D0%90" , "А" },
-            { "%D0%91" , "Б" },
-            { "%D0%92" , "В" },
-            { "%D0%93" , "Г" },
-            { "%D0%94" , "Д" },
-            { "%D0%95" , "Е" },
-            { "%D0%81" , "Ё" },
-            { "%D0%96" , "Ж" },
-            { "%D0%97" , "З" },
-            { "%D0%98" , "И" },
-            { "%D0%99" , "Й" },
-            { "%D0%9A" , "К" },
-            { "%D0%9B" , "Л" },
-            { "%D0%9C" , "М" },
-            { "%D0%9D" , "Н" },
-            { "%D0%9E" , "О" },
-            { "%D0%9F" , "П" },
-            { "%D0%A0" , "Р" },
-            { "%D0%A1" , "С" },
-            { "%D0%A2" , "Т" },
-            { "%D0%A3" , "У" },
-            { "%D0%A4" , "Ф" },
-            { "%D0%A5" , "Х" },
-            { "%D0%A6" , "Ц" },
-            { "%D0%A7" , "Ч" },
-            { "%D0%A8" , "Ш" },
-            { "%D0%A9" , "Щ" },
-            { "%D0%AA" , "Ъ" },
-            { "%D0%AB" , "Ы" },
-            { "%D0%AC" , "Ь" },
-            { "%D0%AD" , "Э" },
-            { "%D0%AE" , "Ю" },
-            { "%D0%AF" , "Я" }
+            { "%D0%B0" , "??" },
+            { "%D0%B1" , "??" },
+            { "%D0%B2" , "??" },
+            { "%D0%B3" , "??" },
+            { "%D0%B4" , "??" },
+            { "%D0%B5" , "??" },
+            { "%D1%91" , "??" },
+            { "%D0%B6" , "??" },
+            { "%D0%B7" , "??" },
+            { "%D0%B8" , "??" },
+            { "%D0%B9" , "??" },
+            { "%D0%BA" , "??" },
+            { "%D0%BB" , "??" },
+            { "%D0%BC" , "??" },
+            { "%D0%BD" , "??" },
+            { "%D0%BE" , "??" },
+            { "%D0%BF" , "??" },
+            { "%D1%80" , "??" },
+            { "%D1%81" , "??" },
+            { "%D1%82" , "??" },
+            { "%D1%83" , "??" },
+            { "%D1%84" , "??" },
+            { "%D1%85" , "??" },
+            { "%D1%86" , "??" },
+            { "%D1%87" , "??" },
+            { "%D1%88" , "??" },
+            { "%D1%89" , "??" },
+            { "%D1%8A" , "??" },
+            { "%D1%8B" , "??" },
+            { "%D1%8C" , "??" },
+            { "%D1%8D" , "??" },
+            { "%D1%8E" , "??" },
+            { "%D1%8F" , "??" },
+            { "%D0%90" , "??" },
+            { "%D0%91" , "??" },
+            { "%D0%92" , "??" },
+            { "%D0%93" , "??" },
+            { "%D0%94" , "??" },
+            { "%D0%95" , "??" },
+            { "%D0%81" , "??" },
+            { "%D0%96" , "??" },
+            { "%D0%97" , "??" },
+            { "%D0%98" , "??" },
+            { "%D0%99" , "??" },
+            { "%D0%9A" , "??" },
+            { "%D0%9B" , "??" },
+            { "%D0%9C" , "??" },
+            { "%D0%9D" , "??" },
+            { "%D0%9E" , "??" },
+            { "%D0%9F" , "??" },
+            { "%D0%A0" , "??" },
+            { "%D0%A1" , "??" },
+            { "%D0%A2" , "??" },
+            { "%D0%A3" , "??" },
+            { "%D0%A4" , "??" },
+            { "%D0%A5" , "??" },
+            { "%D0%A6" , "??" },
+            { "%D0%A7" , "??" },
+            { "%D0%A8" , "??" },
+            { "%D0%A9" , "??" },
+            { "%D0%AA" , "??" },
+            { "%D0%AB" , "??" },
+            { "%D0%AC" , "??" },
+            { "%D0%AD" , "??" },
+            { "%D0%AE" , "??" },
+            { "%D0%AF" , "??" }
         };
         #endregion;
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            //TODO: разобратся с этим условием
+            //TODO: ???????????????????? ?? ???????? ????????????????
             //if (!GlobalOptions.PreloadPlugins) CurvePluginHandler.Init();
             CurvePluginHandler.Init();
         }

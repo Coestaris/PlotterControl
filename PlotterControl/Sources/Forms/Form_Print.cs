@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Print.cs
+* PlotterControl\Form_Print.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:46
 *=================================*/
 
 using CnC_WFA.Properties;
@@ -86,7 +62,7 @@ namespace CnC_WFA
             button_next_tab1.Enabled = false;
             button_exit.Enabled = false;
             state = 2;
-            button_tab2_back.Text = "Выйти";
+            button_tab2_back.Text = "??????????";
             CheckState();
         }
 
@@ -189,11 +165,11 @@ namespace CnC_WFA
                 loadingCircle_tab1.Active = false;
                 button_next_tab1.Enabled = true;
                 buffpr = new Vect((string)listBox_prlist.Items[listBox_prlist.SelectedIndex]);
-                label_pr_name.Text = "Имя: " + (string)listBox_prlist.Items[listBox_prlist.SelectedIndex];
-                label_resolution.Text = "Разрешение: " + buffpr.Header.Width + "x" + buffpr.Header.Height;
-                label_pr_connum.Text = "Кол-во контуров: " + buffpr.RowData.Length;
-                label_pr_points.Text = "Кол-во точек: " + buffpr.Points;
-                label_source.Text = "Тип: " + buffpr.Header.VectType;
+                label_pr_name.Text = "??????: " + (string)listBox_prlist.Items[listBox_prlist.SelectedIndex];
+                label_resolution.Text = "????????????????????: " + buffpr.Header.Width + "x" + buffpr.Header.Height;
+                label_pr_connum.Text = "??????-???? ????????????????: " + buffpr.RowData.Length;
+                label_pr_points.Text = "??????-???? ??????????: " + buffpr.Points;
+                label_source.Text = "??????: " + buffpr.Header.VectType;
                 button_next_tab1.Enabled = false;
                 button_refreshlist.Enabled = false;
                 button_removepr.Enabled = false;
@@ -250,7 +226,7 @@ namespace CnC_WFA
                 main_header = pr.Header;
                 bmp = new Bitmap(297, 210);
                 long gdc = Helper.Helper.GCD((int)main_header.Width, (int)main_header.Height);
-                label_ratio.Text = "Соотн. сторон: " + main_header.Height / gdc + '/' + main_header.Width / gdc;
+                label_ratio.Text = "??????????. ????????????: " + main_header.Height / gdc + '/' + main_header.Width / gdc;
                 textBox_xsize.Text = "50";
                 loadingCircle1.Visible = false;
                 loadingCircle1.Active = false;
@@ -331,7 +307,7 @@ namespace CnC_WFA
                 {
                     if (float.Parse(textBox_xsize.Text) + xoffest > 297)
                     {
-                        MessageBox.Show((int.Parse(textBox_xsize.Text) +xoffest)+ " (xsize + xoffset) more than the allowable size. XSize can`t be more than 297 (А4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show((int.Parse(textBox_xsize.Text) +xoffest)+ " (xsize + xoffset) more than the allowable size. XSize can`t be more than 297 (??4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         textBox_xsize.Text = textBox_xsize_laststring;
                         err = true;
                         return;
@@ -351,7 +327,7 @@ namespace CnC_WFA
 
                         if (ysize > 210)
                         {
-                            MessageBox.Show(ysize + " more than the allowable size. YSize can`t be more than 210 (А4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(ysize + " more than the allowable size. YSize can`t be more than 210 (??4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             textBox_ysize.Text = textBox_ysize_laststring;
                             textBox_xsize.Text = textBox_xsize_laststring;
                             err = true;
@@ -395,7 +371,7 @@ namespace CnC_WFA
                 {
                     if (float.Parse(textBox_ysize.Text) + yoffest> 210)
                     {
-                        MessageBox.Show((int.Parse(textBox_ysize.Text) + xoffest) + " (ysize + yoffset) more than the allowable size. YSize can`t be more than 210 (А4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show((int.Parse(textBox_ysize.Text) + xoffest) + " (ysize + yoffset) more than the allowable size. YSize can`t be more than 210 (??4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         textBox_ysize.Text = textBox_ysize_laststring;
                         err = true;
                         return;
@@ -471,7 +447,7 @@ namespace CnC_WFA
             {
                 if (float.Parse(textBox_xoffset.Text) + xoffest > 297)
                 {
-                    MessageBox.Show((int.Parse(textBox_xsize.Text) + xoffest) + " (xsize + xoffset) more than the allowable size. XSize can`t be more than 297 (А4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show((int.Parse(textBox_xsize.Text) + xoffest) + " (xsize + xoffset) more than the allowable size. XSize can`t be more than 297 (??4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_xoffset.Text = textbox_xoffset_laststring;
                     err = true;
                     return;
@@ -519,7 +495,7 @@ namespace CnC_WFA
             {
                 if (float.Parse(textBox_ysize.Text) + yoffest > 210)
                 {
-                    MessageBox.Show((int.Parse(textBox_ysize.Text) + yoffest) + " (ysize + yoffset) more than the allowable size. YSize can`t be more than 210 (А4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show((int.Parse(textBox_ysize.Text) + yoffest) + " (ysize + yoffset) more than the allowable size. YSize can`t be more than 210 (??4)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_yoffset.Text = textbox_yoffset_laststring;
                     err = true;
                     return;
@@ -578,18 +554,18 @@ namespace CnC_WFA
                 int bd = int.Parse(comboBox_bdrate.Text);
                 main_port = new SerialPort(comboBox_com.Text, bd);
                 main_port.Open();
-                MessageBox.Show("Порт \" " + comboBox_com.Text + "\" открыт", "Инфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("???????? \" " + comboBox_com.Text + "\" ????????????", "????????", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 button_print.Enabled = true;
             }
             catch
             {
-                MessageBox.Show("Невозможно открыть порт \" " + comboBox_com.Text + "\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("???????????????????? ?????????????? ???????? \" " + comboBox_com.Text + "\"", "????????????", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button_tab2_back_Click(object sender, EventArgs e)
         {
-            if (button_tab2_back.Text == "Выйти") Close();
+            if (button_tab2_back.Text == "??????????") Close();
             button_refreshlist.PerformClick();
             state = 1;
             CheckState();
@@ -645,7 +621,7 @@ namespace CnC_WFA
             {
                 print.Abort();
                 Thread.Sleep(1000);
-                label2.Text = string.Format("За {0:0.##} сек. или {1:0.##} мин.",time,time/60);
+                label2.Text = string.Format("???? {0:0.##} ??????. ?????? {1:0.##} ??????.",time,time/60);
                 state = 5;
                 CheckState();
                 tabControl1.SelectedIndex = 5;
@@ -660,7 +636,7 @@ namespace CnC_WFA
                 Invoke(d, new object[] { a });
             } else
             {
-                MessageBox.Show("Печать окончена с кодом ошибки:\" " + errorarg + "\"", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("???????????? ???????????????? ?? ?????????? ????????????:\" " + errorarg + "\"", "????????????", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tabControl1.SelectedIndex = 1;
             }
         }
@@ -681,8 +657,8 @@ namespace CnC_WFA
             else
             {
                 time = a.time_spend;
-                label_spendtime.Text = string.Format("Затрачено: {0:0.##}s({1:0.##}m)", (a.time_spend), (a.time_spend /60));
-                label_lefttime.Text = string.Format("Осталось: {0:0.##}s({1:0.##}m)", (a.time_left), (a.time_left / 60));
+                label_spendtime.Text = string.Format("??????????????????: {0:0.##}s({1:0.##}m)", (a.time_spend), (a.time_spend /60));
+                label_lefttime.Text = string.Format("????????????????: {0:0.##}s({1:0.##}m)", (a.time_left), (a.time_left / 60));
             }
         }
 
@@ -707,8 +683,8 @@ namespace CnC_WFA
             {
                 progressBar1.Maximum = (int)a.CountTotal;
                 progressBar1.Value = (int)a.CountDone;
-                label_complete_percentage.Text = string.Format("Завершено: {0:0.##}%", ((float)a.CountDone / (float)a.CountTotal * 100));
-                label_complete_number.Text = "Контуров: " + a.CountDone + '\\' + a.CountTotal;
+                label_complete_percentage.Text = string.Format("??????????????????: {0:0.##}%", ((float)a.CountDone / (float)a.CountTotal * 100));
+                label_complete_number.Text = "????????????????: " + a.CountDone + '\\' + a.CountTotal;
 
                 pictureBox2.Image = print.ProcessBmp;
             }
@@ -723,7 +699,7 @@ namespace CnC_WFA
             }
             else
             {
-                label_complete.Text = "Завершено: " + a + '%';
+                label_complete.Text = "??????????????????: " + a + '%';
             }
         }
 
@@ -742,7 +718,7 @@ namespace CnC_WFA
                 label_prtime_print.Text = label_prtime.Text;
                 label_resolution_print.Text = label_resolution.Text;
                 label_type_print.Text = label_source.Text;
-                label_num_of_cont.Text = "Кол-во контуров: " + pr.ContorurCount;
+                label_num_of_cont.Text = "??????-???? ????????????????: " + pr.ContorurCount;
                 tabControl1.SelectedIndex = 3;
             }
         }
@@ -779,11 +755,11 @@ namespace CnC_WFA
 
         private void button_abort_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Прервать печать?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("???????????????? ?????????????", "??????????????????????????", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 print.Abort();
                 Thread.Sleep(1000);
-                label2.Text = string.Format("За {0:0.##} сек. или {1:0.##} мин.", time, time / 60);
+                label2.Text = string.Format("???? {0:0.##} ??????. ?????? {1:0.##} ??????.", time, time / 60);
                 state = 5;
                 CheckState();
                 tabControl1.SelectedIndex = 5;

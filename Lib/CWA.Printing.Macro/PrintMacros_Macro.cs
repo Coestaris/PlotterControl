@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* CWA.Printing.Macro \ PrintMacros_Macro.cs
+* CWA.Printing.Macro\PrintMacros_Macro.cs
 *
-* Created: 17.06.2017 21:03
-* Last Edited: 18.08.2017 20:23:26
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
+* Created: 22.08.2017 20:09
+* Last Edited: 01.07.2017 13:09:58
 *=================================*/
 
 using CWA.Vectors.Document;
@@ -44,35 +20,35 @@ using System.Xml;
 namespace CWA.Printing.Macro
 {
     /// <summary>
-    /// РћРїРёСЃС‹РІР°РµС‚ РјР°РєСЂРѕСЃ - РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ РґРµР№СЃС‚РІРёР№, РІС‹РїРѕР»РЅСЏРµРјС‹С… РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРµ.
+    /// Описывает макрос - последовательность действий, выполняемых на устройстве.
     /// </summary>
     public class Macro
     {
         /// <summary>
-        /// РРјСЏ РјР°РєСЂРѕСЃР°.
+        /// Имя макроса.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// РћРїРёСЃР°РЅРёРµ РјР°РєСЂРѕСЃР°.
+        /// Описание макроса.
         /// </summary>
         public string Discr { get; set; }
 
         /// <summary>
-        /// Р’РµСЂСЃРёСЏ РїСЂРѕРіСЂР°РјРјС‹, РІ РєРѕС‚РѕСЂРѕР№ Р±С‹Р» СЃРѕР·РґР°РЅ РјР°РєСЂРѕСЃ.
+        /// Версия программы, в которой был создан макрос.
         /// </summary>
         public Version CreatedVersion { get; set; }
 
         /// <summary>
-        /// РЎРїРёСЃРѕРє СЌР»РµРјРµРЅС‚РѕРІ РјР°РєСЂРѕСЃР°.
+        /// Список элементов макроса.
         /// </summary>
         public List<MacroElem> Elems { get; set; }
 
         /// <summary>
-        /// РЎРѕР·РґР°РµС‚ РЅРѕРІС‹Р№ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°  <see cref="Macro"/>.
+        /// Создает новый экземпляр класса  <see cref="Macro"/>.
         /// </summary>
-        /// <param name="name">РРјСЏ РјР°РєСЂРѕСЃР°.</param>
-        /// <param name="discr">РћРїРёСЃР°РЅРёРµ РјР°РєСЂРѕСЃР°.</param>
+        /// <param name="name">Имя макроса.</param>
+        /// <param name="discr">Описание макроса.</param>
         public Macro(string name, string discr)
         {
             CreatedVersion = new Version(GlobalOptions.Ver);
@@ -82,9 +58,9 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// РЎРѕР·РґР°РµС‚ РЅРѕРІС‹Р№ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° <see cref="Macro"/>, Р·Р°РіСЂСѓР¶Р°СЏ РµРіРѕ РёР· С„Р°Р№Р»Р°.
+        /// Создает новый экземпляр класса <see cref="Macro"/>, загружая его из файла.
         /// </summary>
-        /// <param name="filename">РРјСЏ С„Р°Р№Р»Р°.</param>
+        /// <param name="filename">Имя файла.</param>
         public Macro(string filename)
         {
             try
@@ -121,9 +97,9 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// РЎРѕС…СЂР°РЅСЏРµС‚ РјР°РєСЂРѕСЃ РІ С„Р°Р№Р» СЃ СЂР°Р·С€РёСЂРµРЅРёРµРј .pcmacros.
+        /// Сохраняет макрос в файл с разширением .pcmacros.
         /// </summary>
-        /// <param name="filename">РРјСЏ С„Р°Р№Р»Р° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ.</param>
+        /// <param name="filename">Имя файла для сохранения.</param>
         public void Save(string filename)
         {
             XmlTextWriter textWritter = new XmlTextWriter(filename, Encoding.UTF8);

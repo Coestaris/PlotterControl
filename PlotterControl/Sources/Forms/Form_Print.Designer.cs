@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Print.Designer.cs
+* PlotterControl\Form_Print.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:46
 *=================================*/
 
 namespace CnC_WFA
@@ -236,7 +212,7 @@ namespace CnC_WFA
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 55);
             this.button2.TabIndex = 33;
-            this.button2.Text = "Загрузить";
+            this.button2.Text = "??????????????????";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -313,7 +289,7 @@ namespace CnC_WFA
             this.button_refreshlist.Name = "button_refreshlist";
             this.button_refreshlist.Size = new System.Drawing.Size(93, 31);
             this.button_refreshlist.TabIndex = 23;
-            this.button_refreshlist.Text = "Обновить";
+            this.button_refreshlist.Text = "????????????????";
             this.button_refreshlist.UseVisualStyleBackColor = false;
             this.button_refreshlist.Click += new System.EventHandler(this.button_refreshlist_Click);
             // 
@@ -338,7 +314,7 @@ namespace CnC_WFA
             this.button_openfolder.Name = "button_openfolder";
             this.button_openfolder.Size = new System.Drawing.Size(93, 56);
             this.button_openfolder.TabIndex = 21;
-            this.button_openfolder.Text = "Открыть папку";
+            this.button_openfolder.Text = "?????????????? ??????????";
             this.button_openfolder.UseVisualStyleBackColor = false;
             this.button_openfolder.Click += new System.EventHandler(this.button_openfolder_Click);
             // 
@@ -394,7 +370,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(78, 31);
             this.button_exit.TabIndex = 16;
-            this.button_exit.Text = "Назад";
+            this.button_exit.Text = "??????????";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
@@ -409,7 +385,7 @@ namespace CnC_WFA
             this.button_removepr.Name = "button_removepr";
             this.button_removepr.Size = new System.Drawing.Size(93, 31);
             this.button_removepr.TabIndex = 15;
-            this.button_removepr.Text = "Удалить";
+            this.button_removepr.Text = "??????????????";
             this.button_removepr.UseVisualStyleBackColor = false;
             this.button_removepr.Click += new System.EventHandler(this.button_removepr_Click);
             // 
@@ -436,7 +412,7 @@ namespace CnC_WFA
             this.button_next_tab1.Name = "button_next_tab1";
             this.button_next_tab1.Size = new System.Drawing.Size(78, 31);
             this.button_next_tab1.TabIndex = 13;
-            this.button_next_tab1.Text = "Далее";
+            this.button_next_tab1.Text = "??????????";
             this.button_next_tab1.UseVisualStyleBackColor = false;
             this.button_next_tab1.Click += new System.EventHandler(this.button_next_tab1_Click);
             // 
@@ -476,7 +452,7 @@ namespace CnC_WFA
             this.button_tab2_back.Name = "button_tab2_back";
             this.button_tab2_back.Size = new System.Drawing.Size(81, 43);
             this.button_tab2_back.TabIndex = 17;
-            this.button_tab2_back.Text = "Назад";
+            this.button_tab2_back.Text = "??????????";
             this.button_tab2_back.UseVisualStyleBackColor = false;
             this.button_tab2_back.Click += new System.EventHandler(this.button_tab2_back_Click);
             // 
@@ -493,7 +469,7 @@ namespace CnC_WFA
             this.groupBox4.Size = new System.Drawing.Size(348, 105);
             this.groupBox4.TabIndex = 21;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Соеденение";
+            this.groupBox4.Text = "????????????????????";
             // 
             // label_bd
             // 
@@ -503,7 +479,7 @@ namespace CnC_WFA
             this.label_bd.Name = "label_bd";
             this.label_bd.Size = new System.Drawing.Size(125, 19);
             this.label_bd.TabIndex = 24;
-            this.label_bd.Text = "Скорость соед.: ";
+            this.label_bd.Text = "???????????????? ????????.: ";
             // 
             // label_com
             // 
@@ -513,7 +489,7 @@ namespace CnC_WFA
             this.label_com.Name = "label_com";
             this.label_com.Size = new System.Drawing.Size(91, 19);
             this.label_com.TabIndex = 15;
-            this.label_com.Text = "Имя порта:";
+            this.label_com.Text = "?????? ??????????:";
             // 
             // button_open
             // 
@@ -527,7 +503,7 @@ namespace CnC_WFA
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(72, 38);
             this.button_open.TabIndex = 23;
-            this.button_open.Text = "Подкл.";
+            this.button_open.Text = "??????????.";
             this.button_open.UseVisualStyleBackColor = false;
             this.button_open.Click += new System.EventHandler(this.button_open_Click);
             // 
@@ -585,7 +561,7 @@ namespace CnC_WFA
             this.button_print.Name = "button_print";
             this.button_print.Size = new System.Drawing.Size(78, 43);
             this.button_print.TabIndex = 14;
-            this.button_print.Text = "Печать";
+            this.button_print.Text = "????????????";
             this.button_print.UseVisualStyleBackColor = false;
             this.button_print.Click += new System.EventHandler(this.button_print_Click);
             // 
@@ -602,7 +578,7 @@ namespace CnC_WFA
             this.groupBox1.Size = new System.Drawing.Size(512, 325);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Параметры";
+            this.groupBox1.Text = "??????????????????";
             // 
             // button_reset
             // 
@@ -615,7 +591,7 @@ namespace CnC_WFA
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(97, 31);
             this.button_reset.TabIndex = 21;
-            this.button_reset.Text = "Сбросить";
+            this.button_reset.Text = "????????????????";
             this.button_reset.UseVisualStyleBackColor = false;
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
@@ -634,7 +610,7 @@ namespace CnC_WFA
             this.groupBox3.Size = new System.Drawing.Size(278, 106);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Смещение";
+            this.groupBox3.Text = "????????????????";
             // 
             // label10
             // 
@@ -664,7 +640,7 @@ namespace CnC_WFA
             this.checkBox_useoffset.Name = "checkBox_useoffset";
             this.checkBox_useoffset.Size = new System.Drawing.Size(206, 23);
             this.checkBox_useoffset.TabIndex = 11;
-            this.checkBox_useoffset.Text = "Использовать смещение";
+            this.checkBox_useoffset.Text = "???????????????????????? ????????????????";
             this.checkBox_useoffset.UseVisualStyleBackColor = true;
             this.checkBox_useoffset.CheckedChanged += new System.EventHandler(this.checkBox_useoffset_CheckedChanged);
             // 
@@ -676,7 +652,7 @@ namespace CnC_WFA
             this.label_yoffset.Name = "label_yoffset";
             this.label_yoffset.Size = new System.Drawing.Size(74, 19);
             this.label_yoffset.TabIndex = 10;
-            this.label_yoffset.Text = "По оси Y:";
+            this.label_yoffset.Text = "???? ?????? Y:";
             // 
             // textBox_xoffset
             // 
@@ -696,7 +672,7 @@ namespace CnC_WFA
             this.label_xoffset.Name = "label_xoffset";
             this.label_xoffset.Size = new System.Drawing.Size(75, 19);
             this.label_xoffset.TabIndex = 9;
-            this.label_xoffset.Text = "По оси Х:";
+            this.label_xoffset.Text = "???? ?????? ??:";
             // 
             // textBox_yoffset
             // 
@@ -726,7 +702,7 @@ namespace CnC_WFA
             this.groupBox2.Size = new System.Drawing.Size(278, 151);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Размер";
+            this.groupBox2.Text = "????????????";
             // 
             // textBox_xsize
             // 
@@ -776,7 +752,7 @@ namespace CnC_WFA
             this.label_maxx.Name = "label_maxx";
             this.label_maxx.Size = new System.Drawing.Size(110, 19);
             this.label_maxx.TabIndex = 8;
-            this.label_maxx.Text = "Макс.: 297mm";
+            this.label_maxx.Text = "????????.: 297mm";
             // 
             // label_maxy
             // 
@@ -786,7 +762,7 @@ namespace CnC_WFA
             this.label_maxy.Name = "label_maxy";
             this.label_maxy.Size = new System.Drawing.Size(110, 19);
             this.label_maxy.TabIndex = 7;
-            this.label_maxy.Text = "Макс.: 210mm";
+            this.label_maxy.Text = "????????.: 210mm";
             // 
             // label_ysize
             // 
@@ -796,7 +772,7 @@ namespace CnC_WFA
             this.label_ysize.Name = "label_ysize";
             this.label_ysize.Size = new System.Drawing.Size(67, 19);
             this.label_ysize.TabIndex = 5;
-            this.label_ysize.Text = "Высота:";
+            this.label_ysize.Text = "????????????:";
             // 
             // label_xsize
             // 
@@ -806,7 +782,7 @@ namespace CnC_WFA
             this.label_xsize.Name = "label_xsize";
             this.label_xsize.Size = new System.Drawing.Size(72, 19);
             this.label_xsize.TabIndex = 4;
-            this.label_xsize.Text = "Ширина:";
+            this.label_xsize.Text = "????????????:";
             // 
             // radioButton_ysize
             // 
@@ -817,7 +793,7 @@ namespace CnC_WFA
             this.radioButton_ysize.Size = new System.Drawing.Size(133, 23);
             this.radioButton_ysize.TabIndex = 3;
             this.radioButton_ysize.TabStop = true;
-            this.radioButton_ysize.Text = "Задать высоту";
+            this.radioButton_ysize.Text = "???????????? ????????????";
             this.radioButton_ysize.UseVisualStyleBackColor = true;
             this.radioButton_ysize.CheckedChanged += new System.EventHandler(this.radioButton_ysize_CheckedChanged);
             // 
@@ -830,7 +806,7 @@ namespace CnC_WFA
             this.radioButton_xsize.Size = new System.Drawing.Size(138, 23);
             this.radioButton_xsize.TabIndex = 2;
             this.radioButton_xsize.TabStop = true;
-            this.radioButton_xsize.Text = "Задать ширину";
+            this.radioButton_xsize.Text = "???????????? ????????????";
             this.radioButton_xsize.UseVisualStyleBackColor = true;
             this.radioButton_xsize.CheckedChanged += new System.EventHandler(this.radioButton_xsize_CheckedChanged);
             // 
@@ -974,7 +950,7 @@ namespace CnC_WFA
             this.label_penwidth.Name = "label_penwidth";
             this.label_penwidth.Size = new System.Drawing.Size(117, 19);
             this.label_penwidth.TabIndex = 34;
-            this.label_penwidth.Text = "Ширина линий";
+            this.label_penwidth.Text = "???????????? ??????????";
             // 
             // pictureBox_backcolor
             // 
@@ -1005,7 +981,7 @@ namespace CnC_WFA
             this.button_backcolor.Name = "button_backcolor";
             this.button_backcolor.Size = new System.Drawing.Size(113, 31);
             this.button_backcolor.TabIndex = 31;
-            this.button_backcolor.Text = "Цв. фона";
+            this.button_backcolor.Text = "????. ????????";
             this.button_backcolor.UseVisualStyleBackColor = false;
             this.button_backcolor.Click += new System.EventHandler(this.button_backcolor_Click);
             // 
@@ -1020,7 +996,7 @@ namespace CnC_WFA
             this.button_drawcolor.Name = "button_drawcolor";
             this.button_drawcolor.Size = new System.Drawing.Size(113, 30);
             this.button_drawcolor.TabIndex = 1;
-            this.button_drawcolor.Text = "Цв. линий";
+            this.button_drawcolor.Text = "????. ??????????";
             this.button_drawcolor.UseVisualStyleBackColor = false;
             this.button_drawcolor.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -1045,7 +1021,7 @@ namespace CnC_WFA
             this.button_pause.Name = "button_pause";
             this.button_pause.Size = new System.Drawing.Size(93, 36);
             this.button_pause.TabIndex = 5;
-            this.button_pause.Text = "Пауза";
+            this.button_pause.Text = "??????????";
             this.button_pause.UseVisualStyleBackColor = false;
             this.button_pause.Click += new System.EventHandler(this.button_pause_Click);
             // 
@@ -1061,7 +1037,7 @@ namespace CnC_WFA
             this.groupBox6.Size = new System.Drawing.Size(231, 94);
             this.groupBox6.TabIndex = 27;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Печать";
+            this.groupBox6.Text = "????????????";
             // 
             // label_complete_number
             // 
@@ -1110,7 +1086,7 @@ namespace CnC_WFA
             this.button_abort.Name = "button_abort";
             this.button_abort.Size = new System.Drawing.Size(93, 36);
             this.button_abort.TabIndex = 4;
-            this.button_abort.Text = "Прервать";
+            this.button_abort.Text = "????????????????";
             this.button_abort.UseVisualStyleBackColor = false;
             this.button_abort.Click += new System.EventHandler(this.button_abort_Click);
             // 
@@ -1126,7 +1102,7 @@ namespace CnC_WFA
             this.groupBox7.Size = new System.Drawing.Size(180, 94);
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Вектор";
+            this.groupBox7.Text = "????????????";
             // 
             // label_prtime_print
             // 
@@ -1237,7 +1213,7 @@ namespace CnC_WFA
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(491, 94);
             this.label13.TabIndex = 36;
-            this.label13.Text = "Следуйте интрукциям...\r\n";
+            this.label13.Text = "???????????????? ????????????????????...\r\n";
             // 
             // label12
             // 
@@ -1247,7 +1223,7 @@ namespace CnC_WFA
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(401, 41);
             this.label12.TabIndex = 35;
-            this.label12.Text = "Вас приветствует мастер печати\r\n";
+            this.label12.Text = "?????? ???????????????????????? ???????????? ????????????\r\n";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage5
@@ -1272,7 +1248,7 @@ namespace CnC_WFA
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(245, 36);
             this.label3.TabIndex = 41;
-            this.label3.Text = "Нажмите \"Выйти\" для выхода";
+            this.label3.Text = "?????????????? \"??????????\" ?????? ????????????";
             // 
             // label2
             // 
@@ -1283,7 +1259,7 @@ namespace CnC_WFA
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(245, 36);
             this.label2.TabIndex = 40;
-            this.label2.Text = "За 1453 сек. или 12 мин.";
+            this.label2.Text = "???? 1453 ??????. ?????? 12 ??????.";
             // 
             // label1
             // 
@@ -1294,7 +1270,7 @@ namespace CnC_WFA
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(245, 36);
             this.label1.TabIndex = 35;
-            this.label1.Text = "Печать окончена";
+            this.label1.Text = "???????????? ????????????????";
             // 
             // button6
             // 
@@ -1320,7 +1296,7 @@ namespace CnC_WFA
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(151, 36);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Печать вектора";
+            this.label5.Text = "???????????? ??????????????";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_5
@@ -1333,7 +1309,7 @@ namespace CnC_WFA
             this.label_5.Name = "label_5";
             this.label_5.Size = new System.Drawing.Size(142, 36);
             this.label_5.TabIndex = 18;
-            this.label_5.Text = "        Печать";
+            this.label_5.Text = "        ????????????";
             this.label_5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label_4
@@ -1346,7 +1322,7 @@ namespace CnC_WFA
             this.label_4.Name = "label_4";
             this.label_4.Size = new System.Drawing.Size(142, 36);
             this.label_4.TabIndex = 16;
-            this.label_4.Text = "    Подготовка";
+            this.label_4.Text = "    ????????????????????";
             this.label_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_3
@@ -1359,7 +1335,7 @@ namespace CnC_WFA
             this.label_3.Name = "label_3";
             this.label_3.Size = new System.Drawing.Size(142, 43);
             this.label_3.TabIndex = 15;
-            this.label_3.Text = "        Настройка\r\n        печати";
+            this.label_3.Text = "        ??????????????????\r\n        ????????????";
             this.label_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label_2
@@ -1372,7 +1348,7 @@ namespace CnC_WFA
             this.label_2.Name = "label_2";
             this.label_2.Size = new System.Drawing.Size(151, 36);
             this.label_2.TabIndex = 14;
-            this.label_2.Text = "     Выбор файла";
+            this.label_2.Text = "     ?????????? ??????????";
             this.label_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_1
@@ -1385,7 +1361,7 @@ namespace CnC_WFA
             this.label_1.Name = "label_1";
             this.label_1.Size = new System.Drawing.Size(142, 36);
             this.label_1.TabIndex = 13;
-            this.label_1.Text = "      Приветствие";
+            this.label_1.Text = "      ??????????????????????";
             this.label_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button3
@@ -1399,7 +1375,7 @@ namespace CnC_WFA
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 31);
             this.button3.TabIndex = 34;
-            this.button3.Text = "Справка";
+            this.button3.Text = "??????????????";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1

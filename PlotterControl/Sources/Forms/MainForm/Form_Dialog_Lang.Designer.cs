@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Dialog_Lang.Designer.cs
+* PlotterControl\Form_Dialog_Lang.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 19:55
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:47
 *=================================*/
 
 namespace CnC_WFA
@@ -79,7 +55,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(83, 35);
             this.button_exit.TabIndex = 118;
-            this.button_exit.Text = "Выйти";
+            this.button_exit.Text = "??????????";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
@@ -94,7 +70,7 @@ namespace CnC_WFA
             this.button_select.Name = "button_select";
             this.button_select.Size = new System.Drawing.Size(110, 35);
             this.button_select.TabIndex = 120;
-            this.button_select.Text = "Выбрать";
+            this.button_select.Text = "??????????????";
             this.button_select.UseVisualStyleBackColor = false;
             // 
             // button_edit
@@ -108,7 +84,7 @@ namespace CnC_WFA
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(126, 35);
             this.button_edit.TabIndex = 121;
-            this.button_edit.Text = "Редактировать";
+            this.button_edit.Text = "??????????????????????????";
             this.button_edit.UseVisualStyleBackColor = false;
             // 
             // Form_Dialog_Lang
@@ -124,7 +100,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Dialog_Lang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Выбор языка";
+            this.Text = "?????????? ??????????";
             this.Load += new System.EventHandler(this.Form_Dialog_Lang_Load);
             this.ResumeLayout(false);
 

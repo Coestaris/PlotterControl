@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Dialog_EditElement.Designer.cs
+* PlotterControl\Form_Dialog_EditElement.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:47
 *=================================*/
 
 namespace CnC_WFA
@@ -119,7 +95,7 @@ namespace CnC_WFA
             this.button_markers.Name = "button_markers";
             this.button_markers.Size = new System.Drawing.Size(122, 36);
             this.button_markers.TabIndex = 38;
-            this.button_markers.Text = "Маркеры";
+            this.button_markers.Text = "??????????????";
             this.button_markers.UseVisualStyleBackColor = false;
             // 
             // button_display
@@ -134,7 +110,7 @@ namespace CnC_WFA
             this.button_display.Name = "button_display";
             this.button_display.Size = new System.Drawing.Size(122, 36);
             this.button_display.TabIndex = 37;
-            this.button_display.Text = "Отображение";
+            this.button_display.Text = "??????????????????????";
             this.button_display.UseVisualStyleBackColor = false;
             // 
             // button_exit
@@ -149,7 +125,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(119, 36);
             this.button_exit.TabIndex = 2;
-            this.button_exit.Text = "Закрыть";
+            this.button_exit.Text = "??????????????";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
@@ -165,7 +141,7 @@ namespace CnC_WFA
             this.button_axis.Name = "button_axis";
             this.button_axis.Size = new System.Drawing.Size(122, 36);
             this.button_axis.TabIndex = 1;
-            this.button_axis.Text = "Оси";
+            this.button_axis.Text = "??????";
             this.button_axis.UseVisualStyleBackColor = false;
             // 
             // tabControl1
@@ -200,7 +176,7 @@ namespace CnC_WFA
             this.checkBox_axis_show.Name = "checkBox_axis_show";
             this.checkBox_axis_show.Size = new System.Drawing.Size(110, 21);
             this.checkBox_axis_show.TabIndex = 132;
-            this.checkBox_axis_show.Text = "Отображать";
+            this.checkBox_axis_show.Text = "????????????????????";
             this.checkBox_axis_show.UseVisualStyleBackColor = true;
             this.checkBox_axis_show.CheckedChanged += new System.EventHandler(this.checkBox_axis_show_CheckedChanged);
             // 
@@ -218,7 +194,7 @@ namespace CnC_WFA
             this.groupBox_axis_display.Size = new System.Drawing.Size(469, 125);
             this.groupBox_axis_display.TabIndex = 131;
             this.groupBox_axis_display.TabStop = false;
-            this.groupBox_axis_display.Text = "Параметры отображения";
+            this.groupBox_axis_display.Text = "?????????????????? ??????????????????????";
             // 
             // label_axis_width
             // 
@@ -228,7 +204,7 @@ namespace CnC_WFA
             this.label_axis_width.Name = "label_axis_width";
             this.label_axis_width.Size = new System.Drawing.Size(98, 17);
             this.label_axis_width.TabIndex = 128;
-            this.label_axis_width.Text = "Ширина осей";
+            this.label_axis_width.Text = "???????????? ????????";
             // 
             // label_axis_color
             // 
@@ -238,7 +214,7 @@ namespace CnC_WFA
             this.label_axis_color.Name = "label_axis_color";
             this.label_axis_color.Size = new System.Drawing.Size(75, 17);
             this.label_axis_color.TabIndex = 127;
-            this.label_axis_color.Text = "Цвет осей";
+            this.label_axis_color.Text = "???????? ????????";
             // 
             // label_axis_color_info
             // 
@@ -261,7 +237,7 @@ namespace CnC_WFA
             this.button_axis_color.Name = "button_axis_color";
             this.button_axis_color.Size = new System.Drawing.Size(84, 35);
             this.button_axis_color.TabIndex = 124;
-            this.button_axis_color.Text = "Выбрать";
+            this.button_axis_color.Text = "??????????????";
             this.button_axis_color.UseVisualStyleBackColor = false;
             this.button_axis_color.Click += new System.EventHandler(this.button_axis_color_Click);
             // 
@@ -296,7 +272,7 @@ namespace CnC_WFA
             this.groupBox_axis_param.Size = new System.Drawing.Size(469, 129);
             this.groupBox_axis_param.TabIndex = 130;
             this.groupBox_axis_param.TabStop = false;
-            this.groupBox_axis_param.Text = "Параметры осей";
+            this.groupBox_axis_param.Text = "?????????????????? ????????";
             // 
             // label_axis_offset_y
             // 
@@ -306,7 +282,7 @@ namespace CnC_WFA
             this.label_axis_offset_y.Name = "label_axis_offset_y";
             this.label_axis_offset_y.Size = new System.Drawing.Size(109, 17);
             this.label_axis_offset_y.TabIndex = 130;
-            this.label_axis_offset_y.Text = "Смещение по Y";
+            this.label_axis_offset_y.Text = "???????????????? ???? Y";
             // 
             // label_axis_offset_x
             // 
@@ -316,7 +292,7 @@ namespace CnC_WFA
             this.label_axis_offset_x.Name = "label_axis_offset_x";
             this.label_axis_offset_x.Size = new System.Drawing.Size(109, 17);
             this.label_axis_offset_x.TabIndex = 129;
-            this.label_axis_offset_x.Text = "Смещение по Х";
+            this.label_axis_offset_x.Text = "???????????????? ???? ??";
             // 
             // textBox_axis_offset_y
             // 
@@ -343,7 +319,7 @@ namespace CnC_WFA
             this.radioButton_axis_limited.Size = new System.Drawing.Size(154, 21);
             this.radioButton_axis_limited.TabIndex = 9;
             this.radioButton_axis_limited.TabStop = true;
-            this.radioButton_axis_limited.Text = "Ограниченные оси";
+            this.radioButton_axis_limited.Text = "???????????????????????? ??????";
             this.radioButton_axis_limited.UseVisualStyleBackColor = true;
             this.radioButton_axis_limited.CheckedChanged += new System.EventHandler(this.radioButton_axis_limited_CheckedChanged);
             // 
@@ -356,7 +332,7 @@ namespace CnC_WFA
             this.radioButton_axis_unlimited.Size = new System.Drawing.Size(169, 21);
             this.radioButton_axis_unlimited.TabIndex = 8;
             this.radioButton_axis_unlimited.TabStop = true;
-            this.radioButton_axis_unlimited.Text = "Неограниченные оси";
+            this.radioButton_axis_unlimited.Text = "???????????????????????????? ??????";
             this.radioButton_axis_unlimited.UseVisualStyleBackColor = true;
             // 
             // label_axis_label
@@ -367,7 +343,7 @@ namespace CnC_WFA
             this.label_axis_label.Name = "label_axis_label";
             this.label_axis_label.Size = new System.Drawing.Size(151, 22);
             this.label_axis_label.TabIndex = 7;
-            this.label_axis_label.Text = "Параметры осей";
+            this.label_axis_label.Text = "?????????????????? ????????";
             // 
             // tabPage2
             // 

@@ -1,82 +1,58 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* CWA.Printing.Macro \ PrintMacros_MacroElemTypeShorted.cs
+* CWA.Printing.Macro\PrintMacros_MacroElemTypeShorted.cs
 *
-* Created: 17.06.2017 21:03
-* Last Edited: 18.08.2017 20:23:26
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
+* Created: 22.08.2017 20:09
+* Last Edited: 01.07.2017 13:09:58
 *=================================*/
 
 namespace CWA.Printing.Macro
 {
     /// <summary>
-    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ. 
-    /// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ MacroElemType.
+    /// Описывает тип макроса, в сокращенном виде, удобном для хранения в файле. 
+    /// Все варианты - эквиваленты вариантам перечисления MacroElemType.
     /// </summary>
     public enum MacroElemTypeShorted
     {
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.Tool. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ).
+        /// Эквивалент: MacroElemType.Tool. Только перемещение пера (вверх/вниз).
         /// </summary>
         T,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.MoveToPoint. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.MoveToPoint. Перемещение инструмента в конкретную точку.
         /// </summary>
         MTP,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.MoveRelative. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.MoveRelative. Смещение инструмента на заданную дельту.
         /// </summary>
         MR,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.Delay. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.Delay. Только задержка.
         /// </summary>
         D,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.None. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.None. Ничего не делать.
         /// </summary>
         N,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.ToolAndDelay. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.ToolAndDelay. Перемещение пера (вверх/вниз) с задержкой после.
         /// </summary>
         TAD,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.MoveToPointAndDelay. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.MoveToPointAndDelay. Перемещение инструмента в конкретную точку с задержкой после.
         /// </summary>
         MTPAD,
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: MacroElemType.MoveRelativeAndDelay. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Эквивалент: MacroElemType.MoveRelativeAndDelay. Перемещение инструмента в конкретную точку с задержкой после.
         /// </summary>
         MRAD
     }

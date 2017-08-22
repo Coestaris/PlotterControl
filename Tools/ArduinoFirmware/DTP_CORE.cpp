@@ -231,6 +231,7 @@ uint16_t PLOTTER_work = PLOTTER_WORK;
 uint16_t PLOTTER_idle = PLOTTER_IDLE;
 bool PLOTTER_pause = false;
 bool PLOTTER_com = false;
+bool PLOTTER_ForceStop = false;
 uint32_t PLOTTER_DelayTime = 50;
 
 bool PLOTTER_CheckBounds()
@@ -292,6 +293,7 @@ void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrectio
 	counter = 0;	
 	PLOTTER_DelayTime = PLOTTER_idle;
 	bool drawing = false;
+	PLOTTER_ForceStop = false;
 	while (counter != PrintFileSize)
 	{
 		byte* Bytes = new byte[4];
@@ -363,11 +365,11 @@ void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrectio
 		if (!PLOTTER_MoveSM((int32_t)((int32_t)dx * (int32_t)XCoef), 
 							(int32_t)((int32_t)dy * (int32_t)YCoef), 
 							0, 
-							true))
+							true) || PLOTTER_ForceStop)
 		{
 			if (drawing)
 				PLOTTER_LiftPen(ElevationDelta, ElevationCorrection);
-			Error("002200", false);
+			Error("010", false);
 			break;
 		};
 		counter += 4;
@@ -423,6 +425,11 @@ void PLOTTER_delayMicros(uint32_t wt)
 	mks = (uint16_t)(wt % 1000);
 	if (mls > 0) delay(mls);
 	if (mks > 0) delayMicroseconds(mks);
+}
+
+void PLOTTER_Abort()
+{
+	PLOTTER_ForceStop = true;
 }
 
 bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z, bool checkBoundsAndComands)

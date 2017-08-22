@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* CWA.Vectors.Document \ VEditor_DocumentCirlce.cs
+* CWA.Vectors.Document\VEditor_DocumentCirlce.cs
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:23:27
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
+* Created: 22.08.2017 20:09
+* Last Edited: 22.08.2017 20:27:23
 *=================================*/
 
 using System.Drawing;
@@ -38,26 +14,26 @@ using System.Drawing.Drawing2D;
 namespace CWA.Vectors.Document
 {
     /// <summary>
-    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ <see cref="DocumentItem"/>.
+    /// Описывает объект эллипса, который наследуется от <see cref="DocumentItem"/>.
     /// </summary>
     public class DocumentCirlce : DocumentItem
     {
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Центр круга.
         /// </summary>
         public PointF Center { get; internal set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Радиус круга.
         /// </summary>
         public float Radius { get; internal set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="DocumentCirlce"/>.
+        /// Создает новый экземпляр класса <see cref="DocumentCirlce"/>.
         /// </summary>
-        /// <param name="position">пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
-        /// <param name="p1">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.</param>
-        /// <param name="r">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="position">Позиция объекта.</param>
+        /// <param name="p1">Центр круга.</param>
+        /// <param name="r">Радиус круга.</param>
         public DocumentCirlce(PointF position, PointF p1, float r)
         {
             Center = p1;
@@ -67,7 +43,7 @@ namespace CWA.Vectors.Document
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Перерисовует объект.
         /// </summary>
         public override void PreRender()
         {

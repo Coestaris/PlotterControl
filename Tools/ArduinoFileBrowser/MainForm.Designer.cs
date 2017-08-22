@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* ArduinoFileBrowser \ MainForm.Designer.cs
+* ArduinoFileBrowser\MainForm.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 20:09
-* Last Edited: 07.08.2017 21:52:22
-*
+* Last Edited: 18.08.2017 20:26:45
 *=================================*/
 
 namespace FileBrowser
@@ -37,14 +13,14 @@ namespace FileBrowser
     partial class MainForm
     {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// ???????????????????????? ???????????????????? ????????????????????????.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// ???????????????????? ?????? ???????????????????????? ??????????????.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">??????????????, ???????? ?????????????????????? ???????????? ???????????? ???????? ????????????; ?????????? ??????????.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -54,11 +30,11 @@ namespace FileBrowser
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region ??????, ?????????????????????????? ?????????????????? ?????????????????????????? ???????? Windows
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// ?????????????????? ?????????? ?????? ?????????????????? ???????????????????????? ??? ???? ?????????????????? 
+        /// ???????????????????? ?????????? ???????????? ?? ?????????????? ?????????????????? ????????.
         /// </summary>
         private void InitializeComponent()
         {
@@ -153,7 +129,7 @@ namespace FileBrowser
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.openToolStripMenuItem.Text = "Открыть";
+            this.openToolStripMenuItem.Text = "??????????????";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
@@ -165,14 +141,14 @@ namespace FileBrowser
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.deleteToolStripMenuItem.Text = "Удалить";
+            this.deleteToolStripMenuItem.Text = "??????????????";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.button5_Click);
             // 
             // copyNameToolStripMenuItem
             // 
             this.copyNameToolStripMenuItem.Name = "copyNameToolStripMenuItem";
             this.copyNameToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.copyNameToolStripMenuItem.Text = "Скопировать имя";
+            this.copyNameToolStripMenuItem.Text = "?????????????????????? ??????";
             this.copyNameToolStripMenuItem.Click += new System.EventHandler(this.button2_Click);
             // 
             // toolStripSeparator2
@@ -187,20 +163,20 @@ namespace FileBrowser
             this.createFileToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
             this.createToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.createToolStripMenuItem.Text = "Создать";
+            this.createToolStripMenuItem.Text = "??????????????";
             // 
             // createDirToolStripMenuItem
             // 
             this.createDirToolStripMenuItem.Name = "createDirToolStripMenuItem";
             this.createDirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.createDirToolStripMenuItem.Text = "Папку";
+            this.createDirToolStripMenuItem.Text = "??????????";
             this.createDirToolStripMenuItem.Click += new System.EventHandler(this.createDirToolStripMenuItem_Click);
             // 
             // createFileToolStripMenuItem
             // 
             this.createFileToolStripMenuItem.Name = "createFileToolStripMenuItem";
             this.createFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.createFileToolStripMenuItem.Text = "Пустой файл";
+            this.createFileToolStripMenuItem.Text = "???????????? ????????";
             this.createFileToolStripMenuItem.Click += new System.EventHandler(this.createFileToolStripMenuItem_Click);
             // 
             // contextMenuStrip2
@@ -218,27 +194,27 @@ namespace FileBrowser
             this.createFiletoolStripMenuItem6});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(128, 22);
-            this.toolStripMenuItem4.Text = "Создать";
+            this.toolStripMenuItem4.Text = "??????????????";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.createDirToolStripMenuItem_Click);
             // 
             // createDirtoolStripMenuItem5
             // 
             this.createDirtoolStripMenuItem5.Name = "createDirtoolStripMenuItem5";
             this.createDirtoolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
-            this.createDirtoolStripMenuItem5.Text = "Папку";
+            this.createDirtoolStripMenuItem5.Text = "??????????";
             // 
             // createFiletoolStripMenuItem6
             // 
             this.createFiletoolStripMenuItem6.Name = "createFiletoolStripMenuItem6";
             this.createFiletoolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
-            this.createFiletoolStripMenuItem6.Text = "Пустой файл";
+            this.createFiletoolStripMenuItem6.Text = "???????????? ????????";
             this.createFiletoolStripMenuItem6.Click += new System.EventHandler(this.createFileToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.refreshToolStripMenuItem.Text = "Обновить";
+            this.refreshToolStripMenuItem.Text = "????????????????";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.button4_Click);
             // 
             // MainForm

@@ -56,6 +56,18 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			break;
 		}
 		
+		case DTP_COMMANDTYPE::Plotter_Print_Abort:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::DATA;
+			dataByte = 1;
+			if (ReqToStartPrint)
+			{
+				PLOTTER_Abort();
+			}
+			break;
+		}
+
 		case DTP_COMMANDTYPE::Plotter_Print_Run:
 		{
 			status = DTP_ANSWER_STATUS::OK;

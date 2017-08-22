@@ -136,6 +136,8 @@ const int DirectoryBufferSize PROGMEM = 40;
 
 	void PLOTTER_delayMicros(uint32_t wt);
 
+	void PLOTTER_Abort();
+
 	bool PLOTTER_MoveSM(int32_t x, int32_t y, int32_t z, bool checkBoundsAndComands);
 
 	void PLOTTER_LiftPen(uint16_t ElevationDelta, int16_t ElevationCorrection);

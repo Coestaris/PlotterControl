@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* ArduinoFileBrowser \ ReceiveDialog.Designer.cs
+* ArduinoFileBrowser\ReceiveDialog.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 20:09
-* Last Edited: 30.07.2017 22:17:44
-*
+* Last Edited: 18.08.2017 20:26:45
 *=================================*/
 
 namespace FileBrowser
@@ -93,7 +69,7 @@ namespace FileBrowser
             this.button_abort.Name = "button_abort";
             this.button_abort.Size = new System.Drawing.Size(104, 33);
             this.button_abort.TabIndex = 1;
-            this.button_abort.Text = "Прервать";
+            this.button_abort.Text = "????????????????";
             this.button_abort.UseVisualStyleBackColor = true;
             this.button_abort.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -146,7 +122,7 @@ namespace FileBrowser
             this.button_pick.Name = "button_pick";
             this.button_pick.Size = new System.Drawing.Size(48, 23);
             this.button_pick.TabIndex = 7;
-            this.button_pick.Text = "Выбр";
+            this.button_pick.Text = "????????";
             this.button_pick.UseVisualStyleBackColor = true;
             this.button_pick.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -163,7 +139,7 @@ namespace FileBrowser
             this.button_receive.Name = "button_receive";
             this.button_receive.Size = new System.Drawing.Size(104, 33);
             this.button_receive.TabIndex = 10;
-            this.button_receive.Text = "Получить";
+            this.button_receive.Text = "????????????????";
             this.button_receive.UseVisualStyleBackColor = true;
             this.button_receive.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -186,7 +162,7 @@ namespace FileBrowser
             this.label_oldName.Name = "label_oldName";
             this.label_oldName.Size = new System.Drawing.Size(88, 35);
             this.label_oldName.TabIndex = 12;
-            this.label_oldName.Text = "Новое имя\r\nна ПК";
+            this.label_oldName.Text = "?????????? ??????\r\n???? ????";
             // 
             // label_newName
             // 
@@ -194,7 +170,7 @@ namespace FileBrowser
             this.label_newName.Name = "label_newName";
             this.label_newName.Size = new System.Drawing.Size(88, 35);
             this.label_newName.TabIndex = 11;
-            this.label_newName.Text = "Имя файла\r\nна утсройстве";
+            this.label_newName.Text = "?????? ??????????\r\n???? ????????????????????";
             // 
             // saveFileDialog
             // 
@@ -217,7 +193,7 @@ namespace FileBrowser
             this.Name = "ReceiveDialog";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Диалог получения файлов";
+            this.Text = "???????????? ?????????????????? ????????????";
             this.Load += new System.EventHandler(this.ReceiveDialog_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

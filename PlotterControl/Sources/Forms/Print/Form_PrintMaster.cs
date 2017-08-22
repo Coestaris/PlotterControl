@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_PrintMaster.cs
+* PlotterControl\Form_PrintMaster.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 19.08.2017 16:52:40
-*
+* Last Edited: 19.08.2017 23:25:23
 *=================================*/
 
 using CWA_Resources.Properties;
@@ -64,7 +40,7 @@ namespace CnC_WFA
 
         public Form_PrintMaster(string fn, bool ignr)
         {
-
+             
         }
 
         public Form_PrintMaster(string fn, bool ignr, string port, int bdrate, SizeF size, bool auto)
@@ -103,25 +79,27 @@ namespace CnC_WFA
         {
             if (master != null)
             {
-                if ((master.Listener.PacketReader as SerialPacketReader).Port.IsOpen)
-                    (master.Listener.PacketReader as SerialPacketReader).Port.Close();
-                if ((master.Listener.PacketWriter as SerialPacketWriter).Port.IsOpen)
-                    (master.Listener.PacketReader as SerialPacketWriter).Port.Close();
+                master.CloseConnection();
             }
         }
 
         private void button_open_Click(object sender, EventArgs e)
         {
-            if (button_open.Text == "Откл.")
+            if (button_open.Text == "????????.")
             {
                 ResetConntection();
                 button_tab1_next.Enabled = false;
                 comboBox_bdrate.Enabled = true;
                 comboBox_com.Enabled = true;
-                button_open.Text = "Подкл.";
+                button_open.Text = "??????????.";
             }
             else
             {
+                if(comboBox_bdrate.Text == "")
+                {
+                    MessageBox.Show("?????????????? ?????? ??????????", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 ResetConntection();
                 button_tab1_next.Enabled = false;
                 SerialPort port = new SerialPort(comboBox_com.Text, int.Parse(comboBox_bdrate.Text));
@@ -131,7 +109,7 @@ namespace CnC_WFA
                 }
                 catch
                 {
-                    MessageBox.Show(string.Format("Не удалось открыть порт {0}", comboBox_com.Text), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("???? ?????????????? ?????????????? ???????? {0}", comboBox_com.Text), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 master = new DTPMaster(
@@ -141,19 +119,19 @@ namespace CnC_WFA
                 {
                     if (!master.Device.Test())
                     {
-                        MessageBox.Show("Устройство не ответило на первичный опрос", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("???????????????????? ???? ???????????????? ???? ?????????????????? ??????????", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Устройство не ответило на первичный опрос", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("???????????????????? ???? ???????????????? ???? ?????????????????? ??????????", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 button_tab1_next.Enabled = true;
                 comboBox_bdrate.Enabled = false;
                 comboBox_com.Enabled = false;
-                button_open.Text = "Откл.";
+                button_open.Text = "????????.";
             }
         }
 
@@ -231,8 +209,8 @@ namespace CnC_WFA
                 int index = listBox_fileList.SelectedIndex;
                 Bitmap preview = Metas[index].Preview;
                 pictureBox_preview.Image = preview;
-                label_resol.Text = string.Format("Размер: {0} x {1}", Metas[index].Width, Metas[index].Height);
-                label_type.Text = string.Format("Тип: {0}", Metas[index].Type);
+                label_resol.Text = string.Format("????????????: {0} x {1}", Metas[index].Width, Metas[index].Height);
+                label_type.Text = string.Format("??????: {0}", Metas[index].Type);
             }
             button_tab2_next.Enabled = listBox_fileList.SelectedIndex != -1;
         }
@@ -277,7 +255,7 @@ namespace CnC_WFA
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        string.Format("Произошла ошибка типа {0}.\n{2}\n\nСтек вызовов:\n{1}",
+                        string.Format("?????????????????? ???????????? ???????? {0}.\n{2}\n\n???????? ??????????????:\n{1}",
                         ex.GetType().FullName,
                         ex.StackTrace,
                         ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -288,22 +266,22 @@ namespace CnC_WFA
         }
 
         /// <summary>
-        /// Получает размер по высоте из размера по ширине (сохраняя пропорцию).
+        /// ???????????????? ???????????? ???? ???????????? ???? ?????????????? ???? ???????????? (???????????????? ??????????????????).
         /// </summary>
-        /// <param name="imgWidth">Ширина изображения.</param>
-        /// <param name="imgHeight">Высота изображения.</param>
-        /// <param name="xSize">Размер по ширине.</param>
+        /// <param name="imgWidth">???????????? ??????????????????????.</param>
+        /// <param name="imgHeight">???????????? ??????????????????????.</param>
+        /// <param name="xSize">???????????? ???? ????????????.</param>
         public static float GetYsize(float imgWidth, float imgHeight, float xSize)
         {
             return xSize * imgHeight / imgWidth;
         }
 
         /// <summary>
-        /// Получает размер по ширине из размера по высоте (сохраняя пропорцию).
+        /// ???????????????? ???????????? ???? ???????????? ???? ?????????????? ???? ???????????? (???????????????? ??????????????????).
         /// </summary>
-        /// <param name="imgWidth">Ширина изображения.</param>
-        /// <param name="imgHeight">Высота изображения.</param>
-        /// <param name="ySize">Размер по высоте.</param>
+        /// <param name="imgWidth">???????????? ??????????????????????.</param>
+        /// <param name="imgHeight">???????????? ??????????????????????.</param>
+        /// <param name="ySize">???????????? ???? ????????????.</param>
         public static float GetXsize(float imgWidth, float imgHeight, float ySize)
         {
             return ySize * imgWidth / imgHeight;
@@ -317,7 +295,7 @@ namespace CnC_WFA
             configMaster = new PlotterConfig(master);
             comboBox_pens.Items.Clear();
             comboBox_pens.Items.AddRange(configMaster.Pens.Select(p => p.Name).ToArray());
-            comboBox_pens.Items.Add("<польз. перо>");
+            comboBox_pens.Items.Add("<??????????. ????????>");
             comboBox_pens.SelectedIndex = 0;
             RecalcSize();
         }
@@ -330,14 +308,14 @@ namespace CnC_WFA
             {
                 if(!float.TryParse(textBox_xsize.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float xsize))
                 {
-                    MessageBox.Show(string.Format("\"{0}\" некорректное число", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("\"{0}\" ???????????????????????? ??????????", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_xsize.Text = lastCorrectStrings[0];
                     return;
                 }
                 float ysize = GetYsize(SelectedMetadata.Width, SelectedMetadata.Height, xsize);
                 if(xsize <= 0 || ysize <= 0 || xsize >= 297 || ysize >= 210)
                 {
-                    MessageBox.Show(string.Format("Размеры по ширине должны в пределах 0мм и 297мм, а по высоте от 0мм до 210мм.", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("?????????????? ???? ???????????? ???????????? ?? ???????????????? 0???? ?? 297????, ?? ???? ???????????? ???? 0???? ???? 210????.", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_xsize.Text = lastCorrectStrings[0];
                     return;
                 }
@@ -347,14 +325,14 @@ namespace CnC_WFA
             {
                 if (!float.TryParse(textBox_ysize.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float ysize))
                 {
-                    MessageBox.Show(string.Format("\"{0}\" некорректное число", textBox_ysize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("\"{0}\" ???????????????????????? ??????????", textBox_ysize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_ysize.Text = lastCorrectStrings[1];
                     return;
                 }
                 float xsize = GetXsize(SelectedMetadata.Width, SelectedMetadata.Height, ysize);
                 if (xsize <= 0 || ysize <= 0 || xsize >= 297 || ysize >= 210)
                 {
-                    MessageBox.Show(string.Format("Размеры по ширине должны в пределах 0мм и 297мм, а по высоте от 0мм до 210мм.", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("?????????????? ???? ???????????? ???????????? ?? ???????????????? 0???? ?? 297????, ?? ???? ???????????? ???? 0???? ???? 210????.", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_ysize.Text = lastCorrectStrings[1];
                     return;
                 }
@@ -409,7 +387,7 @@ namespace CnC_WFA
             printMaster.OnError += PrintMaster_OnError;
             printMaster.PrintingEnd += PrintMaster_PrintingEnd;
             printMaster.StatusRequest += PrintMaster_StatusRequest;
-            printMaster.BeginPrinting(SelectedMetadata.Index, configMaster.Pens[comboBox_pens.SelectedIndex]);
+            printMaster.BeginPrinting(SelectedMetadata.Index, new PlotterPenInfo("", UInt16.Parse(textBox_elev_delta.Text), Int16.Parse(textBox_elev_corr.Text), Color.Empty));
         }
 
         private void PrintMaster_PrintingEnd()
@@ -436,9 +414,9 @@ namespace CnC_WFA
             {
                 progressBar1.Maximum = (int)MaxPosition;
                 progressBar1.Value = (int)CurrentPosition;
-                label_spendTme.Text = string.Format("Затраченно времени: {0}", TimeArgs.SecondsSpend);
-                label_leftTime.Text = string.Format("Времени до завершения(примерно): {0}", TimeArgs.SecondsLeft);
-                label_speed.Text = string.Format("Скорость: {0}", TimeArgs.Speed);
+                label_spendTme.Text = string.Format("???????????????????? ??????????????: {0:0.#} ????????????", TimeArgs.SecondsSpend);
+                label_leftTime.Text = string.Format("?????????????? ???? ????????????????????(????????????????): {0:0.#} ????????????.", TimeArgs.SecondsLeft);
+                label_speed.Text = string.Format("????????????????: {0:0.##} ????????????????/??", TimeArgs.Speed);
                 label_progress.Text = string.Format("{0}/{1}", CurrentPosition, MaxPosition);
                 label_percentage.Text = string.Format("{0:0.##}%", (float)CurrentPosition / MaxPosition * 100f);
             }
@@ -453,7 +431,8 @@ namespace CnC_WFA
             }
             else
             {
-                MessageBox.Show(string.Format("Произошла ошибка {0}. Это не означает что печать была или будет прервана, но отслеживать процесс далее будет не возможно.", arg.ToString()), "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("?????????????????? ???????????? {0}. ?????? ???? ???????????????? ?????? ???????????? ???????? ?????? ?????????? ????????????????, ???? ?????????????????????? ?????????????? ?????????? ?????????? ???? ????????????????.", arg.ToString()), "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                printMaster.Master.CloseConnection();
                 tabControl1.SelectedIndex = 4;
                 CheckState(4);
             }
@@ -470,6 +449,12 @@ namespace CnC_WFA
         {
             tabControl1.SelectedIndex = 1;
             CheckState(1);
+        }
+
+        private void button_abort_Click(object sender, EventArgs e)
+        {
+            printMaster.AbortPrinting();
+            printMaster.Master.CloseConnection();
         }
     }
 }

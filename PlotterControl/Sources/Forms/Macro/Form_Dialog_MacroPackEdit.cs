@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Dialog_MacroPackEdit.cs
+* PlotterControl\Form_Dialog_MacroPackEdit.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 19.08.2017 22:57:57
 *=================================*/
 
 using CWA;
@@ -79,13 +55,13 @@ namespace CnC_WFA
 
         private void UpDateGeneralSettings()
         {
-            Text = string.Format("Пак макросов: \"{0}\"", main.Name);
+            Text = string.Format("?????? ????????????????: \"{0}\"", main.Name);
             textBox_caption.Text = main.Caption;
             textBox_name.Text = main.Name;
             richTextBox_discr.Text = main.Discr;
             comboBox_portname.SelectedItem = main.PortName.ToString();
             comboBox_bdrate.SelectedItem = main.PortBD.ToString();
-            label_samples.Text = string.Format("Сємплов: {0}", main.Samples.Count);
+            label_samples.Text = string.Format("??????????????: {0}", main.Samples.Count);
             listBox_samples.Items.AddRange(main.Samples.ToArray());
         }
 
@@ -144,7 +120,7 @@ namespace CnC_WFA
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
             main.Name = textBox_name.Text;
-            Text = string.Format("Пак макросов: \"{0}\"", main.Name);
+            Text = string.Format("?????? ????????????????: \"{0}\"", main.Name);
         }
 
         private void textBox_caption_TextChanged(object sender, EventArgs e)
@@ -181,15 +157,15 @@ namespace CnC_WFA
             listBox_samples.Items.Add(textBox_sample_value.Text);
             main.Samples.Add(textBox_sample_value.Text);
             textBox_sample_value.Text = "";
-            label_samples.Text = string.Format("Сємплов: {0}", main.Samples.Count);
+            label_samples.Text = string.Format("??????????????: {0}", main.Samples.Count);
         }
 
         private void button_samples_remove_Click(object sender, EventArgs e)
         {
             if(listBox_samples.SelectedIndex!=-1)
             {
-                listBox_samples.Items.RemoveAt(listBox_samples.SelectedIndex);
                 main.Samples.RemoveAt(listBox_samples.SelectedIndex);
+                listBox_samples.Items.RemoveAt(listBox_samples.SelectedIndex);
             }
         }
 
@@ -241,7 +217,7 @@ namespace CnC_WFA
                 }
                 catch
                 {
-                    MessageBox.Show("Ошибка при загрузке -_-");
+                    MessageBox.Show("???????????? ?????? ???????????????? -_-");
                     main = new MacroPack("NoName", "NoDiscr", "NoName");
                 }
                 UpDateGeneralSettings();

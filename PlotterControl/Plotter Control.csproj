@@ -151,31 +151,31 @@
     </Compile>
     <Compile Include="Sources\Other\Grapher.cs" />
     <Compile Include="Sources\Other\TaskbarState.cs" />
-    <None Include="Plugins\_Curve_ArchimedeanSpiral.cs">
+    <None Include="Plugins\Curve_ArchimedeanSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Cochleoid.cs">
+    <None Include="Plugins\Curve_Cochleoid.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Epicycloid.cs">
+    <None Include="Plugins\Curve_Epicycloid.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Fermats.cs">
+    <None Include="Plugins\Curve_Fermats.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_HyperbolicSpiral.cs">
+    <None Include="Plugins\Curve_HyperbolicSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Lituus.cs">
+    <None Include="Plugins\Curve_Lituus.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Logarithmic.cs">
+    <None Include="Plugins\Curve_Logarithmic.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Poinsots.cs">
+    <None Include="Plugins\Curve_Poinsots.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\_Curve_Sinusoidal.cs">
+    <None Include="Plugins\Curve_Sinusoidal.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Compile Include="Properties\Resources.Designer.cs">

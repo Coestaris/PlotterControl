@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Macros.cs
+* PlotterControl\Form_Macros.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:47
 *=================================*/
 
 using CWA;
@@ -180,12 +156,12 @@ namespace CnC_WFA
         private void UpDateListBox()
         {
             if (IsLoad) toolStripMenuItem_saveas.Enabled = true;
-            Text = string.Format("Макрос: \"{0}\"", main.Name);
+            Text = string.Format("????????????: \"{0}\"", main.Name);
             listBox_elements.Items.Clear();
             toolStripTextBox_discr.Text = main.Discr;
             toolStripTextBox_name.Text = main.Name;
             foreach (var a in main.Elems) listBox_elements.Items.Add(a.StringType);
-            label_elements.Text = string.Format("Элементов: {0}", listBox_elements.Items.Count);
+            label_elements.Text = string.Format("??????????????????: {0}", listBox_elements.Items.Count);
         }
 
         private void Form_macroses_Load(object sender, EventArgs e)
@@ -250,7 +226,7 @@ namespace CnC_WFA
             {
                 if(IsUpped)
                 {
-                    MessageBox.Show("Уже поднято, куда еще поднимать?");
+                    MessageBox.Show("?????? ??????????????, ???????? ?????? ???????????????????");
                     return;
                 }
                 IsUpped = false;
@@ -260,7 +236,7 @@ namespace CnC_WFA
             {
                 if(!IsUpped)
                 {
-                    MessageBox.Show("Уже опущено, куда еще опускать?");
+                    MessageBox.Show("?????? ??????????????, ???????? ?????? ?????????????????");
                     return;
                 }
                 IsUpped = true;
@@ -537,13 +513,13 @@ namespace CnC_WFA
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
             main.Name = toolStripTextBox_name.Text;
-            Text = string.Format("Макрос: \"{0}\"", main.Name);
+            Text = string.Format("????????????: \"{0}\"", main.Name);
         }
 
         private void textBox_descr_TextChanged(object sender, EventArgs e)
         {
             main.Discr = toolStripTextBox_discr.Text;
-            Text = string.Format("Макрос: \"{0}\"", main.Name);
+            Text = string.Format("????????????: \"{0}\"", main.Name);
         }
 
         private void button3_Click(object sender, EventArgs e)

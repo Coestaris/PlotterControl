@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_Dialog_MacroPackEdit.Designer.cs
+* PlotterControl\Form_Dialog_MacroPackEdit.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:47
 *=================================*/
 
 namespace CnC_WFA
@@ -137,7 +113,7 @@ namespace CnC_WFA
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(122, 36);
             this.button_save.TabIndex = 0;
-            this.button_save.Text = "Сохранить";
+            this.button_save.Text = "??????????????????";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
@@ -152,7 +128,7 @@ namespace CnC_WFA
             this.button_load.Name = "button_load";
             this.button_load.Size = new System.Drawing.Size(122, 36);
             this.button_load.TabIndex = 1;
-            this.button_load.Text = "Загрузить";
+            this.button_load.Text = "??????????????????";
             this.button_load.UseVisualStyleBackColor = true;
             this.button_load.Click += new System.EventHandler(this.button_load_Click);
             // 
@@ -531,7 +507,7 @@ namespace CnC_WFA
             this.label_main_title.Name = "label_main_title";
             this.label_main_title.Size = new System.Drawing.Size(196, 22);
             this.label_main_title.TabIndex = 26;
-            this.label_main_title.Text = "Основные параметры";
+            this.label_main_title.Text = "???????????????? ??????????????????";
             // 
             // tabPage_connection
             // 
@@ -556,7 +532,7 @@ namespace CnC_WFA
             this.label_conn_title.Name = "label_conn_title";
             this.label_conn_title.Size = new System.Drawing.Size(212, 22);
             this.label_conn_title.TabIndex = 23;
-            this.label_conn_title.Text = "Параметры соеденения";
+            this.label_conn_title.Text = "?????????????????? ????????????????????";
             // 
             // tabPage_macro
             // 
@@ -571,7 +547,7 @@ namespace CnC_WFA
             this.tabPage_macro.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_macro.Size = new System.Drawing.Size(509, 353);
             this.tabPage_macro.TabIndex = 2;
-            this.tabPage_macro.Text = "Макросы";
+            this.tabPage_macro.Text = "??????????????";
             this.tabPage_macro.Click += new System.EventHandler(this.tabPage_macro_Click);
             // 
             // pictureBox1
@@ -614,7 +590,7 @@ namespace CnC_WFA
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(78, 21);
             this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "Скрыть";
+            this.checkBox1.Text = "????????????";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label_macro_title
@@ -625,7 +601,7 @@ namespace CnC_WFA
             this.label_macro_title.Name = "label_macro_title";
             this.label_macro_title.Size = new System.Drawing.Size(194, 22);
             this.label_macro_title.TabIndex = 23;
-            this.label_macro_title.Text = "Параметры макросов";
+            this.label_macro_title.Text = "?????????????????? ????????????????";
             // 
             // tabPage_sample
             // 
@@ -651,7 +627,7 @@ namespace CnC_WFA
             this.label_sample_title.Name = "label_sample_title";
             this.label_sample_title.Size = new System.Drawing.Size(185, 22);
             this.label_sample_title.TabIndex = 22;
-            this.label_sample_title.Text = "Параметры сэмплов";
+            this.label_sample_title.Text = "?????????????????? ??????????????";
             // 
             // panel3
             // 
@@ -680,7 +656,7 @@ namespace CnC_WFA
             this.button_preset.Name = "button_preset";
             this.button_preset.Size = new System.Drawing.Size(122, 36);
             this.button_preset.TabIndex = 39;
-            this.button_preset.Text = "Пресеты";
+            this.button_preset.Text = "??????????????";
             this.button_preset.UseVisualStyleBackColor = false;
             this.button_preset.Click += new System.EventHandler(this.button_preset_Click);
             // 
@@ -696,7 +672,7 @@ namespace CnC_WFA
             this.button_macro.Name = "button_macro";
             this.button_macro.Size = new System.Drawing.Size(122, 36);
             this.button_macro.TabIndex = 38;
-            this.button_macro.Text = "Макросы";
+            this.button_macro.Text = "??????????????";
             this.button_macro.UseVisualStyleBackColor = false;
             this.button_macro.Click += new System.EventHandler(this.button_macro_Click);
             // 
@@ -712,7 +688,7 @@ namespace CnC_WFA
             this.button_conn.Name = "button_conn";
             this.button_conn.Size = new System.Drawing.Size(122, 36);
             this.button_conn.TabIndex = 37;
-            this.button_conn.Text = "Соеденение";
+            this.button_conn.Text = "????????????????????";
             this.button_conn.UseVisualStyleBackColor = false;
             this.button_conn.Click += new System.EventHandler(this.button_conn_Click);
             // 
@@ -728,7 +704,7 @@ namespace CnC_WFA
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(122, 36);
             this.button_close.TabIndex = 2;
-            this.button_close.Text = "Закрыть";
+            this.button_close.Text = "??????????????";
             this.button_close.UseVisualStyleBackColor = false;
             this.button_close.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -744,7 +720,7 @@ namespace CnC_WFA
             this.button_main.Name = "button_main";
             this.button_main.Size = new System.Drawing.Size(122, 48);
             this.button_main.TabIndex = 1;
-            this.button_main.Text = "Основные параметры";
+            this.button_main.Text = "???????????????? ??????????????????";
             this.button_main.UseVisualStyleBackColor = false;
             this.button_main.Click += new System.EventHandler(this.button_main_Click);
             // 

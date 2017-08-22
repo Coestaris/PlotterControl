@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_PrintMaster.Designer.cs
+* PlotterControl\Form_PrintMaster.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 19.08.2017 16:21:58
-*
+* Last Edited: 19.08.2017 22:27:02
 *=================================*/
 
 namespace CnC_WFA
@@ -122,15 +98,20 @@ namespace CnC_WFA
             this.radioButton_xsize = new System.Windows.Forms.RadioButton();
             this.button_tab3_next = new System.Windows.Forms.Button();
             this.tabPage_print = new System.Windows.Forms.TabPage();
+            this.label_percentage = new System.Windows.Forms.Label();
             this.label_progress = new System.Windows.Forms.Label();
             this.label_speed = new System.Windows.Forms.Label();
             this.label_leftTime = new System.Windows.Forms.Label();
             this.label_spendTme = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_abort = new System.Windows.Forms.Button();
+            this.button_pause = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.tabPage_end = new System.Windows.Forms.TabPage();
+            this.button_tab5_exit = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label_percentage = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage_main.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -141,6 +122,7 @@ namespace CnC_WFA
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).BeginInit();
             this.groupBox_size.SuspendLayout();
             this.tabPage_print.SuspendLayout();
+            this.tabPage_end.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_title_2
@@ -152,7 +134,7 @@ namespace CnC_WFA
             this.label_title_2.Name = "label_title_2";
             this.label_title_2.Size = new System.Drawing.Size(151, 36);
             this.label_title_2.TabIndex = 17;
-            this.label_title_2.Text = "Печать вектора";
+            this.label_title_2.Text = "???????????? ??????????????";
             this.label_title_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_5
@@ -165,7 +147,7 @@ namespace CnC_WFA
             this.label_5.Name = "label_5";
             this.label_5.Size = new System.Drawing.Size(142, 36);
             this.label_5.TabIndex = 18;
-            this.label_5.Text = "        Завершение";
+            this.label_5.Text = "        ????????????????????";
             this.label_5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label_4
@@ -178,7 +160,7 @@ namespace CnC_WFA
             this.label_4.Name = "label_4";
             this.label_4.Size = new System.Drawing.Size(142, 36);
             this.label_4.TabIndex = 16;
-            this.label_4.Text = "        Печать";
+            this.label_4.Text = "        ????????????";
             this.label_4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label_3
@@ -191,7 +173,7 @@ namespace CnC_WFA
             this.label_3.Name = "label_3";
             this.label_3.Size = new System.Drawing.Size(142, 43);
             this.label_3.TabIndex = 15;
-            this.label_3.Text = "        Настройка\r\n        печати";
+            this.label_3.Text = "        ??????????????????\r\n        ????????????";
             this.label_3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label_2
@@ -204,7 +186,7 @@ namespace CnC_WFA
             this.label_2.Name = "label_2";
             this.label_2.Size = new System.Drawing.Size(151, 36);
             this.label_2.TabIndex = 14;
-            this.label_2.Text = "     Выбор файла";
+            this.label_2.Text = "     ?????????? ??????????";
             this.label_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_1
@@ -217,7 +199,7 @@ namespace CnC_WFA
             this.label_1.Name = "label_1";
             this.label_1.Size = new System.Drawing.Size(142, 36);
             this.label_1.TabIndex = 13;
-            this.label_1.Text = "      Приветствие";
+            this.label_1.Text = "      ??????????????????????";
             this.label_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_help
@@ -231,7 +213,7 @@ namespace CnC_WFA
             this.button_help.Name = "button_help";
             this.button_help.Size = new System.Drawing.Size(86, 31);
             this.button_help.TabIndex = 34;
-            this.button_help.Text = "Справка";
+            this.button_help.Text = "??????????????";
             this.button_help.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1
@@ -242,6 +224,7 @@ namespace CnC_WFA
             // tabPage_main
             // 
             this.tabPage_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_main.Controls.Add(this.label1);
             this.tabPage_main.Controls.Add(this.groupBox4);
             this.tabPage_main.Controls.Add(this.button_tab1_exit);
             this.tabPage_main.Controls.Add(this.button_tab1_next);
@@ -261,12 +244,12 @@ namespace CnC_WFA
             this.groupBox4.Controls.Add(this.comboBox_bdrate);
             this.groupBox4.Controls.Add(this.comboBox_com);
             this.groupBox4.Font = new System.Drawing.Font("Cambria", 12F);
-            this.groupBox4.Location = new System.Drawing.Point(20, 291);
+            this.groupBox4.Location = new System.Drawing.Point(169, 291);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(348, 105);
             this.groupBox4.TabIndex = 39;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Соеденение";
+            this.groupBox4.Text = "????????????????????";
             // 
             // label_bd
             // 
@@ -276,7 +259,7 @@ namespace CnC_WFA
             this.label_bd.Name = "label_bd";
             this.label_bd.Size = new System.Drawing.Size(125, 19);
             this.label_bd.TabIndex = 24;
-            this.label_bd.Text = "Скорость соед.: ";
+            this.label_bd.Text = "???????????????? ????????.: ";
             // 
             // label_com
             // 
@@ -286,7 +269,7 @@ namespace CnC_WFA
             this.label_com.Name = "label_com";
             this.label_com.Size = new System.Drawing.Size(91, 19);
             this.label_com.TabIndex = 15;
-            this.label_com.Text = "Имя порта:";
+            this.label_com.Text = "?????? ??????????:";
             // 
             // button_open
             // 
@@ -299,7 +282,7 @@ namespace CnC_WFA
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(72, 38);
             this.button_open.TabIndex = 23;
-            this.button_open.Text = "Подкл.";
+            this.button_open.Text = "??????????.";
             this.button_open.UseVisualStyleBackColor = false;
             this.button_open.Click += new System.EventHandler(this.button_open_Click);
             // 
@@ -356,7 +339,7 @@ namespace CnC_WFA
             this.button_tab1_exit.Name = "button_tab1_exit";
             this.button_tab1_exit.Size = new System.Drawing.Size(78, 31);
             this.button_tab1_exit.TabIndex = 38;
-            this.button_tab1_exit.Text = "Выйти";
+            this.button_tab1_exit.Text = "??????????";
             this.button_tab1_exit.UseVisualStyleBackColor = false;
             this.button_tab1_exit.Click += new System.EventHandler(this.button_tab1_exit_Click);
             // 
@@ -372,7 +355,7 @@ namespace CnC_WFA
             this.button_tab1_next.Name = "button_tab1_next";
             this.button_tab1_next.Size = new System.Drawing.Size(78, 31);
             this.button_tab1_next.TabIndex = 37;
-            this.button_tab1_next.Text = "Далее";
+            this.button_tab1_next.Text = "??????????";
             this.button_tab1_next.UseVisualStyleBackColor = false;
             this.button_tab1_next.Click += new System.EventHandler(this.button_tab1_next_Click);
             // 
@@ -382,10 +365,10 @@ namespace CnC_WFA
             this.label_discr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label_discr.Location = new System.Drawing.Point(26, 75);
             this.label_discr.Name = "label_discr";
-            this.label_discr.Size = new System.Drawing.Size(491, 94);
+            this.label_discr.Size = new System.Drawing.Size(491, 45);
             this.label_discr.TabIndex = 36;
-            this.label_discr.Text = "Следуйте интрукциям указанным в мастере, и в результате вы получите напечатаный в" +
-    "ектор.\r\n\r\n";
+            this.label_discr.Text = "???????????????? ???????????????????? ?????????????????? ?? ??????????????, ?? ?? ???????????????????? ???? ???????????????? ?????????????????????? ??" +
+    "??????????.\r\n\r\n";
             // 
             // label_title
             // 
@@ -395,7 +378,7 @@ namespace CnC_WFA
             this.label_title.Name = "label_title";
             this.label_title.Size = new System.Drawing.Size(401, 41);
             this.label_title.TabIndex = 35;
-            this.label_title.Text = "Вас приветствует мастер печати\r\n";
+            this.label_title.Text = "?????? ???????????????????????? ???????????? ????????????\r\n";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabControl1
@@ -405,6 +388,7 @@ namespace CnC_WFA
             this.tabControl1.Controls.Add(this.tabPage_pickVect);
             this.tabControl1.Controls.Add(this.tabPage_opts);
             this.tabControl1.Controls.Add(this.tabPage_print);
+            this.tabControl1.Controls.Add(this.tabPage_end);
             this.tabControl1.Font = new System.Drawing.Font("Cambria", 12F);
             this.tabControl1.Location = new System.Drawing.Point(161, -30);
             this.tabControl1.Name = "tabControl1";
@@ -442,7 +426,7 @@ namespace CnC_WFA
             this.button_deviceInfo.Name = "button_deviceInfo";
             this.button_deviceInfo.Size = new System.Drawing.Size(98, 34);
             this.button_deviceInfo.TabIndex = 43;
-            this.button_deviceInfo.Text = "Инфо";
+            this.button_deviceInfo.Text = "????????";
             this.button_deviceInfo.UseVisualStyleBackColor = false;
             this.button_deviceInfo.Click += new System.EventHandler(this.button_deviceInfo_Click);
             // 
@@ -494,7 +478,7 @@ namespace CnC_WFA
             this.button_tab2_back.Name = "button_tab2_back";
             this.button_tab2_back.Size = new System.Drawing.Size(78, 31);
             this.button_tab2_back.TabIndex = 40;
-            this.button_tab2_back.Text = "Назад";
+            this.button_tab2_back.Text = "??????????";
             this.button_tab2_back.UseVisualStyleBackColor = false;
             this.button_tab2_back.Click += new System.EventHandler(this.button_tab2_back_Click);
             // 
@@ -510,7 +494,7 @@ namespace CnC_WFA
             this.button_tab2_next.Name = "button_tab2_next";
             this.button_tab2_next.Size = new System.Drawing.Size(78, 31);
             this.button_tab2_next.TabIndex = 39;
-            this.button_tab2_next.Text = "Далее";
+            this.button_tab2_next.Text = "??????????";
             this.button_tab2_next.UseVisualStyleBackColor = false;
             this.button_tab2_next.Click += new System.EventHandler(this.button_tab2_next_Click);
             // 
@@ -524,7 +508,7 @@ namespace CnC_WFA
             this.button_refresh.Name = "button_refresh";
             this.button_refresh.Size = new System.Drawing.Size(97, 33);
             this.button_refresh.TabIndex = 4;
-            this.button_refresh.Text = "Обновить";
+            this.button_refresh.Text = "????????????????";
             this.button_refresh.UseVisualStyleBackColor = false;
             this.button_refresh.Click += new System.EventHandler(this.button_refresh_Click);
             // 
@@ -538,7 +522,7 @@ namespace CnC_WFA
             this.button_upload.Name = "button_upload";
             this.button_upload.Size = new System.Drawing.Size(98, 33);
             this.button_upload.TabIndex = 3;
-            this.button_upload.Text = "Загрузить";
+            this.button_upload.Text = "??????????????????";
             this.button_upload.UseVisualStyleBackColor = false;
             this.button_upload.Click += new System.EventHandler(this.button_upload_Click);
             // 
@@ -552,7 +536,7 @@ namespace CnC_WFA
             this.button_delete.Name = "button_delete";
             this.button_delete.Size = new System.Drawing.Size(97, 33);
             this.button_delete.TabIndex = 2;
-            this.button_delete.Text = "Удалить";
+            this.button_delete.Text = "??????????????";
             this.button_delete.UseVisualStyleBackColor = false;
             this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
@@ -606,7 +590,7 @@ namespace CnC_WFA
             this.groupBox_pens.Size = new System.Drawing.Size(500, 141);
             this.groupBox_pens.TabIndex = 47;
             this.groupBox_pens.TabStop = false;
-            this.groupBox_pens.Text = "Параметры пера";
+            this.groupBox_pens.Text = "?????????????????? ????????";
             // 
             // pictureBox_color
             // 
@@ -625,7 +609,7 @@ namespace CnC_WFA
             this.label_color.Name = "label_color";
             this.label_color.Size = new System.Drawing.Size(52, 19);
             this.label_color.TabIndex = 47;
-            this.label_color.Text = "Цвет: ";
+            this.label_color.Text = "????????: ";
             // 
             // comboBox_pens
             // 
@@ -654,7 +638,7 @@ namespace CnC_WFA
             this.label_elev_corr_1.Name = "label_elev_corr_1";
             this.label_elev_corr_1.Size = new System.Drawing.Size(57, 19);
             this.label_elev_corr_1.TabIndex = 45;
-            this.label_elev_corr_1.Text = "шагов.";
+            this.label_elev_corr_1.Text = "??????????.";
             // 
             // label_elev_corr
             // 
@@ -664,7 +648,7 @@ namespace CnC_WFA
             this.label_elev_corr.Name = "label_elev_corr";
             this.label_elev_corr.Size = new System.Drawing.Size(123, 38);
             this.label_elev_corr.TabIndex = 44;
-            this.label_elev_corr.Text = "Корректировка\r\nподнятия пера:\r\n";
+            this.label_elev_corr.Text = "??????????????????????????\r\n???????????????? ????????:\r\n";
             // 
             // textBox_elev_delta
             // 
@@ -683,7 +667,7 @@ namespace CnC_WFA
             this.label_elev_delta_1.Name = "label_elev_delta_1";
             this.label_elev_delta_1.Size = new System.Drawing.Size(57, 19);
             this.label_elev_delta_1.TabIndex = 13;
-            this.label_elev_delta_1.Text = "шагов.";
+            this.label_elev_delta_1.Text = "??????????.";
             // 
             // label_elev_delta
             // 
@@ -693,7 +677,7 @@ namespace CnC_WFA
             this.label_elev_delta.Name = "label_elev_delta";
             this.label_elev_delta.Size = new System.Drawing.Size(122, 38);
             this.label_elev_delta.TabIndex = 12;
-            this.label_elev_delta.Text = "Дельта \r\nподнятия пера:";
+            this.label_elev_delta.Text = "???????????? \r\n???????????????? ????????:";
             // 
             // button_tab3_back
             // 
@@ -706,7 +690,7 @@ namespace CnC_WFA
             this.button_tab3_back.Name = "button_tab3_back";
             this.button_tab3_back.Size = new System.Drawing.Size(78, 31);
             this.button_tab3_back.TabIndex = 42;
-            this.button_tab3_back.Text = "Назад";
+            this.button_tab3_back.Text = "??????????";
             this.button_tab3_back.UseVisualStyleBackColor = false;
             this.button_tab3_back.Click += new System.EventHandler(this.button_tab3_back_Click);
             // 
@@ -728,7 +712,7 @@ namespace CnC_WFA
             this.groupBox_size.Size = new System.Drawing.Size(500, 151);
             this.groupBox_size.TabIndex = 19;
             this.groupBox_size.TabStop = false;
-            this.groupBox_size.Text = "Размер";
+            this.groupBox_size.Text = "????????????";
             // 
             // textBox_xsize
             // 
@@ -779,7 +763,7 @@ namespace CnC_WFA
             this.label_maxx.Name = "label_maxx";
             this.label_maxx.Size = new System.Drawing.Size(110, 19);
             this.label_maxx.TabIndex = 8;
-            this.label_maxx.Text = "Макс.: 297mm";
+            this.label_maxx.Text = "????????.: 297mm";
             // 
             // label_maxy
             // 
@@ -789,7 +773,7 @@ namespace CnC_WFA
             this.label_maxy.Name = "label_maxy";
             this.label_maxy.Size = new System.Drawing.Size(110, 19);
             this.label_maxy.TabIndex = 7;
-            this.label_maxy.Text = "Макс.: 210mm";
+            this.label_maxy.Text = "????????.: 210mm";
             // 
             // label_ysize
             // 
@@ -799,7 +783,7 @@ namespace CnC_WFA
             this.label_ysize.Name = "label_ysize";
             this.label_ysize.Size = new System.Drawing.Size(67, 19);
             this.label_ysize.TabIndex = 5;
-            this.label_ysize.Text = "Высота:";
+            this.label_ysize.Text = "????????????:";
             // 
             // label_xsize
             // 
@@ -809,7 +793,7 @@ namespace CnC_WFA
             this.label_xsize.Name = "label_xsize";
             this.label_xsize.Size = new System.Drawing.Size(72, 19);
             this.label_xsize.TabIndex = 4;
-            this.label_xsize.Text = "Ширина:";
+            this.label_xsize.Text = "????????????:";
             // 
             // radioButton_ysize
             // 
@@ -820,7 +804,7 @@ namespace CnC_WFA
             this.radioButton_ysize.Size = new System.Drawing.Size(133, 23);
             this.radioButton_ysize.TabIndex = 3;
             this.radioButton_ysize.TabStop = true;
-            this.radioButton_ysize.Text = "Задать высоту";
+            this.radioButton_ysize.Text = "???????????? ????????????";
             this.radioButton_ysize.UseVisualStyleBackColor = true;
             // 
             // radioButton_xsize
@@ -832,7 +816,7 @@ namespace CnC_WFA
             this.radioButton_xsize.Size = new System.Drawing.Size(138, 23);
             this.radioButton_xsize.TabIndex = 2;
             this.radioButton_xsize.TabStop = true;
-            this.radioButton_xsize.Text = "Задать ширину";
+            this.radioButton_xsize.Text = "???????????? ????????????";
             this.radioButton_xsize.UseVisualStyleBackColor = true;
             this.radioButton_xsize.CheckedChanged += new System.EventHandler(this.radioButton_xsize_CheckedChanged);
             // 
@@ -847,7 +831,7 @@ namespace CnC_WFA
             this.button_tab3_next.Name = "button_tab3_next";
             this.button_tab3_next.Size = new System.Drawing.Size(78, 31);
             this.button_tab3_next.TabIndex = 41;
-            this.button_tab3_next.Text = "Далее";
+            this.button_tab3_next.Text = "??????????";
             this.button_tab3_next.UseVisualStyleBackColor = false;
             this.button_tab3_next.Click += new System.EventHandler(this.button_tab3_next_Click);
             // 
@@ -859,8 +843,8 @@ namespace CnC_WFA
             this.tabPage_print.Controls.Add(this.label_speed);
             this.tabPage_print.Controls.Add(this.label_leftTime);
             this.tabPage_print.Controls.Add(this.label_spendTme);
-            this.tabPage_print.Controls.Add(this.button2);
-            this.tabPage_print.Controls.Add(this.button1);
+            this.tabPage_print.Controls.Add(this.button_abort);
+            this.tabPage_print.Controls.Add(this.button_pause);
             this.tabPage_print.Controls.Add(this.progressBar1);
             this.tabPage_print.Location = new System.Drawing.Point(4, 31);
             this.tabPage_print.Name = "tabPage_print";
@@ -868,81 +852,151 @@ namespace CnC_WFA
             this.tabPage_print.TabIndex = 6;
             this.tabPage_print.Text = "tabPage_setSize";
             // 
-            // label4
+            // label_percentage
+            // 
+            this.label_percentage.AutoSize = true;
+            this.label_percentage.Location = new System.Drawing.Point(12, 378);
+            this.label_percentage.Name = "label_percentage";
+            this.label_percentage.Size = new System.Drawing.Size(13, 19);
+            this.label_percentage.TabIndex = 7;
+            this.label_percentage.Text = " ";
+            this.label_percentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label_progress
             // 
             this.label_progress.AutoSize = true;
-            this.label_progress.Location = new System.Drawing.Point(12, 283);
-            this.label_progress.Name = "label4";
-            this.label_progress.Size = new System.Drawing.Size(51, 19);
+            this.label_progress.Location = new System.Drawing.Point(12, 308);
+            this.label_progress.Name = "label_progress";
+            this.label_progress.Size = new System.Drawing.Size(13, 19);
             this.label_progress.TabIndex = 6;
-            this.label_progress.Text = "label4";
+            this.label_progress.Text = " ";
             // 
-            // label3
+            // label_speed
             // 
             this.label_speed.AutoSize = true;
-            this.label_speed.Location = new System.Drawing.Point(12, 27);
-            this.label_speed.Name = "label3";
-            this.label_speed.Size = new System.Drawing.Size(51, 19);
+            this.label_speed.Location = new System.Drawing.Point(12, 37);
+            this.label_speed.Name = "label_speed";
+            this.label_speed.Size = new System.Drawing.Size(13, 19);
             this.label_speed.TabIndex = 5;
-            this.label_speed.Text = "label3";
+            this.label_speed.Text = " ";
             // 
-            // label2
+            // label_leftTime
             // 
             this.label_leftTime.AutoSize = true;
-            this.label_leftTime.Location = new System.Drawing.Point(12, 56);
-            this.label_leftTime.Name = "label2";
-            this.label_leftTime.Size = new System.Drawing.Size(51, 19);
+            this.label_leftTime.Location = new System.Drawing.Point(12, 69);
+            this.label_leftTime.Name = "label_leftTime";
+            this.label_leftTime.Size = new System.Drawing.Size(13, 19);
             this.label_leftTime.TabIndex = 4;
-            this.label_leftTime.Text = "label2";
+            this.label_leftTime.Text = " ";
             // 
-            // label1
+            // label_spendTme
             // 
             this.label_spendTme.AutoSize = true;
             this.label_spendTme.Location = new System.Drawing.Point(12, 8);
-            this.label_spendTme.Name = "label1";
-            this.label_spendTme.Size = new System.Drawing.Size(51, 19);
+            this.label_spendTme.Name = "label_spendTme";
+            this.label_spendTme.Size = new System.Drawing.Size(13, 19);
             this.label_spendTme.TabIndex = 3;
-            this.label_spendTme.Text = "label1";
+            this.label_spendTme.Text = " ";
             // 
-            // button2
+            // button_abort
             // 
-            this.button2.Location = new System.Drawing.Point(311, 356);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 77);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_abort.BackColor = System.Drawing.Color.White;
+            this.button_abort.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_abort.FlatAppearance.BorderSize = 2;
+            this.button_abort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_abort.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_abort.Location = new System.Drawing.Point(258, 381);
+            this.button_abort.Name = "button_abort";
+            this.button_abort.Size = new System.Drawing.Size(130, 52);
+            this.button_abort.TabIndex = 2;
+            this.button_abort.Text = "???????????????? ????????????";
+            this.button_abort.UseVisualStyleBackColor = false;
+            this.button_abort.Click += new System.EventHandler(this.button_abort_Click);
             // 
-            // button1
+            // button_pause
             // 
-            this.button1.Location = new System.Drawing.Point(417, 356);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 77);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_pause.BackColor = System.Drawing.Color.White;
+            this.button_pause.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_pause.FlatAppearance.BorderSize = 2;
+            this.button_pause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_pause.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_pause.Location = new System.Drawing.Point(394, 381);
+            this.button_pause.Name = "button_pause";
+            this.button_pause.Size = new System.Drawing.Size(123, 52);
+            this.button_pause.TabIndex = 1;
+            this.button_pause.Text = "??????????";
+            this.button_pause.UseVisualStyleBackColor = false;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(16, 305);
+            this.progressBar1.Location = new System.Drawing.Point(16, 330);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(501, 45);
             this.progressBar1.TabIndex = 0;
+            // 
+            // tabPage_end
+            // 
+            this.tabPage_end.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_end.Controls.Add(this.label2);
+            this.tabPage_end.Controls.Add(this.label3);
+            this.tabPage_end.Controls.Add(this.button_tab5_exit);
+            this.tabPage_end.Location = new System.Drawing.Point(4, 31);
+            this.tabPage_end.Name = "tabPage_end";
+            this.tabPage_end.Size = new System.Drawing.Size(531, 444);
+            this.tabPage_end.TabIndex = 8;
+            this.tabPage_end.Text = "tabPage_end";
+            // 
+            // button_tab5_exit
+            // 
+            this.button_tab5_exit.BackColor = System.Drawing.Color.White;
+            this.button_tab5_exit.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_tab5_exit.FlatAppearance.BorderSize = 2;
+            this.button_tab5_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_tab5_exit.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_tab5_exit.Location = new System.Drawing.Point(440, 407);
+            this.button_tab5_exit.Name = "button_tab5_exit";
+            this.button_tab5_exit.Size = new System.Drawing.Size(78, 31);
+            this.button_tab5_exit.TabIndex = 39;
+            this.button_tab5_exit.Text = "??????????";
+            this.button_tab5_exit.UseVisualStyleBackColor = false;
+            this.button_tab5_exit.Click += new System.EventHandler(this.button_tab1_exit_Click);
             // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // label5
+            // label1
             // 
-            this.label_percentage.AutoSize = true;
-            this.label_percentage.Location = new System.Drawing.Point(254, 356);
-            this.label_percentage.Name = "label5";
-            this.label_percentage.Size = new System.Drawing.Size(51, 19);
-            this.label_percentage.TabIndex = 7;
-            this.label_percentage.Text = "label5";
-            this.label_percentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(26, 225);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(491, 63);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "?????? ?????????????????????? ???????????? ???????????????????? ?????????????????????? ?? ????????????????????. ???????????????? ?????? ?????????? ?? " +
+    "???????????????? ???????????????????? ?? ?????????? ??????????????????????.\r\n";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(26, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(491, 45);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "???? ???????????? ?????????????? ???????????? ????????????.\r\n";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Cambria", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(3, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(401, 41);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "???????????? ??????????????????\r\n";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form_PrintMaster
             // 
@@ -963,7 +1017,7 @@ namespace CnC_WFA
             this.MaximizeBox = false;
             this.Name = "Form_PrintMaster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Мастер Печати";
+            this.Text = "???????????? ????????????";
             this.Load += new System.EventHandler(this.Form_PrintMaster_Load);
             this.tabPage_main.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -980,6 +1034,7 @@ namespace CnC_WFA
             this.groupBox_size.PerformLayout();
             this.tabPage_print.ResumeLayout(false);
             this.tabPage_print.PerformLayout();
+            this.tabPage_end.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1048,10 +1103,15 @@ namespace CnC_WFA
         private System.Windows.Forms.Label label_speed;
         private System.Windows.Forms.Label label_leftTime;
         private System.Windows.Forms.Label label_spendTme;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_abort;
+        private System.Windows.Forms.Button button_pause;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button_deviceInfo;
         private System.Windows.Forms.Label label_percentage;
+        private System.Windows.Forms.TabPage tabPage_end;
+        private System.Windows.Forms.Button button_tab5_exit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

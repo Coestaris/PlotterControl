@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_MacroPack.Designer.cs
+* PlotterControl\Form_MacroPack.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 19:55
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:47
 *=================================*/
 
 namespace CnC_WFA
@@ -78,7 +54,7 @@ namespace CnC_WFA
             this.button_main_device_col.Name = "button_main_device_col";
             this.button_main_device_col.Size = new System.Drawing.Size(160, 57);
             this.button_main_device_col.TabIndex = 1;
-            this.button_main_device_col.Text = "Создать новый пак\r\n";
+            this.button_main_device_col.Text = "?????????????? ?????????? ??????\r\n";
             this.button_main_device_col.UseVisualStyleBackColor = false;
             this.button_main_device_col.Click += new System.EventHandler(this.button_main_device_col_Click);
             // 
@@ -94,7 +70,7 @@ namespace CnC_WFA
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 57);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Загрузить существующий пак\r\n\r\n\r\n";
+            this.button1.Text = "?????????????????? ???????????????????????? ??????\r\n\r\n\r\n";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // Form_MacroPack

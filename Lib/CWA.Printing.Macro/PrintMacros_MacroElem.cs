@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* CWA.Printing.Macro \ PrintMacros_MacroElem.cs
+* CWA.Printing.Macro\PrintMacros_MacroElem.cs
 *
-* Created: 17.06.2017 21:03
-* Last Edited: 18.08.2017 20:23:26
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
+* Created: 22.08.2017 20:09
+* Last Edited: 01.07.2017 13:09:58
 *=================================*/
 
 using System.Drawing;
@@ -37,14 +13,14 @@ using System.Drawing;
 namespace CWA.Printing.Macro
 {
     /// <summary>
-    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    /// Описывает элемент макроса.
     /// </summary>
     public class MacroElem
     {
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ MacroElemType пїЅ MacroElemTypeShorted.
+        /// Преобразует MacroElemType в MacroElemTypeShorted.
         /// </summary>
-        /// <param name="t">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ MacroElemType.</param>
+        /// <param name="t">Экземпляр класса MacroElemType.</param>
         public static MacroElemTypeShorted NormalToShorted(MacroElemType t)
         {
             switch (t)
@@ -62,9 +38,9 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ MacroElemTypeShorted пїЅ MacroElemType.
+        /// Преобразует MacroElemTypeShorted в MacroElemType.
         /// </summary>
-        /// <param name="t">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ MacroElemTypeShorted.</param>
+        /// <param name="t">Экземпляр класса MacroElemTypeShorted.</param>
         public static MacroElemType ShortedTypeToNormal(MacroElemTypeShorted t)
         {
             switch (t)
@@ -82,7 +58,7 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Форматированное имя элемента.
         /// </summary>
         public string StringType
         {
@@ -114,32 +90,32 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Тип элемента.
         /// </summary>
         public MacroElemType Type { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Перемещение в конкретную точку.
         /// </summary>
         public int ToolMove { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Перемещение в конкретную точку.
         /// </summary>
         public PointF MoveToPoint { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Относительное смещение.
         /// </summary>
         public PointF MoveRelative { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ.
+        /// Задержка после выполнения основного действия в МС.
         /// </summary>
         public float Delay { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  <see cref="StringType"/>).
+        /// Преобразует экземпляр к строковому представлению (возвращает свойство  <see cref="StringType"/>).
         /// </summary>
         /// <returns></returns>
         public override string ToString()

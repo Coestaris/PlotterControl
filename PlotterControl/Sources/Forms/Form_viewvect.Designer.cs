@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_ViewVect.Designer.cs
+* PlotterControl\Form_ViewVect.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 01.07.2017 13:09:58
-*
+* Last Edited: 18.08.2017 20:26:46
 *=================================*/
 
 namespace CnC_WFA
@@ -120,7 +96,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(78, 36);
             this.button_exit.TabIndex = 18;
-            this.button_exit.Text = "Выйти";
+            this.button_exit.Text = "??????????";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             this.button_exit.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -138,7 +114,7 @@ namespace CnC_WFA
             this.button_load.Name = "button_load";
             this.button_load.Size = new System.Drawing.Size(98, 36);
             this.button_load.TabIndex = 14;
-            this.button_load.Text = "Загрузить";
+            this.button_load.Text = "??????????????????";
             this.button_load.UseVisualStyleBackColor = false;
             this.button_load.Click += new System.EventHandler(this.button4_Click);
             this.button_load.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -172,7 +148,7 @@ namespace CnC_WFA
             this.button_pick2ndcolor.Name = "button_pick2ndcolor";
             this.button_pick2ndcolor.Size = new System.Drawing.Size(75, 36);
             this.button_pick2ndcolor.TabIndex = 18;
-            this.button_pick2ndcolor.Text = "Фон";
+            this.button_pick2ndcolor.Text = "??????";
             this.button_pick2ndcolor.UseVisualStyleBackColor = false;
             this.button_pick2ndcolor.Click += new System.EventHandler(this.button_pick2ndcolor_Click);
             this.button_pick2ndcolor.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -190,7 +166,7 @@ namespace CnC_WFA
             this.button_pickcolor.Name = "button_pickcolor";
             this.button_pickcolor.Size = new System.Drawing.Size(75, 38);
             this.button_pickcolor.TabIndex = 17;
-            this.button_pickcolor.Text = "Линии";
+            this.button_pickcolor.Text = "??????????";
             this.button_pickcolor.UseVisualStyleBackColor = false;
             this.button_pickcolor.Click += new System.EventHandler(this.button_pickcolor_Click);
             this.button_pickcolor.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -210,7 +186,7 @@ namespace CnC_WFA
             this.button_outter.Name = "button_outter";
             this.button_outter.Size = new System.Drawing.Size(116, 38);
             this.button_outter.TabIndex = 16;
-            this.button_outter.Text = "Вн. просмотр";
+            this.button_outter.Text = "????. ????????????????";
             this.button_outter.UseVisualStyleBackColor = false;
             this.button_outter.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
             this.button_outter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
@@ -228,7 +204,7 @@ namespace CnC_WFA
             this.button_redraw.Name = "button_redraw";
             this.button_redraw.Size = new System.Drawing.Size(116, 36);
             this.button_redraw.TabIndex = 12;
-            this.button_redraw.Text = "Перерисовать";
+            this.button_redraw.Text = "????????????????????????";
             this.button_redraw.UseVisualStyleBackColor = false;
             this.button_redraw.Click += new System.EventHandler(this.button_redraw_Click);
             this.button_redraw.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -242,7 +218,7 @@ namespace CnC_WFA
             this.label_pathtofile.Name = "label_pathtofile";
             this.label_pathtofile.Size = new System.Drawing.Size(242, 18);
             this.label_pathtofile.TabIndex = 1;
-            this.label_pathtofile.Text = "Путь к файлу: ";
+            this.label_pathtofile.Text = "???????? ?? ??????????: ";
             this.label_pathtofile.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
             this.label_pathtofile.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
             // 
@@ -254,7 +230,7 @@ namespace CnC_WFA
             this.checkBox_onecolor.Name = "checkBox_onecolor";
             this.checkBox_onecolor.Size = new System.Drawing.Size(123, 22);
             this.checkBox_onecolor.TabIndex = 10;
-            this.checkBox_onecolor.Text = "Одно-цветная";
+            this.checkBox_onecolor.Text = "????????-??????????????";
             this.checkBox_onecolor.UseVisualStyleBackColor = true;
             this.checkBox_onecolor.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
             this.checkBox_onecolor.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
@@ -296,7 +272,7 @@ namespace CnC_WFA
             this.label_latency.Name = "label_latency";
             this.label_latency.Size = new System.Drawing.Size(78, 20);
             this.label_latency.TabIndex = 8;
-            this.label_latency.Text = "Задержка: ";
+            this.label_latency.Text = "????????????????: ";
             this.label_latency.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
             this.label_latency.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
             // 
@@ -313,7 +289,7 @@ namespace CnC_WFA
             this.button_pause.Name = "button_pause";
             this.button_pause.Size = new System.Drawing.Size(91, 34);
             this.button_pause.TabIndex = 6;
-            this.button_pause.Text = "Пауза";
+            this.button_pause.Text = "??????????";
             this.button_pause.UseVisualStyleBackColor = false;
             this.button_pause.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
             this.button_pause.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
@@ -344,7 +320,7 @@ namespace CnC_WFA
             this.button_begindraw.Name = "button_begindraw";
             this.button_begindraw.Size = new System.Drawing.Size(91, 36);
             this.button_begindraw.TabIndex = 1;
-            this.button_begindraw.Text = "Начать";
+            this.button_begindraw.Text = "????????????";
             this.button_begindraw.UseVisualStyleBackColor = false;
             this.button_begindraw.Click += new System.EventHandler(this.button_begindraw_Click);
             this.button_begindraw.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -411,7 +387,7 @@ namespace CnC_WFA
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(90, 17);
             this.label_status.TabIndex = 33;
-            this.label_status.Text = "Отрисовка...";
+            this.label_status.Text = "??????????????????...";
             this.label_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_status.Visible = false;
             // 
@@ -428,7 +404,7 @@ namespace CnC_WFA
             this.button_print.Name = "button_print";
             this.button_print.Size = new System.Drawing.Size(78, 36);
             this.button_print.TabIndex = 19;
-            this.button_print.Text = "Печать";
+            this.button_print.Text = "????????????";
             this.button_print.UseVisualStyleBackColor = false;
             this.button_print.Click += new System.EventHandler(this.button_print_Click);
             this.button_print.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
@@ -443,7 +419,7 @@ namespace CnC_WFA
             this.groupBox_contours.Size = new System.Drawing.Size(266, 291);
             this.groupBox_contours.TabIndex = 34;
             this.groupBox_contours.TabStop = false;
-            this.groupBox_contours.Text = "Контуры";
+            this.groupBox_contours.Text = "??????????????";
             // 
             // statusStrip1
             // 
@@ -499,7 +475,7 @@ namespace CnC_WFA
             this.groupBox_realtime.Size = new System.Drawing.Size(266, 141);
             this.groupBox_realtime.TabIndex = 36;
             this.groupBox_realtime.TabStop = false;
-            this.groupBox_realtime.Text = "Отрисовка в реальном времени";
+            this.groupBox_realtime.Text = "?????????????????? ?? ???????????????? ??????????????";
             // 
             // label1
             // 
@@ -509,7 +485,7 @@ namespace CnC_WFA
             this.label_ms.Name = "label1";
             this.label_ms.Size = new System.Drawing.Size(31, 20);
             this.label_ms.TabIndex = 12;
-            this.label_ms.Text = "мс.";
+            this.label_ms.Text = "????.";
             // 
             // groupBox_main
             // 
@@ -527,7 +503,7 @@ namespace CnC_WFA
             this.groupBox_main.Size = new System.Drawing.Size(266, 161);
             this.groupBox_main.TabIndex = 37;
             this.groupBox_main.TabStop = false;
-            this.groupBox_main.Text = "Отрисовка";
+            this.groupBox_main.Text = "??????????????????";
             // 
             // checkBox1
             // 
@@ -537,7 +513,7 @@ namespace CnC_WFA
             this.checkBox_randomcolor.Name = "checkBox1";
             this.checkBox_randomcolor.Size = new System.Drawing.Size(186, 21);
             this.checkBox_randomcolor.TabIndex = 21;
-            this.checkBox_randomcolor.Text = "Случайный цвет линий";
+            this.checkBox_randomcolor.Text = "?????????????????? ???????? ??????????";
             this.checkBox_randomcolor.UseVisualStyleBackColor = true;
             this.checkBox_randomcolor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 

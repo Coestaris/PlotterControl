@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* PlotterControl \ Form_ManualControl.cs
+* PlotterControl\Form_ManualControl.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
 * Last Edited: 18.08.2017 20:45:19
-*
 *=================================*/
 
 using CWA;
@@ -63,13 +39,13 @@ namespace CnC_WFA
 
         private void button_mc_Click(object sender, EventArgs e)
         {
-            if (button_mc.Text == "Отключится")
+            if (button_mc.Text == "????????????????????")
             {
                 combobox_bdrate.Enabled = true;
                 combobox_com.Enabled = true;
                 Control.Enabled = false;
                 //mc.Close();
-                button_mc.Text = "Подключится";
+                button_mc.Text = "??????????????????????";
                 return;
             }
             try
@@ -78,7 +54,7 @@ namespace CnC_WFA
                 Control.Enabled = true;
                 combobox_bdrate.Enabled = false;
                 combobox_com.Enabled = false;
-                button_mc.Text = "Отключится";
+                button_mc.Text = "????????????????????";
             }
             catch { MessageBox.Show(string.Format("Can`t open port {0} on {1}", combobox_com.Text, int.Parse(combobox_bdrate.Text))); }
         }

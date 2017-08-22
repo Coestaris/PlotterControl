@@ -1,35 +1,11 @@
-/*
-	The MIT License(MIT)
-
-	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
-
-
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
-
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
-*/
-
 /*=================================\
-* CWA.Printing.Macro \ PrintMacros_MacroPack.cs
+* CWA.Printing.Macro\PrintMacros_MacroPack.cs
 *
-* Created: 17.06.2017 21:03
-* Last Edited: 18.08.2017 20:23:26
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
 *
+* Created: 22.08.2017 20:09
+* Last Edited: 01.07.2017 13:09:58
 *=================================*/
 
 using System.Collections.Generic;
@@ -42,55 +18,55 @@ using System;
 namespace CWA.Printing.Macro
 {
     /// <summary>
-    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    /// Описывает макро пак - контейнер макросов, объедененных в один общий документ, для более удобного использования.
     /// </summary>
     [Serializable]
     public class MacroPack
     {
         /// <summary>
-        /// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
+        /// Имя пака.
         /// </summary>
         //public string Name { get; set; }
         public string Name;
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
+        /// Описание пака.
         /// </summary>
         public string Discr { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
+        /// Отображаемое имя пака.
         /// </summary>
         public string Caption { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅпїЅпїЅпїЅ.
+        /// Список "семплов" пака.
         /// </summary>
         public List<string> Samples { get; set; }
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Стандартное имя порта.
         /// </summary>
         public ComPortName PortName { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
+        /// Размер окна пака.
         /// </summary>
         public Size WindowSize { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// Стандартная скорость соеденеия с портом.
         /// </summary>
         public BdRate PortBD { get; set; }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.
+        /// Список имен элементов пака.
         /// </summary>
         public List<MacroPackElem> Elems { get; set; }
 
         /// <summary>
-        ///  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        ///  Возвращает дочерные элементы.
         /// </summary>
-        /// <param name="CantLoadList">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="CantLoadList">Возвращает список элементов, которые не получилось загрузить.</param>
         /// <returns></returns>
         public List<Macro> GetElems(out List<string> CantLoadList)
         {
@@ -98,16 +74,16 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="MacroPack"/>.
+        /// Создает новый экземпляр класса <see cref="MacroPack"/>.
         /// </summary>
         public MacroPack() { }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="MacroPack"/>.
+        /// Создает новый экземпляр класса <see cref="MacroPack"/>.
         /// </summary>
-        /// <param name="name">пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.</param>
-        /// <param name="discr">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ.</param>
-        /// <param name="caption">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ.</param>
+        /// <param name="name">Имя пака.</param>
+        /// <param name="discr">Описание пака.</param>
+        /// <param name="caption">Отображаемое имя.</param>
         public MacroPack(string name, string discr, string caption)
         {
             Name = name;
@@ -120,9 +96,9 @@ namespace CWA.Printing.Macro
         }
         
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ.
+        /// Сохраняет макро пак в файл.
         /// </summary>
-        /// <param name="FileName">пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="FileName">Имя файла для сохранения.</param>
         public void Save(string FileName)
         {
             XmlSerializer formatter = new XmlSerializer(typeof(MacroPack));
@@ -133,9 +109,9 @@ namespace CWA.Printing.Macro
         }
 
         /// <summary>
-        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ <see cref="MacroPack"/>, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// Создает новый экземпляр класса <see cref="MacroPack"/>, загружая его с файла.
         /// </summary>
-        /// <param name="filename">пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.</param>
+        /// <param name="filename">Имя файла для сохранения.</param>
         public static MacroPack Load(string FileName)
         {
             MacroPack result;
