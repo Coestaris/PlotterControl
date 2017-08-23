@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 22.08.2017 21:20:09
 *=================================*/
 
 using System;
@@ -53,7 +53,7 @@ namespace CWA.DTP
             else this.Name = Name;
         }
 
-        public static string RandomGenerateSenderName(int length)
+        private static string RandomGenerateSenderName(int length)
         {
             Random random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -61,7 +61,7 @@ namespace CWA.DTP
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public static byte[] RandomGenerateSenderMask()
+        private static byte[] RandomGenerateSenderMask()
         {
             Random r = new Random();
             var result = new byte[7];

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 22.08.2017 21:18:04
 *=================================*/
 
 using CWA_Resources.Properties;
@@ -961,7 +961,7 @@ namespace CnC_WFA
                         listBox1.SelectedItem = listBox1.Items[i];
                         panel_angle.Visible = true;
                         trackBar_angle.Value = (int)main.Items[i].Angle;
-                        label_text_anglevalue.Text = trackBar_angle.Value.ToString() + '??';
+                        label_text_anglevalue.Text = trackBar_angle.Value.ToString() + ".";
                         if (e.Button == MouseButtons.Right)
                         {
                             contextMenuStrip_object_edit.Items.Clear();
@@ -1069,7 +1069,7 @@ namespace CnC_WFA
 
         private void trackBar1_Scroll_1(object sender, EventArgs e)
         {
-            label_text_anglevalue.Text = trackBar_angle.Value.ToString() + '??';
+            label_text_anglevalue.Text = trackBar_angle.Value.ToString() + ".";
             main.Items[listBox1.SelectedIndex].Angle = trackBar_angle.Value;
             main.Items[listBox1.SelectedIndex].PreRender();
             Matrix m = new Matrix();

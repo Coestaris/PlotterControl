@@ -5,10 +5,12 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 22.08.2017 21:41:32
 *=================================*/
 
 using CWA.DTP.FileTransfer;
+using System.IO.Ports;
+using System.Threading;
 
 namespace CWA.DTP
 {
@@ -76,6 +78,28 @@ namespace CWA.DTP
         public SdCardDirectory CreateDirectoryHandlerFromRoot()
         {
             return new SdCardDirectory("/", ph);
+        }
+
+        public void CloseConnection()
+        {
+            if(Listener.PacketReader is SerialPacketReader)
+            {
+                SerialPort port = (Listener.PacketReader as SerialPacketReader).Port;
+                if (port.IsOpen)
+                {
+                    while (port.BytesToRead != 0) Thread.Sleep(100);
+                    lock (port) port.Close();
+                }
+            }
+            if (Listener.PacketWriter is SerialPacketWriter)
+            {
+                SerialPort port = (Listener.PacketReader as SerialPacketWriter).Port;
+                if (port.IsOpen)
+                {
+                    while (port.BytesToRead != 0) Thread.Sleep(100);
+                    lock (port) port.Close();
+                }
+            }
         }
 
         public SdCardFile CreateFileHandler(string Path)

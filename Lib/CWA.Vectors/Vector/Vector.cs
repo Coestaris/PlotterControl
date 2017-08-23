@@ -5,9 +5,10 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 23.08.2017 19:43:13
 *=================================*/
 
+using Compresser;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,9 +31,37 @@ namespace CWA.Vectors
         /// Рандомайзер для метода ToBitmap().
         /// </summary>
         private Random _rand = new Random();
+
+        private readonly static byte[] ByteDownPattern = new byte[4] { 100, 100, 100, 100 };
+        private readonly static byte[] ByteUpPattern = new byte[4] { 101, 101, 101, 101 };
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Находит разницу двух точек и возвращает результаты типа <see cref="Int16"/>, как массив 4х байтов.
+        /// </summary>
+        /// <param name="pn1">Первая точка.</param>
+        /// <param name="pn2">Вторая точка.</param>
+        private byte[] DeltaPoints(VPointEx p1, VPointEx p2)
+        {
+            var dx = BitConverter.GetBytes((Int16)(-p1.BasePoint.X + p2.BasePoint.X));
+            var dy = BitConverter.GetBytes((Int16)(-p1.BasePoint.Y + p2.BasePoint.Y));
+            var bytes = new byte[4];
+            Buffer.BlockCopy(dx, 0, bytes, 0, 2);
+            Buffer.BlockCopy(dy, 0, bytes, 2, 2);
+            return bytes;
+        }
+
+        /// <summary>
+        /// Находит дистанцию между двумя точками.
+        /// </summary>
+        /// <param name="pn1">Первая точка.</param>
+        /// <param name="pn2">Вторая точка.</param>
+        private float Distance(VPoint pn1, VPoint pn2)
+        {
+            return (float)Math.Sqrt((pn2.X - pn1.X) * (pn2.X - pn1.X) + (pn2.Y - pn1.Y) * (pn2.Y - pn1.Y));
+        }
+              
         /// <summary>
         /// Инициализирует экземлпяр.
         /// </summary>
@@ -97,13 +126,35 @@ namespace CWA.Vectors
         }
 
         /// <summary>
+        /// Сохраняет вектор в формате .PCV.
+        /// </summary>
+        /// <param name="FileName">Имя файла для загрузки.</param>
+        private void SavePCV(string FileName)
+        {
+            var t = new StreamWriter(File.OpenWrite(FileName));
+            t.Write("vect,");
+            t.Write(Header.Width+",");
+            t.Write(Header.Height + ",");
+            t.Write(Header.VectType + ",");
+            t.Write(RawData.Length + ",");
+            t.Write(";");
+            for (int i = 0; i <= RawData.Length - 1; i++)
+            {
+                for (int ii = 0; ii <= RawData[i].Length - 1; ii++) t.Write(string.Format("{0},{1}:", RawData[i][ii].BasePoint.X.ToString(CultureInfo.InvariantCulture), RawData[i][ii].BasePoint.Y.ToString(CultureInfo.InvariantCulture)));
+                if(RawData.Length-1 != i) t.Write("?");
+            }
+            t.Write("end");
+            t.Close();
+        }
+
+        /// <summary>
         /// Загружает вектор формата .PRRES.
         /// </summary>
-        /// <param name="filename">Имя файла для загрузки.</param>
-        private void LoadVectPrres(string filename)
+        /// <param name="FileName">Имя файла для загрузки.</param>
+        private void LoadVectPrres(string FileName)
         {
             VPointEx[][] contours;// = new VPointEx[0][];
-            var s = File.ReadAllText(filename);
+            var s = File.ReadAllText(FileName);
             var main = s.Split('$');
             var header = main[0].Split(';');
             VectHeader headerr = new VectHeader();
@@ -137,29 +188,163 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Сохраняет базовую информацию о векторе в формате .PCV.
+        /// Сохраняет вектор в формате .PRRES.
         /// </summary>
-        /// <param name="filename">Имя файла для загрузки.</param>
-        /// <param name="RawData_">Вектор для сохранения.</param>
-        [Obsolete]
-        public void SavePCV(string filename, VPointEx[][] RawData_)
+        /// <param name="name">Имя файла.</param>
+        /// <param name="Ori">Имя оригинального изображения (оставленно для совместимости).</param>
+        /// <param name="Resname">Имя промежуточного результата (оставленно для совместимости).</param>
+        private void SavePRRES(string name, string Ori = "Not used", string Resname = "Not used")
         {
-            var t = new StreamWriter(File.OpenWrite(filename));
-            t.Write("vect,");
-            t.Write(Header.Width+",");
-            t.Write(Header.Height + ",");
-            t.Write(Header.VectType + ",");
-            t.Write(RawData.Length + ",");
-            t.Write(";");
-            for (int i = 0; i <= RawData.Length - 1; i++)
+            var text = new StreamWriter(File.OpenWrite(name));
+            text.Write( "prres;");
+            text.Write(Header.Width + ";");
+            text.Write(Header.Height + ";");
+            text.Write(Header.VectType);
+            text.Write(Ori + ";");
+            text.Write(0 + ";");
+            text.Write(Resname + ";");
+            text.Write(RawData.Length + ";");
+            for (int i = 0; i <= RawData.Length - 1; i++) 
             {
-                for (int ii = 0; ii <= RawData[i].Length - 1; ii++) t.Write(string.Format("{0},{1}:", RawData[i][ii].BasePoint.X.ToString(CultureInfo.InvariantCulture), RawData[i][ii].BasePoint.Y.ToString(CultureInfo.InvariantCulture)));
-                if(RawData.Length-1 != i) t.Write("?");
+                text.Write("$");
+                text.Write(RawData[i].Length + "?");
+                for (int ii = 0; ii <= RawData[i].Length - 1; ii++) text.Write("(" + RawData[i][ii].BasePoint.X + "," + RawData[i][ii].BasePoint.Y + ");");
+                text.Write("#");
             }
-            t.Write("end");
-            t.Close();
+            text.Close();
         }
 
+        /// <summary>
+        /// Загружает вектор формата .PCV (OPCV вида).
+        /// </summary>
+        /// <param name="FileName">Имя файла для загрузки.</param>
+        private void LoadVectOPCV(string FileName)
+        {
+            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
+
+            ZipFile.ExtractToDirectory(FileName, DirectoryName);
+
+            VectorIncludeFile Include = null;
+            VectorFileInfo FileInfo = null;
+            RawVector Vector = null;
+            List<RawVector> VectorsEx = null;
+            Dictionary<string, string> ExParams = null;
+            XmlSerializer includeFormatter = new XmlSerializer(typeof(VectorIncludeFile));
+            using (FileStream fs = new FileStream(DirectoryName + "includes.xml", FileMode.Open))
+            {
+                Include = (VectorIncludeFile)includeFormatter.Deserialize(fs);
+            }
+            foreach (var item in Include.Items)
+            {
+                switch (item.Type)
+                {
+                    case VectorFileType.FileInfo:
+                        {
+                            XmlSerializer fileInfoFormatter = new XmlSerializer(typeof(VectorFileInfo));
+                            using (FileStream fs = new FileStream(DirectoryName + item.FileName, FileMode.Open))
+                            {
+                                FileInfo = (VectorFileInfo)fileInfoFormatter.Deserialize(fs);
+                            }
+                        }
+                        break;
+                    case VectorFileType.Vector:
+                        {
+                            if (Vector == null)
+                                Vector = new RawVector(File.ReadAllBytes(DirectoryName + item.FileName));
+                            else
+                            {
+                                if (VectorsEx == null)
+                                    VectorsEx = new List<RawVector>();
+                                VectorsEx.Add(new RawVector(File.ReadAllBytes(DirectoryName + item.FileName)));
+                            }
+                        }
+                        break;
+                    case VectorFileType.PenInfo:
+                        break;
+                    case VectorFileType.OtherData:
+                        {
+                            if (ExParams == null)
+                                ExParams = new Dictionary<string, string>();
+                            ExParams.Add(item.FileName.Split('|').First(), item.FileName.Split('|').Last());
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (var item in Directory.GetFiles(DirectoryName))
+                File.Delete(item);
+            Directory.Delete(DirectoryName);
+
+            if (Vector == null)
+                throw new ArgumentNullException(nameof(Vector));
+            if (FileInfo == null)
+                throw new ArgumentNullException(nameof(Vector));
+            var result = Vector.ToVector();
+            result.Header = FileInfo.ToHeader();
+            result.Header.CountOfCont = result.RawData.Length;
+            if (VectorsEx != null)
+                result.RaswDataEX = VectorsEx.Select(p => p.ToRawData()).ToArray();
+            if (ExParams != null)
+                result.Header.ExParams = ExParams;
+            //////////////////////////////////////////Не забуть доделать это -_-
+        }
+
+        /// <summary>
+        /// Сохраняет вектор в формате .PCV (OPCV вида).
+        /// </summary>
+        /// <param name="FileName">Имя файла для загрузки.</param>
+        private void SaveOPCV(string FileName)
+        {
+            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
+            Directory.CreateDirectory(DirectoryName);
+            var Include = new VectorIncludeFile() { Items = new List<VectorIncludeFileItem>() };
+            var fileInfo = new VectorFileInfo()
+            {
+                DisplayName = FileName,
+                Height = (UInt16)Header.Height,
+                VectType = Header.VectType,
+                Width = (UInt16)Header.Width
+            };
+            Include.Items.Add(new VectorIncludeFileItem() { FileName = "fileInfo.xml", Type = VectorFileType.FileInfo });
+            Include.Items.Add(new VectorIncludeFileItem() { FileName = "1.rawVect", Type = VectorFileType.Vector });
+            int vectCounter = 2;
+            if (RaswDataEX != null) foreach (var item in RaswDataEX)
+                {
+                    string locFileName = vectCounter++ + ".rawVect";
+                    Include.Items.Add(new VectorIncludeFileItem() { FileName = locFileName, Type = VectorFileType.Vector });
+                    using (FileStream fs = new FileStream(DirectoryName + locFileName, FileMode.OpenOrCreate))
+                    {
+                        var bytes = new RawVector(this, item).ToBytes();
+                        fs.Write(bytes, 0, bytes.Length);
+                    }
+                }
+            if (Header.ExParams != null) foreach (var item in Header.ExParams)
+                    Include.Items.Add(new VectorIncludeFileItem() { FileName = item.Key + "|" + item.Value, Type = VectorFileType.OtherData });
+
+            XmlSerializer fileInfoFormatter = new XmlSerializer(typeof(VectorFileInfo));
+            using (FileStream fs = new FileStream(DirectoryName + "fileInfo.xml", FileMode.OpenOrCreate))
+            {
+                fileInfoFormatter.Serialize(fs, fileInfo);
+            }
+            using (FileStream fs = new FileStream(DirectoryName + "1.rawVect", FileMode.OpenOrCreate))
+            {
+                var bytes = new RawVector(this).ToBytes();
+                fs.Write(bytes, 0, bytes.Length);
+            }
+            XmlSerializer includeFormatter = new XmlSerializer(typeof(VectorIncludeFile));
+            using (FileStream fs = new FileStream(DirectoryName + "includes.xml", FileMode.OpenOrCreate))
+            {
+                includeFormatter.Serialize(fs, Include);
+            }
+            if (File.Exists(FileName))
+                File.Delete(FileName);
+            ZipFile.CreateFromDirectory(DirectoryName, FileName);
+            foreach (var item in Directory.GetFiles(DirectoryName))
+                File.Delete(item);
+            Directory.Delete(DirectoryName);
+        }
         #endregion
 
         #region Public Fields
@@ -251,168 +436,36 @@ namespace CWA.Vectors
         #endregion
 
         #region Public Methods
-
         /// <summary>
-        /// Сохраняет вектор в старом формате.
+        /// Сохраняет вектор.
         /// </summary>
-        /// <param name="name">Имя файла.</param>
-        /// <param name="Ori">Имя оригинального изображения (оставленно для совместимости).</param>
-        /// <param name="Resname">Имя промежуточного результата (оставленно для совместимости).</param>
-        [Obsolete]
-        public void SavePRRES(string name, string Ori = "Not used", string Resname = "Not used")
+        /// <param name="FileName">Имя файла.</param>
+        public void Save(string FileName, VectorFileFormat FileFormat)
         {
-            var text = new StreamWriter(File.OpenWrite(name));
-            text.Write( "prres;");
-            text.Write(Header.Width + ";");
-            text.Write(Header.Height + ";");
-            text.Write(Header.VectType);
-            text.Write(Ori + ";");
-            text.Write(0 + ";");
-            text.Write(Resname + ";");
-            text.Write(RawData.Length + ";");
-            for (int i = 0; i <= RawData.Length - 1; i++) 
+#pragma warning disable CS0612 // Тип или член устарел
+            switch (FileFormat)
             {
-                text.Write("$");
-                text.Write(RawData[i].Length + "?");
-                for (int ii = 0; ii <= RawData[i].Length - 1; ii++) text.Write("(" + RawData[i][ii].BasePoint.X + "," + RawData[i][ii].BasePoint.Y + ");");
-                text.Write("#");
+                case VectorFileFormat.PRRES:
+                    SavePRRES(FileName);
+                    break;
+                case VectorFileFormat.PCV:
+                    SavePCV(FileName);
+                    break;
+                case VectorFileFormat.OPCV:
+                    SaveOPCV(FileName);
+                    break;
             }
-            text.Close();
-        }
-
-        private void LoadVectOPCV(string FileName)
-        {
-            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
-
-            ZipFile.ExtractToDirectory(FileName, DirectoryName);
-
-            VectorIncludeFile Include = null;
-            VectorFileInfo FileInfo = null;
-            RawVector Vector = null;
-            List<RawVector> VectorsEx = null;
-            Dictionary<string, string> ExParams = null;
-            XmlSerializer includeFormatter = new XmlSerializer(typeof(VectorIncludeFile));
-            using (FileStream fs = new FileStream(DirectoryName + "includes.xml", FileMode.Open))
-            {
-                Include = (VectorIncludeFile)includeFormatter.Deserialize(fs);
-            }
-            foreach (var item in Include.Items)
-            {
-                switch (item.Type)
-                {
-                    case VectorFileType.FileInfo:
-                        {
-                            XmlSerializer fileInfoFormatter = new XmlSerializer(typeof(VectorFileInfo));
-                            using (FileStream fs = new FileStream(DirectoryName + item.FileName, FileMode.Open))
-                            {
-                                FileInfo = (VectorFileInfo)fileInfoFormatter.Deserialize(fs);
-                            }
-                        }
-                        break;
-                    case VectorFileType.Vector:
-                        {
-                            if (Vector == null)
-                                Vector = new RawVector(File.ReadAllBytes(DirectoryName + item.FileName));
-                            else
-                            {
-                                if (VectorsEx == null)
-                                    VectorsEx = new List<RawVector>();
-                                VectorsEx.Add(new RawVector(File.ReadAllBytes(DirectoryName + item.FileName)));
-                            }
-                        }
-                        break;
-                    case VectorFileType.PenInfo:
-                        break;
-                    case VectorFileType.OtherData:
-                        {
-                            if (ExParams == null)
-                                ExParams = new Dictionary<string, string>();
-                            ExParams.Add(item.FileName.Split('|').First(), item.FileName.Split('|').Last());
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            foreach (var item in Directory.GetFiles(DirectoryName))
-                File.Delete(item);
-            Directory.Delete(DirectoryName);
-
-            if (Vector == null)
-                throw new ArgumentNullException(nameof(Vector));
-            if (FileInfo == null)
-                throw new ArgumentNullException(nameof(Vector));
-            var result = Vector.ToVector();
-            result.Header = FileInfo.ToHeader();
-            result.Header.CountOfCont = result.RawData.Length;
-            if (VectorsEx != null)
-                result.RaswDataEX = VectorsEx.Select(p => p.ToRawData()).ToArray();
-            if (ExParams != null)
-                result.Header.ExParams = ExParams;
-            //////////////////////////////////////////Не забуть доделать это -_-
-        }
-
-        private void SaveOPCV(String FileName)
-        {
-            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
-            Directory.CreateDirectory(DirectoryName);
-            var Include = new VectorIncludeFile() { Items = new List<VectorIncludeFileItem>() };
-            var fileInfo = new VectorFileInfo()
-            {
-                DisplayName = FileName,
-                Height = (UInt16)Header.Height,
-                VectType = Header.VectType,
-                Width = (UInt16)Header.Width
-            };
-            Include.Items.Add(new VectorIncludeFileItem() { FileName = "fileInfo.xml", Type = VectorFileType.FileInfo });
-            Include.Items.Add(new VectorIncludeFileItem() { FileName = "1.rawVect", Type = VectorFileType.Vector });
-            int vectCounter = 2;
-            if (RaswDataEX != null) foreach (var item in RaswDataEX)
-                {
-                    string locFileName = vectCounter++ + ".rawVect";
-                    Include.Items.Add(new VectorIncludeFileItem() { FileName = locFileName, Type = VectorFileType.Vector });
-                    using (FileStream fs = new FileStream(DirectoryName + locFileName, FileMode.OpenOrCreate))
-                    {
-                        var bytes = new RawVector(this, item).ToBytes();
-                        fs.Write(bytes, 0, bytes.Length);
-                    }
-                }
-            if (Header.ExParams != null) foreach (var item in Header.ExParams)
-                    Include.Items.Add(new VectorIncludeFileItem() { FileName = item.Key + "|" + item.Value, Type = VectorFileType.OtherData });
-
-            XmlSerializer fileInfoFormatter = new XmlSerializer(typeof(VectorFileInfo));
-            using (FileStream fs = new FileStream(DirectoryName + "fileInfo.xml", FileMode.OpenOrCreate))
-            {
-                fileInfoFormatter.Serialize(fs, fileInfo);
-            }
-            using (FileStream fs = new FileStream(DirectoryName + "1.rawVect", FileMode.OpenOrCreate))
-            {
-                var bytes = new RawVector(this).ToBytes();
-                fs.Write(bytes, 0, bytes.Length);
-            }
-            XmlSerializer includeFormatter = new XmlSerializer(typeof(VectorIncludeFile));
-            using (FileStream fs = new FileStream(DirectoryName + "includes.xml", FileMode.OpenOrCreate))
-            {
-                includeFormatter.Serialize(fs, Include);
-            }
-            if (File.Exists(FileName))
-                File.Delete(FileName);
-            ZipFile.CreateFromDirectory(DirectoryName, FileName);
-            foreach (var item in Directory.GetFiles(DirectoryName))
-                File.Delete(item);
-            Directory.Delete(DirectoryName);
+#pragma warning restore CS0612 // Тип или член устарел
         }
 
         /// <summary>
         /// Сохраняет вектор.
         /// </summary>
-        /// <param name="name">Имя файла.</param>
-        /// <param name="ExParams">Дополнительный параметры сохранения (опционально).</param>
+        /// <param name="FileName">Имя файла.</param>
         public void Save(string FileName)
         {
-           
-        } //TODO 
+            SaveOPCV(FileName);
+        }
 
         /// <summary>
         /// Сортировка контуров вектора за ихним размером.
@@ -436,7 +489,7 @@ namespace CWA.Vectors
             }
             return bitmap;
         }
-
+        
         /// <summary>
         /// Рендер вектора. С заданными параметрами.
         /// </summary>
@@ -456,6 +509,25 @@ namespace CWA.Vectors
             return bitmap;
         }
 
+        /// <summary>
+        /// Рендер вектора. С заданными параметрами.
+        /// </summary>
+        /// <param name="BackColor">Цвет фона.</param>
+        /// <param name="DrawColor">Цвет рисования.</param>
+        /// <param name="Size">Задает размер выходящего изображения.</param>
+        public Bitmap ToBitmap(Color BackColor, Color DrawColor, Size Size)
+        {
+            Bitmap bitmap = new Bitmap((int)(Header.Width), (int)(Header.Height));
+            Rectangle rec = new Rectangle(0, 0, (int)(Header.Width), (int)(Header.Height));
+            using (Graphics gr = Graphics.FromImage(bitmap))
+            {
+                gr.FillRectangle(new SolidBrush(BackColor), rec);
+            }
+            for (int x = 0; x <= RawData.Length - 1; x++)
+                for (int y = 0; y <= RawData[x].Length - 1; y++)
+                    bitmap.SetPixel((int)RawData[x][y].BasePoint.Y, (int)RawData[x][y].BasePoint.X, DrawColor);
+            return new Bitmap(bitmap, Size);
+        }
 
         /// <summary>
         /// Форматирует разешение согласно заданому формату. Например "[{0}-{1}]" = [100-200].
@@ -487,33 +559,10 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Находит разницу двух точек и возвращает результаты типа <see cref="Int16"/>, как массив 4х байтов.
+        /// Удаление всех контуров, размер которых менее указанной границы.
         /// </summary>
-        /// <param name="pn1">Первая точка.</param>
-        /// <param name="pn2">Вторая точка.</param>
-        private byte[] DeltaPoints(VPointEx p1, VPointEx p2)
-        {
-            var dx = BitConverter.GetBytes((Int16)( - p1.BasePoint.X + p2.BasePoint.X));
-            var dy = BitConverter.GetBytes((Int16)( - p1.BasePoint.Y + p2.BasePoint.Y));
-            var bytes = new byte[4];
-            Buffer.BlockCopy(dx, 0, bytes, 0, 2);
-            Buffer.BlockCopy(dy, 0, bytes, 2, 2);
-            return bytes;
-        }
-
-        /// <summary>
-        /// Находит дистанцию между двумя точками.
-        /// </summary>
-        /// <param name="pn1">Первая точка.</param>
-        /// <param name="pn2">Вторая точка.</param>
-        internal static float Distance(VPoint pn1, VPoint pn2)
-        {
-            return (float)Math.Sqrt((pn2.X - pn1.X) * (pn2.X - pn1.X) + (pn2.Y - pn1.Y) * (pn2.Y - pn1.Y));
-        }
-
-        private readonly static byte[] ByteDownPattern = new byte[4] { 100, 100, 100, 100 };
-        private readonly static byte[] ByteUpPattern = new byte[4] { 101, 101, 101, 101 };
-
+        /// <param name="DeleteThreshold">Предел удаления контуров.</param>
+        /// <returns></returns>
         public Vector ClearThisVector(UInt32 DeleteThreshold)
         {
             var temp = RawData.ToList();
@@ -527,34 +576,57 @@ namespace CWA.Vectors
         /// <summary>
         /// Преобразует вектор в бинарно-примитивный формат, для отправки на утсройство.
         /// </summary>
-        /// <returns></returns>
         public byte[] ToBinnaryVector()
         {
+            // Формат файла следующий: [DeltaX (2 байта), DeltaY (2 байта)].
+            // ByteDownPattern - согласованный маркер того, что по какой-либо причине необходимо опустить инструмент в данный момент выполнения.
+            // ByteUpPattern - аналогично, паттерн поднятия пера.
+
+            if(RawData == null) throw new ArgumentNullException(nameof(RawData));
+            if (Points <= 2) throw new ArgumentException("Невозможно преобразовать вектор, в котором менее 2 точек");
+
+            //Предполагается, что иснтрумент изначально подянт.
             var bytes = new List<byte>();
+                
+            //Перемещенее в начальную точку (перва точка вектора).
             bytes.AddRange(DeltaPoints(new VPointEx(0, 0), RawData[0][0]));
+            //Опускаем инструмент, по приезду.
             bytes.AddRange(ByteDownPattern);
+
             for (int i = 0; i < RawData.Length; i++) 
             {
                 for (int ii = 0; ii < RawData[i].Length - 1; ii++)
                 {
+                    //Если расстояние меж двумя последующими точками менее 20...
+                    //Определение "разрывов", т.е., когда в следствии багов векторизации получаются разрывы в контурах.
                     if (Distance(RawData[i][ii].BasePoint, RawData[i][ii + 1].BasePoint) >= 20)
                     {
+                        //Если по приезду на ту точку, останется всего 10 комманд, то и смысла тогда туда ехать нет. 
                         if(RawData[i].Skip(ii).Count() <= 10)
                             break;
+                        //Поднимаем инструмент.
                         bytes.AddRange(ByteUpPattern);
+                        //Едем на заданную точку.
                         bytes.AddRange(DeltaPoints(RawData[i][ii], RawData[i][ii + 1]));
+                        //Опускаем перо.
                         bytes.AddRange(ByteDownPattern);
                         continue;
                     }
+                    //Перемещаемся на след. точку.
                     bytes.AddRange(DeltaPoints(RawData[i][ii], RawData[i][ii + 1]));
                 }
+                //По концу контура, поднимаем инструмент.
                 bytes.AddRange(ByteUpPattern);
+                
+                //Если это не последний контур...
                 if (i != RawData.Length - 1)
                 {
+                    //...то едем, к началу следующего.
                     bytes.AddRange(DeltaPoints(RawData[i].Last(), RawData[i + 1].First()));
                     bytes.AddRange(ByteDownPattern);
                 } else
                 {
+                    //...иначе едем в условный 0.
                     bytes.AddRange(DeltaPoints(RawData.Last().Last(), new VPointEx(0, 0)));
                 }
             }

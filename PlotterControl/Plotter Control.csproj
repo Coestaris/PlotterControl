@@ -357,6 +357,12 @@
     <Content Include="Lib\IconSet.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Lib\Microsoft.WindowsAPICodePack.dll" />
+    <Content Include="Lib\Microsoft.WindowsAPICodePack.pdb" />
+    <Content Include="Lib\Microsoft.WindowsAPICodePack.Shell.dll" />
+    <Content Include="Lib\Microsoft.WindowsAPICodePack.Shell.pdb" />
+    <Content Include="Lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll" />
+    <Content Include="Lib\Microsoft.WindowsAPICodePack.ShellExtensions.pdb" />
     <Content Include="Sources\LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

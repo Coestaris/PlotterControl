@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 23.08.2017 20:35:40
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -15,8 +15,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CWA.DTP.Plotter
 {
@@ -145,21 +143,39 @@ namespace CWA.DTP.Plotter
             File.WriteAllBytes(vectorPcName, bytes);
             File.WriteAllBytes(metaDataPcName, meta.ToByteArray());
 
-            var fileSender = Master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh);
+            //Находим хэш файла пк.
+            var localHash = CrCHandler.CRC32(vectorPcName);
+            if(ContentTable.PreviewHashes.Values.Contains(localHash))
+            {
+                //Если файл с таким хэшем есть на устройстве, то нечего его переотправлять
+                return true;
+            }
 
+            var fileSender = Master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh
+                                                   | FileTransferSecurityFlags.VerifyCheckSum);
             fileSender.PacketLength = 2000;
-
             if (!fileSender.SendFileSync(vectorPcName, vectorName))
                 return false;
             if (!fileSender.SendFileSync(previewPcName, previewName))
                 return false;
             if (!fileSender.SendFileSync(metaDataPcName, metaDataName))
                 return false;
-
+            //Добавляем в нашу таблицу хэш данного вектора.
             ContentTable.VectorHashes.Add(index, CrCHandler.CRC32(vectorPcName));
+            //Хэш превью изображения.
             ContentTable.PreviewHashes.Add(index, CrCHandler.CRC32(previewPcName));
+            //Сам адресс вектора.
             ContentTable.VectorAdresses.Add(index);
-            ContentTable.Upload();
+            //Загружаем измененный конфиг на девайс.
+            try
+            {
+                ContentTable.Upload();
+            }
+            catch
+            {
+                //Особо неважно, что именно произошло.
+                return false;
+            }
             return true;
         }
 

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 23.08.2017 19:20:40
 *=================================*/
 
 using System;
@@ -38,7 +38,7 @@ namespace CWA.DTP
             Sender = sender;
             CrCHandler crc = new CrCHandler();
             Crc = crc.ComputeChecksumBytes(data);
-            Size = (short)(data.Length + 14);
+            Size = unchecked((short)(data.Length + 14));
             TotalData = new byte[0];
             IsEmpty = false;
         }

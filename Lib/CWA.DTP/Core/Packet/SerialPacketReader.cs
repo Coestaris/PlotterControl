@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 23.08.2017 19:22:48
 *=================================*/
 
 using System.IO.Ports;
@@ -61,39 +61,13 @@ namespace CWA.DTP
 
         private byte[] ReadAsync()
         {
-            /* var a = (byte)_port.ReadByte();
-             var b = (byte)_port.ReadByte();
-             var len = DtpHelper.GetNumber(a, b) - 255;
-             if (len < 12) throw new WrongPacketInputException(len, _port.BytesToRead + 2);
-             var buffer = new byte[len];
-             int total = 0;
-             while (total != len - 2)
-             {
-                 var buffer_ = new byte[len - total - 2];
-                 int newLen = _port.Read(buffer_, 0, len - total - 2);
-                 Buffer.BlockCopy(buffer_, 0, buffer, 2 + total, newLen);
-                 total += newLen;
-             }
-             return buffer;*/
-
-            var a = (byte)Port.ReadByte();
-            var b = (byte)Port.ReadByte();
-
-
-            var len = HelpMethods.GetNumber(a, b) - 255;
-            var buffer = new byte[len];
-            buffer[0] = a;
-            buffer[1] = b;
-
-            //Console.WriteLine("LEN: {0}. LEN: {1} {2}", len, a, b);
-            
-            /*byte[] inBuff = new byte[len - 2];
-            port.Read(inBuff, 0, len - 2);
-            var e = inBuff.ToList();
-            e.Insert(0, b);
-            e.Insert(0, a);
-            */
-            for (int i = 0; i <= len - 3; i++)
+            var lowLenByte = (byte)Port.ReadByte();
+            var highLenByte = (byte)Port.ReadByte();
+            var Length = HelpMethods.GetNumber(lowLenByte, highLenByte) - 255;
+            var buffer = new byte[Length];
+            buffer[0] = lowLenByte;
+            buffer[1] = highLenByte;
+            for (int i = 0; i <= Length - 3; i++)
             {
                 buffer[i + 2] = (byte)Port.ReadByte();
             }

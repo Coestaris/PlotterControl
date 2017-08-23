@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:32
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 23.08.2017 20:35:06
 *=================================*/
 
 using System;
@@ -37,7 +37,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Определяет, будет ли выводится дебаг-информация в консоль.
         /// </summary>
-        private bool _say;
+        private bool _outputDebugInfo;
 
         /// <summary>
         /// Количесвто потоков выполнения векторизации.
@@ -135,7 +135,7 @@ namespace CWA.Vectors
         #region Private Methods
 
         /// <summary>
-        /// Вызывает ивент PrStatusChanged с параметром а.
+        /// Вызывает ивент <see cref="PrStatusChanged"/> с параметром а.
         /// </summary>
         /// <param name="a">Параметр вызова события.</param>
         private void VectChangedSimulate(PrStausChangedParameters a)
@@ -242,7 +242,7 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// 2й по важности метод класса. Разбивает массив точек на контура, в зависимости от того, с какими областями\объектами они граничат. В связке с ImagePrData() фактически полностью векторизирует изображение.
+        /// 2й по важности метод класса. Разбивает массив точек на контура, в зависимости от того, с какими областями\объектами они граничат. В связке с <see cref="ImagePrData"/> фактически полностью векторизирует изображение.
         /// </summary>
         /// <param name="arr">Массив для выделения контуров</param>
         private VPointEx[][] SortPointArray(VPointEx[] arr)
@@ -272,161 +272,262 @@ namespace CWA.Vectors
         }
 
         /// <summary>
-        /// Основной метод класса. Выделяет те самые массивы точек, которые методом SortPointArray() бьются на контура. Сортирует их и чистит от хлама. Возвращает и берет данные с соответсвущих словарей. Многопоточная операция.
+        /// Основной метод класса. Выделяет те самые массивы точек, которые методом <see cref="SortPointArray(VPointEx[])"/> бьются на контура. Сортирует их и чистит от хлама. Возвращает и берет данные с соответсвущих словарей. Многопоточная операция.
         /// </summary>
         private void ImagePrData()
         {
-            var contours = new VPointEx[0][];
-            int mark = 0, prcounter = 0;
-            int[][] whitemap = new int[0][];
-            if (_say)
+            // == ШАГ 1: ОБЪЯВЛЕНИЕ ЛОКАЛЬНЫХ ПЕРЕМЕННЫХ ==
+
+
+            //Основной счетчик. Обозначает уникальный номер области или объекта.
+            int AreaMark = 0;
+            //Результирующий массив контуров.
+            var Contours = new VPointEx[0][];
+            //Изначальное биннарное представление изображения. Если пиксель равен (0,0,0), то digMap на этом индексе будет равен 1.
+            var digMap = new int[0][];
+            //Само изображение данного потока.
+            var ProceedImage = _imgMap[Thread.CurrentThread.ManagedThreadId];
+            //Массив, с обозначенными на нем областями.
+            var WhiteMap = new int[0][];
+            //Массив цветов изображения.
+            Color[][] BufferImage = new Color[0][];
+    
+
+            // == ШАГ 2: ПОДГОТОВКА ==
+
+
+            //Вывод информации о выполении новой операции.
+            if (_outputDebugInfo)
             {
                 Console.WriteLine(string.Format(_initSay, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.ThreadState, Thread.CurrentThread.Priority, (Milliseconds / 1000)));
                 Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Init", (Milliseconds / 1000)));
             }
-            else
-            {
-                prcounter += 1;
-                _proList[Thread.CurrentThread.ManagedThreadId] = prcounter;
-            }
-            var buffimgp = _imgMap[Thread.CurrentThread.ManagedThreadId];
-            Color[][] buffimg = new Color[0][];
-            Helper.ResizeArray(ref buffimg, buffimgp.Height, buffimgp.Width);
-            for (int i = 0; i <= buffimgp.Width - 1; i++)
-                for (int ii = 0; ii <= buffimgp.Height - 1; ii++)
-                    buffimg[ii][i] = buffimgp.GetPixel(i, ii);
-            var digmap = new int[0][];
-            Helper.ResizeArray(ref digmap, buffimg.Length, buffimg[0].Length);
-            for (int i = 0; i <= buffimg.Length - 2; i++)
-                for (int ii = 0; ii <= buffimg[0].Length - 2; ii++)
-                    if (buffimg[i][ii].R == 0 && buffimg[i][ii].G == 0 && buffimg[i][ii].B == 0) digmap[i][ii] = 1;
-            Surround(ref digmap);
-            Surround(ref digmap);
-            whitemap = digmap;
-            if (_say) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Searching For Areas", (Milliseconds / 1000)));
-            else
-            {
-                prcounter += 1;
-                _proList[Thread.CurrentThread.ManagedThreadId] = prcounter;
-            }
-            mark = 3;
-            for (int i = 1; i <= buffimg.Length - 2; i++)
-                for (int ii = 1; ii <= buffimg[0].Length - 2; ii++)
+            _proList[Thread.CurrentThread.ManagedThreadId]++;
+
+            //Задаем размер BufferImage.
+            Helper.ResizeArray(ref BufferImage, ProceedImage.Height, ProceedImage.Width);
+            //Задаем размер digMap.
+            Helper.ResizeArray(ref digMap, BufferImage.Length, BufferImage[0].Length);
+            
+            //Заполняем BufferImage цветами из ProceedImage.
+            for (int i = 0; i <= ProceedImage.Width - 1; i++)
+                for (int ii = 0; ii <= ProceedImage.Height - 1; ii++)
+                    BufferImage[ii][i] = ProceedImage.GetPixel(i, ii);
+
+            //Заполняем digMap по вышеуказанному правилу.
+            for (int i = 0; i <= BufferImage.Length - 2; i++)
+                for (int ii = 0; ii <= BufferImage[0].Length - 2; ii++)
+                    if (BufferImage[i][ii].R == 0 && BufferImage[i][ii].G == 0 && BufferImage[i][ii].B == 0) digMap[i][ii] = 1;
+
+            //Добавляем digMap по 2 пустых ячейки с каждой стороны.
+            Surround(ref digMap);
+            Surround(ref digMap);
+
+            //Создаем копию digMap.
+            WhiteMap = digMap;
+
+
+            // == ШАГ 3: ПОИСК ОБЛАСТЕЙ ==
+
+
+            //Вывод информации о выполении новой операции.
+            if (_outputDebugInfo) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Searching For Areas", (Milliseconds / 1000)));
+            _proList[Thread.CurrentThread.ManagedThreadId]++;
+
+            //Присваиваем 3, потому что 0,1 и 2 зарезервированы.
+            AreaMark = 3;
+
+            //Для каждого пикселя выполняем.
+            for (int i = 1; i <= BufferImage.Length - 2; i++)
+                for (int ii = 1; ii <= BufferImage[0].Length - 2; ii++)
                 {
-                    if (whitemap[i][ii] == 0)
+                    //Если, проверяеммый пиксель пустой (что есть условием существования области)
+                    if (WhiteMap[i][ii] == 0)
                     {
-                        whitemap[i][ii] = mark;
+                        //Обозначиваем этот пиксель уникальным для области номером.
+                        WhiteMap[i][ii] = AreaMark;
+
+                        //Следующая операция выполняется для присваивания всем пикселям данной области, одного и того же номера.
+                        //Некий аналог рекурсивного метода поиска объектов.
                         while (true)
                         {
-                            bool b = false;
-                            for (int i2 = 1; i2 <= buffimg.Length - 2; i2++)
-                                for (int ii2 = 1; ii2 <= buffimg[0].Length - 2; ii2++)
-                                    if (whitemap[i2][ii2] == 0 && NearK(whitemap, i2, ii2, mark))
+                            //Указывает на то, были ли произведены какие-либо изменения.
+                            bool changedSomething = false;
+
+                            //Для каждого пикселя выполняем.
+                            for (int i2 = 1; i2 <= BufferImage.Length - 2; i2++)
+                                for (int ii2 = 1; ii2 <= BufferImage[0].Length - 2; ii2++)
+                                    //Если есть пиксель, рядом с пикселем, помеченным нашим текущем AreaMark, то...
+                                    if (WhiteMap[i2][ii2] == 0 && NearK(WhiteMap, i2, ii2, AreaMark))
                                     {
-                                        whitemap[i2][ii2] = mark;
-                                        b = true;
+                                        //...и этот пиксель помечаем, как AreaMark.
+                                        WhiteMap[i2][ii2] = AreaMark;
+                                        //Помечаем, что изменили что-то.
+                                        changedSomething = true;
                                     }
-                            if (!b) break;
+                            if (!changedSomething) break;
                         }
-                        mark++;
+                        AreaMark++;
                     }
                 }
-            if (_say) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Searching For Objects", (Milliseconds / 1000)));
-            else
-            {
-                prcounter += 1;
-                _proList[Thread.CurrentThread.ManagedThreadId] = prcounter;
-            }
-            var mask = digmap; var p = mark + 2;
-            for (int i = 1; i <= buffimg.Length - 2; i++)
-                for (int ii = 1; ii <= buffimg[0].Length - 2; ii++)
-                    if(mask[i][ii]==1)
+
+
+            // == ШАГ 4: ПОИСК ОБЪЕКТОВ ==
+
+            //Вывод информации о выполении новой операции.
+            if (_outputDebugInfo) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Searching For Objects", (Milliseconds / 1000)));
+            _proList[Thread.CurrentThread.ManagedThreadId]++;
+
+
+            //Создаем копию digMap.
+            var MaskArray = digMap;
+
+            //Для отделения областей от объектов, добавляем к счетчику еще 2.
+            var ObjectMark = AreaMark + 2;
+
+            //Для каждого пикселя выполняем.
+            for (int i = 1; i <= BufferImage.Length - 2; i++)
+                for (int ii = 1; ii <= BufferImage[0].Length - 2; ii++)
+                    //Если, проверяеммый пиксель не пустой (что есть условием существования объекта)
+                    if (MaskArray[i][ii]==1)
                     {
-                        VPointEx[] tm = new VPointEx[0];
-                        mask[i][ii] = p;
-                        for(int d = 3; d<=mark-1; d++) if(NearK(whitemap, i ,ii ,d)) Helper.InsertToArray(ref tm, new VPointEx(i, ii, d, Color.Empty));
+                        //tempPointArray - временный массив несортированых точек.
+                        VPointEx[] tempPointArray = new VPointEx[0];
+
+                        //Обозначиваем этот пиксель уникальным для объетка номером.
+                        MaskArray[i][ii] = ObjectMark;
+
+                        //Если, этот пиксель граничит с каким-то пикселем из области (т.е. его значение <= AreaMark)...
+                        for (int d = 3; d <= AreaMark - 1; d++) if (NearK(WhiteMap, i, ii, d))
+                                //..., то добавляем его в наш массив.
+                                Helper.InsertToArray(ref tempPointArray, new VPointEx(i, ii, d, Color.Empty));
+
+                        //Далее выполняется аналог предыдущей операции, с некоторым изменениям.
                         while(true)
                         {
-                            bool b = false;
-                            for (int i2 = 1; i2 <= buffimg.Length - 2; i2++) 
-                                for (int ii2 = 1; ii2 <= buffimg[0].Length - 2; ii2++)
+                            //Указывает на то, были ли произведены какие-либо изменения.
+                            bool changedSomething = false;
+
+                            //Для каждого пикселя выполняем.
+                            for (int i2 = 1; i2 <= BufferImage.Length - 2; i2++) 
+                                for (int ii2 = 1; ii2 <= BufferImage[0].Length - 2; ii2++)
                                 {
-                                    if(mask[i2][ii2] == 1 && NearK(mask,i2,ii2,p))
+                                    //Если есть пиксель, рядом с пикселем, помеченным нашим текущем ObjectMark, то...
+                                    if (MaskArray[i2][ii2] == 1 && NearK(MaskArray, i2, ii2, ObjectMark)) 
                                     {
-                                        mask[i2][ii2] = p;
-                                        b = true;
-                                        for (int d = 3; d <= mark - 1; d++)
-                                            if (NearK(whitemap,i2,ii2,d))
+                                        //...и этот пиксель помечаем, как ObjectMark.
+                                        MaskArray[i2][ii2] = ObjectMark;
+                                        //Помечаем, что изменили что-то.
+                                        changedSomething = true;
+                                        
+                                        //В этом случаем, мы выполняем то же, что и с первым пекселем.
+                                        //Если, этот пиксель граничит с каким-то пикселем из области (т.е. его значение <= AreaMark)...
+                                        for (int d = 3; d <= AreaMark - 1; d++)
+                                            if (NearK(WhiteMap, i2, ii2, d)) 
                                             {
-                                                Helper.InsertToArray(ref tm, new VPointEx(i2, ii2, d, Color.Empty));
+                                                //..., то добавляем его в наш массив.
+                                                Helper.InsertToArray(ref tempPointArray, new VPointEx(i2, ii2, d, Color.Empty));
                                                 break;
                                             }
                                     }
                                 }
-                            if (!b) break;
+                            if (!changedSomething) break;
                         }
-                        p++;
-                        var tmp = SortPointArray(tm);
-                        Helper.ConcatArrays(ref contours,ref tmp);
+                        ObjectMark++;
+
+                        //Далее сортируем наш массив.
+                        var tmp = SortPointArray(tempPointArray);
+                        //Сливаем его с нашим Contours.
+                        Helper.ConcatArrays(ref Contours, ref tmp);
                         tmp = null;
-                        tm = null;
+                        tempPointArray = null;
                     }
-            if (_say) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Sorting Points", (Milliseconds / 1000)));
-            else
+
+
+            // == ШАГ 5: ОБРАБОТКА РЕЗУЛЬТАТОВ ==
+
+
+            // ШАГ 5.1: Сортировка точек.
+
+            //Вывод информации о выполении новой операции.
+            if (_outputDebugInfo) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Sorting Points", (Milliseconds / 1000)));
+            _proList[Thread.CurrentThread.ManagedThreadId]++;
+
+            //Для каждого контура...
+            for(int ii=0; ii<=Contours.Length-1; ii++)
             {
-                prcounter += 1;
-                _proList[Thread.CurrentThread.ManagedThreadId] = prcounter;
+                VPoint[] sortedArray = new VPoint[0];
+                //Добавляем в новый массив необходимые точки.
+                //Это необходимо из-за различия типов VPoint и VPointEx.
+                for (int i = 0; i <= Contours[ii].Length - 1; i++) Helper.InsertToArray(ref sortedArray, Contours[ii][i].BasePoint);
+
+                //Сортируем наш массив.
+                PointSort(ref sortedArray);
+
+                //Выполняем обратную операцию пресваивания.
+                for (int i = 0; i <= Contours[ii].Length - 1; i++) Contours[ii][i].BasePoint = sortedArray[i];
+                sortedArray = null;
             }
-            for(int ii=0; ii<=contours.Length-1; ii++)
-            {
-                VPoint[] aaa = new VPoint[0];
-                for (int i = 0; i <= contours[ii].Length - 1; i++) Helper.InsertToArray(ref aaa, contours[ii][i].BasePoint);
-                PointSort(ref aaa);
-                for (int i = 0; i <= contours[ii].Length - 1; i++) contours[ii][i].BasePoint = aaa[i];
-                aaa = null;
-            }
-            if (_say) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Sorting Contours", (Milliseconds / 1000)));
-            else
-            {
-                prcounter += 1;
-                _proList[Thread.CurrentThread.ManagedThreadId] = prcounter;
-            }
-            CSort(ref contours);
-            _imgVect.Add(buffimgp, contours);
-            _endList[Thread.CurrentThread.ManagedThreadId]= true;
-            if (_say) Console.WriteLine("Stream Ended. ID: " + Thread.CurrentThread.ManagedThreadId);
+
+            // ШАГ 5.2: Сортировка контуров и сохранения результата.
+
+            //Вывод информации о выполении новой операции.
+            if (_outputDebugInfo) Console.WriteLine(string.Format(_stateSay, Thread.CurrentThread.ManagedThreadId, "Sorting Contours", (Milliseconds / 1000)));
+            _proList[Thread.CurrentThread.ManagedThreadId]++;
+
+            //Сортировка всех контуров.
+            CSort(ref Contours);
+
+            //Сохраняем результат.
+            _imgVect.Add(ProceedImage, Contours);
+            
+            //Отмечаем что процесс завершенн.
+            _endList[Thread.CurrentThread.ManagedThreadId] = true;
+
+            //Вывод информации о завершении процесса.
+            if (_outputDebugInfo) Console.WriteLine("Stream Ended. ID: " + Thread.CurrentThread.ManagedThreadId);
         }
 
         /// <summary>
-        /// Бьет изображение на части и запускает для кождого ImagePrData() на отдельных потоках. Ждет пока они завершаться.
+        /// Бьет изображение на части и запускает для кождого <see cref="ImagePrData()"/> на отдельных потоках. Ждет пока они завершаться.
         /// </summary>
         private void ImagePr()
         {
-            var m = Milliseconds / 1000;
-            if (_say)
+            //Отмечается метка начала процесса.
+            var startSeconds = Milliseconds / 1000;
+
+            //Вывод информации о начале процесса.
+            if (_outputDebugInfo)
             {
                 Console.WriteLine("=================================");
                 Console.WriteLine("Vectorization Started");
                 Console.WriteLine("     1. Preparing Image");
             }
-            int N = _num;
+
+            //Рабочее изображение.
             Bitmap Bmp = _proceedBitmap;
-            int W = _proceedBitmap.Width / N;
-            Bitmap[] bitmaps = new Bitmap[N];
+
+            //Ширина одной части изображения.
+            int Width = _proceedBitmap.Width / _num;
+
+            //Части изображения.
+            Bitmap[] bitmaps = new Bitmap[_num];
             int i = 0, gli = 0, currbmp = 0;
-            bitmaps[0] = new Bitmap(W, _proceedBitmap.Height, PixelFormat.Format24bppRgb);
-            if (N != 1)
+            bitmaps[0] = new Bitmap(Width, _proceedBitmap.Height, PixelFormat.Format24bppRgb);
+            
+            //Процесс резделения изображения на _Num частей.
+            if (_num != 1)
                 while (i != Bmp.Width)
                 {
                     i++; gli++;
-                    if (i % W == 0 && i + currbmp * W != Bmp.Width && currbmp + 1 != bitmaps.Length)
+                    if (i % Width == 0 && i + currbmp * Width != Bmp.Width && currbmp + 1 != bitmaps.Length)
                     {
                         currbmp += 1;
-                        bitmaps[currbmp] = new Bitmap(W, _proceedBitmap.Height, PixelFormat.Format24bppRgb);
+                        bitmaps[currbmp] = new Bitmap(Width, _proceedBitmap.Height, PixelFormat.Format24bppRgb);
                         i = 0;
                     }
-                    if (i > W - 1) break;
-                    if (i + currbmp * W > Bmp.Width) break;
+                    if (i > Width - 1) break;
+                    if (i + currbmp * Width > Bmp.Width) break;
                     Color[] hpixels = new Color[Bmp.Height];
                     try
                     {
@@ -436,43 +537,65 @@ namespace CWA.Vectors
                     }
                     catch { }
                 } else { bitmaps[0] = Bmp; }
-            Thread[] streams = new Thread[N];
-            for (int ii = 0; ii <= N - 1; ii++)
+
+            //Массив потоков выполнения.
+            Thread[] streams = new Thread[_num];
+
+            //Каждому потоку задается метод.
+            //К его ID привязывается: статус выполнения, метка о том, закончил ли поток, изображения для этого потока.
+            for (int ii = 0; ii <= _num - 1; ii++)
             {
                 streams[ii] = new Thread(ImagePrData);
                 _proList.Add(streams[ii].ManagedThreadId, 0);
                 _endList.Add(streams[ii].ManagedThreadId, false);
                 _imgMap.Add(streams[ii].ManagedThreadId, bitmaps[ii]);
             }
-            for (int ii = 0; ii <= N - 1; ii++) streams[ii].Start();
-            int maxval = N * 5, lastval = 0;
-            if (_say) Console.WriteLine("     2. Processing");
-            while(true)
+
+            //Каждый поток запускается.
+            for (int ii = 0; ii <= _num - 1; ii++) streams[ii].Start();
+
+            int MaxValue = _num * 5;
+            int LastValue = 0;
+
+            //Вывод информации о выполении новой операции.
+            if (_outputDebugInfo) Console.WriteLine("     2. Processing");
+
+            while (true)
             {
-                for (int ii = 0; ii <= N - 1; ii++) if (streams[ii].ThreadState == ThreadState.Running) _numPr += _proList[streams[ii].ManagedThreadId];
-                if(lastval!=_numPr)
+                //Собирает общий статус-каунт всех потоков.
+                for (int ii = 0; ii <= _num - 1; ii++)
+                    if (streams[ii].ThreadState == ThreadState.Running) _numPr += _proList[streams[ii].ManagedThreadId];
+                //Если значение изменилось, то...
+                if (LastValue != _numPr) 
                 {
-                    if (_numPr > maxval) maxval = _numPr;
-                    VectChanged(new PrStausChangedParameters(maxval, _numPr));
-                    lastval = _numPr;
+                    //... вызвать ивент изменения.
+                    if (_numPr > MaxValue) MaxValue = _numPr;
+                    VectChanged(new PrStausChangedParameters(MaxValue, _numPr));
+                    LastValue = _numPr;
                 }
                 Thread.Sleep(500);
                 _numPr = 0;
+
+                //Если все потоки завершили свою работу, то...
                 bool f = true;
-                for (int ii = 0; ii <= N - 1; ii++) 
+                for (int ii = 0; ii <= _num - 1; ii++) 
                     if(!_endList.Values.ToArray()[ii])
                     {
                         f = false;
                         break;
                     }
+                //... прервать цикл.
                 if (f) break;
             }
-            for (int ii = 0; ii <= N - 1; ii++)
+
+            //Для всех частей.
+            for (int ii = 0; ii <= _num - 1; ii++)
             {
+                //Каждый результат склеивается с предыдущим, с небольшим смщением.
                 var tmVect = _imgVect[bitmaps[ii]];
                 for (int a = 0; a <= tmVect.Length - 1; a++)
                     for (int b = 0; b <= tmVect[a].Length - 1; b++)
-                        tmVect[a][b].BasePoint = new VPoint(tmVect[a][b].BasePoint.X, tmVect[a][b].BasePoint.Y + ii * W - ii, tmVect[a][b].BasePoint.Color);
+                        tmVect[a][b].BasePoint = new VPoint(tmVect[a][b].BasePoint.X, tmVect[a][b].BasePoint.Y + ii * Width - ii, tmVect[a][b].BasePoint.Color);
                 Helper.ConcatArrays(ref _rawData, ref tmVect);
                 tmVect = null;
             }
@@ -480,7 +603,7 @@ namespace CWA.Vectors
             _proList = null;
             _imgMap = null;
             _imgVect = null;
-            if (_say)
+            if (_outputDebugInfo)
             {
                 Console.WriteLine(string.Format("DONE in {0} second(s) or {1:0.##} minute(s)", (Milliseconds/1000), (Milliseconds/60000)));
                 Console.WriteLine("=================================");
@@ -510,19 +633,23 @@ namespace CWA.Vectors
         /// <returns>Возвращает вектор.</returns>
         public Vector Proceed(Bitmap Image, bool WriteDebugInfo = false, int StreamCount = 1)
         {
-            _say = WriteDebugInfo;
+            _outputDebugInfo = WriteDebugInfo;
             _num = StreamCount;
             _proceedBitmap = Image;
             ImagePr();
-            _header = new VectHeader();
-            _header.CountOfCont = _rawData.Length;
-            _header.Width = Image.Width;
-            _header.Height = Image.Height;
-            _header.VectType = VectType.Rastr;
-            var l = new Vector();
-            l.Header = _header;
-            l.RawData = _rawData;
-            return l;
+            _header = new VectHeader()
+            {
+                CountOfCont = _rawData.Length,
+                Width = Image.Width,
+                Height = Image.Height,
+                VectType = VectType.Rastr
+            };
+            var v = new Vector()
+            {
+                Header = _header,
+                RawData = _rawData
+            };
+            return v;
         }
         
         /// <summary>
@@ -534,19 +661,23 @@ namespace CWA.Vectors
         public Vector Proceed(bool WriteDebugInfo = false, int StreamCount = 1)
         {
             _dt = DateTime.Now;
-            _say = WriteDebugInfo;
+            _outputDebugInfo = WriteDebugInfo;
             _num = StreamCount;
             _proceedBitmap = ImageToProceed;
             ImagePr();
-            _header = new VectHeader();
-            _header.CountOfCont = _rawData.Length;
-            _header.Width = ImageToProceed.Width;
-            _header.Height = ImageToProceed.Height;
-            _header.VectType = VectType.Rastr;
-            var l = new Vector();
-            l.Header = _header;
-            l.RawData = _rawData;
-            return l;
+            _header = new VectHeader()
+            {
+                CountOfCont = _rawData.Length,
+                Width = ImageToProceed.Width,
+                Height = ImageToProceed.Height,
+                VectType = VectType.Rastr
+            };
+            var v = new Vector()
+            {
+                Header = _header,
+                RawData = _rawData
+            };
+            return v;
         }
         #endregion
 

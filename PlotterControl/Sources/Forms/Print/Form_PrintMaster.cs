@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 19.08.2017 23:25:23
+* Last Edited: 22.08.2017 21:43:57
 *=================================*/
 
 using CWA_Resources.Properties;
@@ -453,7 +453,8 @@ namespace CnC_WFA
 
         private void button_abort_Click(object sender, EventArgs e)
         {
-            printMaster.AbortPrinting();
+           // printMaster.AbortPrinting();
+           //TODO: AKSJDKA:SLDj
             printMaster.Master.CloseConnection();
         }
     }

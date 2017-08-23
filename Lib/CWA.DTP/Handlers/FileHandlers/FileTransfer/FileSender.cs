@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 23.08.2017 19:19:50
 *=================================*/
 
 using System;
@@ -130,17 +130,18 @@ namespace CWA.DTP.FileTransfer
             return true;
         }
 
-        private bool CompareHash()
+        private unsafe bool CompareHash()
         {
-            var crcres = BaseHandler.File_GetCrC32();
-            if (crcres.Status != GeneralPacketHandler.WriteReadFileHandleResult.OK)
+            var deviceHash = BaseHandler.File_GetCrC32();
+            if (deviceHash.Status != GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantGetHashOfFile, true));
                 return false;
             }
-            //TODO: CRC!!
-            var localcrc = new CrCHandler().ComputeChecksumBytes(_data);
-            if (crcres.Result[0] != localcrc[0] || crcres.Result[1] != localcrc[1]) RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.HashesNotEqual, false));
+            UInt32 localHash = 0;
+            fixed (byte* bytes = _data) localHash = CrCHandler.CRC32(bytes, (UInt32)_data.Length);
+            if (BitConverter.ToUInt32(deviceHash.Result, 0) != localHash)
+                RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.HashesNotEqual, false));
             return true;
         }
 
