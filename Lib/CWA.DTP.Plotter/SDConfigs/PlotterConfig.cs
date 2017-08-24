@@ -56,7 +56,7 @@ namespace CWA.DTP.Plotter
             return Parts.ToArray();
         }
 
-        private readonly byte[] Separator = new byte[8] { 0, 1, 2, 3, 4, 5, 6, 7};
+        private static readonly byte[] Separator = new byte[8] { 0, 1, 2, 3, 4, 5, 6, 7};
 
         public void UploadPenProfiles()
         {
@@ -74,6 +74,15 @@ namespace CWA.DTP.Plotter
             file.Close();
         }
 
+        internal static List<PlotterPenInfo> GetPensFromBytes(byte[] bytes)
+        {
+            var Pens = new List<PlotterPenInfo>();
+            var data = Separate(bytes, Separator);
+            foreach (var item in data.ToList().FindAll(p => p.Length != 0))
+                Pens.Add(new PlotterPenInfo(item));
+            return Pens;
+        }
+
         public void DownloadPenProfiles()
         {
             Pens = new List<PlotterPenInfo>();
@@ -87,12 +96,7 @@ namespace CWA.DTP.Plotter
             {
                 if (readRes.Result.Length == 0)
                     return;
-                else
-                {
-                    var data = Separate(readRes.Result, Separator);
-                    foreach (var item in data.ToList().FindAll(p=>p.Length != 0))
-                        Pens.Add(new PlotterPenInfo(item));
-                }
+                else Pens = GetPensFromBytes(readRes.Result);
             }
             else throw new FailOperationException("Не удалось получить массив байтов конфиг-файла перьев.");
         }

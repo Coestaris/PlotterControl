@@ -61,6 +61,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SomeFileInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SomeFileInfo.Designer.cs">
+      <DependentUpon>SomeFileInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\ReceiveDialog.cs">
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SomeFileInfo.resx">
+      <DependentUpon>SomeFileInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +119,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Lib\CWA.DTP.Plotter\CWA.DTP.Plotter.csproj">
+      <Project>{38004aaa-a3c7-4875-8918-63910bded423}</Project>
+      <Name>CWA.DTP.Plotter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Lib\CWA.DTP\CWA.DTP.csproj">
       <Project>{476a54ca-91a4-437e-8fac-2cfef15ec7be}</Project>
       <Name>CWA.DTP</Name>

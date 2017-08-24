@@ -51,12 +51,13 @@ namespace CWA.DTP.Plotter
             Elements = new List<FlFormatElement>();
             bytes.Split(8).ToList().ForEach(p =>
             {
+                var data = p.ToArray();
                 var elem = new FlFormatElement()
                 {
-                    Dx = (Int16)((bytes[1] & 0xFF) << 8 | (bytes[0] & 0xFF)),
-                    Dy = (Int16)((bytes[3] & 0xFF) << 8 | (bytes[2] & 0xFF)),
-                    Dz = (Int16)((bytes[5] & 0xFF) << 8 | (bytes[4] & 0xFF)),
-                    Delay = (UInt16)((bytes[7] & 0xFF) << 8 | (bytes[6] & 0xFF)),
+                    Dx = (Int16)((data[1] & 0xFF) << 8 | (data[0] & 0xFF)),
+                    Dy = (Int16)((data[3] & 0xFF) << 8 | (data[2] & 0xFF)),
+                    Dz = (Int16)((data[5] & 0xFF) << 8 | (data[4] & 0xFF)),
+                    Delay = (UInt16)((data[7] & 0xFF) << 8 | (data[6] & 0xFF)),
                 };
                 Elements.Add(elem);
             });

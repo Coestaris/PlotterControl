@@ -17,7 +17,6 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
@@ -32,7 +31,7 @@ namespace FileBrowser
         {
             InitializeComponent();
         }
-        private string portName = "COM11";
+        private string portName = "COM9";
         private Sender Sender = new Sender("Coestar");
         private SerialPort port;
         private Bitmap folderImage = new Bitmap("Icons\\folder.png");
@@ -188,7 +187,7 @@ namespace FileBrowser
             if (listView1.SelectedItems.Count == 1)
             {
                 if (listView1.SelectedItems[0].SubItems[1].Text != "<folder>")
-                    if (listView1.SelectedIndices[0] == 0)
+                    if (listView1.SelectedIndices[0] == 0 && listView1.SelectedItems[0].SubItems[0].Text == "...")
                     {
                         CurrentPath.RemoveAt(CurrentPath.Count - 1);
                         TrySetupFolder();
@@ -199,7 +198,24 @@ namespace FileBrowser
                         {
                             string path = string.Join("", CurrentPath);
                             string newPath = new FileInfo(System.Windows.Forms.Application.ExecutablePath).Directory.FullName + "\\" + listView1.SelectedItems[0].SubItems[0].Text;
-                            if (new ReceiveDialog(Master, path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text, newPath).ShowDialog() == DialogResult.OK) System.Diagnostics.Process.Start(newPath);
+                            string fileName = path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text;
+                            if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
+                            {
+                                if (fileName == "/config.cfg") new SomeFileInfo(InfoType.Config, newPath).ShowDialog();
+                                else if (fileName == "/ctable.cfg") new SomeFileInfo(InfoType.CTable, newPath).ShowDialog();
+                                else if (fileName == "/pens.cfg") new SomeFileInfo(InfoType.Pens, newPath).ShowDialog();
+                                else if (fileName.EndsWith(".m")) new SomeFileInfo(InfoType.VMeta, newPath).ShowDialog();
+                                else if (fileName.EndsWith(".p"))
+                                {
+                                    if (File.Exists(newPath + ".png"))
+                                        File.Delete(newPath + ".png");
+                                    File.Move(newPath, newPath + ".png");
+                                    System.Diagnostics.Process.Start(newPath + ".png");
+                                }
+                                else if (fileName.EndsWith(".v")) new SomeFileInfo(InfoType.VData, newPath).ShowDialog();
+                                else if(fileName.EndsWith(".flv")) new SomeFileInfo(InfoType.FLVData, newPath).ShowDialog();
+                                else System.Diagnostics.Process.Start(newPath);
+                            }
                         }
                     }
                 else
@@ -297,7 +313,7 @@ namespace FileBrowser
                     }
                     catch
                     {
-                        System.Windows.Forms.MessageBox.Show("??an`t delete File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Windows.Forms.MessageBox.Show("Can`t delete File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 } else
                 {
@@ -309,7 +325,7 @@ namespace FileBrowser
                     }
                     catch
                     {
-                        System.Windows.Forms.MessageBox.Show("??an`t delete Dir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Windows.Forms.MessageBox.Show("Can`t delete Dir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

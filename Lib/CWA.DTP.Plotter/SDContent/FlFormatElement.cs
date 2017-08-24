@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 24.08.2017 14:20
-* Last Edited: 24.08.2017 21:42:05
+* Last Edited: 24.08.2017 20:36:07
 *=================================*/
 
 using System;
@@ -28,5 +28,10 @@ namespace CWA.DTP.Plotter
         }
 
         public FlFormatElement() { }
+
+        public override string ToString()
+        {
+            return string.Format("Dx: {0}; Dy: {1}; Dz: {2}; Delay: {3}", Dx, Dy, Dz, Delay);
+        }
     }
 }

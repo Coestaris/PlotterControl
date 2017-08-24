@@ -14,11 +14,9 @@ using System.Linq;
 
 namespace CWA.DTP.Plotter
 {
-    internal class PlotterContentTable
+    internal class PlotterContentTable : AbstractMaster
     {
         private const string ConfigFileName = "/ctable.cfg";
-
-        private DTPMaster Master;
 
         public List<UInt16> VectorAdresses { get; private set; }
 
@@ -86,10 +84,42 @@ namespace CWA.DTP.Plotter
             file.Close();
         }
 
-        internal PlotterContentTable(DTPMaster master)
+        public override string ToString()
         {
-            Master = master;
+            string formatString = "{3}. Adress: {0}, Vector Hash: {1}, Preview Hash: {2}";
+            string res = "Vectors:\n"; int counter = 0;
+            foreach(var i in VectorAdresses)
+                res += string.Format(formatString, i, VectorHashes[i], PreviewHashes[i], counter++) + '\n';
+            return res;
+        }
+
+        internal static PlotterContentTable FromBytes(byte[] bytes)
+        {
+            var Result = new PlotterContentTable()
+            {
+                VectorAdresses = new List<UInt16>(),
+                VectorHashes = new Dictionary<ushort, uint>(),
+                PreviewHashes = new Dictionary<ushort, uint>()
+            };
+            if (bytes.Length != 0)
+            {
+                bytes.Split(10).ToList().ForEach(p =>
+                {
+                    var a = p.ToArray();
+                    Result.VectorAdresses.Add((UInt16)(a[0] | (a[1] << 8)));
+                    Result.VectorHashes.Add(Result.VectorAdresses.Last(), (UInt32)((a[5] << 24) | (a[4] << 16) | (a[3] << 8) | a[2]));
+                    Result.PreviewHashes.Add(Result.VectorAdresses.Last(), (UInt32)((a[9] << 24) | (a[8] << 16) | (a[7] << 8) | a[6]));
+                });
+            }
+            Result.CountOfVectors = (UInt16)Result.VectorAdresses.Count;
+            return Result;
+        }
+
+        internal PlotterContentTable(DTPMaster master) : base(master)
+        {
             Download();
         }
+
+        internal PlotterContentTable() : base(null) { }
     }
 }

@@ -1,4 +1,4 @@
-/*=================================\
+﻿/*=================================\
 * CWA.DTP.Plotter\AbstractMaster.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
@@ -19,7 +19,8 @@ namespace CWA.DTP.Plotter
         public AbstractMaster(DTPMaster master)
         {
             Master = master;
-            ph = new PlotterPacketHandler(master.Sender, master.Listener);
+            if(Master != null)
+                ph = new PlotterPacketHandler(master.Sender, master.Listener);
         }
     }
 }
