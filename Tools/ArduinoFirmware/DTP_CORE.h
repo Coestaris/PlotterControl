@@ -126,6 +126,8 @@ const int DirectoryBufferSize PROGMEM = 40;
 
 	void PLOTTER_INIT();
 
+	void PLOTTER_RUN_EXFORMAT(File &file);
+
 	void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrection, uint16_t XCoef, uint16_t YCoef);
 
 	void PLOTTER_ResetToDefault();

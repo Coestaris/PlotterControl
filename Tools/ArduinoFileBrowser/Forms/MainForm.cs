@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 22.08.2017 20:42:14
+* Last Edited: 24.08.2017 21:49:50
 *=================================*/
 
 using CWA.DTP;
@@ -33,7 +33,7 @@ namespace FileBrowser
             InitializeComponent();
         }
         private string portName = "COM11";
-        private Sender Sender = new Sender(SenderType.SevenByteName, "Coestar");
+        private Sender Sender = new Sender("Coestar");
         private SerialPort port;
         private Bitmap folderImage = new Bitmap("Icons\\folder.png");
         private Bitmap backImage = new Bitmap("Icons\\back.png");

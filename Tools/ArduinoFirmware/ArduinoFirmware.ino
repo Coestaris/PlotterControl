@@ -11,7 +11,7 @@ uint16_t PRINT_XCoef, PRINT_YCoef, PRINT_ElevDelta;
 int16_t PRINT_ElevCorr;
 
 
-bool ReqToStartPrint = false;
+uint8_t ReqToStartPrint = 0;
 int ii = 0;
 
 void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
@@ -34,6 +34,16 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 
 	switch ((DTP_COMMANDTYPE)command)
 	{
+		case DTP_COMMANDTYPE::Plotter_Print_Run_Ex:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+			dataByte = 0;
+			PrintFileName = (uint16_t)(data[0] | (data[1] << 8));
+			ReqToStartPrint = 2;
+			break;
+		}
+
 		case DTP_COMMANDTYPE::Plotter_Print_Info:
 		{
 			status = DTP_ANSWER_STATUS::OK;
@@ -51,7 +61,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 				(curr >> 8) & 0xFF,
 				(curr >> 16) & 0xFF,
 				(curr >> 24) & 0xFF,
-				ReqToStartPrint ? 1 : 0
+				ReqToStartPrint != 0 ? 1 : 0
 			};
 			break;
 		}
@@ -61,7 +71,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			status = DTP_ANSWER_STATUS::OK;
 			error_code = DTP_ANSWER_ERRORCODE_TYPE::DATA;
 			dataByte = 1;
-			if (ReqToStartPrint)
+			if (ReqToStartPrint != 0)
 			{
 				PLOTTER_Abort();
 			}
@@ -78,7 +88,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			PRINT_XCoef = (uint16_t)(data[4] | (data[5] << 8));
 			PRINT_YCoef = (uint16_t)(data[6] | (data[7] << 8));
 			PrintFileName = (uint16_t)(data[8] | (data[9] << 8));
-			ReqToStartPrint = true;
+			ReqToStartPrint = 1;
 			break;
 		}
 
@@ -872,13 +882,24 @@ void loop()
 	Read();
 	if (before != FreeMemory()) Error(ERROR_LOST_MEMORY, true);
 
-	if (ReqToStartPrint)
+	if (ReqToStartPrint != 0)
 	{
-		File file = SD.open(String(PrintFileName) + ".v");
-		PRINT_FileSize = file.size();
-		PLOTTER_RUN(file, PRINT_ElevDelta, PRINT_ElevCorr, PRINT_XCoef, PRINT_YCoef);
-		ReqToStartPrint = false;
-		file.close();
+		if (ReqToStartPrint == 2)
+		{
+			File file = SD.open("v" + String(PrintFileName) + ".flv");
+			PRINT_FileSize = file.size();
+			PLOTTER_RUN_EXFORMAT(file);
+			ReqToStartPrint = 0;
+			file.close();
+		}
+		else
+		{
+			File file = SD.open(String(PrintFileName) + ".v");
+			PRINT_FileSize = file.size();
+			PLOTTER_RUN(file, PRINT_ElevDelta, PRINT_ElevCorr, PRINT_XCoef, PRINT_YCoef);
+			ReqToStartPrint = 0;
+			file.close();
+		}
 	} 
 }
 

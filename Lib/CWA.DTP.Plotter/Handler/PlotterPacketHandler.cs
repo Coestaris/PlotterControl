@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 21:32:09
 *=================================*/
 
 using System;
@@ -67,6 +67,11 @@ namespace CWA.DTP.Plotter
             result.Max = BitConverter.ToUInt32(res.Data, 0);
             result.Curr = BitConverter.ToUInt32(res.Data, 4);
             return result;
+        }
+
+        public bool RunFlFormatFile(UInt16 Index)
+        {
+            return !GetResult((UInt16)CommandType.Plotter_Print_Run_Ex, BitConverter.GetBytes(Index)).IsEmpty;
         }
     }
 }

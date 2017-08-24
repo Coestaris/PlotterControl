@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,9 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\AbstractMaster.cs" />
     <Compile Include="Handler\CommandType.cs" />
     <Compile Include="Handler\PlotterPacketHandler.cs" />
+    <Compile Include="Printing\PrintingDelegates.cs" />
+    <Compile Include="Printing\FlFormatPrintMaster.cs" />
     <Compile Include="SDConfigs\PlotterConfig.cs" />
+    <Compile Include="SDContent\FlFormat.cs" />
+    <Compile Include="SDContent\FlFormatElement.cs" />
     <Compile Include="SDContent\PlotterContent.cs" />
     <Compile Include="SDContent\PlotterContentTable.cs" />
     <Compile Include="SDConfigs\PlotterPenInfo.cs" />

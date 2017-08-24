@@ -5,14 +5,14 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 23.08.2017 19:21:34
+* Last Edited: 24.08.2017 20:01:08
 *=================================*/
 
 using System;
 
 namespace CWA.DTP
 {
-    public static class HelpMethods
+    internal static class HelpMethods
     {
         public static Tuple<byte, byte> SplitNumber(int num)
         {

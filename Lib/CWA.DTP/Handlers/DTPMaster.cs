@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 22.08.2017 21:41:32
+* Last Edited: 24.08.2017 21:49:14
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -34,17 +34,9 @@ namespace CWA.DTP
             }
         }
 
-        public DTPMaster(IPacketReader reader, IPacketWriter writer)
-        {
-            ph = new GeneralPacketHandler(new Sender(SenderType.SevenByteName), new PacketListener(reader, writer));
-            Device = new DeviceControl() { ParentMaster = this };
-        }
+        public DTPMaster(IPacketReader reader, IPacketWriter writer) : this(Sender.Nullable, new PacketListener(reader, writer))  { }
 
-        public DTPMaster(IPacketReader reader, IPacketWriter writer, string SenderName)
-        {
-            ph = new GeneralPacketHandler(new Sender(SenderType.SevenByteName, SenderName), new PacketListener(reader, writer));
-            Device = new DeviceControl() { ParentMaster = this };
-        }
+        public DTPMaster(IPacketReader reader, IPacketWriter writer, string SenderName) : this(new Sender(SenderName), new PacketListener(reader, writer)) { }
 
         public DTPMaster(Sender sender, PacketListener listener)
         {
@@ -77,7 +69,7 @@ namespace CWA.DTP
 
         public SdCardDirectory CreateDirectoryHandlerFromRoot()
         {
-            return new SdCardDirectory("/", ph);
+            return SdCardDirectory.Root(ph);
         }
 
         public void CloseConnection()
@@ -106,7 +98,5 @@ namespace CWA.DTP
         {
             return new SdCardFile(Path, ph);
         }
-
-
     }
 }

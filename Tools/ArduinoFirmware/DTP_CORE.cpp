@@ -190,15 +190,12 @@ void Read() {
 	byte b = Serial.read();
 	int len = GetNumber(a, b) - 255;
 	byte* buffer = new byte[len];
-	
 	for (int i = 0; i <= len - 3; i++)
 	{
 		Wait();
 		buffer[i + 2] = Serial.read();
 	};
-
 	//Serial.readBytes(buffer + 2, len - 2);
-
 	int command = (int)GetNumber(buffer[2], buffer[3]);
 	int dataLen = len - 14;
 	byte* data = new byte[dataLen];
@@ -208,6 +205,7 @@ void Read() {
 #else
 	byte* crc = SplitNumber(CRC16Handler.ccitt(data, dataLen));
 #endif
+	//Я надеюсь, когда-то, кто-то, объяснит мне, как это вообще работает...
 	delete[] buffer;
 	if (crc[0] != buffer[len - 2] || crc[1] != buffer[len - 1])
 	{
@@ -273,6 +271,43 @@ void PLOTTER_INIT()
 	PLOTTER_DelayTime = 50;
 	digitalWrite(PLOTTER_PAUSELED, PLOTTER_pause);
 	digitalWrite(PLOTTER_PAUSECOM, PLOTTER_com);
+}
+
+void PLOTTER_RUN_EXFORMAT(File &file)
+{
+	digitalWrite(RelayPin, 0);
+	delay(200);
+	if (!file)
+		Error(ERROR_SD_CARDINIT, true);
+	uint32_t PrintFileSize = file.size();
+	counter = 0;
+	PLOTTER_DelayTime = PLOTTER_idle;
+	bool drawing = false;
+	PLOTTER_ForceStop = false;
+	while (counter != PrintFileSize)
+	{
+		byte* Bytes = new byte[8];
+		file.seek(counter);
+		if (file.readBytes(Bytes, 8) != 8)
+			Error(ERROR_SD_CARDINIT, true);
+		int16_t dx = (int16_t)(((Bytes[1] & 0xFF) << 8) | (Bytes[0] & 0xFF));
+		int16_t dy = (int16_t)(((Bytes[3] & 0xFF) << 8) | (Bytes[2] & 0xFF));
+		int16_t zy = (int16_t)(((Bytes[5] & 0xFF) << 8) | (Bytes[4] & 0xFF));
+		uint16_t delayVal = (uint16_t)(((Bytes[7] & 0xFF) << 8) | (Bytes[6] & 0xFF));
+		delete[] Bytes;
+		delay(delayVal);
+		if (!PLOTTER_MoveSM((int32_t)dx, (int32_t)dy, (int32_t)zy, true) || PLOTTER_ForceStop)
+		{
+			//Неважно на скольо, главное дабы поднял.
+			if (drawing)
+				PLOTTER_LiftPen(2000, 0);
+			Error("010", false);
+			break;
+		};
+		counter += 8;
+	}
+	delay(200);
+	digitalWrite(RelayPin, 1);
 }
 
 void PLOTTER_RUN(File &file, uint16_t ElevationDelta, int16_t ElevationCorrection, uint16_t XCoef, uint16_t YCoef)

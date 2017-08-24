@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 23.08.2017 20:35:40
+* Last Edited: 24.08.2017 20:48:33
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -18,10 +18,8 @@ using System.Linq;
 
 namespace CWA.DTP.Plotter
 {
-    public class PlotterContent
+    public class PlotterContent : AbstractMaster
     {
-        internal DTPMaster Master;
-
         internal PlotterContentTable ContentTable { get; private set; }
 
         public List<UInt16> VectorIndexes
@@ -32,9 +30,8 @@ namespace CWA.DTP.Plotter
             }
         }
 
-        public PlotterContent(DTPMaster master)
+        public PlotterContent(DTPMaster master) : base(master)
         {
-            Master = master;
             ContentTable = new PlotterContentTable(Master);
         }
 
@@ -147,7 +144,7 @@ namespace CWA.DTP.Plotter
             var localHash = CrCHandler.CRC32(vectorPcName);
             if(ContentTable.PreviewHashes.Values.Contains(localHash))
             {
-                //Если файл с таким хэшем есть на устройстве, то нечего его переотправлять
+                //Если файл с таким хэшем есть на устройстве, то нечего его переотправлять.
                 return true;
             }
 
@@ -182,6 +179,61 @@ namespace CWA.DTP.Plotter
         public void Refresh()
         {
             ContentTable = new PlotterContentTable(Master);
+        }
+
+        private void DeleteAllFlFormatFiles()
+        {
+            var dir = Master.CreateDirectoryHandlerFromRoot();
+            var files = dir.SubFiles;
+            foreach (SdCardFile file in files)
+                if(file.FilePath.StartsWith("fl"))
+                    try
+                    {
+                        file.Delete();
+                    }
+                    catch(Exception e)
+                    {
+                        throw e;
+                    }
+        }
+
+        /// <summary>
+        /// Получает хэш-коды всех FF файлов.
+        /// </summary>
+        /// <returns>Словарь, где Ключ - индекс файла, а Значение - сам хэш-код. null, если ни одного файла небыло найдено.</returns>
+        public Dictionary<UInt32, UInt32> GetFlFormatHashes()
+        {
+            Dictionary<UInt32, UInt32> result = new Dictionary<UInt32, UInt32>();
+            var dir = Master.CreateDirectoryHandlerFromRoot();
+            var files = dir.SubFiles;
+            foreach (SdCardFile file in files)
+                if (file.FilePath.StartsWith("fl"))
+                    result.Add(UInt32.Parse(file.FilePath.Remove(0, 2)), file.CRC32);
+            return result.Count == 0 ? null : result;
+        }
+
+        public UInt32 CountOfFlFormatFiles
+        {
+            get
+            {
+                var dir = Master.CreateDirectoryHandlerFromRoot();
+                return (UInt32)dir.SubFiles.Count(p => p.FilePath.StartsWith("fl"));
+            }
+        }
+
+        public bool UploadFlFormatFiles(FlFormat[] Files, bool DeleteAllFlFiles)
+        {
+            if (DeleteAllFlFiles)
+                DeleteAllFlFormatFiles();
+            string deviceName = "v{0}.flv";
+            Int32 i = 0;
+            var fileSender = Master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh
+                                                   | FileTransferSecurityFlags.VerifyCheckSum);
+            fileSender.PacketLength = 2000;
+            foreach (FlFormat file in Files)
+                if (!fileSender.SendFileSync(file.ToBytes(), string.Format(deviceName, i++)))
+                    return false;
+            return true;
         }
     }
 }

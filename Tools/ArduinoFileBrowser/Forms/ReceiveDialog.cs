@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 18.08.2017 20:26:45
+* Last Edited: 24.08.2017 14:08:45
 *=================================*/
 
 using CWA.DTP;
@@ -26,7 +26,7 @@ namespace FileBrowser
 
         private void SetupReceiver()
         {
-            fileReceiver = master.CreateFileReceiver(FileTransferSecurityFlags.VerifyLengh);
+            fileReceiver = master.CreateFileReceiver(FileTransferSecurityFlags.VerifyLengh | FileTransferSecurityFlags.VerifyCheckSum);
             fileReceiver.PacketLength = PacketSize;
             fileReceiver.ReceiveProcessChanged += FileSender_ReceiverProcessChanged;
             fileReceiver.ReceiveError += FileSender_ReceiverError;

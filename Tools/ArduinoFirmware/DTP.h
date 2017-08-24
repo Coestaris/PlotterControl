@@ -176,6 +176,7 @@ enum class DTP_COMMANDTYPE : uint16_t
 	Plotter_Print_Run = 0x121,
 	Plotter_Print_Info = 0x122,
 	Plotter_Print_Abort = 0x123,
+	Plotter_Print_Run_Ex = 0x124
 };
 
 enum class DTP_ANSWER_STATUS

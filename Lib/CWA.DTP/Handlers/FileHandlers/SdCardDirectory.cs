@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 13:56:48
 *=================================*/
 
 using System.Linq;
@@ -104,6 +104,11 @@ namespace CWA.DTP
                     return res.ResultFiles.Select(p => new SdCardFile(p, ph)).ToArray();
                 else throw new FailOperationException(res.Status);
             }
+        }
+
+        internal static SdCardDirectory Root(GeneralPacketHandler ph)
+        {
+            return new SdCardDirectory("/", ph);
         }
     }
 }

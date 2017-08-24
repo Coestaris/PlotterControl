@@ -5,14 +5,8 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 20:38:50
 *=================================*/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CWA.DTP.Plotter
 {
@@ -22,5 +16,6 @@ namespace CWA.DTP.Plotter
         Plotter_Print_Run = 0x121,
         Plotter_Print_Info = 0x122,
         Plotter_Print_Abort = 0x123,
-    }
+        Plotter_Print_Run_Ex = 0x124
+    };
 }

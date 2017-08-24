@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 14:15:26
 *=================================*/
 
 using System;
@@ -53,7 +53,7 @@ namespace CWA.DTP.Plotter
                     return;
                 };
             }
-            var fileSender = Parrent.Master.CreateFileReceiver(FileTransfer.FileTransferSecurityFlags.VerifyLengh);
+            var fileSender = Parrent.Master.CreateFileReceiver(FileTransfer.FileTransferSecurityFlags.VerifyLengh | FileTransfer.FileTransferSecurityFlags.VerifyCheckSum);
             fileSender.PacketLength = 2000;
             if (!fileSender.ReceiveFileSync(pcName, dName))
                 throw new FileHandlerException("Не удалось передать миниатюру вектора");
@@ -68,17 +68,19 @@ namespace CWA.DTP.Plotter
 
         internal VectorMetaData(PlotterContent parrent)
         {
+            LoadedPreview = false;
             Parrent = parrent;
         }
 
         internal VectorMetaData(byte[] data, PlotterContent parrent)
         {
+            LoadedPreview = false;
             Parrent = parrent;
             UInt16 stringLen = (UInt16)(data[0] | (data[1] << 8));
             Type = (VectType)data[stringLen + 2];
             Height = (UInt16)(data[stringLen + 3] | (data[stringLen + 4] << 8));
             Width = (UInt16)(data[stringLen + 5] | (data[stringLen + 6] << 8));
-            Name = new string(data.Skip(2).Take(stringLen).ToList().FindAll(p=> p!= 0).Select(p=>(char)p).ToArray());
+            Name = new string(data.Skip(2).Take(stringLen).ToList().FindAll(p => p != 0).Select(p => (char)p).ToArray());
         }
 
         internal byte[] ToByteArray()

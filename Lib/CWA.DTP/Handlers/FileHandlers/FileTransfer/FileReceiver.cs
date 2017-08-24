@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 14:07:41
 *=================================*/
 
 using System;
@@ -192,6 +192,25 @@ namespace CWA.DTP.FileTransfer
             }
             File.Create(pcName).Close();
             File.WriteAllBytes(pcName, buffer);
+            if(CheckLen)
+                if (len != new FileInfo(pcName).Length)
+                    RaiseErrorEvent(new FileReceiverErrorArgs(FileReceiverError.NotEqualSizes, false));
+            if(CheckSum)
+            {
+                UInt32 localHash = CrCHandler.CRC32(pcName);
+                UInt32 deviceHash = 0;
+                try
+                {
+                    deviceHash = MainFile.CRC32;
+                }
+                catch
+                {
+                    RaiseErrorEvent(new FileReceiverErrorArgs(FileReceiverError.CantGetHashOfFile, true));
+                    return false;
+                }
+                if(localHash != deviceHash)
+                    RaiseErrorEvent(new FileReceiverErrorArgs(FileReceiverError.HashesNotEqual, false));
+            }
             try { MainFile.Close(); } catch
             {
                 RaiseErrorEvent(new FileReceiverErrorArgs(FileReceiverError.CantCloseFile, true));

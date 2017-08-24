@@ -5,26 +5,22 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 21:42:29
 *=================================*/
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CWA.DTP.Plotter
 {
-    public class PlotterConfig
+    public class PlotterConfig : AbstractMaster
     {
         private const string ConfigFileName = "/config.cfg";
 
         private const string PensConfigFileName = "/pens.cfg";
 
         internal const UInt16 ConfigFileLength = 14;
-
-        public DTPMaster Master { get; set; }
 
         public List<PlotterPenInfo> Pens { get; private set; }
 
@@ -121,9 +117,8 @@ namespace CWA.DTP.Plotter
             file.Close();
         }
 
-        public PlotterConfig(DTPMaster master)
+        public PlotterConfig(DTPMaster master) : base(master)
         {
-            Master = master;
             DownloadConfig();
             DownloadPenProfiles();
         }

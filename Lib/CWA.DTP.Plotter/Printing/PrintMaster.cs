@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:33
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 20:48:18
 *=================================*/
 
 using System;
@@ -14,19 +14,11 @@ using System.Threading;
 
 namespace CWA.DTP.Plotter
 {
-    public delegate void PrintEndEventHandler();
-
-    public delegate void PrintErrorEventHandler(PrintErrorType arg);
-
-    public delegate void PrintStatusEventHandler(PrintStatus arg, UInt32 CurrentPosition, UInt32 MaxPosition, PrintStatusTimeArgs TimeArgs);
-    
-    public class PrintMaster
+    public class PrintMaster : AbstractMaster
     {
         private int LasProgress, CountOfData;
 
         private double lSpeed, LastLeftTime;
-
-        private PlotterPacketHandler ph;
 
         private bool Printing;
 
@@ -63,8 +55,6 @@ namespace CWA.DTP.Plotter
             StatusRequest?.Invoke(arg, CurrentPosition, MaxPosition, TimeArgs);
         }
 
-        public DTPMaster Master { get; set; }
-
         public PlotterContent ContentMaster { get; private set; }
 
         public UInt32 StatusRequestInterval { get; set; }
@@ -73,10 +63,9 @@ namespace CWA.DTP.Plotter
 
         public float YMM { get; set; }
 
-        public PrintMaster(DTPMaster master, float Xmm, float Ymm, UInt32 statusRequestInterval)
+        public PrintMaster(DTPMaster master, float Xmm, float Ymm, UInt32 statusRequestInterval) : base(master)
         {
             StatusRequestInterval = statusRequestInterval;
-            Master = master;
             ph = new PlotterPacketHandler(master.Sender, master.Listener);
             XMM = Xmm;
             YMM = Ymm;

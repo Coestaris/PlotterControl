@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 22.08.2017 21:20:09
+* Last Edited: 24.08.2017 21:48:50
 *=================================*/
 
 using System;
@@ -46,11 +46,16 @@ namespace CWA.DTP
             Name = RandomGenerateSenderName(7);
         }
 
-        public Sender(SenderType type, string Name)
+        public Sender(string Name)
         {
-            Type = type;
-            if (type == SenderType.UnNamedByteMask) Mask = RandomGenerateSenderMask();
-            else this.Name = Name;
+            Type = SenderType.SevenByteName;
+            this.Name = Name;
+        }
+
+        public Sender(byte[] Mask)
+        {
+            Type = SenderType.UnNamedByteMask;
+            this.Mask = Mask;
         }
 
         private static string RandomGenerateSenderName(int length)

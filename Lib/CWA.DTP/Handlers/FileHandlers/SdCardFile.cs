@@ -5,10 +5,11 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 24.08.2017 21:40:47
 *=================================*/
 
 using System;
+using System.Linq;
 
 namespace CWA.DTP
 {
@@ -19,12 +20,6 @@ namespace CWA.DTP
         private GeneralPacketHandler ph;
         
         public string FilePath { get; set; }
-
-        internal SdCardFile(string path, GeneralPacketHandler ph)
-        {
-            FilePath = path;
-            this.ph = ph;
-        }
 
         public bool IsOpen { get; private set; }
 
@@ -54,6 +49,75 @@ namespace CWA.DTP
             }
         }
 
+        public string Extension
+        {
+            get
+            {
+                return FilePath.Split('.').Last();
+            }
+        }
+
+        public string FileName
+        {
+            get
+            {
+                var countOfSeparators = FilePath.ToList().FindAll(p => p == '/').Count;
+                if (countOfSeparators != 0) return FilePath.Split('/').Last();
+                else return FilePath;
+            }
+        }
+        
+        public uint Length
+        {
+            get
+            {
+                if (!IsOpen)
+                    throw new FileHandlerException("Файл закрыт");
+                var res = ph.File_GetLength();
+                if(res.Status != GeneralPacketHandler.FileDirHandleResult.OK)
+                    throw new FailOperationException("Не удалось получить длину (размер) файла", res);
+                return res.Length;
+            }
+        }
+
+        public SdCardDirectoryFileInfo FileInfo
+        {
+            get
+            {
+                var res = ph.File_GetInfo(FilePath);
+                return res.FI;
+            }
+        }
+        
+        public SdCardDirectory ParentDirectory
+        {
+            get
+            {
+                var countOfSeparators = FilePath.ToList().FindAll(p => p == '/').Count;
+                if ((FilePath.StartsWith("/") && countOfSeparators == 1) || (!FilePath.StartsWith("/") && countOfSeparators == 0))
+                    return SdCardDirectory.Root(ph);
+                var path = FilePath.Substring(0, FilePath.LastIndexOf('/'));
+                return new SdCardDirectory(path, ph);
+                
+            }
+        }
+
+        public SdCardBinnaryFile BinnaryFile
+        {
+            get
+            {
+                if (IsOpen)
+                    return new SdCardBinnaryFile(this, ph);
+                else throw new FileHandlerException("Файл закрыт");
+            }
+        }
+        
+        internal SdCardFile(string path, GeneralPacketHandler ph)
+        {
+            FilePath = path;
+            this.ph = ph;
+        }
+
         public SdCardFile Open(bool ClearContent)
         {
             if(!IsExists)
@@ -81,19 +145,6 @@ namespace CWA.DTP
             IsGlobalOpenedFiles = false;
         }
 
-        public uint Length
-        {
-            get
-            {
-                if (!IsOpen)
-                    throw new FileHandlerException("Файл закрыт");
-                var res = ph.File_GetLength();
-                if(res.Status != GeneralPacketHandler.FileDirHandleResult.OK)
-                    throw new FailOperationException("Не удалось получить длину (размер) файла", res);
-                return res.Length;
-            }
-        }
-
         public SdCardFile Create()
         {
             var res = ph.File_Create(FilePath);
@@ -117,35 +168,5 @@ namespace CWA.DTP
             if (res != GeneralPacketHandler.FileDirHandleResult.OK)
                 throw new FailOperationException(res);
         }
-
-        public SdCardDirectoryFileInfo FileInfo
-        {
-            get
-            {
-                var res = ph.File_GetInfo(FilePath);
-                return res.FI;
-            }
-        }
-        
-        public SdCardDirectory ParentDirectory
-        {
-            get
-            {
-                var path = FilePath.Substring(0, FilePath.LastIndexOf('/'));
-                return new SdCardDirectory(path, ph);
-                
-            }
-        }
-
-        public SdCardBinnaryFile BinnaryFile
-        {
-            get
-            {
-                if (IsOpen)
-                    return new SdCardBinnaryFile(this, ph);
-                else throw new FileHandlerException("Файл закрыт");
-            }
-        }
-        
     }
 }
