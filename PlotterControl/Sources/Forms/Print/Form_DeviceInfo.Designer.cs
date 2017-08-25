@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 18.08.2017 20:56
-* Last Edited: 18.08.2017 21:33:21
+* Last Edited: 25.08.2017 22:25:23
 *=================================*/
 
 namespace CnC_WFA
@@ -86,7 +86,7 @@ namespace CnC_WFA
             this.button_tab2_back.Name = "button_tab2_back";
             this.button_tab2_back.Size = new System.Drawing.Size(78, 31);
             this.button_tab2_back.TabIndex = 41;
-            this.button_tab2_back.Text = "??????????";
+            this.button_tab2_back.Text = "Назад";
             this.button_tab2_back.UseVisualStyleBackColor = false;
             this.button_tab2_back.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -104,7 +104,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_DeviceInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "???????????????????? ???? ????????????????????";
+            this.Text = "Информация об устройстве";
             this.Load += new System.EventHandler(this.Form_DeviceInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

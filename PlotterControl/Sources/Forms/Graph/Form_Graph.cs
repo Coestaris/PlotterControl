@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
 using CWA;
@@ -223,7 +223,7 @@ namespace CnC_WFA
             dy = (int)((float)dy * oldVal / trackBar1.Value);
 
             Zoom = trackBar1.Value;
-            label_zoom.Text = string.Format("???????????????????? ???? {0}%", Zoom);
+            label_zoom.Text = string.Format("Увеличение на {0}%", Zoom);
             RedrawLow(pictureBox1.Width / 2 - oldDeltas.X, pictureBox1.Height / 2 - oldDeltas.Y);
             
             timer_redraw.Stop();
@@ -299,7 +299,7 @@ namespace CnC_WFA
         private void button3_Click(object sender, EventArgs e)
         {
             if (listBox_Main.SelectedIndex != -1)
-                if(MessageBox.Show(string.Format("???? ?????????????????????????? ???????????? ?????????????? ???????????? {0}?", Main.Graphs[listBox_Main.SelectedIndex].Name), "????????e??????", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(MessageBox.Show(string.Format("Вы действительно хотите удалить график {0}?", Main.Graphs[listBox_Main.SelectedIndex].Name), "Удалeние", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Main.Graphs.RemoveAt(listBox_Main.SelectedIndex);
                     UpdateListBox();

@@ -1,11 +1,35 @@
+/*
+	The MIT License(MIT)
+
+	Copyright(c) 2016 - 2017 Kurylko Maxim Igorevich
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
+*/
+
 /*=================================\
-* ArduinoFileBrowser\SendDialog.cs
+* ArduinoFileBrowser \ SendDialog.cs
 *
-* The Coestaris licenses this file to you under the MIT license.
-* See the LICENSE file in the project root for more information.
+* Created: 06.08.2017 20:09
+* Last Edited: 30.07.2017 22:18:02
 *
-* Created: 22.08.2017 20:41
-* Last Edited: 18.08.2017 20:26:45
 *=================================*/
 
 using CWA.DTP;
@@ -62,8 +86,8 @@ namespace FileBrowser
         private void FileSender_SendingError(FileSenderErrorArgs arg)
         {
             Console.Write("ERROR! Code {0}, IsCritical {1}", arg.Error.ToString(), arg.IsCritical);
-            MessageBox.Show(string.Format("???????????????? ????????????. ?????? ????????????: {0}.\n???????????????? ???????????????????? ??????????????: {1}", arg.Error, arg.IsCritical ? "??????" : "????"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            if(arg.IsCritical) FormCloseThread();
+            MessageBox.Show(string.Format("Проиошла ошибка. Код ошибки: {0}.\nВозможно продолжать отравку: {1}", arg.Error, arg.IsCritical ? "нет" : "да"), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            if (arg.IsCritical) FormCloseThread();
         }
 
         private delegate void FormCloseThreadFeedBack();
@@ -74,7 +98,7 @@ namespace FileBrowser
             if (InvokeRequired)
             {
                 FormCloseThreadFeedBack d = new FormCloseThreadFeedBack(FormCloseThread);
-                Invoke(d, new object[] {  });
+                Invoke(d, new object[] { });
             }
             else
             {
@@ -95,10 +119,10 @@ namespace FileBrowser
                 progressBar1.Maximum = (int)total;
                 progressBar1.Value = (int)arg.PacketTrasfered;
 
-                label_percentage.Text = string.Format("???????????????????? {0:0.##}% ????????????????", (double)arg.PacketTrasfered / total * 100);
-                if (arg.TimeLeft > 60) label_timeleft.Text = string.Format("?????????????? ????????????????: {0:0} ??????. ({1:0.#} ??????)", arg.TimeLeft, arg.TimeLeft / 60f);
-                else label_timeleft.Text = string.Format("?????????????? ????????????????: {0:0} ??????.", arg.TimeLeft);
-                label_speed.Text = string.Format("???????????????? ????????????????: {0:0.##} ??????????", arg.Speed);
+                label_percentage.Text = string.Format("Завершенно {0:0.##}% процесса", (double)arg.PacketTrasfered / total * 100);
+                if (arg.TimeLeft > 60) label_timeleft.Text = string.Format("Времени осталось: {0:0} сек. ({1:0.#} мин)", arg.TimeLeft, arg.TimeLeft / 60f);
+                else label_timeleft.Text = string.Format("Времени осталось: {0:0} сек.", arg.TimeLeft);
+                label_speed.Text = string.Format("Скорость передачи: {0:0.##} КБайт", arg.Speed);
             }
         }
 
@@ -139,4 +163,3 @@ namespace FileBrowser
         }
     }
 }
- 

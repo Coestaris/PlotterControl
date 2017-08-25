@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 25.08.2017 22:25:35
 *=================================*/
 
 namespace CnC_WFA
@@ -58,7 +58,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(83, 35);
             this.button_exit.TabIndex = 117;
-            this.button_exit.Text = "??????????";
+            this.button_exit.Text = "Выйти";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
@@ -74,7 +74,7 @@ namespace CnC_WFA
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(111, 35);
             this.button_save.TabIndex = 118;
-            this.button_save.Text = "??????????????????";
+            this.button_save.Text = "Сохранить";
             this.button_save.UseVisualStyleBackColor = false;
             this.button_save.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -89,7 +89,7 @@ namespace CnC_WFA
             this.button_selectAll.Name = "button_selectAll";
             this.button_selectAll.Size = new System.Drawing.Size(163, 35);
             this.button_selectAll.TabIndex = 119;
-            this.button_selectAll.Text = "???????????????? ??????";
+            this.button_selectAll.Text = "Выделить все";
             this.button_selectAll.UseVisualStyleBackColor = false;
             this.button_selectAll.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -108,7 +108,7 @@ namespace CnC_WFA
             this.label_discr.Name = "label_discr";
             this.label_discr.Size = new System.Drawing.Size(401, 72);
             this.label_discr.TabIndex = 0;
-            this.label_discr.Text = "???????????????? ?????????????? ?????? ?????????????????? ????????????????";
+            this.label_discr.Text = "Выделете элемент для просмотра описания";
             this.label_discr.Click += new System.EventHandler(this.label_discr_Click);
             // 
             // Form_Dialog_Assoc
@@ -125,7 +125,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Dialog_Assoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "???????????? ????????????????????";
+            this.Text = "Мастер ассоциаций";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Dialog_Assoc_FormClosing);
             this.Load += new System.EventHandler(this.Form_Dialog_Assoc_Load);
             this.Click += new System.EventHandler(this.Form_Dialog_Assoc_Click);

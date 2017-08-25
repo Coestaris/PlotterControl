@@ -1,11 +1,11 @@
-﻿/*=================================\
+/*=================================\
 * CWA.DTP.Plotter\AbstractMaster.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
 * Created: 24.08.2017 20:28
-* Last Edited: 24.08.2017 20:51:03
+* Last Edited: 24.08.2017 22:20:15
 *=================================*/
 
 namespace CWA.DTP.Plotter

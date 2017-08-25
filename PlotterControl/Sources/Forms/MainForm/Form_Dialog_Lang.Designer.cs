@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 19:55
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 25.08.2017 22:25:42
 *=================================*/
 
 namespace CnC_WFA
@@ -55,7 +55,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(83, 35);
             this.button_exit.TabIndex = 118;
-            this.button_exit.Text = "??????????";
+            this.button_exit.Text = "Выйти";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
@@ -70,7 +70,7 @@ namespace CnC_WFA
             this.button_select.Name = "button_select";
             this.button_select.Size = new System.Drawing.Size(110, 35);
             this.button_select.TabIndex = 120;
-            this.button_select.Text = "??????????????";
+            this.button_select.Text = "Выбрать";
             this.button_select.UseVisualStyleBackColor = false;
             // 
             // button_edit
@@ -84,7 +84,7 @@ namespace CnC_WFA
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(126, 35);
             this.button_edit.TabIndex = 121;
-            this.button_edit.Text = "??????????????????????????";
+            this.button_edit.Text = "Редактировать";
             this.button_edit.UseVisualStyleBackColor = false;
             // 
             // Form_Dialog_Lang
@@ -100,7 +100,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Dialog_Lang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "?????????? ??????????";
+            this.Text = "Выбор языка";
             this.Load += new System.EventHandler(this.Form_Dialog_Lang_Load);
             this.ResumeLayout(false);
 

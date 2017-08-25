@@ -1,4 +1,14 @@
-﻿using System;
+/*=================================\
+* ArduinoFileBrowser\SomeFileInfo.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
+*
+* Created: 24.08.2017 22:03
+* Last Edited: 24.08.2017 23:08:45
+*=================================*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 19.08.2017 22:57:57
+* Created: 25.08.2017 22:27
+* Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
 using CWA;
@@ -55,13 +55,13 @@ namespace CnC_WFA
 
         private void UpDateGeneralSettings()
         {
-            Text = string.Format("?????? ????????????????: \"{0}\"", main.Name);
+            Text = string.Format("Пак макросов: \"{0}\"", main.Name);
             textBox_caption.Text = main.Caption;
             textBox_name.Text = main.Name;
             richTextBox_discr.Text = main.Discr;
             comboBox_portname.SelectedItem = main.PortName.ToString();
             comboBox_bdrate.SelectedItem = main.PortBD.ToString();
-            label_samples.Text = string.Format("??????????????: {0}", main.Samples.Count);
+            label_samples.Text = string.Format("Сємплов: {0}", main.Samples.Count);
             listBox_samples.Items.AddRange(main.Samples.ToArray());
         }
 
@@ -120,7 +120,7 @@ namespace CnC_WFA
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
             main.Name = textBox_name.Text;
-            Text = string.Format("?????? ????????????????: \"{0}\"", main.Name);
+            Text = string.Format("Пак макросов: \"{0}\"", main.Name);
         }
 
         private void textBox_caption_TextChanged(object sender, EventArgs e)
@@ -157,15 +157,15 @@ namespace CnC_WFA
             listBox_samples.Items.Add(textBox_sample_value.Text);
             main.Samples.Add(textBox_sample_value.Text);
             textBox_sample_value.Text = "";
-            label_samples.Text = string.Format("??????????????: {0}", main.Samples.Count);
+            label_samples.Text = string.Format("Сємплов: {0}", main.Samples.Count);
         }
 
         private void button_samples_remove_Click(object sender, EventArgs e)
         {
             if(listBox_samples.SelectedIndex!=-1)
             {
-                main.Samples.RemoveAt(listBox_samples.SelectedIndex);
                 listBox_samples.Items.RemoveAt(listBox_samples.SelectedIndex);
+                main.Samples.RemoveAt(listBox_samples.SelectedIndex);
             }
         }
 
@@ -217,7 +217,7 @@ namespace CnC_WFA
                 }
                 catch
                 {
-                    MessageBox.Show("???????????? ?????? ???????????????? -_-");
+                    MessageBox.Show("Ошибка при загрузке -_-");
                     main = new MacroPack("NoName", "NoDiscr", "NoName");
                 }
                 UpDateGeneralSettings();

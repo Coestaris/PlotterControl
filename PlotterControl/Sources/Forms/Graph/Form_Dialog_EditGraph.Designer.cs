@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
 namespace CnC_WFA
@@ -166,7 +166,7 @@ namespace CnC_WFA
             this.tabPage_data.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_data.Size = new System.Drawing.Size(528, 357);
             this.tabPage_data.TabIndex = 0;
-            this.tabPage_data.Text = "?????????????? ????????????";
+            this.tabPage_data.Text = "Выбрать данные";
             // 
             // panel1
             // 
@@ -190,7 +190,7 @@ namespace CnC_WFA
             this.radioButton1.Size = new System.Drawing.Size(136, 21);
             this.radioButton1.TabIndex = 5;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "???????????????? (??????)";
+            this.radioButton1.Text = "Формулой (пол)";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label_data_title
@@ -201,7 +201,7 @@ namespace CnC_WFA
             this.label_data_title.Name = "label_data_title";
             this.label_data_title.Size = new System.Drawing.Size(137, 22);
             this.label_data_title.TabIndex = 4;
-            this.label_data_title.Text = "?????????? ????????????";
+            this.label_data_title.Text = "Выбор Данных";
             // 
             // label_data_info
             // 
@@ -211,7 +211,7 @@ namespace CnC_WFA
             this.label_data_info.Name = "label_data_info";
             this.label_data_info.Size = new System.Drawing.Size(136, 17);
             this.label_data_info.TabIndex = 3;
-            this.label_data_info.Text = "???????????????? ????????????: ";
+            this.label_data_info.Text = "Получить данные: ";
             // 
             // radioButton2
             // 
@@ -221,7 +221,7 @@ namespace CnC_WFA
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(87, 21);
             this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "???? ??????????";
+            this.radioButton2.Text = "Из файла";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton_data_formula
@@ -234,7 +234,7 @@ namespace CnC_WFA
             this.radioButton_data_formula.Size = new System.Drawing.Size(96, 21);
             this.radioButton_data_formula.TabIndex = 1;
             this.radioButton_data_formula.TabStop = true;
-            this.radioButton_data_formula.Text = "????????????????";
+            this.radioButton_data_formula.Text = "Формулой";
             this.radioButton_data_formula.UseVisualStyleBackColor = true;
             this.radioButton_data_formula.CheckedChanged += new System.EventHandler(this.radioButton_data_formula_CheckedChanged);
             // 
@@ -264,7 +264,7 @@ namespace CnC_WFA
             this.tabPage_data_formula.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_data_formula.Size = new System.Drawing.Size(488, 307);
             this.tabPage_data_formula.TabIndex = 0;
-            this.tabPage_data_formula.Text = "????????????????";
+            this.tabPage_data_formula.Text = "Формулой";
             // 
             // panel_data_formula_status
             // 
@@ -286,7 +286,7 @@ namespace CnC_WFA
             this.button_data_formula_status_more.Name = "button_data_formula_status_more";
             this.button_data_formula_status_more.Size = new System.Drawing.Size(103, 36);
             this.button_data_formula_status_more.TabIndex = 1;
-            this.button_data_formula_status_more.Text = "??????????????????";
+            this.button_data_formula_status_more.Text = "Подробнее";
             this.button_data_formula_status_more.UseVisualStyleBackColor = false;
             this.button_data_formula_status_more.Visible = false;
             this.button_data_formula_status_more.Click += new System.EventHandler(this.button_data_formula_status_more_Click);
@@ -312,7 +312,7 @@ namespace CnC_WFA
             this.groupBox_data_formula_limits.Size = new System.Drawing.Size(476, 98);
             this.groupBox_data_formula_limits.TabIndex = 10;
             this.groupBox_data_formula_limits.TabStop = false;
-            this.groupBox_data_formula_limits.Text = "???????????????????? ??????????????????????????";
+            this.groupBox_data_formula_limits.Text = "Промежуток табулирования";
             // 
             // label_data_forumula_range_info
             // 
@@ -320,7 +320,7 @@ namespace CnC_WFA
             this.label_data_forumula_range_info.Name = "label_data_forumula_range_info";
             this.label_data_forumula_range_info.Size = new System.Drawing.Size(251, 56);
             this.label_data_forumula_range_info.TabIndex = 9;
-            this.label_data_forumula_range_info.Text = "?????????????????????? ???????????????????? ??????. ??????????????????. ????????????????, \"2 * Math.Pi\" ?????? \"Math.Pow(2, ." +
+            this.label_data_forumula_range_info.Text = "Допускается применение мат. выражений. Например, \"2 * Math.Pi\" или \"Math.Pow(2, ." +
     "5f)\"";
             this.label_data_forumula_range_info.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -349,7 +349,7 @@ namespace CnC_WFA
             this.label_data_formula_start.Name = "label_data_formula_start";
             this.label_data_formula_start.Size = new System.Drawing.Size(66, 17);
             this.label_data_formula_start.TabIndex = 7;
-            this.label_data_formula_start.Text = "???????????? ??";
+            this.label_data_formula_start.Text = "Начать с";
             // 
             // label_data_formula_end
             // 
@@ -358,7 +358,7 @@ namespace CnC_WFA
             this.label_data_formula_end.Name = "label_data_formula_end";
             this.label_data_formula_end.Size = new System.Drawing.Size(25, 17);
             this.label_data_formula_end.TabIndex = 8;
-            this.label_data_formula_end.Text = "????";
+            this.label_data_formula_end.Text = "по";
             // 
             // button_data_formula_compile
             // 
@@ -370,7 +370,7 @@ namespace CnC_WFA
             this.button_data_formula_compile.Name = "button_data_formula_compile";
             this.button_data_formula_compile.Size = new System.Drawing.Size(103, 36);
             this.button_data_formula_compile.TabIndex = 5;
-            this.button_data_formula_compile.Text = "??????????????????";
+            this.button_data_formula_compile.Text = "Применить";
             this.button_data_formula_compile.UseVisualStyleBackColor = false;
             this.button_data_formula_compile.Click += new System.EventHandler(this.button_data_formula_compile_Click);
             // 
@@ -385,7 +385,7 @@ namespace CnC_WFA
             this.groupBox_data_formula_formula.Size = new System.Drawing.Size(371, 154);
             this.groupBox_data_formula_formula.TabIndex = 9;
             this.groupBox_data_formula_formula.TabStop = false;
-            this.groupBox_data_formula_formula.Text = "??????????????";
+            this.groupBox_data_formula_formula.Text = "Функция";
             // 
             // richTextBox_data_formula_add
             // 
@@ -404,8 +404,8 @@ namespace CnC_WFA
             this.label_data_formula_help.Name = "label_data_formula_help";
             this.label_data_formula_help.Size = new System.Drawing.Size(352, 93);
             this.label_data_formula_help.TabIndex = 7;
-            this.label_data_formula_help.Text = "?????????????? ?????????????? ?????????????????????????????? ?????????????? ?????????? C# ?? ?????????????? \"??????????????????\" ?????? ????????????" +
-    "???????? ??????????????????. ?????????????? ??????????????:\r\n 1. \"2 * x - 4\"\r\n 2. \"Math.Pow(x, 3) - Math.Si" +
+            this.label_data_formula_help.Text = "Введите формулу соответствующую формату языка C# и нажмите \"Применить\" для сохран" +
+    "ения изменений. Примеры функций:\r\n 1. \"2 * x - 4\"\r\n 2. \"Math.Pow(x, 3) - Math.Si" +
     "n(x)\"\r\n";
             // 
             // button_data_formula_expand
@@ -436,7 +436,7 @@ namespace CnC_WFA
             this.button_data_formula_help.Name = "button_data_formula_help";
             this.button_data_formula_help.Size = new System.Drawing.Size(103, 36);
             this.button_data_formula_help.TabIndex = 3;
-            this.button_data_formula_help.Text = "????????????";
+            this.button_data_formula_help.Text = "Помощь";
             this.button_data_formula_help.UseVisualStyleBackColor = false;
             // 
             // tabPage_data_fromFile
@@ -478,7 +478,7 @@ namespace CnC_WFA
             this.groupBox1.Size = new System.Drawing.Size(470, 165);
             this.groupBox1.TabIndex = 115;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "?????????????????? ????????????????????";
+            this.groupBox1.Text = "Параметры отображеня";
             // 
             // label_display_color_rgb
             // 
@@ -501,7 +501,7 @@ namespace CnC_WFA
             this.button_display_color.Name = "button_display_color";
             this.button_display_color.Size = new System.Drawing.Size(84, 35);
             this.button_display_color.TabIndex = 112;
-            this.button_display_color.Text = "??????????????";
+            this.button_display_color.Text = "Выбрать";
             this.button_display_color.UseVisualStyleBackColor = false;
             this.button_display_color.Click += new System.EventHandler(this.button_display_color_Click);
             // 
@@ -522,7 +522,7 @@ namespace CnC_WFA
             this.label_display_width.Name = "label_display_width";
             this.label_display_width.Size = new System.Drawing.Size(82, 17);
             this.label_display_width.TabIndex = 46;
-            this.label_display_width.Text = "?????? ??????????";
+            this.label_display_width.Text = "Тип линии";
             // 
             // label3
             // 
@@ -532,7 +532,7 @@ namespace CnC_WFA
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 17);
             this.label3.TabIndex = 45;
-            this.label3.Text = "???????????? ??????????";
+            this.label3.Text = "Ширина линии";
             // 
             // textBox_display_width
             // 
@@ -559,7 +559,7 @@ namespace CnC_WFA
             this.label_display_color.Name = "label_display_color";
             this.label_display_color.Size = new System.Drawing.Size(147, 17);
             this.label_display_color.TabIndex = 6;
-            this.label_display_color.Text = "???????? ?????????? ??????????????";
+            this.label_display_color.Text = "Цвет линии графика";
             // 
             // checkBox_display_display
             // 
@@ -571,7 +571,7 @@ namespace CnC_WFA
             this.checkBox_display_display.Name = "checkBox_display_display";
             this.checkBox_display_display.Size = new System.Drawing.Size(110, 21);
             this.checkBox_display_display.TabIndex = 41;
-            this.checkBox_display_display.Text = "????????????????????";
+            this.checkBox_display_display.Text = "Отображать";
             this.checkBox_display_display.UseVisualStyleBackColor = true;
             this.checkBox_display_display.CheckedChanged += new System.EventHandler(this.checkBox_display_display_CheckedChanged);
             // 
@@ -583,7 +583,7 @@ namespace CnC_WFA
             this.label_display_title.Name = "label_display_title";
             this.label_display_title.Size = new System.Drawing.Size(228, 22);
             this.label_display_title.TabIndex = 5;
-            this.label_display_title.Text = "?????????????????? ??????????????????????";
+            this.label_display_title.Text = "Параметры отображения";
             // 
             // tabPage_markers
             // 
@@ -604,7 +604,7 @@ namespace CnC_WFA
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 22);
             this.label1.TabIndex = 6;
-            this.label1.Text = "?????????????????? ????????????????";
+            this.label1.Text = "Параметры маркеров";
             // 
             // panel4
             // 
@@ -632,7 +632,7 @@ namespace CnC_WFA
             this.groupBox_markers_params.Size = new System.Drawing.Size(485, 188);
             this.groupBox_markers_params.TabIndex = 125;
             this.groupBox_markers_params.TabStop = false;
-            this.groupBox_markers_params.Text = "???????????????????? ????????????????";
+            this.groupBox_markers_params.Text = "Размещение маркеров";
             // 
             // button_markers_help
             // 
@@ -645,7 +645,7 @@ namespace CnC_WFA
             this.button_markers_help.Name = "button_markers_help";
             this.button_markers_help.Size = new System.Drawing.Size(84, 35);
             this.button_markers_help.TabIndex = 121;
-            this.button_markers_help.Text = "????????????";
+            this.button_markers_help.Text = "Помощь";
             this.button_markers_help.UseVisualStyleBackColor = false;
             // 
             // radioButton_markers_inpoints
@@ -657,7 +657,7 @@ namespace CnC_WFA
             this.radioButton_markers_inpoints.Size = new System.Drawing.Size(152, 21);
             this.radioButton_markers_inpoints.TabIndex = 9;
             this.radioButton_markers_inpoints.TabStop = true;
-            this.radioButton_markers_inpoints.Text = "?? ???????????????? ????????????";
+            this.radioButton_markers_inpoints.Text = "В заданных точках";
             this.radioButton_markers_inpoints.UseVisualStyleBackColor = true;
             // 
             // button_markers_compile
@@ -671,7 +671,7 @@ namespace CnC_WFA
             this.button_markers_compile.Name = "button_markers_compile";
             this.button_markers_compile.Size = new System.Drawing.Size(107, 35);
             this.button_markers_compile.TabIndex = 120;
-            this.button_markers_compile.Text = "??????????????????";
+            this.button_markers_compile.Text = "Применить";
             this.button_markers_compile.UseVisualStyleBackColor = false;
             this.button_markers_compile.Click += new System.EventHandler(this.button_markers_compile_Click);
             // 
@@ -685,7 +685,7 @@ namespace CnC_WFA
             this.radioButton_markers_period.Size = new System.Drawing.Size(222, 21);
             this.radioButton_markers_period.TabIndex = 9;
             this.radioButton_markers_period.TabStop = true;
-            this.radioButton_markers_period.Text = "?? ???????????????? ????????????????????????????";
+            this.radioButton_markers_period.Text = "С заданной периодичностью";
             this.radioButton_markers_period.UseVisualStyleBackColor = true;
             this.radioButton_markers_period.CheckedChanged += new System.EventHandler(this.radioButton_markers_period_CheckedChanged);
             // 
@@ -710,7 +710,7 @@ namespace CnC_WFA
             this.button_markers_setpoints.Name = "button_markers_setpoints";
             this.button_markers_setpoints.Size = new System.Drawing.Size(131, 35);
             this.button_markers_setpoints.TabIndex = 122;
-            this.button_markers_setpoints.Text = "?????????????? ??????????";
+            this.button_markers_setpoints.Text = "Выбрать точки";
             this.button_markers_setpoints.UseVisualStyleBackColor = false;
             // 
             // groupBox_period
@@ -737,7 +737,7 @@ namespace CnC_WFA
             this.label_markers_period_end.Name = "label_markers_period_end";
             this.label_markers_period_end.Size = new System.Drawing.Size(25, 17);
             this.label_markers_period_end.TabIndex = 14;
-            this.label_markers_period_end.Text = "????";
+            this.label_markers_period_end.Text = "по";
             // 
             // label_markers_period_start
             // 
@@ -747,7 +747,7 @@ namespace CnC_WFA
             this.label_markers_period_start.Name = "label_markers_period_start";
             this.label_markers_period_start.Size = new System.Drawing.Size(66, 17);
             this.label_markers_period_start.TabIndex = 13;
-            this.label_markers_period_start.Text = "???????????? ??";
+            this.label_markers_period_start.Text = "Начать с";
             // 
             // label_markers_period
             // 
@@ -757,7 +757,7 @@ namespace CnC_WFA
             this.label_markers_period.Name = "label_markers_period";
             this.label_markers_period.Size = new System.Drawing.Size(58, 17);
             this.label_markers_period.TabIndex = 12;
-            this.label_markers_period.Text = "????????????";
+            this.label_markers_period.Text = "Период";
             // 
             // textBox_markers_period_end
             // 
@@ -784,7 +784,7 @@ namespace CnC_WFA
             this.checkBox_markers_period.Name = "checkBox_markers_period";
             this.checkBox_markers_period.Size = new System.Drawing.Size(128, 40);
             this.checkBox_markers_period.TabIndex = 9;
-            this.checkBox_markers_period.Text = "???? ?????????????? ????????????????????\r\n\r\n";
+            this.checkBox_markers_period.Text = "На заданом промежутке\r\n\r\n";
             this.checkBox_markers_period.UseVisualStyleBackColor = true;
             this.checkBox_markers_period.CheckedChanged += new System.EventHandler(this.checkBox_markers_period_CheckedChanged);
             // 
@@ -814,7 +814,7 @@ namespace CnC_WFA
             this.groupBox_markers_display.Size = new System.Drawing.Size(485, 106);
             this.groupBox_markers_display.TabIndex = 124;
             this.groupBox_markers_display.TabStop = false;
-            this.groupBox_markers_display.Text = "?????????????????? ??????????????";
+            this.groupBox_markers_display.Text = "Параметры маркера";
             // 
             // panel_markers_status
             // 
@@ -836,7 +836,7 @@ namespace CnC_WFA
             this.button_markers_status.Name = "button_markers_status";
             this.button_markers_status.Size = new System.Drawing.Size(103, 36);
             this.button_markers_status.TabIndex = 1;
-            this.button_markers_status.Text = "??????????????????";
+            this.button_markers_status.Text = "Подробнее";
             this.button_markers_status.UseVisualStyleBackColor = false;
             this.button_markers_status.Visible = false;
             this.button_markers_status.Click += new System.EventHandler(this.button_markers_status_Click);
@@ -858,7 +858,7 @@ namespace CnC_WFA
             this.label_markers_color.Name = "label_markers_color";
             this.label_markers_color.Size = new System.Drawing.Size(99, 17);
             this.label_markers_color.TabIndex = 123;
-            this.label_markers_color.Text = "???????? ??????????????";
+            this.label_markers_color.Text = "Цвет маркера";
             // 
             // label_markers_size
             // 
@@ -868,7 +868,7 @@ namespace CnC_WFA
             this.label_markers_size.Name = "label_markers_size";
             this.label_markers_size.Size = new System.Drawing.Size(114, 17);
             this.label_markers_size.TabIndex = 122;
-            this.label_markers_size.Text = "???????????? ??????????????";
+            this.label_markers_size.Text = "Размер маркера";
             // 
             // label_markers_type
             // 
@@ -878,7 +878,7 @@ namespace CnC_WFA
             this.label_markers_type.Name = "label_markers_type";
             this.label_markers_type.Size = new System.Drawing.Size(93, 17);
             this.label_markers_type.TabIndex = 15;
-            this.label_markers_type.Text = "?????? ??????????????";
+            this.label_markers_type.Text = "Тип маркера";
             // 
             // textBox_markers_size
             // 
@@ -909,7 +909,7 @@ namespace CnC_WFA
             this.button_markers_color.Name = "button_markers_color";
             this.button_markers_color.Size = new System.Drawing.Size(84, 35);
             this.button_markers_color.TabIndex = 115;
-            this.button_markers_color.Text = "??????????????";
+            this.button_markers_color.Text = "Выбрать";
             this.button_markers_color.UseVisualStyleBackColor = false;
             this.button_markers_color.Click += new System.EventHandler(this.button_markers_color_Click);
             // 
@@ -939,7 +939,7 @@ namespace CnC_WFA
             this.checkBox_markers_use.Name = "checkBox_markers_use";
             this.checkBox_markers_use.Size = new System.Drawing.Size(185, 21);
             this.checkBox_markers_use.TabIndex = 7;
-            this.checkBox_markers_use.Text = "???????????????????????? ??????????????";
+            this.checkBox_markers_use.Text = "Использовать маркеры";
             this.checkBox_markers_use.UseVisualStyleBackColor = true;
             this.checkBox_markers_use.CheckedChanged += new System.EventHandler(this.checkBox_markers_use_CheckedChanged);
             // 
@@ -955,7 +955,7 @@ namespace CnC_WFA
             this.button_data.Name = "button_data";
             this.button_data.Size = new System.Drawing.Size(122, 36);
             this.button_data.TabIndex = 1;
-            this.button_data.Text = "?????????? ????????????";
+            this.button_data.Text = "Выбор данных";
             this.button_data.UseVisualStyleBackColor = false;
             this.button_data.Click += new System.EventHandler(this.button_data_Click);
             // 
@@ -971,7 +971,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(119, 36);
             this.button_exit.TabIndex = 2;
-            this.button_exit.Text = "??????????????";
+            this.button_exit.Text = "Закрыть";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -1005,7 +1005,7 @@ namespace CnC_WFA
             this.label_name.Name = "label_name";
             this.label_name.Size = new System.Drawing.Size(36, 17);
             this.label_name.TabIndex = 9;
-            this.label_name.Text = "??????";
+            this.label_name.Text = "Имя";
             // 
             // panel3
             // 
@@ -1033,7 +1033,7 @@ namespace CnC_WFA
             this.button_markers.Name = "button_markers";
             this.button_markers.Size = new System.Drawing.Size(122, 36);
             this.button_markers.TabIndex = 38;
-            this.button_markers.Text = "??????????????";
+            this.button_markers.Text = "Маркеры";
             this.button_markers.UseVisualStyleBackColor = false;
             this.button_markers.Click += new System.EventHandler(this.button_markers_Click);
             // 
@@ -1049,7 +1049,7 @@ namespace CnC_WFA
             this.button_display.Name = "button_display";
             this.button_display.Size = new System.Drawing.Size(122, 36);
             this.button_display.TabIndex = 37;
-            this.button_display.Text = "??????????????????????";
+            this.button_display.Text = "Отображение";
             this.button_display.UseVisualStyleBackColor = false;
             this.button_display.Click += new System.EventHandler(this.button_display_Click);
             // 

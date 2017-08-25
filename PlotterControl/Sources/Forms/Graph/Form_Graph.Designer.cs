@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
 using CWA_Resources.Properties;
@@ -116,7 +116,7 @@ namespace CnC_WFA
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(88, 38);
             this.button_add.TabIndex = 1;
-            this.button_add.Text = "????????????????";
+            this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = false;
             this.button_add.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -132,7 +132,7 @@ namespace CnC_WFA
             this.button_edit.Name = "button_edit";
             this.button_edit.Size = new System.Drawing.Size(130, 38);
             this.button_edit.TabIndex = 2;
-            this.button_edit.Text = "??????????????????????????";
+            this.button_edit.Text = "Редактировать";
             this.button_edit.UseVisualStyleBackColor = false;
             this.button_edit.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -148,7 +148,7 @@ namespace CnC_WFA
             this.button_del.Name = "button_del";
             this.button_del.Size = new System.Drawing.Size(88, 40);
             this.button_del.TabIndex = 3;
-            this.button_del.Text = "??????????????";
+            this.button_del.Text = "Удалить";
             this.button_del.UseVisualStyleBackColor = false;
             this.button_del.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -179,7 +179,7 @@ namespace CnC_WFA
             this.groupBox1.Size = new System.Drawing.Size(250, 247);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "??????????????";
+            this.groupBox1.Text = "Графики";
             // 
             // button_copy
             // 
@@ -193,7 +193,7 @@ namespace CnC_WFA
             this.button_copy.Name = "button_copy";
             this.button_copy.Size = new System.Drawing.Size(130, 38);
             this.button_copy.TabIndex = 4;
-            this.button_copy.Text = "??????????????????????";
+            this.button_copy.Text = "Дублировать";
             this.button_copy.UseVisualStyleBackColor = false;
             this.button_copy.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -231,7 +231,7 @@ namespace CnC_WFA
             this.groupBox2.Size = new System.Drawing.Size(250, 231);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "????????????????";
+            this.groupBox2.Text = "Элементы";
             // 
             // button_setup_addPoints
             // 
@@ -255,7 +255,7 @@ namespace CnC_WFA
             this.checkBox_use_addPoints.Name = "checkBox_use_addPoints";
             this.checkBox_use_addPoints.Size = new System.Drawing.Size(146, 21);
             this.checkBox_use_addPoints.TabIndex = 13;
-            this.checkBox_use_addPoints.Text = "?????????? ???? ??????????????";
+            this.checkBox_use_addPoints.Text = "Точки на графике";
             this.checkBox_use_addPoints.UseVisualStyleBackColor = true;
             this.checkBox_use_addPoints.CheckedChanged += new System.EventHandler(this.checkBox_use_addPoints_CheckedChanged);
             // 
@@ -281,7 +281,7 @@ namespace CnC_WFA
             this.checkBox_use_legend.Name = "checkBox_use_legend";
             this.checkBox_use_legend.Size = new System.Drawing.Size(82, 21);
             this.checkBox_use_legend.TabIndex = 11;
-            this.checkBox_use_legend.Text = "??????????????";
+            this.checkBox_use_legend.Text = "Легенда";
             this.checkBox_use_legend.UseVisualStyleBackColor = true;
             this.checkBox_use_legend.CheckedChanged += new System.EventHandler(this.checkBox_use_legend_CheckedChanged);
             // 
@@ -307,7 +307,7 @@ namespace CnC_WFA
             this.checkBox_use_Grid.Name = "checkBox_use_Grid";
             this.checkBox_use_Grid.Size = new System.Drawing.Size(65, 21);
             this.checkBox_use_Grid.TabIndex = 9;
-            this.checkBox_use_Grid.Text = "??????????";
+            this.checkBox_use_Grid.Text = "Сетка";
             this.checkBox_use_Grid.UseVisualStyleBackColor = true;
             this.checkBox_use_Grid.CheckedChanged += new System.EventHandler(this.checkBox__use_Grid_CheckedChanged);
             // 
@@ -333,7 +333,7 @@ namespace CnC_WFA
             this.checkBox_use_docName.Name = "checkBox_use_docName";
             this.checkBox_use_docName.Size = new System.Drawing.Size(167, 21);
             this.checkBox_use_docName.TabIndex = 7;
-            this.checkBox_use_docName.Text = "???????????????? ??????????????????";
+            this.checkBox_use_docName.Text = "Название документа";
             this.checkBox_use_docName.UseVisualStyleBackColor = true;
             this.checkBox_use_docName.CheckedChanged += new System.EventHandler(this.checkBox_use_docName_CheckedChanged);
             // 
@@ -359,7 +359,7 @@ namespace CnC_WFA
             this.checkBox_use_axisNames.Name = "checkBox_use_axisNames";
             this.checkBox_use_axisNames.Size = new System.Drawing.Size(125, 21);
             this.checkBox_use_axisNames.TabIndex = 5;
-            this.checkBox_use_axisNames.Text = "???????????????? ????????";
+            this.checkBox_use_axisNames.Text = "Название осей";
             this.checkBox_use_axisNames.UseVisualStyleBackColor = true;
             this.checkBox_use_axisNames.CheckedChanged += new System.EventHandler(this.checkBox_use_axisNames_CheckedChanged);
             // 
@@ -387,7 +387,7 @@ namespace CnC_WFA
             this.checkBox_use_axis.Name = "checkBox_use_axis";
             this.checkBox_use_axis.Size = new System.Drawing.Size(53, 21);
             this.checkBox_use_axis.TabIndex = 0;
-            this.checkBox_use_axis.Text = "??????";
+            this.checkBox_use_axis.Text = "Оси";
             this.checkBox_use_axis.UseVisualStyleBackColor = true;
             this.checkBox_use_axis.CheckedChanged += new System.EventHandler(this.checkBox_use_axis_CheckedChanged);
             // 
@@ -402,7 +402,7 @@ namespace CnC_WFA
             this.labelHint.Name = "labelHint";
             this.labelHint.Size = new System.Drawing.Size(496, 32);
             this.labelHint.TabIndex = 9;
-            this.labelHint.Text = "???????????????? ?????????????? ?????? ???????????? ????????????...\r\n";
+            this.labelHint.Text = "Добавьте графики для начала работы...\r\n";
             // 
             // label_zoom
             // 
@@ -443,7 +443,7 @@ namespace CnC_WFA
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(88, 40);
             this.button3.TabIndex = 16;
-            this.button3.Text = "????????";
+            this.button3.Text = "Загр";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
@@ -458,7 +458,7 @@ namespace CnC_WFA
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 40);
             this.button2.TabIndex = 5;
-            this.button2.Text = "????????";
+            this.button2.Text = "Сохр";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -473,7 +473,7 @@ namespace CnC_WFA
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 45);
             this.button1.TabIndex = 15;
-            this.button1.Text = "??";
+            this.button1.Text = "С";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
@@ -548,8 +548,8 @@ namespace CnC_WFA
             this.label_load.Name = "label_load";
             this.label_load.Size = new System.Drawing.Size(361, 73);
             this.label_load.TabIndex = 0;
-            this.label_load.Text = "??????????????????, ???????? ???????? ???????????????? ?? \r\n?????????????????? ????????????. ?????? ?????????? ????????????\r\n???? ???????? ??????" +
-    "????.";
+            this.label_load.Text = "Подождите, пока идет загрузка и \r\nобработка данных. Это может занять\r\nдо пары мин" +
+    "ут.";
             this.label_load.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel_loaderr
@@ -573,7 +573,7 @@ namespace CnC_WFA
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(361, 73);
             this.label1.TabIndex = 0;
-            this.label1.Text = "???????????????????? ???????????? ?????? ???????????????? ??????????????????.";
+            this.label1.Text = "Обнаружены ошибки при загрузке документа.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_loaderr_close
@@ -588,7 +588,7 @@ namespace CnC_WFA
             this.button_loaderr_close.Name = "button_loaderr_close";
             this.button_loaderr_close.Size = new System.Drawing.Size(106, 40);
             this.button_loaderr_close.TabIndex = 5;
-            this.button_loaderr_close.Text = "????????i????";
+            this.button_loaderr_close.Text = "Закрiть";
             this.button_loaderr_close.UseVisualStyleBackColor = false;
             // 
             // button_loaderr_more
@@ -603,7 +603,7 @@ namespace CnC_WFA
             this.button_loaderr_more.Name = "button_loaderr_more";
             this.button_loaderr_more.Size = new System.Drawing.Size(106, 40);
             this.button_loaderr_more.TabIndex = 6;
-            this.button_loaderr_more.Text = "??????????????????";
+            this.button_loaderr_more.Text = "Подробнее";
             this.button_loaderr_more.UseVisualStyleBackColor = false;
             // 
             // backgroundWorker1
@@ -639,7 +639,7 @@ namespace CnC_WFA
             this.MinimumSize = new System.Drawing.Size(800, 714);
             this.Name = "Form_Graph";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "???????????????????? ????????????????";
+            this.Text = "Построение графиков";
             this.Load += new System.EventHandler(this.Form_Graph_Load);
             this.SizeChanged += new System.EventHandler(this.Form_Graph_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -1,4 +1,14 @@
-﻿namespace FileBrowser
+/*=================================\
+* ArduinoFileBrowser\SomeFileInfo.Designer.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
+*
+* Created: 24.08.2017 22:03
+* Last Edited: 24.08.2017 22:40:30
+*=================================*/
+
+namespace FileBrowser
 {
     partial class SomeFileInfo
     {

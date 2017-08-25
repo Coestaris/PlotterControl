@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:46
+* Last Edited: 25.08.2017 22:17:05
 *=================================*/
 
 namespace CnC_WFA
@@ -435,7 +435,7 @@ namespace CnC_WFA
             this.label_mcinfo.Name = "label_mcinfo";
             this.label_mcinfo.Size = new System.Drawing.Size(129, 51);
             this.label_mcinfo.TabIndex = 0;
-            this.label_mcinfo.Text = "?????????????? - XY\r\nW - ?????????????? ????????\r\n S - ???????????????? ????????\r\n";
+            this.label_mcinfo.Text = "Стрелки - XY\r\nW - поднять перо\r\n S - опустить перо\r\n";
             // 
             // button_exit
             // 

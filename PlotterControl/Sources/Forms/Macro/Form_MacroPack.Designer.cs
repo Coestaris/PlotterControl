@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 06.08.2017 19:55
-* Last Edited: 18.08.2017 20:26:47
+* Created: 25.08.2017 22:27
+* Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
 namespace CnC_WFA
@@ -54,7 +54,7 @@ namespace CnC_WFA
             this.button_main_device_col.Name = "button_main_device_col";
             this.button_main_device_col.Size = new System.Drawing.Size(160, 57);
             this.button_main_device_col.TabIndex = 1;
-            this.button_main_device_col.Text = "?????????????? ?????????? ??????\r\n";
+            this.button_main_device_col.Text = "Создать новый пак\r\n";
             this.button_main_device_col.UseVisualStyleBackColor = false;
             this.button_main_device_col.Click += new System.EventHandler(this.button_main_device_col_Click);
             // 
@@ -70,7 +70,7 @@ namespace CnC_WFA
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 57);
             this.button1.TabIndex = 0;
-            this.button1.Text = "?????????????????? ???????????????????????? ??????\r\n\r\n\r\n";
+            this.button1.Text = "Загрузить существующий пак\r\n\r\n\r\n";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // Form_MacroPack

@@ -1,11 +1,11 @@
 /*=================================\
-* PlotterControl\Form_serialmonitor.Designer.cs
+* PlotterControl\Form_SerialMonitor.Designer.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:46
+* Last Edited: 25.08.2017 22:16:57
 *=================================*/
 
 namespace CnC_WFA
@@ -120,7 +120,7 @@ namespace CnC_WFA
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(115, 30);
             this.button_open.TabIndex = 4;
-            this.button_open.Text = "??????????????????????";
+            this.button_open.Text = "Подключится";
             this.button_open.UseVisualStyleBackColor = false;
             this.button_open.Click += new System.EventHandler(this.button_open_Click);
             // 
@@ -137,7 +137,7 @@ namespace CnC_WFA
             this.groupBox_setup.Size = new System.Drawing.Size(649, 62);
             this.groupBox_setup.TabIndex = 5;
             this.groupBox_setup.TabStop = false;
-            this.groupBox_setup.Text = "??????????????????";
+            this.groupBox_setup.Text = "Настройки";
             // 
             // label_portname
             // 
@@ -147,7 +147,7 @@ namespace CnC_WFA
             this.label_portname.Name = "label_portname";
             this.label_portname.Size = new System.Drawing.Size(86, 17);
             this.label_portname.TabIndex = 9;
-            this.label_portname.Text = "?????? ??????????: ";
+            this.label_portname.Text = "Имя порта: ";
             // 
             // label_bdrate
             // 
@@ -157,7 +157,7 @@ namespace CnC_WFA
             this.label_bdrate.Name = "label_bdrate";
             this.label_bdrate.Size = new System.Drawing.Size(157, 17);
             this.label_bdrate.TabIndex = 8;
-            this.label_bdrate.Text = "???????????????? ????????????????????:";
+            this.label_bdrate.Text = "Скорость соеденения:";
             // 
             // button_send
             // 
@@ -171,7 +171,7 @@ namespace CnC_WFA
             this.button_send.Name = "button_send";
             this.button_send.Size = new System.Drawing.Size(100, 40);
             this.button_send.TabIndex = 5;
-            this.button_send.Text = "??????????????????";
+            this.button_send.Text = "Отправить";
             this.button_send.UseVisualStyleBackColor = false;
             this.button_send.Click += new System.EventHandler(this.button_send_Click);
             // 
@@ -201,7 +201,7 @@ namespace CnC_WFA
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(94, 38);
             this.button_exit.TabIndex = 7;
-            this.button_exit.Text = "??????????";
+            this.button_exit.Text = "Выход";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -227,7 +227,7 @@ namespace CnC_WFA
             this.button_savelog.Name = "button_savelog";
             this.button_savelog.Size = new System.Drawing.Size(126, 32);
             this.button_savelog.TabIndex = 9;
-            this.button_savelog.Text = "?????????????????? ??????";
+            this.button_savelog.Text = "Сохранить лог";
             this.button_savelog.UseVisualStyleBackColor = false;
             this.button_savelog.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -239,7 +239,7 @@ namespace CnC_WFA
             this.checkBox_usehelper.Name = "checkBox_usehelper";
             this.checkBox_usehelper.Size = new System.Drawing.Size(126, 38);
             this.checkBox_usehelper.TabIndex = 10;
-            this.checkBox_usehelper.Text = "???????????????????????? \r\n????????????????";
+            this.checkBox_usehelper.Text = "Использовать \r\nпомощник";
             this.checkBox_usehelper.UseVisualStyleBackColor = true;
             // 
             // saveFileDialog1

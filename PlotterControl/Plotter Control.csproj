@@ -119,6 +119,24 @@
     <Compile Include="Sources\Forms\Graph\Form_Dialog_EditGraph.Designer.cs">
       <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.designer.cs">
+      <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_MacroPack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_MacroPack.designer.cs">
+      <DependentUpon>Form_MacroPack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Macros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Macros.designer.cs">
+      <DependentUpon>Form_Macros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sources\Forms\MainForm\Form_Dialog_Assoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,18 +207,6 @@
     <Compile Include="Sources\Forms\Form_CurvePlugins.Designer.cs">
       <DependentUpon>Form_CurvePlugins.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.Designer.cs">
-      <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_Macros.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_Macros.Designer.cs">
-      <DependentUpon>Form_Macros.cs</DependentUpon>
-    </Compile>
     <Compile Include="Sources\Other\Environment\CommandLineParser.cs" />
     <Compile Include="Sources\Other\FastBitmap.cs" />
     <Compile Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.cs">
@@ -214,12 +220,6 @@
     </Compile>
     <Compile Include="Sources\Forms\VEdit\Form_EditVector.Designer.cs">
       <DependentUpon>Form_EditVector.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_MacroPack.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sources\Forms\Macro\Form_MacroPack.Designer.cs">
-      <DependentUpon>Form_MacroPack.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\Forms\Form_ManualControl.cs">
       <SubType>Form</SubType>
@@ -277,6 +277,15 @@
     <EmbeddedResource Include="Sources\Forms\Graph\Form_Dialog_EditGraph.resx">
       <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.resx">
+      <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_MacroPack.resx">
+      <DependentUpon>Form_MacroPack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Macros.resx">
+      <DependentUpon>Form_Macros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\MainForm\Form_Dialog_Assoc.resx">
       <DependentUpon>Form_Dialog_Assoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,20 +301,11 @@
     <EmbeddedResource Include="Sources\Forms\VEdit\Form_Dialog_VectorEdit.resx">
       <DependentUpon>Form_Dialog_VectorEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.resx">
-      <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\VEdit\Form_EditVector.resx">
       <DependentUpon>Form_EditVector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Macro\Form_MacroPack.resx">
-      <DependentUpon>Form_MacroPack.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Graph\Form_Graph.resx">
       <DependentUpon>Form_Graph.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sources\Forms\Macro\Form_Macros.resx">
-      <DependentUpon>Form_Macros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Form_ManualControl.resx">
       <DependentUpon>Form_ManualControl.cs</DependentUpon>

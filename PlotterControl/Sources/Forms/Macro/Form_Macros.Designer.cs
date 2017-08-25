@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Created: 25.08.2017 22:27
+* Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
 namespace CnC_WFA
@@ -606,7 +606,7 @@ namespace CnC_WFA
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1083, 24);
             this.menuStrip.TabIndex = 10;
-            this.menuStrip.Text = "????????";
+            this.menuStrip.Text = "Файл";
             // 
             // toolStripMenuItem_file
             // 
@@ -620,27 +620,27 @@ namespace CnC_WFA
             this.toolStripMenuItem_close});
             this.toolStripMenuItem_file.Name = "toolStripMenuItem_file";
             this.toolStripMenuItem_file.Size = new System.Drawing.Size(48, 20);
-            this.toolStripMenuItem_file.Text = "????????";
+            this.toolStripMenuItem_file.Text = "Файл";
             // 
             // toolStripMenuItem_new
             // 
             this.toolStripMenuItem_new.Name = "toolStripMenuItem_new";
             this.toolStripMenuItem_new.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_new.Text = "??????????";
+            this.toolStripMenuItem_new.Text = "Новый";
             this.toolStripMenuItem_new.Click += new System.EventHandler(this.button_clear_Click);
             // 
             // toolStripMenuItem_save
             // 
             this.toolStripMenuItem_save.Name = "toolStripMenuItem_save";
             this.toolStripMenuItem_save.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_save.Text = "??????????????????";
+            this.toolStripMenuItem_save.Text = "Сохранить";
             this.toolStripMenuItem_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // toolStripMenuItem_load
             // 
             this.toolStripMenuItem_load.Name = "toolStripMenuItem_load";
             this.toolStripMenuItem_load.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_load.Text = "??????????????????";
+            this.toolStripMenuItem_load.Text = "Загрузить";
             this.toolStripMenuItem_load.Click += new System.EventHandler(this.button_load_Click);
             // 
             // toolStripSeparator1
@@ -652,7 +652,7 @@ namespace CnC_WFA
             // 
             this.toolStripMenuItem_close.Name = "toolStripMenuItem_close";
             this.toolStripMenuItem_close.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_close.Text = "??????????????";
+            this.toolStripMenuItem_close.Text = "Закрыть";
             this.toolStripMenuItem_close.Click += new System.EventHandler(this.button3_Click);
             // 
             // toolStripMenuItem_macro
@@ -665,14 +665,14 @@ namespace CnC_WFA
             this.toolStripMenuItem_addimg});
             this.toolStripMenuItem_macro.Name = "toolStripMenuItem_macro";
             this.toolStripMenuItem_macro.Size = new System.Drawing.Size(62, 20);
-            this.toolStripMenuItem_macro.Text = "????????????";
+            this.toolStripMenuItem_macro.Text = "Макрос";
             // 
             // toolStripTextBox_name
             // 
             this.toolStripTextBox_name.BackColor = System.Drawing.SystemColors.Menu;
             this.toolStripTextBox_name.Name = "toolStripTextBox_name";
             this.toolStripTextBox_name.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox_name.Text = "??????";
+            this.toolStripTextBox_name.Text = "Имя";
             this.toolStripTextBox_name.TextChanged += new System.EventHandler(this.textBox_name_TextChanged);
             // 
             // toolStripTextBox_discr
@@ -680,7 +680,7 @@ namespace CnC_WFA
             this.toolStripTextBox_discr.BackColor = System.Drawing.SystemColors.Menu;
             this.toolStripTextBox_discr.Name = "toolStripTextBox_discr";
             this.toolStripTextBox_discr.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox_discr.Text = "????????????????";
+            this.toolStripTextBox_discr.Text = "Описание";
             this.toolStripTextBox_discr.TextChanged += new System.EventHandler(this.textBox_descr_TextChanged);
             // 
             // toolStripSeparator2
@@ -692,20 +692,20 @@ namespace CnC_WFA
             // 
             this.toolStripMenuItem_tocorner.Name = "toolStripMenuItem_tocorner";
             this.toolStripMenuItem_tocorner.Size = new System.Drawing.Size(165, 22);
-            this.toolStripMenuItem_tocorner.Text = "??????????????????????";
+            this.toolStripMenuItem_tocorner.Text = "Переместить";
             // 
             // toolStripMenuItem_addimg
             // 
             this.toolStripMenuItem_addimg.Name = "toolStripMenuItem_addimg";
             this.toolStripMenuItem_addimg.Size = new System.Drawing.Size(165, 22);
-            this.toolStripMenuItem_addimg.Text = "???????????????? ??????????.";
+            this.toolStripMenuItem_addimg.Text = "Добавить изобр.";
             // 
             // toolStripMenuItem_saveas
             // 
             this.toolStripMenuItem_saveas.Enabled = false;
             this.toolStripMenuItem_saveas.Name = "toolStripMenuItem_saveas";
             this.toolStripMenuItem_saveas.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_saveas.Text = "?????????????????? ??????";
+            this.toolStripMenuItem_saveas.Text = "Сохранить как";
             this.toolStripMenuItem_saveas.Click += new System.EventHandler(this.toolStripMenuItem_saveas_Click);
             // 
             // toolStripSeparator3

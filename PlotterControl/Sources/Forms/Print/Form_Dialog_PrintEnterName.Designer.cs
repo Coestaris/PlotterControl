@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 19.08.2017 18:00:55
+* Last Edited: 25.08.2017 22:25:11
 *=================================*/
 
 namespace CnC_WFA
@@ -124,7 +124,7 @@ namespace CnC_WFA
             this.label_pc.Name = "label_pc";
             this.label_pc.Size = new System.Drawing.Size(124, 19);
             this.label_pc.TabIndex = 35;
-            this.label_pc.Text = "???????? ?? ??????????????:";
+            this.label_pc.Text = "Путь к вектору:";
             // 
             // label_name
             // 
@@ -134,7 +134,7 @@ namespace CnC_WFA
             this.label_name.Name = "label_name";
             this.label_name.Size = new System.Drawing.Size(111, 19);
             this.label_name.TabIndex = 36;
-            this.label_name.Text = "?????? ??????????????: ";
+            this.label_name.Text = "Имя вектора: ";
             // 
             // button1
             // 
@@ -155,7 +155,6 @@ namespace CnC_WFA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(437, 124);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.loadingCircle_previewLoad);
@@ -168,7 +167,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Dialog_PrintEnterNames";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "???????????????? ?????????????? ???? ????????????????????";
+            this.Text = "Отправка вектора на устройство";
             this.Load += new System.EventHandler(this.EnterNameDialog_Load);
             this.Shown += new System.EventHandler(this.EnterNameDialog_Shown);
             this.ResumeLayout(false);
