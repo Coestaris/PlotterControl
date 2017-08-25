@@ -55,11 +55,12 @@ namespace FileBrowser
 
         }
 
+        private InfoType type;
 
         public SomeFileInfo(InfoType type, string FileName)
         {
             InitializeComponent();
-
+            this.type = type;
             if (type == InfoType.Config)
                 richTextBox1.Text = new PlotterConfigOptions(File.ReadAllBytes(FileName)).ToString();
             else if (type == InfoType.CTable)
@@ -77,6 +78,11 @@ namespace FileBrowser
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void SomeFileInfo_Load(object sender, EventArgs e)
+        {
+            label1.Text = string.Format("Тип файла: {0}", type.ToString());
         }
     }
 }

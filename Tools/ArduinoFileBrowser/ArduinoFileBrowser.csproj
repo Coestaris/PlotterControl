@@ -61,6 +61,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SelectPortForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectPortForm.Designer.cs">
+      <DependentUpon>SelectPortForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SomeFileInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectPortForm.resx">
+      <DependentUpon>SelectPortForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SomeFileInfo.resx">
       <DependentUpon>SomeFileInfo.cs</DependentUpon>
