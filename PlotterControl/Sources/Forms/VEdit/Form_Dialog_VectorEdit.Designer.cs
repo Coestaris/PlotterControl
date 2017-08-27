@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 25.08.2017 22:17:30
+* Last Edited: 26.08.2017 16:30:54
 *=================================*/
 
 using CWA_Resources;
@@ -987,10 +987,10 @@ namespace CnC_WFA
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(879, 325);
+            this.tabPage3.Size = new System.Drawing.Size(879, 331);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Help";
             this.tabPage3.UseVisualStyleBackColor = true;

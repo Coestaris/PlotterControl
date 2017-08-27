@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:48
+* Last Edited: 26.08.2017 20:14:56
 *=================================*/
 
 using BrendanGrant.Helpers.FileAssociation;
@@ -110,19 +110,15 @@ namespace CnC_WFA
 
         public static List<bool> GetUnidentifiedAssoc()
         {
-            FileAssociationInfo fai_pcv = new FileAssociationInfo(".pcv");
-            FileAssociationInfo fai_pcgraph = new FileAssociationInfo(".pcgraph");
-            FileAssociationInfo fai_pcvdoc = new FileAssociationInfo(".pcvdoc");
-            FileAssociationInfo fai_prres = new FileAssociationInfo(".prres");
-            FileAssociationInfo fai_pcmacros = new FileAssociationInfo(".pcmacros");
-            FileAssociationInfo fai_pcmpack = new FileAssociationInfo(".pcmpack");
-            List<bool> Unidentified = new List<bool>();
-            Unidentified.Add(!fai_pcv.Exists);
-            Unidentified.Add(!fai_pcvdoc.Exists);
-            Unidentified.Add(!fai_prres.Exists);
-            Unidentified.Add(!fai_pcmacros.Exists);
-            Unidentified.Add(!fai_pcmpack.Exists);
-            Unidentified.Add(!fai_pcgraph.Exists);
+            List<bool> Unidentified = new List<bool>
+            {
+                !new FileAssociationInfo(".pcv").Exists,
+                !new FileAssociationInfo(".pcgraph").Exists,
+                !new FileAssociationInfo(".pcvdoc").Exists,
+                !new FileAssociationInfo(".prres").Exists,
+                !new FileAssociationInfo(".pcmacros").Exists,
+                !new FileAssociationInfo(".pcmpack").Exists
+            };
             return Unidentified;
         }
 
@@ -276,9 +272,8 @@ namespace CnC_WFA
         public static void DeleteAllAssociations()
         {
             List<string> CantDelete = new List<string>();
-            AssocDeleteFailReason reason;
             foreach (var item in Enum.GetValues(typeof(FileFormats)))
-                if (!DeleteAssociation((FileFormats)item, out reason))
+                if (!DeleteAssociation((FileFormats)item, out AssocDeleteFailReason reason))
                     CantDelete.Add(TranslateBase.CurrentLang.Phrase["Core.ProgID"] + "\"" + ((FileFormats)item).ToString() + "\". Reason(s): " + reason.ToString());
             if (CantDelete.Count != 0) MessageBox.Show(TranslateBase.CurrentLang.Error["Core.CantDeleteNextElems"] + "\n  --" + string.Join("\n  --" ,CantDelete));
         }

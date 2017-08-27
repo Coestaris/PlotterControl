@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 25.08.2017 22:17:44
+* Last Edited: 26.08.2017 16:30:54
 *=================================*/
 
 using CWA_Resources;
@@ -254,7 +254,7 @@ namespace CnC_WFA
             this.button_delete.FlatAppearance.BorderSize = 2;
             this.button_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_delete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_delete.Image = Resources.delete;
+            this.button_delete.Image = ((System.Drawing.Image)(resources.GetObject("button_delete.Image")));
             this.button_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_delete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_delete.Location = new System.Drawing.Point(7, 188);
@@ -296,7 +296,7 @@ namespace CnC_WFA
             this.button_drcolor.FlatAppearance.BorderSize = 2;
             this.button_drcolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_drcolor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_drcolor.Image = Resources.palette;
+            this.button_drcolor.Image = ((System.Drawing.Image)(resources.GetObject("button_drcolor.Image")));
             this.button_drcolor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_drcolor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_drcolor.Location = new System.Drawing.Point(93, 188);
@@ -325,7 +325,7 @@ namespace CnC_WFA
             this.button_rename.FlatAppearance.BorderSize = 2;
             this.button_rename.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_rename.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_rename.Image = Resources.edit;
+            this.button_rename.Image = ((System.Drawing.Image)(resources.GetObject("button_rename.Image")));
             this.button_rename.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_rename.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_rename.Location = new System.Drawing.Point(7, 224);
@@ -344,7 +344,7 @@ namespace CnC_WFA
             this.button_edit.FlatAppearance.BorderSize = 2;
             this.button_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_edit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_edit.Image = Resources.edit;
+            this.button_edit.Image = ((System.Drawing.Image)(resources.GetObject("button_edit.Image")));
             this.button_edit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_edit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_edit.Location = new System.Drawing.Point(7, 146);
@@ -503,7 +503,7 @@ namespace CnC_WFA
             this.button_hidezoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_hidezoom.Font = new System.Drawing.Font("Cambria", 12F);
             this.button_hidezoom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_hidezoom.Image = Resources.invisible;
+            this.button_hidezoom.Image = ((System.Drawing.Image)(resources.GetObject("button_hidezoom.Image")));
             this.button_hidezoom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_hidezoom.Location = new System.Drawing.Point(1080, 676);
             this.button_hidezoom.Name = "button_hidezoom";
@@ -537,7 +537,7 @@ namespace CnC_WFA
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = Resources.setup;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox2.Location = new System.Drawing.Point(330, 102);
             this.pictureBox2.Name = "pictureBox2";
@@ -839,7 +839,7 @@ namespace CnC_WFA
             this.button_loaddata_load.FlatAppearance.BorderSize = 2;
             this.button_loaddata_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_loaddata_load.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_loaddata_load.Image = Resources.open;
+            this.button_loaddata_load.Image = ((System.Drawing.Image)(resources.GetObject("button_loaddata_load.Image")));
             this.button_loaddata_load.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_loaddata_load.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_loaddata_load.Location = new System.Drawing.Point(7, 226);
@@ -892,7 +892,7 @@ namespace CnC_WFA
             this.button_loaddata_break.FlatAppearance.BorderSize = 2;
             this.button_loaddata_break.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_loaddata_break.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_loaddata_break.Image = Resources.delete;
+            this.button_loaddata_break.Image = ((System.Drawing.Image)(resources.GetObject("button_loaddata_break.Image")));
             this.button_loaddata_break.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button_loaddata_break.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_loaddata_break.Location = new System.Drawing.Point(165, 225);
@@ -913,7 +913,7 @@ namespace CnC_WFA
             this.button_loaddata_ok.FlatAppearance.BorderSize = 2;
             this.button_loaddata_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_loaddata_ok.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_loaddata_ok.Image = Resources.ok2;
+            this.button_loaddata_ok.Image = ((System.Drawing.Image)(resources.GetObject("button_loaddata_ok.Image")));
             this.button_loaddata_ok.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button_loaddata_ok.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_loaddata_ok.Location = new System.Drawing.Point(197, 225);
@@ -990,7 +990,7 @@ namespace CnC_WFA
             this.button_done.FlatAppearance.BorderSize = 2;
             this.button_done.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_done.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_done.Image = Resources.ok2;
+            this.button_done.Image = ((System.Drawing.Image)(resources.GetObject("button_done.Image")));
             this.button_done.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button_done.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_done.Location = new System.Drawing.Point(199, 201);
@@ -1011,7 +1011,7 @@ namespace CnC_WFA
             this.button_break.FlatAppearance.BorderSize = 2;
             this.button_break.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_break.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_break.Image = Resources.delete;
+            this.button_break.Image = ((System.Drawing.Image)(resources.GetObject("button_break.Image")));
             this.button_break.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button_break.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_break.Location = new System.Drawing.Point(164, 201);
@@ -1033,7 +1033,7 @@ namespace CnC_WFA
             this.button_dideprop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_dideprop.Font = new System.Drawing.Font("Cambria", 12F);
             this.button_dideprop.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_dideprop.Image = Resources.invisible;
+            this.button_dideprop.Image = ((System.Drawing.Image)(resources.GetObject("button_dideprop.Image")));
             this.button_dideprop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_dideprop.Location = new System.Drawing.Point(1076, 46);
             this.button_dideprop.Name = "button_dideprop";
@@ -1070,7 +1070,7 @@ namespace CnC_WFA
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = Resources.newfile;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
@@ -1080,7 +1080,7 @@ namespace CnC_WFA
             // toolStripButton3
             // 
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = Resources.open;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
@@ -1091,7 +1091,7 @@ namespace CnC_WFA
             // 
             this.toolStripButton_save_.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton_save_.Enabled = false;
-            this.toolStripButton_save_.Image = Resources.save;
+            this.toolStripButton_save_.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_save_.Image")));
             this.toolStripButton_save_.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_save_.Name = "toolStripButton_save_";
             this.toolStripButton_save_.Size = new System.Drawing.Size(23, 22);
@@ -1112,7 +1112,7 @@ namespace CnC_WFA
             this.shapeToolStripMenuItem1,
             this.textToolStripMenuItem1});
             this.toolStripSplitButton_additems.Enabled = false;
-            this.toolStripSplitButton_additems.Image = Resources.add;
+            this.toolStripSplitButton_additems.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton_additems.Image")));
             this.toolStripSplitButton_additems.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton_additems.Name = "toolStripSplitButton_additems";
             this.toolStripSplitButton_additems.Size = new System.Drawing.Size(32, 22);
@@ -1121,7 +1121,7 @@ namespace CnC_WFA
             // rasterImageToolStripMenuItem
             // 
             this.rasterImageToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.rasterImageToolStripMenuItem.Image = Resources.image;
+            this.rasterImageToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rasterImageToolStripMenuItem.Image")));
             this.rasterImageToolStripMenuItem.Name = "rasterImageToolStripMenuItem";
             this.rasterImageToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.rasterImageToolStripMenuItem.Text = "Raster Image";
@@ -1129,7 +1129,7 @@ namespace CnC_WFA
             // 
             // dataToolStripMenuItem1
             // 
-            this.dataToolStripMenuItem1.Image = Resources.database;
+            this.dataToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("dataToolStripMenuItem1.Image")));
             this.dataToolStripMenuItem1.Name = "dataToolStripMenuItem1";
             this.dataToolStripMenuItem1.Size = new System.Drawing.Size(173, 24);
             this.dataToolStripMenuItem1.Text = "Data";
@@ -1142,42 +1142,42 @@ namespace CnC_WFA
             this.cirlceToolStripMenuItem1,
             this.lineToolStripMenuItem1,
             this.squareToolStripMenuItem});
-            this.shapeToolStripMenuItem1.Image = Resources.shapes;
+            this.shapeToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("shapeToolStripMenuItem1.Image")));
             this.shapeToolStripMenuItem1.Name = "shapeToolStripMenuItem1";
             this.shapeToolStripMenuItem1.Size = new System.Drawing.Size(173, 24);
             this.shapeToolStripMenuItem1.Text = "Shape";
             // 
             // triangleToolStripMenuItem1
             // 
-            this.triangleToolStripMenuItem1.Image = Resources.triangle;
+            this.triangleToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("triangleToolStripMenuItem1.Image")));
             this.triangleToolStripMenuItem1.Name = "triangleToolStripMenuItem1";
             this.triangleToolStripMenuItem1.Size = new System.Drawing.Size(138, 24);
             this.triangleToolStripMenuItem1.Text = "Triangle";
             // 
             // cirlceToolStripMenuItem1
             // 
-            this.cirlceToolStripMenuItem1.Image = Resources.ellipse;
+            this.cirlceToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("cirlceToolStripMenuItem1.Image")));
             this.cirlceToolStripMenuItem1.Name = "cirlceToolStripMenuItem1";
             this.cirlceToolStripMenuItem1.Size = new System.Drawing.Size(138, 24);
             this.cirlceToolStripMenuItem1.Text = "Cirlce";
             // 
             // lineToolStripMenuItem1
             // 
-            this.lineToolStripMenuItem1.Image = Resources.line;
+            this.lineToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("lineToolStripMenuItem1.Image")));
             this.lineToolStripMenuItem1.Name = "lineToolStripMenuItem1";
             this.lineToolStripMenuItem1.Size = new System.Drawing.Size(138, 24);
             this.lineToolStripMenuItem1.Text = "Line";
             // 
             // squareToolStripMenuItem
             // 
-            this.squareToolStripMenuItem.Image = Resources.rectangle;
+            this.squareToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("squareToolStripMenuItem.Image")));
             this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
             this.squareToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
             this.squareToolStripMenuItem.Text = "Square";
             // 
             // textToolStripMenuItem1
             // 
-            this.textToolStripMenuItem1.Image = Resources.font;
+            this.textToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("textToolStripMenuItem1.Image")));
             this.textToolStripMenuItem1.Name = "textToolStripMenuItem1";
             this.textToolStripMenuItem1.Size = new System.Drawing.Size(173, 24);
             this.textToolStripMenuItem1.Text = "Text";
@@ -1187,7 +1187,7 @@ namespace CnC_WFA
             // 
             this.toolStripButton_docopts_.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton_docopts_.Enabled = false;
-            this.toolStripButton_docopts_.Image = Resources.settings;
+            this.toolStripButton_docopts_.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_docopts_.Image")));
             this.toolStripButton_docopts_.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_docopts_.Name = "toolStripButton_docopts_";
             this.toolStripButton_docopts_.Size = new System.Drawing.Size(23, 22);
@@ -1198,7 +1198,7 @@ namespace CnC_WFA
             // 
             this.toolStripButton_render_.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton_render_.Enabled = false;
-            this.toolStripButton_render_.Image = Resources.image;
+            this.toolStripButton_render_.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_render_.Image")));
             this.toolStripButton_render_.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_render_.Name = "toolStripButton_render_";
             this.toolStripButton_render_.Size = new System.Drawing.Size(23, 22);
@@ -1425,21 +1425,21 @@ namespace CnC_WFA
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.editToolStripMenuItem.Image = Resources.edit;
+            this.editToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItem.Image")));
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // cloneToolStripMenuItem
             // 
-            this.cloneToolStripMenuItem.Image = Resources.add;
+            this.cloneToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cloneToolStripMenuItem.Image")));
             this.cloneToolStripMenuItem.Name = "cloneToolStripMenuItem";
             this.cloneToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.cloneToolStripMenuItem.Text = "Clone";
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Image = Resources.delete;
+            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
@@ -1473,7 +1473,7 @@ namespace CnC_WFA
             this.button_pickfont.FlatAppearance.BorderSize = 2;
             this.button_pickfont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_pickfont.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_pickfont.Image = Resources.font;
+            this.button_pickfont.Image = ((System.Drawing.Image)(resources.GetObject("button_pickfont.Image")));
             this.button_pickfont.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_pickfont.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_pickfont.Location = new System.Drawing.Point(3, 201);

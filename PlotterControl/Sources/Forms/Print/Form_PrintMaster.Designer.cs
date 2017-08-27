@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 25.08.2017 22:24:21
+* Last Edited: 26.08.2017 16:30:55
 *=================================*/
 
 namespace CnC_WFA
@@ -107,11 +107,11 @@ namespace CnC_WFA
             this.button_pause = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabPage_end = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.button_tab5_exit = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabPage_main.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -124,7 +124,7 @@ namespace CnC_WFA
             this.tabPage_print.SuspendLayout();
             this.tabPage_end.SuspendLayout();
             this.SuspendLayout();
-                // 
+            // 
             // label_title_2
             // 
             this.label_title_2.Font = new System.Drawing.Font("Cambria", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -944,6 +944,27 @@ namespace CnC_WFA
             this.tabPage_end.TabIndex = 8;
             this.tabPage_end.Text = "tabPage_end";
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(26, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(491, 45);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "???? ???????????? ?????????????? ???????????? ????????????.\r\n";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Cambria", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(3, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(401, 41);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "???????????? ??????????????????\r\n";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // button_tab5_exit
             // 
             this.button_tab5_exit.BackColor = System.Drawing.Color.White;
@@ -972,29 +993,7 @@ namespace CnC_WFA
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(491, 63);
             this.label1.TabIndex = 40;
-            this.label1.Text = "?????? ?????????????????????? ???????????? ???????????????????? ?????????????????????? ?? ????????????????????. ???????????????? ?????? ?????????? ?? " +
-    "???????????????? ???????????????????? ?? ?????????? ??????????????????????.\r\n";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(26, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(491, 45);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "???? ???????????? ?????????????? ???????????? ????????????.\r\n";
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Cambria", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(3, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(401, 41);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "???????????? ??????????????????\r\n";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Text = resources.GetString("label1.Text");
             // 
             // Form_PrintMaster
             // 

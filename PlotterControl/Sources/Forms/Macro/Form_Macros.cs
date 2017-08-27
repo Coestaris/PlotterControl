@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 26.08.2017 21:29:06
 *=================================*/
 
 using CWA;
@@ -128,6 +128,8 @@ namespace CnC_WFA
             GrNormal = grNormal.ToArray();
         }
 
+        private Bitmap MacroBmp;
+
         private void Render()
         {
             float height = scrh * Zoom;
@@ -144,7 +146,12 @@ namespace CnC_WFA
             using (Graphics gr = Graphics.FromImage(bmp))
             {
                 gr.FillRectangle(Brushes.White, new RectangleF(0, 0, wight, height));
-                gr.DrawRectangle(PenRectangle, 2,2, wight-4, height-4);
+                if(MacroBmp != null)
+                   
+                    gr.DrawImage(MacroBmp, 0, 0,
+                        main.PicSize.Width * Zoom / .013f,
+                        main.PicSize.Height * Zoom  / .013f);
+                gr.DrawRectangle(PenRectangle, 2, 2, wight - 4, height - 4);
                 foreach (var item in grUp) gr.DrawPath(new Pen(Color.Gray, 1 * Zoom) { DashStyle = DashStyle.Dash }, item);
                 foreach (var item in grNo) gr.DrawPath(new Pen(Color.Black, 1 * Zoom), item);
             }
@@ -169,8 +176,10 @@ namespace CnC_WFA
             radioButton_move_vetr.Checked = true;
             radioButton_elt_none.Checked = true;
             Form_macroses_Resize(null, null);
-            PenRectangle = new Pen(Color.Black, 1);
-            PenRectangle.DashStyle = DashStyle.Dash;
+            PenRectangle = new Pen(Color.Black, 1)
+            {
+                DashStyle = DashStyle.Dash
+            };
             Zoom = 1;
             RenderGR();
             Render();
@@ -372,8 +381,11 @@ namespace CnC_WFA
                 }
                 radioButton_elt_none.Checked = true;
                 Form_macroses_Resize(null, null);
-                PenRectangle = new Pen(Color.Black, 1);
-                PenRectangle.DashStyle = DashStyle.Dash;
+                MacroBmp = new Bitmap(main.PicFileName);
+                PenRectangle = new Pen(Color.Black, 1)
+                {
+                    DashStyle = DashStyle.Dash
+                };
                 Zoom = 1;
                 IsLoad = true;
                 LastFilePath = openFileDialog1.FileName;
@@ -532,6 +544,39 @@ namespace CnC_WFA
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 main.Save(saveFileDialog1.FileName);
+            }
+        }
+
+        private void toolStripMenuItem_tocorner_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem_addimg_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(main.PicFileName))
+            {
+                var f = new Form_Dialog_MacroAddImage();
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    main.PicFileName = f.Path;
+                    main.PicSize = new SizeF(f.XSize, f.YSize);
+                    MacroBmp = new Bitmap(f.Path);
+                };
+            } else
+            {
+                var f = new Form_Dialog_MacroAddImage()
+                {
+                    Path = main.PicFileName,
+                    XSize = main.PicSize.Width,
+                    YSize = main.PicSize.Height
+                };
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    main.PicFileName = f.Path;
+                    main.PicSize = new SizeF(f.XSize, f.YSize);
+                    MacroBmp = new Bitmap(f.Path);
+                };
             }
         }
 

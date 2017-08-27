@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 25.08.2017 22:16:07
+* Last Edited: 26.08.2017 16:30:54
 *=================================*/
 
 namespace CnC_WFA
@@ -477,12 +477,12 @@ namespace CnC_WFA
             this.groupBox_realtime.TabStop = false;
             this.groupBox_realtime.Text = "Отрисовка в реальном времени";
             // 
-            // label1
+            // label_ms
             // 
             this.label_ms.AllowDrop = true;
             this.label_ms.Enabled = false;
             this.label_ms.Location = new System.Drawing.Point(135, 75);
-            this.label_ms.Name = "label1";
+            this.label_ms.Name = "label_ms";
             this.label_ms.Size = new System.Drawing.Size(31, 20);
             this.label_ms.TabIndex = 12;
             this.label_ms.Text = "мс.";
@@ -505,12 +505,12 @@ namespace CnC_WFA
             this.groupBox_main.TabStop = false;
             this.groupBox_main.Text = "Отрисовка";
             // 
-            // checkBox1
+            // checkBox_randomcolor
             // 
             this.checkBox_randomcolor.AutoSize = true;
             this.checkBox_randomcolor.Enabled = false;
             this.checkBox_randomcolor.Location = new System.Drawing.Point(6, 134);
-            this.checkBox_randomcolor.Name = "checkBox1";
+            this.checkBox_randomcolor.Name = "checkBox_randomcolor";
             this.checkBox_randomcolor.Size = new System.Drawing.Size(186, 21);
             this.checkBox_randomcolor.TabIndex = 21;
             this.checkBox_randomcolor.Text = "Случайный цвет линий";
@@ -559,7 +559,7 @@ namespace CnC_WFA
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form_ViewVect";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "View vector";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_viewvect_FormClosing);
             this.Load += new System.EventHandler(this.Form_viewvect_Load);

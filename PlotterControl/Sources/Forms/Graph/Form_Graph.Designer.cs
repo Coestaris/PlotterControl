@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 26.08.2017 16:30:55
 *=================================*/
 
 using CWA_Resources.Properties;
@@ -77,9 +77,9 @@ namespace CnC_WFA
             this.loadingCircle_tab1 = new MRG.Controls.UI.LoadingCircle();
             this.label_load = new System.Windows.Forms.Label();
             this.panel_loaderr = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button_loaderr_close = new System.Windows.Forms.Button();
             this.button_loaderr_more = new System.Windows.Forms.Button();
+            this.button_loaderr_close = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -566,15 +566,20 @@ namespace CnC_WFA
             this.panel_loaderr.TabIndex = 32;
             this.panel_loaderr.Visible = false;
             // 
-            // label1
+            // button_loaderr_more
             // 
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(-1, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(361, 73);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Обнаружены ошибки при загрузке документа.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button_loaderr_more.BackColor = System.Drawing.Color.White;
+            this.button_loaderr_more.Enabled = false;
+            this.button_loaderr_more.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_loaderr_more.FlatAppearance.BorderSize = 2;
+            this.button_loaderr_more.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_loaderr_more.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_loaderr_more.Location = new System.Drawing.Point(74, 117);
+            this.button_loaderr_more.Name = "button_loaderr_more";
+            this.button_loaderr_more.Size = new System.Drawing.Size(106, 40);
+            this.button_loaderr_more.TabIndex = 6;
+            this.button_loaderr_more.Text = "Подробнее";
+            this.button_loaderr_more.UseVisualStyleBackColor = false;
             // 
             // button_loaderr_close
             // 
@@ -591,20 +596,15 @@ namespace CnC_WFA
             this.button_loaderr_close.Text = "Закрiть";
             this.button_loaderr_close.UseVisualStyleBackColor = false;
             // 
-            // button_loaderr_more
+            // label1
             // 
-            this.button_loaderr_more.BackColor = System.Drawing.Color.White;
-            this.button_loaderr_more.Enabled = false;
-            this.button_loaderr_more.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_loaderr_more.FlatAppearance.BorderSize = 2;
-            this.button_loaderr_more.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_loaderr_more.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_loaderr_more.Location = new System.Drawing.Point(74, 117);
-            this.button_loaderr_more.Name = "button_loaderr_more";
-            this.button_loaderr_more.Size = new System.Drawing.Size(106, 40);
-            this.button_loaderr_more.TabIndex = 6;
-            this.button_loaderr_more.Text = "Подробнее";
-            this.button_loaderr_more.UseVisualStyleBackColor = false;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(-1, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(361, 73);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Обнаружены ошибки при загрузке документа.";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundWorker1
             // 

@@ -78,10 +78,6 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="Compresser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLLs\Compresser.dll</HintPath>
-    </Reference>
     <Reference Include="FileAssociation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\vk_vm\Desktop\File_assoc\FileAssociationExample\bin\Debug\FileAssociation.dll</HintPath>
@@ -118,6 +114,12 @@
     </Compile>
     <Compile Include="Sources\Forms\Graph\Form_Dialog_EditGraph.Designer.cs">
       <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroAddImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroAddImage.Designer.cs">
+      <DependentUpon>Form_Dialog_MacroAddImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.cs">
       <SubType>Form</SubType>
@@ -277,6 +279,9 @@
     <EmbeddedResource Include="Sources\Forms\Graph\Form_Dialog_EditGraph.resx">
       <DependentUpon>Form_Dialog_EditGraph.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sources\Forms\Macro\Form_Dialog_MacroAddImage.resx">
+      <DependentUpon>Form_Dialog_MacroAddImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sources\Forms\Macro\Form_Dialog_MacroPackEdit.resx">
       <DependentUpon>Form_Dialog_MacroPackEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,7 +368,7 @@
     <Content Include="Lib\Microsoft.WindowsAPICodePack.Shell.pdb" />
     <Content Include="Lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll" />
     <Content Include="Lib\Microsoft.WindowsAPICodePack.ShellExtensions.pdb" />
-    <Content Include="Sources\LICENSE.txt">
+    <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_English\Icon.png">
@@ -408,7 +413,6 @@
     <None Include="Options\Options.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="DLLs\Compresser.dll" />
     <Content Include="DLLs\MRG.Controls.UI.dll" />
     <Content Include="HTML Help\ApiManual.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -628,6 +632,10 @@
     <ProjectReference Include="..\Lib\Resources\CWA_Resources.csproj">
       <Project>{e8e3a87a-490a-4701-9d1b-83bc6ac2b568}</Project>
       <Name>CWA_Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\VectorThumbnailHandler\VectorThumbnailHandler.csproj">
+      <Project>{ea4a0c65-6a12-4d47-aee5-b2faa4566016}</Project>
+      <Name>VectorThumbnailHandler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

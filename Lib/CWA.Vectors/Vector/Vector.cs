@@ -5,10 +5,9 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 23.08.2017 19:43:13
+* Last Edited: 26.08.2017 20:10:56
 *=================================*/
 
-using Compresser;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -78,17 +77,20 @@ namespace CWA.Vectors
         private void LoadVectPCV(string filename)
         {
             VPointEx[][] contours = new VPointEx[0][];
-            string s = File.ReadAllText(filename);
-            if(s.StartsWith("vectarch")) Compresser.Compresser.DeCompress(filename, false);
-            s = File.ReadAllText(filename);
+            string s = new string(Helper.Decompress(File.ReadAllBytes(filename)).Select(pp => (char)pp).ToArray());
+
+            //TODO: Это по прежнему не совместимо с PCV старого образца, с VectArch.
+            //Нид сделать что-то по типу удаления того "хедера" и читать его.
+
             var data = s.Split(';');
             var head = new VectHeader();
             var header_ = data[0].Split(',');
             head.Width = float.Parse(header_[1], CultureInfo.InvariantCulture);
             head.Height = float.Parse(header_[2], CultureInfo.InvariantCulture);
-            switch(header_[3].ToLower().Trim())
+            switch (header_[3].ToLower().Trim())
             {
-                case ("rastr"): head.VectType = VectType.Rastr;
+                case ("rastr"):
+                    head.VectType = VectType.Rastr;
                     break;
                 case ("func"):
                     head.VectType = VectType.Func;
@@ -107,24 +109,22 @@ namespace CWA.Vectors
             contours = new VPointEx[p.Length][];
             for (int i = 0; i <= p.Length - 1; i++)
             {
-                var data1= p[i];
-                var data2= data1.Split(':');
-                var countofpoints= data2.Length;
-                contours[i] = new VPointEx[countofpoints-1];
-                for(int ii = 0; ii<=data2.Length-2; ii++)
+                var data1 = p[i];
+                var data2 = data1.Split(':');
+                var countofpoints = data2.Length;
+                contours[i] = new VPointEx[countofpoints - 1];
+                for (int ii = 0; ii <= data2.Length - 2; ii++)
                 {
                     var Coordinates = data2[ii].Split(',');
-                    var xs= Coordinates[0];
-                    var ys= Coordinates[1];
-                    contours[i][ii]= new VPointEx(float.Parse(xs, CultureInfo.InvariantCulture), float.Parse(ys, CultureInfo.InvariantCulture), 0, Color.Black);
+                    var xs = Coordinates[0];
+                    var ys = Coordinates[1];
+                    contours[i][ii] = new VPointEx(float.Parse(xs, CultureInfo.InvariantCulture), float.Parse(ys, CultureInfo.InvariantCulture), 0, Color.Black);
                 }
             }
             Helper.DeleteFromArray(contours.Length, ref contours);
             Header = head;
             RawData = contours;
-            Compresser.Compresser.Compress(filename, false, "vectarch");
         }
-
         /// <summary>
         /// Сохраняет вектор в формате .PCV.
         /// </summary>
@@ -220,7 +220,18 @@ namespace CWA.Vectors
         /// <param name="FileName">Имя файла для загрузки.</param>
         private void LoadVectOPCV(string FileName)
         {
-            string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
+            //Идея с локальной директорией неплоха, но неприятно, когда при открытие эксплоера, появляется папка, а потом удаляется -_-.
+            //string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
+
+            //С папкой "где-то там", намного приятнее :З.
+            string DirectoryName = Path.GetTempPath() + "vect\\";
+
+            if (Directory.Exists(DirectoryName))
+            {
+                foreach (var item in Directory.GetFiles(DirectoryName))
+                    File.Delete(item);
+                Directory.Delete(DirectoryName);
+            }
 
             ZipFile.ExtractToDirectory(FileName, DirectoryName);
 
@@ -276,18 +287,17 @@ namespace CWA.Vectors
             foreach (var item in Directory.GetFiles(DirectoryName))
                 File.Delete(item);
             Directory.Delete(DirectoryName);
-
             if (Vector == null)
                 throw new ArgumentNullException(nameof(Vector));
             if (FileInfo == null)
                 throw new ArgumentNullException(nameof(Vector));
-            var result = Vector.ToVector();
-            result.Header = FileInfo.ToHeader();
-            result.Header.CountOfCont = result.RawData.Length;
+            RawData = Vector.ToRawData();
+            Header = FileInfo.ToHeader();
+            Header.CountOfCont = RawData.Length;
             if (VectorsEx != null)
-                result.RaswDataEX = VectorsEx.Select(p => p.ToRawData()).ToArray();
+                RaswDataEX = VectorsEx.Select(p => p.ToRawData()).ToArray();
             if (ExParams != null)
-                result.Header.ExParams = ExParams;
+                Header.ExParams = ExParams;
             //////////////////////////////////////////Не забуть доделать это -_-
         }
 

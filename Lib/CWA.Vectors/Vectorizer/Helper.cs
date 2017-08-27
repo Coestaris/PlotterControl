@@ -5,10 +5,12 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:32
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 26.08.2017 17:49:31
 *=================================*/
 
 using System;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Xml;
 
@@ -100,6 +102,33 @@ namespace CWA.Vectors
         {
             arr = new t[a][];
             for (int i = 0; i <= a - 1; i++) arr[i] = new t[b];
+        }
+
+        /// <summary>
+        /// Сжимает заданный массив байтов.
+        /// </summary>
+        public static byte[] Compress(byte[] data)
+        {
+            MemoryStream output = new MemoryStream();
+            using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
+            {
+                dstream.Write(data, 0, data.Length);
+            }
+            return output.ToArray();
+        }
+
+        /// <summary>
+        /// Декомпрессит заданный массив байтов.
+        /// </summary>
+        public static byte[] Decompress(byte[] data)
+        {
+            MemoryStream input = new MemoryStream(data);
+            MemoryStream output = new MemoryStream();
+            using (DeflateStream dstream = new DeflateStream(input, CompressionMode.Decompress))
+            {
+                dstream.CopyTo(output);
+            }
+            return output.ToArray();
         }
     }
 }

@@ -5,31 +5,25 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 22.08.2017 21:43:57
+* Last Edited: 26.08.2017 16:30:55
 *=================================*/
 
-using CWA_Resources.Properties;
 using CWA;
-using CWA.Printing;
-using CWA.Vectors;
+using CWA.DTP;
+using CWA.DTP.Plotter;
+using CWA_Resources.Properties;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Globalization;
-using System.IO;
 using System.IO.Ports;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
-using CWA.DTP;
-using CWA.DTP.Plotter;
 
 namespace CnC_WFA
 {
     public partial class Form_PrintMaster : Form
     {
-        int Index;
         ComponentResourceManager resources = new ComponentResourceManager(typeof(Form_PrintMaster));
 
         private DTPMaster master;
@@ -45,7 +39,7 @@ namespace CnC_WFA
 
         public Form_PrintMaster(string fn, bool ignr, string port, int bdrate, SizeF size, bool auto)
         {
-            //TODO :!!
+            //TODO: !!
         }
 
         public Form_PrintMaster()

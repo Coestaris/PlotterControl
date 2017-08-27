@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:37
-* Last Edited: 01.07.2017 13:09:58
+* Last Edited: 26.08.2017 16:19:09
 *=================================*/
 
 using CWA.Vectors.Document;
@@ -45,6 +45,16 @@ namespace CWA.Printing.Macro
         public List<MacroElem> Elems { get; set; }
 
         /// <summary>
+        /// Имя изображения, привязанного к макросу.
+        /// </summary>
+        public string PicFileName { get; set; }
+
+        /// <summary>
+        /// Размер изображения, привязанного к макросу.
+        /// </summary>
+        public SizeF PicSize { get; set; }
+
+        /// <summary>
         /// Создает новый экземпляр класса  <see cref="Macro"/>.
         /// </summary>
         /// <param name="name">Имя макроса.</param>
@@ -68,15 +78,16 @@ namespace CWA.Printing.Macro
                 Elems = new List<MacroElem>(0);
                 XmlDocument document = new XmlDocument();
                 document.Load(filename);
-                var neme = document.ChildNodes[1].ChildNodes[0].Attributes[0].Value;
-                var d = document.ChildNodes[1].ChildNodes[0].Attributes[1].Value;
-                int mav = int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[0].Value);
-                int miv = int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[1].Value);
-                int bn = int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[2].Value);
-                int rev = int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[3].Value);
-                CreatedVersion = new Version(mav, miv, bn, rev);
-                Name = neme;
-                Discr = d;
+                Name = document.ChildNodes[1].ChildNodes[0].Attributes[0].Value;
+                Discr = document.ChildNodes[1].ChildNodes[0].Attributes[1].Value;
+                PicFileName = document.ChildNodes[1].ChildNodes[0].Attributes[2].Value;
+                string[] PicSizeValues = document.ChildNodes[1].ChildNodes[0].Attributes[3].Value.Split('_');
+                PicSize = new SizeF(float.Parse(PicSizeValues[0], CultureInfo.InvariantCulture), float.Parse(PicSizeValues[1], CultureInfo.InvariantCulture));
+                CreatedVersion = new Version(
+                    int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[0].Value),
+                    int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[1].Value),
+                    int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[2].Value),
+                    int.Parse(document.ChildNodes[1].ChildNodes[1].Attributes[3].Value));
                 Elems = new List<MacroElem>();
                 for (int i = 2; i <= document.ChildNodes[1].ChildNodes.Count - 1; i++)
                 {
@@ -96,6 +107,13 @@ namespace CWA.Printing.Macro
             }
         }
 
+        private void AppendAttrToNode(XmlDocument document, XmlNode node, string AttributeName, string Value)
+        {
+            XmlAttribute attr = document.CreateAttribute(AttributeName);
+            attr.Value = Value;
+            node.Attributes.Append(attr);
+        }
+
         /// <summary>
         /// Сохраняет макрос в файл с разширением .pcmacros.
         /// </summary>
@@ -107,29 +125,31 @@ namespace CWA.Printing.Macro
             textWritter.WriteStartElement("MACRO");
             textWritter.WriteEndElement();
             textWritter.Close();
-            XmlDocument document = new XmlDocument();
-            document.Load(filename);
-            XmlNode el = document.CreateElement("S");
-            document.DocumentElement.AppendChild(el);
-            XmlAttribute name = document.CreateAttribute("N"); name.Value = Name; el.Attributes.Append(name);
-            XmlAttribute discr = document.CreateAttribute("D"); discr.Value = Discr; el.Attributes.Append(discr);
-            XmlNode vers = document.CreateElement("V");
-            XmlAttribute mav = document.CreateAttribute("MV"); mav.Value = CreatedVersion.Major.ToString(); vers.Attributes.Append(mav);
-            XmlAttribute miv = document.CreateAttribute("MnrV"); miv.Value = CreatedVersion.Minor.ToString(); vers.Attributes.Append(miv);
-            XmlAttribute bn = document.CreateAttribute("BNr"); bn.Value = CreatedVersion.Build.ToString(); vers.Attributes.Append(bn);
-            XmlAttribute rev = document.CreateAttribute("R"); rev.Value = CreatedVersion.Revision.ToString(); vers.Attributes.Append(rev);
-            document.DocumentElement.AppendChild(vers);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filename);
+            XmlNode el = doc.CreateElement("S");
+            doc.DocumentElement.AppendChild(el);
+            AppendAttrToNode(doc, el, "N", Name);
+            AppendAttrToNode(doc, el, "D", Discr);
+            AppendAttrToNode(doc, el, "PN", PicFileName);
+            AppendAttrToNode(doc, el, "PS", string.Format("{0}_{1}", PicSize.Width, PicSize.Height));
+            XmlNode vers = doc.CreateElement("V");
+            AppendAttrToNode(doc, vers, "MV", CreatedVersion.Major.ToString());
+            AppendAttrToNode(doc, vers, "MnrV", CreatedVersion.Minor.ToString());
+            AppendAttrToNode(doc, vers, "BNr", CreatedVersion.Build.ToString());
+            AppendAttrToNode(doc, vers, "R", CreatedVersion.Revision.ToString());
+            doc.DocumentElement.AppendChild(vers);
             foreach (var a in Elems)
             {
-                XmlNode element = document.CreateElement("ME");
-                document.DocumentElement.AppendChild(element);
-                XmlAttribute Type = document.CreateAttribute("T"); Type.Value = MacroElem.NormalToShorted(a.Type).ToString(); element.Attributes.Append(Type);
-                XmlAttribute ToolMove = document.CreateAttribute("TM"); ToolMove.Value = a.ToolMove.ToString(); element.Attributes.Append(ToolMove);
-                XmlAttribute MoveToPoint = document.CreateAttribute("MTP"); MoveToPoint.Value = string.Format("{0}_{1}", a.MoveToPoint.X, a.MoveToPoint.Y); element.Attributes.Append(MoveToPoint);
-                XmlAttribute MoveRelative = document.CreateAttribute("MR"); MoveRelative.Value = string.Format("{0}_{1}", a.MoveRelative.X, a.MoveRelative.Y); element.Attributes.Append(MoveRelative);
-                XmlAttribute Delay = document.CreateAttribute("D"); Delay.Value = a.Delay.ToString(CultureInfo.InvariantCulture); element.Attributes.Append(Delay);
+                XmlNode node = doc.CreateElement("ME");
+                doc.DocumentElement.AppendChild(node);
+                AppendAttrToNode(doc, node, "T", MacroElem.NormalToShorted(a.Type).ToString());
+                AppendAttrToNode(doc, node, "TM", a.ToolMove.ToString());
+                AppendAttrToNode(doc, node, "MTP", string.Format("{0}_{1}", a.MoveToPoint.X, a.MoveToPoint.Y));
+                AppendAttrToNode(doc, node, "MR", string.Format("{0}_{1}", a.MoveRelative.X, a.MoveRelative.Y));
+                AppendAttrToNode(doc, node, "D", a.Delay.ToString(CultureInfo.InvariantCulture));
             }
-            document.Save(filename);
+            doc.Save(filename);
         }
     }
 }

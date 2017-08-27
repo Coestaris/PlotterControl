@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 26.08.2017 16:30:56
 *=================================*/
 
 namespace CnC_WFA
@@ -70,18 +70,16 @@ namespace CnC_WFA
             this.textBox_sample_value = new System.Windows.Forms.TextBox();
             this.button_samples_remove = new System.Windows.Forms.Button();
             this.listBox_samples = new System.Windows.Forms.ListBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_main = new System.Windows.Forms.TabPage();
             this.label_main_title = new System.Windows.Forms.Label();
             this.tabPage_connection = new System.Windows.Forms.TabPage();
             this.label_conn_title = new System.Windows.Forms.Label();
             this.tabPage_macro = new System.Windows.Forms.TabPage();
+            this.listBox_macroses = new CnC_WFA.ImageListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_macroMain = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_isHidden = new System.Windows.Forms.CheckBox();
             this.label_macro_title = new System.Windows.Forms.Label();
             this.tabPage_sample = new System.Windows.Forms.TabPage();
             this.label_sample_title = new System.Windows.Forms.Label();
@@ -91,7 +89,10 @@ namespace CnC_WFA
             this.button_conn = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
             this.button_main = new System.Windows.Forms.Button();
-            this.listBox_macroses = new CnC_WFA.ImageListBox();
+            this.openFileDialog_macro = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog_mpack = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog_mpack = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog_macro2 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage_main.SuspendLayout();
             this.tabPage_connection.SuspendLayout();
@@ -139,7 +140,7 @@ namespace CnC_WFA
             this.button_addnew.FlatAppearance.BorderSize = 2;
             this.button_addnew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_addnew.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_addnew.Location = new System.Drawing.Point(11, 18);
+            this.button_addnew.Location = new System.Drawing.Point(11, 198);
             this.button_addnew.Name = "button_addnew";
             this.button_addnew.Size = new System.Drawing.Size(89, 36);
             this.button_addnew.TabIndex = 3;
@@ -454,22 +455,6 @@ namespace CnC_WFA
             this.listBox_samples.TabIndex = 19;
             this.listBox_samples.SelectedIndexChanged += new System.EventHandler(this.listBox_samples_SelectedIndexChanged);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "macros";
-            this.openFileDialog1.Filter = "PC Macros | *.pcmacros";
-            this.openFileDialog1.InitialDirectory = "macros\\";
-            this.openFileDialog1.Multiselect = true;
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            this.openFileDialog2.Filter = "PC Macro Pack|*.pcmpack";
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = "PC Macro Pack|*.pcmpack";
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage_main);
@@ -537,6 +522,7 @@ namespace CnC_WFA
             // tabPage_macro
             // 
             this.tabPage_macro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_macro.Controls.Add(this.button_addnew);
             this.tabPage_macro.Controls.Add(this.listBox_macroses);
             this.tabPage_macro.Controls.Add(this.pictureBox1);
             this.tabPage_macro.Controls.Add(this.panel_macroMain);
@@ -548,7 +534,17 @@ namespace CnC_WFA
             this.tabPage_macro.Size = new System.Drawing.Size(509, 353);
             this.tabPage_macro.TabIndex = 2;
             this.tabPage_macro.Text = "Макросы";
-            this.tabPage_macro.Click += new System.EventHandler(this.tabPage_macro_Click);
+            // 
+            // listBox_macroses
+            // 
+            this.listBox_macroses.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox_macroses.FormattingEnabled = true;
+            this.listBox_macroses.ImageList = null;
+            this.listBox_macroses.Location = new System.Drawing.Point(11, 45);
+            this.listBox_macroses.Name = "listBox_macroses";
+            this.listBox_macroses.Size = new System.Drawing.Size(256, 147);
+            this.listBox_macroses.TabIndex = 24;
+            this.listBox_macroses.SelectedIndexChanged += new System.EventHandler(this.listBox_macroses_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -562,7 +558,7 @@ namespace CnC_WFA
             // 
             // panel_macroMain
             // 
-            this.panel_macroMain.Controls.Add(this.checkBox1);
+            this.panel_macroMain.Controls.Add(this.checkBox_isHidden);
             this.panel_macroMain.Controls.Add(this.comboBox_macro_charbind);
             this.panel_macroMain.Controls.Add(this.label_macro_charbind);
             this.panel_macroMain.Controls.Add(this.label_macro_elemcount);
@@ -570,7 +566,6 @@ namespace CnC_WFA
             this.panel_macroMain.Controls.Add(this.label_macro_caption);
             this.panel_macroMain.Controls.Add(this.label_macro_path);
             this.panel_macroMain.Controls.Add(this.comboBox_macro_keybind);
-            this.panel_macroMain.Controls.Add(this.button_addnew);
             this.panel_macroMain.Controls.Add(this.textBox_macro_caption);
             this.panel_macroMain.Controls.Add(this.button_repickpath);
             this.panel_macroMain.Controls.Add(this.button_openineditor);
@@ -583,15 +578,16 @@ namespace CnC_WFA
             this.panel_macroMain.Size = new System.Drawing.Size(511, 193);
             this.panel_macroMain.TabIndex = 25;
             // 
-            // checkBox1
+            // checkBox_isHidden
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(413, 110);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(78, 21);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "Скрыть";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox_isHidden.AutoSize = true;
+            this.checkBox_isHidden.Location = new System.Drawing.Point(413, 110);
+            this.checkBox_isHidden.Name = "checkBox_isHidden";
+            this.checkBox_isHidden.Size = new System.Drawing.Size(78, 21);
+            this.checkBox_isHidden.TabIndex = 20;
+            this.checkBox_isHidden.Text = "Скрыть";
+            this.checkBox_isHidden.UseVisualStyleBackColor = true;
+            this.checkBox_isHidden.CheckedChanged += new System.EventHandler(this.checkBox_isHidden_CheckedChanged);
             // 
             // label_macro_title
             // 
@@ -724,16 +720,27 @@ namespace CnC_WFA
             this.button_main.UseVisualStyleBackColor = false;
             this.button_main.Click += new System.EventHandler(this.button_main_Click);
             // 
-            // listBox_macroses
+            // openFileDialog_macro
             // 
-            this.listBox_macroses.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox_macroses.FormattingEnabled = true;
-            this.listBox_macroses.ImageList = null;
-            this.listBox_macroses.Location = new System.Drawing.Point(11, 45);
-            this.listBox_macroses.Name = "listBox_macroses";
-            this.listBox_macroses.Size = new System.Drawing.Size(256, 147);
-            this.listBox_macroses.TabIndex = 24;
-            this.listBox_macroses.SelectedIndexChanged += new System.EventHandler(this.listBox_macroses_SelectedIndexChanged);
+            this.openFileDialog_macro.FileName = "macros";
+            this.openFileDialog_macro.Filter = "PC Macros | *.pcmacros";
+            this.openFileDialog_macro.InitialDirectory = "macros\\";
+            this.openFileDialog_macro.Multiselect = true;
+            // 
+            // openFileDialog_mpack
+            // 
+            this.openFileDialog_mpack.FileName = "openFileDialog2";
+            this.openFileDialog_mpack.Filter = "PC Macro Pack|*.pcmpack";
+            // 
+            // saveFileDialog_mpack
+            // 
+            this.saveFileDialog_mpack.Filter = "PC Macro Pack|*.pcmpack";
+            // 
+            // openFileDialog_macro2
+            // 
+            this.openFileDialog_macro2.FileName = "macros";
+            this.openFileDialog_macro2.Filter = "PC Macros | *.pcmacros";
+            this.openFileDialog_macro2.InitialDirectory = "macros\\";
             // 
             // Form_Dialog_MacroPackEdit
             // 
@@ -799,15 +806,12 @@ namespace CnC_WFA
         private System.Windows.Forms.ListBox listBox_samples;
         private System.Windows.Forms.TextBox textBox_sample_value;
         private System.Windows.Forms.Label label_macro_path;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage_main;
         private System.Windows.Forms.TabPage tabPage_connection;
         private System.Windows.Forms.TabPage tabPage_macro;
         private System.Windows.Forms.TabPage tabPage_sample;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox_isHidden;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button_preset;
@@ -821,5 +825,9 @@ namespace CnC_WFA
         private System.Windows.Forms.Label label_macro_title;
         private ImageListBox listBox_macroses;
         private System.Windows.Forms.Panel panel_macroMain;
+        private System.Windows.Forms.OpenFileDialog openFileDialog_macro;
+        private System.Windows.Forms.OpenFileDialog openFileDialog_mpack;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog_mpack;
+        private System.Windows.Forms.OpenFileDialog openFileDialog_macro2;
     }
 }

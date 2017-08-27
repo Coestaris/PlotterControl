@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:30
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 26.08.2017 16:44:00
 *=================================*/
 
 using System;
@@ -17,7 +17,7 @@ namespace CWA.Vectors
     /// Хранит основную информацию файле архива.
     /// </summary>
     [Serializable]
-    internal class VectorIncludeFileItem
+    public class VectorIncludeFileItem
     {
         /// <summary>
         /// Имя файла.

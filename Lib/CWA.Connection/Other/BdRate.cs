@@ -42,7 +42,7 @@ namespace CWA.Connection
         /// </summary>
         public static int[] GetNamesInt()
         {
-            return _names.Cast<int>().ToArray();
+            return _names.Select(p=>int.Parse(p)).ToArray();
         }
 
         /// <summary>

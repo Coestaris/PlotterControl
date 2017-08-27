@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:36
-* Last Edited: 01.07.2017 13:09:58
+* Last Edited: 27.08.2017 13:30:22
 *=================================*/
 
 using System.Collections.Generic;
@@ -26,8 +26,8 @@ namespace CWA.Printing.Macro
         /// <summary>
         /// Имя пака.
         /// </summary>
-        //public string Name { get; set; }
-        public string Name;
+        public string Name { get; set; }
+        //public string Name;
 
         /// <summary>
         /// Описание пака.

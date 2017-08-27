@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 26.08.2017 16:30:56
 *=================================*/
 
 namespace CnC_WFA
@@ -89,8 +89,10 @@ namespace CnC_WFA
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem_file = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_new = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_save = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_load = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_saveas = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_save = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_close = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_macro = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,8 +101,6 @@ namespace CnC_WFA
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem_tocorner = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem_addimg = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem_saveas = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_main.SuspendLayout();
             this.groupBox_addel.SuspendLayout();
@@ -629,19 +629,32 @@ namespace CnC_WFA
             this.toolStripMenuItem_new.Text = "Новый";
             this.toolStripMenuItem_new.Click += new System.EventHandler(this.button_clear_Click);
             // 
-            // toolStripMenuItem_save
-            // 
-            this.toolStripMenuItem_save.Name = "toolStripMenuItem_save";
-            this.toolStripMenuItem_save.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_save.Text = "Сохранить";
-            this.toolStripMenuItem_save.Click += new System.EventHandler(this.button_save_Click);
-            // 
             // toolStripMenuItem_load
             // 
             this.toolStripMenuItem_load.Name = "toolStripMenuItem_load";
             this.toolStripMenuItem_load.Size = new System.Drawing.Size(153, 22);
             this.toolStripMenuItem_load.Text = "Загрузить";
             this.toolStripMenuItem_load.Click += new System.EventHandler(this.button_load_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
+            // 
+            // toolStripMenuItem_saveas
+            // 
+            this.toolStripMenuItem_saveas.Enabled = false;
+            this.toolStripMenuItem_saveas.Name = "toolStripMenuItem_saveas";
+            this.toolStripMenuItem_saveas.Size = new System.Drawing.Size(153, 22);
+            this.toolStripMenuItem_saveas.Text = "Сохранить как";
+            this.toolStripMenuItem_saveas.Click += new System.EventHandler(this.toolStripMenuItem_saveas_Click);
+            // 
+            // toolStripMenuItem_save
+            // 
+            this.toolStripMenuItem_save.Name = "toolStripMenuItem_save";
+            this.toolStripMenuItem_save.Size = new System.Drawing.Size(153, 22);
+            this.toolStripMenuItem_save.Text = "Сохранить";
+            this.toolStripMenuItem_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // toolStripSeparator1
             // 
@@ -699,19 +712,7 @@ namespace CnC_WFA
             this.toolStripMenuItem_addimg.Name = "toolStripMenuItem_addimg";
             this.toolStripMenuItem_addimg.Size = new System.Drawing.Size(165, 22);
             this.toolStripMenuItem_addimg.Text = "Добавить изобр.";
-            // 
-            // toolStripMenuItem_saveas
-            // 
-            this.toolStripMenuItem_saveas.Enabled = false;
-            this.toolStripMenuItem_saveas.Name = "toolStripMenuItem_saveas";
-            this.toolStripMenuItem_saveas.Size = new System.Drawing.Size(153, 22);
-            this.toolStripMenuItem_saveas.Text = "Сохранить как";
-            this.toolStripMenuItem_saveas.Click += new System.EventHandler(this.toolStripMenuItem_saveas_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
+            this.toolStripMenuItem_addimg.Click += new System.EventHandler(this.toolStripMenuItem_addimg_Click);
             // 
             // Form_Macro
             // 

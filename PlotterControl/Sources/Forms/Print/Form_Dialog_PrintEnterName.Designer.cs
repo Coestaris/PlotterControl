@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 25.08.2017 22:25:11
+* Last Edited: 26.08.2017 16:30:55
 *=================================*/
 
 namespace CnC_WFA
@@ -155,6 +155,7 @@ namespace CnC_WFA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(437, 124);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.loadingCircle_previewLoad);
@@ -166,7 +167,7 @@ namespace CnC_WFA
             this.Controls.Add(this.button_ok);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Dialog_PrintEnterNames";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отправка вектора на устройство";
             this.Load += new System.EventHandler(this.EnterNameDialog_Load);
             this.Shown += new System.EventHandler(this.EnterNameDialog_Shown);

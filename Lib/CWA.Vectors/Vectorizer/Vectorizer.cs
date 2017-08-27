@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:32
-* Last Edited: 23.08.2017 20:35:06
+* Last Edited: 26.08.2017 20:05:55
 *=================================*/
 
 using System;
@@ -493,6 +493,9 @@ namespace CWA.Vectors
         /// </summary>
         private void ImagePr()
         {
+            //Как говорится, лучше перестраховаться
+            Init();
+
             //Отмечается метка начала процесса.
             var startSeconds = Milliseconds / 1000;
 
