@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 24.08.2017 14:15:26
+* Last Edited: 28.08.2017 14:40:09
 *=================================*/
 
 using System;
@@ -19,12 +19,20 @@ namespace CWA.DTP.Plotter
     public class VectorMetaData
     {
         private static int CountOfPreviews = 0;
+        private bool LoadedPreview;
+        private Bitmap PreviewCache;
+        private PlotterContent Parrent;
 
         public string Name { get; internal set; }
+
         public VectType Type  { get; internal set; }
+
         public UInt16 Height { get; internal set; }
+
         public UInt16 Width { get; internal set; }
+
         public UInt16 Index { get; set; }
+
         public Bitmap Preview
         {
             get
@@ -34,10 +42,6 @@ namespace CWA.DTP.Plotter
                 return PreviewCache;
             }
         }
-
-        private bool LoadedPreview;
-        private Bitmap PreviewCache;
-        private PlotterContent Parrent;
 
         public void DownloadPreview()
         {

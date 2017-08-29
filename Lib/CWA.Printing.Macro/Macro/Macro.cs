@@ -5,9 +5,10 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:37
-* Last Edited: 26.08.2017 16:19:09
+* Last Edited: 28.08.2017 14:52:49
 *=================================*/
 
+using CWA.DTP.Plotter;
 using CWA.Vectors.Document;
 using System;
 using System.Collections.Generic;
@@ -105,6 +106,20 @@ namespace CWA.Printing.Macro
             {
                 throw new FileLoadException("Unknown error", e);
             }
+        }
+
+        public FlFormat ToFlFormat()
+        {
+            var fl = new FlFormat();
+            Int16 lastX = 0;
+            Int16 lastY = 0;
+            foreach (var item in Elems)
+            {
+                fl.Elements.Add(new FlFormatElement((Int16)(item.MoveToPoint.X - lastX), (Int16)(item.MoveToPoint.Y - lastY), (Int16)(item.ToolMove), (UInt16)(item.Delay)));
+                lastX = (Int16)item.MoveToPoint.X;
+                lastY = (Int16)item.MoveToPoint.Y;
+            }
+            return fl;
         }
 
         private void AppendAttrToNode(XmlDocument document, XmlNode node, string AttributeName, string Value)

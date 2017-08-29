@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:56
+* Last Edited: 28.08.2017 23:32:26
 *=================================*/
 
 using System;
@@ -29,10 +29,22 @@ namespace CnC_WFA
         {
             InitializeComponent();
         }
+               
 
         public Form_Dialog_EditElement(GraphDoc Object, int v)
         {
             InitializeComponent();
+
+            Buttons = new Button[]
+            {
+                button_axis,
+                button_axisCaption,
+                button_docCaption,
+                button_grid,
+                button_legend,
+                button_addPoints
+            };
+
             this.Object = Object;
             tabControl1.SelectedIndex = v;
 
@@ -84,10 +96,7 @@ namespace CnC_WFA
             }
         }
 
-        private void button_exit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void button_exit_Click(object sender, EventArgs e) => Close();
 
         private void Form_Dialog_EditElement_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -97,9 +106,114 @@ namespace CnC_WFA
 
         }
 
-        private void Form_Dialog_EditElement_Load(object sender, EventArgs e)
-        {
+        private Button[] Buttons; 
+        private Color SelectedButtonColor = Color.FromArgb(5, 92, 199);
+        private Color DefaultButtonColor = Color.FromArgb(4, 60, 130);
+        private DateTime startTimePeriod;
+        private DateTime endTimePeriod;
 
+        public List<string> GlobalErrorsPeriod { get; private set; }
+
+        private void HighLightButton(int index)
+        {
+            for (int i = 0; i < Buttons.Length; i++)
+                Buttons[i].BackColor = i == index ? SelectedButtonColor : DefaultButtonColor;
+            tabControl1.SelectedIndex = index;
+        }
+
+        private void button_axis_Click(object sender, EventArgs e) => HighLightButton(0);
+
+        private void button_axisCaption_Click(object sender, EventArgs e) => HighLightButton(1);
+
+        private void button_docCaption_Click(object sender, EventArgs e) => HighLightButton(2);
+
+        private void button_grid_Click(object sender, EventArgs e) => HighLightButton(3);
+
+        private void button_legend_Click(object sender, EventArgs e) => HighLightButton(4);
+
+        private void button_addPoints_Click(object sender, EventArgs e) => HighLightButton(5);
+
+        private void button_markers_compile_Click(object sender, EventArgs e)
+        {
+            startTimePeriod = DateTime.Now;
+            string LowCompString = Object.AxisCaptionParams.LowLimFormula;
+            string HighCompString = Object.AxisCaptionParams.HighLimFormula;
+            string PeriodCompString = Object.AxisCaptionParams.PeriodFormula;
+            Object.AxisCaptionParams.LowLimFormula = textBox_markers_period_start.Text;
+            Object.AxisCaptionParams.HighLimFormula = textBox_markers_period_end.Text;
+            Object.AxisCaptionParams.PeriodFormula = textBox_markers_period.Text;
+            GlobalErrorsPeriod = Object.AxisCaptionParams.CompilePeriod();
+            if (GlobalErrorsPeriod != null)
+            {
+                panel_markers_status.Visible = true;
+                panel_markers_status.BackColor = Color.FromArgb(255, 74, 74);
+                label_markers_status.Text = string.Format("Найдено {0} ошибок.", (GlobalErrorsPeriod?.Count == null ? 0 : GlobalErrorsPeriod?.Count));
+                button_markers_status.Visible = true;
+                Object.AxisCaptionParams.LowLimFormula = LowCompString;
+                Object.AxisCaptionParams.HighLimFormula = HighCompString;
+                Object.AxisCaptionParams.PeriodFormula = PeriodCompString;
+                Object.AxisCaptionParams.CompilePeriod();
+                endTimePeriod = DateTime.Now;
+            }
+            else
+            {
+                panel_markers_status.Visible = true;
+                panel_markers_status.BackColor = Color.FromArgb(0, 255, 0);
+                label_markers_status.Text = string.Format("OK! Собрано за {0} миллисекунд.", (DateTime.Now - startTimePeriod).TotalMilliseconds);
+                button_markers_status.Visible = false;
+                Object.AxisCaptionParams.CompilePeriod();
+            }
+            timer_markers_expire.Enabled = true;
+
+        }
+
+        private void checkBox_markers_period_CheckedChanged(object sender, EventArgs e)
+        {
+            Object.AxisCaptionParams.AutoRange = !Object.AxisCaptionParams.AutoRange;
+            if(!Object.AxisCaptionParams.AutoRange)
+            {
+                textBox_markers_period_end.Enabled = false;
+                textBox_markers_period_start.Enabled = false;
+            }
+        }
+
+        private void radioButton_independence_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBox_inde.Enabled = radioButton_independence.Checked;
+        }
+
+        private void checkBox_addPoints_displ_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBox_markers.Enabled = checkBox_addPoints_displ.Checked;
+            groupBox_names.Enabled = checkBox_addPoints_displ.Checked;
+            Object.AxisCaptionParams.Display = checkBox_addPoints_displ.Checked;
+        }
+
+        private void button_markers_status_Click(object sender, EventArgs e)
+        {
+            var periodErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("|"));
+            var highErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("\\"));
+            var lowErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("/"));
+            string[] messages = new string[] {
+                "Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:\n",
+                "\n1.Ошибок при компиляции периода не было найдено.\n",
+                "\n1.Найдено {0} ошибок при компиляции строки периода \"{1}\":\n{2}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{3}\"\n",
+                "\n{1}.Ошибок при компиляции строки {0} предела не было найдено.\n",
+                "\n{5}.Найдено {0} ошибок при компиляции строки {1} предела \"{2}\":\n{3}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{4}\"\n"
+            };
+            string res = "";
+            res += string.Format(messages[0], startTimePeriod, endTimePeriod, (endTimePeriod - startTimePeriod).TotalSeconds, GlobalErrorsPeriod.Count);
+
+            if (periodErrors.Count == 0) res += messages[1];
+            else res += string.Format(messages[2], periodErrors.Count, textBox_markers_period.Text, string.Join("\n", periodErrors.Select(p => "   - " + p.Trim('|'))), Object.AxisCaptionParams.PeriodFormula);
+
+            if (lowErrors.Count == 0) res += string.Format(messages[3], "нижнего", 2);
+            else res += string.Format(messages[4], lowErrors.Count, "нижнего", textBox_markers_period_end.Text, string.Join("\n", lowErrors.Select(p => "   - " + p.Trim('/'))), Object.AxisCaptionParams.LowLimFormula, 2);
+
+            if (highErrors.Count == 0) res += string.Format(messages[3], "верхнего", 3);
+            else res += string.Format(messages[4], highErrors.Count, "верхнего", textBox_markers_period_start.Text, string.Join("\n", highErrors.Select(p => "   - " + p.Trim('\\'))), Object.AxisCaptionParams.HighLimFormula, 3);
+
+            MessageBox.Show(res, "Отчет об ошибках", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

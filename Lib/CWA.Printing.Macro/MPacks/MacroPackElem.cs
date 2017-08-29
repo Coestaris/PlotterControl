@@ -5,10 +5,11 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:36
-* Last Edited: 01.07.2017 13:09:58
+* Last Edited: 27.08.2017 21:35:49
 *=================================*/
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Input;
 
@@ -45,12 +46,23 @@ namespace CWA.Printing.Macro
         /// </summary>
         private Macro basicMacro;
 
-
         /// <summary>
         /// ¬озвращает значение базового макроса.
         /// </summary>
         public Macro GetMacro()
         {
+            if(basicMacro == null)
+            {
+                try
+                {
+                    if (File.Exists(Path))
+                        basicMacro = new Macro(Path);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
             return basicMacro;
         }
 

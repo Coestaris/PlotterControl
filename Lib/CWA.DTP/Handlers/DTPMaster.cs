@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 24.08.2017 21:49:14
+* Last Edited: 28.08.2017 14:37:22
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -18,23 +18,11 @@ namespace CWA.DTP
     {
         internal GeneralPacketHandler ph;
 
-        public PacketListener Listener
-        {
-            get
-            {
-                return ph.Listener;
-            }
-        }
+        public PacketListener Listener => ph.Listener;
 
-        public Sender Sender
-        {
-            get
-            {
-                return ph.Sender;
-            }
-        }
-
-        public DTPMaster(IPacketReader reader, IPacketWriter writer) : this(Sender.Nullable, new PacketListener(reader, writer))  { }
+        public Sender Sender => ph.Sender;
+        
+        public DTPMaster(IPacketReader reader, IPacketWriter writer) : this(Sender.Empty, new PacketListener(reader, writer))  { }
 
         public DTPMaster(IPacketReader reader, IPacketWriter writer, string SenderName) : this(new Sender(SenderName), new PacketListener(reader, writer)) { }
 
@@ -46,31 +34,15 @@ namespace CWA.DTP
 
         public DeviceControl Device { get; private set; }
 
-        public FileSender CreateFileSender(FileTransferSecurityFlags flags)
-        {
-            return new FileSender(flags)
-            {
-                BaseHandler = ph
-            };
-        }
+        public FileSender CreateFileSender(FileTransferSecurityFlags flags) => new FileSender(flags) { BaseHandler = ph };
 
-        public FileReceiver CreateFileReceiver(FileTransferSecurityFlags flags)
-        {
-            return new FileReceiver(flags)
-            {
-                BaseHandler = ph
-            };
-        }
+        public FileReceiver CreateFileReceiver(FileTransferSecurityFlags flags) => new FileReceiver(flags) { BaseHandler = ph };
 
-        public SdCardDirectory CreateDirectoryHandler(string Path)
-        {
-            return new SdCardDirectory(Path, ph);
-        }
+        public SdCardDirectory CreateDirectoryHandler(string Path) => new SdCardDirectory(Path, ph);
 
-        public SdCardDirectory CreateDirectoryHandlerFromRoot()
-        {
-            return SdCardDirectory.Root(ph);
-        }
+        public SdCardDirectory CreateDirectoryHandlerFromRoot() => SdCardDirectory.Root(ph);
+
+        public SdCardFile CreateFileHandler(string Path) => new SdCardFile(Path, ph);
 
         public void CloseConnection()
         {
@@ -85,7 +57,7 @@ namespace CWA.DTP
             }
             if (Listener.PacketWriter is SerialPacketWriter)
             {
-                SerialPort port = (Listener.PacketReader as SerialPacketWriter).Port;
+                SerialPort port = (Listener.PacketWriter as SerialPacketWriter).Port;
                 if (port.IsOpen)
                 {
                     while (port.BytesToRead != 0) Thread.Sleep(100);
@@ -93,10 +65,6 @@ namespace CWA.DTP
                 }
             }
         }
-
-        public SdCardFile CreateFileHandler(string Path)
-        {
-            return new SdCardFile(Path, ph);
-        }
+        
     }
 }

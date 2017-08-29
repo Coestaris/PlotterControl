@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:47
+* Last Edited: 28.08.2017 23:32:27
 *=================================*/
 
 using System;
@@ -472,6 +472,7 @@ namespace CnC_WFA
         private GraphicsPath preRenderedXAxis, preRenderedYAxis;
         public List<Graph> Graphs { get; set; }
         public GraphDocAxis AxisParams { get; set; }
+        public GraphDocAxiCaption AxisCaptionParams { get; set; }
 
         public GraphDoc()
         {
@@ -559,5 +560,98 @@ namespace CnC_WFA
             if (result.LocalGraphDocVers == 0 || result.LocalGraphDocVers < GraphDocVers) throw new InvalidDataException(string.Format("???????????????????? ???????????????? ?????????????????????????????? ????????????. ???? ?????????????????? ?????????????????? ???????? ???????????? {0}, ?????????? ???????????????????? - {1}. ???????????????? ???????? ???????????????? ?? ?????????? ???????????????????????????? ???????????????????? ????????????.\n???? ???????????? ?????????????????????? ???????????? ????????????????, ?????????????? ???????????? ?????????????? ?? ??????????, ?????? ?????????? ???????????????? ???????????? ?? ?????????????? ??????????????. ?????????? ?????????? ;)", result.LocalGraphDocVers, GraphDocVers));
             return result;
         }
+    }
+
+    [Serializable]
+    public class GraphDocAxiCaption
+    {
+        public bool Display { get; set; }
+
+        public bool isIndependence { get; set; }
+
+        //For independence behavior
+        public string LowLimFormula { get; set; }
+        public string HighLimFormula { get; set; }
+        public string PeriodFormula { get; set; }
+        public float Period { get; set; }
+        public float LowLim { get; set; }
+        public float HighLim { get; set; }
+
+        public List<string> CompilePeriod()
+        {
+            var CSHarpProvider = CodeDomProvider.CreateProvider("CSharp");
+            CompilerParameters compilerParams = new CompilerParameters()
+            {
+                GenerateExecutable = false,
+                GenerateInMemory = true,
+            };
+            compilerParams.ReferencedAssemblies.AddRange(new string[]
+            {
+                "System.dll",
+            });
+            compilerParams.IncludeDebugInformation = false;
+
+            var compilerResultPeriod = CSHarpProvider.CompileAssemblyFromSource(compilerParams, FormulaDataSource.CompRangeEnvironment.Replace("{formula}", PeriodFormula));
+            var compilerResultLow = CSHarpProvider.CompileAssemblyFromSource(compilerParams, FormulaDataSource.CompRangeEnvironment.Replace("{formula}", LowLimFormula));
+            var compilerResultHigh = CSHarpProvider.CompileAssemblyFromSource(compilerParams, FormulaDataSource.CompRangeEnvironment.Replace("{formula}", HighLimFormula));
+
+            if (compilerResultLow.Errors.Count == 0 && compilerResultHigh.Errors.Count == 0 && compilerResultPeriod.Errors.Count == 0)
+            {
+                try
+                {
+                    var _baseTypeLow = compilerResultLow.CompiledAssembly.GetType("Func.Function");
+                    var _baseTypeHigh = compilerResultHigh.CompiledAssembly.GetType("Func.Function");
+                    var _baseTypePeriod = compilerResultPeriod.CompiledAssembly.GetType("Func.Function");
+                    Period = ((Func<float>)Delegate.CreateDelegate(typeof(Func<float>), _baseTypePeriod.GetMethod("MainFunction"))).Invoke();
+                    HighLim = ((Func<float>)Delegate.CreateDelegate(typeof(Func<float>), _baseTypeHigh.GetMethod("MainFunction"))).Invoke();
+                    LowLim = ((Func<float>)Delegate.CreateDelegate(typeof(Func<float>), _baseTypeLow.GetMethod("MainFunction"))).Invoke();
+
+                }
+                catch (Exception e)
+                {
+                    var res = new List<string>();
+                    res.Add(e.Message + ". Stack Trace: " + e.StackTrace);
+                    return res;
+                }
+            }
+            else
+            {
+                var res = new List<string>();
+                if (compilerResultLow.Errors.Count != 0)
+                {
+                    foreach (var a in compilerResultLow.Errors)
+                    {
+                        var b = a.ToString();
+                        res.Add('/' + b.Substring(b.IndexOf("CS")));
+                    }
+                }
+                if (compilerResultHigh.Errors.Count != 0)
+                {
+                    foreach (var a in compilerResultHigh.Errors)
+                    {
+                        var b = a.ToString();
+                        res.Add('\\' + b.Substring(b.IndexOf("CS")));
+                    }
+                }
+                if (compilerResultPeriod.Errors.Count != 0)
+                {
+                    foreach (var a in compilerResultPeriod.Errors)
+                    {
+                        var b = a.ToString();
+                        res.Add('|' + b.Substring(b.IndexOf("CS")));
+                    }
+                }
+                return res;
+            }
+            return null;
+        }
+
+        public bool DisplayXAxisName { get; set; }
+        public bool DisplayYAxisName { get; set; }
+        public string XAxisName { get; set; }
+        public string YAxisName { get; set; }
+        public bool AutoRange { get; internal set; }
+
+        public GraphDocAxiCaption() { }
     }
 }

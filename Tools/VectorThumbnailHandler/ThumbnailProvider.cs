@@ -26,14 +26,31 @@ namespace HandlerSamples
 
         private Bitmap ProccedBitmap(string Filename, int sideSize)
         {
+            var v = new Vector(Filename);
             int borderSize = (int)(sideSize * .1f);
-            Bitmap baseBmp = new Vector(Filename).ToBitmap(Color.White, Color.Black, new Size(sideSize - borderSize, sideSize - borderSize));
+            Bitmap baseBmp = v.ToBitmap(Color.White, Color.Black, new Size(sideSize - borderSize, sideSize - borderSize));
             Bitmap bmp = new Bitmap(sideSize, sideSize);
             using (Graphics gr = Graphics.FromImage(bmp))
             {
+                string FileFortamStr = ".PCV";
+                switch (v.Header.FileFormat)
+                {
+                    case VectorFileFormat.PRRES:
+                        FileFortamStr = ".PRRES";
+                        break;
+                    case VectorFileFormat.PCV:
+                        FileFortamStr = ".PCV";
+                        break;
+                    case VectorFileFormat.OPCV:
+                        FileFortamStr = ".OPCV";
+                        break;
+                    default:
+                        FileFortamStr = "err";
+                        break;
+                }
+                gr.DrawString(FileFortamStr, new Font("Century", FontSizeKoef * sideSize), Brushes.Black, new PointF(TextXKoef * sideSize, TextYKoef * sideSize));
                 gr.FillRectangle(new SolidBrush(Color.FromArgb(101, 0, 101)), new Rectangle(0, 0, sideSize, sideSize));
                 gr.DrawImage(baseBmp, new Point(borderSize / 2, borderSize / 2));
-                gr.DrawString(".PCV", new Font("Century", FontSizeKoef * sideSize), Brushes.Black, new PointF(TextXKoef * sideSize, TextYKoef * sideSize));
             }
             return bmp;
         }

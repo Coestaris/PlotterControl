@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 29.08.2017 15:54:18
 *=================================*/
 
 using System.Collections.Generic;
@@ -46,6 +46,7 @@ namespace CWA.Vectors
         /// Дополнительные параметеры вектора.
         /// </summary>
         public Dictionary<string, string> ExParams { get;  set; }
+        public VectorFileFormat FileFormat { get; internal set; }
 
         /// <summary>
         /// Оператор сравнения хедеров.

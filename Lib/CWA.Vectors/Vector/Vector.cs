@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 26.08.2017 20:10:56
+* Last Edited: 29.08.2017 16:28:06
 *=================================*/
 
 using System;
@@ -30,6 +30,33 @@ namespace CWA.Vectors
         /// Рандомайзер для метода ToBitmap().
         /// </summary>
         private Random _rand = new Random();
+
+        private byte[] PCVByteHeader = new byte[]
+        {
+            (byte)'V',
+            (byte)'e',
+            (byte)'c',
+            (byte)'t',
+            (byte)'A',
+            (byte)'r',
+            (byte)'c',
+            (byte)'h',
+            (byte)'0'
+        };
+
+        private byte[] bytesToDelete = new byte[]
+        {
+            (byte)'0',
+            (byte)'1',
+            (byte)'2',
+            (byte)'3',
+            (byte)'4',
+            (byte)'5',
+            (byte)'6',
+            (byte)'7',
+            (byte)'8',
+            (byte)'9'
+        };
 
         private readonly static byte[] ByteDownPattern = new byte[4] { 100, 100, 100, 100 };
         private readonly static byte[] ByteUpPattern = new byte[4] { 101, 101, 101, 101 };
@@ -70,6 +97,21 @@ namespace CWA.Vectors
             if (string.IsNullOrEmpty(Filename)) Filename = "";
         }
 
+        private byte[] GetBytesAndRemoveHeader(string FileName)
+        {
+            //"VectArch" - 8 символов.
+            List<byte> totalBytes = File.ReadAllBytes(FileName).ToList();
+            int delIndex = 8;
+            for(; delIndex < totalBytes.Count; delIndex++)
+                if (!bytesToDelete.Contains(totalBytes[delIndex]))
+                    break;
+            totalBytes.RemoveRange(0, delIndex);
+
+            string s = new string(totalBytes.Select(pp => (char)pp).ToArray());
+
+            return Helper.Decompress(totalBytes.ToArray());
+        }
+
         /// <summary>
         /// Загружает вектор формата .PCV.
         /// </summary>
@@ -77,7 +119,7 @@ namespace CWA.Vectors
         private void LoadVectPCV(string filename)
         {
             VPointEx[][] contours = new VPointEx[0][];
-            string s = new string(Helper.Decompress(File.ReadAllBytes(filename)).Select(pp => (char)pp).ToArray());
+            string s = new string(GetBytesAndRemoveHeader(filename).Select(pp => (char)pp).ToArray());
 
             //TODO: Это по прежнему не совместимо с PCV старого образца, с VectArch.
             //Нид сделать что-то по типу удаления того "хедера" и читать его.
@@ -125,13 +167,15 @@ namespace CWA.Vectors
             Header = head;
             RawData = contours;
         }
+     
         /// <summary>
         /// Сохраняет вектор в формате .PCV.
         /// </summary>
         /// <param name="FileName">Имя файла для загрузки.</param>
         private void SavePCV(string FileName)
         {
-            var t = new StreamWriter(File.OpenWrite(FileName));
+            var memoryStream = new MemoryStream();
+            var t = new StreamWriter(memoryStream);
             t.Write("vect,");
             t.Write(Header.Width+",");
             t.Write(Header.Height + ",");
@@ -145,6 +189,10 @@ namespace CWA.Vectors
             }
             t.Write("end");
             t.Close();
+            byte[] data = new byte[memoryStream.Length + PCVByteHeader.Length];
+            Buffer.BlockCopy(PCVByteHeader, 0, data, 0, PCVByteHeader.Length);
+            Buffer.BlockCopy(PCVByteHeader, 0, memoryStream.ToArray(), PCVByteHeader.Length, (int)memoryStream.Length);
+            File.WriteAllBytes(FileName, Helper.Compress(data));
         }
 
         /// <summary>
@@ -224,7 +272,8 @@ namespace CWA.Vectors
             //string DirectoryName = FileName.Split('.').Reverse().ToArray()[1] + '\\';
 
             //С папкой "где-то там", намного приятнее :З.
-            string DirectoryName = Path.GetTempPath() + "vect\\";
+            //Рандом для того, чтобы минимизировать шанс коллизии, при открытии виндой.
+            string DirectoryName = Path.GetTempPath() + string.Format("vect{0}\\", new Random().Next(0,10000));
 
             if (Directory.Exists(DirectoryName))
             {
@@ -711,12 +760,26 @@ namespace CWA.Vectors
         /// <param name="filename">Файл, с которого будет загружен вектор.</param>
         public Vector(string filename)
         {
+#pragma warning disable CS0612 // Тип или член устарел
             Init();
             string ind =  File.ReadLines(filename).First();
-            if (ind.StartsWith("prres")) LoadVectPrres(filename);
-            else if (ind.StartsWith("vect") || ind.StartsWith("vectarch")) LoadVectPCV(filename);
-            else LoadVectOPCV(filename);
+            if (ind.StartsWith("prres"))
+            {
+                LoadVectPrres(filename);
+                Header.FileFormat = VectorFileFormat.PRRES;
+            }
+            else if (ind.StartsWith("vect") || ind.StartsWith("vectarch"))
+            {
+                LoadVectPCV(filename);
+                Header.FileFormat = VectorFileFormat.PCV;
+            }
+            else
+            {
+                LoadVectOPCV(filename);
+                Header.FileFormat = VectorFileFormat.OPCV;
+            }
             Filename = filename;
+#pragma warning restore CS0612 // Тип или член устарел
         }
 
         /// <summary>

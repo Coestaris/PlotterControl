@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 26.08.2017 16:30:56
+* Last Edited: 27.08.2017 21:30:51
 *=================================*/
 
 namespace CnC_WFA
@@ -151,6 +151,7 @@ namespace CnC_WFA
             // button_repickpath
             // 
             this.button_repickpath.BackColor = System.Drawing.Color.White;
+            this.button_repickpath.Enabled = false;
             this.button_repickpath.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_repickpath.FlatAppearance.BorderSize = 2;
             this.button_repickpath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -185,6 +186,7 @@ namespace CnC_WFA
             // 
             // textBox_macro_caption
             // 
+            this.textBox_macro_caption.Enabled = false;
             this.textBox_macro_caption.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.textBox_macro_caption.Location = new System.Drawing.Point(309, 61);
             this.textBox_macro_caption.Name = "textBox_macro_caption";
@@ -195,6 +197,7 @@ namespace CnC_WFA
             // comboBox_macro_charbind
             // 
             this.comboBox_macro_charbind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_macro_charbind.Enabled = false;
             this.comboBox_macro_charbind.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.comboBox_macro_charbind.FormattingEnabled = true;
             this.comboBox_macro_charbind.Location = new System.Drawing.Point(309, 135);
@@ -206,6 +209,7 @@ namespace CnC_WFA
             // comboBox_macro_keybind
             // 
             this.comboBox_macro_keybind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_macro_keybind.Enabled = false;
             this.comboBox_macro_keybind.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.comboBox_macro_keybind.FormattingEnabled = true;
             this.comboBox_macro_keybind.Location = new System.Drawing.Point(309, 98);
@@ -227,6 +231,7 @@ namespace CnC_WFA
             // button_remove
             // 
             this.button_remove.BackColor = System.Drawing.Color.White;
+            this.button_remove.Enabled = false;
             this.button_remove.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_remove.FlatAppearance.BorderSize = 2;
             this.button_remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -242,6 +247,7 @@ namespace CnC_WFA
             // button_openineditor
             // 
             this.button_openineditor.BackColor = System.Drawing.Color.White;
+            this.button_openineditor.Enabled = false;
             this.button_openineditor.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_openineditor.FlatAppearance.BorderSize = 2;
             this.button_openineditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -572,7 +578,6 @@ namespace CnC_WFA
             this.panel_macroMain.Controls.Add(this.button_remove);
             this.panel_macroMain.Controls.Add(this.label_macro_discr);
             this.panel_macroMain.Controls.Add(this.label_macro_name);
-            this.panel_macroMain.Enabled = false;
             this.panel_macroMain.Location = new System.Drawing.Point(0, 180);
             this.panel_macroMain.Name = "panel_macroMain";
             this.panel_macroMain.Size = new System.Drawing.Size(511, 193);
@@ -581,6 +586,7 @@ namespace CnC_WFA
             // checkBox_isHidden
             // 
             this.checkBox_isHidden.AutoSize = true;
+            this.checkBox_isHidden.Enabled = false;
             this.checkBox_isHidden.Location = new System.Drawing.Point(413, 110);
             this.checkBox_isHidden.Name = "checkBox_isHidden";
             this.checkBox_isHidden.Size = new System.Drawing.Size(78, 21);

@@ -5,13 +5,15 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 27.08.2017 13:38:33
+* Last Edited: 28.08.2017 14:52:28
 *=================================*/
 
 using CWA.Connection;
 using CWA.DTP;
+using CWA.DTP.Plotter;
 using CWA.Printing.Macro;
 using System;
+using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Windows.Forms;
@@ -26,7 +28,8 @@ namespace CnC_WFA
         }
 
         public MacroPack Main;
-        public DTPMaster Master; 
+        public DTPMaster Master;
+        public PlotterContent ContentMaster; 
 
         private void button_main_device_col_Click(object sender, EventArgs e)
         {
@@ -40,16 +43,23 @@ namespace CnC_WFA
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(openFileDialog2.ShowDialog() == DialogResult.OK)
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {
-                tabControl1.SelectedIndex = 1;
                 Main = MacroPack.Load(openFileDialog2.FileName);
 
+                if (!Main.IsEveryMacroCorrect)
+                {
+                    MessageBox.Show("Не удалось загрузить 1 или несколько макросов.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                tabControl1.SelectedIndex = 1;
+
                 comboBox_presets.Items.Clear();
-                comboBox_presets.Items.Add(Main.Samples);
+                comboBox_presets.Items.AddRange(Main.Samples.ToArray());
 
                 comboBox_bd.Items.Clear();
-                comboBox_bd.Items.AddRange(BdRate.GetNamesInt().Select(p=>p.ToString()).ToArray());
+                comboBox_bd.Items.AddRange(BdRate.GetNamesInt().Select(p => p.ToString()).ToArray());
                 comboBox_port.Items.Clear();
                 comboBox_port.Items.AddRange(SerialPort.GetPortNames());
 
@@ -62,6 +72,8 @@ namespace CnC_WFA
                 richTextBox_discr.Text = Main.Discr;
                 label_caption.Text = Main.Caption;
                 label_name.Text = Main.Name;
+
+                CreateButtons();
             }
         }
 
@@ -77,14 +89,67 @@ namespace CnC_WFA
             comboBox_port.SelectedItem = Main.PortName.ToString();
         }
 
+        private void OnButtonClick(object sender, EventArgs e)
+        {
+            int index = (int)(sender as Button).Tag;
+            MessageBox.Show(Main.Elems[index].Path);
+        }
+
+        private void CreateButtons()
+        {
+            Font f = new Font("Cambria", 8.25f);
+            int x = 0, y = 0, i = 0;
+            panel1.Controls.Clear();
+            foreach (var item in Main.Elems)
+            {
+                var btn = new Button()
+                {
+                    Size = new Size(71, 57),
+                    BackColor = Color.White,
+                    FlatStyle = FlatStyle.Flat,
+                    Text = item.Options.Caption,
+                    Location = new Point(15 + x * 106, 14 + y * 85),
+                    Font = f,
+                    Tag = i
+                };
+                btn.Click += OnButtonClick;
+                btn.FlatAppearance.BorderSize = 2;
+                btn.FlatAppearance.BorderColor = Color.Silver;
+                var LabelcharBind = new Label
+                {
+                    Location = new Point(15 + x * 106, 74 + y * 85),
+                    AutoSize = true,
+                    Font = f,
+                    Text = item.Options.CharBind.ToString()
+                };
+                var LabelKeyBind = new Label
+                {
+                    Location = new Point(15 + x * 106, 82 + y * 85),
+                    Font = f,
+                    AutoSize = true,
+                    Text = item.Options.KeyBind.ToString()
+                };
+                panel1.Controls.AddRange(new Control[] { btn, LabelcharBind, LabelKeyBind });
+                if (x % 4 == 0 && x != 0)
+                {
+                    y++;
+                    x = 0;
+                } else x++;
+                i++;
+            }
+        }
+
         private void button_connect_Click(object sender, EventArgs e)
         {
             if (button_connect.Text == "Отключить")
             {
-                Master.CloseConnection();
+                Master?.CloseConnection();
                 groupBox_presets.Enabled = false;
                 groupBox_macro.Enabled = false;
                 button_connect.Text = "Подключится";
+                comboBox_bd.Enabled = true;
+                comboBox_port.Enabled = true;
+
             }
             else
             {
@@ -93,11 +158,9 @@ namespace CnC_WFA
                     MessageBox.Show("Укажите скорость соеденения", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                Master.CloseConnection();
-
+                Master?.CloseConnection();
                 groupBox_presets.Enabled = false;
                 groupBox_macro.Enabled = false;
-
                 SerialPort port = new SerialPort(comboBox_port.Text, int.Parse(comboBox_bd.Text));
                 try
                 {
@@ -125,13 +188,76 @@ namespace CnC_WFA
                     return;
                 }
                 groupBox_presets.Enabled = true;
-                groupBox_macro.Enabled = false;
-
+                groupBox_macro.Enabled = true;
                 comboBox_bd.Enabled = false;
                 comboBox_port.Enabled = false;
-
                 button_connect.Text = "Отключить";
+                ContentMaster = new PlotterContent(Master);
+                tabControl1.Enabled = false;
+                loadingCircle_previewLoad.Visible = true;
+                backgroundWorker1.RunWorkerAsync();
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void button_exit_3_Click(object sender, EventArgs e)
+        {
+            if (groupBox_presets.Enabled)
+                if(MessageBox.Show("В данный момент активна сессия подключения. Прервать ее и выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Master.CloseConnection();
+                    Close();
+                }
+
+        }
+
+        private void Form_MacroPack_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (groupBox_presets.Enabled)
+                if (MessageBox.Show("В данный момент активна сессия подключения. Прервать ее и выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    Master.CloseConnection();
+                else e.Cancel = true;
+        }
+
+        private void button_reopen_Click(object sender, EventArgs e)
+        {
+            if (groupBox_presets.Enabled)
+                if (MessageBox.Show("В данный момент активна сессия подключения. Прервать ее и загрузить другой пак?", "Загрузка", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Master.CloseConnection();
+                    button_connect_Click(null, null);
+                }
+            button1_Click(null, null);
+        }
+
+        private delegate void BackGroundWorkerEndedHandler();
+
+        private void BackGroundWorkerEnded()
+        {
+            if(InvokeRequired)
+            {
+                var d = new BackGroundWorkerEndedHandler(BackGroundWorkerEnded);
+                Invoke(d);
+            }
+            else
+            {
+                loadingCircle_previewLoad.Visible = false;
+                tabControl1.Enabled = true;
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            ContentMaster.UploadFlFormatFiles(Main.Elems.Select(p => p.GetMacro().ToFlFormat()).ToArray(), true);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

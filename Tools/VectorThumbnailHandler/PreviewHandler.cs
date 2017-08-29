@@ -18,8 +18,9 @@ namespace HandlerSamples
         public void Populate(Vector definition)
         {
             lblName.Text = definition.Filename;
-            txtContent.Text = definition.Header.VectType.ToString();
-            imageEncoded.Image = definition.ToBitmap();
+            txtContent.Text = string.Format("Vector File Type: {0}\nResolution: {1}:\nContours: {2}. Points: {3}",
+                definition.Header.VectType.ToString(), definition.GetResolutionByFormat("{0}x{1}"), definition.ContorurCount, definition.Points);
+            imageEncoded.Image = definition.ToBitmap(Color.White, Color.Black);
         }
 
         private System.ComponentModel.IContainer components = null;
@@ -40,41 +41,52 @@ namespace HandlerSamples
             imageEncoded = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)(imageEncoded)).BeginInit();
             SuspendLayout();
+            // 
+            // txtContent
+            // 
             txtContent.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-                        | AnchorStyles.Left)
-                        | AnchorStyles.Right);
-            txtContent.Location = new Point(12, 173);
+            | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            txtContent.Location = new Point(12, 250);
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";
             txtContent.ReadOnly = true;
             txtContent.ScrollBars = ScrollBars.Both;
-            txtContent.Size = new Size(269, 157);
+            txtContent.Size = new Size(269, 80);
             txtContent.TabIndex = 0;
+            // 
+            // lblName
+            // 
             lblName.AutoSize = true;
             lblName.Location = new Point(9, 9);
             lblName.Name = "lblName";
             lblName.Size = new Size(49, 13);
             lblName.TabIndex = 1;
             lblName.Text = "file name";
+            // 
+            // imageEncoded
+            // 
             imageEncoded.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-                        | AnchorStyles.Right);
+            | AnchorStyles.Right);
             imageEncoded.Location = new Point(12, 25);
             imageEncoded.Name = "imageEncoded";
-            imageEncoded.Size = new Size(269, 142);
+            imageEncoded.Size = new Size(269, 219);
             imageEncoded.SizeMode = PictureBoxSizeMode.Zoom;
             imageEncoded.TabIndex = 2;
             imageEncoded.TabStop = false;
+            // 
+            // PreviewHandleControl
+            // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(imageEncoded);
             Controls.Add(lblName);
             Controls.Add(txtContent);
-            Name = "PreviewHandlerWinformsDemoControl";
+            Name = "PreviewHandleControl";
             Size = new Size(293, 342);
             ((System.ComponentModel.ISupportInitialize)(imageEncoded)).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         private TextBox txtContent;

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 23.08.2017 19:22:48
+* Last Edited: 28.08.2017 14:33:40
 *=================================*/
 
 using System.IO.Ports;
@@ -89,7 +89,7 @@ namespace CWA.DTP
                 {
                     reader = new SerialPacketReader(port, 500);
                     writer = new SerialPacketWriter(port);
-                    var a = new GeneralPacketHandler(Sender.Nullable, new PacketListener(reader, writer));
+                    var a = new GeneralPacketHandler(Sender.Empty, new PacketListener(reader, writer));
                     if (a.Device_Test())
                     {
                         reader.TimeOutInterval = TimeOutInterval;

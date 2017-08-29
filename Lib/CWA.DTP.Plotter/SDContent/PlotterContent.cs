@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 24.08.2017 20:48:33
+* Last Edited: 28.08.2017 14:39:38
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -22,13 +22,7 @@ namespace CWA.DTP.Plotter
     {
         internal PlotterContentTable ContentTable { get; private set; }
 
-        public List<UInt16> VectorIndexes
-        {
-            get
-            {
-                return ContentTable.VectorAdresses;
-            }
-        }
+        public List<UInt16> VectorIndexes => ContentTable.VectorAdresses;
 
         public PlotterContent(DTPMaster master) : base(master)
         {
@@ -72,13 +66,7 @@ namespace CWA.DTP.Plotter
             return true;
         }
 
-        public UInt16 CountOfVectors
-        {
-            get
-            {
-                return ContentTable.CountOfVectors;
-            }
-        }
+        public UInt16 CountOfVectors => ContentTable.CountOfVectors;
 
         public VectorMetaData GetVectorMetaData(UInt16 index)
         {
@@ -181,7 +169,7 @@ namespace CWA.DTP.Plotter
             ContentTable = new PlotterContentTable(Master);
         }
 
-        private void DeleteAllFlFormatFiles()
+        public void DeleteAllFlFormatFiles()
         {
             var dir = Master.CreateDirectoryHandlerFromRoot();
             var files = dir.SubFiles;
@@ -204,11 +192,10 @@ namespace CWA.DTP.Plotter
         public Dictionary<UInt32, UInt32> GetFlFormatHashes()
         {
             Dictionary<UInt32, UInt32> result = new Dictionary<UInt32, UInt32>();
-            var dir = Master.CreateDirectoryHandlerFromRoot();
-            var files = dir.SubFiles;
+            var files = Master.CreateDirectoryHandlerFromRoot().SubFiles;
             foreach (SdCardFile file in files)
                 if (file.FilePath.StartsWith("fl"))
-                    result.Add(UInt32.Parse(file.FilePath.Remove(0, 2)), file.CRC32);
+                    result.Add(UInt32.Parse(file.FilePath.Remove(0, 2).Split('.')[0]), file.CRC32);
             return result.Count == 0 ? null : result;
         }
 

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:36
-* Last Edited: 27.08.2017 13:30:22
+* Last Edited: 28.08.2017 14:44:58
 *=================================*/
 
 using System.Collections.Generic;
@@ -64,13 +64,27 @@ namespace CWA.Printing.Macro
         public List<MacroPackElem> Elems { get; set; }
 
         /// <summary>
+        /// Указывает на то, что удалось корректно загрузить все элементы.
+        /// </summary>
+        public bool IsEveryMacroCorrect => Elems.TrueForAll(p => p.GetMacro() != null);
+
+        /// <summary>
         ///  Возвращает дочерные элементы.
         /// </summary>
         /// <param name="CantLoadList">Возвращает список элементов, которые не получилось загрузить.</param>
         /// <returns></returns>
-        public List<Macro> GetElems(out List<string> CantLoadList)
+        public List<Macro> GetElems(out List<MacroPackElem> CantLoadList)
         {
-            throw new NotImplementedException();
+            var result = new List<Macro>();
+            CantLoadList = new List<MacroPackElem>();
+            foreach (var item in Elems)
+            {
+                var macro = item.GetMacro();
+                if (macro == null)
+                    CantLoadList.Add(item);
+                else result.Add(macro);
+            }
+            return result.Count == 0 ? null : result;
         }
 
         /// <summary>

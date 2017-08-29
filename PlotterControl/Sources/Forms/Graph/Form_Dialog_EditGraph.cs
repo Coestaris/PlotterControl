@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 28.08.2017 22:59:11
 *=================================*/
 
 using System;
@@ -29,7 +29,9 @@ namespace CnC_WFA
         }
 
         private Graph Object;
+
         private List<string> GlobalErrors, GlobalErrorsLims, GlobalErrorsPeriod;
+
         private string CurrentCompString;
 
         private DateTime startTime, endTime, startTimePeriod, endTimePeriod;
@@ -37,6 +39,12 @@ namespace CnC_WFA
         private string CurrentCompStringLow, CurrentCompStringHigh;
 
         public Form_Graph FormParent { get; internal set; }
+
+        private Button[] Buttons;
+
+        private Color SelectedButtonColor = Color.FromArgb(5, 92, 199);
+
+        private Color DefaultButtonColor = Color.FromArgb(4, 60, 130);
 
         public Form_Dialog_EditGraph(Graph editing)
         {
@@ -47,6 +55,13 @@ namespace CnC_WFA
 
         private void Form_Dialog_EditGraph_Load(object sender, EventArgs e)
         {
+            Buttons = new Button[]
+            {
+                button_data,
+                button_display,
+                button_markers
+            };
+
             textBox_name.Text = Object.Name;
             if (Object.DataSource.GetType() == typeof(FormulaDataSource))
             {
@@ -100,7 +115,6 @@ namespace CnC_WFA
             if (img != null) img.Dispose();
         }
 
-
         private void SetMarkerColorProbe()
         {
             Bitmap bmp = new Bitmap(50, 50);
@@ -109,12 +123,6 @@ namespace CnC_WFA
             pictureBox_markers_color.Image = bmp;
             if (img != null) img.Dispose();
         }
-
-        private void textBox_data_formula_formula_TextChanged(object sender, EventArgs e)
-        {
-            CurrentCompString = textBox_data_formula_formula.Text;
-        }
-
 
         private void button_data_formula_compile_Click(object sender, EventArgs e)
         {
@@ -207,11 +215,6 @@ namespace CnC_WFA
             button_data_formula_status_more.Visible = false;
         }
 
-        private void richTextBox_data_formula_add_TextChanged(object sender, EventArgs e)
-        {
-            CurrentCompString = richTextBox_data_formula_add.Text;
-        }
-
         private void button_data_formula_expand_Click(object sender, EventArgs e)
         {
             if (!richTextBox_data_formula_add.Visible)
@@ -225,10 +228,7 @@ namespace CnC_WFA
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void button4_Click(object sender, EventArgs e) => Close();
 
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
@@ -236,32 +236,26 @@ namespace CnC_WFA
             Text = string.Format("Редактирование \"{0}\"", Object.Name);
         }
 
+        private void HighLightButton(int index)
+        {
+            for (int i = 0; i < Buttons.Length; i++)
+                Buttons[i].BackColor = i == index ? SelectedButtonColor : DefaultButtonColor;
+            tabControl_main.SelectedIndex = index;
+        }
+
         private void Form_Dialog_EditGraph_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Object.DataSource.GetType() == typeof(FormulaDataSource))
             {
                 var ds = Object.DataSource as FormulaDataSource;
-                /*
-                float outNum1, outNum2 = 0;
-                if (outNum1 >= outNum2)
-                {
-                    MessageBox.Show("Нижний предел не может быть больше либо равным верхему", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    e.Cancel = true;
-                }
-                */
-                
                 string res = "";
-
                 if (CurrentCompString != ds.Formula) res += string.Format("Введенная формула \"{0}\" не совпадает с удачной \"{1}\"", CurrentCompString, ds.Formula);
                 if (CurrentCompStringHigh != ds.HighLimFormula) res += string.Format("Введенная формула нижнего правого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringLow, ds.HighLimFormula);
                 if (CurrentCompStringLow != ds.LowLimFormula) res += string.Format("Введенная формула нижнего левого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringHigh, ds.LowLimFormula);
-
                 if (textBox_markers_period.Text != Object.Markers.PeriodFormula) res += string.Format("Введенная формула периода маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period.Text, Object.Markers.PeriodFormula);
                 if (textBox_markers_period_start.Text != Object.Markers.LowLimFormula) res += string.Format("Введенная формула левого предела маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period_start.Text, Object.Markers.LowLimFormula);
                 if (textBox_markers_period_end.Text != Object.Markers.HighLimFormula) res += string.Format("Введенная формула левого правого маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period_end.Text, Object.Markers.HighLimFormula);
-
                 if(res.Length != 0) MessageBox.Show(res, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 Object.DataSource = ds;
             }
             Object.MainPen = new Pen(colorDialog1.Color, float.Parse(textBox_display_width.Text));
@@ -273,27 +267,6 @@ namespace CnC_WFA
            
         }
 
-        private void button_data_Click(object sender, EventArgs e)
-        {
-            tabControl_main.SelectedIndex = 0;
-            button_data.BackColor = Color.FromArgb(5, 92, 199);
-            button_display.BackColor = Color.FromArgb(4, 60, 130);
-            button_markers.BackColor = Color.FromArgb(4, 60, 130);
-        }
-
-        private void button_display_Click(object sender, EventArgs e)
-        {
-            tabControl_main.SelectedIndex = 1;
-            button_display.BackColor = Color.FromArgb(5, 92, 199);
-            button_data.BackColor = Color.FromArgb(4, 60, 130);
-            button_markers.BackColor = Color.FromArgb(4, 60, 130);
-        }
-
-        private void radioButton_data_formula_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_display_color_Click(object sender, EventArgs e)
         {
             if(colorDialog1.ShowDialog() == DialogResult.OK)
@@ -301,11 +274,6 @@ namespace CnC_WFA
                 SetDisplayColorProbe();
                 label_display_color_rgb.Text = string.Format("RGB ({0}, {1}, {2})", colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
             }
-        }
-
-        private void textBox_markers_period_TextChanged(object sender, EventArgs e)
-        {
-            Object.Markers.PeriodFormula = textBox_markers_period.Text;
         }
 
         private void checkBox_markers_period_CheckedChanged(object sender, EventArgs e)
@@ -325,16 +293,6 @@ namespace CnC_WFA
             Object.Markers.Use = checkBox_markers_use.Checked;
             groupBox_markers_display.Enabled = checkBox_markers_use.Checked;
             groupBox_markers_params.Enabled = checkBox_markers_use.Checked;
-        }
-
-        private void textBox_markers_end_TextChanged(object sender, EventArgs e)
-        {
-            Object.Markers.HighLimFormula = textBox_markers_period_end.Text;
-        }
-
-        private void textBox_markers_period_start_TextChanged(object sender, EventArgs e)
-        {
-            Object.Markers.LowLimFormula = textBox_markers_period_start.Text;
         }
 
         private void button_markers_status_Click(object sender, EventArgs e)
@@ -372,20 +330,10 @@ namespace CnC_WFA
             timer_markers_expire.Enabled = false;
         }
 
-        private void button_markers_color_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButton_markers_period_CheckedChanged(object sender, EventArgs e)
         {
             groupBox_period.Enabled = radioButton_markers_period.Checked;
             groupBox_points.Enabled = !radioButton_markers_period.Checked;
-        }
-
-        private void checkBox_display_display_CheckedChanged(object sender, EventArgs e)
-        {
-            groupBox1.Enabled = checkBox_display_display.Checked;
         }
 
         private void button_markers_compile_Click(object sender, EventArgs e)
@@ -425,22 +373,26 @@ namespace CnC_WFA
             }
         }
 
-        private void textBox_data_formula_start_TextChanged(object sender, EventArgs e)
-        {
-            CurrentCompStringLow = textBox_data_formula_start.Text;
-        }
+        private void button_data_Click(object sender, EventArgs e) => HighLightButton(0);
 
-        private void textBox_data_formula_end_TextChanged(object sender, EventArgs e)
-        {
-            CurrentCompStringHigh = textBox_data_formula_end.Text;
-        }
+        private void button_display_Click(object sender, EventArgs e) => HighLightButton(1);
 
-        private void button_markers_Click(object sender, EventArgs e)
-        {
-            tabControl_main.SelectedIndex = 2;
-            button_markers.BackColor = Color.FromArgb(5, 92, 199);
-            button_display.BackColor = Color.FromArgb(4, 60, 130);
-            button_data.BackColor = Color.FromArgb(4, 60, 130);
-        }
+        private void button_markers_Click(object sender, EventArgs e) => HighLightButton(2);
+
+        private void textBox_markers_period_TextChanged(object sender, EventArgs e) => Object.Markers.PeriodFormula = textBox_markers_period.Text;
+
+        private void textBox_markers_end_TextChanged(object sender, EventArgs e) => Object.Markers.HighLimFormula = textBox_markers_period_end.Text;
+
+        private void textBox_markers_period_start_TextChanged(object sender, EventArgs e) => Object.Markers.LowLimFormula = textBox_markers_period_start.Text;
+
+        private void checkBox_display_display_CheckedChanged(object sender, EventArgs e) => groupBox1.Enabled = checkBox_display_display.Checked;
+
+        private void textBox_data_formula_start_TextChanged(object sender, EventArgs e) => CurrentCompStringLow = textBox_data_formula_start.Text;
+
+        private void textBox_data_formula_end_TextChanged(object sender, EventArgs e) => CurrentCompStringHigh = textBox_data_formula_end.Text;
+
+        private void textBox_data_formula_formula_TextChanged(object sender, EventArgs e) => CurrentCompString = textBox_data_formula_formula.Text;
+
+        private void richTextBox_data_formula_add_TextChanged(object sender, EventArgs e) => CurrentCompString = richTextBox_data_formula_add.Text;
     }
 }

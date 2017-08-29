@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 24.08.2017 21:48:50
+* Last Edited: 28.08.2017 14:37:01
 *=================================*/
 
 using System;
@@ -16,12 +16,14 @@ namespace CWA.DTP
     public class Sender
     {
         public byte[] Mask { get; set; }
+
         public SenderType Type { get; set; }
+
         private string _name;
 
         public string Name
         {
-            get { return _name; }
+            get => _name; 
             set
             {
                 if (value.Length != 7) throw new ArgumentException();
@@ -31,13 +33,7 @@ namespace CWA.DTP
             }
         }
 
-        public static Sender Nullable
-        {
-            get
-            {
-                return new Sender(SenderType.UnNamedByteMask);
-            }
-        }
+        public static Sender Empty => new Sender(SenderType.UnNamedByteMask);
 
         public Sender(SenderType type)
         {

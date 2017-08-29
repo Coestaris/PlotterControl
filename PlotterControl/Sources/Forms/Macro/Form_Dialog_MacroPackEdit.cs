@@ -1,27 +1,12 @@
-/*
-    The MIT License(MIT)
-
-    Copyright (c) 2016 - 2017 Kurylko Maxim Igorevich
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
-
-*/
+/*=================================\
+* PlotterControl\Form_Dialog_MacroPackEdit.cs
+*
+* The Coestaris licenses this file to you under the MIT license.
+* See the LICENSE file in the project root for more information.
+*
+* Created: 25.08.2017 22:27
+* Last Edited: 27.08.2017 21:30:51
+*=================================*/
 
 using CWA;
 using CWA.Connection;
@@ -60,14 +45,6 @@ namespace CnC_WFA
         private void UpDateMacrosettings(int i)
         {
             var a = main.Elems[i];
-
-            if (a.GetMacro() == null)
-            {
-                panel_macroMain.Enabled = false;
-                button_repickpath.Enabled = true;
-                button_remove.Enabled = true;
-                button_openineditor.Enabled = false;
-            }
             if (a.GetMacro() == null)
             {
                 int height = pictureBox1.Height;
@@ -82,7 +59,7 @@ namespace CnC_WFA
                 }
                 Image img = pictureBox1.Image;
                 pictureBox1.Image = bmp;
-                if (img != null) img.Dispose();
+                img?.Dispose();
                 return;
             }
             label_macro_name.Text = "Name: " + ExOperators.CutString(a.GetMacro().Name, 15);
@@ -226,11 +203,17 @@ namespace CnC_WFA
 
         private void listBox_macroses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel_macroMain.Enabled = listBox_macroses.SelectedIndex != -1;
-            button_remove.Enabled = listBox_macroses.SelectedIndex != -1;
-            button_repickpath.Enabled = listBox_macroses.SelectedIndex != -1;
-            button_openineditor.Enabled = listBox_macroses.SelectedIndex != -1;
-            if (listBox_macroses.SelectedIndex != -1)
+            bool isExists = main.Elems[listBox_macroses.SelectedIndex].GetMacro() != null;
+            bool isNNS = listBox_macroses.SelectedIndex != -1;
+
+            textBox_macro_caption.Enabled = isNNS && isExists;
+            comboBox_macro_charbind.Enabled = isNNS && isExists;
+            comboBox_macro_keybind.Enabled = isNNS && isExists;
+            checkBox_isHidden.Enabled = isNNS && isExists;
+            button_openineditor.Enabled = isNNS && isExists;
+            button_remove.Enabled = isNNS;
+            button_repickpath.Enabled = isNNS;
+            if (isNNS)
             {
                 LastListBoxIndex = listBox_macroses.SelectedIndex;
                 UpDateMacrosettings(listBox_macroses.SelectedIndex);

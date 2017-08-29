@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:32
-* Last Edited: 26.08.2017 17:49:31
+* Last Edited: 29.08.2017 15:39:05
 *=================================*/
 
 using System;
@@ -110,7 +110,8 @@ namespace CWA.Vectors
         public static byte[] Compress(byte[] data)
         {
             MemoryStream output = new MemoryStream();
-            using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
+            //using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
+            using (GZipStream dstream = new GZipStream(output, CompressionLevel.Optimal))
             {
                 dstream.Write(data, 0, data.Length);
             }
@@ -124,7 +125,8 @@ namespace CWA.Vectors
         {
             MemoryStream input = new MemoryStream(data);
             MemoryStream output = new MemoryStream();
-            using (DeflateStream dstream = new DeflateStream(input, CompressionMode.Decompress))
+            //using (DeflateStream dstream = new DeflateStream(input, CompressionMode.Decompress))
+            using (GZipStream dstream = new GZipStream(input, CompressionMode.Decompress))
             {
                 dstream.CopyTo(output);
             }

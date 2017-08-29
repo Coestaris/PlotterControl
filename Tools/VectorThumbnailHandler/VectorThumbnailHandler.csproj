@@ -63,5 +63,10 @@
       <Name>CWA.Vectors</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PreviewHandler.resx">
+      <DependentUpon>PreviewHandler.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

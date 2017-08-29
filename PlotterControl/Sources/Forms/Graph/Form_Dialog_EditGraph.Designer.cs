@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 28.08.2017 22:59:29
 *=================================*/
 
 namespace CnC_WFA
@@ -236,7 +236,6 @@ namespace CnC_WFA
             this.radioButton_data_formula.TabStop = true;
             this.radioButton_data_formula.Text = "Формулой";
             this.radioButton_data_formula.UseVisualStyleBackColor = true;
-            this.radioButton_data_formula.CheckedChanged += new System.EventHandler(this.radioButton_data_formula_CheckedChanged);
             // 
             // tabControl_data
             // 
@@ -911,7 +910,6 @@ namespace CnC_WFA
             this.button_markers_color.TabIndex = 115;
             this.button_markers_color.Text = "Выбрать";
             this.button_markers_color.UseVisualStyleBackColor = false;
-            this.button_markers_color.Click += new System.EventHandler(this.button_markers_color_Click);
             // 
             // pictureBox_markers_color
             // 

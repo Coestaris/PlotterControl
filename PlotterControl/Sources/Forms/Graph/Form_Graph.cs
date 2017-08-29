@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 28.08.2017 23:36:45
 *=================================*/
 
 using CWA;
@@ -143,7 +143,7 @@ namespace CnC_WFA
                     Type = MarkerType.Circle,
                     Size = 5,
                     Color = Color.Red
-                }
+                }               
             };
 
             el.Name = "graph" + Main.Graphs.Count;
@@ -174,7 +174,23 @@ namespace CnC_WFA
                     XOffset = 0,
                     YOffset = 0
                 },
-                LocalGraphDocVers = GraphDoc.GraphDocVers
+                LocalGraphDocVers = GraphDoc.GraphDocVers,
+                AxisCaptionParams = new GraphDocAxiCaption()
+                {
+                    AutoRange = true,
+                    Display = true,
+                    LowLim = -(float)Math.PI * 2,
+                    HighLim = (float)Math.PI * 2,
+                    Period = (float)Math.PI,
+                    PeriodFormula = "Math.PI",
+                    HighLimFormula = "Math.PI * 2",
+                    LowLimFormula = "-Math.PI * 2",
+                    DisplayXAxisName = false,
+                    DisplayYAxisName = false,
+                    isIndependence = false,
+                    XAxisName = "",
+                    YAxisName = ""
+                }
             };
             Zoom = DefZoom;
             trackBar1.Value = DefZoom;

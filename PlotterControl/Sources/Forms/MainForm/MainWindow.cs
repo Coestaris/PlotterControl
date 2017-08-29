@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 19.08.2017 18:09:59
+* Last Edited: 28.08.2017 22:40:59
 *=================================*/
 
 using CWA;
@@ -1177,7 +1177,6 @@ namespace CnC_WFA
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //Process.Start("d:\\CODING\\Solution1\\ConsoleApp1\\ConsoleApp1.exe");
-
             configchanged = new bool[11];
             devicechanged = new bool[8];
             comboBox_main_device_port.Items.AddRange(SerialPort.GetPortNames());
@@ -1235,6 +1234,8 @@ namespace CnC_WFA
             configchanged = new bool[11];
             devicechanged = new bool[8];
             FirstConfigPreloadChange = false;
+
+            
             CheckChangedDevice();
             CheckChanged();
         }

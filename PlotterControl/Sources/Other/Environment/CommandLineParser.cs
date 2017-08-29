@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:48
+* Last Edited: 28.08.2017 23:53:28
 *=================================*/
 
 using CWA.Vectors;
@@ -26,7 +26,12 @@ namespace CnC_WFA
 
         public static void Parse(string[] data)
         {
-            if (data.Length == 1) { Application.Run(FormTranslator.Translate(new MainWindow())); return; }
+            if (data.Length == 1)
+            {
+                Application.Run(new MainWindow());
+                //Application.Run(FormTranslator.Translate(new MainWindow()));
+                return;
+            }
             {
                 var data1 = string.Join(" ", data);
                 var data2 = data1.Split(' ').ToList().Skip(2);
