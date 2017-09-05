@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 24.08.2017 22:03
-* Last Edited: 24.08.2017 23:08:45
+* Last Edited: 25.08.2017 22:41:16
 *=================================*/
 
 using System;
@@ -39,7 +39,7 @@ namespace FileBrowser
         public static string VDataToString(byte[] bytes)
         {
             string res = "";
-            foreach (var item in bytes.Split(4))
+            foreach (var item in bytes.Split(9))
             {
                 var iArr = item.ToArray();
                 if (iArr.SequenceEqual(new byte[] { 100, 100, 100, 100 })) res += "\nDOWN!\n";
@@ -56,33 +56,51 @@ namespace FileBrowser
         }
 
         private InfoType type;
+        private string FileName;
 
         public SomeFileInfo(InfoType type, string FileName)
         {
             InitializeComponent();
             this.type = type;
-            if (type == InfoType.Config)
-                richTextBox1.Text = new PlotterConfigOptions(File.ReadAllBytes(FileName)).ToString();
-            else if (type == InfoType.CTable)
-                richTextBox1.Text = PlotterContentTable.FromBytes(File.ReadAllBytes(FileName)).ToString();
-            else if (type == InfoType.Pens)
-                richTextBox1.Text = string.Join("", PlotterConfig.GetPensFromBytes(File.ReadAllBytes(FileName)).Select(p => p.ToString() + "\n============================\n"));
-            else if (type == InfoType.VMeta)
-                richTextBox1.Text = new VectorMetaData(File.ReadAllBytes(FileName), null).ToString();
-            else if (type == InfoType.VData)
-                richTextBox1.Text = VDataToString(File.ReadAllBytes(FileName));
-            else if (type == InfoType.FLVData)
-                richTextBox1.Text = string.Join("\n", new FlFormat(File.ReadAllBytes(FileName)).Elements.Select(p => p.ToString()));
+            this.FileName = FileName;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.OK;
             Close();
         }
 
         private void SomeFileInfo_Load(object sender, EventArgs e)
         {
             label1.Text = string.Format("Тип файла: {0}", type.ToString());
+            try
+            {
+                if (type == InfoType.Config)
+                    richTextBox1.Text = new PlotterConfigOptions(File.ReadAllBytes(FileName)).ToString();
+                else if (type == InfoType.CTable)
+                    richTextBox1.Text = PlotterContentTable.FromBytes(File.ReadAllBytes(FileName)).ToString();
+                else if (type == InfoType.Pens)
+                    richTextBox1.Text = string.Join("", PlotterConfig.GetPensFromBytes(File.ReadAllBytes(FileName)).Select(p => p.ToString() + "\n============================\n"));
+                else if (type == InfoType.VMeta)
+                    richTextBox1.Text = new VectorMetaData(File.ReadAllBytes(FileName), null).ToString();
+                else if (type == InfoType.VData)
+                    richTextBox1.Text = VDataToString(File.ReadAllBytes(FileName));
+                else if (type == InfoType.FLVData)
+                    richTextBox1.Text = string.Join("\n", new FlFormat(File.ReadAllBytes(FileName)).Elements.Select(p => p.ToString()));
+                else
+                {
+                    DialogResult = DialogResult.No;
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    string.Format("Произошла ошибка типа {0}.\n{2}\n\nНажмите \"Повтор\" для повторной попытки. Стек вызовов:\n{1}", ex.GetType().FullName, ex.StackTrace, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = DialogResult.No;
+                Close();
+            }
         }
     }
 }

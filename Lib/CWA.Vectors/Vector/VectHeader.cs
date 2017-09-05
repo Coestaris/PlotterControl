@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 29.08.2017 15:54:18
+* Last Edited: 29.08.2017 16:39:54
 *=================================*/
 
 using System.Collections.Generic;
@@ -46,7 +46,11 @@ namespace CWA.Vectors
         /// Дополнительные параметеры вектора.
         /// </summary>
         public Dictionary<string, string> ExParams { get;  set; }
-        public VectorFileFormat FileFormat { get; internal set; }
+
+        /// <summary>
+        /// Формат файла, который использовался при загруке. По умолчанию - <see cref="VectorFileFormat.OPCV"/>.
+        /// </summary>
+        public VectorFileFormat FileFormat { get; internal set; } = VectorFileFormat.OPCV;
 
         /// <summary>
         /// Оператор сравнения хедеров.

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 25.08.2017 22:36:10
+* Last Edited: 25.08.2017 23:44:31
 *=================================*/
 
 using CWA.DTP;
@@ -141,7 +141,7 @@ namespace FileBrowser
                 new ColumnHeader() {Text = "Creation Date" },
                 new ColumnHeader() {Text = "Flags" }
             });
-            CurrentPath.Add("/");
+            CurrentPath = new List<string>() { "/" };
             SetupFolder();
             RecalcColumnHeaderWidth();
         }
@@ -156,6 +156,13 @@ namespace FileBrowser
                 Master = new DTPMaster(new SerialPacketReader(port, 4000), new SerialPacketWriter(port));
                 Master.Device.SyncTyme();
 
+            }
+            catch (WrongPacketInputException ex)
+            {
+                if (System.Windows.Forms.MessageBox.Show(
+                    string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString()), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    MainFormLoad(null, null);
+                else Close();
             }
             catch (Exception ex)
             {
@@ -184,6 +191,60 @@ namespace FileBrowser
             }
         }
 
+        private bool SystemFileName(string fileName, bool proceed, string newPath)
+        {
+            if (fileName.EndsWith("config.cfg"))
+            {
+                if(proceed)
+                    new SomeFileInfo(InfoType.Config, newPath).ShowDialog();
+                return true;
+            }
+            else if (fileName.EndsWith ("ctable.cfg"))
+            {
+                if (proceed)
+                  new SomeFileInfo(InfoType.CTable, newPath).ShowDialog();
+                return true;
+            }
+            else if (fileName.EndsWith("pens.cfg"))
+            {
+                if (proceed)
+                    new SomeFileInfo(InfoType.Pens, newPath).ShowDialog();
+                return true;
+            }
+            else if (fileName.EndsWith(".m"))
+            {
+                if (proceed)
+                    new SomeFileInfo(InfoType.VMeta, newPath).ShowDialog();
+                return true;
+            }
+            else if (fileName.EndsWith(".p"))
+            {
+                if (proceed)
+                {
+                    if (File.Exists(newPath + ".png"))
+                        File.Delete(newPath + ".png");
+                    File.Move(newPath, newPath + ".png");
+                    System.Diagnostics.Process.Start(newPath + ".png");
+                }
+                return true;
+            }
+            else if (fileName.EndsWith(".v"))
+            {
+                if (proceed)
+                    new SomeFileInfo(InfoType.VData, newPath).ShowDialog();
+                return true;
+            }
+            else if (fileName.EndsWith(".flv"))
+            {
+                if (proceed)
+                    new SomeFileInfo(InfoType.FLVData, newPath).ShowDialog();
+                return true;
+            }
+            else
+                if (proceed) System.Diagnostics.Process.Start(newPath);
+            return false;
+        }
+
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listView1.SelectedItems.Count == 1)
@@ -196,28 +257,31 @@ namespace FileBrowser
                     }
                     else
                     {
-                        if (System.Windows.Forms.MessageBox.Show("Вы хотите передать файл на ПК и просмотреть его?", "Передача", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        string path = string.Join("", CurrentPath);
+                        string newPath = new FileInfo(System.Windows.Forms.Application.ExecutablePath).Directory.FullName + "\\" + listView1.SelectedItems[0].SubItems[0].Text;
+                        string fileName = path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text;
+                        var fileInfo = Master.CreateFileHandler(fileName);
+                        if (SystemFileName(fileInfo.FileName, false, ""))
                         {
-                            string path = string.Join("", CurrentPath);
-                            string newPath = new FileInfo(System.Windows.Forms.Application.ExecutablePath).Directory.FullName + "\\" + listView1.SelectedItems[0].SubItems[0].Text;
-                            string fileName = path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text;
-                            if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
+                            var res = System.Windows.Forms.MessageBox.Show("Предполагаемо, этот файл - системный. Хотите открыть его встроенным просмотрщиком?", "Передача", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                            if (res == DialogResult.Yes)
                             {
-                                if (fileName == "/config.cfg") new SomeFileInfo(InfoType.Config, newPath).ShowDialog();
-                                else if (fileName == "/ctable.cfg") new SomeFileInfo(InfoType.CTable, newPath).ShowDialog();
-                                else if (fileName == "/pens.cfg") new SomeFileInfo(InfoType.Pens, newPath).ShowDialog();
-                                else if (fileName.EndsWith(".m")) new SomeFileInfo(InfoType.VMeta, newPath).ShowDialog();
-                                else if (fileName.EndsWith(".p"))
-                                {
-                                    if (File.Exists(newPath + ".png"))
-                                        File.Delete(newPath + ".png");
-                                    File.Move(newPath, newPath + ".png");
-                                    System.Diagnostics.Process.Start(newPath + ".png");
-                                }
-                                else if (fileName.EndsWith(".v")) new SomeFileInfo(InfoType.VData, newPath).ShowDialog();
-                                else if(fileName.EndsWith(".flv")) new SomeFileInfo(InfoType.FLVData, newPath).ShowDialog();
-                                else System.Diagnostics.Process.Start(newPath);
+                                if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
+                                    SystemFileName(fileName, true, newPath);
                             }
+                            else if (res == DialogResult.No)
+                            {
+                                if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
+                                    System.Diagnostics.Process.Start(newPath);
+                            }
+                        }
+                        else
+                        {
+                            if (System.Windows.Forms.MessageBox.Show("Вы хотите передать файл на ПК и просмотреть его?", "Передача", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                                return;
+
+                            if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
+                                System.Diagnostics.Process.Start(newPath);
                         }
                     }
                 else
