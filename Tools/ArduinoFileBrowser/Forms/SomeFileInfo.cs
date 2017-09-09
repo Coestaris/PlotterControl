@@ -5,21 +5,16 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 24.08.2017 22:03
-* Last Edited: 25.08.2017 22:41:16
+* Last Edited: 06.09.2017 20:36:38
 *=================================*/
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CWA.DTP;
 using CWA.DTP.Plotter;
+using System;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace FileBrowser
 {
@@ -30,10 +25,11 @@ namespace FileBrowser
         Pens,
         VMeta,
         VData,
-        FLVData
+        FLVData,
+        Image,
+        Unknown
     }
-
-
+    
     public partial class SomeFileInfo : Form
     {
         public static string VDataToString(byte[] bytes)

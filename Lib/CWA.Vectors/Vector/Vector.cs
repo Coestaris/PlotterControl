@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 29.08.2017 16:28:06
+* Last Edited: 08.09.2017 20:51:00
 *=================================*/
 
 using System;
@@ -347,7 +347,6 @@ namespace CWA.Vectors
                 RaswDataEX = VectorsEx.Select(p => p.ToRawData()).ToArray();
             if (ExParams != null)
                 Header.ExParams = ExParams;
-            //////////////////////////////////////////Не забуть доделать это -_-
         }
 
         /// <summary>
@@ -461,7 +460,7 @@ namespace CWA.Vectors
         /// <summary>
         /// Количество контуров вектора.
         /// </summary>
-        public int ContorurCount { get; internal set; }
+        public int ContorurCount { get => RawData.Length; }
 
         /// <summary>
         /// Разрешение ветктора в формате "{0}x{1}".

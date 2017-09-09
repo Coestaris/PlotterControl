@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 25.08.2017 22:35:10
+* Last Edited: 06.09.2017 20:27:50
 *=================================*/
 
 namespace FileBrowser
@@ -58,6 +58,8 @@ namespace FileBrowser
             this.createDirtoolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.createFiletoolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button_info = new System.Windows.Forms.Button();
+            this.toolStripMenuItem1_prop = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -71,8 +73,8 @@ namespace FileBrowser
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
-            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
+            this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
             // label_path
             // 
@@ -118,12 +120,13 @@ namespace FileBrowser
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.toolStripSeparator1,
+            this.toolStripMenuItem1_prop,
             this.deleteToolStripMenuItem,
             this.copyNameToolStripMenuItem,
             this.toolStripSeparator2,
             this.createToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 148);
             // 
             // openToolStripMenuItem
             // 
@@ -168,14 +171,14 @@ namespace FileBrowser
             // createDirToolStripMenuItem
             // 
             this.createDirToolStripMenuItem.Name = "createDirToolStripMenuItem";
-            this.createDirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createDirToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.createDirToolStripMenuItem.Text = "Папку";
             this.createDirToolStripMenuItem.Click += new System.EventHandler(this.createDirToolStripMenuItem_Click);
             // 
             // createFileToolStripMenuItem
             // 
             this.createFileToolStripMenuItem.Name = "createFileToolStripMenuItem";
-            this.createFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createFileToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.createFileToolStripMenuItem.Text = "Пустой файл";
             this.createFileToolStripMenuItem.Click += new System.EventHandler(this.createFileToolStripMenuItem_Click);
             // 
@@ -195,33 +198,51 @@ namespace FileBrowser
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(128, 22);
             this.toolStripMenuItem4.Text = "Создать";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.createDirToolStripMenuItem_Click);
             // 
             // createDirtoolStripMenuItem5
             // 
             this.createDirtoolStripMenuItem5.Name = "createDirtoolStripMenuItem5";
-            this.createDirtoolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.createDirtoolStripMenuItem5.Size = new System.Drawing.Size(146, 22);
             this.createDirtoolStripMenuItem5.Text = "Папку";
+            this.createDirtoolStripMenuItem5.Click += new System.EventHandler(this.createDirToolStripMenuItem_Click);
             // 
             // createFiletoolStripMenuItem6
             // 
             this.createFiletoolStripMenuItem6.Name = "createFiletoolStripMenuItem6";
-            this.createFiletoolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+            this.createFiletoolStripMenuItem6.Size = new System.Drawing.Size(146, 22);
             this.createFiletoolStripMenuItem6.Text = "Пустой файл";
             this.createFiletoolStripMenuItem6.Click += new System.EventHandler(this.createFileToolStripMenuItem_Click);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.refreshToolStripMenuItem.Text = "Обновить";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button_info
+            // 
+            this.button_info.Location = new System.Drawing.Point(341, 10);
+            this.button_info.Name = "button_info";
+            this.button_info.Size = new System.Drawing.Size(75, 23);
+            this.button_info.TabIndex = 6;
+            this.button_info.Text = "Info";
+            this.button_info.UseVisualStyleBackColor = true;
+            this.button_info.Click += new System.EventHandler(this.button_info_Click);
+            // 
+            // toolStripMenuItem1_prop
+            // 
+            this.toolStripMenuItem1_prop.Name = "toolStripMenuItem1_prop";
+            this.toolStripMenuItem1_prop.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuItem1_prop.Text = "Свойства";
+            this.toolStripMenuItem1_prop.Click += new System.EventHandler(this.toolStripMenuItem1_prop_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 459);
+            this.Controls.Add(this.button_info);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -260,6 +281,8 @@ namespace FileBrowser
         private System.Windows.Forms.ToolStripMenuItem createDirtoolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem createFiletoolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.Button button_info;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1_prop;
     }
 }
 

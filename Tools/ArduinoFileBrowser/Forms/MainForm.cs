@@ -5,10 +5,12 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 25.08.2017 23:44:31
+* Last Edited: 06.09.2017 21:04:29
 *=================================*/
 
+using CnC_WFA;
 using CWA.DTP;
+using FileBrowser.Forms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,7 +53,7 @@ namespace FileBrowser
                           1073741824f);
         }
 
-        private string ProccedSize(int size)
+        public static string ProccedSize(int size)
         {
             if (size < 1024) return size.ToString() + " B";
             else if (size < 1048576f) return (size / 1024f).ToString() + " Kb";
@@ -107,7 +109,8 @@ namespace FileBrowser
             foreach (var a in ResultDirs)
             {
                 var res = Master.CreateDirectoryHandler(Path == "/" ? a.DirectoryPath : Path + '/' + a.DirectoryPath).DirectoryInfo;
-                ListViewItem item = new ListViewItem(new string[] { '[' + a.DirectoryPath + ']', "<folder>", res.CreationTime.ToString(), "____" }, ResultFiles.Length);
+                string flagString = string.Format("{0}{1}{2}{3}", res.IsSystem ? 's' : '-', res.IsHidden ? 'h' : '-', res.IsLFN ? 'l' : '-', res.IsReadOnly ? 'r' : '-');
+                ListViewItem item = new ListViewItem(new string[] { '[' + a.DirectoryPath + ']', "<folder>", res.CreationTime.ToString(), flagString }, ResultFiles.Length);
                 listView1.Items.Add(item);
             }
             ImageList il = new ImageList();
@@ -116,7 +119,10 @@ namespace FileBrowser
             {
                 il.Images.Add(IconManager.FindIconForFilename(a.FilePath, false));
                 var res = Master.CreateFileHandler(Path == "/" ? a.FilePath : Path + '/' + a.FilePath).FileInfo;
-                ListViewItem item = new ListViewItem(new string[] { a.FilePath, ProccedSize(res.FileDirectorySize), res.CreationTime.ToString(), "____" }, il.Images.Count - 1);
+
+                string flagString = string.Format("{0}{1}{2}{3}", res.IsSystem ? 's' : '-', res.IsHidden ? 'h' : '-', res.IsLFN ? 'l' : '-', res.IsReadOnly ? 'r' : '-');
+
+                ListViewItem item = new ListViewItem(new string[] { a.FilePath, ProccedSize(res.FileDirectorySize), res.CreationTime.ToString(), flagString }, il.Images.Count - 1);
                 listView1.Items.Add(item);
             }
             il.Images.Add(folderImage);
@@ -191,31 +197,31 @@ namespace FileBrowser
             }
         }
 
-        private bool SystemFileName(string fileName, bool proceed, string newPath)
+        static internal InfoType SystemFileName(string fileName, bool proceed, string newPath)
         {
             if (fileName.EndsWith("config.cfg"))
             {
-                if(proceed)
+                if (proceed)
                     new SomeFileInfo(InfoType.Config, newPath).ShowDialog();
-                return true;
+                return InfoType.Config;
             }
-            else if (fileName.EndsWith ("ctable.cfg"))
+            else if (fileName.EndsWith("ctable.cfg"))
             {
                 if (proceed)
-                  new SomeFileInfo(InfoType.CTable, newPath).ShowDialog();
-                return true;
+                    new SomeFileInfo(InfoType.CTable, newPath).ShowDialog();
+                return InfoType.CTable;
             }
             else if (fileName.EndsWith("pens.cfg"))
             {
                 if (proceed)
                     new SomeFileInfo(InfoType.Pens, newPath).ShowDialog();
-                return true;
+                return InfoType.Pens;
             }
             else if (fileName.EndsWith(".m"))
             {
                 if (proceed)
                     new SomeFileInfo(InfoType.VMeta, newPath).ShowDialog();
-                return true;
+                return InfoType.VMeta;
             }
             else if (fileName.EndsWith(".p"))
             {
@@ -226,28 +232,28 @@ namespace FileBrowser
                     File.Move(newPath, newPath + ".png");
                     System.Diagnostics.Process.Start(newPath + ".png");
                 }
-                return true;
+                return InfoType.Image;
             }
             else if (fileName.EndsWith(".v"))
             {
                 if (proceed)
                     new SomeFileInfo(InfoType.VData, newPath).ShowDialog();
-                return true;
+                return InfoType.VData;
             }
             else if (fileName.EndsWith(".flv"))
             {
                 if (proceed)
                     new SomeFileInfo(InfoType.FLVData, newPath).ShowDialog();
-                return true;
+                return InfoType.FLVData;
             }
             else
                 if (proceed) System.Diagnostics.Process.Start(newPath);
-            return false;
+            return InfoType.Unknown;
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listView1.SelectedItems.Count == 1)
+            if (listView1.SelectedItems.Count == 1 && e.Button == MouseButtons.Left)
             {
                 if (listView1.SelectedItems[0].SubItems[1].Text != "<folder>")
                     if (listView1.SelectedIndices[0] == 0 && listView1.SelectedItems[0].SubItems[0].Text == "...")
@@ -261,7 +267,7 @@ namespace FileBrowser
                         string newPath = new FileInfo(System.Windows.Forms.Application.ExecutablePath).Directory.FullName + "\\" + listView1.SelectedItems[0].SubItems[0].Text;
                         string fileName = path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text;
                         var fileInfo = Master.CreateFileHandler(fileName);
-                        if (SystemFileName(fileInfo.FileName, false, ""))
+                        if (SystemFileName(fileInfo.FileName, false, "") != InfoType.Unknown)
                         {
                             var res = System.Windows.Forms.MessageBox.Show("Предполагаемо, этот файл - системный. Хотите открыть его встроенным просмотрщиком?", "Передача", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                             if (res == DialogResult.Yes)
@@ -368,7 +374,6 @@ namespace FileBrowser
             if (listView1.SelectedItems.Count == 1)
             {
                 string path = string.Join("", CurrentPath);
-
                 if (listView1.SelectedItems[0].SubItems[1].Text != "<folder>")
                 {
                     var a = Master.CreateFileHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text);
@@ -381,9 +386,10 @@ namespace FileBrowser
                     {
                         System.Windows.Forms.MessageBox.Show("Can`t delete File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                } else
+                }
+                else
                 {
-                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[',']'));
+                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
                     try
                     {
                         a.Delete(true);
@@ -395,16 +401,17 @@ namespace FileBrowser
                     }
                 }
             }
-            else System.Windows.Forms.MessageBox.Show("Select File or Dir","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else System.Windows.Forms.MessageBox.Show("Select File or Dir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
+            ListViewHitTestInfo HI = listView1.HitTest(e.Location);
             if (e.Button == MouseButtons.Right)
             {
-                if (listView1.FocusedItem.Bounds.Contains(e.Location) == true)
-                    contextMenuStrip1.Show(Cursor.Position);
-                else contextMenuStrip2.Show(Cursor.Position);
+                if (HI.Location == ListViewHitTestLocations.None)
+                    contextMenuStrip2.Show(Cursor.Position);
+                else contextMenuStrip1.Show(Cursor.Position);
             }
         }
 
@@ -416,11 +423,10 @@ namespace FileBrowser
         private void createDirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var d = new EnterNameDialog();
-            if(d.ShowDialog() == DialogResult.OK)
+            if (d.ShowDialog() == DialogResult.OK)
             {
                 string path = string.Join("", CurrentPath);
                 var dir = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + d.Value);
-
                 try
                 {
                     dir.Create(false);
@@ -440,7 +446,6 @@ namespace FileBrowser
             {
                 string path = string.Join("", CurrentPath);
                 var file = Master.CreateFileHandler(path + (path != "/" ? "/" : "") + d.Value);
-
                 try
                 {
                     file.Create();
@@ -453,9 +458,32 @@ namespace FileBrowser
             }
         }
 
-        private void toolStripSeparator4_Click(object sender, EventArgs e)
+        private void button_info_Click(object sender, EventArgs e)
         {
+            new Form_DeviceInfo(Master).ShowDialog();
+        }
 
+        private void toolStripMenuItem1_prop_Click(object sender, EventArgs e)
+        {
+            string path = string.Join("", CurrentPath);
+            try
+            {
+                if (listView1.SelectedItems[0].SubItems[1].Text != "<folder>")
+                {
+                    var a = Master.CreateFileHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text);
+                    a.Open(false);
+                    new FileDirInfo(a, a.FileInfo, a.CRC32, listView1.SmallImageList.Images[listView1.SelectedIndices[0]]).ShowDialog();
+                    a.Close();
+                } else
+                {
+                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
+                    new FileDirInfo(a, a.DirectoryInfo, listView1.SmallImageList.Images[listView1.SmallImageList.Images.Count - 3]).ShowDialog();
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(string.Format("Произошла ошибка типа {0}.\n{2}\n\nСтек вызовов:\n{1}", ex.GetType().FullName, ex.StackTrace, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
+            }
         }
     }
 
@@ -508,7 +536,7 @@ namespace FileBrowser
             return returnVal;
         }
     }
-   
+    
     /// <summary>
     /// Internals are mostly from here: http://www.codeproject.com/Articles/2532/Obtaining-and-managing-file-and-folder-icons-using
     /// Caches all results.
@@ -646,6 +674,4 @@ namespace FileBrowser
             public static extern int DestroyIcon(IntPtr hIcon);
         }
     }
-
-
 }

@@ -55,6 +55,18 @@
     <Compile Include="Forms\EnterNameDialog.Designer.cs">
       <DependentUpon>EnterNameDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FileDirInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FileDirInfo.Designer.cs">
+      <DependentUpon>FileDirInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_DeviceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_DeviceInfo.Designer.cs">
+      <DependentUpon>Form_DeviceInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,12 @@
     </Compile>
     <EmbeddedResource Include="Forms\EnterNameDialog.resx">
       <DependentUpon>EnterNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FileDirInfo.resx">
+      <DependentUpon>FileDirInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_DeviceInfo.resx">
+      <DependentUpon>Form_DeviceInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

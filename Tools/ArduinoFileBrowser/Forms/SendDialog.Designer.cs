@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 25.08.2017 22:33:01
+* Last Edited: 06.09.2017 19:53:09
 *=================================*/
 
 namespace FileBrowser
@@ -49,9 +49,9 @@ namespace FileBrowser
             this.textBox_deviceName = new System.Windows.Forms.TextBox();
             this.button_send = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label_oldName = new System.Windows.Forms.Label();
             this.label_newName = new System.Windows.Forms.Label();
+            this.label_oldName = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +60,6 @@ namespace FileBrowser
             this.progressBar1.Location = new System.Drawing.Point(12, 51);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(449, 33);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 0;
             // 
             // button_abort
@@ -156,10 +155,13 @@ namespace FileBrowser
             this.panel1.Size = new System.Drawing.Size(515, 123);
             this.panel1.TabIndex = 11;
             // 
-            // openFileDialog
+            // label_newName
             // 
-            this.openFileDialog.FileName = "file.file";
-            this.openFileDialog.Filter = "Any File|*.*";
+            this.label_newName.Location = new System.Drawing.Point(12, 47);
+            this.label_newName.Name = "label_newName";
+            this.label_newName.Size = new System.Drawing.Size(88, 35);
+            this.label_newName.TabIndex = 14;
+            this.label_newName.Text = "Новое имя\r\nна девайсе";
             // 
             // label_oldName
             // 
@@ -169,13 +171,10 @@ namespace FileBrowser
             this.label_oldName.TabIndex = 13;
             this.label_oldName.Text = "Имя файла\r\nна ПК";
             // 
-            // label_newName
+            // openFileDialog
             // 
-            this.label_newName.Location = new System.Drawing.Point(12, 47);
-            this.label_newName.Name = "label_newName";
-            this.label_newName.Size = new System.Drawing.Size(88, 35);
-            this.label_newName.TabIndex = 14;
-            this.label_newName.Text = "Новое имя\r\nна девайсе";
+            this.openFileDialog.FileName = "file.file";
+            this.openFileDialog.Filter = "Any File|*.*";
             // 
             // SendDialog
             // 

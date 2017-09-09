@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:54
+* Last Edited: 09.09.2017 12:34:47
 *=================================*/
 
 using CWA;
@@ -24,24 +24,32 @@ namespace CnC_WFA
     public partial class Form_ViewVect : Form
     {
         private string path;
-        private Vector pr;
+        private Vector vect;
         private Color backcolor;
         private Color drawcolor;
-        private Thread draw_th;
-        private Bitmap bmp_fb;
-        private Thread DrawThr;
-        private int Num = 0;
-        private List<VPoint> points;
-        private delegate void ChangeImgFeedback(Bitmap s);
-        private int lastsi;
-        private Bitmap colorprobe_back, colorprobe_draw;
-        private delegate void ChangeLabelTextFeedback(string s);
-        private Bitmap bmp;
         public string filename;
+        private Thread draw_th;
+        private int lastsi;
+        private Bitmap bmp;
+        private Color selColor;
+        private bool defaultView;
+
+        private bool isToolStrip;
+        private bool isZoom;
+        private bool isList;
 
         public Form_ViewVect()
         {
             InitializeComponent();
+
+            isToolStrip = true;
+            isZoom = true;
+            isList = false;
+
+            SetIntr();
+
+            panel_zoom.Visible = false;
+
             loadingCircle1.InnerCircleRadius = 25;
             loadingCircle1.OuterCircleRadius = 26;
             loadingCircle1.NumberSpoke = 100;
@@ -49,6 +57,14 @@ namespace CnC_WFA
 
         public Form_ViewVect(string fn, bool ignore)
         {
+            InitializeComponent();
+
+            isToolStrip = true;
+            isZoom = true;
+            isList = false;
+
+            SetIntr();
+
             if (!ignore)
             {
                 var fi = new FileInfo(Application.ExecutablePath);
@@ -56,62 +72,119 @@ namespace CnC_WFA
                 GlobalOptionsLogPolitics.Filename = fi.DirectoryName + "\\Options\\logPolitics.xml";
                 GlobalOptions.Load();
             }
-            InitializeComponent();
             loadingCircle1.InnerCircleRadius = 25;
             loadingCircle1.OuterCircleRadius = 26;
             loadingCircle1.NumberSpoke = 100;
-            proceed(fn);
+
+            panel_zoom.Visible = false;
+
+            Proceed(fn);
             FillListBox();
+
+            Rectangle resolution = Screen.PrimaryScreen.Bounds;
+
+            Height = (int)vect.Header.Height + 100;
+            Width = (int)vect.Header.Width + 40;
+
+            double timesH = double.MaxValue, timesW = double.MaxValue;
+
+            if (vect.Header.Height > resolution.Height - 100)
+                timesH = (resolution.Height - 100) / vect.Header.Height;
+            if (vect.Header.Width > resolution.Width - 40)
+                timesW = (resolution.Width - 40) / vect.Header.Width;
+
+            var minTimes = Math.Min(timesH, timesW);
+            if (minTimes != double.MaxValue)
+            {
+                trackBar1.Value = (int)(minTimes * 100 - 10);
+                if (timesH != double.MaxValue)
+                    Height = resolution.Height - 100;
+                else Height = (int)((Height - 100) * minTimes);
+                if (timesW != double.MaxValue)
+                    Width = resolution.Width - 40;
+                else Width = (int)((Width - 40) * minTimes) - 50;
+            }
+            else
+            {
+                isZoom = false;
+                SetIntr();
+            }
+
         }
 
         private void FillListBox()
         {
             int i = 0;
             listBox1.Items.Clear();
-            foreach (var a in pr.RawData) listBox1.Items.Add(string.Format(TranslateBase.CurrentLang.Phrase["VectorViewer.ContourDiscr"], i++, a.Length));
+            foreach (var a in vect.RawData) listBox1.Items.Add(string.Format(TranslateBase.CurrentLang.Phrase["VectorViewer.ContourDiscr"], i++, a.Length));
         }
 
-        private void proceed(string fn)
+        private void SetIntr()
         {
+            toolStripMenuItem_defDisp.Image = !defaultView ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
+            contoursToolStripMenuItem.Image = !isList ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
+            infoStripToolStripMenuItem.Image = !isToolStrip ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
+            zoomToolStripMenuItem.Image = !isZoom ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
+
+            statusStrip1.Visible = isToolStrip;
+            if (isList)
+            {
+                panel3.Location = new Point(276, 36);
+                panel3.Size = new Size(Width - 304, Height - 110);
+                panel_cont.Visible = true;
+                if (isZoom)
+                {
+                    panel_zoom.Visible = true;
+                    panel_zoom.Location = new Point(10, 288);
+                }
+                else panel_zoom.Visible = false;
+            }
+            else
+            {
+                panel_cont.Visible = false;
+                panel3.Location = new Point(0, 24);
+                panel3.Size = new Size(Width - 16, Height - 88);
+                if (isZoom)
+                {
+                    panel_zoom.Visible = true;
+                    panel_zoom.Location = new Point(4, Height - 139);
+                }
+                else panel_zoom.Visible = false;
+            }
+        }
+
+        private void Proceed(string fn)
+        {
+            toolStripComboBox_dispType.SelectedIndex = 1;
             lastsi = 0;
             filename = fn;
-            checkBox_randomcolor.Enabled = true;
-            pictureBox2.Width = pictureBox1.Width;
-            pictureBox2.Height = pictureBox1.Height;
-            colorprobe_back = new Bitmap(pictureBox2.Width, pictureBox2.Height);
-            colorprobe_draw = new Bitmap(pictureBox2.Width, pictureBox2.Height);
-            //label_cont_points.Enabled = true;
-            label_pathtofile.Enabled = true;
-            //label_resolution.Enabled = true;
-            //label_resname.Enabled = true;
-            //label_prtime.Enabled = true;
             listBox1.Enabled = true;
-            button_begindraw.Enabled = true;
-            button_pickcolor.Enabled = true;
-            button_redraw.Enabled = true;
-            button_print.Enabled = true;
-            button_pick2ndcolor.Enabled = true;
-            button_outter.Enabled = true;
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             label_status.Visible = true;
             label_status.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Loading"];
             path = fn;
-            pr = new Vector(path);
-            label_pathtofile.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.PathToFile"] + ": " + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length-1] ;
+            vect = new Vector(path);
             toolStripStatusLabel_filename.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Filename"] + ": " + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length - 1];
-            toolStripStatusLabel_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Resolution"] + ": " + pr.Header.Width + "x" + pr.Header.Height;
-            toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Contours"] + ": " + pr.ContorurCount + "; " + TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Points"] + ": " + pr.Points.ToString();
-            pr.RawData = pr.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
+            toolStripStatusLabel_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Resolution"] + ": " + vect.Header.Width + "x" + vect.Header.Height;
+            toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Contours"] + ": " + vect.ContorurCount + "; " + TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Points"] + ": " + vect.Points.ToString();
+            vect.RawData = vect.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
             Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Label"] + " \"" + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length - 1] + '\"';
             drawcolor = GlobalOptions.DefViewDraw;
             backcolor = GlobalOptions.DefViewBack;
+            selColor = Color.Blue;
             label_status.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Drawing"];
             if (new FileInfo(filename).Extension == ".prres") toolStripStatusLabel_oldprstyle.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.OldVectorFormat"];
             else toolStripStatusLabel_oldprstyle.Text = "";
-            draw_th?.Abort();
+            SetColorProbe();
+
+            label.Visible = false;
+            pictureBox_main.Visible = true;
+
+            if (isZoom)
+                panel_zoom.Visible = true;
+
             draw_th = new Thread(ChangeLabelTextProcAsync);
-            setcolorprobe();
             draw_th.Start();
         }
 
@@ -123,66 +196,64 @@ namespace CnC_WFA
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
             path = openFileDialog1.FileName;
-            proceed(path);
+            Proceed(path);
             FillListBox();
         }
 
-        private void setcolorprobe()
+        private void SetColorProbe()
         {
-            Rectangle rect = new Rectangle(0, 0,(int) pr.Header.Width, (int)pr.Header.Height);
+            Bitmap colorprobe_draw = new Bitmap(50, 50);
+            Bitmap colorprobe_back = new Bitmap(50, 50);
+            Bitmap colorprobe_sel = new Bitmap(50, 50);
+            Rectangle rect = new Rectangle(0, 0, 50, 50);
+            Rectangle rect1 = new Rectangle(5, 5, 40, 40);
             using (Graphics gr = Graphics.FromImage(colorprobe_back))
             {
-                gr.FillRectangle(new SolidBrush(backcolor), rect);
+                gr.FillRectangle(Brushes.Black, rect);
+                gr.FillRectangle(new SolidBrush(backcolor), rect1);
             }
             using (Graphics gr = Graphics.FromImage(colorprobe_draw))
             {
-                gr.FillRectangle(new SolidBrush(drawcolor), rect);
+                gr.FillRectangle(Brushes.Black, rect);
+                gr.FillRectangle(new SolidBrush(drawcolor), rect1);
             }
-            pictureBox1.Image = colorprobe_draw;
-            pictureBox2.Image = colorprobe_back;
+            using (Graphics gr = Graphics.FromImage(colorprobe_sel))
+            {
+                gr.FillRectangle(Brushes.Black, rect);
+                gr.FillRectangle(new SolidBrush(selColor), rect1);
+            }
+            toolStripMenuItem_color.Image?.Dispose();
+            toolStripMenuItem_color.Image = colorprobe_draw;
+            toolStripMenuItem_backgroundColor.Image?.Dispose();
+            toolStripMenuItem_backgroundColor.Image = colorprobe_back;
+            toolStripMenuItem_selectedColor.Image?.Dispose();
+            toolStripMenuItem_selectedColor.Image = colorprobe_sel;
         }
 
-        private void Form_viewvect_Load(object sender, EventArgs e)
-        {
-            //listBox2.Items.Clear();
-            //string[] paths = Directory.GetFiles("prres\\", "*.prres");
-            //listBox2.Items.AddRange(paths);
-            //paths = Directory.GetFiles("prres\\", "*.pcv");
-            //listBox2.Items.AddRange(paths);
-        }
-        private void ChangeLabelTextProc(string s)
+        private delegate void EndOfRenderImageHandler();
+
+        private void EndOfRenderImage()
         {
             if (InvokeRequired)
             {
-                ChangeLabelTextFeedback d = new ChangeLabelTextFeedback(ChangeLabelTextProc);
-                Invoke(d, new object[] { s });
+                EndOfRenderImageHandler d = new EndOfRenderImageHandler(EndOfRenderImage);
+                Invoke(d, new object[] {});
             }
             else
             {
                 loadingCircle1.Visible = false;
                 loadingCircle1.Active = false;
                 label_status.Visible = false;
-                //label_status.Text = "Loading...";
+                float zoom = trackBar1.Value / 100f;
+                pictureBox_main.Image?.Dispose();
+                pictureBox_main.Image = new Bitmap(bmp, new Size((int)(bmp.Width * zoom), (int)(bmp.Height * zoom)));
             }
         }
 
         private void ChangeLabelTextProcAsync()
         {
-            bmp = new Bitmap((int)pr.Header.Width, (int)pr.Header.Height);
-            Random rnd = new Random();
-            Rectangle rect = new Rectangle(0, 0,(int) pr.Header.Width, (int)pr.Header.Height);
-            using (Graphics gr = Graphics.FromImage(bmp)) gr.FillRectangle(new SolidBrush(backcolor), rect);
-            for (int i = 0; i <= pr.RawData.Length - 1; i++)
-            {
-                Color c;
-                if (!checkBox_randomcolor.Checked) c = drawcolor;
-                else c = Color.FromArgb(255, rnd.Next(100,255), rnd.Next(100,255), rnd.Next(100,255));
-                for (var ii = 0; ii <= pr.RawData[i].Length - 1; ii++)
-                    try { bmp.SetPixel((int)pr.RawData[i][ii].BasePoint.Y, (int)pr.RawData[i][ii].BasePoint.X, c); }
-                    catch { }
-            }
-            pictureBox_main.Image = bmp;
-            ChangeLabelTextProc("");
+            bmp = vect.ToBitmap(backcolor, drawcolor);
+            EndOfRenderImage();
         }
 
         private void button_exit_Click(object sender, EventArgs e)
@@ -196,45 +267,22 @@ namespace CnC_WFA
             {
                 Random rnd = new Random();
                 Color c;
-                if (!checkBox_randomcolor.Checked) c = drawcolor;
-                else c = Color.FromArgb(255, rnd.Next(100, 255), rnd.Next(100, 255), rnd.Next(100, 255));
-                for (var ii = 0; ii <= pr.RawData[lastsi].Length - 1; ii++)
-                    try { bmp.SetPixel((int)pr.RawData[lastsi][ii].BasePoint.Y, (int)pr.RawData[lastsi][ii].BasePoint.X, c); }
-                    catch { }
+                var bmp_ = new Bitmap((Image)bmp.Clone());
+                if (toolStripComboBox_dispType.SelectedIndex == 0)
+                    c = Color.FromArgb(255, rnd.Next(100, 255), rnd.Next(100, 255), rnd.Next(100, 255));
+                else c = drawcolor;
+
+                for (var ii = 0; ii <= vect.RawData[lastsi].Length - 1; ii++)
+                    bmp_.SetPixel((int)vect.RawData[lastsi][ii].BasePoint.Y, (int)vect.RawData[lastsi][ii].BasePoint.X, c);
                 int nowsel = listBox1.SelectedIndex;
-                c = Color.Yellow;
-                for (var ii = 0; ii <= pr.RawData[nowsel].Length - 1; ii++)
-                    try { bmp.SetPixel((int)pr.RawData[nowsel][ii].BasePoint.Y, (int)pr.RawData[nowsel][ii].BasePoint.X, c); }
-                    catch { }
-                pictureBox_main.Image = bmp;
+                c = selColor;
+                for (var ii = 0; ii <= vect.RawData[nowsel].Length - 1; ii++)
+                    bmp_.SetPixel((int)vect.RawData[nowsel][ii].BasePoint.Y, (int)vect.RawData[nowsel][ii].BasePoint.X, c);
+                float zoom = trackBar1.Value / 100f;
+                pictureBox_main.Image?.Dispose();
+                pictureBox_main.Image = new Bitmap(bmp_, new Size((int)(bmp_.Width * zoom), (int)(bmp_.Height * zoom)));
                 lastsi = nowsel;
-            }
-        }
 
-        
-        private void ChangeImgProc(Bitmap s)
-        {
-            if (InvokeRequired)
-            {
-                ChangeImgFeedback d = new ChangeImgFeedback(ChangeImgProc);
-                Invoke(d, new object[] { s });
-            }
-            else
-            {
-                trackBar1.Value = Num;
-                var a = pictureBox_main.Image;
-                pictureBox_main.Image = (Image)bmp_fb.Clone();
-                a.Dispose();
-            }
-        }
-
-        private void Draw()
-        {
-            while(true)
-            {
-                lock(bmp) bmp_fb.SetPixel((int)points[Num].X, (int)points[Num].Y, GlobalOptions.DefViewDraw);
-                Num += 1;
-                ChangeImgProc(bmp);
             }
         }
 
@@ -246,7 +294,8 @@ namespace CnC_WFA
         private void statusStrip1_DragDrop(object sender, DragEventArgs e)
         {
             string[] fn =  (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            if(fn[0].EndsWith(".pcv")) proceed(fn[0]);
+            if (fn[0].EndsWith(".pcv") || fn[0].EndsWith(".prres")) Proceed(fn[0]);
+            else MessageBox.Show("Wrong file format");
             FillListBox();
         }
 
@@ -257,29 +306,9 @@ namespace CnC_WFA
             label_status.Visible = true;
             draw_th?.Abort();
             draw_th = new Thread(ChangeLabelTextProcAsync);
-            setcolorprobe();
+            SetColorProbe();
             draw_th.Start();
             listBox1.SelectedIndex = -1;
-        }
-
-        private void button_pick2ndcolor_Click(object sender, EventArgs e)
-        {
-            var a = colorDialog1.ShowDialog();
-            if( a== DialogResult.OK) backcolor = colorDialog1.Color;
-            setcolorprobe();
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            button_pickcolor.Enabled = !checkBox_randomcolor.Checked;
-            pictureBox1.Enabled = !checkBox_randomcolor.Checked;
-        }
-
-        private void button_pickcolor_Click(object sender, EventArgs e)
-        {
-            var a = colorDialog2.ShowDialog();
-            if (a == DialogResult.OK) drawcolor = colorDialog2.Color;
-            setcolorprobe();
         }
 
         private void button_print_Click(object sender, EventArgs e)
@@ -288,22 +317,87 @@ namespace CnC_WFA
             fpr.Show();
         }
 
-        private void Form_viewvect_FormClosing(object sender, FormClosingEventArgs e)
+        private void toolStripMenuItem_color_Click(object sender, EventArgs e)
         {
-            DrawThr?.Abort();
+            colorDialog1.Color = drawcolor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                drawcolor = colorDialog1.Color;
+                SetColorProbe();
+                draw_th = new Thread(ChangeLabelTextProcAsync);
+                draw_th.Start();
+            }
         }
 
-        private void button_begindraw_Click(object sender, EventArgs e)
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            bmp_fb = new Bitmap((int)pr.Header.Width, (int)pr.Header.Height);
-            using (Graphics g = Graphics.FromImage(bmp_fb)) g.FillRectangle(new SolidBrush(GlobalOptions.DefViewBack), new Rectangle(0, 0, (int)pr.Header.Width, (int)pr.Header.Height));
-            points = new List<VPoint>();
-            for (int i = 0; i <= pr.RawData.Length - 1; i++)
-                for (var ii = 0; ii <= pr.RawData[i].Length - 1; ii++)
-                    points.Add(pr.RawData[i][ii].BasePoint);
-            trackBar1.Maximum = points.Count;
-            DrawThr = new Thread(Draw);
-            DrawThr.Start();
+            float zoom = trackBar1.Value / 100f;
+            label3.Text = zoom.ToString("0.##");
+            pictureBox_main.Image?.Dispose();
+            pictureBox_main.Image = new Bitmap(bmp, new Size((int)(bmp.Width * zoom), (int)(bmp.Height * zoom)));
+        }
+
+        private void Form_ViewVect_Load(object sender, EventArgs e)
+        {
+            label_zoom_min.Text = trackBar1.Minimum.ToString();
+            label_zoom_max.Text = trackBar1.Maximum.ToString();
+            float zoom = trackBar1.Value / 100f;
+            label3.Text = zoom.ToString("0.##");
+        }
+
+        private void toolStripMenuItem_backgroundColor_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = backcolor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                backcolor = colorDialog1.Color;
+                SetColorProbe();
+                draw_th = new Thread(ChangeLabelTextProcAsync);
+                draw_th.Start();
+            }
+        }
+
+        private void toolStripMenuItem_selectedColor_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = selColor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                selColor = colorDialog1.Color;
+                SetColorProbe();
+            }
+        }
+
+        private void toolStripComboBox_dispType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem_resetZoom_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 100;
+        }
+
+        private void Form_ViewVect_Resize(object sender, EventArgs e)
+        {
+            SetIntr();
+        }
+
+        private void contoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isList = !isList;
+            SetIntr();
+        }
+
+        private void infoStripToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isToolStrip = !isToolStrip;
+            SetIntr();
+        }
+
+        private void zoomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isZoom = !isZoom;
+            SetIntr();
         }
     }
 }

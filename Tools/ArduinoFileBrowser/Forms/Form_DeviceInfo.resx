@@ -117,33 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="loadingCircle1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAARRJREFUeF7t0DEBgDAAwDA8IRKhEzLejoNuf48YyHU/c2ZPWQfKOrBkjTHywZ+y
-        BH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzBn7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvw
-        pyzBn7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzBn7IEf8oS/ClL8KcswZ+yBH/K
-        EvwpS/CnLMGfsgR/yhL8KUvwpyzBn7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzB
-        n7IEf8oS/ClL8KcswZ+yBH/KEvwpS/CnLMGfsgR/yhL8KUvwpyzBnyUr/8o6UNa2OV9XWjDseKQnQQAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>157, 17</value>
-  </metadata>
-  <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>273, 17</value>
-  </metadata>
-  <metadata name="colorDialog2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>394, 17</value>
-  </metadata>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>515, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAgIAAAAEAIAAoCAEARgAAAEBAAAABACAAKEIAAG4IAQAgIAAAAQAgAKgQAACWSgEAEBAAAAEA

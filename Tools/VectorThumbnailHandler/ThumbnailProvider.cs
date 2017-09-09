@@ -48,9 +48,9 @@ namespace HandlerSamples
                         FileFortamStr = "err";
                         break;
                 }
-                gr.DrawString(FileFortamStr, new Font("Century", FontSizeKoef * sideSize), Brushes.Black, new PointF(TextXKoef * sideSize, TextYKoef * sideSize));
                 gr.FillRectangle(new SolidBrush(Color.FromArgb(101, 0, 101)), new Rectangle(0, 0, sideSize, sideSize));
                 gr.DrawImage(baseBmp, new Point(borderSize / 2, borderSize / 2));
+                gr.DrawString(FileFortamStr, new Font("Century", FontSizeKoef * sideSize), Brushes.Black, new PointF(TextXKoef * sideSize, TextYKoef * sideSize));
             }
             return bmp;
         }

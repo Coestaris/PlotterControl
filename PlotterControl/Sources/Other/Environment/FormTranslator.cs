@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:48
+* Last Edited: 08.09.2017 20:11:05
 *=================================*/
 
 using System;
@@ -44,24 +44,6 @@ namespace CnC_WFA
         {
             var a = TranslateBase.CurrentLang.Menu;
             form.Text = a["Form_ViewVect.Caption"];
-            form.button_begindraw.Text =a["Form_ViewVect.button_begindraw"];
-            form.button_exit.Text = a["Form_ViewVect.button_exit"];
-            form.button_load.Text = a["Form_ViewVect.button_load"];
-            form.button_outter.Text = a["Form_ViewVect.button_outter"];
-            form.button_pause.Text = a["Form_ViewVect.button_pause"];
-            form.button_pick2ndcolor.Text = a["Form_ViewVect.button_pick2ndcolor"];
-            form.button_pickcolor.Text = a["Form_ViewVect.button_pickcolor"];
-            form.button_pick_onecolordraw.Text = a["Form_ViewVect.button_pick_onecolordraw"];
-            form.button_print.Text = a["Form_ViewVect.button_print"];
-            form.button_redraw.Text = a["Form_ViewVect.button_redraw"];
-            form.groupBox_contours.Text = a["Form_ViewVect.groupBox_contours"];
-            form.groupBox_main.Text = a["Form_ViewVect.groupBox_main"];
-            form.groupBox_realtime.Text = a["Form_ViewVect.groupBox_realtime"];
-            form.label_latency.Text = a["Form_ViewVect.label_latency"];
-            form.label_ms.Text = a["Form_ViewVect.label_ms"];
-            form.label_pathtofile.Text = a["Form_ViewVect.label_pathtofile"];
-            form.checkBox_randomcolor.Text = a["Form_ViewVect.checkBox_randomcolor"];
-            form.checkBox_onecolor.Text = a["Form_ViewVect.checkBox_onecolor"];
             return form;
         }
 

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:54
+* Last Edited: 09.09.2017 12:08:57
 *=================================*/
 
 namespace CnC_WFA
@@ -39,317 +39,85 @@ namespace CnC_WFA
         public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ViewVect));
-            this.button_exit = new System.Windows.Forms.Button();
-            this.button_load = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button_pick2ndcolor = new System.Windows.Forms.Button();
-            this.button_pickcolor = new System.Windows.Forms.Button();
-            this.button_outter = new System.Windows.Forms.Button();
-            this.button_redraw = new System.Windows.Forms.Button();
-            this.label_pathtofile = new System.Windows.Forms.Label();
-            this.checkBox_onecolor = new System.Windows.Forms.CheckBox();
-            this.button_pick_onecolordraw = new System.Windows.Forms.Button();
-            this.textBox_latency = new System.Windows.Forms.TextBox();
-            this.label_latency = new System.Windows.Forms.Label();
-            this.button_pause = new System.Windows.Forms.Button();
-            this.label_counters = new System.Windows.Forms.Label();
-            this.button_begindraw = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.pictureBox_main = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.label_status = new System.Windows.Forms.Label();
-            this.button_print = new System.Windows.Forms.Button();
-            this.groupBox_contours = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_filename = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_resolution = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_oldprstyle = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox_realtime = new System.Windows.Forms.GroupBox();
-            this.label_ms = new System.Windows.Forms.Label();
-            this.groupBox_main = new System.Windows.Forms.GroupBox();
-            this.checkBox_randomcolor = new System.Windows.Forms.CheckBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_open = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_close = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_saveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_print = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItem_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox_dispType = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripMenuItem_color = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_backgroundColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_selectedColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem_defDisp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem_resetZoom = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoStripToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel_cont = new System.Windows.Forms.Panel();
+            this.panel_zoom = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label_zoom_max = new System.Windows.Forms.Label();
+            this.label_zoom_min = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_main)).BeginInit();
-            this.groupBox_contours.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox_realtime.SuspendLayout();
-            this.groupBox_main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.panel_cont.SuspendLayout();
+            this.panel_zoom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button_exit
-            // 
-            this.button_exit.AllowDrop = true;
-            this.button_exit.BackColor = System.Drawing.Color.White;
-            this.button_exit.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_exit.FlatAppearance.BorderSize = 2;
-            this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_exit.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_exit.Location = new System.Drawing.Point(826, 611);
-            this.button_exit.Name = "button_exit";
-            this.button_exit.Size = new System.Drawing.Size(78, 36);
-            this.button_exit.TabIndex = 18;
-            this.button_exit.Text = "Выйти";
-            this.button_exit.UseVisualStyleBackColor = false;
-            this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
-            this.button_exit.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_exit.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_load
-            // 
-            this.button_load.AllowDrop = true;
-            this.button_load.BackColor = System.Drawing.Color.White;
-            this.button_load.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_load.FlatAppearance.BorderSize = 2;
-            this.button_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_load.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_load.Location = new System.Drawing.Point(722, 611);
-            this.button_load.Name = "button_load";
-            this.button_load.Size = new System.Drawing.Size(98, 36);
-            this.button_load.TabIndex = 14;
-            this.button_load.Text = "Загрузить";
-            this.button_load.UseVisualStyleBackColor = false;
-            this.button_load.Click += new System.EventHandler(this.button4_Click);
-            this.button_load.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_load.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
             // 
             // listBox1
             // 
             this.listBox1.AllowDrop = true;
             this.listBox1.Enabled = false;
+            this.listBox1.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
             this.listBox1.Items.AddRange(new object[] {
             "contours"});
-            this.listBox1.Location = new System.Drawing.Point(7, 24);
+            this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(253, 259);
+            this.listBox1.Size = new System.Drawing.Size(244, 242);
             this.listBox1.TabIndex = 13;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
             this.listBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
             // 
-            // button_pick2ndcolor
-            // 
-            this.button_pick2ndcolor.AllowDrop = true;
-            this.button_pick2ndcolor.BackColor = System.Drawing.Color.White;
-            this.button_pick2ndcolor.Enabled = false;
-            this.button_pick2ndcolor.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_pick2ndcolor.FlatAppearance.BorderSize = 2;
-            this.button_pick2ndcolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_pick2ndcolor.Location = new System.Drawing.Point(125, 48);
-            this.button_pick2ndcolor.Name = "button_pick2ndcolor";
-            this.button_pick2ndcolor.Size = new System.Drawing.Size(75, 36);
-            this.button_pick2ndcolor.TabIndex = 18;
-            this.button_pick2ndcolor.Text = "Фон";
-            this.button_pick2ndcolor.UseVisualStyleBackColor = false;
-            this.button_pick2ndcolor.Click += new System.EventHandler(this.button_pick2ndcolor_Click);
-            this.button_pick2ndcolor.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_pick2ndcolor.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_pickcolor
-            // 
-            this.button_pickcolor.AllowDrop = true;
-            this.button_pickcolor.BackColor = System.Drawing.Color.White;
-            this.button_pickcolor.Enabled = false;
-            this.button_pickcolor.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_pickcolor.FlatAppearance.BorderSize = 2;
-            this.button_pickcolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_pickcolor.Location = new System.Drawing.Point(125, 90);
-            this.button_pickcolor.Name = "button_pickcolor";
-            this.button_pickcolor.Size = new System.Drawing.Size(75, 38);
-            this.button_pickcolor.TabIndex = 17;
-            this.button_pickcolor.Text = "Линии";
-            this.button_pickcolor.UseVisualStyleBackColor = false;
-            this.button_pickcolor.Click += new System.EventHandler(this.button_pickcolor_Click);
-            this.button_pickcolor.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_pickcolor.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_outter
-            // 
-            this.button_outter.AllowDrop = true;
-            this.button_outter.BackColor = System.Drawing.Color.White;
-            this.button_outter.Enabled = false;
-            this.button_outter.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_outter.FlatAppearance.BorderSize = 2;
-            this.button_outter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_outter.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_outter.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_outter.Location = new System.Drawing.Point(6, 90);
-            this.button_outter.Name = "button_outter";
-            this.button_outter.Size = new System.Drawing.Size(116, 38);
-            this.button_outter.TabIndex = 16;
-            this.button_outter.Text = "Вн. просмотр";
-            this.button_outter.UseVisualStyleBackColor = false;
-            this.button_outter.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_outter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_redraw
-            // 
-            this.button_redraw.AllowDrop = true;
-            this.button_redraw.BackColor = System.Drawing.Color.White;
-            this.button_redraw.Enabled = false;
-            this.button_redraw.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_redraw.FlatAppearance.BorderSize = 2;
-            this.button_redraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_redraw.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_redraw.Location = new System.Drawing.Point(6, 48);
-            this.button_redraw.Name = "button_redraw";
-            this.button_redraw.Size = new System.Drawing.Size(116, 36);
-            this.button_redraw.TabIndex = 12;
-            this.button_redraw.Text = "Перерисовать";
-            this.button_redraw.UseVisualStyleBackColor = false;
-            this.button_redraw.Click += new System.EventHandler(this.button_redraw_Click);
-            this.button_redraw.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_redraw.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // label_pathtofile
-            // 
-            this.label_pathtofile.AllowDrop = true;
-            this.label_pathtofile.Enabled = false;
-            this.label_pathtofile.Location = new System.Drawing.Point(7, 20);
-            this.label_pathtofile.Name = "label_pathtofile";
-            this.label_pathtofile.Size = new System.Drawing.Size(242, 18);
-            this.label_pathtofile.TabIndex = 1;
-            this.label_pathtofile.Text = "Путь к файлу: ";
-            this.label_pathtofile.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.label_pathtofile.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // checkBox_onecolor
-            // 
-            this.checkBox_onecolor.AllowDrop = true;
-            this.checkBox_onecolor.Enabled = false;
-            this.checkBox_onecolor.Location = new System.Drawing.Point(12, 33);
-            this.checkBox_onecolor.Name = "checkBox_onecolor";
-            this.checkBox_onecolor.Size = new System.Drawing.Size(123, 22);
-            this.checkBox_onecolor.TabIndex = 10;
-            this.checkBox_onecolor.Text = "Одно-цветная";
-            this.checkBox_onecolor.UseVisualStyleBackColor = true;
-            this.checkBox_onecolor.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.checkBox_onecolor.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_pick_onecolordraw
-            // 
-            this.button_pick_onecolordraw.AllowDrop = true;
-            this.button_pick_onecolordraw.BackColor = System.Drawing.Color.White;
-            this.button_pick_onecolordraw.Enabled = false;
-            this.button_pick_onecolordraw.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_pick_onecolordraw.FlatAppearance.BorderSize = 2;
-            this.button_pick_onecolordraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_pick_onecolordraw.Location = new System.Drawing.Point(133, 27);
-            this.button_pick_onecolordraw.Name = "button_pick_onecolordraw";
-            this.button_pick_onecolordraw.Size = new System.Drawing.Size(32, 31);
-            this.button_pick_onecolordraw.TabIndex = 11;
-            this.button_pick_onecolordraw.Text = "...";
-            this.button_pick_onecolordraw.UseVisualStyleBackColor = false;
-            this.button_pick_onecolordraw.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_pick_onecolordraw.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // textBox_latency
-            // 
-            this.textBox_latency.AllowDrop = true;
-            this.textBox_latency.Enabled = false;
-            this.textBox_latency.Location = new System.Drawing.Point(84, 72);
-            this.textBox_latency.Name = "textBox_latency";
-            this.textBox_latency.Size = new System.Drawing.Size(49, 25);
-            this.textBox_latency.TabIndex = 2;
-            this.textBox_latency.Text = "1";
-            this.textBox_latency.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.textBox_latency.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // label_latency
-            // 
-            this.label_latency.AllowDrop = true;
-            this.label_latency.Enabled = false;
-            this.label_latency.Location = new System.Drawing.Point(10, 75);
-            this.label_latency.Name = "label_latency";
-            this.label_latency.Size = new System.Drawing.Size(78, 20);
-            this.label_latency.TabIndex = 8;
-            this.label_latency.Text = "Задержка: ";
-            this.label_latency.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.label_latency.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_pause
-            // 
-            this.button_pause.AllowDrop = true;
-            this.button_pause.BackColor = System.Drawing.Color.White;
-            this.button_pause.Enabled = false;
-            this.button_pause.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_pause.FlatAppearance.BorderSize = 2;
-            this.button_pause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_pause.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_pause.Location = new System.Drawing.Point(171, 66);
-            this.button_pause.Name = "button_pause";
-            this.button_pause.Size = new System.Drawing.Size(91, 34);
-            this.button_pause.TabIndex = 6;
-            this.button_pause.Text = "Пауза";
-            this.button_pause.UseVisualStyleBackColor = false;
-            this.button_pause.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_pause.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // label_counters
-            // 
-            this.label_counters.AllowDrop = true;
-            this.label_counters.Enabled = false;
-            this.label_counters.Location = new System.Drawing.Point(216, 119);
-            this.label_counters.Name = "label_counters";
-            this.label_counters.Size = new System.Drawing.Size(44, 19);
-            this.label_counters.TabIndex = 9;
-            this.label_counters.Text = "0/0";
-            this.label_counters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label_counters.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.label_counters.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // button_begindraw
-            // 
-            this.button_begindraw.AllowDrop = true;
-            this.button_begindraw.BackColor = System.Drawing.Color.White;
-            this.button_begindraw.Enabled = false;
-            this.button_begindraw.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_begindraw.FlatAppearance.BorderSize = 2;
-            this.button_begindraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_begindraw.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_begindraw.Location = new System.Drawing.Point(171, 24);
-            this.button_begindraw.Name = "button_begindraw";
-            this.button_begindraw.Size = new System.Drawing.Size(91, 36);
-            this.button_begindraw.TabIndex = 1;
-            this.button_begindraw.Text = "Начать";
-            this.button_begindraw.UseVisualStyleBackColor = false;
-            this.button_begindraw.Click += new System.EventHandler(this.button_begindraw_Click);
-            this.button_begindraw.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_begindraw.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.AllowDrop = true;
-            this.trackBar1.Enabled = false;
-            this.trackBar1.Location = new System.Drawing.Point(6, 90);
-            this.trackBar1.Maximum = 0;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(254, 45);
-            this.trackBar1.TabIndex = 7;
-            this.trackBar1.TickFrequency = 5;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBar1.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.trackBar1.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
             // pictureBox_main
             // 
             this.pictureBox_main.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_main.Location = new System.Drawing.Point(9, 8);
+            this.pictureBox_main.Location = new System.Drawing.Point(9, 9);
             this.pictureBox_main.Name = "pictureBox_main";
-            this.pictureBox_main.Size = new System.Drawing.Size(623, 637);
-            this.pictureBox_main.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_main.Size = new System.Drawing.Size(615, 592);
+            this.pictureBox_main.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox_main.TabIndex = 16;
             this.pictureBox_main.TabStop = false;
+            this.pictureBox_main.Visible = false;
             // 
             // openFileDialog1
             // 
@@ -365,7 +133,7 @@ namespace CnC_WFA
             this.loadingCircle1.Color = System.Drawing.SystemColors.MenuHighlight;
             this.loadingCircle1.ForeColor = System.Drawing.Color.Transparent;
             this.loadingCircle1.InnerCircleRadius = 5;
-            this.loadingCircle1.Location = new System.Drawing.Point(283, 274);
+            this.loadingCircle1.Location = new System.Drawing.Point(115, 471);
             this.loadingCircle1.Name = "loadingCircle1";
             this.loadingCircle1.NumberSpoke = 12;
             this.loadingCircle1.OuterCircleRadius = 11;
@@ -383,43 +151,13 @@ namespace CnC_WFA
             this.label_status.AutoSize = true;
             this.label_status.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label_status.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.label_status.Location = new System.Drawing.Point(280, 317);
+            this.label_status.Location = new System.Drawing.Point(100, 501);
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(90, 17);
             this.label_status.TabIndex = 33;
             this.label_status.Text = "Отрисовка...";
             this.label_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_status.Visible = false;
-            // 
-            // button_print
-            // 
-            this.button_print.AllowDrop = true;
-            this.button_print.BackColor = System.Drawing.Color.White;
-            this.button_print.Enabled = false;
-            this.button_print.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_print.FlatAppearance.BorderSize = 2;
-            this.button_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_print.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.button_print.Location = new System.Drawing.Point(638, 611);
-            this.button_print.Name = "button_print";
-            this.button_print.Size = new System.Drawing.Size(78, 36);
-            this.button_print.TabIndex = 19;
-            this.button_print.Text = "Печать";
-            this.button_print.UseVisualStyleBackColor = false;
-            this.button_print.Click += new System.EventHandler(this.button_print_Click);
-            this.button_print.DragDrop += new System.Windows.Forms.DragEventHandler(this.statusStrip1_DragDrop);
-            this.button_print.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            // 
-            // groupBox_contours
-            // 
-            this.groupBox_contours.Controls.Add(this.listBox1);
-            this.groupBox_contours.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox_contours.Location = new System.Drawing.Point(638, 317);
-            this.groupBox_contours.Name = "groupBox_contours";
-            this.groupBox_contours.Size = new System.Drawing.Size(266, 291);
-            this.groupBox_contours.TabIndex = 34;
-            this.groupBox_contours.TabStop = false;
-            this.groupBox_contours.Text = "Контуры";
             // 
             // statusStrip1
             // 
@@ -458,84 +196,258 @@ namespace CnC_WFA
             this.toolStripStatusLabel_oldprstyle.Name = "toolStripStatusLabel_oldprstyle";
             this.toolStripStatusLabel_oldprstyle.Size = new System.Drawing.Size(0, 17);
             // 
-            // groupBox_realtime
+            // menuStrip1
             // 
-            this.groupBox_realtime.Controls.Add(this.label_counters);
-            this.groupBox_realtime.Controls.Add(this.button_pause);
-            this.groupBox_realtime.Controls.Add(this.button_pick_onecolordraw);
-            this.groupBox_realtime.Controls.Add(this.label_ms);
-            this.groupBox_realtime.Controls.Add(this.checkBox_onecolor);
-            this.groupBox_realtime.Controls.Add(this.textBox_latency);
-            this.groupBox_realtime.Controls.Add(this.trackBar1);
-            this.groupBox_realtime.Controls.Add(this.label_latency);
-            this.groupBox_realtime.Controls.Add(this.button_begindraw);
-            this.groupBox_realtime.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.groupBox_realtime.Location = new System.Drawing.Point(638, 170);
-            this.groupBox_realtime.Name = "groupBox_realtime";
-            this.groupBox_realtime.Size = new System.Drawing.Size(266, 141);
-            this.groupBox_realtime.TabIndex = 36;
-            this.groupBox_realtime.TabStop = false;
-            this.groupBox_realtime.Text = "Отрисовка в реальном времени";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.windowsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(912, 24);
+            this.menuStrip1.TabIndex = 38;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // label_ms
+            // fileToolStripMenuItem
             // 
-            this.label_ms.AllowDrop = true;
-            this.label_ms.Enabled = false;
-            this.label_ms.Location = new System.Drawing.Point(135, 75);
-            this.label_ms.Name = "label_ms";
-            this.label_ms.Size = new System.Drawing.Size(31, 20);
-            this.label_ms.TabIndex = 12;
-            this.label_ms.Text = "мс.";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_open,
+            this.toolStripMenuItem_close,
+            this.toolStripSeparator2,
+            this.toolStripMenuItem_edit,
+            this.toolStripMenuItem_saveAs,
+            this.toolStripMenuItem_print,
+            this.toolStripSeparator1,
+            this.ToolStripMenuItem_exit});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // groupBox_main
+            // ToolStripMenuItem_open
             // 
-            this.groupBox_main.Controls.Add(this.checkBox_randomcolor);
-            this.groupBox_main.Controls.Add(this.pictureBox2);
-            this.groupBox_main.Controls.Add(this.pictureBox1);
-            this.groupBox_main.Controls.Add(this.button_pick2ndcolor);
-            this.groupBox_main.Controls.Add(this.label_pathtofile);
-            this.groupBox_main.Controls.Add(this.button_redraw);
-            this.groupBox_main.Controls.Add(this.button_outter);
-            this.groupBox_main.Controls.Add(this.button_pickcolor);
-            this.groupBox_main.Font = new System.Drawing.Font("Cambria", 11.25F);
-            this.groupBox_main.Location = new System.Drawing.Point(638, 3);
-            this.groupBox_main.Name = "groupBox_main";
-            this.groupBox_main.Size = new System.Drawing.Size(266, 161);
-            this.groupBox_main.TabIndex = 37;
-            this.groupBox_main.TabStop = false;
-            this.groupBox_main.Text = "Отрисовка";
+            this.ToolStripMenuItem_open.Name = "ToolStripMenuItem_open";
+            this.ToolStripMenuItem_open.Size = new System.Drawing.Size(114, 22);
+            this.ToolStripMenuItem_open.Text = "Open";
+            this.ToolStripMenuItem_open.Click += new System.EventHandler(this.button4_Click);
             // 
-            // checkBox_randomcolor
+            // toolStripMenuItem_close
             // 
-            this.checkBox_randomcolor.AutoSize = true;
-            this.checkBox_randomcolor.Enabled = false;
-            this.checkBox_randomcolor.Location = new System.Drawing.Point(6, 134);
-            this.checkBox_randomcolor.Name = "checkBox_randomcolor";
-            this.checkBox_randomcolor.Size = new System.Drawing.Size(186, 21);
-            this.checkBox_randomcolor.TabIndex = 21;
-            this.checkBox_randomcolor.Text = "Случайный цвет линий";
-            this.checkBox_randomcolor.UseVisualStyleBackColor = true;
-            this.checkBox_randomcolor.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.toolStripMenuItem_close.Name = "toolStripMenuItem_close";
+            this.toolStripMenuItem_close.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_close.Text = "Close";
             // 
-            // pictureBox2
+            // toolStripSeparator2
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox2.Location = new System.Drawing.Point(204, 50);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(57, 34);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 20;
-            this.pictureBox2.TabStop = false;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(111, 6);
             // 
-            // pictureBox1
+            // toolStripMenuItem_edit
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(204, 92);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(57, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.toolStripMenuItem_edit.Name = "toolStripMenuItem_edit";
+            this.toolStripMenuItem_edit.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_edit.Text = "Edit";
+            // 
+            // toolStripMenuItem_saveAs
+            // 
+            this.toolStripMenuItem_saveAs.Name = "toolStripMenuItem_saveAs";
+            this.toolStripMenuItem_saveAs.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_saveAs.Text = "Save As";
+            // 
+            // toolStripMenuItem_print
+            // 
+            this.toolStripMenuItem_print.Name = "toolStripMenuItem_print";
+            this.toolStripMenuItem_print.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_print.Text = "Print";
+            this.toolStripMenuItem_print.Click += new System.EventHandler(this.button_print_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
+            // 
+            // ToolStripMenuItem_exit
+            // 
+            this.ToolStripMenuItem_exit.Name = "ToolStripMenuItem_exit";
+            this.ToolStripMenuItem_exit.Size = new System.Drawing.Size(114, 22);
+            this.ToolStripMenuItem_exit.Text = "Exit";
+            this.ToolStripMenuItem_exit.Click += new System.EventHandler(this.button_exit_Click);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox_dispType,
+            this.toolStripMenuItem_color,
+            this.toolStripMenuItem_backgroundColor,
+            this.toolStripMenuItem_selectedColor,
+            this.toolStripSeparator3,
+            this.toolStripMenuItem_defDisp,
+            this.toolStripMenuItem_resetZoom});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // toolStripComboBox_dispType
+            // 
+            this.toolStripComboBox_dispType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_dispType.Items.AddRange(new object[] {
+            "Random Color",
+            "Заданные цвета"});
+            this.toolStripComboBox_dispType.Name = "toolStripComboBox_dispType";
+            this.toolStripComboBox_dispType.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox_dispType.Click += new System.EventHandler(this.toolStripComboBox_dispType_Click);
+            // 
+            // toolStripMenuItem_color
+            // 
+            this.toolStripMenuItem_color.Name = "toolStripMenuItem_color";
+            this.toolStripMenuItem_color.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem_color.Text = "Cotour Color";
+            this.toolStripMenuItem_color.Click += new System.EventHandler(this.toolStripMenuItem_color_Click);
+            // 
+            // toolStripMenuItem_backgroundColor
+            // 
+            this.toolStripMenuItem_backgroundColor.Name = "toolStripMenuItem_backgroundColor";
+            this.toolStripMenuItem_backgroundColor.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem_backgroundColor.Text = "Background Color";
+            this.toolStripMenuItem_backgroundColor.Click += new System.EventHandler(this.toolStripMenuItem_backgroundColor_Click);
+            // 
+            // toolStripMenuItem_selectedColor
+            // 
+            this.toolStripMenuItem_selectedColor.Name = "toolStripMenuItem_selectedColor";
+            this.toolStripMenuItem_selectedColor.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem_selectedColor.Text = "Selected Color";
+            this.toolStripMenuItem_selectedColor.Click += new System.EventHandler(this.toolStripMenuItem_selectedColor_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(178, 6);
+            // 
+            // toolStripMenuItem_defDisp
+            // 
+            this.toolStripMenuItem_defDisp.Name = "toolStripMenuItem_defDisp";
+            this.toolStripMenuItem_defDisp.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem_defDisp.Text = "Default display";
+            // 
+            // toolStripMenuItem_resetZoom
+            // 
+            this.toolStripMenuItem_resetZoom.Name = "toolStripMenuItem_resetZoom";
+            this.toolStripMenuItem_resetZoom.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem_resetZoom.Text = "Reset Zoom";
+            this.toolStripMenuItem_resetZoom.Click += new System.EventHandler(this.toolStripMenuItem_resetZoom_Click);
+            // 
+            // windowsToolStripMenuItem
+            // 
+            this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contoursToolStripMenuItem,
+            this.infoStripToolStripMenuItem,
+            this.zoomToolStripMenuItem});
+            this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
+            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.windowsToolStripMenuItem.Text = "Windows";
+            // 
+            // contoursToolStripMenuItem
+            // 
+            this.contoursToolStripMenuItem.Name = "contoursToolStripMenuItem";
+            this.contoursToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contoursToolStripMenuItem.Text = "Contours";
+            this.contoursToolStripMenuItem.Click += new System.EventHandler(this.contoursToolStripMenuItem_Click);
+            // 
+            // infoStripToolStripMenuItem
+            // 
+            this.infoStripToolStripMenuItem.Name = "infoStripToolStripMenuItem";
+            this.infoStripToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoStripToolStripMenuItem.Text = "Info strip";
+            this.infoStripToolStripMenuItem.Click += new System.EventHandler(this.infoStripToolStripMenuItem_Click);
+            // 
+            // zoomToolStripMenuItem
+            // 
+            this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zoomToolStripMenuItem.Text = "Zoom";
+            this.zoomToolStripMenuItem.Click += new System.EventHandler(this.zoomToolStripMenuItem_Click);
+            // 
+            // panel_cont
+            // 
+            this.panel_cont.Controls.Add(this.listBox1);
+            this.panel_cont.Location = new System.Drawing.Point(10, 30);
+            this.panel_cont.Name = "panel_cont";
+            this.panel_cont.Size = new System.Drawing.Size(257, 252);
+            this.panel_cont.TabIndex = 39;
+            // 
+            // panel_zoom
+            // 
+            this.panel_zoom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_zoom.Controls.Add(this.label3);
+            this.panel_zoom.Controls.Add(this.label_zoom_max);
+            this.panel_zoom.Controls.Add(this.label_zoom_min);
+            this.panel_zoom.Controls.Add(this.trackBar1);
+            this.panel_zoom.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.panel_zoom.Location = new System.Drawing.Point(4, 572);
+            this.panel_zoom.Name = "panel_zoom";
+            this.panel_zoom.Size = new System.Drawing.Size(257, 61);
+            this.panel_zoom.TabIndex = 40;
+            this.panel_zoom.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(102, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "label3";
+            // 
+            // label_zoom_max
+            // 
+            this.label_zoom_max.AutoSize = true;
+            this.label_zoom_max.Location = new System.Drawing.Point(208, 40);
+            this.label_zoom_max.Name = "label_zoom_max";
+            this.label_zoom_max.Size = new System.Drawing.Size(46, 17);
+            this.label_zoom_max.TabIndex = 2;
+            this.label_zoom_max.Text = "label2";
+            // 
+            // label_zoom_min
+            // 
+            this.label_zoom_min.AutoSize = true;
+            this.label_zoom_min.Location = new System.Drawing.Point(3, 40);
+            this.label_zoom_min.Name = "label_zoom_min";
+            this.label_zoom_min.Size = new System.Drawing.Size(46, 17);
+            this.label_zoom_min.TabIndex = 1;
+            this.label_zoom_min.Text = "label1";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(3, 8);
+            this.trackBar1.Maximum = 500;
+            this.trackBar1.Minimum = 10;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(247, 45);
+            this.trackBar1.SmallChange = 5;
+            this.trackBar1.TabIndex = 0;
+            this.trackBar1.TickFrequency = 10;
+            this.trackBar1.Value = 100;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // panel3
+            // 
+            this.panel3.AutoScroll = true;
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label);
+            this.panel3.Controls.Add(this.pictureBox_main);
+            this.panel3.Location = new System.Drawing.Point(0, 24);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(912, 623);
+            this.panel3.TabIndex = 41;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label.Location = new System.Drawing.Point(335, 274);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(307, 25);
+            this.label.TabIndex = 17;
+            this.label.Text = "Для просмотра выберите файл";
             // 
             // Form_ViewVect
             // 
@@ -545,76 +457,79 @@ namespace CnC_WFA
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(912, 672);
+            this.Controls.Add(this.panel_zoom);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel_cont);
             this.Controls.Add(this.label_status);
-            this.Controls.Add(this.button_exit);
-            this.Controls.Add(this.groupBox_main);
-            this.Controls.Add(this.button_load);
-            this.Controls.Add(this.button_print);
-            this.Controls.Add(this.groupBox_realtime);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox_contours);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.loadingCircle1);
-            this.Controls.Add(this.pictureBox_main);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form_ViewVect";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View vector";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_viewvect_FormClosing);
-            this.Load += new System.EventHandler(this.Form_viewvect_Load);
+            this.Load += new System.EventHandler(this.Form_ViewVect_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form_viewvect_DragDropEnter);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.Resize += new System.EventHandler(this.Form_ViewVect_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_main)).EndInit();
-            this.groupBox_contours.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox_realtime.ResumeLayout(false);
-            this.groupBox_realtime.PerformLayout();
-            this.groupBox_main.ResumeLayout(false);
-            this.groupBox_main.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panel_cont.ResumeLayout(false);
+            this.panel_zoom.ResumeLayout(false);
+            this.panel_zoom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        public System.Windows.Forms.Button button_exit;
-        public System.Windows.Forms.Button button_load;
         public System.Windows.Forms.ListBox listBox1;
-        public System.Windows.Forms.Button button_pick2ndcolor;
-        public System.Windows.Forms.Button button_pickcolor;
-        public System.Windows.Forms.Button button_outter;
-        public System.Windows.Forms.Button button_redraw;
-        public System.Windows.Forms.Label label_pathtofile;
-        public System.Windows.Forms.CheckBox checkBox_onecolor;
-        public System.Windows.Forms.Button button_pick_onecolordraw;
-        public System.Windows.Forms.TextBox textBox_latency;
-        public System.Windows.Forms.Label label_latency;
-        public System.Windows.Forms.Button button_pause;
-        public System.Windows.Forms.Label label_counters;
-        public System.Windows.Forms.Button button_begindraw;
-        public System.Windows.Forms.TrackBar trackBar1;
         public System.Windows.Forms.PictureBox pictureBox_main;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         public MRG.Controls.UI.LoadingCircle loadingCircle1;
         public System.Windows.Forms.Label label_status;
-        public System.Windows.Forms.Button button_print;
-        public System.Windows.Forms.GroupBox groupBox_contours;
         public System.Windows.Forms.StatusStrip statusStrip1;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_filename;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_resolution;
-        public System.Windows.Forms.GroupBox groupBox_realtime;
-        public System.Windows.Forms.GroupBox groupBox_main;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         public System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.ColorDialog colorDialog2;
-        public System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.PictureBox pictureBox1;
-        public System.Windows.Forms.CheckBox checkBox_randomcolor;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_oldprstyle;
-        public System.Windows.Forms.Label label_ms;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_open;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_close;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_edit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_saveAs;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_print;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_exit;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_dispType;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_color;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_backgroundColor;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_selectedColor;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_resetZoom;
+        private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contoursToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem infoStripToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_defDisp;
+        private System.Windows.Forms.Panel panel_cont;
+        private System.Windows.Forms.Panel panel_zoom;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label_zoom_max;
+        private System.Windows.Forms.Label label_zoom_min;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label;
     }
 }

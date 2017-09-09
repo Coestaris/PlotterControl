@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 28.08.2017 23:53:28
+* Last Edited: 09.09.2017 12:35:03
 *=================================*/
 
 using CWA.Vectors;
@@ -28,8 +28,9 @@ namespace CnC_WFA
         {
             if (data.Length == 1)
             {
-                Application.Run(new MainWindow());
-                //Application.Run(FormTranslator.Translate(new MainWindow()));
+                //Application.Run(new MainWindow());
+                //Application.Run(new Form_ViewVect("d:\\CODING\\PlotterControl\\PlotterControl\\bin\\Debug\\Data\\Vect\\rd.pcv", true));
+                Application.Run(FormTranslator.Translate(new MainWindow()));
                 return;
             }
             {
