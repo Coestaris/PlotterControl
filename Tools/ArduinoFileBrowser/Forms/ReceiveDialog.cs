@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 25.08.2017 22:32:35
+* Last Edited: 10.09.2017 18:27:20
 *=================================*/
 
 using CWA.DTP;
@@ -161,6 +161,56 @@ namespace FileBrowser
         }
 
         private void ReceiveDialog_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_deviceName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_percentage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_timeleft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_speed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_pcName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_oldName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_newName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
         }

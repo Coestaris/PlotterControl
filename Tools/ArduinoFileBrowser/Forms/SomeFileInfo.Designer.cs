@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 24.08.2017 22:03
-* Last Edited: 24.08.2017 22:40:30
+* Last Edited: 10.09.2017 18:26:41
 *=================================*/
 
 namespace FileBrowser
@@ -45,6 +45,8 @@ namespace FileBrowser
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.richTextBox1.Location = new System.Drawing.Point(13, 13);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -54,20 +56,26 @@ namespace FileBrowser
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.button1.Location = new System.Drawing.Point(394, 253);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 29);
             this.button1.TabIndex = 1;
             this.button1.Text = "Закрыть";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cambria", 9F);
             this.label1.Location = new System.Drawing.Point(13, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 13);
+            this.label1.Size = new System.Drawing.Size(10, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = " ";
             // 
@@ -75,6 +83,7 @@ namespace FileBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(503, 287);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);

@@ -103,6 +103,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 				path += (char)data[i];
 
 			File a = SD.open(path.c_str());
+
 			if (!SD.exists(path.c_str()))
 			{
 				status = DTP_ANSWER_STATUS::Error;

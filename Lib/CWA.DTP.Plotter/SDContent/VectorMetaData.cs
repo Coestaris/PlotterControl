@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:34
-* Last Edited: 28.08.2017 14:40:09
+* Last Edited: 09.09.2017 21:06:55
 *=================================*/
 
 using System;
@@ -18,9 +18,10 @@ namespace CWA.DTP.Plotter
 {
     public class VectorMetaData
     {
-        private static int CountOfPreviews = 0;
         private bool LoadedPreview;
+
         private Bitmap PreviewCache;
+
         private PlotterContent Parrent;
 
         public string Name { get; internal set; }
@@ -45,6 +46,8 @@ namespace CWA.DTP.Plotter
 
         public void DownloadPreview()
         {
+            //TODO: Возможность задавать путь или как-то переделать. А то кешированние - хорошо,
+            //но тут выходит частный случай его использованния. Не гут.
             string pcName = string.Format("Data//Cache//{0}.p", Index);
             string dName = string.Format("{0}.p", Index);
             if (File.Exists(pcName))

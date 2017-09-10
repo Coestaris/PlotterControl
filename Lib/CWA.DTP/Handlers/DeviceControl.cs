@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 28.08.2017 14:38:23
+* Last Edited: 09.09.2017 20:45:08
 *=================================*/
 
 using System;
@@ -14,12 +14,28 @@ namespace CWA.DTP
 {
     public class DeviceControl
     {
+        internal Sender _deviceSender;
+
         internal DTPMaster ParentMaster;
 
         internal DeviceControl() { }
 
-        public bool Test() => ParentMaster.ph.Device_Test();
+        //Самый верный способ - задавать его при подключении, т. е. при вызове Test.
+        //Для этого нужно обойти стандартный packetHandler =\, т. к. тот расчитан хранить подобное "в себе".
+        //Потому, пускай, Device_Test возвращает не true или false, а Sender иди null. Профит.
+        public Sender DeviceSender { get => _deviceSender ?? throw new InvalidOperationException("Для начала необходимо вызвать метод DeviceControl.Test(), что бы задать начальное значение данного параметра."); }
 
+        public bool Test()
+        {
+            var res = ParentMaster.ph.Device_Test();
+            if (res != null)
+            {
+                _deviceSender = res;
+                return true;
+            }
+            return false;
+        }
+        
         public bool Test(byte[] data) => ParentMaster.ph.Device_DataTest(data);
 
         public bool SyncTyme() => ParentMaster.ph.Device_SyncTime() != -1;

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 28.08.2017 14:33:40
+* Last Edited: 09.09.2017 20:42:30
 *=================================*/
 
 using System.IO.Ports;
@@ -75,8 +75,14 @@ namespace CWA.DTP
             return buffer;
         }
 
-        public static bool FirstAvailable(int TimeOutInterval, out SerialPacketReader reader, out SerialPacketWriter writer)
+        internal static bool FirstAvailable(
+            int TimeOutInterval,
+            out SerialPacketReader reader, 
+            out SerialPacketWriter writer,
+            out Sender sender,
+            bool SyncTyme)
         {
+            sender = null;
             reader = null; writer = null;
             var ports = SerialPort.GetPortNames();
             if (ports == null) return false;
@@ -90,9 +96,14 @@ namespace CWA.DTP
                     reader = new SerialPacketReader(port, 500);
                     writer = new SerialPacketWriter(port);
                     var a = new GeneralPacketHandler(Sender.Empty, new PacketListener(reader, writer));
-                    if (a.Device_Test())
+                    var res = a.Device_Test();
+                    if(res != null)
                     {
+                        if (SyncTyme)
+                            if (a.Device_SyncTime() == -1)
+                                throw new FailOperationException("Неудалось синхронизировать время.");
                         reader.TimeOutInterval = TimeOutInterval;
+                        sender = res;
                         return true;
                     }
                     else return false;

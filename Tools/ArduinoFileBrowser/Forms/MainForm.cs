@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 06.09.2017 21:04:29
+* Last Edited: 10.09.2017 19:06:29
 *=================================*/
 
 using CnC_WFA;
@@ -18,12 +18,14 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TsudaKageyu;
 
 namespace FileBrowser
 {
@@ -37,9 +39,9 @@ namespace FileBrowser
         public string portName = "COM9";
         private Sender Sender = new Sender("Coestar");
         private SerialPort port;
-        private Bitmap folderImage = new Bitmap("Icons\\folder.png");
-        private Bitmap backImage = new Bitmap("Icons\\back.png");
-        private Bitmap forwardImage = new Bitmap("Icons\\forward.png");
+        private Bitmap folderImage;
+        private Bitmap backImage;
+        private Bitmap forwardImage;
         private DTPMaster Master;
         private List<string> CurrentPath = new List<string>();
 
@@ -96,8 +98,7 @@ namespace FileBrowser
             for (int i = 0; i < listView1.Columns.Count; i++)
                 listView1.Columns[i].Width = (int)(totalWidth * WidthCoof[i]);
         }
-
-
+        
         private void SetupFolder()
         {
             string Path = string.Join("", CurrentPath);
@@ -128,11 +129,12 @@ namespace FileBrowser
             il.Images.Add(folderImage);
             il.Images.Add(backImage);
             il.Images.Add(forwardImage);
+            il.Images.Add(emptyImage);
             listView1.SmallImageList = il;
             listView1.ListViewItemSorter = new ListViewComparer(lastColumn, lastOrder);
             listView1.Sort();
 
-            listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - (lastOrder == SortOrder.Descending ? 1 : 2);
+            listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - (lastOrder == SortOrder.Descending ? 2 : 3);
         }
 
         private void GetData()
@@ -154,6 +156,23 @@ namespace FileBrowser
 
         private void MainFormLoad(object sender, EventArgs e)
         {
+            string DllName = "Lib\\FileBrowserResources.dll";
+
+            if (!File.Exists(DllName))
+                throw new DllNotFoundException($"Dll {DllName} not found");
+
+            var ie = new IconExtractor(DllName);
+
+            backImage = ie.GetIcon(0).ToBitmap();
+            forwardImage = ie.GetIcon(1).ToBitmap();
+            folderImage = ie.GetIcon(2).ToBitmap();
+
+            emptyImage = new Bitmap(5, 5);
+
+            //folderImage = new Bitmap("Icons\\folder.png");
+            //backImage = new Bitmap("Icons\\back.png");
+            //forwardImage = new Bitmap("Icons\\forward.png");
+
             MainForm_SizeChanged(null, null);
             try
             {
@@ -166,7 +185,7 @@ namespace FileBrowser
             catch (WrongPacketInputException ex)
             {
                 if (System.Windows.Forms.MessageBox.Show(
-                    string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString()), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}. Сообщение: {1}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString(), ex.Message), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     MainFormLoad(null, null);
                 else Close();
             }
@@ -184,7 +203,7 @@ namespace FileBrowser
             catch (WrongPacketInputException ex)
             {
                 if (System.Windows.Forms.MessageBox.Show(
-                    string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString()), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                   string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}. Сообщение: {1}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString(), ex.Message), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     MainFormLoad(null, null);
                 else Close();
             }
@@ -253,7 +272,7 @@ namespace FileBrowser
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listView1.SelectedItems.Count == 1 && e.Button == MouseButtons.Left)
+            if (listView1.SelectedItems.Count == 1 && (e == null || e.Button == MouseButtons.Left))
             {
                 if (listView1.SelectedItems[0].SubItems[1].Text != "<folder>")
                     if (listView1.SelectedIndices[0] == 0 && listView1.SelectedItems[0].SubItems[0].Text == "...")
@@ -263,8 +282,11 @@ namespace FileBrowser
                     }
                     else
                     {
+                        if (!Directory.Exists("Temp"))
+                            Directory.CreateDirectory("Temp");
+
                         string path = string.Join("", CurrentPath);
-                        string newPath = new FileInfo(System.Windows.Forms.Application.ExecutablePath).Directory.FullName + "\\" + listView1.SelectedItems[0].SubItems[0].Text;
+                        string newPath = new FileInfo(System.Windows.Forms.Application.ExecutablePath).Directory.FullName + "\\Temp\\" + listView1.SelectedItems[0].SubItems[0].Text;
                         string fileName = path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text;
                         var fileInfo = Master.CreateFileHandler(fileName);
                         if (SystemFileName(fileInfo.FileName, false, "") != InfoType.Unknown)
@@ -277,17 +299,15 @@ namespace FileBrowser
                             }
                             else if (res == DialogResult.No)
                             {
-                                if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
-                                    System.Diagnostics.Process.Start(newPath);
+                                HandleLocalFile(newPath, fileName);
                             }
+                   
                         }
                         else
                         {
                             if (System.Windows.Forms.MessageBox.Show("Вы хотите передать файл на ПК и просмотреть его?", "Передача", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                                 return;
-
-                            if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
-                                System.Diagnostics.Process.Start(newPath);
+                            HandleLocalFile(newPath, fileName);
                         }
                     }
                 else
@@ -296,6 +316,22 @@ namespace FileBrowser
                     CurrentPath.Add(CurrentPath.Last().EndsWith("/") ? path : '/' + path);
                     TrySetupFolder();
                 }
+            }
+        }
+
+        private void HandleLocalFile(string newPath, string fileName)
+        {
+            var locHash = CrCHandler.CRC32(newPath);
+            if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
+            {
+                var res = System.Diagnostics.Process.Start(newPath);
+                res.WaitForExit();
+                if (CrCHandler.CRC32(newPath) != locHash)
+                    if (System.Windows.Forms.MessageBox.Show("Файл был изменен. Хотите отправить его на устройство?", "Передача", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        new SendDialog(Master, newPath, fileName).ShowDialog();
+                        TrySetupFolder();
+                    }
             }
         }
 
@@ -314,6 +350,7 @@ namespace FileBrowser
 
         int lastColumn = 0;
         SortOrder lastOrder = SortOrder.Ascending;
+        private Bitmap emptyImage;
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -321,20 +358,20 @@ namespace FileBrowser
             {
                 if (lastOrder == SortOrder.Ascending)
                 {
-                    listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - 1;
+                    listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - 2;
                     lastOrder = SortOrder.Descending;
                 }
                 else
                 {
-                    listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - 2;
+                    listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - 3;
                     lastOrder = SortOrder.Ascending;
                 }
                 listView1.ListViewItemSorter = new ListViewComparer(e.Column, lastOrder);
             }
             else
             {
-                listView1.Columns[lastColumn].ImageIndex = -1;
-                listView1.Columns[e.Column].ImageIndex = listView1.SmallImageList.Images.Count - 2;
+                listView1.Columns[lastColumn].ImageIndex = listView1.SmallImageList.Images.Count - 1;
+                listView1.Columns[e.Column].ImageIndex = listView1.SmallImageList.Images.Count - 3;
                 lastOrder = SortOrder.Ascending;
                 listView1.ListViewItemSorter = new ListViewComparer(e.Column, SortOrder.Ascending);
             }
@@ -346,6 +383,12 @@ namespace FileBrowser
         {
             listView1.Width = Width - 40;
             listView1.Height = Height - 90;
+
+            button_info.Left = Width - 365;
+            button_refresh.Left = Width - 283;
+            button_send.Left = Width - 202;
+            button_rec.Left = Width - 112;
+
             RecalcColumnHeaderWidth();
         }
 
@@ -477,7 +520,7 @@ namespace FileBrowser
                 } else
                 {
                     var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
-                    new FileDirInfo(a, a.DirectoryInfo, listView1.SmallImageList.Images[listView1.SmallImageList.Images.Count - 3]).ShowDialog();
+                    new FileDirInfo(a, a.DirectoryInfo, listView1.SmallImageList.Images[listView1.SmallImageList.Images.Count - 4]).ShowDialog();
                 }
             }
             catch(Exception ex)

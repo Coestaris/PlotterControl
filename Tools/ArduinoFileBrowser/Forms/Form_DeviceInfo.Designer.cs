@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 06.09.2017 20:06
-* Last Edited: 06.09.2017 20:06:45
+* Last Edited: 10.09.2017 18:26:40
 *=================================*/
 
 namespace CnC_WFA
@@ -58,10 +58,10 @@ namespace CnC_WFA
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Cambria", 12F);
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.richTextBox1.Location = new System.Drawing.Point(319, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(423, 300);
+            this.richTextBox1.Size = new System.Drawing.Size(310, 300);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -81,8 +81,8 @@ namespace CnC_WFA
             this.button_tab2_back.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_tab2_back.FlatAppearance.BorderSize = 2;
             this.button_tab2_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_tab2_back.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_tab2_back.Location = new System.Drawing.Point(664, 318);
+            this.button_tab2_back.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.button_tab2_back.Location = new System.Drawing.Point(551, 318);
             this.button_tab2_back.Name = "button_tab2_back";
             this.button_tab2_back.Size = new System.Drawing.Size(78, 31);
             this.button_tab2_back.TabIndex = 41;
@@ -95,7 +95,7 @@ namespace CnC_WFA
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(754, 354);
+            this.ClientSize = new System.Drawing.Size(647, 353);
             this.Controls.Add(this.button_tab2_back);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.richTextBox1);

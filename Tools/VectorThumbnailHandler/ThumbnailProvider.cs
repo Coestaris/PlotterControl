@@ -15,6 +15,7 @@ namespace HandlerSamples
     [ThumbnailProvider("PCVThumbnailer", ".pcv", ThumbnailAdornment = ThumbnailAdornment.DropShadow, DisableProcessIsolation = true)]
     public class ThumbnailProvider : Microsoft.WindowsAPICodePack.ShellExtensions.ThumbnailProvider, IThumbnailFromShellObject, IThumbnailFromFile
     {
+        //Магические числа? Ох уж эти частные случаи
         private const float FontSizeKoef = 0.0872727272727273f;
         private const float TextXKoef = 0.0748181818181818f;
         private const float TextYKoef = 0.8136363636363636f;

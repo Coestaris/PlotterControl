@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 06.09.2017 20:27:50
+* Last Edited: 10.09.2017 18:39:17
 *=================================*/
 
 namespace FileBrowser
@@ -41,12 +41,13 @@ namespace FileBrowser
             this.components = new System.ComponentModel.Container();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label_path = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_rec = new System.Windows.Forms.Button();
+            this.button_send = new System.Windows.Forms.Button();
+            this.button_refresh = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1_prop = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -59,16 +60,15 @@ namespace FileBrowser
             this.createFiletoolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_info = new System.Windows.Forms.Button();
-            this.toolStripMenuItem1_prop = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(12, 39);
+            this.listView1.Location = new System.Drawing.Point(12, 45);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(665, 406);
+            this.listView1.Size = new System.Drawing.Size(665, 400);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -79,41 +79,57 @@ namespace FileBrowser
             // label_path
             // 
             this.label_path.AutoSize = true;
-            this.label_path.Location = new System.Drawing.Point(12, 15);
+            this.label_path.Font = new System.Drawing.Font("Cambria", 9F);
+            this.label_path.Location = new System.Drawing.Point(12, 19);
             this.label_path.Name = "label_path";
-            this.label_path.Size = new System.Drawing.Size(35, 13);
+            this.label_path.Size = new System.Drawing.Size(39, 14);
             this.label_path.TabIndex = 1;
             this.label_path.Text = "label1";
             // 
-            // button1
+            // button_rec
             // 
-            this.button1.Location = new System.Drawing.Point(593, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Receive File";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_rec.BackColor = System.Drawing.Color.White;
+            this.button_rec.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_rec.FlatAppearance.BorderSize = 2;
+            this.button_rec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_rec.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.button_rec.Location = new System.Drawing.Point(593, 10);
+            this.button_rec.Name = "button_rec";
+            this.button_rec.Size = new System.Drawing.Size(84, 29);
+            this.button_rec.TabIndex = 2;
+            this.button_rec.Text = "Receive File";
+            this.button_rec.UseVisualStyleBackColor = false;
+            this.button_rec.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // button_send
             // 
-            this.button3.Location = new System.Drawing.Point(503, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(84, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Send File";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button_send.BackColor = System.Drawing.Color.White;
+            this.button_send.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_send.FlatAppearance.BorderSize = 2;
+            this.button_send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_send.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.button_send.Location = new System.Drawing.Point(503, 10);
+            this.button_send.Name = "button_send";
+            this.button_send.Size = new System.Drawing.Size(84, 29);
+            this.button_send.TabIndex = 4;
+            this.button_send.Text = "Send File";
+            this.button_send.UseVisualStyleBackColor = false;
+            this.button_send.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // button_refresh
             // 
-            this.button4.Location = new System.Drawing.Point(422, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Refresh";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button_refresh.BackColor = System.Drawing.Color.White;
+            this.button_refresh.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_refresh.FlatAppearance.BorderSize = 2;
+            this.button_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_refresh.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.button_refresh.Location = new System.Drawing.Point(422, 10);
+            this.button_refresh.Name = "button_refresh";
+            this.button_refresh.Size = new System.Drawing.Size(75, 29);
+            this.button_refresh.TabIndex = 5;
+            this.button_refresh.Text = "Refresh";
+            this.button_refresh.UseVisualStyleBackColor = false;
+            this.button_refresh.Click += new System.EventHandler(this.button4_Click);
             // 
             // contextMenuStrip1
             // 
@@ -126,7 +142,7 @@ namespace FileBrowser
             this.toolStripSeparator2,
             this.createToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 148);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 126);
             // 
             // openToolStripMenuItem
             // 
@@ -139,6 +155,13 @@ namespace FileBrowser
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
+            // 
+            // toolStripMenuItem1_prop
+            // 
+            this.toolStripMenuItem1_prop.Name = "toolStripMenuItem1_prop";
+            this.toolStripMenuItem1_prop.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuItem1_prop.Text = "Свойства";
+            this.toolStripMenuItem1_prop.Click += new System.EventHandler(this.toolStripMenuItem1_prop_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -222,35 +245,35 @@ namespace FileBrowser
             // 
             // button_info
             // 
-            this.button_info.Location = new System.Drawing.Point(341, 10);
+            this.button_info.BackColor = System.Drawing.Color.White;
+            this.button_info.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_info.FlatAppearance.BorderSize = 2;
+            this.button_info.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_info.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.button_info.Location = new System.Drawing.Point(340, 10);
             this.button_info.Name = "button_info";
-            this.button_info.Size = new System.Drawing.Size(75, 23);
+            this.button_info.Size = new System.Drawing.Size(76, 29);
             this.button_info.TabIndex = 6;
             this.button_info.Text = "Info";
-            this.button_info.UseVisualStyleBackColor = true;
+            this.button_info.UseVisualStyleBackColor = false;
             this.button_info.Click += new System.EventHandler(this.button_info_Click);
-            // 
-            // toolStripMenuItem1_prop
-            // 
-            this.toolStripMenuItem1_prop.Name = "toolStripMenuItem1_prop";
-            this.toolStripMenuItem1_prop.Size = new System.Drawing.Size(171, 22);
-            this.toolStripMenuItem1_prop.Text = "Свойства";
-            this.toolStripMenuItem1_prop.Click += new System.EventHandler(this.toolStripMenuItem1_prop_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(689, 459);
             this.Controls.Add(this.button_info);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_refresh);
+            this.Controls.Add(this.button_send);
+            this.Controls.Add(this.button_rec);
             this.Controls.Add(this.label_path);
             this.Controls.Add(this.listView1);
+            this.MinimumSize = new System.Drawing.Size(598, 435);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "File Browser";
             this.Load += new System.EventHandler(this.MainFormLoad);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.contextMenuStrip1.ResumeLayout(false);
@@ -264,9 +287,9 @@ namespace FileBrowser
 
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label_path;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_rec;
+        private System.Windows.Forms.Button button_send;
+        private System.Windows.Forms.Button button_refresh;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyNameToolStripMenuItem;

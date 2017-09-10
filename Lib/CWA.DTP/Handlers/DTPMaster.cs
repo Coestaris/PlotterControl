@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 28.08.2017 14:37:22
+* Last Edited: 09.09.2017 20:45:07
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -14,8 +14,25 @@ using System.Threading;
 
 namespace CWA.DTP
 {
-    public sealed partial class DTPMaster
+    public sealed class DTPMaster
     {
+        public static DTPMaster CreateFromSerial() => CreateFromSerial(1000, new Sender(SenderType.UnNamedByteMask), true);
+
+        public static DTPMaster CreateFromSerial(int TimeOut) => CreateFromSerial(TimeOut, new Sender(SenderType.UnNamedByteMask), true);
+
+        public static DTPMaster CreateFromSerial(int TimeOut, string SenderName) => CreateFromSerial(TimeOut, new Sender(SenderName), true);
+
+        public static DTPMaster CreateFromSerial(int TimeOut, Sender Sender, bool SyncTime)
+        {
+            if (SerialPacketReader.FirstAvailable(TimeOut, out var reader, out var writer, out var sender, SyncTime))
+            {
+                var master = new DTPMaster(Sender, new PacketListener(reader, writer));
+                master.Device._deviceSender = sender;
+                return master;
+            }
+            else return null;
+        }
+
         internal GeneralPacketHandler ph;
 
         public PacketListener Listener => ph.Listener;

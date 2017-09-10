@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 08.09.2017 20:51:00
+* Last Edited: 09.09.2017 21:14:03
 *=================================*/
 
 using System;
@@ -31,7 +31,7 @@ namespace CWA.Vectors
         /// </summary>
         private Random _rand = new Random();
 
-        private byte[] PCVByteHeader = new byte[]
+        private readonly static byte[] PCVByteHeader = new byte[]
         {
             (byte)'V',
             (byte)'e',
@@ -44,7 +44,7 @@ namespace CWA.Vectors
             (byte)'0'
         };
 
-        private byte[] bytesToDelete = new byte[]
+        private readonly static byte[] bytesToDelete = new byte[]
         {
             (byte)'0',
             (byte)'1',
@@ -59,6 +59,7 @@ namespace CWA.Vectors
         };
 
         private readonly static byte[] ByteDownPattern = new byte[4] { 100, 100, 100, 100 };
+
         private readonly static byte[] ByteUpPattern = new byte[4] { 101, 101, 101, 101 };
         #endregion
 

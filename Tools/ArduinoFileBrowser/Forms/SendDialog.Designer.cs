@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 06.09.2017 19:53:09
+* Last Edited: 10.09.2017 19:07:03
 *=================================*/
 
 namespace FileBrowser
@@ -59,87 +59,109 @@ namespace FileBrowser
             // 
             this.progressBar1.Location = new System.Drawing.Point(12, 51);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(449, 33);
+            this.progressBar1.Size = new System.Drawing.Size(459, 33);
+            this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 0;
             // 
             // button_abort
             // 
+            this.button_abort.BackColor = System.Drawing.Color.White;
+            this.button_abort.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_abort.FlatAppearance.BorderSize = 2;
+            this.button_abort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_abort.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.button_abort.Location = new System.Drawing.Point(367, 90);
             this.button_abort.Name = "button_abort";
             this.button_abort.Size = new System.Drawing.Size(104, 33);
             this.button_abort.TabIndex = 1;
             this.button_abort.Text = "Прервать";
-            this.button_abort.UseVisualStyleBackColor = true;
+            this.button_abort.UseVisualStyleBackColor = false;
             this.button_abort.Click += new System.EventHandler(this.button1_Click);
             // 
             // label_name
             // 
             this.label_name.AutoSize = true;
+            this.label_name.Font = new System.Drawing.Font("Cambria", 9F);
             this.label_name.Location = new System.Drawing.Point(13, 13);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(35, 13);
+            this.label_name.Size = new System.Drawing.Size(39, 14);
             this.label_name.TabIndex = 2;
             this.label_name.Text = "label1";
             // 
             // label_percentage
             // 
             this.label_percentage.AutoSize = true;
+            this.label_percentage.Font = new System.Drawing.Font("Cambria", 9F);
             this.label_percentage.Location = new System.Drawing.Point(13, 32);
             this.label_percentage.Name = "label_percentage";
-            this.label_percentage.Size = new System.Drawing.Size(35, 13);
+            this.label_percentage.Size = new System.Drawing.Size(39, 14);
             this.label_percentage.TabIndex = 3;
             this.label_percentage.Text = "label2";
             // 
             // label_timeleft
             // 
             this.label_timeleft.AutoSize = true;
+            this.label_timeleft.Font = new System.Drawing.Font("Cambria", 9F);
             this.label_timeleft.Location = new System.Drawing.Point(13, 94);
             this.label_timeleft.Name = "label_timeleft";
-            this.label_timeleft.Size = new System.Drawing.Size(35, 13);
+            this.label_timeleft.Size = new System.Drawing.Size(39, 14);
             this.label_timeleft.TabIndex = 4;
             this.label_timeleft.Text = "label3";
             // 
             // label_speed
             // 
             this.label_speed.AutoSize = true;
+            this.label_speed.Font = new System.Drawing.Font("Cambria", 9F);
             this.label_speed.Location = new System.Drawing.Point(13, 114);
             this.label_speed.Name = "label_speed";
-            this.label_speed.Size = new System.Drawing.Size(35, 13);
+            this.label_speed.Size = new System.Drawing.Size(39, 14);
             this.label_speed.TabIndex = 5;
             this.label_speed.Text = "label4";
             // 
             // textBox_pcName
             // 
+            this.textBox_pcName.Font = new System.Drawing.Font("Cambria", 9F);
             this.textBox_pcName.Location = new System.Drawing.Point(106, 15);
             this.textBox_pcName.Name = "textBox_pcName";
-            this.textBox_pcName.Size = new System.Drawing.Size(311, 20);
+            this.textBox_pcName.Size = new System.Drawing.Size(311, 22);
             this.textBox_pcName.TabIndex = 6;
             // 
             // button_pick
             // 
+            this.button_pick.BackColor = System.Drawing.Color.White;
+            this.button_pick.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_pick.FlatAppearance.BorderSize = 2;
+            this.button_pick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_pick.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_pick.Location = new System.Drawing.Point(422, 15);
             this.button_pick.Name = "button_pick";
             this.button_pick.Size = new System.Drawing.Size(48, 23);
             this.button_pick.TabIndex = 7;
             this.button_pick.Text = "Выбр";
-            this.button_pick.UseVisualStyleBackColor = true;
+            this.button_pick.UseVisualStyleBackColor = false;
             this.button_pick.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox_deviceName
             // 
+            this.textBox_deviceName.Font = new System.Drawing.Font("Cambria", 9F);
             this.textBox_deviceName.Location = new System.Drawing.Point(106, 52);
             this.textBox_deviceName.Name = "textBox_deviceName";
-            this.textBox_deviceName.Size = new System.Drawing.Size(364, 20);
+            this.textBox_deviceName.Size = new System.Drawing.Size(364, 22);
             this.textBox_deviceName.TabIndex = 8;
             // 
             // button_send
             // 
+            this.button_send.BackColor = System.Drawing.Color.White;
+            this.button_send.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_send.FlatAppearance.BorderSize = 2;
+            this.button_send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_send.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.button_send.Location = new System.Drawing.Point(366, 78);
             this.button_send.Name = "button_send";
             this.button_send.Size = new System.Drawing.Size(104, 33);
             this.button_send.TabIndex = 10;
             this.button_send.Text = "Отправить";
-            this.button_send.UseVisualStyleBackColor = true;
+            this.button_send.UseVisualStyleBackColor = false;
             this.button_send.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel1
@@ -157,6 +179,7 @@ namespace FileBrowser
             // 
             // label_newName
             // 
+            this.label_newName.Font = new System.Drawing.Font("Cambria", 9F);
             this.label_newName.Location = new System.Drawing.Point(12, 47);
             this.label_newName.Name = "label_newName";
             this.label_newName.Size = new System.Drawing.Size(88, 35);
@@ -165,6 +188,7 @@ namespace FileBrowser
             // 
             // label_oldName
             // 
+            this.label_oldName.Font = new System.Drawing.Font("Cambria", 9F);
             this.label_oldName.Location = new System.Drawing.Point(12, 14);
             this.label_oldName.Name = "label_oldName";
             this.label_oldName.Size = new System.Drawing.Size(80, 35);
@@ -180,6 +204,7 @@ namespace FileBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(483, 149);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label_speed);

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 28.08.2017 22:40:59
+* Last Edited: 09.09.2017 21:25:32
 *=================================*/
 
 using CWA;
@@ -1223,7 +1223,7 @@ namespace CnC_WFA
             FileInfo fi = new FileInfo(Application.ExecutablePath);
             label_main_about_hm.Text+= FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.HM.dll").FileVersion + '.';
             label_main_about_pr.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.dll").FileVersion + '.';
-            label_main_about_v.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.dll").FileVersion + '.';
+            //label_main_about_v.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.dll").FileVersion + '.';
             label_main_about_ve.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.Document.dll").FileVersion + '.';
             label_main_about_pm.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.Macro.dll").FileVersion + '.';
             label_main_about_con.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Connection.dll").FileVersion + '.';

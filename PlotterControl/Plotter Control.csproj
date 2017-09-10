@@ -646,6 +646,14 @@ move /Y  $(TargetDir)\*.dll  $(TargetDir)\Lib\
 move /Y  $(TargetDir)\CNCWFA_*.pdb  $(TargetDir)\Lib\
 
 move /Y  $(TargetDir)\CWA*.pdb  $(TargetDir)\lib\
+
+copy /Y $(TargetDir)\..\..\..\Tools\ArduinoFileBrowser\Bin\$(ConfigurationName)\Lib\FileBrowserResources.dll*  $(TargetDir)\lib
+
+move $(TargetDir)\VectorThumbnailHandler.pdb  $(TargetDir)\lib\
+move /Y $(TargetDir)\Microsoft.WindowsAPICodePack*.pdb  $(TargetDir)\lib\
+
+copy /Y $(TargetDir)\..\..\..\Tools\ArduinoFileBrowser\Bin\$(ConfigurationName)\FileBrowser.*  $(TargetDir)\
+
 chdir /d $(ProjectDir)
 
 </PostBuildEvent>

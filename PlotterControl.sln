@@ -36,6 +36,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArduinoFirmware", "Tools\ArduinoFirmware\DTP.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoFileBrowser", "Tools\ArduinoFileBrowser\ArduinoFileBrowser.csproj", "{F533C7ED-6DE5-4A1D-8B6E-8379FB32E16D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FDFD4EEB-C202-4D93-A6E9-D8984A12D014} = {FDFD4EEB-C202-4D93-A6E9-D8984A12D014}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CWA.Connection", "Lib\CWA.Connection\CWA.Connection.csproj", "{04B8E3C1-4D43-4751-883E-6F9A2156F2A1}"
 EndProject

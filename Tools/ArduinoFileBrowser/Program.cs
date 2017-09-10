@@ -5,22 +5,16 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 20:09
-* Last Edited: 18.08.2017 20:26:45
+* Last Edited: 09.09.2017 21:10:45
 *=================================*/
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FileBrowser
 {
     static class Program
     {
-        /// <summary>
-        /// ?????????????? ?????????? ?????????? ?????? ????????????????????.
-        /// </summary>
         [STAThread]
         static void Main()
         {

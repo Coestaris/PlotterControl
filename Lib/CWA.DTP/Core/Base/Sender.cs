@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 28.08.2017 14:37:01
+* Last Edited: 09.09.2017 20:37:03
 *=================================*/
 
 using System;
@@ -85,9 +85,17 @@ namespace CWA.DTP
 
         public static bool operator ==(Sender first, Sender second)
         {
-            if (first.Type == second.Type &&
-                Enumerable.SequenceEqual(first.Mask, second.Mask)) return true;
-            else return false;
+            try
+            {
+                if (first.Type != second.Type) return false;
+                if (first.Type == SenderType.SevenByteName)
+                    return Enumerable.SequenceEqual(first.Mask, second.Mask);
+                else return first.Name == second.Name;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public override bool Equals(object obj)

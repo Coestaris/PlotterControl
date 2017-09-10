@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 23.08.2017 19:20:40
+* Last Edited: 09.09.2017 20:59:00
 *=================================*/
 
 using System;
@@ -57,10 +57,16 @@ namespace CWA.DTP
 
         public static bool operator ==(Packet first, Packet second)
         {
-            if (first.Command == second.Command &&
-                Enumerable.SequenceEqual(first.Data, second.Data) &&
-                first.Sender == second.Sender) return true;
-            else return false;
+            try
+            {
+                if (first.Command == second.Command &&
+                    Enumerable.SequenceEqual(first.Data, second.Data) &&
+                    first.Sender == second.Sender) return true;
+                else return false;
+            } catch
+            {
+                return false;
+            }
         }
 
         public override bool Equals(object obj)

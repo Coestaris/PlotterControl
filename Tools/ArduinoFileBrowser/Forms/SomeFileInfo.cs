@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 24.08.2017 22:03
-* Last Edited: 06.09.2017 20:36:38
+* Last Edited: 10.09.2017 18:56:31
 *=================================*/
 
 using CWA.DTP;
@@ -35,7 +35,7 @@ namespace FileBrowser
         public static string VDataToString(byte[] bytes)
         {
             string res = "";
-            foreach (var item in bytes.Split(9))
+            foreach (var item in bytes.Split(4))
             {
                 var iArr = item.ToArray();
                 if (iArr.SequenceEqual(new byte[] { 100, 100, 100, 100 })) res += "\nDOWN!\n";

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 06.09.2017 19:53:09
+* Last Edited: 10.09.2017 19:07:03
 *=================================*/
 
 using CWA.DTP;
@@ -24,6 +24,9 @@ namespace FileBrowser
             InitializeComponent();
         }
 
+        private bool Sending;
+        private string OldName, NewName;
+
         private void SendDialog_Load(object sender, EventArgs e)
         {
             fileSender = master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh);
@@ -31,6 +34,9 @@ namespace FileBrowser
             fileSender.SendingProcessChanged += FileSender_SendingProcessChanged;
             fileSender.SendingError += FileSender_SendingError;
             fileSender.SendingEnd += FileSender_SendingEnd;
+
+            if (Sending)
+                SetupSending(OldName, NewName);
         }
 
         private DateTime startTime;
@@ -50,7 +56,11 @@ namespace FileBrowser
         public SendDialog(DTPMaster master, string oldName, string newName)
         {
             InitializeComponent();
-            SetupSending(oldName, oldName);
+            this.master = master;
+            OldName = oldName;
+            Sending = true;
+            panel1.Visible = false;
+            NewName = newName;
         }
 
         private void FileSender_SendingEnd(FileTransferEndArgs arg)

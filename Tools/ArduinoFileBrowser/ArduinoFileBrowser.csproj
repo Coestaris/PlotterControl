@@ -32,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -143,7 +144,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Properties\App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\CWA.DTP.Plotter\CWA.DTP.Plotter.csproj">
@@ -154,23 +155,29 @@
       <Project>{476a54ca-91a4-437e-8fac-2cfef15ec7be}</Project>
       <Name>CWA.DTP</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Lib\IconExtractor\IconExtractor.csproj">
+      <Project>{FDFD4EEB-C202-4D93-A6E9-D8984A12D014}</Project>
+      <Name>IconExtractor</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Icons\forward.png">
+    <Content Include="FileBrowserResources.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Icons\folder.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Icons\back.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LICENSE.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Images\1.ico" />
+    <Content Include="Images\1.png" />
+    <Content Include="Images\2.ico" />
+    <Content Include="Images\2.png" />
+    <Content Include="Images\3.ico" />
+    <Content Include="Images\3.png" />
+    <None Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>move /Y  $(TargetDir)\*.dll  $(TargetDir)\Lib\
+move /Y  $(TargetDir)\CWA*.pdb  $(TargetDir)\lib\</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 09.09.2017 20:10:41
 *=================================*/
 
 using System;
@@ -217,10 +217,10 @@ namespace CWA.DTP
 
         #endregion
 
-        public bool Device_Test()
+        public Sender Device_Test()
         {
             var result = GetResult((UInt16)CommandType.Test);
-            return !result.IsEmpty;
+            return result.IsEmpty ? null : result.Sender;
         }
 
         public bool Device_DataTest(byte[] data)
