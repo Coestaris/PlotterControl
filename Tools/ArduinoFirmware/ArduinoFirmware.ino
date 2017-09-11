@@ -34,6 +34,17 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 
 	switch ((DTP_COMMANDTYPE)command)
 	{
+		case DTP_COMMANDTYPE::SPEAKER_BEEP:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::NONE;
+			String pattern = "";
+			for (int i = 0; i <= dataLen - 1; i++)
+				pattern += (char)data[i];
+			Error(pattern, false);
+			break;
+		}
+
 		case DTP_COMMANDTYPE::Plotter_Print_Run_Ex:
 		{
 			status = DTP_ANSWER_STATUS::OK;
@@ -129,6 +140,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			};
 
 			delete[] temp;
+			
 
 			uint32_t size = a.size();
 			dataBytesLen = 16;

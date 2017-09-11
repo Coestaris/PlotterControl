@@ -267,7 +267,6 @@ namespace CWA.DTP
             if (result.IsEmpty) return FileExistsResult.Fail;
             if (result.Code == 1) return FileExistsResult.NotExists;
             else return FileExistsResult.Exists;
-           
         }
 
         public FileDirHandleResult File_Delete(string FileName)
@@ -307,6 +306,11 @@ namespace CWA.DTP
                 default:
                     return FileDirHandleResult.Fail;
             }
+        }
+
+        public bool Device_SpeakerBeep(string Patten)
+        {
+            return !GetResult((UInt16)CommandType.SPEAKER_BEEP, Encoding.Default.GetBytes(Patten)).IsEmpty;
         }
 
         public FileDirHandleResult Dir_Delete(string DirectoryName, bool DeleteSubItems)

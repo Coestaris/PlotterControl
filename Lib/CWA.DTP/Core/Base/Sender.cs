@@ -10,6 +10,7 @@
 
 using System;
 using System.Linq;
+using System.Text;
 
 namespace CWA.DTP
 {
@@ -35,6 +36,15 @@ namespace CWA.DTP
 
         public static Sender Empty => new Sender(SenderType.UnNamedByteMask);
 
+        public Sender(byte[] Bytes)
+        {
+            if (Bytes.Length != 8)
+                throw new ArgumentException("Lengt must be 8", nameof(Bytes));
+            if (Bytes[0] == (byte)SenderType.SevenByteName)
+                Name = Encoding.Default.GetString(Bytes, 1, 7);
+            else Mask = Bytes.Skip(1).ToArray();
+        }
+
         public Sender(SenderType type)
         {
             Type = type;
@@ -46,12 +56,6 @@ namespace CWA.DTP
         {
             Type = SenderType.SevenByteName;
             this.Name = Name;
-        }
-
-        public Sender(byte[] Mask)
-        {
-            Type = SenderType.UnNamedByteMask;
-            this.Mask = Mask;
         }
 
         private static string RandomGenerateSenderName(int length)

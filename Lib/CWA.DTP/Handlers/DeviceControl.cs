@@ -36,6 +36,8 @@ namespace CWA.DTP
             return false;
         }
         
+        public bool SpeakerBeep(string Pattern) => ParentMaster.ph.Device_SpeakerBeep(Pattern);
+
         public bool Test(byte[] data) => ParentMaster.ph.Device_DataTest(data);
 
         public bool SyncTyme() => ParentMaster.ph.Device_SyncTime() != -1;

@@ -264,15 +264,6 @@ namespace CnC_WFA
         public static Form_SerialMonitor Translate(Form_SerialMonitor form)
         {
             var a = TranslateBase.CurrentLang.Menu;
-            form.button_exit.Text = a["Form_SerialMonitor.button_exit"];
-            form.button_open.Text = a["Form_SerialMonitor.button_open"];
-            form.button_savelog.Text = a["Form_SerialMonitor.button_savelog"];
-            form.button_send.Text = a["Form_SerialMonitor.button_send"];
-            form.checkBox_usehelper.Text = a["Form_SerialMonitor.checkBox_usehelper"];
-            form.groupBox_setup.Text = a["Form_SerialMonitor.groupBox_setup"];
-            form.label_bdrate.Text = a["Form_SerialMonitor.label_bdrate"];
-            form.label_portname.Text = a["Form_SerialMonitor.label_portname"];
-            form.Text = a["Form_SerialMonitor.Text"];
             return form;
         }
 
