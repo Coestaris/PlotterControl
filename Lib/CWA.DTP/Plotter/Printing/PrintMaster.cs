@@ -1,11 +1,11 @@
 /*=================================\
-* CWA.DTP.Plotter\PrintMaster.cs
+* CWA.DTP\PrintMaster.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 22.08.2017 20:33
-* Last Edited: 24.08.2017 20:48:18
+* Created: 12.09.2017 21:45
+* Last Edited: 12.09.2017 21:51:04
 *=================================*/
 
 using System;
@@ -63,7 +63,7 @@ namespace CWA.DTP.Plotter
 
         public float YMM { get; set; }
 
-        public PrintMaster(DTPMaster master, float Xmm, float Ymm, UInt32 statusRequestInterval) : base(master)
+        internal PrintMaster(DTPMaster master, float Xmm, float Ymm, UInt32 statusRequestInterval) : base(master)
         {
             StatusRequestInterval = statusRequestInterval;
             ph = new PlotterPacketHandler(master.Sender, master.Listener);

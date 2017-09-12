@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 12.09.2017 22:22:11
 *=================================*/
 
 namespace CnC_WFA
@@ -68,6 +68,7 @@ namespace CnC_WFA
             this.textBox_step = new System.Windows.Forms.TextBox();
             this.label_mcinfo = new System.Windows.Forms.Label();
             this.button_exit = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.Control.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -102,7 +103,7 @@ namespace CnC_WFA
             // label_bdrate
             // 
             this.label_bdrate.AutoSize = true;
-            this.label_bdrate.Location = new System.Drawing.Point(204, 27);
+            this.label_bdrate.Location = new System.Drawing.Point(8, 59);
             this.label_bdrate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_bdrate.Name = "label_bdrate";
             this.label_bdrate.Size = new System.Drawing.Size(57, 17);
@@ -129,10 +130,10 @@ namespace CnC_WFA
             "56000",
             "57600",
             "115200"});
-            this.combobox_bdrate.Location = new System.Drawing.Point(317, 24);
+            this.combobox_bdrate.Location = new System.Drawing.Point(95, 56);
             this.combobox_bdrate.Margin = new System.Windows.Forms.Padding(4);
             this.combobox_bdrate.Name = "combobox_bdrate";
-            this.combobox_bdrate.Size = new System.Drawing.Size(115, 25);
+            this.combobox_bdrate.Size = new System.Drawing.Size(105, 25);
             this.combobox_bdrate.TabIndex = 2;
             this.combobox_bdrate.SelectedIndexChanged += new System.EventHandler(this.combobox_bdrate_SelectedIndexChanged);
             // 
@@ -143,11 +144,11 @@ namespace CnC_WFA
             this.groupBox1.Controls.Add(this.label_bdrate);
             this.groupBox1.Controls.Add(this.combobox_com);
             this.groupBox1.Controls.Add(this.label_com);
-            this.groupBox1.Location = new System.Drawing.Point(12, 240);
+            this.groupBox1.Location = new System.Drawing.Point(350, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(570, 65);
+            this.groupBox1.Size = new System.Drawing.Size(213, 139);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Setup";
@@ -159,10 +160,10 @@ namespace CnC_WFA
             this.button_mc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_mc.FlatAppearance.BorderSize = 2;
             this.button_mc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_mc.Location = new System.Drawing.Point(443, 16);
+            this.button_mc.Location = new System.Drawing.Point(114, 88);
             this.button_mc.Margin = new System.Windows.Forms.Padding(4);
             this.button_mc.Name = "button_mc";
-            this.button_mc.Size = new System.Drawing.Size(119, 38);
+            this.button_mc.Size = new System.Drawing.Size(86, 36);
             this.button_mc.TabIndex = 5;
             this.button_mc.Text = "Start";
             this.button_mc.UseVisualStyleBackColor = false;
@@ -178,20 +179,21 @@ namespace CnC_WFA
             this.Control.Margin = new System.Windows.Forms.Padding(4);
             this.Control.Name = "Control";
             this.Control.Padding = new System.Windows.Forms.Padding(4);
-            this.Control.Size = new System.Drawing.Size(682, 221);
+            this.Control.Size = new System.Drawing.Size(329, 365);
             this.Control.TabIndex = 6;
             this.Control.TabStop = false;
             this.Control.Text = "Control";
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.comboBox1);
             this.groupBox4.Controls.Add(this.button_down);
             this.groupBox4.Controls.Add(this.button_up);
-            this.groupBox4.Location = new System.Drawing.Point(500, 18);
+            this.groupBox4.Location = new System.Drawing.Point(188, 18);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(159, 191);
+            this.groupBox4.Size = new System.Drawing.Size(129, 169);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Tool position";
@@ -202,10 +204,10 @@ namespace CnC_WFA
             this.button_down.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_down.FlatAppearance.BorderSize = 2;
             this.button_down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_down.Location = new System.Drawing.Point(30, 49);
+            this.button_down.Location = new System.Drawing.Point(18, 70);
             this.button_down.Margin = new System.Windows.Forms.Padding(4);
             this.button_down.Name = "button_down";
-            this.button_down.Size = new System.Drawing.Size(111, 38);
+            this.button_down.Size = new System.Drawing.Size(86, 38);
             this.button_down.TabIndex = 9;
             this.button_down.Text = "Down";
             this.button_down.UseVisualStyleBackColor = false;
@@ -217,10 +219,10 @@ namespace CnC_WFA
             this.button_up.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_up.FlatAppearance.BorderSize = 2;
             this.button_up.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_up.Location = new System.Drawing.Point(30, 100);
+            this.button_up.Location = new System.Drawing.Point(18, 116);
             this.button_up.Margin = new System.Windows.Forms.Padding(4);
             this.button_up.Name = "button_up";
-            this.button_up.Size = new System.Drawing.Size(111, 38);
+            this.button_up.Size = new System.Drawing.Size(86, 36);
             this.button_up.TabIndex = 6;
             this.button_up.Text = "Up";
             this.button_up.UseVisualStyleBackColor = false;
@@ -243,7 +245,7 @@ namespace CnC_WFA
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(196, 191);
+            this.groupBox3.Size = new System.Drawing.Size(164, 169);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "MN command";
@@ -284,10 +286,10 @@ namespace CnC_WFA
             this.button_dmove.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_dmove.FlatAppearance.BorderSize = 2;
             this.button_dmove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_dmove.Location = new System.Drawing.Point(25, 145);
+            this.button_dmove.Location = new System.Drawing.Point(68, 128);
             this.button_dmove.Margin = new System.Windows.Forms.Padding(4);
             this.button_dmove.Name = "button_dmove";
-            this.button_dmove.Size = new System.Drawing.Size(111, 38);
+            this.button_dmove.Size = new System.Drawing.Size(86, 36);
             this.button_dmove.TabIndex = 3;
             this.button_dmove.Text = "Send";
             this.button_dmove.UseVisualStyleBackColor = false;
@@ -373,11 +375,11 @@ namespace CnC_WFA
             this.groupBox2.Controls.Add(this.label_mcstep);
             this.groupBox2.Controls.Add(this.textBox_step);
             this.groupBox2.Controls.Add(this.label_mcinfo);
-            this.groupBox2.Location = new System.Drawing.Point(220, 18);
+            this.groupBox2.Location = new System.Drawing.Point(16, 195);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(272, 191);
+            this.groupBox2.Size = new System.Drawing.Size(301, 156);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "MC Step control";
@@ -385,7 +387,7 @@ namespace CnC_WFA
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(186, 52);
+            this.label4.Location = new System.Drawing.Point(218, 51);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 17);
@@ -398,10 +400,10 @@ namespace CnC_WFA
             this.button_startmc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_startmc.FlatAppearance.BorderSize = 2;
             this.button_startmc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_startmc.Location = new System.Drawing.Point(153, 145);
+            this.button_startmc.Location = new System.Drawing.Point(172, 95);
             this.button_startmc.Margin = new System.Windows.Forms.Padding(4);
             this.button_startmc.Name = "button_startmc";
-            this.button_startmc.Size = new System.Drawing.Size(111, 38);
+            this.button_startmc.Size = new System.Drawing.Size(86, 36);
             this.button_startmc.TabIndex = 10;
             this.button_startmc.Text = "Start";
             this.button_startmc.UseVisualStyleBackColor = false;
@@ -410,7 +412,7 @@ namespace CnC_WFA
             // label_mcstep
             // 
             this.label_mcstep.AutoSize = true;
-            this.label_mcstep.Location = new System.Drawing.Point(10, 25);
+            this.label_mcstep.Location = new System.Drawing.Point(11, 51);
             this.label_mcstep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mcstep.Name = "label_mcstep";
             this.label_mcstep.Size = new System.Drawing.Size(114, 17);
@@ -419,7 +421,7 @@ namespace CnC_WFA
             // 
             // textBox_step
             // 
-            this.textBox_step.Location = new System.Drawing.Point(140, 49);
+            this.textBox_step.Location = new System.Drawing.Point(172, 48);
             this.textBox_step.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_step.Name = "textBox_step";
             this.textBox_step.Size = new System.Drawing.Size(38, 25);
@@ -430,7 +432,7 @@ namespace CnC_WFA
             // 
             this.label_mcinfo.AutoSize = true;
             this.label_mcinfo.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label_mcinfo.Location = new System.Drawing.Point(8, 95);
+            this.label_mcinfo.Location = new System.Drawing.Point(12, 80);
             this.label_mcinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mcinfo.Name = "label_mcinfo";
             this.label_mcinfo.Size = new System.Drawing.Size(129, 51);
@@ -443,21 +445,29 @@ namespace CnC_WFA
             this.button_exit.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_exit.FlatAppearance.BorderSize = 2;
             this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_exit.Location = new System.Drawing.Point(587, 255);
+            this.button_exit.Location = new System.Drawing.Point(477, 342);
             this.button_exit.Margin = new System.Windows.Forms.Padding(4);
             this.button_exit.Name = "button_exit";
-            this.button_exit.Size = new System.Drawing.Size(111, 38);
+            this.button_exit.Size = new System.Drawing.Size(86, 36);
             this.button_exit.TabIndex = 10;
             this.button_exit.Text = "Exit";
             this.button_exit.UseVisualStyleBackColor = false;
             this.button_exit.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(7, 33);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(107, 25);
+            this.comboBox1.TabIndex = 11;
             // 
             // Form_ManualControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(704, 311);
+            this.ClientSize = new System.Drawing.Size(582, 383);
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.Control);
             this.Controls.Add(this.groupBox1);
@@ -514,5 +524,6 @@ namespace CnC_WFA
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

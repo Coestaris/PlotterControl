@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 09.09.2017 12:08:57
+* Last Edited: 12.09.2017 21:02:57
 *=================================*/
 
 namespace CnC_WFA
@@ -327,6 +327,7 @@ namespace CnC_WFA
             this.toolStripMenuItem_defDisp.Name = "toolStripMenuItem_defDisp";
             this.toolStripMenuItem_defDisp.Size = new System.Drawing.Size(181, 22);
             this.toolStripMenuItem_defDisp.Text = "Default display";
+            this.toolStripMenuItem_defDisp.Click += new System.EventHandler(this.toolStripMenuItem_defDisp_Click);
             // 
             // toolStripMenuItem_resetZoom
             // 
@@ -348,21 +349,21 @@ namespace CnC_WFA
             // contoursToolStripMenuItem
             // 
             this.contoursToolStripMenuItem.Name = "contoursToolStripMenuItem";
-            this.contoursToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contoursToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.contoursToolStripMenuItem.Text = "Contours";
             this.contoursToolStripMenuItem.Click += new System.EventHandler(this.contoursToolStripMenuItem_Click);
             // 
             // infoStripToolStripMenuItem
             // 
             this.infoStripToolStripMenuItem.Name = "infoStripToolStripMenuItem";
-            this.infoStripToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoStripToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.infoStripToolStripMenuItem.Text = "Info strip";
             this.infoStripToolStripMenuItem.Click += new System.EventHandler(this.infoStripToolStripMenuItem_Click);
             // 
             // zoomToolStripMenuItem
             // 
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             this.zoomToolStripMenuItem.Click += new System.EventHandler(this.zoomToolStripMenuItem_Click);
             // 

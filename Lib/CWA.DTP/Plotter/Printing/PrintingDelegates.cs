@@ -1,11 +1,11 @@
 /*=================================\
-* CWA.DTP.Plotter\PrintingDelegates.cs
+* CWA.DTP\PrintingDelegates.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 24.08.2017 20:42
-* Last Edited: 24.08.2017 20:43:23
+* Created: 12.09.2017 21:45
+* Last Edited: 12.09.2017 21:45:57
 *=================================*/
 
 using System;

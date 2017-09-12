@@ -1,11 +1,11 @@
 /*=================================\
-* CWA.DTP.Plotter\VectorMetaData.cs
+* CWA.DTP\VectorMetaData.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 22.08.2017 20:34
-* Last Edited: 09.09.2017 21:06:55
+* Created: 12.09.2017 21:45
+* Last Edited: 12.09.2017 21:45:57
 *=================================*/
 
 using System;

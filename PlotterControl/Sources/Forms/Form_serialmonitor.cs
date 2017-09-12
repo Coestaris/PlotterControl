@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 27.08.2017 14:30:45
+* Last Edited: 12.09.2017 20:04:21
 *=================================*/
 
 using System;
@@ -163,14 +163,8 @@ namespace CnC_WFA
             UInt16 Command;
             byte[] Sender;
             byte[] DataBytes = new byte[0];
-
             try { Command = BitConverter.ToUInt16(new byte[] { byte.Parse(textBox_command_b1.Text), byte.Parse(textBox_command_b2.Text) }, 0); }
-            catch
-            {
-                label_err.Text = "Error: Command";
-                return;
-            }
-
+            catch { label_err.Text = "Error: Command"; return; }
             try
             {
                 Sender = new byte[8]
@@ -185,34 +179,32 @@ namespace CnC_WFA
                     byte.Parse(textBox_sender_b8.Text),
                 };
             }
-            catch
-            {
-                label_err.Text = "Error: Sender Bytes";
-                return;
-            }
-
-
-            if(textBox_data.Text != "")
-            try
-            {
-                DataBytes = textBox_data.Text.Split(',').Select(p => byte.Parse(p)).ToArray();
-            }
-            catch
-            {
-                label_err.Text = "Error: Data";
-                return;
-            }
-
+            catch { label_err.Text = "Error: Sender Bytes";  return; }
+            if (textBox_data.Text != "")
+            try { DataBytes = textBox_data.Text.Split(',').Select(p => byte.Parse(p)).ToArray(); }
+            catch { label_err.Text = "Error: Data";  return; }
             UInt16 Length = (UInt16)(DataBytes.Length + 14 + 255);
-
-            var lengthBytes = BitConverter.GetBytes(Length);
-            textBox_size_b1.Text = lengthBytes[0].ToString();
-            textBox_size_b2.Text = lengthBytes[1].ToString();
-            var crcH = new CrCHandler();
-            var crc = crcH.ComputeChecksumBytes(DataBytes);
-            textBox_hash_b1.Text = crc[0].ToString();
-            textBox_hash_b2.Text = crc[1].ToString();
-
+            byte[] lengthBytes;
+            try {  lengthBytes = checkBox_size.Checked ? new byte[] { byte.Parse(textBox_size_b1.Text), byte.Parse(textBox_size_b2.Text) } : BitConverter.GetBytes(Length); }
+            catch  {  label_err.Text = "Error: Size"; return; }
+            if (!checkBox_size.Checked)
+            {
+                textBox_size_b1.Text = lengthBytes[0].ToString();
+                textBox_size_b2.Text = lengthBytes[1].ToString();
+            }
+            byte[] crc;
+            if (!checkBox_hash.Checked)
+            {
+                var crcH = new CrCHandler();
+                crc = crcH.ComputeChecksumBytes(DataBytes);
+                textBox_hash_b1.Text = crc[0].ToString();
+                textBox_hash_b2.Text = crc[1].ToString();
+            }
+            else
+            {
+                try {  crc = new byte[] { byte.Parse(textBox_hash_b1.Text), byte.Parse(textBox_hash_b2.Text) }; }
+                catch  { label_err.Text = "Error: Hash"; return; }
+            }
             if (action)
             {
                 byte[] totalBytes = new byte[DataBytes.Length + 14];

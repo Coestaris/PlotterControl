@@ -53,9 +53,9 @@
       <Project>{04b8e3c1-4d43-4751-883e-6f9a2156f2a1}</Project>
       <Name>CWA.Connection</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CWA.DTP.Plotter\CWA.DTP.Plotter.csproj">
-      <Project>{38004AAA-A3C7-4875-8918-63910BDED423}</Project>
-      <Name>CWA.DTP.Plotter</Name>
+    <ProjectReference Include="..\CWA.DTP\CWA.DTP.csproj">
+      <Project>{476a54ca-91a4-437e-8fac-2cfef15ec7be}</Project>
+      <Name>CWA.DTP</Name>
     </ProjectReference>
     <ProjectReference Include="..\CWA.Vectors.Document\CWA.Vectors.Document.csproj">
       <Project>{6fb9a28a-d2f1-49db-8a43-8023f6eab1d2}</Project>

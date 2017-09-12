@@ -1,17 +1,15 @@
 /*=================================\
-* CWA.DTP.Plotter\PlotterPacketHandler.cs
+* CWA.DTP\PlotterPacketHandler.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 22.08.2017 20:34
-* Last Edited: 24.08.2017 21:32:09
+* Created: 12.09.2017 21:45
+* Last Edited: 12.09.2017 21:45:57
 *=================================*/
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CWA.DTP.Plotter
 {
@@ -46,7 +44,7 @@ namespace CWA.DTP.Plotter
             public PrintStatus Status { get; set; } = Plotter.PrintStatus.FailGetStatus;
             public UInt32 Max { get; set; } = 0;
             public UInt32 Curr { get; set; } = 0;
-    }
+        }
 
         public PrintStatusRequestResult PrintStatus()
         {
@@ -72,6 +70,15 @@ namespace CWA.DTP.Plotter
         public bool RunFlFormatFile(UInt16 Index)
         {
             return !GetResult((UInt16)CommandType.Plotter_Print_Run_Ex, BitConverter.GetBytes(Index)).IsEmpty;
+        }
+
+        public bool MoveTool(Int16 dx, Int16 dy, Int16 dz)
+        {
+            var result = new List<byte>();
+            result.AddRange(BitConverter.GetBytes(dx));
+            result.AddRange(BitConverter.GetBytes(dy));
+            result.AddRange(BitConverter.GetBytes(dz));
+            return !GetResult((UInt16)CommandType.Plotter_Move, result.ToArray()).IsEmpty;
         }
     }
 }

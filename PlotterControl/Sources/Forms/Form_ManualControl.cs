@@ -5,10 +5,11 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 12.09.2017 22:22:11
 *=================================*/
 
 using CWA;
+using CWA.DTP;
 using System;
 using System.IO.Ports;
 using System.Windows.Forms;
@@ -23,6 +24,8 @@ namespace CnC_WFA
         {
             InitializeComponent();
         }
+
+        private DTPMaster master;
 
         private void combobox_com_Click(object sender, EventArgs e)
         {
@@ -39,62 +42,52 @@ namespace CnC_WFA
 
         private void button_mc_Click(object sender, EventArgs e)
         {
-            if (button_mc.Text == "????????????????????")
+            if (button_mc.Text == "Откл.")
             {
                 combobox_bdrate.Enabled = true;
                 combobox_com.Enabled = true;
                 Control.Enabled = false;
                 //mc.Close();
-                button_mc.Text = "??????????????????????";
+                button_mc.Text = "Подкл.";
                 return;
             }
             try
             {
-                //mc = new ManualControl(combobox_com.Text, int.Parse(combobox_bdrate.Text));
+                var port = new SerialPort(combobox_com.Text, int.Parse(combobox_bdrate.Text.Remove(0, 2)));
+                port.Open();
+                var Listener = new PacketListener(new SerialPacketReader(port, 3000), new SerialPacketWriter(port));
+                master = new DTPMaster(new Sender("Coestar"), Listener);
+
                 Control.Enabled = true;
                 combobox_bdrate.Enabled = false;
                 combobox_com.Enabled = false;
-                button_mc.Text = "????????????????????";
+                button_mc.Text = "Откл.";
             }
             catch { MessageBox.Show(string.Format("Can`t open port {0} on {1}", combobox_com.Text, int.Parse(combobox_bdrate.Text))); }
         }
 
         private void button_dmove_Click(object sender, EventArgs e)
         {
-            string command= "";
-            int xmove = 0;
-            if(!int.TryParse(textBox_xmove.Text,out xmove))
+
+            int dx = 0;
+            if (!int.TryParse(textBox_xmove.Text, out dx))
             {
                 MessageBox.Show("Invalid X value");
                 return;
             }
-            int ymove = 0;
-            if (!int.TryParse(textBox_ymove.Text, out ymove))
+            int dy = 0;
+            if (!int.TryParse(textBox_ymove.Text, out dy))
             {
                 MessageBox.Show("Invalid Y value");
                 return;
             }
-            int zmove = 0;
-            if (!int.TryParse(textBox_zmove.Text, out zmove))
+            int dz = 0;
+            if (!int.TryParse(textBox_zmove.Text, out dz))
             {
                 MessageBox.Show("Invalid Z value");
                 return;
             }
-            command = string.Format("{0},{1},{2};",xmove , ymove , zmove);
-            //try { mc.ToolMove(xmove, ymove, zmove);  }
-            //catch
-            //{
-            //    MessageBox.Show("Can`t write Serial Port");
-            //    Control.Enabled = false;
-            //    groupBox1.Enabled = true;
-
-            //}
-            //if (!checkBox_savemove.Checked)
-            //{
-            //    textBox_xmove.Text = "0";
-            //    textBox_ymove.Text = "0";
-            //    textBox_zmove.Text = "0";
-            //}
+            ///asldkjaslkjdasd
         }
 
         private void button_startmc_Click(object sender, EventArgs e)

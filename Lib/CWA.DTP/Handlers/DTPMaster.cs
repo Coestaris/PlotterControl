@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 09.09.2017 20:45:07
+* Last Edited: 12.09.2017 21:50:56
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -81,6 +81,21 @@ namespace CWA.DTP
                     lock (port) port.Close();
                 }
             }
+        }
+
+        public Plotter.PlotterConfig CreatePlotterConfig()
+        {
+            return new Plotter.PlotterConfig(this);
+        }
+
+        public Plotter.PlotterContent CreatePlotterContent()
+        {
+            return new Plotter.PlotterContent(this);
+        }
+
+        public Plotter.PrintMaster CreatePlotterPrintMaster(float XMM, float YMM)
+        {
+            return new Plotter.PrintMaster(this, XMM, YMM, 0);
         }
         
     }

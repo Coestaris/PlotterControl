@@ -45,6 +45,18 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			break;
 		}
 
+		case DTP_COMMANDTYPE::Plotter_Move:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+			
+			int16_t dx = (uint16_t)(data[0] | (data[1] << 8));
+			int16_t dy = (uint16_t)(data[2] | (data[3] << 8));
+			int16_t dz = (uint16_t)(data[4] | (data[5] << 8));
+			dataByte = PLOTTER_MoveSM(dx, dy, dz, true) ? 0 : 1;
+			break;
+		}
+
 		case DTP_COMMANDTYPE::Plotter_Print_Run_Ex:
 		{
 			status = DTP_ANSWER_STATUS::OK;

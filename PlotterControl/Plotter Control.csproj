@@ -601,10 +601,6 @@
       <Project>{04b8e3c1-4d43-4751-883e-6f9a2156f2a1}</Project>
       <Name>CWA.Connection</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Lib\CWA.DTP.Plotter\CWA.DTP.Plotter.csproj">
-      <Project>{38004aaa-a3c7-4875-8918-63910bded423}</Project>
-      <Name>CWA.DTP.Plotter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Lib\CWA.DTP\CWA.DTP.csproj">
       <Project>{476a54ca-91a4-437e-8fac-2cfef15ec7be}</Project>
       <Name>CWA.DTP</Name>

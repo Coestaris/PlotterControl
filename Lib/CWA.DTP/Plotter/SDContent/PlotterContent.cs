@@ -1,11 +1,11 @@
 /*=================================\
-* CWA.DTP.Plotter\PlotterContent.cs
+* CWA.DTP\PlotterContent.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 22.08.2017 20:34
-* Last Edited: 28.08.2017 14:39:38
+* Created: 12.09.2017 21:45
+* Last Edited: 12.09.2017 21:47:46
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -24,7 +24,7 @@ namespace CWA.DTP.Plotter
 
         public List<UInt16> VectorIndexes => ContentTable.VectorAdresses;
 
-        public PlotterContent(DTPMaster master) : base(master)
+        internal PlotterContent(DTPMaster master) : base(master)
         {
             ContentTable = new PlotterContentTable(Master);
         }

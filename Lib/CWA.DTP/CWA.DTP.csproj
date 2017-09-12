@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,12 +78,35 @@
     <Compile Include="Handlers\LowLevelHandlers\FileInfo.cs" />
     <Compile Include="Handlers\LowLevelHandlers\GeneralPacketHandler.cs" />
     <Compile Include="Handlers\FileHandlers\SdCardBinnaryFile.cs" />
+    <Compile Include="Plotter\Handler\AbstractMaster.cs" />
+    <Compile Include="Plotter\Handler\CommandType.cs" />
+    <Compile Include="Plotter\Handler\PlotterPacketHandler.cs" />
+    <Compile Include="Plotter\Printing\FlFormatPrintMaster.cs" />
+    <Compile Include="Plotter\Printing\PrintErrorType.cs" />
+    <Compile Include="Plotter\Printing\PrintingDelegates.cs" />
+    <Compile Include="Plotter\Printing\PrintMaster.cs" />
+    <Compile Include="Plotter\Printing\PrintStatus.cs" />
+    <Compile Include="Plotter\Printing\PrintStatusTimeArgs.cs" />
+    <Compile Include="Plotter\SDConfigs\PlotterConfig.cs" />
+    <Compile Include="Plotter\SDConfigs\PlotterConfigOptions.cs" />
+    <Compile Include="Plotter\SDConfigs\PlotterPenInfo.cs" />
+    <Compile Include="Plotter\SDContent\FlFormat.cs" />
+    <Compile Include="Plotter\SDContent\FlFormatElement.cs" />
+    <Compile Include="Plotter\SDContent\PlotterContent.cs" />
+    <Compile Include="Plotter\SDContent\PlotterContentTable.cs" />
+    <Compile Include="Plotter\SDContent\VectorMetaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CWA.Vectors\CWA.Vectors.csproj">
+      <Project>{154dbf89-c8b7-488b-a8ef-9ccbe76a0c10}</Project>
+      <Name>CWA.Vectors</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

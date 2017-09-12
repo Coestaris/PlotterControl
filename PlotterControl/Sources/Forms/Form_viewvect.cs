@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 09.09.2017 12:34:47
+* Last Edited: 12.09.2017 21:15:57
 *=================================*/
 
 using CWA;
@@ -32,7 +32,7 @@ namespace CnC_WFA
         private int lastsi;
         private Bitmap bmp;
         private Color selColor;
-        private bool defaultView;
+        private bool defaultView = true;
 
         private bool isToolStrip;
         private bool isZoom;
@@ -125,6 +125,7 @@ namespace CnC_WFA
             contoursToolStripMenuItem.Image = !isList ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
             infoStripToolStripMenuItem.Image = !isToolStrip ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
             zoomToolStripMenuItem.Image = !isZoom ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
+            toolStripComboBox_dispType.Image = !defaultView ? CWA_Resources.Properties.Resources.delete : CWA_Resources.Properties.Resources.ok1;
 
             statusStrip1.Visible = isToolStrip;
             if (isList)
@@ -169,7 +170,7 @@ namespace CnC_WFA
             toolStripStatusLabel_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Resolution"] + ": " + vect.Header.Width + "x" + vect.Header.Height;
             toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Contours"] + ": " + vect.ContorurCount + "; " + TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Points"] + ": " + vect.Points.ToString();
             vect.RawData = vect.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
-            Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Label"] + " \"" + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length - 1] + '\"';
+            Text = $"{TranslateBase.CurrentLang.Phrase["VectorViewer.Label"]} \"{new FileInfo(path).Directory.Name}{'\\'}{path.Split('\\')[path.Split('\\').Length - 1]}{'\"'}";
             drawcolor = GlobalOptions.DefViewDraw;
             backcolor = GlobalOptions.DefViewBack;
             selColor = Color.Blue;
@@ -177,6 +178,7 @@ namespace CnC_WFA
             if (new FileInfo(filename).Extension == ".prres") toolStripStatusLabel_oldprstyle.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.OldVectorFormat"];
             else toolStripStatusLabel_oldprstyle.Text = "";
             SetColorProbe();
+            
 
             label.Visible = false;
             pictureBox_main.Visible = true;
@@ -252,7 +254,18 @@ namespace CnC_WFA
 
         private void ChangeLabelTextProcAsync()
         {
-            bmp = vect.ToBitmap(backcolor, drawcolor);
+            if (defaultView)
+            {
+                bmp = vect.ToBitmap(backcolor, drawcolor);
+            } else
+            {
+                bmp = new Bitmap((int)vect.Header.Width, (int)vect.Header.Height);
+                using (Graphics gr = Graphics.FromImage(bmp))
+                {
+                    gr.FillRectangle(new SolidBrush(backcolor), new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    gr.DrawPath(new Pen(drawcolor), vect.GrPath);
+                }
+            }
             EndOfRenderImage();
         }
 
@@ -375,6 +388,7 @@ namespace CnC_WFA
         private void toolStripMenuItem_resetZoom_Click(object sender, EventArgs e)
         {
             trackBar1.Value = 100;
+            trackBar1_Scroll(null, null);
         }
 
         private void Form_ViewVect_Resize(object sender, EventArgs e)
@@ -398,6 +412,14 @@ namespace CnC_WFA
         {
             isZoom = !isZoom;
             SetIntr();
+        }
+
+        private void toolStripMenuItem_defDisp_Click(object sender, EventArgs e)
+        {
+            defaultView = !defaultView;
+            SetIntr();
+            draw_th = new Thread(ChangeLabelTextProcAsync);
+            draw_th.Start();
         }
     }
 }
