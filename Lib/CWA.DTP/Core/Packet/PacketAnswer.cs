@@ -5,11 +5,12 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 16.09.2017 13:33:59
 *=================================*/
 
 using System;
 using System.Linq;
+using System.Security;
 
 namespace CWA.DTP
 {
@@ -23,7 +24,7 @@ namespace CWA.DTP
         public byte[] Data { get; set; }
         private bool isEmpty;
 
-        public PacketAnswer(Packet base_)
+        public PacketAnswer(Packet base_, bool ignoreValidation)
         {
             if (base_.IsEmpty) { IsEmpty = true; return; };
             if (base_.Data == null || base_.Data.Length < 4) { IsEmpty = true; return; };
@@ -35,6 +36,9 @@ namespace CWA.DTP
                 Code = base_.Data[4];
             else if (DataType == AnswerDataType.DATA)
                 Data = base_.Data.ToList().GetRange(4, base_.Data.Length - 4).ToArray();
+
+            if (!ignoreValidation && Status == AnswerStatus.ValidationError)
+                throw new SecurityException("Необходимо провести валидацию с устройством");
         }
 
         public bool IsEmpty

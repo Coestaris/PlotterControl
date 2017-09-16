@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 08.09.2017 20:11:05
+* Last Edited: 15.09.2017 22:51:45
 *=================================*/
 
 using System;
@@ -277,11 +277,6 @@ namespace CnC_WFA
             form.button_startmc.Text = a["Form_ManualControl.button_startmc"];
             form.button_up.Text = a["Form_ManualControl.button_up"];
             form.checkBox_savemove.Text = a["Form_ManualControl.checkBox_savemove"];
-            form.Control.Text = a["Form_ManualControl.Control"];
-            form.groupBox1.Text = a["Form_ManualControl.groupBox1"];
-            form.groupBox2.Text = a["Form_ManualControl.groupBox2"];
-            form.groupBox3.Text = a["Form_ManualControl.groupBox3"];
-            form.groupBox4.Text = a["Form_ManualControl.groupBox4"];
             form.label_bdrate.Text = a["Form_ManualControl.label_bdrate"];
             form.label_com.Text = a["Form_ManualControl.label_com"];
             form.label_mcinfo.Text = a["Form_ManualControl.label_mcinfo"];

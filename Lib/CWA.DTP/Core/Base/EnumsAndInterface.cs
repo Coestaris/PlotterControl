@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 16.09.2017 13:50:37
 *=================================*/
 
 namespace CWA.DTP
@@ -23,9 +23,18 @@ namespace CWA.DTP
 
     public enum AnswerStatus
     {
-        OK = 0x20,
-	    Warning = 0x40,
-	    Error = 0x60
+        OK = 0x10,
+    	Warning = 0x20,
+    	Error = 0x40,
+	    ValidationError = 0x60
+    };
+
+    enum ValidationStatus
+    {
+        NotValidated = 0x10,
+	    Validated = 0x20,
+	    WrongKey = 0x40,
+	    Ok = 0x80
     };
 
     public enum AnswerDataType

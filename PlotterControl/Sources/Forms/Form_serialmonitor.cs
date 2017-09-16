@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 12.09.2017 20:04:21
+* Last Edited: 16.09.2017 13:35:35
 *=================================*/
 
 using System;
@@ -41,8 +41,21 @@ namespace CnC_WFA
 
         private void Form_SerialMonitor_Load(object sender, System.EventArgs e)
         {
-            comboBox_command.Items.AddRange(Enum.GetNames(typeof(CommandType)));
-            comboBox_command.Items.AddRange(Enum.GetNames(typeof(CWA.DTP.Plotter.CommandType)));
+            foreach (var item in Enum.GetValues(typeof(CommandType)))
+            {
+                var name = Enum.GetName(typeof(CommandType), item);
+                UInt32 itemI = (UInt32)item;
+                comboBox_command.Items.Add(string.Format("{0} - 0x{1}", name, itemI.ToString("X").Trim()));
+            }
+
+            foreach (var item in Enum.GetValues(typeof(CWA.DTP.Plotter.CommandType)))
+            {
+                var name = Enum.GetName(typeof(CWA.DTP.Plotter.CommandType), item);
+                UInt32 itemI = (UInt32)item;
+                comboBox_command.Items.Add(string.Format("{0} - 0x{1}", name, itemI.ToString("X").Trim()));
+            }
+
+
             comboBox_command.SelectedIndex = 1;
             comboBox_sender.Items.AddRange(Enum.GetNames(typeof(SenderType)));
             comboBox_sender.SelectedIndex = 0;
@@ -115,8 +128,8 @@ namespace CnC_WFA
         private void comboBox_command_SelectedIndexChanged(object sender, EventArgs e)
         {
             byte[] bytes = new byte[0];
-            try { bytes = BitConverter.GetBytes((UInt16)(CommandType)Enum.Parse(typeof(CommandType), comboBox_command.Text)); }
-            catch(ArgumentException) { bytes = BitConverter.GetBytes((UInt16)(CWA.DTP.Plotter.CommandType)Enum.Parse(typeof(CWA.DTP.Plotter.CommandType), comboBox_command.Text)); }
+            try { bytes = BitConverter.GetBytes((UInt16)(CommandType)Enum.Parse(typeof(CommandType), comboBox_command.Text.Split('-')[0])); }
+            catch(ArgumentException) { bytes = BitConverter.GetBytes((UInt16)(CWA.DTP.Plotter.CommandType)Enum.Parse(typeof(CWA.DTP.Plotter.CommandType), comboBox_command.Text.Split('-')[0])); }
             finally
             {
                 textBox_command_b1.Text = bytes[0].ToString();
@@ -282,7 +295,7 @@ namespace CnC_WFA
 
         protected PacketAnswer GetResult(byte[] bytes)
         {
-            return Listener.SendAndListenPacket(new Packet() { TotalData = bytes });
+            return Listener.SendAndListenPacket(new Packet() { TotalData = bytes }, true);
         }
 
         private void button_conn_Click(object sender, EventArgs e)

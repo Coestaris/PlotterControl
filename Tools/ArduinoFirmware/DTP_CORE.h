@@ -83,6 +83,14 @@ const int DirectoryBufferSize PROGMEM = 40;
 	uint32_t crc32_ofFile(File &file, uint32_t &charcnt);
 #endif
 
+	byte* SecurityKey();
+
+	void WriteSecurityKey(byte* key);
+
+	void WriteValidationRequired(bool req);
+
+	bool isValidationRequired();
+
 	byte* ComputeChecksumBytes(const byte* data_p, int length);
 
 	int FreeMemory();

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 10.09.2017 19:06:29
+* Last Edited: 16.09.2017 14:01:46
 *=================================*/
 
 using CnC_WFA;
@@ -187,15 +187,24 @@ namespace FileBrowser
                 if (System.Windows.Forms.MessageBox.Show(
                     string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}. Сообщение: {1}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString(), ex.Message), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     MainFormLoad(null, null);
-                else Close();
+                else
+                {
+                    Close();
+                    return;
+                }
             }
             catch (Exception ex)
             {
                 if (System.Windows.Forms.MessageBox.Show(
                     string.Format("Произошла ошибка типа {0}.\n{2}\n\nНажмите \"Повтор\" для повторной попытки. Стек вызовов:\n{1}", ex.GetType().FullName, ex.StackTrace, ex.Message), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     MainFormLoad(null, null);
-                else Close();
+                else
+                {
+                    Close();
+                    return;
+                }
             }
+
             try
             {
                 GetData();
@@ -205,14 +214,22 @@ namespace FileBrowser
                 if (System.Windows.Forms.MessageBox.Show(
                    string.Format("Невозможно получить данные. Произошла ошибка типа WrongPacketInputException (причина {0}. Сообщение: {1}), это может означать что устройство работает не коректно и не грамотно обрабатывает входящие и исходящие пакеты. Попробуйте перезагрузить его и нажать \"Повтор\"", ex.Type.ToString(), ex.Message), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     MainFormLoad(null, null);
-                else Close();
+                else
+                {
+                    Close();
+                    return;
+                }
             }
             catch (Exception ex)
             {
                 if (System.Windows.Forms.MessageBox.Show(
                     string.Format("Невозможно получить данные.\n{2}\n\nПроизошла ошибка типа {0}, нажмите \"Повтор\" для повторной попытки. Стек вызовов:\n{1}", ex.GetType().FullName, ex.StackTrace, ex.Message), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     MainFormLoad(null, null);
-                else Close();
+                else
+                {
+                    Close();
+                    return;
+                }
             }
         }
 

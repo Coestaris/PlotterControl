@@ -298,7 +298,7 @@ void PLOTTER_RUN_EXFORMAT(File &file)
 		delay(delayVal);
 		if (!PLOTTER_MoveSM((int32_t)dx, (int32_t)dy, (int32_t)zy, true) || PLOTTER_ForceStop)
 		{
-			//Неважно на скольо, главное дабы поднял.
+			//Неважно на сколько, главное дабы поднял.
 			if (drawing)
 				PLOTTER_LiftPen(2000, 0);
 			Error("010", false);
@@ -603,4 +603,31 @@ uint32_t crc32_ofFile(File &file, uint32_t &charcnt)
 	}
 
 	return ~oldcrc32;
+}
+
+#define SecurityKeyBeginIndex 5
+#define isValidationRequiredIndex 4
+
+byte * SecurityKey()
+{
+	byte* res = new byte[16];
+	for (int i = SecurityKeyBeginIndex; i < SecurityKeyBeginIndex + 16; i++)
+		res[i - SecurityKeyBeginIndex] = EEPROM.read(i);
+	return res;
+}
+
+void WriteSecurityKey(byte* key)
+{
+	for (int i = SecurityKeyBeginIndex; i < SecurityKeyBeginIndex + 16; i++)
+		EEPROM.write(i, key[i - SecurityKeyBeginIndex]);
+}
+
+void WriteValidationRequired(bool req)
+{
+	EEPROM.write(isValidationRequiredIndex, req ? 1 : 0);
+}
+
+bool isValidationRequired()
+{
+	return EEPROM.read(isValidationRequiredIndex) == 1;
 }

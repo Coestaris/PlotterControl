@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 19.08.2017 7:38:22
+* Last Edited: 16.09.2017 13:46:49
 *=================================*/
 
 using System;
@@ -40,6 +40,10 @@ namespace CWA.DTP
         GetInfo = 0x11b, 
         File_Open = 0x11c, 
         File_Close = 0x11d, 
-        File_Exists = 0x11e, 
+        File_Exists = 0x11e,
+        Security_Validate = 0x128,
+        Security_ChangeKey = 0x129,
+        Security_SetValidation = 0x12a,
+        Security_IsValReq = 0x12b
     };
 }

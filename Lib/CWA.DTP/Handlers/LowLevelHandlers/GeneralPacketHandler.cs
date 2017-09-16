@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 09.09.2017 20:10:41
+* Last Edited: 16.09.2017 13:55:35
 *=================================*/
 
 using System;
@@ -520,6 +520,28 @@ namespace CWA.DTP
             };
             var result = GetResult((UInt16)CommandType.SetTime, data);
             return !result.IsEmpty;
+        }
+
+        public bool Security_IsValidationRequired()
+        {
+            return GetResult((UInt16)CommandType.Security_IsValReq).Code == 1;
+        }
+
+        public bool Security_Validate(byte[] key)
+        {
+            var res = GetResult((UInt16)CommandType.Security_Validate, key);
+            return res.Code == (byte)ValidationStatus.Ok;
+        }
+
+        public bool Security_ChangeKey(byte[] oldKey, byte[] newKey)
+        {
+            var res = GetResult((UInt16)CommandType.Security_Validate, oldKey.Concat(newKey).ToArray());
+            return (res.Code == (byte)ValidationStatus.Ok);
+        }
+
+        public bool Security_SetValidation(bool Use)
+        {
+            return !GetResult((UInt16)CommandType.Security_SetValidation, new byte[] { (byte)(Use ? 1 : 0) }).IsEmpty;
         }
 
         public DateTimeRequestResult Device_GetTime()

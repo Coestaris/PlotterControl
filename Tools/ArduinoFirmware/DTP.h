@@ -133,6 +133,7 @@
 #endif
 
 #include "SDFAT\SdFat.h";
+#include <eeprom.h>
 
 #ifndef SDVar
 extern SdFat SD;
@@ -177,14 +178,22 @@ enum class DTP_COMMANDTYPE : uint16_t
 	Plotter_Print_Info = 0x122,
 	Plotter_Print_Abort = 0x123,
 	Plotter_Print_Run_Ex = 0x124,
-	Plotter_Move = 0x125
+	Plotter_Move = 0x125,
+	Plotter_TurnEngines_On = 0x126,
+	Plotter_TurnEngines_Off = 0x127,
+
+	Security_Validate = 0x128,
+	Security_ChangeKey = 0x129,
+	Security_SetValidation = 0x12a,
+	Security_IsValReq = 0x12b
 };
 
 enum class DTP_ANSWER_STATUS
 {
-	OK = 0x20,
-	Warning = 0x40,
-	Error = 0x60
+	OK = 0x10,
+	Warning = 0x20,
+	Error = 0x40,
+	ValidationError = 0x60
 };
 
 enum class DTP_ANSWER_ERRORCODE_TYPE

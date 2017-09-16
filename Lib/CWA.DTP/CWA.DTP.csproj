@@ -53,6 +53,9 @@
     <Compile Include="Core\Packet\SerialPacketReader.cs" />
     <Compile Include="Core\Packet\SerialPacketWriter.cs" />
     <Compile Include="Core\Packet\WrongPacketInputException.cs" />
+    <Compile Include="Handlers\SecurityKey.cs" />
+    <Compile Include="Handlers\SecurityManager.cs" />
+    <Compile Include="Plotter\Printing\MovingControl.cs" />
     <Compile Include="Handlers\DeviceControl.cs" />
     <Compile Include="Handlers\DTPMaster.cs" />
     <Compile Include="Handlers\FileHandlers\FailOperationException.cs" />

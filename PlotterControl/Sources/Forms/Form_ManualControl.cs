@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 12.09.2017 22:22:11
+* Last Edited: 15.09.2017 22:51:18
 *=================================*/
 
 using CWA;
@@ -13,6 +13,9 @@ using CWA.DTP;
 using System;
 using System.IO.Ports;
 using System.Windows.Forms;
+using CWA.DTP.Plotter;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CnC_WFA
 {
@@ -26,6 +29,8 @@ namespace CnC_WFA
         }
 
         private DTPMaster master;
+        private List<PlotterPenInfo> Pens;
+        private MovingControl movingControl;
 
         private void combobox_com_Click(object sender, EventArgs e)
         {
@@ -46,7 +51,7 @@ namespace CnC_WFA
             {
                 combobox_bdrate.Enabled = true;
                 combobox_com.Enabled = true;
-                Control.Enabled = false;
+               // Control.Enabled = false;
                 //mc.Close();
                 button_mc.Text = "Подкл.";
                 return;
@@ -57,8 +62,14 @@ namespace CnC_WFA
                 port.Open();
                 var Listener = new PacketListener(new SerialPacketReader(port, 3000), new SerialPacketWriter(port));
                 master = new DTPMaster(new Sender("Coestar"), Listener);
+                Pens = master.CreatePlotterConfig().Pens;
+                movingControl = master.CreatePlotterMovingControl();
 
-                Control.Enabled = true;
+                comboBox1.Items.Clear();
+                comboBox1.Items.AddRange(Pens.Select(p => p.Name).ToArray());
+                comboBox1.SelectedIndex = 0;
+
+               // Control.Enabled = true;
                 combobox_bdrate.Enabled = false;
                 combobox_com.Enabled = false;
                 button_mc.Text = "Откл.";
@@ -68,26 +79,23 @@ namespace CnC_WFA
 
         private void button_dmove_Click(object sender, EventArgs e)
         {
-
-            int dx = 0;
-            if (!int.TryParse(textBox_xmove.Text, out dx))
+            if (!Int16.TryParse(textBox_xmove.Text, out short dx))
             {
                 MessageBox.Show("Invalid X value");
                 return;
             }
-            int dy = 0;
-            if (!int.TryParse(textBox_ymove.Text, out dy))
+            if (!Int16.TryParse(textBox_ymove.Text, out short dy))
             {
                 MessageBox.Show("Invalid Y value");
                 return;
             }
-            int dz = 0;
-            if (!int.TryParse(textBox_zmove.Text, out dz))
+            if (!Int16.TryParse(textBox_zmove.Text, out short dz))
             {
                 MessageBox.Show("Invalid Z value");
                 return;
             }
-            ///asldkjaslkjdasd
+            if (!movingControl.MoveTool(dx, dy, dz))
+                MessageBox.Show("Unable to move tool");
         }
 
         private void button_startmc_Click(object sender, EventArgs e)
@@ -131,12 +139,12 @@ namespace CnC_WFA
 
         private void button_down_Click(object sender, EventArgs e)
         {
-            //mc.ToolDown();
+            movingControl.MoveTool((UInt16)comboBox1.SelectedIndex, false);
         }
 
         private void button_up_Click(object sender, EventArgs e)
         {
-            //mc.ToolUp();
+            movingControl.MoveTool((UInt16)comboBox1.SelectedIndex, false);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -153,6 +161,16 @@ namespace CnC_WFA
         private void Form_ManualControl_FormClosing(object sender, FormClosingEventArgs e)
         {
             //try { mc.Close(); } catch { };
+        }
+
+        private void button_turnOn_Click(object sender, EventArgs e)
+        {
+            movingControl.TurnOnEngines();
+        }
+
+        private void button_turnOff_Click(object sender, EventArgs e)
+        {
+            movingControl.TurnOffEngines();
         }
     }
 }

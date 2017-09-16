@@ -6,10 +6,19 @@ File WriteFile;
 uint16_t PrintFileName;
 bool isOpenFile;
 
+bool isValidated = false;
+
+enum class ValidationStatus
+{
+	NotValidated = 0x10,
+	Validated = 0x20,
+	WrongKey = 0x40,
+	Ok = 0x80
+};
+
 uint32_t PRINT_FileSize;
 uint16_t PRINT_XCoef, PRINT_YCoef, PRINT_ElevDelta;
 int16_t PRINT_ElevCorr;
-
 
 uint8_t ReqToStartPrint = 0;
 int ii = 0;
@@ -25,13 +34,52 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 	debugFILE.print("DATALEN (int): ");
 	debugFILE.println(dataLen);
 #endif 
-	DTP_ANSWER_STATUS status;
-	DTP_ANSWER_ERRORCODE_TYPE error_code;
+	DTP_ANSWER_STATUS status = DTP_ANSWER_STATUS::Error;
+	DTP_ANSWER_ERRORCODE_TYPE error_code = DTP_ANSWER_ERRORCODE_TYPE::NONE;
 	int dataByte = 0;
 	byte* dataBytes = new byte[1];
 	int dataBytesLen = 0;
 #pragma endregion
 
+	if (!isValidated)
+	{
+		if (!isValidationRequired()) {
+			isValidated = true;
+			goto handling;
+		}
+		
+		if (command == (uint16_t)DTP_COMMANDTYPE::Security_IsValReq)
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+			dataByte = isValidationRequired() ? 1 : 0;
+		} else if (command == (uint16_t)DTP_COMMANDTYPE::Security_Validate)
+		{
+			byte* loc = SecurityKey();
+			for (uint8_t i = 0; i < 16; i++)
+				if (loc[i] != data[i])
+				{
+					status = DTP_ANSWER_STATUS::Error;
+					error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+					dataByte = (uint8_t)ValidationStatus::WrongKey;
+					delete[] loc;
+					goto formPacket;
+				}
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+			dataByte = (uint8_t)ValidationStatus::Ok;
+			isValidated = true;
+			delete[] loc;
+			goto formPacket;
+		}
+
+		status = DTP_ANSWER_STATUS::ValidationError;
+		error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+		dataByte = (uint8_t)ValidationStatus::NotValidated;
+		goto formPacket;
+	}
+
+	handling:
 	switch ((DTP_COMMANDTYPE)command)
 	{
 		case DTP_COMMANDTYPE::SPEAKER_BEEP:
@@ -42,6 +90,41 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			for (int i = 0; i <= dataLen - 1; i++)
 				pattern += (char)data[i];
 			Error(pattern, false);
+			break;
+		}
+
+		case DTP_COMMANDTYPE::Security_SetValidation:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::NONE;
+			WriteValidationRequired(data[0] == 1);
+			break;
+		}
+
+		case DTP_COMMANDTYPE::Security_ChangeKey:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+			dataByte = (uint8_t)ValidationStatus::Ok;
+			byte* loc = SecurityKey();
+			for (uint8_t i = 0; i < 16; i++)
+				if (loc[i] != data[i])
+				{
+					status = DTP_ANSWER_STATUS::Error;
+					error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+					dataByte = (uint8_t)ValidationStatus::WrongKey;
+					delete[] loc;
+					break;
+				}
+			memcpy(loc, data + 16, 16);
+			WriteSecurityKey(loc);
+		}
+
+		case DTP_COMMANDTYPE::Security_IsValReq:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
+			dataByte = isValidationRequired() ? 1 : 0;
 			break;
 		}
 
@@ -98,6 +181,24 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			{
 				PLOTTER_Abort();
 			}
+			break;
+		}
+
+		case DTP_COMMANDTYPE::Plotter_TurnEngines_On:
+		{	
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::NONE;
+			digitalWrite(RelayPin, 0);
+			delay(200);
+			break;
+		}
+
+		case DTP_COMMANDTYPE::Plotter_TurnEngines_Off:
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::NONE;
+			digitalWrite(RelayPin, 1);
+			delay(200);
 			break;
 		}
 
@@ -771,6 +872,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			//„асы, минуты, секунды, день, мес€ц, год
 		}
 	}
+	formPacket:
 #ifdef DEBUG
 	debugFILE.print("ANSWER STATUS: ");
 	debugFILE.println((uint32_t)status);

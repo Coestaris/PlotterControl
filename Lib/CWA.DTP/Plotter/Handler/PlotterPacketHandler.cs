@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 12.09.2017 21:45
-* Last Edited: 12.09.2017 21:45:57
+* Last Edited: 15.09.2017 22:50:24
 *=================================*/
 
 using System;
@@ -37,6 +37,16 @@ namespace CWA.DTP.Plotter
             Buffer.BlockCopy(BitConverter.GetBytes(Index), 0, ResBuff, 8, 2);
             var res = GetResult((UInt16)CommandType.Plotter_Print_Run, ResBuff);
             return !res.IsEmpty;
+        }
+
+        public bool TurnOnEngines()
+        {
+            return !GetResult((UInt16)CommandType.Plotter_TurnEngines_On).IsEmpty;
+        }
+
+        public bool TurnOffEngines()
+        {
+            return !GetResult((UInt16)CommandType.Plotter_TurnEngines_On).IsEmpty;
         }
 
         public class PrintStatusRequestResult

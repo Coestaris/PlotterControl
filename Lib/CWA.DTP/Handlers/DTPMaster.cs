@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 12.09.2017 21:50:56
+* Last Edited: 16.09.2017 13:47:32
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -33,12 +33,6 @@ namespace CWA.DTP
             else return null;
         }
 
-        internal GeneralPacketHandler ph;
-
-        public PacketListener Listener => ph.Listener;
-
-        public Sender Sender => ph.Sender;
-        
         public DTPMaster(IPacketReader reader, IPacketWriter writer) : this(Sender.Empty, new PacketListener(reader, writer))  { }
 
         public DTPMaster(IPacketReader reader, IPacketWriter writer, string SenderName) : this(new Sender(SenderName), new PacketListener(reader, writer)) { }
@@ -47,9 +41,18 @@ namespace CWA.DTP
         {
             ph = new GeneralPacketHandler(sender, listener);
             Device = new DeviceControl() { ParentMaster = this };
+            SecurityManager = new SecurityManager() { ParentMaster = this };
         }
 
+        internal GeneralPacketHandler ph;
+
+        public PacketListener Listener => ph.Listener;
+
+        public Sender Sender => ph.Sender;
+        
         public DeviceControl Device { get; private set; }
+
+        public SecurityManager SecurityManager { get; private set; }
 
         public FileSender CreateFileSender(FileTransferSecurityFlags flags) => new FileSender(flags) { BaseHandler = ph };
 
@@ -60,6 +63,14 @@ namespace CWA.DTP
         public SdCardDirectory CreateDirectoryHandlerFromRoot() => SdCardDirectory.Root(ph);
 
         public SdCardFile CreateFileHandler(string Path) => new SdCardFile(Path, ph);
+
+        public Plotter.MovingControl CreatePlotterMovingControl() => new Plotter.MovingControl(this);
+
+        public Plotter.PlotterConfig CreatePlotterConfig() => new Plotter.PlotterConfig(this);
+
+        public Plotter.PlotterContent CreatePlotterContent() => new Plotter.PlotterContent(this);
+
+        public Plotter.PrintMaster CreatePlotterPrintMaster(float XMM, float YMM) => new Plotter.PrintMaster(this, XMM, YMM, 0);
 
         public void CloseConnection()
         {
@@ -82,21 +93,5 @@ namespace CWA.DTP
                 }
             }
         }
-
-        public Plotter.PlotterConfig CreatePlotterConfig()
-        {
-            return new Plotter.PlotterConfig(this);
-        }
-
-        public Plotter.PlotterContent CreatePlotterContent()
-        {
-            return new Plotter.PlotterContent(this);
-        }
-
-        public Plotter.PrintMaster CreatePlotterPrintMaster(float XMM, float YMM)
-        {
-            return new Plotter.PrintMaster(this, XMM, YMM, 0);
-        }
-        
     }
 }

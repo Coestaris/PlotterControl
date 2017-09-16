@@ -5,14 +5,14 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 09.09.2017 20:45:08
+* Last Edited: 16.09.2017 11:37:52
 *=================================*/
 
 using System;
 
 namespace CWA.DTP
 {
-    public class DeviceControl
+    public sealed class DeviceControl
     {
         internal Sender _deviceSender;
 
