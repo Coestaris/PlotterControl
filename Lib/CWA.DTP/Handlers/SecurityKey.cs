@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 16.09.2017 11:37
-* Last Edited: 16.09.2017 11:53:40
+* Last Edited: 17.09.2017 0:01:36
 *=================================*/
 
 using System;
@@ -21,6 +21,11 @@ namespace CWA.DTP
         {
             MD5Manager = MD5.Create();
             key = MD5Manager.ComputeHash(LongKey);
+        }
+
+        private SecurityKey()
+        {
+            MD5Manager = MD5.Create();
         }
 
         public SecurityKey(string StringKey)
@@ -44,8 +49,13 @@ namespace CWA.DTP
             }
         }
 
+        public static SecurityKey Empty => new SecurityKey() { key = new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+
         public static bool operator ==(SecurityKey a, SecurityKey b)
         {
+            if (a is null && b is null)
+                return true;
+
             try
             {
                 return (a.key.SequenceEqual(b.key));

@@ -53,7 +53,9 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			status = DTP_ANSWER_STATUS::OK;
 			error_code = DTP_ANSWER_ERRORCODE_TYPE::CODE;
 			dataByte = isValidationRequired() ? 1 : 0;
-		} else if (command == (uint16_t)DTP_COMMANDTYPE::Security_Validate)
+			goto formPacket;
+		} 
+		else if (command == (uint16_t)DTP_COMMANDTYPE::Security_Validate)
 		{
 			byte* loc = SecurityKey();
 			for (uint8_t i = 0; i < 16; i++)
@@ -70,6 +72,12 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 			dataByte = (uint8_t)ValidationStatus::Ok;
 			isValidated = true;
 			delete[] loc;
+			goto formPacket;
+		}
+		else if (command == (uint16_t)DTP_COMMANDTYPE::Test)
+		{
+			status = DTP_ANSWER_STATUS::OK;
+			error_code = DTP_ANSWER_ERRORCODE_TYPE::NONE;
 			goto formPacket;
 		}
 

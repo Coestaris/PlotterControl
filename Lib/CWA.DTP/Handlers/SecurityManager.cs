@@ -5,8 +5,10 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 16.09.2017 11:37
-* Last Edited: 16.09.2017 14:02:41
+* Last Edited: 16.09.2017 23:58:29
 *=================================*/
+
+using System;
 
 namespace CWA.DTP
 {
@@ -14,23 +16,59 @@ namespace CWA.DTP
     {
         internal DTPMaster ParentMaster;
 
-        internal SecurityManager() { }
+        internal SecurityManager(DTPMaster dTPMaster)
+        {
+            ParentMaster = dTPMaster;
+            IsValidationRequired = ParentMaster.ph.Security_IsValidationRequired();
+        }
 
-        public bool IsValidationRequired { get => ParentMaster.ph.Security_IsValidationRequired(); }
+        public static InvalidOperationException NotValidatedDevice = new InvalidOperationException("Ќевозможно выполнить данную операцию, когда не выполнена необходима€ валидаци€");
 
-       // public bool IsValidated() { }
+        public bool IsValidationRequired { get; private set; }
 
-        //public bool Set
+        public bool IsValidated => (!IsValidationRequired) ? true : _validKey != null;
 
-       // public bool ChangeKey(SecurityKey LastKey, SecurityKey NewKey)
-       // {
-      //  }
+        public bool SetValidation(bool Use)
+        {
+            if (!IsValidated)
+                throw new InvalidOperationException("Ќевозможно выполнить данную операцию, когда не выполнена необходима€ валидаци€");
 
-       // public bool EnterKey(SecurityKey Key)
-       // {
-            
-      //  }
+            if (ParentMaster.ph.Security_SetValidation(Use))
+            {
+                IsValidationRequired = true;
+                return true;
+            }
+            return false;
+        }
 
-        public SecurityKey Key;
+        public bool ChangeKey(SecurityKey LastKey, SecurityKey NewKey)
+        {
+            if (!IsValidated)
+                throw new InvalidOperationException("Ќевозможно выполнить данную операцию, когда не выполнена необходима€ валидаци€");
+
+            if (ParentMaster.ph.Security_ChangeKey(LastKey.key, NewKey.key))
+            {
+                _validKey = NewKey;
+                return true;
+            }
+            return false;
+        }
+
+        public bool Validate(SecurityKey Key)
+        {
+            if(ParentMaster.ph.Security_Validate(Key.key))
+            {
+                _validKey = Key;
+                return true;
+            }
+            return false;
+        }
+
+        private SecurityKey _validKey;
+
+        public SecurityKey ValidKey => IsValidationRequired ? 
+                _validKey ?? throw new InvalidOperationException("¬алидаци€ либо не была успешной, либо не была проведена вовсе.")
+                : SecurityKey.Empty;
+        
     }
 }

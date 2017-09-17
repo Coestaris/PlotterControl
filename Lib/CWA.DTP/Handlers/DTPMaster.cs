@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 16.09.2017 13:47:32
+* Last Edited: 16.09.2017 23:54:38
 *=================================*/
 
 using CWA.DTP.FileTransfer;
@@ -41,7 +41,7 @@ namespace CWA.DTP
         {
             ph = new GeneralPacketHandler(sender, listener);
             Device = new DeviceControl() { ParentMaster = this };
-            SecurityManager = new SecurityManager() { ParentMaster = this };
+            SecurityManager = new SecurityManager(this);
         }
 
         internal GeneralPacketHandler ph;
