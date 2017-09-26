@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP.FileTransfer
 {
-    public class FileReceiverErrorArgs : EventArgs
+    public sealed class FileReceiverErrorArgs : EventArgs
     {
         public FileReceiverError Error { get; private set; }
         public bool IsCritical { get; private set; }

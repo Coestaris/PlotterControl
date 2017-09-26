@@ -979,6 +979,14 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 
 }
 
+void ResetVal()
+{
+	byte* defKey = new byte[16]{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	WriteSecurityKey(defKey);
+	delete[] defKey;
+	WriteValidationRequired(false);
+}
+
 void setup()
 {
 	pinMode(RelayPin, OUTPUT);

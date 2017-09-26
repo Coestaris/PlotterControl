@@ -144,6 +144,8 @@ namespace CWA.DTP.Plotter
         
         public void BeginPrinting(UInt16 Index, PlotterPenInfo Pen)
         {
+            DTPMaster.CheckConnAndVal();
+
             StartTime = DateTime.Now;
             if (ContentMaster == null)
                 ContentMaster = new PlotterContent(Master);

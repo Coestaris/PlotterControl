@@ -15,7 +15,7 @@ using System.Threading;
 
 namespace CWA.DTP.FileTransfer
 {
-    public class FileSender
+    public sealed class FileSender
     {
         private byte[] _data;
 
@@ -25,7 +25,7 @@ namespace CWA.DTP.FileTransfer
 
         public int PacketLength { get; set; } = 3200;
 
-        internal GeneralPacketHandler BaseHandler;
+        internal DTPMaster Master;
 
         internal FileSender(int _packetLength, FileTransferSecurityFlags flags)
         {
@@ -72,20 +72,17 @@ namespace CWA.DTP.FileTransfer
         public void StopAsync()
         {
             if (SenderThread == null)
-                throw new InvalidOperationException("Отправка либо не запущена, либо запущена как синхронный процесс (если так, то я хз как ты вызвал этот метод -_-)");
-
+                throw new InvalidOperationException("Отправка либо не запущена, либо запущена как синхронный процесс (если так, то я хз был вызван этот метод -_-)");
             ForceStop = true;
-            while (SenderThread.IsAlive) Thread.Sleep(100);
-
-            if (!BaseHandler.File_Close())
+            while (SenderThread.ThreadState == ThreadState.Running) Thread.Sleep(10);
+            if (!Master.ph.File_Close())
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantCloseFile, false));
-
             TimerThread.Abort();
         }
 
         private bool HandleFiles(string NewName)
         {
-            var res = BaseHandler.File_Create(NewName);
+            var res = Master.ph.File_Create(NewName);
             if (res == GeneralPacketHandler.FileDirHandleResult.Fail)
             {
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantCreateFile, true));
@@ -106,7 +103,7 @@ namespace CWA.DTP.FileTransfer
                 }
             }*/
 
-            if (BaseHandler.File_Open(NewName, true) != GeneralPacketHandler.WriteReadFileHandleResult.OK)
+            if (Master.ph.File_Open(NewName, true) != GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantOpenFile, true));
                 return false;
@@ -116,7 +113,7 @@ namespace CWA.DTP.FileTransfer
         
         private bool CompareLength()
         {
-            var sizeResult = BaseHandler.File_GetLength();
+            var sizeResult = Master.ph.File_GetLength();
             if (sizeResult.Status == GeneralPacketHandler.FileDirHandleResult.Fail)
             {
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantGetFileSize, true));
@@ -132,7 +129,7 @@ namespace CWA.DTP.FileTransfer
 
         private unsafe bool CompareHash()
         {
-            var deviceHash = BaseHandler.File_GetCrC32();
+            var deviceHash = Master.ph.File_GetCrC32();
             if (deviceHash.Status != GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantGetHashOfFile, true));
@@ -199,7 +196,7 @@ namespace CWA.DTP.FileTransfer
                     return false;
                 }
                 Current++;
-                if (!BaseHandler.File_Append(c.ToArray()))
+                if (!Master.ph.File_Append(c.ToArray()))
                 {
                     RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantSendPacket, true));
                     return false;
@@ -222,7 +219,7 @@ namespace CWA.DTP.FileTransfer
                     return false;
                 }
             }
-            if (!BaseHandler.File_Close())
+            if (!Master.ph.File_Close())
             {
                 RaiseErrorEvent(new FileSenderErrorArgs(FileSenderError.CantCloseFile, true));
                 return false;

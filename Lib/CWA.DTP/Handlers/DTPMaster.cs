@@ -8,14 +8,16 @@
 * Last Edited: 16.09.2017 23:54:38
 *=================================*/
 
+using System;
 using CWA.DTP.FileTransfer;
-using System.IO.Ports;
-using System.Threading;
+using CWA.DTP.Plotter;
 
 namespace CWA.DTP
 {
     public sealed class DTPMaster
     {
+        internal static DTPMaster _this; 
+
         public static DTPMaster CreateFromSerial() => CreateFromSerial(1000, new Sender(SenderType.UnNamedByteMask), true);
 
         public static DTPMaster CreateFromSerial(int TimeOut) => CreateFromSerial(TimeOut, new Sender(SenderType.UnNamedByteMask), true);
@@ -37,11 +39,30 @@ namespace CWA.DTP
 
         public DTPMaster(IPacketReader reader, IPacketWriter writer, string SenderName) : this(new Sender(SenderName), new PacketListener(reader, writer)) { }
 
+        public static void CheckConnAndVal(bool IgnoreValidation = false)
+        {
+            if (_this == null)
+                throw new InvalidOperationException("Выполнение операции без контролирующего мастера");
+            if(!IgnoreValidation && !_this.SecurityManager.IsValidated)
+                throw new InvalidOperationException("Для выполнения данной операции необходимо пройти валидацию");
+            if (_this.isClosed)
+                throw new InvalidOperationException("Невозможно выполнить операцию, так как подключение закрыто");
+        }
+
+        ~DTPMaster()
+        {
+            _this = null;
+        }
+
         public DTPMaster(Sender sender, PacketListener listener)
         {
+            if (_this != null)
+                throw new InvalidOperationException("Уже был создан мастер, пожалуйста используйте его");
+
             ph = new GeneralPacketHandler(sender, listener);
             Device = new DeviceControl() { ParentMaster = this };
             SecurityManager = new SecurityManager(this);
+            _this = this;
         }
 
         internal GeneralPacketHandler ph;
@@ -54,44 +75,31 @@ namespace CWA.DTP
 
         public SecurityManager SecurityManager { get; private set; }
 
-        public FileSender CreateFileSender(FileTransferSecurityFlags flags) => new FileSender(flags) { BaseHandler = ph };
+        public FileSender CreateFileSender(FileTransferSecurityFlags flags) => new FileSender(flags) { Master = this };
 
-        public FileReceiver CreateFileReceiver(FileTransferSecurityFlags flags) => new FileReceiver(flags) { BaseHandler = ph };
+        public FileReceiver CreateFileReceiver(FileTransferSecurityFlags flags) => new FileReceiver(flags) { Master = this };
 
-        public SdCardDirectory CreateDirectoryHandler(string Path) => new SdCardDirectory(Path, ph);
+        public SdCardDirectory CreateDirectoryHandler(string Path) => new SdCardDirectory(Path, this);
 
         public SdCardDirectory CreateDirectoryHandlerFromRoot() => SdCardDirectory.Root(ph);
 
-        public SdCardFile CreateFileHandler(string Path) => new SdCardFile(Path, ph);
+        public SdCardFile CreateFileHandler(string Path) => new SdCardFile(Path, this);
 
-        public Plotter.MovingControl CreatePlotterMovingControl() => new Plotter.MovingControl(this);
+        public MovingControl CreatePlotterMovingControl() => new MovingControl(this);
 
-        public Plotter.PlotterConfig CreatePlotterConfig() => new Plotter.PlotterConfig(this);
+        public PlotterConfig CreatePlotterConfig() => new PlotterConfig(this);
 
-        public Plotter.PlotterContent CreatePlotterContent() => new Plotter.PlotterContent(this);
+        public PlotterContent CreatePlotterContent() => new PlotterContent(this);
 
-        public Plotter.PrintMaster CreatePlotterPrintMaster(float XMM, float YMM) => new Plotter.PrintMaster(this, XMM, YMM, 0);
+        public PrintMaster CreatePlotterPrintMaster(float XMM, float YMM) => new PrintMaster(this, XMM, YMM, 0);
+
+        internal bool isClosed = false;
 
         public void CloseConnection()
         {
-            if(Listener.PacketReader is SerialPacketReader)
-            {
-                SerialPort port = (Listener.PacketReader as SerialPacketReader).Port;
-                if (port.IsOpen)
-                {
-                    while (port.BytesToRead != 0) Thread.Sleep(100);
-                    lock (port) port.Close();
-                }
-            }
-            if (Listener.PacketWriter is SerialPacketWriter)
-            {
-                SerialPort port = (Listener.PacketWriter as SerialPacketWriter).Port;
-                if (port.IsOpen)
-                {
-                    while (port.BytesToRead != 0) Thread.Sleep(100);
-                    lock (port) port.Close();
-                }
-            }
+            Listener.PacketReader.Close();
+            Listener.PacketWriter.Close();
+            isClosed = true;
         }
     }
 }

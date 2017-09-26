@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP
 {
-    public class FailOperationException : Exception
+    public sealed class FailOperationException : Exception
     {
         public override string Message
         {

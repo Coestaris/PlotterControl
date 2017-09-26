@@ -13,11 +13,11 @@ using System.Linq;
 
 namespace CWA.DTP
 {
-    public class SdCardFile
+    public sealed class SdCardFile
     {
         private static bool IsGlobalOpenedFiles = false;
 
-        private GeneralPacketHandler ph;
+        internal DTPMaster Master;
         
         public string FilePath { get; set; }
 
@@ -27,11 +27,12 @@ namespace CWA.DTP
         {
             get
             {
+                DTPMaster.CheckConnAndVal();
                 if (!IsExists)
                     throw new FileHandlerException("Файл не существует");
                 if (!IsOpen)
                     throw new FileHandlerException("Файл закрыт");
-                var a = ph.File_GetCrC32();
+                var a = Master.ph.File_GetCrC32();
                 if (a.Status != GeneralPacketHandler.WriteReadFileHandleResult.OK)
                     throw new FailOperationException("Не удалось получить хеш-код фалйа");
                 return BitConverter.ToUInt32(a.Result, 0);
@@ -42,7 +43,8 @@ namespace CWA.DTP
         {
             get
             {
-                var res = ph.File_Exists(FilePath);
+                DTPMaster.CheckConnAndVal();
+                var res = Master.ph.File_Exists(FilePath);
                 if (res == GeneralPacketHandler.FileExistsResult.Fail)
                     throw new FailOperationException(res);
                 return res == GeneralPacketHandler.FileExistsResult.Exists;
@@ -71,9 +73,10 @@ namespace CWA.DTP
         {
             get
             {
+                DTPMaster.CheckConnAndVal();
                 if (!IsOpen)
                     throw new FileHandlerException("Файл закрыт");
-                var res = ph.File_GetLength();
+                var res = Master.ph.File_GetLength();
                 if(res.Status != GeneralPacketHandler.FileDirHandleResult.OK)
                     throw new FailOperationException("Не удалось получить длину (размер) файла", res);
                 return res.Length;
@@ -84,7 +87,8 @@ namespace CWA.DTP
         {
             get
             {
-                var res = ph.File_GetInfo(FilePath);
+                DTPMaster.CheckConnAndVal();
+                var res = Master.ph.File_GetInfo(FilePath);
                 return res.FI;
             }
         }
@@ -95,9 +99,9 @@ namespace CWA.DTP
             {
                 var countOfSeparators = FilePath.ToList().FindAll(p => p == '/').Count;
                 if ((FilePath.StartsWith("/") && countOfSeparators == 1) || (!FilePath.StartsWith("/") && countOfSeparators == 0))
-                    return SdCardDirectory.Root(ph);
+                    return SdCardDirectory.Root(Master.ph);
                 var path = FilePath.Substring(0, FilePath.LastIndexOf('/'));
-                return new SdCardDirectory(path, ph);
+                return new SdCardDirectory(path, Master);
                 
             }
         }
@@ -107,26 +111,27 @@ namespace CWA.DTP
             get
             {
                 if (IsOpen)
-                    return new SdCardBinnaryFile(this, ph);
+                    return new SdCardBinnaryFile(this, Master.ph);
                 else throw new FileHandlerException("Файл закрыт");
             }
         }
         
-        internal SdCardFile(string path, GeneralPacketHandler ph)
+        internal SdCardFile(string path, DTPMaster master)
         {
             FilePath = path;
-            this.ph = ph;
+            Master = master;
         }
 
         public SdCardFile Open(bool ClearContent)
         {
-            if(!IsExists)
+            DTPMaster.CheckConnAndVal();
+            if (!IsExists)
                 throw new FileHandlerException("Файл не существует");
             if (IsOpen)
                 throw new FileHandlerException("Файл уже был открыть");
             if (IsGlobalOpenedFiles)
                 throw new FailOperationException("На этом домене уже есть открытый файл. Невозможно отрыть более однго файлов");
-            var res = ph.File_Open(FilePath, ClearContent);
+            var res = Master.ph.File_Open(FilePath, ClearContent);
             if (res != GeneralPacketHandler.WriteReadFileHandleResult.OK)
                 throw new FailOperationException("Не удалось открыть файл", res);
             IsOpen = true;
@@ -136,9 +141,10 @@ namespace CWA.DTP
 
         public void Close()
         {
-            if(!IsOpen)
+            DTPMaster.CheckConnAndVal();
+            if (!IsOpen)
                 throw new FileHandlerException("Файл закрыт");
-            var res = ph.File_Close();
+            var res = Master.ph.File_Close();
             if (!res)
                 throw new FailOperationException("Не удалось закрыть файл");
             IsOpen = false;
@@ -147,7 +153,8 @@ namespace CWA.DTP
 
         public SdCardFile Create()
         {
-            var res = ph.File_Create(FilePath);
+            DTPMaster.CheckConnAndVal();
+            var res = Master.ph.File_Create(FilePath);
             if(res != GeneralPacketHandler.FileDirHandleResult.OK)
                 throw new FailOperationException("Не удалось создать файл", res);
             return this;
@@ -155,16 +162,18 @@ namespace CWA.DTP
 
         public void ClearAllBytes()
         {
-            if(IsOpen) if(!ph.File_Close()) throw new FailOperationException("Не удалось закрыть файл");
-            var res = ph.File_Open(FilePath, true);
+            DTPMaster.CheckConnAndVal();
+            if (IsOpen) if(!Master.ph.File_Close()) throw new FailOperationException("Не удалось закрыть файл");
+            var res = Master.ph.File_Open(FilePath, true);
             if(res != GeneralPacketHandler.WriteReadFileHandleResult.OK)
                 throw new FailOperationException("Не удалось открыть файл", res);
-            if (!IsOpen) if (!ph.File_Close()) throw new FailOperationException("Не удалось закрыть файл");
+            if (!IsOpen) if (!Master.ph.File_Close()) throw new FailOperationException("Не удалось закрыть файл");
         }
 
         public void Delete()
         {
-            var res = ph.File_Delete(FilePath);
+            DTPMaster.CheckConnAndVal();
+            var res = Master.ph.File_Delete(FilePath);
             if (res != GeneralPacketHandler.FileDirHandleResult.OK)
                 throw new FailOperationException(res);
         }

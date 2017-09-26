@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace CWA.DTP.FileTransfer
 {
-    public class FileReceiver
+    public sealed class FileReceiver
     {
         private bool CheckSum { get; set; } = true;
 
@@ -22,7 +22,7 @@ namespace CWA.DTP.FileTransfer
 
         public int PacketLength { get; set; } = 3200;
 
-        internal GeneralPacketHandler BaseHandler;
+        internal DTPMaster Master;
 
         internal FileReceiver(int _packetLength, FileTransferSecurityFlags flags)
         {
@@ -114,10 +114,18 @@ namespace CWA.DTP.FileTransfer
 
         public bool ReceiveFileSync(string pcName, string DeviceName)
         {
+            //if (ParentMaster.isClosed)
+            //TODO: –азобратьс€ с мастерами
+            //throw .CloseEx;
+            DTPMaster.CheckConnAndVal();
+
             TimerThread = new Thread(TimerThreadMethod);
             TimerThread.Start();
             DateTime startTime = DateTime.Now;
-            MainFile = new SdCardFile(DeviceName, BaseHandler);
+
+            MainFile = new SdCardFile(DeviceName, Master);
+            //TODO: сделать мастер/ MainFile!
+
             try
             {
                 if (!MainFile.IsExists)

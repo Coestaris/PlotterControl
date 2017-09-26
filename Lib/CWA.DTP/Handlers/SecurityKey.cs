@@ -20,18 +20,28 @@ namespace CWA.DTP
         public SecurityKey(byte[] LongKey)
         {
             MD5Manager = MD5.Create();
-            key = MD5Manager.ComputeHash(LongKey);
+            SetFromHash(LongKey);
         }
 
-        private SecurityKey()
+        public SecurityKey()
         {
             MD5Manager = MD5.Create();
+        }
+
+        public void SetFromHash(string StringKey)
+        {
+            key = MD5Manager.ComputeHash(Encoding.Default.GetBytes(StringKey));
+        }
+
+        public void SetFromHash(byte[] LongKey)
+        {
+            key = MD5Manager.ComputeHash(LongKey);
         }
 
         public SecurityKey(string StringKey)
         {
             MD5Manager = MD5.Create();
-            key = MD5Manager.ComputeHash(Encoding.Default.GetBytes(StringKey));
+            SetFromHash(StringKey);
         }
 
         internal MD5 MD5Manager;
@@ -49,7 +59,7 @@ namespace CWA.DTP
             }
         }
 
-        public static SecurityKey Empty => new SecurityKey() { key = new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+        public static SecurityKey DefaultKey => new SecurityKey() { key = new byte[16] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } };
 
         public static bool operator ==(SecurityKey a, SecurityKey b)
         {

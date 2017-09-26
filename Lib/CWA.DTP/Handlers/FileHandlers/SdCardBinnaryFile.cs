@@ -27,9 +27,20 @@ namespace CWA.DTP
 
         public UInt32 CursorPos { get; set; }
 
+        private readonly UInt32 _Ui8 = sizeof(byte);
+        private readonly UInt32 _i16 = sizeof(Int16);
+        private readonly UInt32 _Ui16 = sizeof(UInt16);
+        private readonly UInt32 _i32 = sizeof(Int32);
+        private readonly UInt32 _Ui32 = sizeof(UInt32);
+        private readonly UInt32 _i64 = sizeof(Int64);
+        private readonly UInt32 _Ui64 = sizeof(UInt64);
+        private readonly UInt32 _D = sizeof(Double);
+        private readonly UInt32 _S = sizeof(Single);
+
         #region Write Methods
         public bool Write(string val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(System.Text.Encoding.Default.GetBytes(val)))
             {
                 cacheLength += (UInt32)val.Length;
@@ -41,21 +52,23 @@ namespace CWA.DTP
 
         public bool Write(byte val)
         {
-            if(ph.File_Append(new byte[1] { val }))
+            DTPMaster.CheckConnAndVal();
+            if (ph.File_Append(new byte[1] { val }))
             {
-                cacheLength += 1;
-                CursorPos += 1;
+                cacheLength += _Ui8;
+                CursorPos += _Ui8;
                 return true;
             }
             return false;
         }
 
-        public bool Write(short val)
+        public bool Write(Int16 val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                cacheLength += 2;
-                CursorPos += 2;
+                cacheLength += _i16;
+                CursorPos += _i16;
                 return true;
             }
             return false;
@@ -63,21 +76,23 @@ namespace CWA.DTP
 
         public bool Write(UInt16 val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                cacheLength += 2;
-                CursorPos += 2;
+                cacheLength += _Ui16;
+                CursorPos += _Ui16;
                 return true;
             }
             return false;
         }
 
-        public bool Write(int val)
+        public bool Write(Int32 val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                cacheLength += 4;
-                CursorPos += 4;
+                cacheLength += _i32;
+                CursorPos += _i32;
                 return true;
             }
             return false;
@@ -85,6 +100,7 @@ namespace CWA.DTP
 
         public bool Write(UInt32 val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
                 cacheLength += 4;
@@ -94,12 +110,13 @@ namespace CWA.DTP
             return false;
         }
 
-        public bool Write(long val)
+        public bool Write(Int64 val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                cacheLength += 8;
-                CursorPos += 8;
+                cacheLength += _i64;
+                CursorPos += _i64;
                 return true;
             }
             return false;
@@ -107,32 +124,35 @@ namespace CWA.DTP
 
         public bool Write(UInt64 val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                cacheLength += 8;
-                CursorPos += 8;
+                cacheLength += _Ui64;
+                CursorPos += _Ui64;
                 return true;
             }
             return false;
         }
 
-        public bool Write(float val)
+        public bool Write(Single val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                CursorPos += 4;
-                cacheLength += 4;
+                CursorPos += _S;
+                cacheLength += _S;
                 return true;
             }
             return false;
         }
 
-        public bool Write(double val)
+        public bool Write(Double val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(BitConverter.GetBytes(val)))
             {
-                CursorPos += 8;
-                cacheLength += 8;
+                CursorPos += _D;
+                cacheLength += _D;
                 return true;
             }
             return false;
@@ -140,10 +160,11 @@ namespace CWA.DTP
 
         public bool Write(bool val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(new byte[1] { val ? (byte)1 : (byte)0 }))
             {
-                CursorPos += 1;
-                cacheLength += 1;
+                CursorPos += _Ui8;
+                cacheLength += _Ui8;
                 return true;
             }
             return false;
@@ -151,10 +172,11 @@ namespace CWA.DTP
 
         public bool Write(char val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append( new byte[1] { (byte)val }))
             {
-                cacheLength += 1;
-                CursorPos += 1;
+                cacheLength += _Ui8;
+                CursorPos += _Ui8;
                 return true;
             }
             return false;
@@ -162,10 +184,11 @@ namespace CWA.DTP
         
         public bool Write(byte[] val)
         {
+            DTPMaster.CheckConnAndVal();
             if (ph.File_Append(val))
             {
-                cacheLength += 1;
-                CursorPos += 1;
+                cacheLength += (UInt32)val.Length;
+                CursorPos += (UInt32)val.Length;
                 return true;
             }
             return false;
@@ -175,12 +198,13 @@ namespace CWA.DTP
         #region Read Methods
         private SdCardBinnaryFileReadResult<object> ReadByte()
         {
-            if (CursorPos + 1 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _Ui8 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 1);
+            var res = ph.File_Read(CursorPos, _Ui8);
             if(res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 1;
+                CursorPos += _Ui8;
                 return new SdCardBinnaryFileReadResult<object>(res.Result[0], true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -188,12 +212,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadBool()
         {
-            if (CursorPos + 1 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _Ui8 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 1);
+            var res = ph.File_Read(CursorPos, _Ui8);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 1;
+                CursorPos += _Ui8;
                 return new SdCardBinnaryFileReadResult<object>(res.Result[0] == 1, true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -201,12 +226,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadShort()
         {
-            if (CursorPos + 2 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _i16 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 2);
+            var res = ph.File_Read(CursorPos, _i16);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 2;
+                CursorPos += _i16;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToInt16(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -214,12 +240,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadUInt16()
         {
-            if (CursorPos + 2 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _Ui16 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 2);
+            var res = ph.File_Read(CursorPos, _Ui16);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 2;
+                CursorPos += _Ui16;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToUInt16(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -227,12 +254,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadInt()
         {
-            if (CursorPos + 4 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _i32 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 4);
+            var res = ph.File_Read(CursorPos, _i32);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 4;
+                CursorPos += _i32;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToInt32(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -240,12 +268,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadUInt32()
         {
-            if (CursorPos + 4 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _Ui32 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 4);
+            var res = ph.File_Read(CursorPos, _Ui32);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 4;
+                CursorPos += _Ui32;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToUInt32(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -253,12 +282,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadLong()
         {
-            if (CursorPos + 8 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _i64 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 8);
+            var res = ph.File_Read(CursorPos, _i64);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 8;
+                CursorPos += _i64;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToInt64(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -266,12 +296,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadUInt64()
         {
-            if (CursorPos + 8 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _Ui64 > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 8);
+            var res = ph.File_Read(CursorPos, _Ui64);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 8;
+                CursorPos += _Ui64;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToUInt64(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -279,12 +310,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadFloat()
         {
-            if (CursorPos + 4 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _S > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 4);
+            var res = ph.File_Read(CursorPos, _S);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 4;
+                CursorPos += _S;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToSingle(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -292,12 +324,13 @@ namespace CWA.DTP
 
         private SdCardBinnaryFileReadResult<object> ReadDouble()
         {
-            if (CursorPos + 8 > cacheLength)
+            DTPMaster.CheckConnAndVal();
+            if (CursorPos + _D > cacheLength)
                 throw new ArgumentOutOfRangeException();
-            var res = ph.File_Read(CursorPos, 8);
+            var res = ph.File_Read(CursorPos, _D);
             if (res.Status == GeneralPacketHandler.WriteReadFileHandleResult.OK)
             {
-                CursorPos += 8;
+                CursorPos += _D;
                 return new SdCardBinnaryFileReadResult<object>(BitConverter.ToDouble(res.Result, 0), true);
             }
             return new SdCardBinnaryFileReadResult<object>(0, false);
@@ -306,6 +339,7 @@ namespace CWA.DTP
 
         public SdCardBinnaryFileReadResult<byte[]> ReadByteArray(UInt32 length)
         {
+            DTPMaster.CheckConnAndVal();
             if (CursorPos + length > cacheLength)
                 throw new ArgumentOutOfRangeException();
             var res = ph.File_Read(CursorPos, length);
@@ -377,7 +411,6 @@ namespace CWA.DTP
                 var res = ReadUInt64();
                 return new SdCardBinnaryFileReadResult<T>((T)res.Result, res.Succeed);
             }
-
             else throw new ArgumentException("Неподдерживаемый тип аргумента.", nameof(type));
         }
     }

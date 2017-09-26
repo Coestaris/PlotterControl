@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP.FileTransfer
 {
-    public class FileTransferEndArgs : EventArgs
+    public sealed class FileTransferEndArgs : EventArgs
     {
         public bool IsForcedEnd { get; private set; }
 

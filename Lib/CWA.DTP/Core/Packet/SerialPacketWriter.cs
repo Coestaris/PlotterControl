@@ -9,10 +9,11 @@
 *=================================*/
 
 using System.IO.Ports;
+using System.Threading;
 
 namespace CWA.DTP
 {
-    public class SerialPacketWriter : IPacketWriter
+    public sealed class SerialPacketWriter : IPacketWriter
     {
         public SerialPort Port { get; private set; }
 
@@ -24,8 +25,24 @@ namespace CWA.DTP
 
         public bool Write(byte[] packet)
         {
-            Port.Write(packet, 0, packet.Length);
-            return true; //Always okay
+            try
+            {
+                Port.Write(packet, 0, packet.Length);
+                return true;
+            }
+            catch { return false; }
+            
+        }
+
+        public void Close()
+        {
+            if (Port != null && Port.IsOpen)
+            {
+                //Пока есть какие-то байты для чтения, ничего не делать
+                while (Port.BytesToRead != 0) Thread.Sleep(10);
+                //Закрываем порт
+                lock (Port) Port.Close();
+            }
         }
     }
 }

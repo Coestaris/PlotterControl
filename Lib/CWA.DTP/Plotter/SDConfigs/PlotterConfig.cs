@@ -60,6 +60,7 @@ namespace CWA.DTP.Plotter
 
         public void UploadPenProfiles()
         {
+            DTPMaster.CheckConnAndVal();
             List<byte> data = new List<byte>();
             foreach(var a in Pens)
             {
@@ -85,6 +86,7 @@ namespace CWA.DTP.Plotter
 
         public void DownloadPenProfiles()
         {
+            DTPMaster.CheckConnAndVal();
             Pens = new List<PlotterPenInfo>();
             var file = Master.CreateFileHandler(PensConfigFileName);
             if (!file.IsExists)
@@ -103,6 +105,7 @@ namespace CWA.DTP.Plotter
 
         public void UploadConfig()
         {
+            DTPMaster.CheckConnAndVal();
             var file = Master.CreateFileHandler(ConfigFileName).Open(true);
             if (!file.BinnaryFile.Write(Options.ToByteArray()))
                 throw new FailOperationException("Не удалось записать данные конфиг-файла");
@@ -114,6 +117,7 @@ namespace CWA.DTP.Plotter
 
         public void DownloadConfig()
         {
+            DTPMaster.CheckConnAndVal();
             var file = Master.CreateFileHandler(ConfigFileName).Open(false);
             var readRes = file.BinnaryFile.ReadByteArray(ConfigFileLength);
             if (readRes.Succeed) Options = new PlotterConfigOptions(readRes.Result);

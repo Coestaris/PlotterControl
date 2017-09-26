@@ -9,6 +9,7 @@
 *=================================*/
 
 using System;
+using System.Security;
 
 namespace CWA.DTP
 {
@@ -16,23 +17,29 @@ namespace CWA.DTP
     {
         internal DTPMaster ParentMaster;
 
+        private bool _validated = false;
+
         internal SecurityManager(DTPMaster dTPMaster)
         {
             ParentMaster = dTPMaster;
             IsValidationRequired = ParentMaster.ph.Security_IsValidationRequired();
+            try
+            {
+                _validated = ParentMaster.ph.Device_DataTest(new byte[] { 1, 2 });
+            }
+            catch(SecurityException)
+            {
+                _validated = false;
+            }
         }
-
-        public static InvalidOperationException NotValidatedDevice = new InvalidOperationException("Ќевозможно выполнить данную операцию, когда не выполнена необходима€ валидаци€");
 
         public bool IsValidationRequired { get; private set; }
 
-        public bool IsValidated => (!IsValidationRequired) ? true : _validKey != null;
+        public bool IsValidated => (!IsValidationRequired) ? true : (_validated ? true : _validKey != null);
 
         public bool SetValidation(bool Use)
         {
-            if (!IsValidated)
-                throw new InvalidOperationException("Ќевозможно выполнить данную операцию, когда не выполнена необходима€ валидаци€");
-
+            DTPMaster.CheckConnAndVal(); 
             if (ParentMaster.ph.Security_SetValidation(Use))
             {
                 IsValidationRequired = true;
@@ -43,9 +50,7 @@ namespace CWA.DTP
 
         public bool ChangeKey(SecurityKey LastKey, SecurityKey NewKey)
         {
-            if (!IsValidated)
-                throw new InvalidOperationException("Ќевозможно выполнить данную операцию, когда не выполнена необходима€ валидаци€");
-
+            DTPMaster.CheckConnAndVal();
             if (ParentMaster.ph.Security_ChangeKey(LastKey.key, NewKey.key))
             {
                 _validKey = NewKey;
@@ -56,7 +61,11 @@ namespace CWA.DTP
 
         public bool Validate(SecurityKey Key)
         {
-            if(ParentMaster.ph.Security_Validate(Key.key))
+            if (IsValidated)
+                return true;
+
+            DTPMaster.CheckConnAndVal(true);
+            if (ParentMaster.ph.Security_Validate(Key.key))
             {
                 _validKey = Key;
                 return true;
@@ -68,7 +77,7 @@ namespace CWA.DTP
 
         public SecurityKey ValidKey => IsValidationRequired ? 
                 _validKey ?? throw new InvalidOperationException("¬алидаци€ либо не была успешной, либо не была проведена вовсе.")
-                : SecurityKey.Empty;
+                : SecurityKey.DefaultKey;
         
     }
 }

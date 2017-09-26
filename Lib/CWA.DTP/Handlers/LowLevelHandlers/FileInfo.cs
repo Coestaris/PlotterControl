@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP
 {
-    public class SdCardDirectoryFileInfo
+    public sealed class SdCardDirectoryFileInfo
     {
         public int FileDirectorySize { get; internal set; }
         public DateTime CreationTime { get; internal set; }

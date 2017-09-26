@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP
 {
-    public class DeviceInfo
+    public sealed class DeviceInfo
     {
         public Board Board { get; internal set; }
         public BoardArchitecture BoardArchitecture { get; internal set; }

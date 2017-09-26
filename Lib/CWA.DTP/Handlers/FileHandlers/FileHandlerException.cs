@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP
 {
-    public class FileHandlerException : Exception
+    public sealed class FileHandlerException : Exception
     {
         private string _Message;
 

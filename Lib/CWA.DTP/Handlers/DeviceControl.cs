@@ -27,6 +27,7 @@ namespace CWA.DTP
 
         public bool Test()
         {
+            DTPMaster.CheckConnAndVal();
             var res = ParentMaster.ph.Device_Test();
             if (res != null)
             {
@@ -35,21 +36,49 @@ namespace CWA.DTP
             }
             return false;
         }
-        
-        public bool SpeakerBeep(string Pattern) => ParentMaster.ph.Device_SpeakerBeep(Pattern);
 
-        public bool Test(byte[] data) => ParentMaster.ph.Device_DataTest(data);
+        public bool SpeakerBeep(string Pattern)
+        {
+            DTPMaster.CheckConnAndVal();
+            return ParentMaster.ph.Device_SpeakerBeep(Pattern);
+        }
 
-        public bool SyncTyme() => ParentMaster.ph.Device_SyncTime() != -1;
+        public bool Test(byte[] data)
+        {
+            DTPMaster.CheckConnAndVal();
+            return ParentMaster.ph.Device_DataTest(data);
+        }
 
-        public CardInfo CardInfo => ParentMaster.ph.Device_GetCardInfo().CI;
+        public bool SyncTyme()
+        {
+            DTPMaster.CheckConnAndVal();
+            return ParentMaster.ph.Device_SyncTime() != -1;
+        }
 
-        public DeviceInfo DeviceInfo => ParentMaster.ph.Device_GetGlobalInfo().DI;
+
+        public CardInfo CardInfo
+        {
+            get
+            {
+                DTPMaster.CheckConnAndVal();
+                return ParentMaster.ph.Device_GetCardInfo().CI;
+            }
+        }
+
+        public DeviceInfo DeviceInfo
+        {
+            get
+            {
+                DTPMaster.CheckConnAndVal();
+                return ParentMaster.ph.Device_GetGlobalInfo().DI;
+            }
+        }
 
         public DateTime DateTime
         {
             get
             {
+                DTPMaster.CheckConnAndVal();
                 var res = ParentMaster.ph.Device_GetTime();
                 if (!res.Success)
                     throw new FailOperationException("Cant get DateTime");
@@ -57,7 +86,8 @@ namespace CWA.DTP
             }
             set
             {
-                if(!ParentMaster.ph.Device_SetTime(value))
+                DTPMaster.CheckConnAndVal();
+                if (!ParentMaster.ph.Device_SetTime(value))
                     throw new FailOperationException("Cant set DateTime");
             }
         }

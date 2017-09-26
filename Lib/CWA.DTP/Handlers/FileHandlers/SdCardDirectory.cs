@@ -8,27 +8,29 @@
 * Last Edited: 24.08.2017 13:56:48
 *=================================*/
 
+using System;
 using System.Linq;
 
 namespace CWA.DTP
 {
-    public class SdCardDirectory
+    public sealed class SdCardDirectory
     {
-        private GeneralPacketHandler ph;
+        private DTPMaster master;
 
         public string DirectoryPath { get; set; }
 
-        internal SdCardDirectory(string path, GeneralPacketHandler ph)
+        internal SdCardDirectory(string path, DTPMaster ph)
         {
             DirectoryPath = path;
-            this.ph = ph;
+            master = ph;
         }
 
         public bool IsExists
         {
             get
             {
-                var res = ph.File_Exists(DirectoryPath);
+                DTPMaster.CheckConnAndVal();
+                var res = master.ph.File_Exists(DirectoryPath);
                 if (res == GeneralPacketHandler.FileExistsResult.Fail)
                     throw new FailOperationException(res);
                 return res == GeneralPacketHandler.FileExistsResult.Exists;
@@ -37,9 +39,10 @@ namespace CWA.DTP
 
         public SdCardDirectory Create(bool CreateNecessary)
         {
+            DTPMaster.CheckConnAndVal();
             if (DirectoryPath == "/") throw new FileHandlerException("Невозможно создать корень -_-");
             if (IsExists) throw new FileHandlerException("Папка уже существует");
-            var res = ph.Dir_Create(DirectoryPath, CreateNecessary);
+            var res = master.ph.Dir_Create(DirectoryPath, CreateNecessary);
             if (res != GeneralPacketHandler.FileDirHandleResult.OK)
                 throw new FailOperationException("Не удалось создать папку", res);
             return this;
@@ -48,9 +51,10 @@ namespace CWA.DTP
 
         public void Delete(bool DeleteSubItems)
         {
+            DTPMaster.CheckConnAndVal();
             if (DirectoryPath == "/") throw new FileHandlerException("Невозможно удалить корень -_-");
             if (!IsExists) throw new FileHandlerException("Папка не существует");
-            var res = ph.Dir_Delete(DirectoryPath, DeleteSubItems);
+            var res = master.ph.Dir_Delete(DirectoryPath, DeleteSubItems);
             if (res != GeneralPacketHandler.FileDirHandleResult.OK)
                 throw new FailOperationException(res);
         }
@@ -59,6 +63,7 @@ namespace CWA.DTP
         {
             get
             {
+                DTPMaster.CheckConnAndVal();
                 if (DirectoryPath == "/")
                     return new SdCardDirectoryFileInfo()
                     {
@@ -66,7 +71,7 @@ namespace CWA.DTP
                         IsSystem = true,
                         Name = "/"
                     };
-                var res = ph.File_GetInfo(DirectoryPath);
+                var res = master.ph.File_GetInfo(DirectoryPath);
                 return res.FI;
             }
         }
@@ -84,11 +89,12 @@ namespace CWA.DTP
         {
             get
             {
+                DTPMaster.CheckConnAndVal();
                 if (DirectoryPath != "/")
                     if (!IsExists) throw new FileHandlerException("Папка не существует");
-                var res = ph.Dir_GetSubDirs(DirectoryPath);
+                var res = master.ph.Dir_GetSubDirs(DirectoryPath);
                 if (res.Status == GeneralPacketHandler.FileDirHandleResult.OK)
-                    return res.ResultDirs.Select(p => new SdCardDirectory(p, ph)).ToArray();
+                    return res.ResultDirs.Select(p => new SdCardDirectory(p, master)).ToArray();
                 else throw new FailOperationException(res.Status);
             }
         }
@@ -97,18 +103,21 @@ namespace CWA.DTP
         {
             get
             {
+                DTPMaster.CheckConnAndVal();
                 if (DirectoryPath != "/")
                     if (!IsExists) throw new FileHandlerException("Папка не существует");
-                var res = ph.Dir_GetFiles(DirectoryPath);
+                var res = master.ph.Dir_GetFiles(DirectoryPath);
                 if (res.Status == GeneralPacketHandler.FileDirHandleResult.OK)
-                    return res.ResultFiles.Select(p => new SdCardFile(p, ph)).ToArray();
+                    return res.ResultFiles.Select(p => new SdCardFile(p, master)).ToArray();
                 else throw new FailOperationException(res.Status);
             }
         }
 
         internal static SdCardDirectory Root(GeneralPacketHandler ph)
         {
-            return new SdCardDirectory("/", ph);
+            //TODO: Что-то сделать с этим дерьмом
+            //return new SdCardDirectory("/", );
+            throw new NotImplementedException();
         }
     }
 }

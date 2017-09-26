@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP.FileTransfer
 {
-    public class FileTransferProcessArgs : EventArgs
+    public sealed class FileTransferProcessArgs : EventArgs
     {
         public long TimeSpend { get; private set; }
         public double TimeLeft { get; private set; }

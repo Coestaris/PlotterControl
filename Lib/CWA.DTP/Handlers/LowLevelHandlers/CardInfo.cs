@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace CWA.DTP
 {
-    public class CardInfo
+    public sealed class CardInfo
     {
         public UInt32 DataStartBlock { get; internal set; }
         public UInt32 RootDirStart { get; internal set; }

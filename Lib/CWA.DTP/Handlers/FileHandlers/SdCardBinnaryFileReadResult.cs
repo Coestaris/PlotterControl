@@ -8,11 +8,9 @@
 * Last Edited: 19.08.2017 7:38:22
 *=================================*/
 
-using System;
-
 namespace CWA.DTP
 {
-    public class SdCardBinnaryFileReadResult<T>
+    public sealed class SdCardBinnaryFileReadResult<T>
     {
         public T Result { get; private set; }
         public bool Succeed { get; private set; }

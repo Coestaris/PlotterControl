@@ -49,6 +49,7 @@ namespace CWA.DTP.Plotter
 
         internal void Upload()
         {
+            DTPMaster.CheckConnAndVal();
             var file = Master.CreateFileHandler(ConfigFileName).Open(true);
             if (!file.BinnaryFile.Write(ToByteArray()))
                 throw new FailOperationException("Не удалось записать данные таблицы векторов");
@@ -58,6 +59,7 @@ namespace CWA.DTP.Plotter
 
         private void Download()
         {
+            DTPMaster.CheckConnAndVal();
             var file = Master.CreateFileHandler(ConfigFileName);
             if (!file.IsExists) file.Create();
             file.Open(false);

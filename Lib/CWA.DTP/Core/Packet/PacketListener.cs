@@ -12,7 +12,7 @@ using System;
 
 namespace CWA.DTP
 {
-    public class PacketListener
+    public sealed class PacketListener
     {
         public IPacketReader PacketReader { get; set; }
 

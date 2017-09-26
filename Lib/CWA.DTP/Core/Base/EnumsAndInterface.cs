@@ -14,11 +14,13 @@ namespace CWA.DTP
     {
         void Reset();
         byte[] Read();
+        void Close();
     }
 
     public interface IPacketWriter
     {
         bool Write(byte[] packet);
+        void Close();
     }
 
     public enum AnswerStatus

@@ -18,11 +18,13 @@ namespace CWA.DTP.Plotter
 
         public bool MoveTool(Int16 dx, Int16 dy, Int16 dz)
         {
+            DTPMaster.CheckConnAndVal();
             return ph.MoveTool(dx, dy, dz);
         }
 
         public bool MoveTool(PlotterPenInfo pen, bool UpDirrection)
         {
+            DTPMaster.CheckConnAndVal();
             return ph.MoveTool(0, 0, UpDirrection ? (Int16)(pen.ElevationCorrection + pen.ElevationDelta) : (Int16)pen.ElevationDelta);
         }
 
@@ -33,11 +35,13 @@ namespace CWA.DTP.Plotter
 
         public bool TurnOnEngines()
         {
+            DTPMaster.CheckConnAndVal();
             return ph.TurnOnEngines();
         }
 
         public bool TurnOffEngines()
         {
+            DTPMaster.CheckConnAndVal();
             return ph.TurnOnEngines();
         }
     }

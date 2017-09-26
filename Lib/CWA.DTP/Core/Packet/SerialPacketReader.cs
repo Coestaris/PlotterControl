@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace CWA.DTP
 {
-    public class SerialPacketReader : IPacketReader
+    public sealed class SerialPacketReader : IPacketReader
     {
         private byte[] Result;
         private bool GetAnsw = false;
@@ -117,6 +117,17 @@ namespace CWA.DTP
         {
             Result = ReadAsync();
             GetAnsw = true;
+        }
+
+        public void Close()
+        {
+            if (Port != null && Port.IsOpen)
+            {
+                //Пока есть какие-то байты для чтения, ничего не делать
+                while (Port.BytesToRead != 0) Thread.Sleep(10);
+                //Закрываем порт
+                lock (Port) Port.Close();
+            }
         }
     }
 }
