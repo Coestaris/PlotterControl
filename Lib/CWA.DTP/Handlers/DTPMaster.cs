@@ -5,16 +5,17 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 16.09.2017 23:54:38
+* Last Edited: 26.09.2017 21:41:34
 *=================================*/
 
 using System;
 using CWA.DTP.FileTransfer;
 using CWA.DTP.Plotter;
+using System.Security;
 
 namespace CWA.DTP
 {
-    public sealed class DTPMaster
+    public sealed class DTPMaster : IDisposable
     {
         internal static DTPMaster _this; 
 
@@ -44,15 +45,15 @@ namespace CWA.DTP
             if (_this == null)
                 throw new InvalidOperationException("Выполнение операции без контролирующего мастера");
             if(!IgnoreValidation && !_this.SecurityManager.IsValidated)
-                throw new InvalidOperationException("Для выполнения данной операции необходимо пройти валидацию");
+                throw new SecurityException("Для выполнения данной операции необходимо пройти валидацию");
             if (_this.isClosed)
                 throw new InvalidOperationException("Невозможно выполнить операцию, так как подключение закрыто");
         }
 
-        ~DTPMaster()
+        /*~DTPMaster()
         {
             _this = null;
-        }
+        }*/
 
         public DTPMaster(Sender sender, PacketListener listener)
         {
@@ -100,6 +101,12 @@ namespace CWA.DTP
             Listener.PacketReader.Close();
             Listener.PacketWriter.Close();
             isClosed = true;
+        }
+
+        public void Dispose()
+        {
+            CloseConnection();
+            _this = null;
         }
     }
 }

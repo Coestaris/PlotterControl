@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 17.09.2017 0:02:58
+* Last Edited: 26.09.2017 21:24:40
 *=================================*/
 
 using System;
@@ -27,7 +27,7 @@ namespace CWA.DTP
 
         public bool Test()
         {
-            DTPMaster.CheckConnAndVal();
+            DTPMaster.CheckConnAndVal(true);
             var res = ParentMaster.ph.Device_Test();
             if (res != null)
             {

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 16.09.2017 11:37
-* Last Edited: 17.09.2017 0:01:36
+* Last Edited: 26.09.2017 20:49:14
 *=================================*/
 
 using System;

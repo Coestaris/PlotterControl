@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 16.09.2017 14:01:46
+* Last Edited: 26.09.2017 21:47:02
 *=================================*/
 
 using CnC_WFA;
@@ -20,6 +20,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
@@ -182,6 +183,15 @@ namespace FileBrowser
                 Master.Device.SyncTyme();
 
             }
+            catch(SecurityException)
+            {
+                if(new ValidateForm(Master).ShowDialog() == DialogResult.Cancel)
+                {
+                    Master.CloseConnection();
+                    Close();
+                    return;
+                }
+            }
             catch (WrongPacketInputException ex)
             {
                 if (System.Windows.Forms.MessageBox.Show(
@@ -338,9 +348,9 @@ namespace FileBrowser
 
         private void HandleLocalFile(string newPath, string fileName)
         {
-            var locHash = CrCHandler.CRC32(newPath);
             if (new ReceiveDialog(Master, fileName, newPath).ShowDialog() == DialogResult.OK)
             {
+                var locHash = CrCHandler.CRC32(newPath);
                 var res = System.Diagnostics.Process.Start(newPath);
                 res.WaitForExit();
                 if (CrCHandler.CRC32(newPath) != locHash)
@@ -544,6 +554,11 @@ namespace FileBrowser
             {
                 System.Windows.Forms.MessageBox.Show(string.Format("Произошла ошибка типа {0}.\n{2}\n\nСтек вызовов:\n{1}", ex.GetType().FullName, ex.StackTrace, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Master?.Dispose();
         }
     }
 

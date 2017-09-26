@@ -126,6 +126,7 @@ void HandlePacket(byte* data, uint32_t dataLen, uint16_t command) {
 				}
 			memcpy(loc, data + 16, 16);
 			WriteSecurityKey(loc);
+			delete[] loc;
 		}
 
 		case DTP_COMMANDTYPE::Security_IsValReq:

@@ -86,6 +86,12 @@
     <Compile Include="Forms\SomeFileInfo.Designer.cs">
       <DependentUpon>SomeFileInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ValidateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ValidateForm.Designer.cs">
+      <DependentUpon>ValidateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\ReceiveDialog.cs">
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SomeFileInfo.resx">
       <DependentUpon>SomeFileInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ValidateForm.resx">
+      <DependentUpon>ValidateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

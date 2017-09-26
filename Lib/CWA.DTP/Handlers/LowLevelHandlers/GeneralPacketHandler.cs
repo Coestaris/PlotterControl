@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 16.09.2017 13:55:35
+* Last Edited: 26.09.2017 21:34:20
 *=================================*/
 
 using System;
@@ -535,7 +535,7 @@ namespace CWA.DTP
 
         public bool Security_ChangeKey(byte[] oldKey, byte[] newKey)
         {
-            var res = GetResult((UInt16)CommandType.Security_Validate, oldKey.Concat(newKey).ToArray());
+            var res = GetResult((UInt16)CommandType.Security_ChangeKey, oldKey.Concat(newKey).ToArray());
             return (res.Code == (byte)ValidationStatus.Ok);
         }
 
