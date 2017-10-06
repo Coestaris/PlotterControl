@@ -29,7 +29,7 @@ namespace FileBrowser
 
         private void SendDialog_Load(object sender, EventArgs e)
         {
-            fileSender = master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh);
+            fileSender = master.FileSender(FileTransferSecurityFlags.VerifyLengh);
             fileSender.PacketLength = PacketSize;
             fileSender.SendingProcessChanged += FileSender_SendingProcessChanged;
             fileSender.SendingError += FileSender_SendingError;

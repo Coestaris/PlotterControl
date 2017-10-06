@@ -105,12 +105,12 @@ namespace FileBrowser
             string Path = string.Join("", CurrentPath);
             label_path.Text = "Device:\\" + Path.Replace('/', '\\');
             listView1.Items.Clear();
-            var ResultFiles = Master.CreateDirectoryHandler(Path).SubFiles;
-            var ResultDirs = Master.CreateDirectoryHandler(Path).SubDirectroies;
+            var ResultFiles = Master.DirectoryHandler(Path).SubFiles;
+            var ResultDirs = Master.DirectoryHandler(Path).SubDirectroies;
             if (Path != "/") listView1.Items.Add(new ListViewItem(new string[] { "...", "", "", "" }, ResultFiles.Length + 1));
             foreach (var a in ResultDirs)
             {
-                var res = Master.CreateDirectoryHandler(Path == "/" ? a.DirectoryPath : Path + '/' + a.DirectoryPath).DirectoryInfo;
+                var res = Master.DirectoryHandler(Path == "/" ? a.DirectoryPath : Path + '/' + a.DirectoryPath).DirectoryInfo;
                 string flagString = string.Format("{0}{1}{2}{3}", res.IsSystem ? 's' : '-', res.IsHidden ? 'h' : '-', res.IsLFN ? 'l' : '-', res.IsReadOnly ? 'r' : '-');
                 ListViewItem item = new ListViewItem(new string[] { '[' + a.DirectoryPath + ']', "<folder>", res.CreationTime.ToString(), flagString }, ResultFiles.Length);
                 listView1.Items.Add(item);
@@ -459,7 +459,7 @@ namespace FileBrowser
                 }
                 else
                 {
-                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
+                    var a = Master.DirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
                     try
                     {
                         a.Delete(true);
@@ -496,7 +496,7 @@ namespace FileBrowser
             if (d.ShowDialog() == DialogResult.OK)
             {
                 string path = string.Join("", CurrentPath);
-                var dir = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + d.Value);
+                var dir = Master.DirectoryHandler(path + (path != "/" ? "/" : "") + d.Value);
                 try
                 {
                     dir.Create(false);
@@ -546,7 +546,7 @@ namespace FileBrowser
                     a.Close();
                 } else
                 {
-                    var a = Master.CreateDirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
+                    var a = Master.DirectoryHandler(path + (path != "/" ? "/" : "") + listView1.SelectedItems[0].SubItems[0].Text.Trim('[', ']'));
                     new FileDirInfo(a, a.DirectoryInfo, listView1.SmallImageList.Images[listView1.SmallImageList.Images.Count - 4]).ShowDialog();
                 }
             }

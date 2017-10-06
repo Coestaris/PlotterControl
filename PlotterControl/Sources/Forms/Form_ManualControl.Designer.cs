@@ -69,8 +69,8 @@ namespace CnC_WFA
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button_turnOn = new System.Windows.Forms.Button();
             this.button_turnOff = new System.Windows.Forms.Button();
+            this.button_turnOn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -384,10 +384,10 @@ namespace CnC_WFA
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -460,22 +460,6 @@ namespace CnC_WFA
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
-            // button_turnOn
-            // 
-            this.button_turnOn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_turnOn.Enabled = false;
-            this.button_turnOn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_turnOn.FlatAppearance.BorderSize = 2;
-            this.button_turnOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_turnOn.Location = new System.Drawing.Point(239, 26);
-            this.button_turnOn.Margin = new System.Windows.Forms.Padding(4);
-            this.button_turnOn.Name = "button_turnOn";
-            this.button_turnOn.Size = new System.Drawing.Size(86, 36);
-            this.button_turnOn.TabIndex = 6;
-            this.button_turnOn.Text = "Turn on";
-            this.button_turnOn.UseVisualStyleBackColor = false;
-            this.button_turnOn.Click += new System.EventHandler(this.button_turnOn_Click);
-            // 
             // button_turnOff
             // 
             this.button_turnOff.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -491,6 +475,22 @@ namespace CnC_WFA
             this.button_turnOff.Text = "Turn off";
             this.button_turnOff.UseVisualStyleBackColor = false;
             this.button_turnOff.Click += new System.EventHandler(this.button_turnOff_Click);
+            // 
+            // button_turnOn
+            // 
+            this.button_turnOn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_turnOn.Enabled = false;
+            this.button_turnOn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_turnOn.FlatAppearance.BorderSize = 2;
+            this.button_turnOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_turnOn.Location = new System.Drawing.Point(239, 26);
+            this.button_turnOn.Margin = new System.Windows.Forms.Padding(4);
+            this.button_turnOn.Name = "button_turnOn";
+            this.button_turnOn.Size = new System.Drawing.Size(86, 36);
+            this.button_turnOn.TabIndex = 6;
+            this.button_turnOn.Text = "Turn on";
+            this.button_turnOn.UseVisualStyleBackColor = false;
+            this.button_turnOn.Click += new System.EventHandler(this.button_turnOn_Click);
             // 
             // Form_ManualControl
             // 

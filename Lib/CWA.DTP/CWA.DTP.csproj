@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,12 @@
     <Compile Include="Core\Packet\WrongPacketInputException.cs" />
     <Compile Include="Handlers\SecurityKey.cs" />
     <Compile Include="Handlers\SecurityManager.cs" />
+    <Compile Include="Plotter\Handler\ValidateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plotter\Handler\ValidateForm.designer.cs">
+      <DependentUpon>ValidateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Plotter\Printing\MovingControl.cs" />
     <Compile Include="Handlers\DeviceControl.cs" />
     <Compile Include="Handlers\DTPMaster.cs" />
@@ -110,6 +117,11 @@
       <Project>{154dbf89-c8b7-488b-a8ef-9ccbe76a0c10}</Project>
       <Name>CWA.Vectors</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Plotter\Handler\ValidateForm.resx">
+      <DependentUpon>ValidateForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

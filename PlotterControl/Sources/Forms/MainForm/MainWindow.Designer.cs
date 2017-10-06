@@ -146,7 +146,6 @@ namespace CnC_WFA
             this.label_main_about_discr = new System.Windows.Forms.Label();
             this.label_main_about_about = new System.Windows.Forms.Label();
             this.tabPage_memory = new System.Windows.Forms.TabPage();
-            this.checkBox_main_memory_val = new System.Windows.Forms.CheckBox();
             this.button_main_memory_def = new System.Windows.Forms.Button();
             this.label_main_memory_bd = new System.Windows.Forms.Label();
             this.label_main_memory_port = new System.Windows.Forms.Label();
@@ -155,9 +154,7 @@ namespace CnC_WFA
             this.label_main_memory_title = new System.Windows.Forms.Label();
             this.checkBox_main_memory_readonly = new System.Windows.Forms.CheckBox();
             this.label_val = new System.Windows.Forms.Label();
-            this.label_low = new System.Windows.Forms.Label();
             this.label_high = new System.Windows.Forms.Label();
-            this.progressBar_main_memory_val = new System.Windows.Forms.ProgressBar();
             this.button_main_memory_connect = new System.Windows.Forms.Button();
             this.button_main_memory_get = new System.Windows.Forms.Button();
             this.button_main_memory_load = new System.Windows.Forms.Button();
@@ -255,6 +252,10 @@ namespace CnC_WFA
             this.tabPage_main_help = new System.Windows.Forms.TabPage();
             this.panel_main_help_tools = new System.Windows.Forms.Panel();
             this.label_help_title = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel_main_tools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -1625,7 +1626,10 @@ namespace CnC_WFA
             // tabPage_memory
             // 
             this.tabPage_memory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.tabPage_memory.Controls.Add(this.checkBox_main_memory_val);
+            this.tabPage_memory.Controls.Add(this.textBox1);
+            this.tabPage_memory.Controls.Add(this.textBox2);
+            this.tabPage_memory.Controls.Add(this.label1);
+            this.tabPage_memory.Controls.Add(this.label2);
             this.tabPage_memory.Controls.Add(this.button_main_memory_def);
             this.tabPage_memory.Controls.Add(this.label_main_memory_bd);
             this.tabPage_memory.Controls.Add(this.label_main_memory_port);
@@ -1634,9 +1638,7 @@ namespace CnC_WFA
             this.tabPage_memory.Controls.Add(this.label_main_memory_title);
             this.tabPage_memory.Controls.Add(this.checkBox_main_memory_readonly);
             this.tabPage_memory.Controls.Add(this.label_val);
-            this.tabPage_memory.Controls.Add(this.label_low);
             this.tabPage_memory.Controls.Add(this.label_high);
-            this.tabPage_memory.Controls.Add(this.progressBar_main_memory_val);
             this.tabPage_memory.Controls.Add(this.button_main_memory_connect);
             this.tabPage_memory.Controls.Add(this.button_main_memory_get);
             this.tabPage_memory.Controls.Add(this.button_main_memory_load);
@@ -1668,19 +1670,6 @@ namespace CnC_WFA
             this.tabPage_memory.Size = new System.Drawing.Size(834, 737);
             this.tabPage_memory.TabIndex = 3;
             this.tabPage_memory.Text = "tabPage1";
-            // 
-            // checkBox_main_memory_val
-            // 
-            this.checkBox_main_memory_val.AutoSize = true;
-            this.checkBox_main_memory_val.Enabled = false;
-            this.checkBox_main_memory_val.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_main_memory_val.Location = new System.Drawing.Point(12, 426);
-            this.checkBox_main_memory_val.Name = "checkBox_main_memory_val";
-            this.checkBox_main_memory_val.Size = new System.Drawing.Size(206, 21);
-            this.checkBox_main_memory_val.TabIndex = 153;
-            this.checkBox_main_memory_val.Text = "Значение потонциометра:";
-            this.checkBox_main_memory_val.UseVisualStyleBackColor = true;
-            this.checkBox_main_memory_val.CheckedChanged += new System.EventHandler(this.checkBox_main_memory_val_CheckedChanged);
             // 
             // button_main_memory_def
             // 
@@ -1723,7 +1712,7 @@ namespace CnC_WFA
             this.label_main_memory_1.AutoSize = true;
             this.label_main_memory_1.Enabled = false;
             this.label_main_memory_1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_memory_1.Location = new System.Drawing.Point(430, 309);
+            this.label_main_memory_1.Location = new System.Drawing.Point(430, 331);
             this.label_main_memory_1.Name = "label_main_memory_1";
             this.label_main_memory_1.Size = new System.Drawing.Size(28, 17);
             this.label_main_memory_1.TabIndex = 149;
@@ -1734,7 +1723,7 @@ namespace CnC_WFA
             this.label_main_memory_2.AutoSize = true;
             this.label_main_memory_2.Enabled = false;
             this.label_main_memory_2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_memory_2.Location = new System.Drawing.Point(430, 273);
+            this.label_main_memory_2.Location = new System.Drawing.Point(430, 295);
             this.label_main_memory_2.Name = "label_main_memory_2";
             this.label_main_memory_2.Size = new System.Drawing.Size(28, 17);
             this.label_main_memory_2.TabIndex = 148;
@@ -1770,19 +1759,10 @@ namespace CnC_WFA
             // 
             this.label_val.AutoSize = true;
             this.label_val.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_val.Location = new System.Drawing.Point(498, 427);
+            this.label_val.Location = new System.Drawing.Point(188, 347);
             this.label_val.Name = "label_val";
             this.label_val.Size = new System.Drawing.Size(0, 17);
             this.label_val.TabIndex = 143;
-            // 
-            // label_low
-            // 
-            this.label_low.AutoSize = true;
-            this.label_low.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_low.Location = new System.Drawing.Point(221, 457);
-            this.label_low.Name = "label_low";
-            this.label_low.Size = new System.Drawing.Size(0, 17);
-            this.label_low.TabIndex = 142;
             // 
             // label_high
             // 
@@ -1792,15 +1772,6 @@ namespace CnC_WFA
             this.label_high.Name = "label_high";
             this.label_high.Size = new System.Drawing.Size(0, 17);
             this.label_high.TabIndex = 117;
-            // 
-            // progressBar_main_memory_val
-            // 
-            this.progressBar_main_memory_val.Location = new System.Drawing.Point(224, 420);
-            this.progressBar_main_memory_val.Maximum = 630;
-            this.progressBar_main_memory_val.Name = "progressBar_main_memory_val";
-            this.progressBar_main_memory_val.Size = new System.Drawing.Size(268, 31);
-            this.progressBar_main_memory_val.TabIndex = 141;
-            this.progressBar_main_memory_val.Visible = false;
             // 
             // button_main_memory_connect
             // 
@@ -1900,7 +1871,7 @@ namespace CnC_WFA
             // 
             this.textBox_main_memory_work.Enabled = false;
             this.textBox_main_memory_work.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_main_memory_work.Location = new System.Drawing.Point(324, 309);
+            this.textBox_main_memory_work.Location = new System.Drawing.Point(324, 331);
             this.textBox_main_memory_work.Name = "textBox_main_memory_work";
             this.textBox_main_memory_work.Size = new System.Drawing.Size(100, 25);
             this.textBox_main_memory_work.TabIndex = 120;
@@ -1919,7 +1890,7 @@ namespace CnC_WFA
             this.label_main_memory_work.AutoSize = true;
             this.label_main_memory_work.Enabled = false;
             this.label_main_memory_work.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_memory_work.Location = new System.Drawing.Point(12, 309);
+            this.label_main_memory_work.Location = new System.Drawing.Point(12, 331);
             this.label_main_memory_work.Name = "label_main_memory_work";
             this.label_main_memory_work.Size = new System.Drawing.Size(299, 17);
             this.label_main_memory_work.TabIndex = 136;
@@ -1939,7 +1910,7 @@ namespace CnC_WFA
             this.label_main_memory_idle.AutoSize = true;
             this.label_main_memory_idle.Enabled = false;
             this.label_main_memory_idle.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_main_memory_idle.Location = new System.Drawing.Point(12, 273);
+            this.label_main_memory_idle.Location = new System.Drawing.Point(12, 295);
             this.label_main_memory_idle.Name = "label_main_memory_idle";
             this.label_main_memory_idle.Size = new System.Drawing.Size(307, 17);
             this.label_main_memory_idle.TabIndex = 135;
@@ -2009,7 +1980,7 @@ namespace CnC_WFA
             // 
             this.textBox_main_memory_idle.Enabled = false;
             this.textBox_main_memory_idle.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_main_memory_idle.Location = new System.Drawing.Point(324, 270);
+            this.textBox_main_memory_idle.Location = new System.Drawing.Point(324, 292);
             this.textBox_main_memory_idle.Name = "textBox_main_memory_idle";
             this.textBox_main_memory_idle.Size = new System.Drawing.Size(100, 25);
             this.textBox_main_memory_idle.TabIndex = 126;
@@ -2030,7 +2001,7 @@ namespace CnC_WFA
             this.checkBox_main_memory_com.AutoSize = true;
             this.checkBox_main_memory_com.Enabled = false;
             this.checkBox_main_memory_com.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_main_memory_com.Location = new System.Drawing.Point(12, 393);
+            this.checkBox_main_memory_com.Location = new System.Drawing.Point(15, 434);
             this.checkBox_main_memory_com.Name = "checkBox_main_memory_com";
             this.checkBox_main_memory_com.Size = new System.Drawing.Size(199, 21);
             this.checkBox_main_memory_com.TabIndex = 127;
@@ -2053,7 +2024,7 @@ namespace CnC_WFA
             this.checkBox_main_memory_pause.AutoSize = true;
             this.checkBox_main_memory_pause.Enabled = false;
             this.checkBox_main_memory_pause.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_main_memory_pause.Location = new System.Drawing.Point(12, 356);
+            this.checkBox_main_memory_pause.Location = new System.Drawing.Point(15, 397);
             this.checkBox_main_memory_pause.Name = "checkBox_main_memory_pause";
             this.checkBox_main_memory_pause.Size = new System.Drawing.Size(216, 21);
             this.checkBox_main_memory_pause.TabIndex = 128;
@@ -3038,12 +3009,52 @@ namespace CnC_WFA
             this.label_help_title.TabIndex = 9;
             this.label_help_title.Text = "Главная";
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(574, 262);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 154;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(200, 262);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 25);
+            this.textBox2.TabIndex = 155;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 265);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 17);
+            this.label1.TabIndex = 157;
+            this.label1.Text = "Пин шага по оси Z (ZStep):";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(338, 265);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(233, 17);
+            this.label2.TabIndex = 156;
+            this.label2.Text = "Пин направления по оси Z (ZDir):";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1282, 722);
+            this.ClientSize = new System.Drawing.Size(1276, 722);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl_main);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -3198,9 +3209,7 @@ namespace CnC_WFA
         internal System.Windows.Forms.Label label_main_memory_title;
         internal System.Windows.Forms.CheckBox checkBox_main_memory_readonly;
         internal System.Windows.Forms.Label label_val;
-        internal System.Windows.Forms.Label label_low;
         internal System.Windows.Forms.Label label_high;
-        internal System.Windows.Forms.ProgressBar progressBar_main_memory_val;
         internal System.Windows.Forms.Button button_main_memory_connect;
         internal System.Windows.Forms.Button button_main_memory_get;
         internal System.Windows.Forms.Button button_main_memory_load;
@@ -3244,7 +3253,6 @@ namespace CnC_WFA
         internal System.Windows.Forms.ComboBox comboBox_main_device_port;
         internal System.Windows.Forms.Timer timer1;
         internal System.Windows.Forms.Button button_main_memory_def;
-        internal System.Windows.Forms.CheckBox checkBox_main_memory_val;
         internal System.Windows.Forms.Button button_main_config_def;
         internal System.Windows.Forms.Button button_main_device_def;
         internal System.Windows.Forms.TabControl tabControl_main;
@@ -3324,6 +3332,10 @@ namespace CnC_WFA
         internal System.Windows.Forms.Button button_print_macro_mpack;
         private System.Windows.Forms.Label label_print_macro_new;
         internal System.Windows.Forms.Button button_print_macro_new;
+        internal System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.Label label2;
     }
 }
 

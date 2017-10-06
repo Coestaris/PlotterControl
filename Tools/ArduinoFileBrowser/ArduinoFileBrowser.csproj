@@ -86,12 +86,6 @@
     <Compile Include="Forms\SomeFileInfo.Designer.cs">
       <DependentUpon>SomeFileInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ValidateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ValidateForm.Designer.cs">
-      <DependentUpon>ValidateForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\ReceiveDialog.cs">
@@ -123,9 +117,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SomeFileInfo.resx">
       <DependentUpon>SomeFileInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ValidateForm.resx">
-      <DependentUpon>ValidateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -180,8 +171,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>move /Y  $(TargetDir)\*.dll  $(TargetDir)\Lib\
-move /Y  $(TargetDir)\CWA*.pdb  $(TargetDir)\lib\</PostBuildEvent>
+    <PostBuildEvent>move /Y  $(TargetDir)*.dll  $(TargetDir)Lib\
+
+move /Y  $(TargetDir)CWA*.pdb  $(TargetDir)lib\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

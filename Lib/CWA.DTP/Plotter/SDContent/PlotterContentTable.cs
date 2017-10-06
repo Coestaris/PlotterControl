@@ -32,13 +32,13 @@ namespace CWA.DTP.Plotter
             foreach (byte item in VectorAdresses)
             {
                 bytes.AddRange(new byte[10] {
-                    (byte)(item & 0xFF),
+                    (byte) (item & 0xFF),
                     (byte)((item >> 8) & 0xFF),
-                    (byte)(VectorHashes[item] & 0xFF),
+                    (byte) (VectorHashes[item] & 0xFF),
                     (byte)((VectorHashes[item] >> 8) & 0xFF),
                     (byte)((VectorHashes[item] >> 16) & 0xFF),
                     (byte)((VectorHashes[item] >> 24) & 0xFF),
-                    (byte)(PreviewHashes[item] & 0xFF),
+                    (byte) (PreviewHashes[item] & 0xFF),
                     (byte)((PreviewHashes[item] >> 8) & 0xFF),
                     (byte)((PreviewHashes[item] >> 16) & 0xFF),
                     (byte)((PreviewHashes[item] >> 24) & 0xFF)

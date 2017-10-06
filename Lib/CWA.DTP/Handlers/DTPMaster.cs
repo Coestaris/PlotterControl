@@ -50,10 +50,10 @@ namespace CWA.DTP
                 throw new InvalidOperationException("Невозможно выполнить операцию, так как подключение закрыто");
         }
 
-        /*~DTPMaster()
+        ~DTPMaster()
         {
-            _this = null;
-        }*/
+            Dispose();
+        }
 
         public DTPMaster(Sender sender, PacketListener listener)
         {
@@ -76,23 +76,23 @@ namespace CWA.DTP
 
         public SecurityManager SecurityManager { get; private set; }
 
-        public FileSender CreateFileSender(FileTransferSecurityFlags flags) => new FileSender(flags) { Master = this };
+        public FileSender FileSender(FileTransferSecurityFlags flags) => new FileSender(flags) { Master = this };
 
-        public FileReceiver CreateFileReceiver(FileTransferSecurityFlags flags) => new FileReceiver(flags) { Master = this };
+        public FileReceiver FileReceiver(FileTransferSecurityFlags flags) => new FileReceiver(flags) { Master = this };
 
-        public SdCardDirectory CreateDirectoryHandler(string Path) => new SdCardDirectory(Path, this);
+        public SdCardDirectory DirectoryHandler(string Path) => new SdCardDirectory(Path, this);
 
-        public SdCardDirectory CreateDirectoryHandlerFromRoot() => SdCardDirectory.Root(ph);
+        public SdCardDirectory DirectoryHandlerFromRoot() => SdCardDirectory.Root(ph);
 
         public SdCardFile CreateFileHandler(string Path) => new SdCardFile(Path, this);
 
-        public MovingControl CreatePlotterMovingControl() => new MovingControl(this);
+        public MovingControl PlotterMovingControl() => new MovingControl(this);
 
-        public PlotterConfig CreatePlotterConfig() => new PlotterConfig(this);
+        public PlotterConfig PlotterConfig() => new PlotterConfig(this);
 
-        public PlotterContent CreatePlotterContent() => new PlotterContent(this);
+        public PlotterContent PlotterContent() => new PlotterContent(this);
 
-        public PrintMaster CreatePlotterPrintMaster(float XMM, float YMM) => new PrintMaster(this, XMM, YMM, 0);
+        public PrintMaster PlotterPrintMaster(float XMM, float YMM) => new PrintMaster(this, XMM, YMM, 0);
 
         internal bool isClosed = false;
 

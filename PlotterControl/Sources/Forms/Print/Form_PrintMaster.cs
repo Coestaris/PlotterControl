@@ -71,10 +71,7 @@ namespace CnC_WFA
 
         private void ResetConntection()
         {
-            if (master != null)
-            {
-                master.CloseConnection();
-            }
+            master?.CloseConnection();
         }
 
         private void button_open_Click(object sender, EventArgs e)
@@ -126,6 +123,17 @@ namespace CnC_WFA
                 comboBox_bdrate.Enabled = false;
                 comboBox_com.Enabled = false;
                 button_open.Text = "????????.";
+
+                if (master.SecurityManager.IsValidationRequired)
+                    if(new ValidateForm(master).ShowDialog() != DialogResult.OK)
+                    {
+                        //запуск стандартной процедуры отключения
+                        ResetConntection();
+                        button_tab1_next.Enabled = false;
+                        comboBox_bdrate.Enabled = true;
+                        comboBox_com.Enabled = true;
+                        button_open.Text = "??????????.";
+                    };
             }
         }
 

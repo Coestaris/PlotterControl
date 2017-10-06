@@ -8,7 +8,7 @@
 * Last Edited: 26.09.2017 22:01:55
 *=================================*/
 
-namespace FileBrowser.Forms
+namespace CWA.DTP
 {
     partial class ValidateForm
     {

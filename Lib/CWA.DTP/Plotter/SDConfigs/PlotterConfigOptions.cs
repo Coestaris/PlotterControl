@@ -27,6 +27,9 @@ namespace CWA.DTP.Plotter
         public bool ComLed { get; set; }
         public bool PauseLed { get; set; }
 
+        public byte PinMappingButtonPause { get; set; }
+        public byte PinMappingButtonStop { get; set; }
+
         internal PlotterConfigOptions(byte[] data)
         {
             PinMappingXStep = data[0];

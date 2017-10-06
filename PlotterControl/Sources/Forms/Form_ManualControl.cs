@@ -51,8 +51,7 @@ namespace CnC_WFA
             {
                 combobox_bdrate.Enabled = true;
                 combobox_com.Enabled = true;
-               // Control.Enabled = false;
-                //mc.Close();
+                master?.CloseConnection();
                 button_mc.Text = "Подкл.";
                 return;
             }
@@ -62,17 +61,24 @@ namespace CnC_WFA
                 port.Open();
                 var Listener = new PacketListener(new SerialPacketReader(port, 3000), new SerialPacketWriter(port));
                 master = new DTPMaster(new Sender("Coestar"), Listener);
-                Pens = master.CreatePlotterConfig().Pens;
-                movingControl = master.CreatePlotterMovingControl();
-
+                Pens = master.PlotterConfig().Pens;
+                movingControl = master.PlotterMovingControl();
                 comboBox1.Items.Clear();
                 comboBox1.Items.AddRange(Pens.Select(p => p.Name).ToArray());
                 comboBox1.SelectedIndex = 0;
-
-               // Control.Enabled = true;
+                //Control.Enabled = true;
                 combobox_bdrate.Enabled = false;
                 combobox_com.Enabled = false;
                 button_mc.Text = "Откл.";
+
+                if (master.SecurityManager.IsValidationRequired)
+                    if (new ValidateForm(master).ShowDialog() != DialogResult.OK)
+                    {
+                        combobox_bdrate.Enabled = true;
+                        combobox_com.Enabled = true;
+                        master?.CloseConnection();
+                        button_mc.Text = "Подкл.";
+                    }
             }
             catch { MessageBox.Show(string.Format("Can`t open port {0} on {1}", combobox_com.Text, int.Parse(combobox_bdrate.Text))); }
         }

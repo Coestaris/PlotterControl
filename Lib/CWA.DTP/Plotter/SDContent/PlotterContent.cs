@@ -136,7 +136,7 @@ namespace CWA.DTP.Plotter
                 return true;
             }
 
-            var fileSender = Master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh
+            var fileSender = Master.FileSender(FileTransferSecurityFlags.VerifyLengh
                                                    | FileTransferSecurityFlags.VerifyCheckSum);
             fileSender.PacketLength = 2000;
             if (!fileSender.SendFileSync(vectorPcName, vectorName))
@@ -171,7 +171,7 @@ namespace CWA.DTP.Plotter
 
         public void DeleteAllFlFormatFiles()
         {
-            var dir = Master.CreateDirectoryHandlerFromRoot();
+            var dir = Master.DirectoryHandlerFromRoot();
             var files = dir.SubFiles;
             foreach (SdCardFile file in files)
                 if(file.FilePath.StartsWith("fl"))
@@ -192,7 +192,7 @@ namespace CWA.DTP.Plotter
         public Dictionary<UInt32, UInt32> GetFlFormatHashes()
         {
             Dictionary<UInt32, UInt32> result = new Dictionary<UInt32, UInt32>();
-            var files = Master.CreateDirectoryHandlerFromRoot().SubFiles;
+            var files = Master.DirectoryHandlerFromRoot().SubFiles;
             foreach (SdCardFile file in files)
                 if (file.FilePath.StartsWith("fl"))
                     result.Add(UInt32.Parse(file.FilePath.Remove(0, 2).Split('.')[0]), file.CRC32);
@@ -203,7 +203,7 @@ namespace CWA.DTP.Plotter
         {
             get
             {
-                var dir = Master.CreateDirectoryHandlerFromRoot();
+                var dir = Master.DirectoryHandlerFromRoot();
                 return (UInt32)dir.SubFiles.Count(p => p.FilePath.StartsWith("fl"));
             }
         }
@@ -214,7 +214,7 @@ namespace CWA.DTP.Plotter
                 DeleteAllFlFormatFiles();
             string deviceName = "v{0}.flv";
             Int32 i = 0;
-            var fileSender = Master.CreateFileSender(FileTransferSecurityFlags.VerifyLengh
+            var fileSender = Master.FileSender(FileTransferSecurityFlags.VerifyLengh
                                                    | FileTransferSecurityFlags.VerifyCheckSum);
             fileSender.PacketLength = 2000;
             foreach (FlFormat file in Files)
