@@ -124,7 +124,7 @@ namespace CnC_WFA
 
         public static void AllertAboutAdmin()
         {
-            MessageBox.Show(TranslateBase.CurrentLang.Phrase["Core.RequiredAdministrator"], TranslateBase.CurrentLang.Phrase["Core.Word.Association"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(TB.L.Phrase["Core.RequiredAdministrator"], TB.L.Phrase["Core.Word.Association"], MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         
         public static void AssociateAll()
@@ -134,13 +134,13 @@ namespace CnC_WFA
             if (Unidentified.Contains(true))
             {
                 List<string> ErrorList = new List<string>();
-                if (Unidentified[(int)FileFormats.PCV]) ErrorList.Add(".PCV (" + TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] + ")");
-                if (Unidentified[(int)FileFormats.PCGRAPH]) ErrorList.Add(".PCGRAPH (" + TranslateBase.CurrentLang.Phrase["Core.UnSetted.MainVectorFiles"] +")");
-                if (Unidentified[(int)FileFormats.PCVDOC]) ErrorList.Add(".VDOC ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.VectorDocument"] + ")");
-                if (Unidentified[(int)FileFormats.PRRES]) ErrorList.Add(".PRRES ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.OldVectorFiles"] + ")");
-                if (Unidentified[(int)FileFormats.PCMACROS]) ErrorList.Add(".PCMACROS ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.Macros"] + ")");
-                if (Unidentified[(int)FileFormats.PCMPACK]) ErrorList.Add(".PCMPACK ("+ TranslateBase.CurrentLang.Phrase["Core.UnSetted.MacroPacks"] + ")");
-                var a = MessageBox.Show(string.Format(TranslateBase.CurrentLang.Phrase["Core.SetAssociation"], string.Join("; ", ErrorList)), TranslateBase.CurrentLang.Phrase["Core.Word.Association"], MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (Unidentified[(int)FileFormats.PCV]) ErrorList.Add(".PCV (" + TB.L.Phrase["Core.UnSetted.MainVectorFiles"] + ")");
+                if (Unidentified[(int)FileFormats.PCGRAPH]) ErrorList.Add(".PCGRAPH (" + TB.L.Phrase["Core.UnSetted.MainVectorFiles"] +")");
+                if (Unidentified[(int)FileFormats.PCVDOC]) ErrorList.Add(".VDOC ("+ TB.L.Phrase["Core.UnSetted.VectorDocument"] + ")");
+                if (Unidentified[(int)FileFormats.PRRES]) ErrorList.Add(".PRRES ("+ TB.L.Phrase["Core.UnSetted.OldVectorFiles"] + ")");
+                if (Unidentified[(int)FileFormats.PCMACROS]) ErrorList.Add(".PCMACROS ("+ TB.L.Phrase["Core.UnSetted.Macros"] + ")");
+                if (Unidentified[(int)FileFormats.PCMPACK]) ErrorList.Add(".PCMPACK ("+ TB.L.Phrase["Core.UnSetted.MacroPacks"] + ")");
+                var a = MessageBox.Show(string.Format(TB.L.Phrase["Core.SetAssociation"], string.Join("; ", ErrorList)), TB.L.Phrase["Core.Word.Association"], MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (a == DialogResult.Cancel) { GlobalOptions.IgnoreRegisterExtentions = true; GlobalOptions.Save(); return; }
                 else if (a == DialogResult.No) return;
             }
@@ -213,60 +213,60 @@ namespace CnC_WFA
         private static void RegPCV()
         {
             AssociateMain("CNCWFAOPENER.PCV", ".pcv", PerceivedTypes.Image, "vect\\pcv");
-            AssociateMainData("CNCWFAOPENER.PCV", TranslateBase.CurrentLang.Phrase["Core.PCV"], EditFlags.None, IconIndex.Icon_PCV);
-            AssociateVerb("CNCWFAOPENER.PCV", @" --open_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
-            AssociateVerb("CNCWFAOPENER.PCV", @" --edit_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
-            AssociateVerb("CNCWFAOPENER.PCV", @" --render_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
-            AssociateVerb("CNCWFAOPENER.PCV", @" --print_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateMainData("CNCWFAOPENER.PCV", TB.L.Phrase["Core.PCV"], EditFlags.None, IconIndex.Icon_PCV);
+            AssociateVerb("CNCWFAOPENER.PCV", @" --open_vector ~~%1", TB.L.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PCV", @" --edit_vector ~~%1", TB.L.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PCV", @" --render_vector ~~%1", TB.L.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PCV", @" --print_vector ~~%1", TB.L.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
         }
 
         private static void RegPCGRAPH()
         {
             AssociateMain("CNCWFAOPENER.PCGRAPH", ".pcgraph", PerceivedTypes.Image, "vect\\pcgraph");
-            AssociateMainData("CNCWFAOPENER.PCGRAPH", TranslateBase.CurrentLang.Phrase["Core.PCGRAPH"], EditFlags.None, IconIndex.Icon_PCGraph);
-            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
-            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
-            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --render_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
-            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --print_graph ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateMainData("CNCWFAOPENER.PCGRAPH", TB.L.Phrase["Core.PCGRAPH"], EditFlags.None, IconIndex.Icon_PCGraph);
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TB.L.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --edit_graph ~~%1", TB.L.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --render_graph ~~%1", TB.L.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PCGRAPH", @" --print_graph ~~%1", TB.L.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
         }
 
         private static void RegPCVDOC()
         {
             AssociateMain("CNCWFAOPENER.PCVDOC", ".pcvdoc", PerceivedTypes.Image, "vect\\pcvdoc");
-            AssociateMainData("CNCWFAOPENER.PCVDOC", TranslateBase.CurrentLang.Phrase["Core.PCVDOC"], EditFlags.None, IconIndex.Icon_PCVDOC);
-            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --open_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
-            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --render_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
-            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --print_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
-            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --convert_doc ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsVector"], IconIndex.Icon_Contex_Read);
+            AssociateMainData("CNCWFAOPENER.PCVDOC", TB.L.Phrase["Core.PCVDOC"], EditFlags.None, IconIndex.Icon_PCVDOC);
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --open_doc ~~%1", TB.L.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --render_doc ~~%1", TB.L.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --print_doc ~~%1", TB.L.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateVerb("CNCWFAOPENER.PCVDOC", @" --convert_doc ~~%1", TB.L.Phrase["Core.Word.OpenAsVector"], IconIndex.Icon_Contex_Read);
         }
 
         private static void RegPRRES()
         {
             AssociateMain("CNCWFAOPENER.PRRES", ".prres", PerceivedTypes.Image, "vect\\prres");
-            AssociateMainData("CNCWFAOPENER.PRRES", TranslateBase.CurrentLang.Phrase["Core.PRRES"], EditFlags.None, IconIndex.Icon_PRRES);
-            AssociateVerb("CNCWFAOPENER.PRRES", @" --open_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
-            AssociateVerb("CNCWFAOPENER.PRRES", @" --edit_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
-            AssociateVerb("CNCWFAOPENER.PRRES", @" --render_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
-            AssociateVerb("CNCWFAOPENER.PRRES", @" --print_vector ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateMainData("CNCWFAOPENER.PRRES", TB.L.Phrase["Core.PRRES"], EditFlags.None, IconIndex.Icon_PRRES);
+            AssociateVerb("CNCWFAOPENER.PRRES", @" --open_vector ~~%1", TB.L.Phrase["Core.Word.Open"], IconIndex.Icon_Program, "Top");
+            AssociateVerb("CNCWFAOPENER.PRRES", @" --edit_vector ~~%1", TB.L.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PRRES", @" --render_vector ~~%1", TB.L.Phrase["Core.Word.OpenAsImage"], IconIndex.Icon_Contex_OpenPicture);
+            AssociateVerb("CNCWFAOPENER.PRRES", @" --print_vector ~~%1", TB.L.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
         }
 
         private static void RegPCMACROS()
         {
             AssociateMain("CNCWFAOPENER.PCMACROS", ".pcmacros", PerceivedTypes.Image, "vect\\pcmacros");
-            AssociateMainData("CNCWFAOPENER.PCMACROS", TranslateBase.CurrentLang.Phrase["Core.PCMACROS"], EditFlags.None, IconIndex.Icon_Macros);
-            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --run_macro ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Run"], IconIndex.Icon_Contex_Run);
-            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --edit_macro ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
-            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --info_macro ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Info"], IconIndex.Icon_Contex_Info);
-            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --print_macro ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
+            AssociateMainData("CNCWFAOPENER.PCMACROS", TB.L.Phrase["Core.PCMACROS"], EditFlags.None, IconIndex.Icon_Macros);
+            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --run_macro ~~%1", TB.L.Phrase["Core.Word.Run"], IconIndex.Icon_Contex_Run);
+            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --edit_macro ~~%1", TB.L.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --info_macro ~~%1", TB.L.Phrase["Core.Word.Info"], IconIndex.Icon_Contex_Info);
+            AssociateVerb("CNCWFAOPENER.PCMACROS", @" --print_macro ~~%1", TB.L.Phrase["Core.Word.Print"], IconIndex.Icon_Contex_Print);
         }
 
         private static void RegPCMPACK()
         {
             AssociateMain("CNCWFAOPENER.PCMPACK", ".pcmpack", PerceivedTypes.Image, "vect\\macropack");
-            AssociateMainData("CNCWFAOPENER.PCMPACK", TranslateBase.CurrentLang.Phrase["Core.PCMPACK"], EditFlags.None, IconIndex.Icon_MacroPack);
-            AssociateVerb("CNCWFAOPENER.PCMPACK", @" --open_mpack ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Open"], IconIndex.Icon_Program);
-            AssociateVerb("CNCWFAOPENER.PCMPACK", @" --edit_mpack ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
-            AssociateVerb("CNCWFAOPENER.PCMPACK", @" --info_mpack ~~%1", TranslateBase.CurrentLang.Phrase["Core.Word.Options"], IconIndex.Icon_Contex_Info);
+            AssociateMainData("CNCWFAOPENER.PCMPACK", TB.L.Phrase["Core.PCMPACK"], EditFlags.None, IconIndex.Icon_MacroPack);
+            AssociateVerb("CNCWFAOPENER.PCMPACK", @" --open_mpack ~~%1", TB.L.Phrase["Core.Word.Open"], IconIndex.Icon_Program);
+            AssociateVerb("CNCWFAOPENER.PCMPACK", @" --edit_mpack ~~%1", TB.L.Phrase["Core.Word.Edit"], IconIndex.Icon_Contex_Edit);
+            AssociateVerb("CNCWFAOPENER.PCMPACK", @" --info_mpack ~~%1", TB.L.Phrase["Core.Word.Options"], IconIndex.Icon_Contex_Info);
         }
 
         public static void DeleteAllAssociations()
@@ -274,8 +274,8 @@ namespace CnC_WFA
             List<string> CantDelete = new List<string>();
             foreach (var item in Enum.GetValues(typeof(FileFormats)))
                 if (!DeleteAssociation((FileFormats)item, out AssocDeleteFailReason reason))
-                    CantDelete.Add(TranslateBase.CurrentLang.Phrase["Core.ProgID"] + "\"" + ((FileFormats)item).ToString() + "\". Reason(s): " + reason.ToString());
-            if (CantDelete.Count != 0) MessageBox.Show(TranslateBase.CurrentLang.Error["Core.CantDeleteNextElems"] + "\n  --" + string.Join("\n  --" ,CantDelete));
+                    CantDelete.Add(TB.L.Phrase["Core.ProgID"] + "\"" + ((FileFormats)item).ToString() + "\". Reason(s): " + reason.ToString());
+            if (CantDelete.Count != 0) MessageBox.Show(TB.L.Error["Core.CantDeleteNextElems"] + "\n  --" + string.Join("\n  --" ,CantDelete));
         }
         
         public static bool DeleteAssociation(FileFormats index, out AssocDeleteFailReason FailReason)

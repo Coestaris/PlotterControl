@@ -42,14 +42,14 @@ namespace CnC_WFA
     {
         public static Form_ViewVect Translate(Form_ViewVect form)
         {
-            var a = TranslateBase.CurrentLang.Menu;
+            var a = TB.L.Menu;
             form.Text = a["Form_ViewVect.Caption"];
             return form;
         }
 
         public static Form_VectorMaster Translate(Form_VectorMaster form)
         {
-            var a = TranslateBase.CurrentLang.Menu;
+            var a = TB.L.Menu;
             form.label_title.Text = a["Form_VectorMaster.label_title"];
             form.label_colormod.Text = a["Form_VectorMaster.label_colormod"];
             form.label_1.Text = a["Form_VectorMaster.label_1"];
@@ -121,7 +121,7 @@ namespace CnC_WFA
 
         public static MainWindow Translate(MainWindow form)
         {
-            var a = TranslateBase.CurrentLang.Menu;
+            var a = TB.L.Menu;
             form.button_about.Text = a["MainWindow.button_about"];
             form.button_config.Text = a["MainWindow.button_config"];
             form.button_device.Text = a["MainWindow.button_device"];
@@ -173,7 +173,6 @@ namespace CnC_WFA
             form.checkBox_main_memory_com.Text = a["MainWindow.checkBox_main_memory_com"];
             form.checkBox_main_memory_pause.Text = a["MainWindow.checkBox_main_memory_pause"];
             form.checkBox_main_memory_readonly.Text = a["MainWindow.checkBox_main_memory_readonly"];
-            form.checkBox_main_memory_val.Text = a["MainWindow.checkBox_main_memory_val"];
             form.checkBox_usedevicespeed.Text = a["MainWindow.checkBox_usedevicespeed"];
             form.label_help_title.Text = a["MainWindow.label_help_title"];
             form.label_main_about_about.Text = a["MainWindow.label_main_about_about"];
@@ -263,13 +262,13 @@ namespace CnC_WFA
 
         public static Form_SerialMonitor Translate(Form_SerialMonitor form)
         {
-            var a = TranslateBase.CurrentLang.Menu;
+            var a = TB.L.Menu;
             return form;
         }
 
         public static Form_ManualControl Translate(Form_ManualControl form)
         {
-            var a = TranslateBase.CurrentLang.Menu;
+            var a = TB.L.Menu;
             form.button_dmove.Text = a["Form_ManualControl.button_dmove"];
             form.button_down.Text = a["Form_ManualControl.button_down"];
             form.button_exit.Text = a["Form_ManualControl.button_exit"];
@@ -295,6 +294,11 @@ namespace CnC_WFA
             form.textBox_zmove.Text = a["Form_ManualControl.textBox_zmove"];
             return form;
         }
+    }
+
+    public static class TB
+    {
+        public static Language L => TranslateBase.CurrentLang;
     }
 
     public static class TranslateBase

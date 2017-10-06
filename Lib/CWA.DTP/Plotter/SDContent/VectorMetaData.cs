@@ -60,7 +60,7 @@ namespace CWA.DTP.Plotter
                     return;
                 };
             }
-            var fileSender = Parrent.Master.CreateFileReceiver(FileTransfer.FileTransferSecurityFlags.VerifyLengh | FileTransfer.FileTransferSecurityFlags.VerifyCheckSum);
+            var fileSender = Parrent.Master.FileReceiver(FileTransfer.FileTransferSecurityFlags.VerifyLengh | FileTransfer.FileTransferSecurityFlags.VerifyCheckSum);
             fileSender.PacketLength = 2000;
             if (!fileSender.ReceiveFileSync(pcName, dName))
                 throw new FileHandlerException("Не удалось передать миниатюру вектора");

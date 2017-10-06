@@ -60,7 +60,7 @@ namespace CnC_WFA
             }
             if (main.CreatedVersion < new Version(GlobalOptions.Ver))
             {
-                var h = MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.OldPCVdocVersion"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var h = MessageBox.Show(TB.L.Message["VectorEditor.OldPCVdocVersion"], TB.L.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (h == DialogResult.Yes)
                 {
                     main.CreatedVersion = new Version(GlobalOptions.Ver);
@@ -77,11 +77,11 @@ namespace CnC_WFA
             button_dideprop.Enabled = true;
             button_dideprop.Size = new Size(63, 23);
             panel_properties.Visible = true;
-            button_dideprop.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
+            button_dideprop.Text = TB.L.Phrase["VectorEditor.Word.Hide"];
             button_hidezoom.Enabled = true;
             Form_editvector_SizeChanged(null, null);
-            toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Name"] + ": " + main.Name;
-            toolStripStatusLabel3.Text = string.Format("| "+ TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Resolution"] + ": {0}x{1}", main.Size.Width, main.Size.Height);
+            toolStripStatusLabel1.Text = TB.L.Phrase["VectorEditor.Word.Name"] + ": " + main.Name;
+            toolStripStatusLabel3.Text = string.Format("| "+ TB.L.Phrase["VectorEditor.Word.Resolution"] + ": {0}x{1}", main.Size.Width, main.Size.Height);
             Form_editvector_SizeChanged(null, null);
             panel_zoom.Visible = true;
             statusStrip1.Visible = true;
@@ -91,7 +91,7 @@ namespace CnC_WFA
             toolStripButton_render_.Enabled = true;
             toolStripButton_save_.Enabled = true;
             toolStripSplitButton_additems.Enabled = true;
-            toolStripStatusLabel_fileversion.Text = "| "+ TranslateBase.CurrentLang.Phrase["VectorEditor.UsedDocumentVersion"] + ": " + main.CreatedVersion.ToString();
+            toolStripStatusLabel_fileversion.Text = "| "+ TB.L.Phrase["VectorEditor.UsedDocumentVersion"] + ": " + main.CreatedVersion.ToString();
             trackBar1_Scroll(null, null);
         }
 
@@ -290,7 +290,7 @@ namespace CnC_WFA
             {
                 panel_zoom.Visible = true;
                 button_hidezoom.Size = new Size(83, 30);
-                button_hidezoom.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
+                button_hidezoom.Text = TB.L.Phrase["VectorEditor.Word.Hide"];
             }
             Form_editvector_SizeChanged(null, null);
         }
@@ -303,7 +303,7 @@ namespace CnC_WFA
             {
                 if (!num.Contains(a))
                 {
-                    MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["VectorEditor.FloatInputError"], a), TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(TB.L.Error["VectorEditor.FloatInputError"], a), TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_text_xpos.Text = l1;
                     err = true;
                     return;
@@ -326,7 +326,7 @@ namespace CnC_WFA
             {
                 if (!num.Contains(a))
                 {
-                    MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["VectorEditor.FloatInputError"], a), TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(TB.L.Error["VectorEditor.FloatInputError"], a), TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_text_width.Text = l3;
                     err = true;
                     return;
@@ -349,7 +349,7 @@ namespace CnC_WFA
             {
                 if (!num.Contains(a))
                 {
-                    MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["VectorEditor.FloatInputError"], a), TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(TB.L.Error["VectorEditor.FloatInputError"], a), TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_text_posy.Text = l2;
                     err = true;
                     return;
@@ -372,7 +372,7 @@ namespace CnC_WFA
             {
                 if (!num.Contains(a))
                 {
-                    MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["VectorEditor.FloatInputError"], a), TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(TB.L.Error["VectorEditor.FloatInputError"], a), TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_text_height.Text = l4;
                     err = true;
                     return;
@@ -430,7 +430,7 @@ namespace CnC_WFA
             globalsel = false;
             if(textBox_newdoc_name.Text.Trim() == "")
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.EnterTheNameOfDocument"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(TB.L.Message["VectorEditor.EnterTheNameOfDocument"], TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (radioButton_newdoc_usesize.Checked)
@@ -438,12 +438,12 @@ namespace CnC_WFA
                 int width, height;
                 if (!int.TryParse(textBox_newdoc_width.Text, out width))
                 {
-                    MessageBox.Show(TranslateBase.CurrentLang.Error["VectorEditor.WrongWidthValue"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(TB.L.Error["VectorEditor.WrongWidthValue"], TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!int.TryParse(textBox_newdoc_height.Text, out height))
                 {
-                    MessageBox.Show(TranslateBase.CurrentLang.Error["VectorEditor.WrongHeightValue"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(TB.L.Error["VectorEditor.WrongHeightValue"], TB.L.Phrase["VectorEditor.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 main = new Document(new SizeF(width, height));
@@ -455,7 +455,7 @@ namespace CnC_WFA
                 button_dideprop.Enabled = true;
                 button_dideprop.Size = new Size(83, 30);
                 panel_properties.Visible = true;
-                button_dideprop.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
+                button_dideprop.Text = TB.L.Phrase["VectorEditor.Word.Hide"];
                 button_hidezoom.Enabled = true;
             }
             else
@@ -469,16 +469,16 @@ namespace CnC_WFA
                 button_dideprop.Enabled = true;
                 button_dideprop.Size = new Size(83, 30);
                 panel_properties.Visible = true;
-                button_dideprop.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
+                button_dideprop.Text = TB.L.Phrase["VectorEditor.Word.Hide"];
                 button_hidezoom.Enabled = true;
                 prbitmap = tmpv.ToBitmap(Color.White, Color.Black);
                 pictureBox_loaddata_preview.Image = prbitmap;
                 panel_dataload.Visible = true;
                 pictureBox2.Visible = true;
                 mode = 1;
-                label_loaddata_path.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Path"] + ':' + new FileInfo(openFileDialog1.FileName).Directory.Name + '\\' + new FileInfo(openFileDialog1.FileName).Name;
-                label_loaddata_resolution.Text = string.Format("{2}: {0}x{1}", tmpv.Header.Width, tmpv.Header.Height, TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Resolution"]);
-                label_loaddata_cont.Text = string.Format("{2}: {0}, {3}: {1}", tmpv.RawData.Length, tmpv.Points, TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Contours"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Points"]);
+                label_loaddata_path.Text = TB.L.Phrase["VectorEditor.Word.Path"] + ':' + new FileInfo(openFileDialog1.FileName).Directory.Name + '\\' + new FileInfo(openFileDialog1.FileName).Name;
+                label_loaddata_resolution.Text = string.Format("{2}: {0}x{1}", tmpv.Header.Width, tmpv.Header.Height, TB.L.Phrase["VectorEditor.Word.Resolution"]);
+                label_loaddata_cont.Text = string.Format("{2}: {0}, {3}: {1}", tmpv.RawData.Length, tmpv.Points, TB.L.Phrase["VectorEditor.Word.Contours"], TB.L.Phrase["VectorEditor.Word.Points"]);
                 SampleH = (int)tmpv.Header.Height;
                 SampleW = (int)tmpv.Header.Width;
                 RenderSampleData();
@@ -488,15 +488,15 @@ namespace CnC_WFA
             button_dideprop.Visible = true;
             listBox1.Items.Clear();
             Form_editvector_SizeChanged(null, null);
-            toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Name"] + ": " + main.Name;
-            toolStripStatusLabel3.Text = string.Format("| {2}: {0}x{1}", main.Size.Width, main.Size.Height, TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Resolution"]);
+            toolStripStatusLabel1.Text = TB.L.Phrase["VectorEditor.Word.Name"] + ": " + main.Name;
+            toolStripStatusLabel3.Text = string.Format("| {2}: {0}x{1}", main.Size.Width, main.Size.Height, TB.L.Phrase["VectorEditor.Word.Resolution"]);
             toolStripButton_docopts_.Enabled = true;
             toolStripButton_render_.Enabled = true;
             toolStripButton_save_.Enabled = true;
             panel_zoom.Visible = true;
             statusStrip1.Visible = true;
             toolStripSplitButton_additems.Enabled = true;
-            toolStripStatusLabel_fileversion.Text = "| "+ TranslateBase.CurrentLang.Phrase["VectorEditor.UsedDocumentVersion"] + ": " + main.CreatedVersion.ToString();
+            toolStripStatusLabel_fileversion.Text = "| "+ TB.L.Phrase["VectorEditor.UsedDocumentVersion"] + ": " + main.CreatedVersion.ToString();
         }
 
 
@@ -544,7 +544,7 @@ namespace CnC_WFA
             {
                 button_dideprop.Location = new Point(Width - button_dideprop.Width - 27 - 83 + 15, button_dideprop.Location.Y);
                 button_dideprop.Size = new Size(83, 30);
-                button_dideprop.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
+                button_dideprop.Text = TB.L.Phrase["VectorEditor.Word.Hide"];
             }
             else
             {
@@ -556,7 +556,7 @@ namespace CnC_WFA
 
         private void UpdateListbox()
         {
-            label_obcount.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Objects"] + ": " + main.Items.Count;
+            label_obcount.Text = TB.L.Phrase["VectorEditor.Word.Objects"] + ": " + main.Items.Count;
             listBox1.Items.Clear();
             foreach(var a in main.Items)
             {
@@ -576,13 +576,13 @@ namespace CnC_WFA
                     gr.FillRectangle(b, rec);
                 }
                 pictureBox_drawcolor.Image = samplecolorprobe;
-                label_type.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Type"] + ": " + selitem.Type.ToString();
+                label_type.Text = TB.L.Phrase["VectorEditor.Word.Type"] + ": " + selitem.Type.ToString();
                 if (selitem.Type != DocumentItemType.Text)
                 {
 
                 } else
                 {
-                    label_subtype.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.SubType"] + ": " + TranslateBase.CurrentLang.Phrase["VectorEditor.Word.None"];
+                    label_subtype.Text = TB.L.Phrase["VectorEditor.Word.SubType"] + ": " + TB.L.Phrase["VectorEditor.Word.None"];
                 }
                 textBox_editname.Text = selitem.Name;
                 RenderEX(Color.Magenta, (GraphicsPath) main.Items[listBox1.SelectedIndex].GrPath.Clone());
@@ -608,9 +608,9 @@ namespace CnC_WFA
                 panel_dataload.Visible = true;
                 pictureBox2.Visible = true;
                 mode = 1;
-                label_loaddata_path.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Path"] + ": " + new FileInfo(openFileDialog1.FileName).Directory.Name + '\\' + new FileInfo(openFileDialog1.FileName).Name;
-                label_loaddata_resolution.Text = string.Format("{2}: {0}x{1}", tmpv.Header.Width, tmpv.Header.Height, TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Resolution"]);
-                label_loaddata_cont.Text = string.Format("{2}: {0}, {3}: {1}", tmpv.RawData.Length, tmpv.Points, TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Contours"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Points"]);
+                label_loaddata_path.Text = TB.L.Phrase["VectorEditor.Word.Path"] + ": " + new FileInfo(openFileDialog1.FileName).Directory.Name + '\\' + new FileInfo(openFileDialog1.FileName).Name;
+                label_loaddata_resolution.Text = string.Format("{2}: {0}x{1}", tmpv.Header.Width, tmpv.Header.Height, TB.L.Phrase["VectorEditor.Word.Resolution"]);
+                label_loaddata_cont.Text = string.Format("{2}: {0}, {3}: {1}", tmpv.RawData.Length, tmpv.Points, TB.L.Phrase["VectorEditor.Word.Contours"], TB.L.Phrase["VectorEditor.Word.Points"]);
                 SampleH = (float)tmpv.Header.Height;
                 SampleW = (float)tmpv.Header.Width;
                 RenderSampleData();
@@ -637,7 +637,7 @@ namespace CnC_WFA
             var a = openFileDialog1.ShowDialog();
             if(a == DialogResult.OK)
             {
-                label_newdoc_path.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Path"] + ": " + new FileInfo(openFileDialog1.FileName).Directory.Name + '\\' + new FileInfo(openFileDialog1.FileName).Name;
+                label_newdoc_path.Text = TB.L.Phrase["VectorEditor.Word.Path"] + ": " + new FileInfo(openFileDialog1.FileName).Directory.Name + '\\' + new FileInfo(openFileDialog1.FileName).Name;
                 path = openFileDialog1.FileName;
             }
         }
@@ -765,7 +765,7 @@ namespace CnC_WFA
                 }
                 if(main.CreatedVersion < new Version(GlobalOptions.Ver))
                 {
-                    var h = MessageBox.Show(TranslateBase.CurrentLang.Message["VectorEditor.OldPCVdocVersion"], TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var h = MessageBox.Show(TB.L.Message["VectorEditor.OldPCVdocVersion"], TB.L.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if(h == DialogResult.Yes)
                     {
                         main.CreatedVersion = new Version(GlobalOptions.Ver);
@@ -782,11 +782,11 @@ namespace CnC_WFA
                 button_dideprop.Enabled = true;
                 button_dideprop.Size = new Size(63, 23);
                 panel_properties.Visible = true;
-                button_dideprop.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Hide"];
+                button_dideprop.Text = TB.L.Phrase["VectorEditor.Word.Hide"];
                 button_hidezoom.Enabled = true;
                 Form_editvector_SizeChanged(null, null);
-                toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Name"] + ": " + main.Name;
-                toolStripStatusLabel3.Text = string.Format("| "+ TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Resolution"] + ": {0}x{1}", main.Size.Width, main.Size.Height);
+                toolStripStatusLabel1.Text = TB.L.Phrase["VectorEditor.Word.Name"] + ": " + main.Name;
+                toolStripStatusLabel3.Text = string.Format("| "+ TB.L.Phrase["VectorEditor.Word.Resolution"] + ": {0}x{1}", main.Size.Width, main.Size.Height);
                 Form_editvector_SizeChanged(null, null);
                 panel_zoom.Visible = true;
                 statusStrip1.Visible = true;
@@ -796,7 +796,7 @@ namespace CnC_WFA
                 toolStripButton_render_.Enabled = true;
                 toolStripButton_save_.Enabled = true;
                 toolStripSplitButton_additems.Enabled = true;
-                toolStripStatusLabel_fileversion.Text = "| "+ TranslateBase.CurrentLang.Phrase["VectorEditor.UsedDocumentVersion"] + ": " + main.CreatedVersion.ToString();
+                toolStripStatusLabel_fileversion.Text = "| "+ TB.L.Phrase["VectorEditor.UsedDocumentVersion"] + ": " + main.CreatedVersion.ToString();
             }
         }
 
@@ -811,7 +811,7 @@ namespace CnC_WFA
                     int c = main.Items.FindAll(p => p.Name == textBox_editname.Text.Trim()).Count;
                     if (c >= 2)
                     {
-                        MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["VectorEditor.FoundObjectWithSameName"], c,textBox_editname.Text), TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(string.Format(TB.L.Error["VectorEditor.FoundObjectWithSameName"], c,textBox_editname.Text), TB.L.Phrase["VectorEditor.Word.Warning"], MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -908,7 +908,7 @@ namespace CnC_WFA
             bool b = float.TryParse(textBox_bordoffset.Text, out offset);
             if(!b)
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["VectorEditor.WrongBordOffsetInput"]);
+                MessageBox.Show(TB.L.Error["VectorEditor.WrongBordOffsetInput"]);
                 return;
             }
             main.Border.Offset = offset;
@@ -937,8 +937,8 @@ namespace CnC_WFA
                     if (e.Button == MouseButtons.Right)
                     {
                         contextMenuStrip_object_edit.Items.Clear();
-                        contextMenuStrip_object_edit.Items.Add(TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Edit"], Resources.edit);
-                        contextMenuStrip_object_edit.Items.Add(TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Delete"], Resources.delete);
+                        contextMenuStrip_object_edit.Items.Add(TB.L.Phrase["VectorEditor.Word.Edit"], Resources.edit);
+                        contextMenuStrip_object_edit.Items.Add(TB.L.Phrase["VectorEditor.Word.Delete"], Resources.delete);
                         for (int ii = 0; ii <= contextMenuStrip_object_edit.Items.Count - 1; ii++)
                         {
                             contextMenuStrip_object_edit.Items[ii].ForeColor = Color.FromKnownColor(KnownColor.ControlText);
@@ -965,9 +965,9 @@ namespace CnC_WFA
                         if (e.Button == MouseButtons.Right)
                         {
                             contextMenuStrip_object_edit.Items.Clear();
-                            contextMenuStrip_object_edit.Items.Add(TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Edit"], Resources.edit);
-                            contextMenuStrip_object_edit.Items.Add(TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Clone"], Resources.add);
-                            contextMenuStrip_object_edit.Items.Add(TranslateBase.CurrentLang.Phrase["VectorEditor.Word.Delete"], Resources.delete);
+                            contextMenuStrip_object_edit.Items.Add(TB.L.Phrase["VectorEditor.Word.Edit"], Resources.edit);
+                            contextMenuStrip_object_edit.Items.Add(TB.L.Phrase["VectorEditor.Word.Clone"], Resources.add);
+                            contextMenuStrip_object_edit.Items.Add(TB.L.Phrase["VectorEditor.Word.Delete"], Resources.delete);
                             for (int ii = 0; ii <= contextMenuStrip_object_edit.Items.Count-1; ii++) 
                             {
                                 contextMenuStrip_object_edit.Items[ii].ForeColor = Color.FromKnownColor(KnownColor.ControlText);

@@ -195,7 +195,7 @@ namespace CnC_WFA
             loadingCircle_tab4.NumberSpoke = 100;
             allow_uit2 = true;
             ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-            openFileDialog1.Filter = string.Format(TranslateBase.CurrentLang.Phrase["VectorMaster.AllImageFiles"] + "({1})|{1}|{0}|" + TranslateBase.CurrentLang.Phrase["VectorMaster.AllFiles"] +"|*", string.Join("|", codecs.Select(codec =>string.Format("{0} ({1})|{1}", codec.CodecName, codec.FilenameExtension)).ToArray()),string.Join(";", codecs.Select(codec => codec.FilenameExtension).ToArray()));
+            openFileDialog1.Filter = string.Format(TB.L.Phrase["VectorMaster.AllImageFiles"] + "({1})|{1}|{0}|" + TB.L.Phrase["VectorMaster.AllFiles"] +"|*", string.Join("|", codecs.Select(codec =>string.Format("{0} ({1})|{1}", codec.CodecName, codec.FilenameExtension)).ToArray()),string.Join(";", codecs.Select(codec => codec.FilenameExtension).ToArray()));
         }
 
         private void UpdateImage_tab1()
@@ -573,7 +573,7 @@ namespace CnC_WFA
                 loadingCircle_tab3.Visible = false;
                 button_next_tab3.Enabled = true;
                 button_back_tab3.Enabled = true;
-                button_update_tab3.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Update"];
+                button_update_tab3.Text = TB.L.Phrase["VectorMaster.Word.Update"];
             }
         }
 
@@ -600,14 +600,14 @@ namespace CnC_WFA
 
         private void UpdateImage_tab3()
         {
-            label_gauss_scale.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Scale"] +": " + trackBar_gauss_scale.Value;
-            label_gauss_sigma.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Sigma"] + ": " + (trackBar_gauss_sigma.Value / 10f).ToString(CultureInfo.InvariantCulture);
-            label_sobel.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Threshold"] + ": " + trackBar_sobelthreshold.Value; 
+            label_gauss_scale.Text = TB.L.Phrase["VectorMaster.Word.Scale"] +": " + trackBar_gauss_scale.Value;
+            label_gauss_sigma.Text = TB.L.Phrase["VectorMaster.Word.Sigma"] + ": " + (trackBar_gauss_sigma.Value / 10f).ToString(CultureInfo.InvariantCulture);
+            label_sobel.Text = TB.L.Phrase["VectorMaster.Word.Threshold"] + ": " + trackBar_sobelthreshold.Value; 
             if (allow_uit)
             {
                 button_peview.Enabled = false;
                 button_next_tab3.Enabled = false;
-                button_update_tab3.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Stop"];
+                button_update_tab3.Text = TB.L.Phrase["VectorMaster.Word.Stop"];
                 button_back_tab3.Enabled = false;
                 if (!Repeat) Repeat = true;
                 loadingCircle_tab3.Visible = true;
@@ -638,13 +638,13 @@ namespace CnC_WFA
 
         private void button_update_tab3_Click(object sender, EventArgs e)
         {
-            if(button_update_tab3.Text == TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Stop"])
+            if(button_update_tab3.Text == TB.L.Phrase["VectorMaster.Word.Stop"])
             {
                 loadingCircle_tab3.Visible = false;
                 loadingCircle_tab3.Active = false;
                 allow_uit = true;
                 uit3.Abort();
-                button_update_tab3.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Update"];
+                button_update_tab3.Text = TB.L.Phrase["VectorMaster.Word.Update"];
             } else UpdateImage_tab3();
         }
 
@@ -693,13 +693,13 @@ namespace CnC_WFA
                 groupBox_rotate.Enabled = true;
                 groupBox_flip.Enabled = true;
                 FileInfo fi = new FileInfo(openFileDialog1.FileName);
-                label_path.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Name"] + ": " + fi.Directory.Name + "/" + fi.Name;
-                label_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Resolution"] +": " + buffimg.Width + "x" + buffimg.Height;
+                label_path.Text = TB.L.Phrase["VectorMaster.Word.Name"] + ": " + fi.Directory.Name + "/" + fi.Name;
+                label_resolution.Text = TB.L.Phrase["VectorMaster.Word.Resolution"] +": " + buffimg.Width + "x" + buffimg.Height;
                 string len = "";
-                if (fi.Length < 1024) len = fi.Length + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Bytes"];
-                else if (fi.Length < 1024 * 1024 && fi.Length > 1024) len = ((float)fi.Length / 1024) + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.KBytes"];
-                else len = ((float)fi.Length / 1024 / 1024) + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.MBytes"];
-                label_size.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Size"] + ": " + len;
+                if (fi.Length < 1024) len = fi.Length + TB.L.Phrase["VectorMaster.Word.Bytes"];
+                else if (fi.Length < 1024 * 1024 && fi.Length > 1024) len = ((float)fi.Length / 1024) + TB.L.Phrase["VectorMaster.Word.KBytes"];
+                else len = ((float)fi.Length / 1024 / 1024) + TB.L.Phrase["VectorMaster.Word.MBytes"];
+                label_size.Text = TB.L.Phrase["VectorMaster.Word.Size"] + ": " + len;
                 button_next.Enabled = true;
                 var b = (Bitmap)Resources.scroll.Clone();
                 b.RotateFlip(RotateFlipType.Rotate90FlipX);
@@ -733,8 +733,8 @@ namespace CnC_WFA
                 }
             TEMP_NUM++;
             bmp.Save("Temp\\tmp" + TEMP_NUM + ".png");
-            label_resolution_.Text = string.Format(TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Resolution"] + ": {0}x{1}", bmp.Width, bmp.Height);
-            label_imgname.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Name"] + ": " + path;
+            label_resolution_.Text = string.Format(TB.L.Phrase["VectorMaster.Word.Resolution"] + ": {0}x{1}", bmp.Width, bmp.Height);
+            label_imgname.Text = TB.L.Phrase["VectorMaster.Word.Name"] + ": " + path;
             pictureBox_tab2.Image = bmp;
             pictureBox_tab4.Image = bmp;
             process_status = 5;
@@ -823,7 +823,7 @@ namespace CnC_WFA
                 button_print.Enabled = true;
                 numericUpDown1.Enabled = true;
                 button_peview.Enabled = true;
-                label_percentage.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Complete"];
+                label_percentage.Text = TB.L.Phrase["VectorMaster.Word.Complete"];
                 progressBar1.Value = 0;
                 timer1.Stop();
                 process_status = 7;
@@ -870,7 +870,7 @@ namespace CnC_WFA
                 SetStringVal d = new SetStringVal(SetStringVal_proc);
                 Invoke(d, new object[] { s });
             }
-            else label_timespend.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.TimeSpend"] + ": " + s;
+            else label_timespend.Text = TB.L.Phrase["VectorMaster.Word.TimeSpend"] + ": " + s;
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -895,8 +895,8 @@ namespace CnC_WFA
 
         private void Setup3dTab()
         {
-            label_imgname.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Name"] + ": " + new FileInfo(path).Directory.Name + '\\' + new FileInfo(path).Name;
-            label_resolution_.Text = string.Format(TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Resolution"] +": {0}x{1}",pictureBox_tab2.Image.Width, pictureBox_tab2.Image.Height);
+            label_imgname.Text = TB.L.Phrase["VectorMaster.Word.Name"] + ": " + new FileInfo(path).Directory.Name + '\\' + new FileInfo(path).Name;
+            label_resolution_.Text = string.Format(TB.L.Phrase["VectorMaster.Word.Resolution"] +": {0}x{1}",pictureBox_tab2.Image.Width, pictureBox_tab2.Image.Height);
             var a = pictureBox_tab4.Image;
             pictureBox_tab4.Image = (Image)new Bitmap("Temp\\tmp"+TEMP_NUM+".png").Clone();
         }
@@ -956,20 +956,20 @@ namespace CnC_WFA
                 FileInfo fi = new FileInfo((string)listBox1.Items[listBox1.SelectedIndex]);
                 string len;
                 string fn = (string)listBox1.Items[listBox1.SelectedIndex];
-                if (fi.Length < 1024) len = fi.Length + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Bytes"];
-                else if (fi.Length < 1024 * 1024 && fi.Length > 1024) len = ((float)fi.Length / 1024) + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.KBytes"];
-                else len = ((float)fi.Length / 1024 / 1024) + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.MBytes"];
+                if (fi.Length < 1024) len = fi.Length + TB.L.Phrase["VectorMaster.Word.Bytes"];
+                else if (fi.Length < 1024 * 1024 && fi.Length > 1024) len = ((float)fi.Length / 1024) + TB.L.Phrase["VectorMaster.Word.KBytes"];
+                else len = ((float)fi.Length / 1024 / 1024) + TB.L.Phrase["VectorMaster.Word.MBytes"];
                 fi = null;
-                label_img_size.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Size"] +": " + len;
+                label_img_size.Text = TB.L.Phrase["VectorMaster.Word.Size"] +": " + len;
                 Bitmap bmp = new Bitmap(fn);
-                label_img_name.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Name"] + ": " + fn;
-                label_img_resol.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Resolution"] + ": " + bmp.Width + "x" + bmp.Height;
-                label_img_pixelformat.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.PixelFormat"] + ": " + bmp.PixelFormat;
+                label_img_name.Text = TB.L.Phrase["VectorMaster.Word.Name"] + ": " + fn;
+                label_img_resol.Text = TB.L.Phrase["VectorMaster.Word.Resolution"] + ": " + bmp.Width + "x" + bmp.Height;
+                label_img_pixelformat.Text = TB.L.Phrase["VectorMaster.Word.PixelFormat"] + ": " + bmp.PixelFormat;
                 try
                 {
-                    label_img_dpi.Text = string.Format(TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Dpi"] + ": {0}x{1}", Graphics.FromImage(bmp).DpiX, Graphics.FromImage(bmp).DpiY);
+                    label_img_dpi.Text = string.Format(TB.L.Phrase["VectorMaster.Word.Dpi"] + ": {0}x{1}", Graphics.FromImage(bmp).DpiX, Graphics.FromImage(bmp).DpiY);
                 }
-                catch { label_img_dpi.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Dpi"] + ':' +  TranslateBase.CurrentLang.Phrase["VectorMaster.CantCalculateDPI"]; }
+                catch { label_img_dpi.Text = TB.L.Phrase["VectorMaster.Word.Dpi"] + ':' +  TB.L.Phrase["VectorMaster.CantCalculateDPI"]; }
                 pictureBox_tab0.Image = bmp;
                 button_next_tab0.Enabled = true;
             }
@@ -998,13 +998,13 @@ namespace CnC_WFA
             groupBox_rotate.Enabled = true;
             groupBox_flip.Enabled = true;
             FileInfo fi = new FileInfo(path);
-            label_path.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Name"] + ": " + fi.Directory.Name + "/" + fi.Name;
-            label_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Resolution"] + ": " + buffimg.Width + "x" + buffimg.Height;
+            label_path.Text = TB.L.Phrase["VectorMaster.Word.Name"] + ": " + fi.Directory.Name + "/" + fi.Name;
+            label_resolution.Text = TB.L.Phrase["VectorMaster.Word.Resolution"] + ": " + buffimg.Width + "x" + buffimg.Height;
             string len = "";
-            if (fi.Length < 1024) len = fi.Length + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Bytes"];
-            else if (fi.Length < 1024 * 1024 && fi.Length > 1024) len = ((float)fi.Length / 1024) + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.KBytes"];
-            else len = ((float)fi.Length / 1024 / 1024) + TranslateBase.CurrentLang.Phrase["VectorMaster.Word.MBytes"];
-            label_size.Text = TranslateBase.CurrentLang.Phrase["VectorMaster.Word.Size"] + ": " + len;
+            if (fi.Length < 1024) len = fi.Length + TB.L.Phrase["VectorMaster.Word.Bytes"];
+            else if (fi.Length < 1024 * 1024 && fi.Length > 1024) len = ((float)fi.Length / 1024) + TB.L.Phrase["VectorMaster.Word.KBytes"];
+            else len = ((float)fi.Length / 1024 / 1024) + TB.L.Phrase["VectorMaster.Word.MBytes"];
+            label_size.Text = TB.L.Phrase["VectorMaster.Word.Size"] + ": " + len;
             button_next.Enabled = true;
             var b = (Bitmap)Resources.scroll.Clone();
             b.RotateFlip(RotateFlipType.Rotate90FlipX);

@@ -41,14 +41,14 @@ namespace CnC_WFA
                 {
                     a = CommandManagment.Parse(string.Join(" ", data2));
                 }
-                catch (Exception e) { MessageBox.Show("\"" + string.Join(" ", data2) + "\" - " + TranslateBase.CurrentLang.Error["Core.WrongInputCommand"] + e.Message); }
+                catch (Exception e) { MessageBox.Show("\"" + string.Join(" ", data2) + "\" - " + TB.L.Error["Core.WrongInputCommand"] + e.Message); }
                 MakeAction(a);
             }
         }
         public static void Init()
         {
             if (File.Exists(CommamndsFileName)) CommandManagment.Load();
-            else MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["Core.OpenError.VectEditor"], CommamndsFileName));
+            else MessageBox.Show(string.Format(TB.L.Error["Core.OpenError.VectEditor"], CommamndsFileName));
         }
 
         [STAThread]
@@ -63,7 +63,7 @@ namespace CnC_WFA
             {
                 try
                 {
-                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
+                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TB.L.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
                     else
                     {
                         string port = res.Flags["port"];
@@ -74,26 +74,26 @@ namespace CnC_WFA
                         bool auto = bool.Parse(res.Flags["auto"]);
                         Application.Run(new Form_PrintMaster(res.Filename, true, port, bdrate, a, auto));
                     }
-                } catch (Exception e) { MessageBox.Show(TranslateBase.CurrentLang.Error["Core.OpenError.Print"] + e.Message); Application.Run(new MainWindow()); return; }
+                } catch (Exception e) { MessageBox.Show(TB.L.Error["Core.OpenError.Print"] + e.Message); Application.Run(new MainWindow()); return; }
             } else
             if (res.Name == "open_vector")
             {
                 try
                 {
-                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
+                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TB.L.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
                     Application.Run(FormTranslator.Translate(new Form_ViewVect(res.Filename, false)));
-                } catch(Exception e) { MessageBox.Show(TranslateBase.CurrentLang.Error["Core.OpenError.ViewVect"] + e.Message); Application.Run(new MainWindow()); return; }
+                } catch(Exception e) { MessageBox.Show(TB.L.Error["Core.OpenError.ViewVect"] + e.Message); Application.Run(new MainWindow()); return; }
             } else
             if (res.Name == "render_vector")
             {
                 try
                 {
-                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
+                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TB.L.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
                     new Vector(res.Filename).ToBitmap(Color.FromName(res.Flags["backcolor"]), Color.FromName(res.Flags["drawcolor"])).Save(new FileInfo(Application.ExecutablePath).Directory.FullName + "\\Temp\\_contex_render_.png");
                     System.Diagnostics.Process.Start(new FileInfo(Application.ExecutablePath).Directory.FullName + "\\Temp\\_contex_render_.png");
                     System.Threading.Thread.Sleep(2000);
                 }
-                catch (Exception e) { MessageBox.Show(TranslateBase.CurrentLang.Error["Core.OpenError.Render"] + e.Message); Application.Run(new MainWindow()); return; }
+                catch (Exception e) { MessageBox.Show(TB.L.Error["Core.OpenError.Render"] + e.Message); Application.Run(new MainWindow()); return; }
             } else
             if(res.Name == "edit_vector")
             {
@@ -103,10 +103,10 @@ namespace CnC_WFA
             {
                 try
                 {
-                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
+                    if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TB.L.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
                     Application.Run(new Form_EditVector(res.Filename));
                 }
-                catch (Exception e) { MessageBox.Show(TranslateBase.CurrentLang.Error["Core.OpenError.VectEditor"] + e.Message); Application.Run(new MainWindow()); return; }
+                catch (Exception e) { MessageBox.Show(TB.L.Error["Core.OpenError.VectEditor"] + e.Message); Application.Run(new MainWindow()); return; }
             }
         }
     }
@@ -150,7 +150,7 @@ namespace CnC_WFA
                 var k = Str.Split('~').ToList().FindAll(p => p != "").Select(p => p.Trim()).ToArray();
                 if (k.Length != 2)
                 {
-                    MessageBox.Show(TranslateBase.CurrentLang.Error["Core.MoreThan1FilenameTags"]);
+                    MessageBox.Show(TB.L.Error["Core.MoreThan1FilenameTags"]);
                     return null;
                 }
                 FileName = k.Last();
@@ -180,15 +180,15 @@ namespace CnC_WFA
             Command cmd = Commands.Find(p => p.Name == MainCommand);
             if (cmd == null)
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["Core.UnknownCommand"]);
+                MessageBox.Show(TB.L.Error["Core.UnknownCommand"]);
                 return null;
             }
             for(int i =0; i<=h.Count-1; i++)
             {
                 if (!cmd.Flags.Select(p => p.Name).Contains(h.Keys.ElementAt(i)))
                 {
-                    if (cmd.Flags.Count == 0) MessageBox.Show(TranslateBase.CurrentLang.Error["Core.WrongAnyFlags"]);
-                    MessageBox.Show(TranslateBase.CurrentLang.Error["Core.WrongFlag"] + string.Join(",", cmd.Flags.Select(p => p.Name)));
+                    if (cmd.Flags.Count == 0) MessageBox.Show(TB.L.Error["Core.WrongAnyFlags"]);
+                    MessageBox.Show(TB.L.Error["Core.WrongFlag"] + string.Join(",", cmd.Flags.Select(p => p.Name)));
                 }
             }
             for (int i = 0; i <= cmd.Flags.Count - 1; i++)

@@ -116,7 +116,7 @@ namespace CnC_WFA
         {
             int i = 0;
             listBox1.Items.Clear();
-            foreach (var a in vect.RawData) listBox1.Items.Add(string.Format(TranslateBase.CurrentLang.Phrase["VectorViewer.ContourDiscr"], i++, a.Length));
+            foreach (var a in vect.RawData) listBox1.Items.Add(string.Format(TB.L.Phrase["VectorViewer.ContourDiscr"], i++, a.Length));
         }
 
         private void SetIntr()
@@ -163,19 +163,19 @@ namespace CnC_WFA
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             label_status.Visible = true;
-            label_status.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Loading"];
+            label_status.Text = TB.L.Phrase["VectorViewer.Word.Loading"];
             path = fn;
             vect = new Vector(path);
-            toolStripStatusLabel_filename.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Filename"] + ": " + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length - 1];
-            toolStripStatusLabel_resolution.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Resolution"] + ": " + vect.Header.Width + "x" + vect.Header.Height;
-            toolStripStatusLabel1.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Contours"] + ": " + vect.ContorurCount + "; " + TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Points"] + ": " + vect.Points.ToString();
+            toolStripStatusLabel_filename.Text = TB.L.Phrase["VectorViewer.Word.Filename"] + ": " + new FileInfo(path).Directory.Name + '\\' + path.Split('\\')[path.Split('\\').Length - 1];
+            toolStripStatusLabel_resolution.Text = TB.L.Phrase["VectorViewer.Word.Resolution"] + ": " + vect.Header.Width + "x" + vect.Header.Height;
+            toolStripStatusLabel1.Text = TB.L.Phrase["VectorViewer.Word.Contours"] + ": " + vect.ContorurCount + "; " + TB.L.Phrase["VectorViewer.Word.Points"] + ": " + vect.Points.ToString();
             vect.RawData = vect.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
-            Text = $"{TranslateBase.CurrentLang.Phrase["VectorViewer.Label"]} \"{new FileInfo(path).Directory.Name}{'\\'}{path.Split('\\')[path.Split('\\').Length - 1]}{'\"'}";
+            Text = $"{TB.L.Phrase["VectorViewer.Label"]} \"{new FileInfo(path).Directory.Name}{'\\'}{path.Split('\\')[path.Split('\\').Length - 1]}{'\"'}";
             drawcolor = GlobalOptions.DefViewDraw;
             backcolor = GlobalOptions.DefViewBack;
             selColor = Color.Blue;
-            label_status.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.Word.Drawing"];
-            if (new FileInfo(filename).Extension == ".prres") toolStripStatusLabel_oldprstyle.Text = TranslateBase.CurrentLang.Phrase["VectorViewer.OldVectorFormat"];
+            label_status.Text = TB.L.Phrase["VectorViewer.Word.Drawing"];
+            if (new FileInfo(filename).Extension == ".prres") toolStripStatusLabel_oldprstyle.Text = TB.L.Phrase["VectorViewer.OldVectorFormat"];
             else toolStripStatusLabel_oldprstyle.Text = "";
             SetColorProbe();
             

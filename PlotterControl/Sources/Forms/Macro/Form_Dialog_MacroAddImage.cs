@@ -91,7 +91,7 @@ namespace CnC_WFA
         {
             InitializeComponent();
             ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-            openFileDialog1.Filter = string.Format(TranslateBase.CurrentLang.Phrase["VectorMaster.AllImageFiles"] + "({1})|{1}|{0}|" + TranslateBase.CurrentLang.Phrase["VectorMaster.AllFiles"] + "|*", string.Join("|", codecs.Select(codec => string.Format("{0} ({1})|{1}", codec.CodecName, codec.FilenameExtension)).ToArray()), string.Join(";", codecs.Select(codec => codec.FilenameExtension).ToArray()));
+            openFileDialog1.Filter = string.Format(TB.L.Phrase["VectorMaster.AllImageFiles"] + "({1})|{1}|{0}|" + TB.L.Phrase["VectorMaster.AllFiles"] + "|*", string.Join("|", codecs.Select(codec => string.Format("{0} ({1})|{1}", codec.CodecName, codec.FilenameExtension)).ToArray()), string.Join(";", codecs.Select(codec => codec.FilenameExtension).ToArray()));
 
         }
     }

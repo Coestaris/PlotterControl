@@ -26,7 +26,7 @@ namespace FileBrowser
 
         private void SetupReceiver()
         {
-            fileReceiver = master.CreateFileReceiver(FileTransferSecurityFlags.VerifyLengh);
+            fileReceiver = master.FileReceiver(FileTransferSecurityFlags.VerifyLengh);
             fileReceiver.PacketLength = PacketSize;
             fileReceiver.ReceiveProcessChanged += FileSender_ReceiverProcessChanged;
             fileReceiver.ReceiveError += FileSender_ReceiverError;

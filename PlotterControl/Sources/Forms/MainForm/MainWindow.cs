@@ -68,16 +68,16 @@ namespace CnC_WFA
         private void CheckChangedDevice()
         {
             IsDevicegChanged = devicechanged.ToList().Find(p => p == true);
-            button_device.Text = TranslateBase.CurrentLang.Phrase["MainWindow.DeviceTitle"] + (IsDevicegChanged ? "*" : " ")+ "\n ";
-            button_home.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Word.Main"] + (IsConfigChanged ? "*" : " ")+ "       ";
+            button_device.Text = TB.L.Phrase["MainWindow.DeviceTitle"] + (IsDevicegChanged ? "*" : " ")+ "\n ";
+            button_home.Text = TB.L.Phrase["MainWindow.Word.Main"] + (IsConfigChanged ? "*" : " ")+ "       ";
             button_main_device_save.Enabled = IsDevicegChanged;
         }
 
         private void CheckChanged()
         {
             IsConfigChanged = configchanged.ToList().Find(p => p == true);
-            button_config.Text = TranslateBase.CurrentLang.Phrase["MainWindow.OptionsTitle"] +  (IsConfigChanged?"*":" ");
-            button_home.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Word.Main"] + (IsConfigChanged ? "*" : "") + "       ";
+            button_config.Text = TB.L.Phrase["MainWindow.OptionsTitle"] +  (IsConfigChanged?"*":" ");
+            button_home.Text = TB.L.Phrase["MainWindow.Word.Main"] + (IsConfigChanged ? "*" : "") + "       ";
             button_main_config_save.Enabled = IsConfigChanged;
         }
 
@@ -94,7 +94,7 @@ namespace CnC_WFA
         {
             if (IsDevicegChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Device_Discard();
                 }
@@ -102,7 +102,7 @@ namespace CnC_WFA
             }
             if (IsConfigChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Config_Discard();
                 }
@@ -110,7 +110,7 @@ namespace CnC_WFA
             }
             //if (a != null && a.IsWorking)
             //{
-            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(TB.L.Error["MainWindow.CloseConnectionSession"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
             button5_Click_2(null, null);
@@ -125,7 +125,7 @@ namespace CnC_WFA
         {
             if (IsDevicegChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Device_Discard();
                 }
@@ -133,7 +133,7 @@ namespace CnC_WFA
             }
             if (IsConfigChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Config_Discard();
                 }
@@ -141,7 +141,7 @@ namespace CnC_WFA
             }
             //if (a != null && a.IsWorking)
             //{
-            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(TB.L.Error["MainWindow.CloseConnectionSession"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
             tabControl_main.SelectedIndex = 2;
@@ -156,7 +156,7 @@ namespace CnC_WFA
         {
             if (IsDevicegChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Device_Discard();
                 }
@@ -164,7 +164,7 @@ namespace CnC_WFA
             }
             if (IsConfigChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Config_Discard();
                 }
@@ -172,7 +172,7 @@ namespace CnC_WFA
             }
             //if (a != null && a.IsWorking)
             //{
-            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(TB.L.Error["MainWindow.CloseConnectionSession"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
             button_help.BackColor = Color.FromArgb(4, 60, 130);
@@ -225,7 +225,7 @@ namespace CnC_WFA
             textBox_maxstepheight.Text = device_maxh.ToString();
             textBox_MaxStepWidth.Text = device_maxw.ToString();
             checkBox_usedevicespeed.Checked = GlobalOptions.UseAutoSpeed;
-            label_main_device_pathto.Text = TranslateBase.CurrentLang.Phrase["MainWindow.PathToArduino"] + ": " + device_path;
+            label_main_device_pathto.Text = TB.L.Phrase["MainWindow.PathToArduino"] + ": " + device_path;
             comboBox_main_device_board.Text = ArduinoBoard.Boards.ToList().Find(p=> p.ProgramName == device_ard).DisplayName;
             devicechanged = new bool[8];
             CheckChangedDevice();
@@ -235,7 +235,7 @@ namespace CnC_WFA
         {
             if (IsDevicegChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Device_Discard();
                 }
@@ -243,7 +243,7 @@ namespace CnC_WFA
             }
             if (IsConfigChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Config_Discard();
                 }
@@ -251,7 +251,7 @@ namespace CnC_WFA
             }
             //if (a != null && a.IsWorking)
             //{
-            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(TB.L.Error["MainWindow.CloseConnectionSession"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
             pictureBox1.BackColor = Color.FromArgb(4, 60, 130);
@@ -267,7 +267,7 @@ namespace CnC_WFA
         {
             if (IsDevicegChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Device_Discard();
                 }
@@ -275,7 +275,7 @@ namespace CnC_WFA
             }
             //if (a != null && a.IsWorking)
             //{
-            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(TB.L.Error["MainWindow.CloseConnectionSession"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
             configchanged = new bool[11];
@@ -304,7 +304,7 @@ namespace CnC_WFA
         {
             if (IsConfigChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Config_Discard();
                 }
@@ -312,7 +312,7 @@ namespace CnC_WFA
             }
             //if (a!=null && a.IsWorking)
             //{
-            //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.CloseConnectionSession"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(TB.L.Error["MainWindow.CloseConnectionSession"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
             devicechanged = new bool[8];
@@ -337,7 +337,7 @@ namespace CnC_WFA
         {
             if (IsDevicegChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Device_Discard();
                 }
@@ -345,7 +345,7 @@ namespace CnC_WFA
             }
             if (IsConfigChanged)
             {
-                if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.DontSaveChanges"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(TB.L.Message["MainWindow.DontSaveChanges"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Config_Discard();
                 } else return;
@@ -407,9 +407,9 @@ namespace CnC_WFA
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.OriArduino"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Drivers"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(TB.L.Message["MainWindow.OriArduino"], TB.L.Phrase["MainWindow.Word.Drivers"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.YouDontNeedToInstallDrivers"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Drivers"], MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MessageBox.Show(TB.L.Message["MainWindow.YouDontNeedToInstallDrivers"], TB.L.Phrase["MainWindow.Word.Drivers"], MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             }
             else
             {
@@ -472,7 +472,7 @@ namespace CnC_WFA
         {
             if(comboBox_main_device_port.Text == "")
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.EnterPortName"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(TB.L.Error["MainWindow.EnterPortName"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (File.Exists(GlobalOptions.PathToArduino + "\\arduino_debug.exe"))
@@ -495,12 +495,12 @@ namespace CnC_WFA
                 Directory.Delete("Driver\\sketch");
 
             }
-            else MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.WasSetWrongPathOrFileNotFound"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show(TB.L.Error["MainWindow.WasSetWrongPathOrFileNotFound"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-           if (MessageBox.Show(TranslateBase.CurrentLang.Message["MainWindow.VisitDeveloperSize"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Process.Start("https://www.arduino.cc/en/Main/Software");
+           if (MessageBox.Show(TB.L.Message["MainWindow.VisitDeveloperSize"], TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Process.Start("https://www.arduino.cc/en/Main/Software");
         }
 
         private void button_main_device_pick_Click(object sender, EventArgs e)
@@ -511,11 +511,11 @@ namespace CnC_WFA
                 {
                     devicechanged[6] = (folderBrowserDialog1.SelectedPath != device_path);
                     CheckChangedDevice();
-                    label_main_device_pathto.Text = TranslateBase.CurrentLang.Phrase["MainWindow.PathToArduino"] +": " + folderBrowserDialog1.SelectedPath;
+                    label_main_device_pathto.Text = TB.L.Phrase["MainWindow.PathToArduino"] +": " + folderBrowserDialog1.SelectedPath;
                     GlobalOptions.PathToArduino = folderBrowserDialog1.SelectedPath;
                     GlobalOptions.Save();
                 }
-                else MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.WasSetWrongPathOrFileNotFound"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else MessageBox.Show(TB.L.Error["MainWindow.WasSetWrongPathOrFileNotFound"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -534,7 +534,7 @@ namespace CnC_WFA
 
         private void button_connect_Click(object sender, EventArgs e)
         {
-            if (button_main_memory_connect.Text == TranslateBase.CurrentLang.Phrase["MainWindow.Word.Disconnect"])
+            if (button_main_memory_connect.Text == TB.L.Phrase["MainWindow.Word.Disconnect"])
             {
                 timer1.Stop();
                 checkBox_main_memory_readonly.Checked = true;
@@ -542,24 +542,19 @@ namespace CnC_WFA
                 checkBox_main_memory_readonly.Enabled = false;
                 button_main_memory_load.Enabled = false;
                 button_main_memory_get.Enabled = false;
-                checkBox_main_memory_val.Enabled = false;
                 button_main_memory_def.Enabled = false;
-                checkBox_main_memory_val.Checked = false;
                 //a.Stop();
-                progressBar_main_memory_val.Value = 0;
                 label_high.Text = "";
-                label_low.Text = "";
                 label_val.Text = "";
-                button_main_memory_connect.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Word.Connect"];
-                checkBox_main_memory_val_CheckedChanged(null, null);
+                button_main_memory_connect.Text = TB.L.Phrase["MainWindow.Word.Connect"];
             } else
             if (comboBox_main_memory_ports.Text == "")
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.EnterPortName"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(TB.L.Error["MainWindow.EnterPortName"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (comboBox_main_memory_bd.Text == "")
             {
-                MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.EnterBD"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(TB.L.Error["MainWindow.EnterBD"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else;
                 //try
@@ -572,7 +567,7 @@ namespace CnC_WFA
                 //    button_main_memory_get.Enabled = true;
                 //    button_main_memory_def.Enabled = true;
                 //    checkBox_main_memory_val.Enabled = true;
-                //    button_main_memory_connect.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Word.Disconnect"];
+                //    button_main_memory_connect.Text = TB.L.Phrase["MainWindow.Word.Disconnect"];
                 //    checkBox_main_memory_val_CheckedChanged(null, null);
                 //}
                 //catch(DeviceMemorySetup.MemorySetupBadRespondException g)
@@ -581,13 +576,13 @@ namespace CnC_WFA
                 //}
                 //catch(DeviceMemorySetup.MemorySetupTimeoutException g)
                 //{
-                //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.TimeOut"], TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    MessageBox.Show(TB.L.Error["MainWindow.TimeOut"], TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //    try { a.Stop(); } catch { };
                 //    return;
                 //}
                 //catch(Exception g)
                 //{
-                //    MessageBox.Show(TranslateBase.CurrentLang.Error["MainWindow.ContConnectOrOpenTo"] + comboBox_main_memory_ports.Text + '!', TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    MessageBox.Show(TB.L.Error["MainWindow.ContConnectOrOpenTo"] + comboBox_main_memory_ports.Text + '!', TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //}
         }
 
@@ -606,14 +601,16 @@ namespace CnC_WFA
             //textBox_main_memory_work.Text = a.WorkDelay.ToString();
             //checkBox_main_memory_com.Checked = a.Com;
             //checkBox_main_memory_pause.Checked = a.Pause;
-            if(checkBox_main_memory_val.Checked) timer1.Start();
+
+            return;
+
             Cursor = Cursors.Default;
             Thread.Sleep(500);
         }
 
         private void FillColors()
         {
-            string s = TranslateBase.CurrentLang.Phrase["MainWindow.RGB"];
+            string s = TB.L.Phrase["MainWindow.RGB"];
             label_main_config_1.Text = string.Format(s, GlobalOptions.DefViewDraw.R, GlobalOptions.DefViewDraw.G, GlobalOptions.DefViewDraw.B);
             label_main_config_2.Text = string.Format(s, GlobalOptions.DefViewBack.R, GlobalOptions.DefViewBack.G, GlobalOptions.DefViewBack.B);
             label_main_config_3.Text = string.Format(s, GlobalOptions.DefPrintDraw.R, GlobalOptions.DefPrintDraw.G, GlobalOptions.DefPrintDraw.B);
@@ -639,7 +636,7 @@ namespace CnC_WFA
             //}
             //int l_idle = (int)(d * 0.10 + 10);
             //int l_work = (int)(d * 0.14 + 20);
-            //label_val.Text = string.Format(TranslateBase.CurrentLang.Phrase["MainWindow.IdleAndWorkDelays"], d, l_idle, l_work);
+            //label_val.Text = string.Format(TB.L.Phrase["MainWindow.IdleAndWorkDelays"], d, l_idle, l_work);
             //progressBar_main_memory_val.Value = d;
         }
 
@@ -650,7 +647,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !int.TryParse(s, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls1;
                 return;
             }
@@ -667,7 +664,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !int.TryParse(s, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls2;
                 return;
             }
@@ -684,7 +681,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !int.TryParse(s, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls3;
                 return;
             }
@@ -765,14 +762,14 @@ namespace CnC_WFA
             checkBox_usedevicespeed.Checked = GlobalOptions.UseAutoSpeed;
             textBox_MaxStepWidth.Text = GlobalOptions.MaxWidthSteps.ToString();
             textBox_maxstepheight.Text = GlobalOptions.MaxHeightSteps.ToString();
-            label_main_device_pathto.Text = TranslateBase.CurrentLang.Error["MainWindow.PathToArduino"] +" :"+ GlobalOptions.PathToArduino;
+            label_main_device_pathto.Text = TB.L.Error["MainWindow.PathToArduino"] +" :"+ GlobalOptions.PathToArduino;
             comboBox_main_device_board.Text = GlobalOptions.DefBoard.DisplayName;
             CheckChangedDevice();
         }
 
         private void button_main_device_help_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("?????????????? ???? ?????????????????? ???????????????? ?????????????? ?? ??????-?????????????????", TranslateBase.CurrentLang.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Process.Start("HTML Help\\Home.html");
+            //if (MessageBox.Show("?????????????? ???? ?????????????????? ???????????????? ?????????????? ?? ??????-?????????????????", TB.L.Phrase["MainWindow.Word.GoAway"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Process.Start("HTML Help\\Home.html");
         }
 
         private void button5_Click_2(object sender, EventArgs e)
@@ -928,7 +925,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !int.TryParse(s, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls7;
                 return;
             }
@@ -1025,7 +1022,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !int.TryParse(s, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls4;
                 return;
             }
@@ -1042,7 +1039,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls5;
                 return;
             }
@@ -1059,7 +1056,7 @@ namespace CnC_WFA
             string s = g.Text;
             if (s != "" && !float.TryParse(s,NumberStyles.Any, CultureInfo.InvariantCulture, out a))
             {
-                MessageBox.Show(string.Format(TranslateBase.CurrentLang.Error["MainWindow.WrongNumber"], s), TranslateBase.CurrentLang.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(TB.L.Error["MainWindow.WrongNumber"], s), TB.L.Phrase["MainWindow.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 g.Text = ls6;
                 return;
             }
@@ -1095,18 +1092,7 @@ namespace CnC_WFA
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            if(progressBar_main_memory_val.Value!=0)
-            {
-                try
-                {
-                    timer1.Stop();
-                    //a.ResetData();
-                    Thread.Sleep(1000);
-                    button_get_Click(null, null);
-
-                }
-                catch { }
-            }
+           
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1152,28 +1138,6 @@ namespace CnC_WFA
             button_get_Click(null, null);
         }
 
-        private void checkBox_main_memory_val_CheckedChanged(object sender, EventArgs e)
-        {
-            var a = checkBox_main_memory_val.Checked;
-            progressBar_main_memory_val.Enabled = a;
-            if (a)
-            {
-                progressBar_main_memory_val.Visible = true;
-                timer1.Start();
-                label_high.Text = "650";
-                label_low.Text = "0";
-            }
-            else
-            {
-                progressBar_main_memory_val.Visible = false;
-                progressBar_main_memory_val.Value = 0;
-                label_high.Text = "";
-                label_low.Text = "";
-                label_val.Text = "";
-                timer1.Stop();
-            }
-        }
-
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //Process.Start("d:\\CODING\\Solution1\\ConsoleApp1\\ConsoleApp1.exe");
@@ -1189,7 +1153,7 @@ namespace CnC_WFA
                 if (File.Exists("C:\\Program Files (x86)\\Arduino\\arduino_debug.exe")) { GlobalOptions.PathToArduino = "C:\\Program Files (x86)\\Arduino\\"; }
                 if (File.Exists("C:\\Program Files\\Arduino\\arduino_debug.exe")) { GlobalOptions.PathToArduino = "C:\\Program Files\\Arduino\\"; }
             }
-            label_main_device_pathto.Text = TranslateBase.CurrentLang.Phrase["MainWindow.PathToArduino"] + ": " + GlobalOptions.PathToArduino;
+            label_main_device_pathto.Text = TB.L.Phrase["MainWindow.PathToArduino"] + ": " + GlobalOptions.PathToArduino;
             if (File.Exists("c:\\Windows\\System32\\drivers\\CH341S64.SYS") || File.Exists("c:\\Windows\\System32\\drivers\\CH341S32.SYS")) DriverInstalled = true;
             if (DriverInstalled) button_main_device_driver.Enabled = false;
             label_main_device_isinstall.Visible = DriverInstalled;
@@ -1217,13 +1181,13 @@ namespace CnC_WFA
             vb = new Bitmap(65, 23);
             pd = new Bitmap(65, 23);
             vd = new Bitmap(65, 23);
-            label_main_about_version.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Version"] + ": " + GlobalOptions.Ver + '.';
-            label_main_about_build.Text = TranslateBase.CurrentLang.Phrase["MainWindow.Build"] + ": " + GlobalOptions.Build + '.';
-            label_main_about_dotnet.Text = TranslateBase.CurrentLang.Phrase["MainWindow.TargetDotNet"] + ": " + "4.5.2" + '.';
+            label_main_about_version.Text = TB.L.Phrase["MainWindow.Version"] + ": " + GlobalOptions.Ver + '.';
+            label_main_about_build.Text = TB.L.Phrase["MainWindow.Build"] + ": " + GlobalOptions.Build + '.';
+            label_main_about_dotnet.Text = TB.L.Phrase["MainWindow.TargetDotNet"] + ": " + "4.5.2" + '.';
             FileInfo fi = new FileInfo(Application.ExecutablePath);
             label_main_about_hm.Text+= FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.HM.dll").FileVersion + '.';
             label_main_about_pr.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.dll").FileVersion + '.';
-            //label_main_about_v.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.dll").FileVersion + '.';
+            label_main_about_v.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.DTP.dll").FileVersion + '.';
             label_main_about_ve.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Vectors.Document.dll").FileVersion + '.';
             label_main_about_pm.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Printing.Macro.dll").FileVersion + '.';
             label_main_about_con.Text += FileVersionInfo.GetVersionInfo(fi.Directory.FullName + "\\Lib\\CWA.Connection.dll").FileVersion + '.';

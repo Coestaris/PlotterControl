@@ -41,7 +41,7 @@ namespace CnC_WFA
             //    ==TranslateBase==
             TranslateBase.LangDirectory = execDirectory + "\\Options\\";
             TranslateBase.Init();
-            TranslateBase.CurrentLangName = GlobalOptions.Lang;
+            TranslateBase.CurrentLang.Name = GlobalOptions.Lang;
             TranslateBase.ProceedLang();
 
             //    ==GlobalOptionsLogPolitics==

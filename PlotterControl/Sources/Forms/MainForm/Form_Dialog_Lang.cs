@@ -9,13 +9,7 @@
 *=================================*/
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CnC_WFA
@@ -44,7 +38,7 @@ namespace CnC_WFA
             foreach (var item in TranslateBase.LoadedLangs)
             {
                 il.Images.Add(item.Icon);
-                if(TranslateBase.CurrentLangName == item.Name) glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Green, item.Name));
+                if(TranslateBase.CurrentLang.Name == item.Name) glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Green, item.Name));
                 else glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Black, item.Name));
             }
             glb.ImageList = il;
@@ -55,7 +49,7 @@ namespace CnC_WFA
         private void Glb_SelectedIndexChanged(object sender, EventArgs e)
         {
             button_edit.Enabled = glb.SelectedIndex != -1;
-            button_select.Enabled = glb.SelectedIndex != -1 && ((ImageListBox.ImageListBoxItem)glb.SelectedItem).Item.ToString() != TranslateBase.CurrentLang.Name;
+            button_select.Enabled = glb.SelectedIndex != -1 && ((ImageListBox.ImageListBoxItem)glb.SelectedItem).Item.ToString() != TB.L.Name;
         }
 
         private void button_exit_Click(object sender, EventArgs e)
