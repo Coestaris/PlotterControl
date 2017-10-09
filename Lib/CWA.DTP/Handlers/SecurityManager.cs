@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 16.09.2017 11:37
-* Last Edited: 16.09.2017 23:58:29
+* Last Edited: 08.10.2017 20:45:38
 *=================================*/
 
 using System;
@@ -46,6 +46,23 @@ namespace CWA.DTP
                 return true;
             }
             return false;
+        }
+
+        public bool ResetKey()
+        {
+            bool res = false;
+            if (ParentMaster.Listener.PacketReader is SerialPacketReader)
+            {
+                (ParentMaster.Listener.PacketReader as SerialPacketReader).TimeOutInterval += 3000;
+                res = ParentMaster.ph.Security_ResetKey();
+                (ParentMaster.Listener.PacketReader as SerialPacketReader).TimeOutInterval -= 3000;
+            }
+            if (res)
+            {
+                IsValidationRequired = true;
+                _validKey = SecurityKey.DefaultKey;
+            }
+            return res;
         }
 
         public bool ChangeKey(SecurityKey LastKey, SecurityKey NewKey)

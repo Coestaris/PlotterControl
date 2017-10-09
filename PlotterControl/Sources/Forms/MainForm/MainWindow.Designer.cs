@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 25.08.2017 22:25:52
+* Created: 06.10.2017 20:19
+* Last Edited: 06.10.2017 20:19:53
 *=================================*/
 
 using CWA_Resources.Properties;

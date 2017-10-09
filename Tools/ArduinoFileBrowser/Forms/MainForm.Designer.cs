@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:41
-* Last Edited: 26.09.2017 21:40:01
+* Last Edited: 08.10.2017 19:52:26
 *=================================*/
 
 namespace FileBrowser
@@ -60,6 +60,7 @@ namespace FileBrowser
             this.createFiletoolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_info = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -258,12 +259,28 @@ namespace FileBrowser
             this.button_info.UseVisualStyleBackColor = false;
             this.button_info.Click += new System.EventHandler(this.button_info_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.button1.Location = new System.Drawing.Point(258, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(76, 29);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Pass";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(689, 459);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_info);
             this.Controls.Add(this.button_refresh);
             this.Controls.Add(this.button_send);
@@ -307,6 +324,7 @@ namespace FileBrowser
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.Button button_info;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1_prop;
+        private System.Windows.Forms.Button button1;
     }
 }
 

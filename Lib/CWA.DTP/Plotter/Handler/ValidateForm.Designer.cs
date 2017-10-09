@@ -1,11 +1,11 @@
 /*=================================\
-* ArduinoFileBrowser\ValidateForm.Designer.cs
+* CWA.DTP\ValidateForm.Designer.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 26.09.2017 21:11
-* Last Edited: 26.09.2017 22:01:55
+* Created: 06.10.2017 20:19
+* Last Edited: 08.10.2017 18:18:21
 *=================================*/
 
 namespace CWA.DTP
@@ -42,6 +42,7 @@ namespace CWA.DTP
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -82,11 +83,22 @@ namespace CWA.DTP
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(15, 96);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(38, 36);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "R";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ValidateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(303, 141);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
@@ -108,5 +120,6 @@ namespace CWA.DTP
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
     }
 }

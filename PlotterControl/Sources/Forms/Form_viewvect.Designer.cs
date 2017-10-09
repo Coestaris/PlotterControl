@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 12.09.2017 21:02:57
+* Last Edited: 08.10.2017 17:10:38
 *=================================*/
 
 namespace CnC_WFA
@@ -122,7 +122,7 @@ namespace CnC_WFA
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "VectFile.pcv";
-            this.openFileDialog1.Filter = "PrRes Files(*.pcv)|*.pcv|PrRes Files(*.prres)|*.prres";
+            this.openFileDialog1.Filter = "PrRes Files(*.pcv)|*.pcv|PrRes Files(*.prres)|*.prres|CVF Files|*.cvf";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // loadingCircle1

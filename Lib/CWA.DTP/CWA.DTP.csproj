@@ -56,6 +56,12 @@
     <Compile Include="Core\Packet\WrongPacketInputException.cs" />
     <Compile Include="Handlers\SecurityKey.cs" />
     <Compile Include="Handlers\SecurityManager.cs" />
+    <Compile Include="Plotter\Handler\SecurityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plotter\Handler\SecurityForm.Designer.cs">
+      <DependentUpon>SecurityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Plotter\Handler\ValidateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Plotter\Handler\SecurityForm.resx">
+      <DependentUpon>SecurityForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plotter\Handler\ValidateForm.resx">
       <DependentUpon>ValidateForm.cs</DependentUpon>
     </EmbeddedResource>

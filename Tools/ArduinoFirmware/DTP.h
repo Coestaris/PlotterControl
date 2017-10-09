@@ -185,7 +185,8 @@ enum class DTP_COMMANDTYPE : uint16_t
 	Security_Validate = 0x128,
 	Security_ChangeKey = 0x129,
 	Security_SetValidation = 0x12a,
-	Security_IsValReq = 0x12b
+	Security_IsValReq = 0x12b,
+	Security_ResetKey = 0x12c
 };
 
 enum class DTP_ANSWER_STATUS

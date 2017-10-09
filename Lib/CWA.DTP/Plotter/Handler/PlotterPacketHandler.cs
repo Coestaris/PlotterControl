@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 12.09.2017 21:45
-* Last Edited: 15.09.2017 22:50:24
+* Last Edited: 08.10.2017 20:58:51
 *=================================*/
 
 using System;
@@ -89,6 +89,11 @@ namespace CWA.DTP.Plotter
             result.AddRange(BitConverter.GetBytes(dy));
             result.AddRange(BitConverter.GetBytes(dz));
             return !GetResult((UInt16)CommandType.Plotter_Move, result.ToArray()).IsEmpty;
+        }
+
+        internal bool PrintingAbort()
+        {
+            return !GetResult((UInt16)CommandType.Plotter_Print_Abort).IsEmpty;
         }
     }
 }

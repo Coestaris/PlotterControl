@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 22.08.2017 20:09
-* Last Edited: 26.09.2017 21:41:34
+* Created: 06.10.2017 20:19
+* Last Edited: 08.10.2017 21:58:55
 *=================================*/
 
 using System;
@@ -105,7 +105,11 @@ namespace CWA.DTP
 
         public void Dispose()
         {
-            CloseConnection();
+            try
+            {
+                CloseConnection();
+            }
+            catch { }
             _this = null;
         }
     }

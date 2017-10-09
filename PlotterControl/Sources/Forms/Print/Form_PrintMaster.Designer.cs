@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 08.10.2017 21:38:47
 *=================================*/
 
 namespace CnC_WFA
@@ -112,6 +112,9 @@ namespace CnC_WFA
             this.button_tab5_exit = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage_end1 = new System.Windows.Forms.TabPage();
+            this.button_tab4_close = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPage_main.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -123,6 +126,7 @@ namespace CnC_WFA
             this.groupBox_size.SuspendLayout();
             this.tabPage_print.SuspendLayout();
             this.tabPage_end.SuspendLayout();
+            this.tabPage_end1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_title_2
@@ -387,6 +391,7 @@ namespace CnC_WFA
             this.tabControl1.Controls.Add(this.tabPage_pickVect);
             this.tabControl1.Controls.Add(this.tabPage_opts);
             this.tabControl1.Controls.Add(this.tabPage_print);
+            this.tabControl1.Controls.Add(this.tabPage_end1);
             this.tabControl1.Font = new System.Drawing.Font("Cambria", 12F);
             this.tabControl1.Location = new System.Drawing.Point(161, -30);
             this.tabControl1.Name = "tabControl1";
@@ -995,6 +1000,41 @@ namespace CnC_WFA
             this.label1.TabIndex = 40;
             this.label1.Text = resources.GetString("label1.Text");
             // 
+            // tabPage_end1
+            // 
+            this.tabPage_end1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage_end1.Controls.Add(this.label4);
+            this.tabPage_end1.Controls.Add(this.button_tab4_close);
+            this.tabPage_end1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage_end1.Name = "tabPage_end1";
+            this.tabPage_end1.Size = new System.Drawing.Size(531, 444);
+            this.tabPage_end1.TabIndex = 8;
+            this.tabPage_end1.Text = "tabPage_end1";
+            // 
+            // button_tab4_close
+            // 
+            this.button_tab4_close.BackColor = System.Drawing.Color.White;
+            this.button_tab4_close.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_tab4_close.FlatAppearance.BorderSize = 2;
+            this.button_tab4_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_tab4_close.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_tab4_close.Location = new System.Drawing.Point(439, 402);
+            this.button_tab4_close.Name = "button_tab4_close";
+            this.button_tab4_close.Size = new System.Drawing.Size(78, 31);
+            this.button_tab4_close.TabIndex = 38;
+            this.button_tab4_close.Text = "Выйти";
+            this.button_tab4_close.UseVisualStyleBackColor = false;
+            this.button_tab4_close.Click += new System.EventHandler(this.button_tab4_close_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(28, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(407, 19);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "Печать завершена. Вы можете закрыть данную форму";
+            // 
             // Form_PrintMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1015,6 +1055,7 @@ namespace CnC_WFA
             this.Name = "Form_PrintMaster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Мастер Печати";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_PrintMaster_FormClosing);
             this.Load += new System.EventHandler(this.Form_PrintMaster_Load);
             this.tabPage_main.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -1032,6 +1073,8 @@ namespace CnC_WFA
             this.tabPage_print.ResumeLayout(false);
             this.tabPage_print.PerformLayout();
             this.tabPage_end.ResumeLayout(false);
+            this.tabPage_end1.ResumeLayout(false);
+            this.tabPage_end1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1110,5 +1153,8 @@ namespace CnC_WFA
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage_end1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button_tab4_close;
     }
 }

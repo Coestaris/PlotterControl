@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 20.09.2017 9:30:50
+* Last Edited: 08.10.2017 20:40:01
 *=================================*/
 
 using System.IO.Ports;

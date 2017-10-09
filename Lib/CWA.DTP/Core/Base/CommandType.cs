@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:09
-* Last Edited: 16.09.2017 23:55:25
+* Last Edited: 06.10.2017 20:31:02
 *=================================*/
 
 using System;
@@ -44,6 +44,7 @@ namespace CWA.DTP
         Security_Validate = 0x128,
         Security_ChangeKey = 0x129,
         Security_SetValidation = 0x12a,
-        Security_IsValReq = 0x12b
+        Security_IsValReq = 0x12b,
+        Security_ResetKey = 0x12c
     };
 }

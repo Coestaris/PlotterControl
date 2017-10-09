@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 12.09.2017 21:45
-* Last Edited: 12.09.2017 21:51:04
+* Last Edited: 08.10.2017 20:58:29
 *=================================*/
 
 using System;
@@ -176,6 +176,13 @@ namespace CWA.DTP.Plotter
             StatusRequestTimer = new Thread(StatusRequestTimerHandler);
             StatusRequestTimer.Start();
 
+        }
+
+        internal void AbortPrinting()
+        {
+            StatusRequestTimer.Abort();
+            ph.PrintingAbort();
+            RaiseEndEvent();
         }
     }
 }

@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 06.08.2017 19:55
-* Last Edited: 26.08.2017 16:30:55
+* Created: 06.10.2017 20:19
+* Last Edited: 06.10.2017 21:50:16
 *=================================*/
 
 using System;
@@ -49,7 +49,7 @@ namespace CnC_WFA
         private void Glb_SelectedIndexChanged(object sender, EventArgs e)
         {
             button_edit.Enabled = glb.SelectedIndex != -1;
-            button_select.Enabled = glb.SelectedIndex != -1 && ((ImageListBox.ImageListBoxItem)glb.SelectedItem).Item.ToString() != TB.L.Name;
+            button_select.Enabled = glb.SelectedIndex != -1 && ((ImageListBox.ImageListBoxItem)glb.SelectedItem).Item.ToString() != TranslateBase.CurrentLangName;
         }
 
         private void button_exit_Click(object sender, EventArgs e)

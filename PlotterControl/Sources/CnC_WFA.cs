@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 18.08.2017 20:26:46
+* Created: 06.10.2017 20:19
+* Last Edited: 06.10.2017 21:50:14
 *=================================*/
 
 using CWA;
@@ -41,7 +41,7 @@ namespace CnC_WFA
             //    ==TranslateBase==
             TranslateBase.LangDirectory = execDirectory + "\\Options\\";
             TranslateBase.Init();
-            TranslateBase.CurrentLang.Name = GlobalOptions.Lang;
+            TranslateBase.CurrentLangName = GlobalOptions.Lang;
             TranslateBase.ProceedLang();
 
             //    ==GlobalOptionsLogPolitics==

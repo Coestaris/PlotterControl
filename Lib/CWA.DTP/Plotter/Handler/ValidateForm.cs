@@ -1,11 +1,11 @@
-п»ї/*=================================\
-* ArduinoFileBrowser\ValidateForm.cs
+/*=================================\
+* CWA.DTP\ValidateForm.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 26.09.2017 21:11
-* Last Edited: 26.09.2017 22:09:27
+* Created: 06.10.2017 20:19
+* Last Edited: 08.10.2017 18:22:30
 *=================================*/
 
 using System;
@@ -22,7 +22,7 @@ namespace CWA.DTP
             Master = master;
             InitializeComponent();
             Master.Device.Test();
-            label1.Text = $"РЈСЃС‚СЂРѕР№СЃС‚РІРѕ {master.Device.DeviceSender.Name} С‚СЂРµР±СѓРµС‚ РІР°Р»РёРґР°С†РёСЋ РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ СЂР°Р±РѕС‚С‹. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ СЃРµРєСЂРµС‚РЅС‹Р№ РєР»СЋС‡ РІ РґР°РЅРЅРѕРµ РїРѕР»Рµ.";
+            label1.Text = $"Устройство {master.Device.DeviceSender.Name} требует валидацию для продолжения работы. Пожалуйста, введите секретный ключ в данное поле.";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace CWA.DTP
             }
             else
             {
-                MessageBox.Show("РќРµ СѓРґР°Р»РѕСЃСЊ РїСЂРѕРІРµСЃС‚Рё РІР°Р»РёРґР°С†РёСЋ СЃ РґР°РЅРЅС‹Рј РєР»СЋС‡РµРј", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не удалось провести валидацию с данным ключем", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -63,6 +63,18 @@ namespace CWA.DTP
         private void ValidateForm_Shown(object sender, EventArgs e)
         {
             textBox1.Focus();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("После нажатия на ОК, нажмите на любую кнопку на устройстве для сброса пароля.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (Master.SecurityManager.ResetKey())
+            {
+                MessageBox.Show("Пароль был сброшен. Необходимость авторизации была снята.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else MessageBox.Show("Не удалось сбросить пароль.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
