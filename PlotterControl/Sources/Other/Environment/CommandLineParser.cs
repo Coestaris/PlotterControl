@@ -72,7 +72,7 @@ namespace CnC_WFA
                         a.Width = float.Parse(res.Flags["size"].Split('x')[0], CultureInfo.InvariantCulture);
                         a.Height = float.Parse(res.Flags["size"].Split('x')[1], CultureInfo.InvariantCulture);
                         bool auto = bool.Parse(res.Flags["auto"]);
-                        Application.Run(new Form_PrintMaster(res.Filename, true, port, bdrate, a, auto));
+                        Application.Run(FormTranslator.Translate(new Form_PrintMaster(res.Filename, true, port, bdrate, a, auto)));
                     }
                 } catch (Exception e) { MessageBox.Show(TB.L.Error["Core.OpenError.Print"] + e.Message); Application.Run(new MainWindow()); return; }
             } else
@@ -104,7 +104,7 @@ namespace CnC_WFA
                 try
                 {
                     if (!File.Exists(res.Filename)) { MessageBox.Show(string.Format(TB.L.Error["Core.CantFindFile"], res.Filename)); Application.Run(new MainWindow()); return; }
-                    Application.Run(new Form_EditVector(res.Filename));
+                    Application.Run(FormTranslator.Translate(new Form_EditVector(res.Filename)));
                 }
                 catch (Exception e) { MessageBox.Show(TB.L.Error["Core.OpenError.VectEditor"] + e.Message); Application.Run(new MainWindow()); return; }
             }

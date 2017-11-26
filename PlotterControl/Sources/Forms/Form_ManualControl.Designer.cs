@@ -548,12 +548,12 @@ namespace CnC_WFA
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        internal System.Windows.Forms.ComboBox comboBox1;
+        internal System.Windows.Forms.TabControl tabControl1;
+        internal System.Windows.Forms.TabPage tabPage1;
+        internal System.Windows.Forms.TabPage tabPage2;
+        internal System.Windows.Forms.TabPage tabPage3;
+        internal System.Windows.Forms.TabPage tabPage4;
         internal System.Windows.Forms.Button button_turnOff;
         internal System.Windows.Forms.Button button_turnOn;
     }

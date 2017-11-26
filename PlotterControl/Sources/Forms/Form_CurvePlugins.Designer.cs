@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 27.08.2017 14:30:45
 *=================================*/
 
 namespace CnC_WFA
@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_CurvePlugins));
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -357,28 +357,28 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Panel panel_main;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label_usage_content;
-        private System.Windows.Forms.Label label_usage_discr;
-        private System.Windows.Forms.Label label_prev_2;
-        private System.Windows.Forms.Label label_prev_1;
-        private System.Windows.Forms.Label label_discr_title;
-        private System.Windows.Forms.Label label_discr_content;
-        private System.Windows.Forms.Label label_creator_content;
-        private System.Windows.Forms.Label label_creator_name;
-        private System.Windows.Forms.Label label_Title;
-        private System.Windows.Forms.PictureBox pictureBox_prev_1;
-        private System.Windows.Forms.PictureBox pictureBox_prev_2;
-        private System.Windows.Forms.Panel panel_content;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel_wait;
-        private MRG.Controls.UI.LoadingCircle loadingCircle_tab1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Panel panel_cantFindPlugins;
-        private System.Windows.Forms.Label label_cantFindPlugins;
-        private System.Windows.Forms.Label label_load;
+        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.Panel panel_main;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label label_usage_content;
+        public System.Windows.Forms.Label label_usage_discr;
+        public System.Windows.Forms.Label label_prev_2;
+        public System.Windows.Forms.Label label_prev_1;
+        public System.Windows.Forms.Label label_discr_title;
+        public System.Windows.Forms.Label label_discr_content;
+        public System.Windows.Forms.Label label_creator_content;
+        public System.Windows.Forms.Label label_creator_name;
+        public System.Windows.Forms.Label label_Title;
+        public System.Windows.Forms.PictureBox pictureBox_prev_1;
+        public System.Windows.Forms.PictureBox pictureBox_prev_2;
+        public System.Windows.Forms.Panel panel_content;
+        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Panel panel_wait;
+        public MRG.Controls.UI.LoadingCircle loadingCircle_tab1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.Panel panel_cantFindPlugins;
+        public System.Windows.Forms.Label label_cantFindPlugins;
+        public System.Windows.Forms.Label label_load;
     }
 }

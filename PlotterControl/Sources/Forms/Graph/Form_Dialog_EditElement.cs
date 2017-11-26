@@ -91,7 +91,7 @@ namespace CnC_WFA
             if(colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 Object.AxisParams.Color = colorDialog1.Color;
-                label_axis_color_info.Text = string.Format("RGB ({0}, {1}, {2})", colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
+                label_axis_color_info.Text = string.Format(TB.L.Phrase["orm_Dialog_EditElement.RGB"], colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
                 SetAxisColorProbe();
             }
         }
@@ -147,7 +147,7 @@ namespace CnC_WFA
             {
                 panel_markers_status.Visible = true;
                 panel_markers_status.BackColor = Color.FromArgb(255, 74, 74);
-                label_markers_status.Text = string.Format("Найдено {0} ошибок.", (GlobalErrorsPeriod?.Count == null ? 0 : GlobalErrorsPeriod?.Count));
+                label_markers_status.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.FoundErrors"], (GlobalErrorsPeriod?.Count == null ? 0 : GlobalErrorsPeriod?.Count));
                 button_markers_status.Visible = true;
                 Object.AxisCaptionParams.LowLimFormula = LowCompString;
                 Object.AxisCaptionParams.HighLimFormula = HighCompString;
@@ -159,7 +159,7 @@ namespace CnC_WFA
             {
                 panel_markers_status.Visible = true;
                 panel_markers_status.BackColor = Color.FromArgb(0, 255, 0);
-                label_markers_status.Text = string.Format("OK! Собрано за {0} миллисекунд.", (DateTime.Now - startTimePeriod).TotalMilliseconds);
+                label_markers_status.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.OKBuiltIn"], (DateTime.Now - startTimePeriod).TotalMilliseconds);
                 button_markers_status.Visible = false;
                 Object.AxisCaptionParams.CompilePeriod();
             }
@@ -195,11 +195,11 @@ namespace CnC_WFA
             var highErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("\\"));
             var lowErrors = GlobalErrorsPeriod.FindAll(p => p.StartsWith("/"));
             string[] messages = new string[] {
-                "Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:\n",
-                "\n1.Ошибок при компиляции периода не было найдено.\n",
-                "\n1.Найдено {0} ошибок при компиляции строки периода \"{1}\":\n{2}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{3}\"\n",
-                "\n{1}.Ошибок при компиляции строки {0} предела не было найдено.\n",
-                "\n{5}.Найдено {0} ошибок при компиляции строки {1} предела \"{2}\":\n{3}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{4}\"\n"
+                TB.L.Phrase["Form_Dialog_EditElement.Log.1"],
+                TB.L.Phrase["Form_Dialog_EditElement.Log.2"],
+                TB.L.Phrase["Form_Dialog_EditElement.Log.3"],
+                TB.L.Phrase["Form_Dialog_EditElement.Log.4"],
+                TB.L.Phrase["Form_Dialog_EditElement.Log.5"]
             };
             string res = "";
             res += string.Format(messages[0], startTimePeriod, endTimePeriod, (endTimePeriod - startTimePeriod).TotalSeconds, GlobalErrorsPeriod.Count);
@@ -207,13 +207,13 @@ namespace CnC_WFA
             if (periodErrors.Count == 0) res += messages[1];
             else res += string.Format(messages[2], periodErrors.Count, textBox_markers_period.Text, string.Join("\n", periodErrors.Select(p => "   - " + p.Trim('|'))), Object.AxisCaptionParams.PeriodFormula);
 
-            if (lowErrors.Count == 0) res += string.Format(messages[3], "нижнего", 2);
-            else res += string.Format(messages[4], lowErrors.Count, "нижнего", textBox_markers_period_end.Text, string.Join("\n", lowErrors.Select(p => "   - " + p.Trim('/'))), Object.AxisCaptionParams.LowLimFormula, 2);
+            if (lowErrors.Count == 0) res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Bottom"], 2);
+            else res += string.Format(messages[4], lowErrors.Count, TB.L.Phrase["Form_Dialog_EditElement.Bottom"], textBox_markers_period_end.Text, string.Join("\n", lowErrors.Select(p => "   - " + p.Trim('/'))), Object.AxisCaptionParams.LowLimFormula, 2);
 
-            if (highErrors.Count == 0) res += string.Format(messages[3], "верхнего", 3);
-            else res += string.Format(messages[4], highErrors.Count, "верхнего", textBox_markers_period_start.Text, string.Join("\n", highErrors.Select(p => "   - " + p.Trim('\\'))), Object.AxisCaptionParams.HighLimFormula, 3);
+            if (highErrors.Count == 0) res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Upper"], 3);
+            else res += string.Format(messages[4], highErrors.Count, TB.L.Phrase["Form_Dialog_EditElement.Upper"], textBox_markers_period_start.Text, string.Join("\n", highErrors.Select(p => "   - " + p.Trim('\\'))), Object.AxisCaptionParams.HighLimFormula, 3);
 
-            MessageBox.Show(res, "Отчет об ошибках", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(res, TB.L.Phrase["Form_Dialog_EditElement.Report"], MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -19,13 +19,17 @@
   <phrase id="MainWindow.OptionsTitle">  Настройки&#xA;  программы </phrase>
   <phrase id="MainWindow.RGB">RGB ({0}, {1}, {2})</phrase>
   <phrase id="MainWindow.IdleAndWorkDelays">{0}, Idle: {1:0.#}, Work: {2:0.#}</phrase>
-
+  <phrase id="MainWindow.Plugins">Плагины</phrase>
+  
   <!-- Main Widnow Messages-->
   <message id="MainWindow.DontSaveChanges">Перейти без сохранения?</message>
   <message id="MainWindow.OriArduino">Вы используете оригинальный Ардуино?</message>
   <message id="MainWindow.YouDontNeedToInstallDrivers">Установка драйверов не нужна, IDE уже имеет нужный набор. Хотите сделать данную кнопку не активную более?</message>
   <message id="MainWindow.VisitDeveloperSize">Перейти на оффициальную страницу разработчика в веб-браузере?</message>
-
+  <message id="MainWindow.ClearingPrecompiledPlugins">Вы уверены, что хотите удалить зарание скомпилированные плагины ({0} элементов)?&#xA;Повторная компиляция может занять продолжительное время.</message>
+  <message id="MainWindow.SuccDeletePlugins">Успешно удалено {0} элеметнов</message>
+  <message id="MainWindow.ForAccYouNeedReloadApp">Для того, чтобы изменения вступили в силу, необходимо перезагрузиит приложение.</message>
+  
   <!-- Main Widnow Errors-->
   <error id="MainWindow.CloseConnectionSession">Закройте сессию подключения!</error>
   <error id="MainWindow.EnterPortName">Укажите имя порта!</error>
@@ -34,7 +38,10 @@
   <error id="MainWindow.TimeOut">Время ожидание истекло, попробуйте позже!</error>
   <error id="MainWindow.ContConnectOrOpenTo">Невозможно открыть или подключится к порту </error>
   <error id="MainWindow.WrongNumber">"{0}" - неверное число!</error>
-
+  <error id="MainWindow.ClosePlWin">Для продолжения Вам необходимо закрыть окно работы с плагинами</error>
+  <error id="MainWindow.DisablePreloadPlugins">Вы не можете проводить операцию очистки кеша плагинов, когда активна опция "предварительной загрузки плагинов". Отключите ее и перезагрузите программу.</error>
+  <error id="MainWindow.CantDeleteSomePlugins">Неудалось удалить некоторые кешированные плагины ({0} элементов). {1} удалено успешно.</error>
+  
 
   <!-- Main Widnow Menus -->
   <menu id="MainWindow.button_about">  О программе  </menu>

@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 08.10.2017 17:10:38
+* Last Edited: 09.10.2017 13:07:03
 *=================================*/
 
 namespace CnC_WFA
@@ -81,6 +81,7 @@ namespace CnC_WFA
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_main)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -226,49 +227,50 @@ namespace CnC_WFA
             // ToolStripMenuItem_open
             // 
             this.ToolStripMenuItem_open.Name = "ToolStripMenuItem_open";
-            this.ToolStripMenuItem_open.Size = new System.Drawing.Size(114, 22);
+            this.ToolStripMenuItem_open.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItem_open.Text = "Open";
             this.ToolStripMenuItem_open.Click += new System.EventHandler(this.button4_Click);
             // 
             // toolStripMenuItem_close
             // 
             this.toolStripMenuItem_close.Name = "toolStripMenuItem_close";
-            this.toolStripMenuItem_close.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_close.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem_close.Text = "Close";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(111, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripMenuItem_edit
             // 
             this.toolStripMenuItem_edit.Name = "toolStripMenuItem_edit";
-            this.toolStripMenuItem_edit.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_edit.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem_edit.Text = "Edit";
             // 
             // toolStripMenuItem_saveAs
             // 
             this.toolStripMenuItem_saveAs.Name = "toolStripMenuItem_saveAs";
-            this.toolStripMenuItem_saveAs.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_saveAs.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem_saveAs.Text = "Save As";
+            this.toolStripMenuItem_saveAs.Click += new System.EventHandler(this.toolStripMenuItem_saveAs_Click);
             // 
             // toolStripMenuItem_print
             // 
             this.toolStripMenuItem_print.Name = "toolStripMenuItem_print";
-            this.toolStripMenuItem_print.Size = new System.Drawing.Size(114, 22);
+            this.toolStripMenuItem_print.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem_print.Text = "Print";
             this.toolStripMenuItem_print.Click += new System.EventHandler(this.button_print_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(111, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // ToolStripMenuItem_exit
             // 
             this.ToolStripMenuItem_exit.Name = "ToolStripMenuItem_exit";
-            this.ToolStripMenuItem_exit.Size = new System.Drawing.Size(114, 22);
+            this.ToolStripMenuItem_exit.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItem_exit.Text = "Exit";
             this.ToolStripMenuItem_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
@@ -450,6 +452,11 @@ namespace CnC_WFA
             this.label.TabIndex = 17;
             this.label.Text = "Äכÿ ןנמסלמענא גûבונטעו פאיכ";
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Vect Files|*.pcv|Vect non-object pcv file|*.pcv|Old Vect Format|*.prres";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
             // Form_ViewVect
             // 
             this.AllowDrop = true;
@@ -501,36 +508,37 @@ namespace CnC_WFA
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         public System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.ColorDialog colorDialog2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_oldprstyle;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_open;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_close;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_edit;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_saveAs;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_print;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_exit;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_dispType;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_color;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_backgroundColor;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_selectedColor;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_resetZoom;
-        private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contoursToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem infoStripToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zoomToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_defDisp;
-        private System.Windows.Forms.Panel panel_cont;
-        private System.Windows.Forms.Panel panel_zoom;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label_zoom_max;
-        private System.Windows.Forms.Label label_zoom_min;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_oldprstyle;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_open;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_close;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_edit;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_saveAs;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_print;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_exit;
+        public System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        public System.Windows.Forms.ToolStripComboBox toolStripComboBox_dispType;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_color;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_backgroundColor;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_selectedColor;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_resetZoom;
+        public System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem contoursToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem infoStripToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem zoomToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_defDisp;
+        public System.Windows.Forms.Panel panel_cont;
+        public System.Windows.Forms.Panel panel_zoom;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label_zoom_max;
+        public System.Windows.Forms.Label label_zoom_min;
+        public System.Windows.Forms.TrackBar trackBar1;
+        public System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Label label;
+        internal System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

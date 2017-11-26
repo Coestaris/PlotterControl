@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 using CWA_Resources.Properties;
@@ -17,7 +17,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -38,7 +38,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Graph));
@@ -660,46 +660,46 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox_Main;
-        private System.Windows.Forms.Button button_add;
-        private System.Windows.Forms.Button button_edit;
-        private System.Windows.Forms.Button button_del;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button_setup_axis;
-        private System.Windows.Forms.CheckBox checkBox_use_axis;
-        private System.Windows.Forms.Button button_setup_addPoints;
-        private System.Windows.Forms.CheckBox checkBox_use_addPoints;
-        private System.Windows.Forms.Button button_setup_legend;
-        private System.Windows.Forms.CheckBox checkBox_use_legend;
-        private System.Windows.Forms.Button button_setup_grid;
-        private System.Windows.Forms.CheckBox checkBox_use_Grid;
-        private System.Windows.Forms.Button button_setup_docName;
-        private System.Windows.Forms.CheckBox checkBox_use_docName;
-        private System.Windows.Forms.Button button_setup_axisNames;
-        private System.Windows.Forms.CheckBox checkBox_use_axisNames;
-        private System.Windows.Forms.Label labelHint;
-        private System.Windows.Forms.Label label_zoom;
-        private System.Windows.Forms.Timer timer_redraw;
-        private System.Windows.Forms.Button button_copy;
-        private System.Windows.Forms.Panel panel_tools;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label_y;
-        private System.Windows.Forms.Label label_x;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel_wait;
-        private MRG.Controls.UI.LoadingCircle loadingCircle_tab1;
-        private System.Windows.Forms.Label label_load;
-        private System.Windows.Forms.Panel panel_loaderr;
-        private System.Windows.Forms.Button button_loaderr_more;
-        private System.Windows.Forms.Button button_loaderr_close;
-        private System.Windows.Forms.Label label1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.ListBox listBox_Main;
+        public System.Windows.Forms.Button button_add;
+        public System.Windows.Forms.Button button_edit;
+        public System.Windows.Forms.Button button_del;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TrackBar trackBar1;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.Button button_setup_axis;
+        public System.Windows.Forms.CheckBox checkBox_use_axis;
+        public System.Windows.Forms.Button button_setup_addPoints;
+        public System.Windows.Forms.CheckBox checkBox_use_addPoints;
+        public System.Windows.Forms.Button button_setup_legend;
+        public System.Windows.Forms.CheckBox checkBox_use_legend;
+        public System.Windows.Forms.Button button_setup_grid;
+        public System.Windows.Forms.CheckBox checkBox_use_Grid;
+        public System.Windows.Forms.Button button_setup_docName;
+        public System.Windows.Forms.CheckBox checkBox_use_docName;
+        public System.Windows.Forms.Button button_setup_axisNames;
+        public System.Windows.Forms.CheckBox checkBox_use_axisNames;
+        public System.Windows.Forms.Label labelHint;
+        public System.Windows.Forms.Label label_zoom;
+        public System.Windows.Forms.Timer timer_redraw;
+        public System.Windows.Forms.Button button_copy;
+        public System.Windows.Forms.Panel panel_tools;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label label_y;
+        public System.Windows.Forms.Label label_x;
+        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Panel panel_wait;
+        public MRG.Controls.UI.LoadingCircle loadingCircle_tab1;
+        public System.Windows.Forms.Label label_load;
+        public System.Windows.Forms.Panel panel_loaderr;
+        public System.Windows.Forms.Button button_loaderr_more;
+        public System.Windows.Forms.Button button_loaderr_close;
+        public System.Windows.Forms.Label label1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

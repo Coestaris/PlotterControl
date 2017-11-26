@@ -591,7 +591,7 @@ namespace CnC_WFA
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Form_VectorMaster().Show();
+            FormTranslator.Translate(new Form_VectorMaster()).Show();
         }
 
         private Vector tmpv;
@@ -701,7 +701,7 @@ namespace CnC_WFA
             {
                 if (main.Items[listBox1.SelectedIndex].Type == DocumentItemType.Image)
                 {
-                    var a = new Form_Dialog_Edit(main.Items[listBox1.SelectedIndex]);
+                    var a = FormTranslator.Translate(new Form_Dialog_Edit(main.Items[listBox1.SelectedIndex]));
                     a.parent = this;
                     //if(main.UseDarkTheme) a.ToTheme(Color.FromArgb(45, 45, 48), Color.FromArgb(255, 255, 255), Color.FromArgb(30, 30, 30), Color.FromArgb(30, 30, 30));
                     //else a.ToTheme(Color.FromKnownColor(KnownColor.Control), Color.FromKnownColor(KnownColor.ControlText), Color.FromKnownColor(KnownColor.Window), Color.FromKnownColor(KnownColor.Control));

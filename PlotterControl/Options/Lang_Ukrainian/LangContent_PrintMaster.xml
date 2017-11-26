@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_PrintMaster.button_abort">Прервать печать</menu>
+  <menu id="Form_PrintMaster.button_delete">Удалить</menu>
+  <menu id="Form_PrintMaster.button_deviceInfo">Инфо</menu>
+  <menu id="Form_PrintMaster.button_help">Справка</menu>
+  <menu id="Form_PrintMaster.button_open">Подкл.</menu>
+  <menu id="Form_PrintMaster.button_pause">Пауза</menu>
+  <menu id="Form_PrintMaster.button_refresh">Обновить</menu>
+  <menu id="Form_PrintMaster.button_tab1_exit">Выйти</menu>
+  <menu id="Form_PrintMaster.button_tab1_next">Далее</menu>
+  <menu id="Form_PrintMaster.button_tab2_back">Назад</menu>
+  <menu id="Form_PrintMaster.button_tab2_next">Далее</menu>
+  <menu id="Form_PrintMaster.button_tab3_back">Назад</menu>
+  <menu id="Form_PrintMaster.button_tab3_next">Далее</menu>
+  <menu id="Form_PrintMaster.button_tab4_close">Выйти</menu>
+  <menu id="Form_PrintMaster.button_tab5_exit">Выход</menu>
+  <menu id="Form_PrintMaster.button_upload">Загрузить</menu>
+  <menu id="Form_PrintMaster.groupBox_pens">Параметры пера</menu>
+  <menu id="Form_PrintMaster.groupBox_size">Размер</menu>
+  <menu id="Form_PrintMaster.groupBox4">Соеденение</menu>
+  <menu id="Form_PrintMaster.label_1">      Приветствие</menu>
+  <menu id="Form_PrintMaster.label_2">     Выбор файла</menu>
+  <menu id="Form_PrintMaster.label_3">        Настройка&#009;&#xA;        печати</menu>
+  <menu id="Form_PrintMaster.label_4">        Печать</menu>
+  <menu id="Form_PrintMaster.label_5">        Завершение</menu>
+  <menu id="Form_PrintMaster.label_bd">Скорость соед.: </menu>
+  <menu id="Form_PrintMaster.label_color">Цвет: </menu>
+  <menu id="Form_PrintMaster.label_com">Имя порта:</menu>
+  <menu id="Form_PrintMaster.label_discr">Следуйте интрукциям указанным в мастере, и в результате вы получите напечатаный в +</menu>
+  <menu id="Form_PrintMaster.label_elev_corr">Корректировка&#009;&#xA;поднятия пера:&#009;&#xA;</menu>
+  <menu id="Form_PrintMaster.label_elev_corr_1">шагов.</menu>
+  <menu id="Form_PrintMaster.label_elev_delta">Дельта &#009;&#xA;поднятия пера:</menu>
+  <menu id="Form_PrintMaster.label_elev_delta_1">шагов.</menu>
+  <menu id="Form_PrintMaster.label_leftTime"> </menu>
+  <menu id="Form_PrintMaster.label_maxx">Макс.: 297mm</menu>
+  <menu id="Form_PrintMaster.label_maxy">Макс.: 210mm</menu>
+  <menu id="Form_PrintMaster.label_measure_xsize">MM.</menu>
+  <menu id="Form_PrintMaster.label_measure_ysize">MM.</menu>
+  <menu id="Form_PrintMaster.label_percentage"> </menu>
+  <menu id="Form_PrintMaster.label_progress"> </menu>
+  <menu id="Form_PrintMaster.label_speed"> </menu>
+  <menu id="Form_PrintMaster.label_spendTme"> </menu>
+  <menu id="Form_PrintMaster.label_title">Вас приветствует мастер печати&#009;&#xA;</menu>
+  <menu id="Form_PrintMaster.label_title_2">Печать вектора</menu>
+  <menu id="Form_PrintMaster.label_xsize">Ширина:</menu>
+  <menu id="Form_PrintMaster.label_ysize">Высота:</menu>
+  <menu id="Form_PrintMaster.label1">resources.GetString(label1.Text)</menu>
+  <menu id="Form_PrintMaster.label2">???? ???????????? ?????????????? ???????????? ????????????.&#009;&#xA;</menu>
+  <menu id="Form_PrintMaster.label3">???????????? ??????????????????&#009;&#xA;</menu>
+  <menu id="Form_PrintMaster.label4">Печать завершена. Вы можете закрыть данную форму</menu>
+  <menu id="Form_PrintMaster.loadingCircle_previewLoad">loadingCircle2</menu>
+  <menu id="Form_PrintMaster.radioButton_xsize">Задать ширину</menu>
+  <menu id="Form_PrintMaster.radioButton_ysize">Задать высоту</menu>
+  <menu id="Form_PrintMaster.tabPage_end">tabPage_end</menu>
+  <menu id="Form_PrintMaster.tabPage_end1">tabPage_end1</menu>
+  <menu id="Form_PrintMaster.tabPage_main">tabPage_main</menu>
+  <menu id="Form_PrintMaster.tabPage_opts">tabPage_opts</menu>
+  <menu id="Form_PrintMaster.tabPage_pickVect">tabPage1</menu>
+  <menu id="Form_PrintMaster.tabPage_print">tabPage_setSize</menu>
+  <menu id="Form_PrintMaster.Text">Мастер Печати</menu>
+  <menu id="Form_PrintMaster.textBox_xsize">100</menu>
+
+</content>

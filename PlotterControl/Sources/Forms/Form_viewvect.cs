@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 06.10.2017 20:19
-* Last Edited: 08.10.2017 17:10:37
+* Last Edited: 09.10.2017 13:14:18
 *=================================*/
 
 using CWA;
@@ -326,7 +326,7 @@ namespace CnC_WFA
 
         private void button_print_Click(object sender, EventArgs e)
         {
-            Form_PrintMaster fpr = new Form_PrintMaster(filename,true);
+            Form_PrintMaster fpr = FormTranslator.Translate(new Form_PrintMaster(filename,true));
             fpr.Show();
         }
 
@@ -420,6 +420,25 @@ namespace CnC_WFA
             SetIntr();
             draw_th = new Thread(ChangeLabelTextProcAsync);
             draw_th.Start();
+        }
+
+        private void toolStripMenuItem_saveAs_Click(object sender, EventArgs e)
+        {
+            if (vect == null)
+            {
+                MessageBox.Show("ќткройте какой-нибить вектор дл€ продолжени€.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                vect.Save(saveFileDialog1.FileName, (VectorFileFormat)(saveFileDialog1.FilterIndex-1));
+            }
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

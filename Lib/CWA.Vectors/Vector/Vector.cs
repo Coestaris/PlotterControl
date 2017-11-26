@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 22.08.2017 20:31
-* Last Edited: 09.09.2017 21:14:03
+* Last Edited: 09.10.2017 13:24:52
 *=================================*/
 
 using System;
@@ -189,11 +189,14 @@ namespace CWA.Vectors
                 if(RawData.Length-1 != i) t.Write("?");
             }
             t.Write("end");
-            t.Close();
+
+            var compresedBytes = Helper.Compress(memoryStream.ToArray());
+
             byte[] data = new byte[memoryStream.Length + PCVByteHeader.Length];
             Buffer.BlockCopy(PCVByteHeader, 0, data, 0, PCVByteHeader.Length);
-            Buffer.BlockCopy(PCVByteHeader, 0, memoryStream.ToArray(), PCVByteHeader.Length, (int)memoryStream.Length);
-            File.WriteAllBytes(FileName, Helper.Compress(data));
+            Buffer.BlockCopy(compresedBytes, 0, data, PCVByteHeader.Length, (int)compresedBytes.Length);
+            File.WriteAllBytes(FileName, data);
+            t.Close();
         }
 
         /// <summary>
@@ -768,7 +771,7 @@ namespace CWA.Vectors
                 LoadVectPrres(filename);
                 Header.FileFormat = VectorFileFormat.PRRES;
             }
-            else if (ind.StartsWith("vect") || ind.StartsWith("vectarch"))
+            else if (ind.StartsWith("vect") || ind.StartsWith("vectarch", StringComparison.OrdinalIgnoreCase))
             {
                 LoadVectPCV(filename);
                 Header.FileFormat = VectorFileFormat.PCV;

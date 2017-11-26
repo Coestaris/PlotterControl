@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 09.08.2017 14:57
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 namespace CnC_WFA
@@ -178,15 +178,15 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.Button button_ok;
-        private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.Button button_cancel;
-        private MRG.Controls.UI.LoadingCircle loadingCircle_previewLoad;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox textBox_pcName;
-        private System.Windows.Forms.Label label_pc;
-        private System.Windows.Forms.Label label_name;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button_ok;
+        public System.Windows.Forms.TextBox textBox_name;
+        public System.Windows.Forms.Button button_cancel;
+        public MRG.Controls.UI.LoadingCircle loadingCircle_previewLoad;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.TextBox textBox_pcName;
+        public System.Windows.Forms.Label label_pc;
+        public System.Windows.Forms.Label label_name;
+        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

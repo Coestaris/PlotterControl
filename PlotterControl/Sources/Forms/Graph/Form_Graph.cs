@@ -151,7 +151,7 @@ namespace CnC_WFA
             el.Markers.CompilePeriod();
             (el.DataSource as FormulaDataSource).Compile();
 
-            new Form_Dialog_EditGraph(el) { FormParent = this }.ShowDialog();
+            FormTranslator.Translate(new Form_Dialog_EditGraph(el) { FormParent = this }).ShowDialog();
             Main.Graphs.Add(el);
             UpdateListBox();
             Main.ResetPrerender();
@@ -223,7 +223,7 @@ namespace CnC_WFA
         {
             if(listBox_Main.SelectedIndex!=-1)
             {
-                new Form_Dialog_EditGraph(Main.Graphs[listBox_Main.SelectedIndex]).ShowDialog();
+                FormTranslator.Translate(new Form_Dialog_EditGraph(Main.Graphs[listBox_Main.SelectedIndex])).ShowDialog();
                 Main.ResetPrerender();
                 UpdateListBox();
                 RedrawHigh(pictureBox1.Width / 2 - dx, pictureBox1.Height / 2 - dy);
@@ -371,7 +371,7 @@ namespace CnC_WFA
 
         private void button_setup_axis_Click(object sender, EventArgs e)
         {
-            new Form_Dialog_EditElement(Main, 0).ShowDialog();
+            FormTranslator.Translate(new Form_Dialog_EditElement(Main, 0)).ShowDialog();
             Main.ResetPrerender();
             RedrawHigh(pictureBox1.Width / 2 - dx, pictureBox1.Height / 2 - dy);
         }

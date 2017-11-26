@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dialog_EditGraph));
@@ -1119,87 +1119,87 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl_main;
-        private System.Windows.Forms.TabPage tabPage_data;
-        private System.Windows.Forms.TabPage tabPage_display;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton_data_formula;
-        private System.Windows.Forms.TabControl tabControl_data;
-        private System.Windows.Forms.TabPage tabPage_data_formula;
-        private System.Windows.Forms.TabPage tabPage_data_fromFile;
-        private System.Windows.Forms.Button button_data;
-        private System.Windows.Forms.Button button_data_formula_expand;
-        private System.Windows.Forms.TextBox textBox_data_formula_formula;
-        private System.Windows.Forms.RichTextBox richTextBox_data_formula_add;
-        private System.Windows.Forms.GroupBox groupBox_data_formula_limits;
-        private System.Windows.Forms.TextBox textBox_data_formula_start;
-        private System.Windows.Forms.TextBox textBox_data_formula_end;
-        private System.Windows.Forms.Label label_data_formula_start;
-        private System.Windows.Forms.Label label_data_formula_end;
-        private System.Windows.Forms.GroupBox groupBox_data_formula_formula;
-        private System.Windows.Forms.Button button_data_formula_help;
-        private System.Windows.Forms.Button button_exit;
-        private System.Windows.Forms.Button button_data_formula_compile;
-        private System.Windows.Forms.Panel panel_data_formula_status;
-        private System.Windows.Forms.Button button_data_formula_status_more;
-        private System.Windows.Forms.Label label_data_formula_status;
-        private System.Windows.Forms.Timer timer_data_forumla_expire;
-        private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label_name;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button_markers;
-        private System.Windows.Forms.Button button_display;
-        private System.Windows.Forms.Label label_data_formula_help;
-        private System.Windows.Forms.TabPage tabPage_markers;
-        private System.Windows.Forms.Label label_data_info;
-        private System.Windows.Forms.Label label_data_title;
-        private System.Windows.Forms.Label label_display_title;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label_data_forumula_range_info;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label_display_width;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_display_width;
-        private System.Windows.Forms.ComboBox comboBox_display_penstyle;
-        private System.Windows.Forms.CheckBox checkBox_display_display;
-        private System.Windows.Forms.Label label_display_color;
-        internal System.Windows.Forms.Label label_display_color_rgb;
-        internal System.Windows.Forms.Button button_display_color;
-        internal System.Windows.Forms.PictureBox pictureBox_display_color;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.GroupBox groupBox_markers_params;
-        internal System.Windows.Forms.Button button_markers_help;
-        internal System.Windows.Forms.Button button_markers_compile;
-        private System.Windows.Forms.RadioButton radioButton_markers_period;
-        private System.Windows.Forms.GroupBox groupBox_points;
-        internal System.Windows.Forms.Button button_markers_setpoints;
-        private System.Windows.Forms.RadioButton radioButton_markers_inpoints;
-        private System.Windows.Forms.GroupBox groupBox_period;
-        private System.Windows.Forms.Label label_markers_period_end;
-        private System.Windows.Forms.Label label_markers_period_start;
-        private System.Windows.Forms.Label label_markers_period;
-        private System.Windows.Forms.TextBox textBox_markers_period_end;
-        private System.Windows.Forms.TextBox textBox_markers_period_start;
-        private System.Windows.Forms.CheckBox checkBox_markers_period;
-        private System.Windows.Forms.TextBox textBox_markers_period;
-        private System.Windows.Forms.GroupBox groupBox_markers_display;
-        private System.Windows.Forms.Label label_markers_color;
-        private System.Windows.Forms.Label label_markers_size;
-        private System.Windows.Forms.Label label_markers_type;
-        private System.Windows.Forms.TextBox textBox_markers_size;
-        internal System.Windows.Forms.Label label_markers_color_info;
-        internal System.Windows.Forms.Button button_markers_color;
-        internal System.Windows.Forms.PictureBox pictureBox_markers_color;
-        private System.Windows.Forms.ComboBox comboBox_markers_type;
-        private System.Windows.Forms.CheckBox checkBox_markers_use;
-        private System.Windows.Forms.Panel panel_markers_status;
-        private System.Windows.Forms.Button button_markers_status;
-        private System.Windows.Forms.Label label_markers_status;
-        private System.Windows.Forms.Timer timer_markers_expire;
-        private System.Windows.Forms.ColorDialog colorDialog2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TabControl tabControl_main;
+        public System.Windows.Forms.TabPage tabPage_data;
+        public System.Windows.Forms.TabPage tabPage_display;
+        public System.Windows.Forms.RadioButton radioButton2;
+        public System.Windows.Forms.RadioButton radioButton_data_formula;
+        public System.Windows.Forms.TabControl tabControl_data;
+        public System.Windows.Forms.TabPage tabPage_data_formula;
+        public System.Windows.Forms.TabPage tabPage_data_fromFile;
+        public System.Windows.Forms.Button button_data;
+        public System.Windows.Forms.Button button_data_formula_expand;
+        public System.Windows.Forms.TextBox textBox_data_formula_formula;
+        public System.Windows.Forms.RichTextBox richTextBox_data_formula_add;
+        public System.Windows.Forms.GroupBox groupBox_data_formula_limits;
+        public System.Windows.Forms.TextBox textBox_data_formula_start;
+        public System.Windows.Forms.TextBox textBox_data_formula_end;
+        public System.Windows.Forms.Label label_data_formula_start;
+        public System.Windows.Forms.Label label_data_formula_end;
+        public System.Windows.Forms.GroupBox groupBox_data_formula_formula;
+        public System.Windows.Forms.Button button_data_formula_help;
+        public System.Windows.Forms.Button button_exit;
+        public System.Windows.Forms.Button button_data_formula_compile;
+        public System.Windows.Forms.Panel panel_data_formula_status;
+        public System.Windows.Forms.Button button_data_formula_status_more;
+        public System.Windows.Forms.Label label_data_formula_status;
+        public System.Windows.Forms.Timer timer_data_forumla_expire;
+        public System.Windows.Forms.TextBox textBox_name;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Label label_name;
+        public System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Button button_markers;
+        public System.Windows.Forms.Button button_display;
+        public System.Windows.Forms.Label label_data_formula_help;
+        public System.Windows.Forms.TabPage tabPage_markers;
+        public System.Windows.Forms.Label label_data_info;
+        public System.Windows.Forms.Label label_data_title;
+        public System.Windows.Forms.Label label_display_title;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label_data_forumula_range_info;
+        public System.Windows.Forms.RadioButton radioButton1;
+        public System.Windows.Forms.Label label_display_width;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox textBox_display_width;
+        public System.Windows.Forms.ComboBox comboBox_display_penstyle;
+        public System.Windows.Forms.CheckBox checkBox_display_display;
+        public System.Windows.Forms.Label label_display_color;
+        public System.Windows.Forms.Label label_display_color_rgb;
+        public System.Windows.Forms.Button button_display_color;
+        public System.Windows.Forms.PictureBox pictureBox_display_color;
+        public System.Windows.Forms.ColorDialog colorDialog1;
+        public System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.GroupBox groupBox_markers_params;
+        public System.Windows.Forms.Button button_markers_help;
+        public System.Windows.Forms.Button button_markers_compile;
+        public System.Windows.Forms.RadioButton radioButton_markers_period;
+        public System.Windows.Forms.GroupBox groupBox_points;
+        public System.Windows.Forms.Button button_markers_setpoints;
+        public System.Windows.Forms.RadioButton radioButton_markers_inpoints;
+        public System.Windows.Forms.GroupBox groupBox_period;
+        public System.Windows.Forms.Label label_markers_period_end;
+        public System.Windows.Forms.Label label_markers_period_start;
+        public System.Windows.Forms.Label label_markers_period;
+        public System.Windows.Forms.TextBox textBox_markers_period_end;
+        public System.Windows.Forms.TextBox textBox_markers_period_start;
+        public System.Windows.Forms.CheckBox checkBox_markers_period;
+        public System.Windows.Forms.TextBox textBox_markers_period;
+        public System.Windows.Forms.GroupBox groupBox_markers_display;
+        public System.Windows.Forms.Label label_markers_color;
+        public System.Windows.Forms.Label label_markers_size;
+        public System.Windows.Forms.Label label_markers_type;
+        public System.Windows.Forms.TextBox textBox_markers_size;
+        public System.Windows.Forms.Label label_markers_color_info;
+        public System.Windows.Forms.Button button_markers_color;
+        public System.Windows.Forms.PictureBox pictureBox_markers_color;
+        public System.Windows.Forms.ComboBox comboBox_markers_type;
+        public System.Windows.Forms.CheckBox checkBox_markers_use;
+        public System.Windows.Forms.Panel panel_markers_status;
+        public System.Windows.Forms.Button button_markers_status;
+        public System.Windows.Forms.Label label_markers_status;
+        public System.Windows.Forms.Timer timer_markers_expire;
+        public System.Windows.Forms.ColorDialog colorDialog2;
+        public System.Windows.Forms.GroupBox groupBox1;
     }
 }

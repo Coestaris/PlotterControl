@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 27.08.2017 14:30:45
+* Last Edited: 11.09.2017 21:13:11
 *=================================*/
 
 namespace CnC_WFA
@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_SerialMonitor));
             this.textBox_size_b1 = new System.Windows.Forms.TextBox();
@@ -560,51 +560,51 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox_size_b1;
-        private System.Windows.Forms.TextBox textBox_size_b2;
-        private System.Windows.Forms.CheckBox checkBox_size;
-        private System.Windows.Forms.TextBox textBox_command_b1;
-        private System.Windows.Forms.TextBox textBox_command_b2;
-        private System.Windows.Forms.ComboBox comboBox_command;
-        private System.Windows.Forms.TextBox textBox_sender_b2;
-        private System.Windows.Forms.TextBox textBox_sender_b1;
-        private System.Windows.Forms.TextBox textBox_sender_b4;
-        private System.Windows.Forms.TextBox textBox_sender_b3;
-        private System.Windows.Forms.TextBox textBox_sender_b6;
-        private System.Windows.Forms.TextBox textBox_sender_b5;
-        private System.Windows.Forms.TextBox textBox_sender_b8;
-        private System.Windows.Forms.TextBox textBox_sender_b7;
-        private System.Windows.Forms.ComboBox comboBox_sender;
-        private System.Windows.Forms.TextBox textBox_fill;
-        private System.Windows.Forms.Button button_fill;
-        private System.Windows.Forms.TextBox textBox_data;
-        private System.Windows.Forms.Label label_data_sep;
-        private System.Windows.Forms.TextBox textBox_conv_input;
-        private System.Windows.Forms.ComboBox comboBox_conv;
-        private System.Windows.Forms.TextBox textBox_conv_output;
-        private System.Windows.Forms.CheckBox checkBox_hash;
-        private System.Windows.Forms.TextBox textBox_hash_b2;
-        private System.Windows.Forms.TextBox textBox_hash_b1;
-        private System.Windows.Forms.Label label_size;
-        private System.Windows.Forms.Label label_command;
-        private System.Windows.Forms.Label label_command_send;
-        private System.Windows.Forms.Label label_sender;
-        private System.Windows.Forms.Label label_sender_type;
-        private System.Windows.Forms.Label label_fill;
-        private System.Windows.Forms.Label label_data;
-        private System.Windows.Forms.Label label_conv;
-        private System.Windows.Forms.Label label_conv_arr;
-        private System.Windows.Forms.Label label_hash;
-        private System.Windows.Forms.ListBox listBox;
-        private System.Windows.Forms.Label label_list;
-        private System.Windows.Forms.ComboBox comboBox_bd;
-        private System.Windows.Forms.ComboBox comboBox_port;
-        private System.Windows.Forms.Button button_conn;
-        private System.Windows.Forms.Label label_port;
-        private System.Windows.Forms.Label label_bd;
-        private System.Windows.Forms.Button button_send;
-        private System.Windows.Forms.Button button_exit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label_err;
+        public System.Windows.Forms.TextBox textBox_size_b1;
+        public System.Windows.Forms.TextBox textBox_size_b2;
+        public System.Windows.Forms.CheckBox checkBox_size;
+        public System.Windows.Forms.TextBox textBox_command_b1;
+        public System.Windows.Forms.TextBox textBox_command_b2;
+        public System.Windows.Forms.ComboBox comboBox_command;
+        public System.Windows.Forms.TextBox textBox_sender_b2;
+        public System.Windows.Forms.TextBox textBox_sender_b1;
+        public System.Windows.Forms.TextBox textBox_sender_b4;
+        public System.Windows.Forms.TextBox textBox_sender_b3;
+        public System.Windows.Forms.TextBox textBox_sender_b6;
+        public System.Windows.Forms.TextBox textBox_sender_b5;
+        public System.Windows.Forms.TextBox textBox_sender_b8;
+        public System.Windows.Forms.TextBox textBox_sender_b7;
+        public System.Windows.Forms.ComboBox comboBox_sender;
+        public System.Windows.Forms.TextBox textBox_fill;
+        public System.Windows.Forms.Button button_fill;
+        public System.Windows.Forms.TextBox textBox_data;
+        public System.Windows.Forms.Label label_data_sep;
+        public System.Windows.Forms.TextBox textBox_conv_input;
+        public System.Windows.Forms.ComboBox comboBox_conv;
+        public System.Windows.Forms.TextBox textBox_conv_output;
+        public System.Windows.Forms.CheckBox checkBox_hash;
+        public System.Windows.Forms.TextBox textBox_hash_b2;
+        public System.Windows.Forms.TextBox textBox_hash_b1;
+        public System.Windows.Forms.Label label_size;
+        public System.Windows.Forms.Label label_command;
+        public System.Windows.Forms.Label label_command_send;
+        public System.Windows.Forms.Label label_sender;
+        public System.Windows.Forms.Label label_sender_type;
+        public System.Windows.Forms.Label label_fill;
+        public System.Windows.Forms.Label label_data;
+        public System.Windows.Forms.Label label_conv;
+        public System.Windows.Forms.Label label_conv_arr;
+        public System.Windows.Forms.Label label_hash;
+        public System.Windows.Forms.ListBox listBox;
+        public System.Windows.Forms.Label label_list;
+        public System.Windows.Forms.ComboBox comboBox_bd;
+        public System.Windows.Forms.ComboBox comboBox_port;
+        public System.Windows.Forms.Button button_conn;
+        public System.Windows.Forms.Label label_port;
+        public System.Windows.Forms.Label label_bd;
+        public System.Windows.Forms.Button button_send;
+        public System.Windows.Forms.Button button_exit;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label label_err;
     }
 }

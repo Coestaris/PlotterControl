@@ -790,7 +790,7 @@ namespace CnC_WFA
         {
             vect_saved++;
             pr.Save("Temp\\" + vect_saved + ".pcv");
-            new Form_PrintMaster("Temp\\" + vect_saved + ".pcv", true).Show();
+            FormTranslator.Translate(new Form_PrintMaster("Temp\\" + vect_saved + ".pcv", true)).Show();
         }
 
         private void button_next_tab4_Click_1(object sender, EventArgs e)

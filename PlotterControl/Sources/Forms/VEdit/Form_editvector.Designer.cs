@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:54
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 using CWA_Resources;
@@ -18,7 +18,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -39,7 +39,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_EditVector));
@@ -1784,131 +1784,131 @@ namespace CnC_WFA
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripButton toolStripButton_new;
-        private System.Windows.Forms.ToolStripButton toolStripButton_open;
-        private System.Windows.Forms.ToolStripButton toolStripButton_save;
-        private System.Windows.Forms.Panel panel_properties;
-        private System.Windows.Forms.TrackBar trackBar_zoom;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Panel panel_zoom;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button_hidezoom;
-        private System.Windows.Forms.Label label_zoom;
-        private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Panel panel_newdoc;
-        private System.Windows.Forms.Label label_newdoc_path;
-        private System.Windows.Forms.Label label_newdoc_width;
-        private System.Windows.Forms.Label label_newdoc_height;
-        private System.Windows.Forms.Label label_newdoc_lab;
-        private System.Windows.Forms.Button button_newdoc_ok;
-        private System.Windows.Forms.Button button_newdoc_cancel;
-        private System.Windows.Forms.Button button_newdoc_brouse;
-        private System.Windows.Forms.RadioButton radioButton_newdoc_usevector;
-        private System.Windows.Forms.RadioButton radioButton_newdoc_usesize;
-        private System.Windows.Forms.TextBox textBox_newdoc_width;
-        private System.Windows.Forms.TextBox textBox_newdoc_height;
-        private System.Windows.Forms.TextBox textBox_newdoc_name;
-        private System.Windows.Forms.Label label_newdoc_name;
-        private System.Windows.Forms.Label labelHint;
+        public System.Windows.Forms.ToolStripButton toolStripButton_new;
+        public System.Windows.Forms.ToolStripButton toolStripButton_open;
+        public System.Windows.Forms.ToolStripButton toolStripButton_save;
+        public System.Windows.Forms.Panel panel_properties;
+        public System.Windows.Forms.TrackBar trackBar_zoom;
+        public System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.Panel panel_zoom;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Button button_hidezoom;
+        public System.Windows.Forms.Label label_zoom;
+        public System.Windows.Forms.FontDialog fontDialog1;
+        public System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.ToolTip toolTip1;
+        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.Panel panel_newdoc;
+        public System.Windows.Forms.Label label_newdoc_path;
+        public System.Windows.Forms.Label label_newdoc_width;
+        public System.Windows.Forms.Label label_newdoc_height;
+        public System.Windows.Forms.Label label_newdoc_lab;
+        public System.Windows.Forms.Button button_newdoc_ok;
+        public System.Windows.Forms.Button button_newdoc_cancel;
+        public System.Windows.Forms.Button button_newdoc_brouse;
+        public System.Windows.Forms.RadioButton radioButton_newdoc_usevector;
+        public System.Windows.Forms.RadioButton radioButton_newdoc_usesize;
+        public System.Windows.Forms.TextBox textBox_newdoc_width;
+        public System.Windows.Forms.TextBox textBox_newdoc_height;
+        public System.Windows.Forms.TextBox textBox_newdoc_name;
+        public System.Windows.Forms.Label label_newdoc_name;
+        public System.Windows.Forms.Label labelHint;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button_rename;
-        private System.Windows.Forms.TextBox textBox_editname;
-        private System.Windows.Forms.Button button_edit;
-        private System.Windows.Forms.Label label_obcount;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Label label_subtype;
-        private System.Windows.Forms.Label label_type;
-        private System.Windows.Forms.Button button_drcolor;
-        private System.Windows.Forms.PictureBox pictureBox_drawcolor;
-        private System.Windows.Forms.Button button_dideprop;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.Panel panel_dataload;
-        private System.Windows.Forms.Label label_loaddata_hint;
-        private System.Windows.Forms.Button button_loaddata_load;
-        private System.Windows.Forms.Label label_loaddata_path;
-        private System.Windows.Forms.Label label_loaddata_cont;
-        private System.Windows.Forms.Label label_loaddata_resolution;
-        private System.Windows.Forms.Button button_loaddata_break;
-        private System.Windows.Forms.Button button_loaddata_ok;
-        private System.Windows.Forms.PictureBox pictureBox_loaddata_preview;
-        private System.Windows.Forms.Label label_dataload_ypos;
-        private System.Windows.Forms.Label label_dataload_xpos;
-        private System.Windows.Forms.TextBox textBox_loaddata_y;
-        private System.Windows.Forms.TextBox textBox_loaddata_x;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton_save_;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton_docopts_;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton_additems;
-        private System.Windows.Forms.ToolStripMenuItem rasterImageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem shapeToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem triangleToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem cirlceToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem squareToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripButton toolStripButton_render_;
+        public System.Windows.Forms.Button button_rename;
+        public System.Windows.Forms.TextBox textBox_editname;
+        public System.Windows.Forms.Button button_edit;
+        public System.Windows.Forms.Label label_obcount;
+        public System.Windows.Forms.ColorDialog colorDialog1;
+        public System.Windows.Forms.Label label_subtype;
+        public System.Windows.Forms.Label label_type;
+        public System.Windows.Forms.Button button_drcolor;
+        public System.Windows.Forms.PictureBox pictureBox_drawcolor;
+        public System.Windows.Forms.Button button_dideprop;
+        public System.Windows.Forms.ToolStripButton toolStripButton1;
+        public System.Windows.Forms.Panel panel_dataload;
+        public System.Windows.Forms.Label label_loaddata_hint;
+        public System.Windows.Forms.Button button_loaddata_load;
+        public System.Windows.Forms.Label label_loaddata_path;
+        public System.Windows.Forms.Label label_loaddata_cont;
+        public System.Windows.Forms.Label label_loaddata_resolution;
+        public System.Windows.Forms.Button button_loaddata_break;
+        public System.Windows.Forms.Button button_loaddata_ok;
+        public System.Windows.Forms.PictureBox pictureBox_loaddata_preview;
+        public System.Windows.Forms.Label label_dataload_ypos;
+        public System.Windows.Forms.Label label_dataload_xpos;
+        public System.Windows.Forms.TextBox textBox_loaddata_y;
+        public System.Windows.Forms.TextBox textBox_loaddata_x;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        public System.Windows.Forms.ToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStripButton toolStripButton2;
+        public System.Windows.Forms.ToolStripButton toolStripButton3;
+        public System.Windows.Forms.ToolStripButton toolStripButton_save_;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripButton toolStripButton_docopts_;
+        public System.Windows.Forms.ToolStripSplitButton toolStripSplitButton_additems;
+        public System.Windows.Forms.ToolStripMenuItem rasterImageToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem shapeToolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem triangleToolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem cirlceToolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem squareToolStripMenuItem;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
+        public System.Windows.Forms.ToolStripButton toolStripButton_render_;
         public System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.ToolStripButton toolStripButton_theme;
-        private System.Windows.Forms.Panel panel_docsettings;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label_fileinfo;
-        private System.Windows.Forms.RichTextBox richTextBox_filediscr;
-        private System.Windows.Forms.TextBox textBox_fileinfo;
-        private System.Windows.Forms.TextBox textBox_fileautor;
-        private System.Windows.Forms.Label label_fileautor;
-        private System.Windows.Forms.Label label_filediscr;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label_bordoffset;
-        private System.Windows.Forms.ComboBox comboBox_bordstyle;
-        private System.Windows.Forms.CheckBox checkBox_useborder;
-        private System.Windows.Forms.Label label_bordstyle;
-        private System.Windows.Forms.TextBox textBox_bordoffset;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_fileversion;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_object_edit;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cloneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.Panel panel_angle;
-        private System.Windows.Forms.Button button_angle_m90deg;
-        private System.Windows.Forms.Button button_angle_p90deg;
-        private System.Windows.Forms.Button button_angle_0deg;
-        private System.Windows.Forms.Label label_text_highanglelim;
-        private System.Windows.Forms.Label label_text_anglevalue;
-        private System.Windows.Forms.Label label_text_lowanglelim;
-        private System.Windows.Forms.TrackBar trackBar_angle;
-        private System.Windows.Forms.Button button_done;
-        private System.Windows.Forms.Button button_break;
-        private System.Windows.Forms.RichTextBox richTextBox_texteditor_text;
-        private System.Windows.Forms.Label label_addtext;
-        private System.Windows.Forms.Button button_pickfont;
-        private System.Windows.Forms.TextBox textBox_text_xpos;
-        private System.Windows.Forms.TextBox textBox_text_posy;
-        private System.Windows.Forms.Label label_text_hint_x;
-        private System.Windows.Forms.Label label_text_hint_y;
-        private System.Windows.Forms.Label label_hint_text;
-        private System.Windows.Forms.TextBox textBox_text_width;
-        private System.Windows.Forms.TextBox textBox_text_height;
-        private System.Windows.Forms.Label label_text_width;
-        private System.Windows.Forms.Label label_help_height;
-        private System.Windows.Forms.Panel panel_text;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.Button button_delete;
+        public System.Windows.Forms.ToolStripButton toolStripButton_theme;
+        public System.Windows.Forms.Panel panel_docsettings;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.Label label_fileinfo;
+        public System.Windows.Forms.RichTextBox richTextBox_filediscr;
+        public System.Windows.Forms.TextBox textBox_fileinfo;
+        public System.Windows.Forms.TextBox textBox_fileautor;
+        public System.Windows.Forms.Label label_fileautor;
+        public System.Windows.Forms.Label label_filediscr;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label label_bordoffset;
+        public System.Windows.Forms.ComboBox comboBox_bordstyle;
+        public System.Windows.Forms.CheckBox checkBox_useborder;
+        public System.Windows.Forms.Label label_bordstyle;
+        public System.Windows.Forms.TextBox textBox_bordoffset;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_fileversion;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStrip_object_edit;
+        public System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem cloneToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        public System.Windows.Forms.Panel panel_angle;
+        public System.Windows.Forms.Button button_angle_m90deg;
+        public System.Windows.Forms.Button button_angle_p90deg;
+        public System.Windows.Forms.Button button_angle_0deg;
+        public System.Windows.Forms.Label label_text_highanglelim;
+        public System.Windows.Forms.Label label_text_anglevalue;
+        public System.Windows.Forms.Label label_text_lowanglelim;
+        public System.Windows.Forms.TrackBar trackBar_angle;
+        public System.Windows.Forms.Button button_done;
+        public System.Windows.Forms.Button button_break;
+        public System.Windows.Forms.RichTextBox richTextBox_texteditor_text;
+        public System.Windows.Forms.Label label_addtext;
+        public System.Windows.Forms.Button button_pickfont;
+        public System.Windows.Forms.TextBox textBox_text_xpos;
+        public System.Windows.Forms.TextBox textBox_text_posy;
+        public System.Windows.Forms.Label label_text_hint_x;
+        public System.Windows.Forms.Label label_text_hint_y;
+        public System.Windows.Forms.Label label_hint_text;
+        public System.Windows.Forms.TextBox textBox_text_width;
+        public System.Windows.Forms.TextBox textBox_text_height;
+        public System.Windows.Forms.Label label_text_width;
+        public System.Windows.Forms.Label label_help_height;
+        public System.Windows.Forms.Panel panel_text;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label3;
     }
 }

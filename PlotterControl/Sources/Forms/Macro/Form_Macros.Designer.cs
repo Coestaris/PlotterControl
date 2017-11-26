@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 26.08.2017 16:30:56
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 namespace CnC_WFA
@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Macro));
@@ -767,66 +767,66 @@ namespace CnC_WFA
         }
 
         #endregion
-        private System.Windows.Forms.ListBox listBox_elements;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox_main;
-        private System.Windows.Forms.Label label_elements;
-        private System.Windows.Forms.GroupBox groupBox_addel;
-        private System.Windows.Forms.Button button_addel;
-        private System.Windows.Forms.Label label_addstatus;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TrackBar trackBar_zoom;
-        private System.Windows.Forms.Label label_zoom;
-        private System.Windows.Forms.GroupBox groupBox_zoom;
-        private System.Windows.Forms.Button button_100percent;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label_delay;
-        private System.Windows.Forms.NumericUpDown numericUpDown_delay;
-        private System.Windows.Forms.GroupBox groupBox_eltype;
-        private System.Windows.Forms.RadioButton radioButton_elt_none;
-        private System.Windows.Forms.RadioButton radioButton_elt_tdown;
-        private System.Windows.Forms.RadioButton radioButton_elt_move;
-        private System.Windows.Forms.RadioButton radioButton_elt_tup;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_xglobal;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TextBox textBox_move_topointy;
-        private System.Windows.Forms.TextBox textBox_move_topointx;
-        private System.Windows.Forms.Label label_move_topointy;
-        private System.Windows.Forms.Label label_move_topointx;
-        private System.Windows.Forms.TextBox textBox_move_offcoory;
-        private System.Windows.Forms.TextBox textBox_move_offcoorx;
-        private System.Windows.Forms.Label label_move_offcoory;
-        private System.Windows.Forms.Label label_move_offcoorx;
-        private System.Windows.Forms.TextBox textBox_move_offanglelength;
-        private System.Windows.Forms.TextBox textBox_move_offangleangle;
-        private System.Windows.Forms.Label label_move_offanglelength;
-        private System.Windows.Forms.Label label_move_offangleangle;
-        private System.Windows.Forms.TextBox textBox_move_offhorvertlength;
-        private System.Windows.Forms.RadioButton radioButton_move_hor;
-        private System.Windows.Forms.RadioButton radioButton_move_vetr;
-        private System.Windows.Forms.Label label_move_horvertlen;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_file;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_new;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_save;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_load;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_close;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_macro;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_name;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_discr;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_tocorner;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_addimg;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_saveas;
+        public System.Windows.Forms.ListBox listBox_elements;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.GroupBox groupBox_main;
+        public System.Windows.Forms.Label label_elements;
+        public System.Windows.Forms.GroupBox groupBox_addel;
+        public System.Windows.Forms.Button button_addel;
+        public System.Windows.Forms.Label label_addstatus;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.TrackBar trackBar_zoom;
+        public System.Windows.Forms.Label label_zoom;
+        public System.Windows.Forms.GroupBox groupBox_zoom;
+        public System.Windows.Forms.Button button_100percent;
+        public System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label label_delay;
+        public System.Windows.Forms.NumericUpDown numericUpDown_delay;
+        public System.Windows.Forms.GroupBox groupBox_eltype;
+        public System.Windows.Forms.RadioButton radioButton_elt_none;
+        public System.Windows.Forms.RadioButton radioButton_elt_tdown;
+        public System.Windows.Forms.RadioButton radioButton_elt_move;
+        public System.Windows.Forms.RadioButton radioButton_elt_tup;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_xglobal;
+        public System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.TabPage tabPage4;
+        public System.Windows.Forms.TextBox textBox_move_topointy;
+        public System.Windows.Forms.TextBox textBox_move_topointx;
+        public System.Windows.Forms.Label label_move_topointy;
+        public System.Windows.Forms.Label label_move_topointx;
+        public System.Windows.Forms.TextBox textBox_move_offcoory;
+        public System.Windows.Forms.TextBox textBox_move_offcoorx;
+        public System.Windows.Forms.Label label_move_offcoory;
+        public System.Windows.Forms.Label label_move_offcoorx;
+        public System.Windows.Forms.TextBox textBox_move_offanglelength;
+        public System.Windows.Forms.TextBox textBox_move_offangleangle;
+        public System.Windows.Forms.Label label_move_offanglelength;
+        public System.Windows.Forms.Label label_move_offangleangle;
+        public System.Windows.Forms.TextBox textBox_move_offhorvertlength;
+        public System.Windows.Forms.RadioButton radioButton_move_hor;
+        public System.Windows.Forms.RadioButton radioButton_move_vetr;
+        public System.Windows.Forms.Label label_move_horvertlen;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.ToolTip toolTip1;
+        public System.Windows.Forms.MenuStrip menuStrip;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_file;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_new;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_save;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_load;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_close;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_macro;
+        public System.Windows.Forms.ToolStripTextBox toolStripTextBox_name;
+        public System.Windows.Forms.ToolStripTextBox toolStripTextBox_discr;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_tocorner;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_addimg;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_saveas;
     }
 }

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== FORM DIALOG MENU ===- -->
+
+
+  <!--Form Dialog Menu Menus -->
+  <menu id="Form_Dialog_EditElement.button_addPoints">Точки на графике</menu>
+  <menu id="Form_Dialog_EditElement.button_axis">Оси</menu>
+  <menu id="Form_Dialog_EditElement.button_axis_color">Выбрать</menu>
+  <menu id="Form_Dialog_EditElement.button_axisCaption">Подписи осей</menu>
+  <menu id="Form_Dialog_EditElement.button_docCaption">Подпись док.</menu>
+  <menu id="Form_Dialog_EditElement.button_exit">Закрыть</menu>
+  <menu id="Form_Dialog_EditElement.button_grid">Сетка</menu>
+  <menu id="Form_Dialog_EditElement.button_legend">Легенда</menu>
+  <menu id="Form_Dialog_EditElement.button_markers_compile">Применить</menu>
+  <menu id="Form_Dialog_EditElement.button_markers_status">Подробнее</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_addPoints_displ">Отображать</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_axis_show">Отображать</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_axis_x">checkBox1</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_axis_y">checkBox2</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_axisC_displ">Отображать</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_docC_displ">Отображать</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_grid_displ">Отображать</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_legend_displ">Отображать</menu>
+  <menu id="Form_Dialog_EditElement.checkBox_markers_period">На заданом промежутке&#009;&#xA;&#009;&#xA;</menu>
+  <menu id="Form_Dialog_EditElement.groupBox_axis_display">Параметры отображения</menu>
+  <menu id="Form_Dialog_EditElement.groupBox_axis_param">Параметры осей</menu>
+  <menu id="Form_Dialog_EditElement.groupBox_inde">Параметры</menu>
+  <menu id="Form_Dialog_EditElement.groupBox_markers">Засечки на осях</menu>
+  <menu id="Form_Dialog_EditElement.groupBox_names">Название осей</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_color">Цвет осей</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_color_info">RGB (100, 100, 100)</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_label">Параметры осей</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_offset_x">Смещение по Х</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_offset_y">Смещение по Y</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_width">Ширина осей</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_x">Особое название оси X:</menu>
+  <menu id="Form_Dialog_EditElement.label_axis_y">Особое название оси Y:</menu>
+  <menu id="Form_Dialog_EditElement.label_markers_period">Период</menu>
+  <menu id="Form_Dialog_EditElement.label_markers_period_end">по</menu>
+  <menu id="Form_Dialog_EditElement.label_markers_period_start">Начать с</menu>
+  <menu id="Form_Dialog_EditElement.label_markers_status">textextetxtextextext</menu>
+  <menu id="Form_Dialog_EditElement.radioButton_asMarkeks">Совпадать с маркерами</menu>
+  <menu id="Form_Dialog_EditElement.radioButton_axis_limited">Ограниченные оси</menu>
+  <menu id="Form_Dialog_EditElement.radioButton_axis_unlimited">Неограниченные оси</menu>
+  <menu id="Form_Dialog_EditElement.radioButton_independence">Самостоятельно</menu>
+  <menu id="Form_Dialog_EditElement.tabPage_addPoints">tabPage1</menu>
+  <menu id="Form_Dialog_EditElement.tabPage_axis">tabPage_axis</menu>
+  <menu id="Form_Dialog_EditElement.tabPage_axisCaption">tabPage2</menu>
+  <menu id="Form_Dialog_EditElement.tabPage_docCaption">tabPage1</menu>
+  <menu id="Form_Dialog_EditElement.tabPage_grid">tabPage1</menu>
+  <menu id="Form_Dialog_EditElement.tabPage_legend">tabPage1</menu>
+  <menu id="Form_Dialog_EditElement.Text">Form_Dialog_EditElement</menu>
+
+</content>

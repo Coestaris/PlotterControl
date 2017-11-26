@@ -93,6 +93,13 @@ namespace CnC_WFA
                 }
                 ResetConntection();
                 button_tab1_next.Enabled = false;
+
+                if(comboBox_com.Text == "")
+                {
+                    MessageBox.Show("Укажите порт соеденения", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 SerialPort port = new SerialPort(comboBox_com.Text, int.Parse(comboBox_bdrate.Text));
                 try
                 {
@@ -227,7 +234,7 @@ namespace CnC_WFA
 
         private void button_upload_Click(object sender, EventArgs e)
         {
-            new Form_Dialog_PrintEnterNames(master).ShowDialog();
+            FormTranslator.Translate(new Form_Dialog_PrintEnterNames(master)).ShowDialog();
             UpdateListBox();
         }
 
@@ -431,7 +438,7 @@ namespace CnC_WFA
 
         private void button_deviceInfo_Click(object sender, EventArgs e)
         {
-            new Form_DeviceInfo(master).ShowDialog();
+            FormTranslator.Translate(new Form_DeviceInfo(master)).ShowDialog();
         }
 
         private void button_tab3_back_Click(object sender, EventArgs e)

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Graph.Editing">Редактирование "{0}"</phrase>
+
+  <phrase id="Form_Graph.Log.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;</phrase>
+  <phrase id="Form_Graph.Log.2">&#xA;1.Ошибок при компиляции формулы не было найдено.&#xA;</phrase>
+  <phrase id="Form_Graph.Log.3">&#xA;1.Найдено {0} ошибок при компиляции строки формулы "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;</phrase>
+  <phrase id="Form_Graph.Log.4">&#xA;{1}.Ошибок при компиляции строки {0} предела не было найдено.&#xA;</phrase>
+  <phrase id="Form_Graph.Log.5">&#xA;{5}.Найдено {0} ошибок при компиляции строки {1} предела "{2}":&#xA;{3}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{4}"&#xA;</phrase>
+
+  <phrase id="Form_Graph.Log1.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.2">&#xA;1.Ошибок при компиляции периода не было найдено.&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.3">&#xA;1.Найдено {0} ошибок при компиляции строки периода "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.4">&#xA;{1}.Ошибок при компиляции строки {0} предела не было найдено.&#xA;",</phrase>
+  <phrase id="Form_Graph.Log1.5">&#xA;{5}.Найдено {0} ошибок при компиляции строки {1} предела "{2}":&#xA;{3}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{4}"&#xA;</phrase>
+
+  <phrase id="Form_Graph.Word.Error">Ошибка</phrase>
+  <phrase id="Form_Graph.ExitLog.1">Введенная формула "{0}" не совпадает с удачной "{1}"</phrase>
+  <phrase id="Form_Graph.ExitLog.2">Введенная формула нижнего правого предела функции "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.3">Введенная формула нижнего левого предела функции "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.4">Введенная формула периода маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.5">Введенная формула левого предела маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.6">Введенная формула левого правого маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  
+  <!-- Graph Menus -->
+  <menu id="Form_Graph.button_add">Добавить</menu>
+  <menu id="Form_Graph.button_copy">Дублировать</menu>
+  <menu id="Form_Graph.button_del">Удалить</menu>
+  <menu id="Form_Graph.button_edit">Редактировать</menu>
+  <menu id="Form_Graph.button_loaderr_close">Закрiть</menu>
+  <menu id="Form_Graph.button_loaderr_more">Подробнее</menu>
+  <menu id="Form_Graph.button1">С</menu>
+  <menu id="Form_Graph.button2">Сохр</menu>
+  <menu id="Form_Graph.button3">Загр</menu>
+  <menu id="Form_Graph.checkBox_use_addPoints">Точки на графике</menu>
+  <menu id="Form_Graph.checkBox_use_axis">Оси</menu>
+  <menu id="Form_Graph.checkBox_use_axisNames">Название осей</menu>
+  <menu id="Form_Graph.checkBox_use_docName">Название документа</menu>
+  <menu id="Form_Graph.checkBox_use_Grid">Сетка</menu>
+  <menu id="Form_Graph.checkBox_use_legend">Легенда</menu>
+  <menu id="Form_Graph.groupBox1">Графики</menu>
+  <menu id="Form_Graph.groupBox2">Элементы</menu>
+  <menu id="Form_Graph.label_load">Подождите, пока идет загрузка и &#009;&#xA;обработка данных. Это может занять&#009;&#xA;до пары мин +</menu>
+  <menu id="Form_Graph.label_x">label1</menu>
+  <menu id="Form_Graph.label_y">label2</menu>
+  <menu id="Form_Graph.label1">Обнаружены ошибки при загрузке документа.</menu>
+  <menu id="Form_Graph.labelHint">Добавьте графики для начала работы...&#009;&#xA;</menu>
+  <menu id="Form_Graph.loadingCircle_tab1">loadingCircle2</menu>
+  <menu id="Form_Graph.Text">Построение графиков</menu>
+
+</content>

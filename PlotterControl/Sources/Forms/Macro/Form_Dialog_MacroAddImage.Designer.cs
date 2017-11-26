@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 26.08.2017 15:49
-* Last Edited: 26.08.2017 16:34:50
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 using System.Drawing.Imaging;
@@ -17,7 +17,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -38,7 +38,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.button_ok = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -222,18 +222,18 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.Button button_ok;
-        private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button button_cancel;
-        private System.Windows.Forms.TextBox textBox_path;
-        private System.Windows.Forms.TextBox textBox_width;
-        private System.Windows.Forms.TextBox textBox_height;
-        private System.Windows.Forms.Label label_path;
-        private System.Windows.Forms.Label label_height;
-        private System.Windows.Forms.Label label_width;
-        private System.Windows.Forms.Button button_pick;
-        private System.Windows.Forms.Label label_width_mm;
-        private System.Windows.Forms.Label label_height_mm;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.Button button_ok;
+        public System.Windows.Forms.PictureBox pictureBox;
+        public System.Windows.Forms.Button button_cancel;
+        public System.Windows.Forms.TextBox textBox_path;
+        public System.Windows.Forms.TextBox textBox_width;
+        public System.Windows.Forms.TextBox textBox_height;
+        public System.Windows.Forms.Label label_path;
+        public System.Windows.Forms.Label label_height;
+        public System.Windows.Forms.Label label_width;
+        public System.Windows.Forms.Button button_pick;
+        public System.Windows.Forms.Label label_width_mm;
+        public System.Windows.Forms.Label label_height_mm;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

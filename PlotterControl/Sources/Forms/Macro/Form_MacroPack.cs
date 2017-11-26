@@ -33,7 +33,7 @@ namespace CnC_WFA
 
         private void button_main_device_col_Click(object sender, EventArgs e)
         {
-            new Form_Dialog_MacroPackEdit().ShowDialog();
+            FormTranslator.Translate(new Form_Dialog_MacroPackEdit()).ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)

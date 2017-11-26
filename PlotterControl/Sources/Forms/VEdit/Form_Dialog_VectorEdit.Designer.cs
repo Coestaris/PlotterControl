@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:54
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 using CWA_Resources;
@@ -18,7 +18,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -39,7 +39,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dialog_Edit));
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -1050,68 +1050,68 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button_cancel;
-        private System.Windows.Forms.Button button_ok;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.TreeView treeView_points;
-        private System.Windows.Forms.Button button_move;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_openvector;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TreeView treeView_pointsex;
-        private System.Windows.Forms.Button button_merge;
-        private System.Windows.Forms.Button button_resize;
-        private System.Windows.Forms.Button button_smdelete;
-        private System.Windows.Forms.Button button_rotatec;
-        private System.Windows.Forms.Button button_rotate;
-        private System.Windows.Forms.Button button_flip;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.Button button_cancel;
+        public System.Windows.Forms.Button button_ok;
+        public System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.Button button_delete;
+        public System.Windows.Forms.TreeView treeView_points;
+        public System.Windows.Forms.Button button_move;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button button_openvector;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.TreeView treeView_pointsex;
+        public System.Windows.Forms.Button button_merge;
+        public System.Windows.Forms.Button button_resize;
+        public System.Windows.Forms.Button button_smdelete;
+        public System.Windows.Forms.Button button_rotatec;
+        public System.Windows.Forms.Button button_rotate;
+        public System.Windows.Forms.Button button_flip;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button_vectinfo;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Button button_vectinfo;
+        public System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.GroupBox groupBox1;
         public MRG.Controls.UI.LoadingCircle loadingCircle1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label_ndresol;
-        private System.Windows.Forms.Label label_2ndname;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label_ndresol;
+        public System.Windows.Forms.Label label_2ndname;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Button button1;
         public MRG.Controls.UI.LoadingCircle loadingCircle2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker_proceed;
-        private System.Windows.Forms.Panel panel_resize;
-        private System.Windows.Forms.TextBox textBox_newheight;
-        private System.Windows.Forms.TextBox textBox_newwith;
-        private System.Windows.Forms.CheckBox checkBox_keepratio;
-        private System.Windows.Forms.Button button_resize_cansel;
-        private System.Windows.Forms.Button button_resize_ok;
-        private System.Windows.Forms.Panel panel_flip;
-        private System.Windows.Forms.Button button_flip_cancel;
-        private System.Windows.Forms.Button button_flip_ok;
-        private System.Windows.Forms.RadioButton radioButton_yflip;
-        private System.Windows.Forms.RadioButton radioButton_xflip;
-        private System.Windows.Forms.Panel panel_sdelete;
-        private System.Windows.Forms.Label label_sd_threshold;
-        private System.Windows.Forms.TextBox textBox_sd_threshold;
-        private System.Windows.Forms.Button button_sd_cancel;
-        private System.Windows.Forms.Button button_sd_ok;
-        private System.Windows.Forms.Panel panel_rotatec;
-        private System.Windows.Forms.RadioButton radioButton_270deg;
-        private System.Windows.Forms.RadioButton radioButton_180deg;
-        private System.Windows.Forms.RadioButton radioButton_90deg;
-        private System.Windows.Forms.Button button_rot_cancel;
-        private System.Windows.Forms.Button button_rot_ok;
-        private System.Windows.Forms.Label label_newwidth;
-        private System.Windows.Forms.Label label_newheight;
-        private System.Windows.Forms.Panel panel_rotc;
-        private System.Windows.Forms.Label label_rotatecenter;
-        private System.Windows.Forms.ComboBox comboBox_rotatecenter;
-        private System.Windows.Forms.Label label_angle;
-        private System.Windows.Forms.TextBox textBox_anglec;
-        private System.Windows.Forms.Button button_rotc_cancel;
-        private System.Windows.Forms.Button button_rotc_ok;
+        public System.ComponentModel.BackgroundWorker backgroundWorker_proceed;
+        public System.Windows.Forms.Panel panel_resize;
+        public System.Windows.Forms.TextBox textBox_newheight;
+        public System.Windows.Forms.TextBox textBox_newwith;
+        public System.Windows.Forms.CheckBox checkBox_keepratio;
+        public System.Windows.Forms.Button button_resize_cansel;
+        public System.Windows.Forms.Button button_resize_ok;
+        public System.Windows.Forms.Panel panel_flip;
+        public System.Windows.Forms.Button button_flip_cancel;
+        public System.Windows.Forms.Button button_flip_ok;
+        public System.Windows.Forms.RadioButton radioButton_yflip;
+        public System.Windows.Forms.RadioButton radioButton_xflip;
+        public System.Windows.Forms.Panel panel_sdelete;
+        public System.Windows.Forms.Label label_sd_threshold;
+        public System.Windows.Forms.TextBox textBox_sd_threshold;
+        public System.Windows.Forms.Button button_sd_cancel;
+        public System.Windows.Forms.Button button_sd_ok;
+        public System.Windows.Forms.Panel panel_rotatec;
+        public System.Windows.Forms.RadioButton radioButton_270deg;
+        public System.Windows.Forms.RadioButton radioButton_180deg;
+        public System.Windows.Forms.RadioButton radioButton_90deg;
+        public System.Windows.Forms.Button button_rot_cancel;
+        public System.Windows.Forms.Button button_rot_ok;
+        public System.Windows.Forms.Label label_newwidth;
+        public System.Windows.Forms.Label label_newheight;
+        public System.Windows.Forms.Panel panel_rotc;
+        public System.Windows.Forms.Label label_rotatecenter;
+        public System.Windows.Forms.ComboBox comboBox_rotatecenter;
+        public System.Windows.Forms.Label label_angle;
+        public System.Windows.Forms.TextBox textBox_anglec;
+        public System.Windows.Forms.Button button_rotc_cancel;
+        public System.Windows.Forms.Button button_rotc_ok;
     }
 }

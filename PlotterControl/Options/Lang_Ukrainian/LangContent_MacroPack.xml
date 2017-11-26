@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_MacroPack.button_back_3">Назад</menu>
+  <menu id="Form_MacroPack.button_connect">Подключится</menu>
+  <menu id="Form_MacroPack.button_create">Создать новый пак&#009;&#xA;</menu>
+  <menu id="Form_MacroPack.button_exit_3">Выйти</menu>
+  <menu id="Form_MacroPack.button_exit1">Выйти</menu>
+  <menu id="Form_MacroPack.button_info">Информация</menu>
+  <menu id="Form_MacroPack.button_load">Загрузить существующий пак&#009;&#xA;&#009;&#xA;&#009;&#xA;</menu>
+  <menu id="Form_MacroPack.button_preset_run">Выполнить</menu>
+  <menu id="Form_MacroPack.button_reopen">Открыть другой пак</menu>
+  <menu id="Form_MacroPack.groupBox_connection">Подключение</menu>
+  <menu id="Form_MacroPack.groupBox_info">Информация</menu>
+  <menu id="Form_MacroPack.groupBox_macro">groupBox2</menu>
+  <menu id="Form_MacroPack.groupBox_presets">Пресеты</menu>
+  <menu id="Form_MacroPack.label_caption">{caption}</menu>
+  <menu id="Form_MacroPack.label_name">{name}</menu>
+  <menu id="Form_MacroPack.label1">label1</menu>
+  <menu id="Form_MacroPack.loadingCircle_previewLoad">loadingCircle2</menu>
+  <menu id="Form_MacroPack.richTextBox_discr"></menu>
+  <menu id="Form_MacroPack.tabPage1">tabPage1</menu>
+  <menu id="Form_MacroPack.tabPage2">tabPage2</menu>
+  <menu id="Form_MacroPack.tabPage3">tabPage3</menu>
+  <menu id="Form_MacroPack.Text">Form_fromvector</menu>
+
+</content>

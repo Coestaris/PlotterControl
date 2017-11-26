@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Dialog_MacroPackEdit));
             this.button_save = new System.Windows.Forms.Button();
@@ -781,59 +781,59 @@ namespace CnC_WFA
 
         #endregion
 
-        private System.Windows.Forms.Button button_save;
-        private System.Windows.Forms.Button button_load;
-        private System.Windows.Forms.Button button_addnew;
-        private System.Windows.Forms.Button button_repickpath;
-        private System.Windows.Forms.Label label_macro_name;
-        private System.Windows.Forms.Label label_macro_discr;
-        private System.Windows.Forms.TextBox textBox_macro_caption;
-        private System.Windows.Forms.ComboBox comboBox_macro_charbind;
-        private System.Windows.Forms.ComboBox comboBox_macro_keybind;
-        private System.Windows.Forms.Label label_macro_caption;
-        private System.Windows.Forms.Button button_remove;
-        private System.Windows.Forms.Button button_openineditor;
-        private System.Windows.Forms.Label label_macro_keybind;
-        private System.Windows.Forms.Label label_macro_charbind;
-        private System.Windows.Forms.TextBox textBox_caption;
-        private System.Windows.Forms.ComboBox comboBox_bdrate;
-        private System.Windows.Forms.ComboBox comboBox_portname;
-        private System.Windows.Forms.Label label_caption;
-        private System.Windows.Forms.RichTextBox richTextBox_discr;
-        private System.Windows.Forms.Label label_discr;
-        private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.Label label_name;
-        private System.Windows.Forms.Label label_portname;
-        private System.Windows.Forms.Label label_bdrate;
-        private System.Windows.Forms.Label label_macro_elemcount;
-        private System.Windows.Forms.Label label_samples;
-        private System.Windows.Forms.Button button_samples_add;
-        private System.Windows.Forms.Button button_samples_remove;
-        private System.Windows.Forms.ListBox listBox_samples;
-        private System.Windows.Forms.TextBox textBox_sample_value;
-        private System.Windows.Forms.Label label_macro_path;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage_main;
-        private System.Windows.Forms.TabPage tabPage_connection;
-        private System.Windows.Forms.TabPage tabPage_macro;
-        private System.Windows.Forms.TabPage tabPage_sample;
-        private System.Windows.Forms.CheckBox checkBox_isHidden;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button_preset;
-        private System.Windows.Forms.Button button_macro;
-        private System.Windows.Forms.Button button_conn;
-        private System.Windows.Forms.Button button_close;
-        private System.Windows.Forms.Button button_main;
-        private System.Windows.Forms.Label label_sample_title;
-        private System.Windows.Forms.Label label_main_title;
-        private System.Windows.Forms.Label label_conn_title;
-        private System.Windows.Forms.Label label_macro_title;
-        private ImageListBox listBox_macroses;
-        private System.Windows.Forms.Panel panel_macroMain;
-        private System.Windows.Forms.OpenFileDialog openFileDialog_macro;
-        private System.Windows.Forms.OpenFileDialog openFileDialog_mpack;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog_mpack;
-        private System.Windows.Forms.OpenFileDialog openFileDialog_macro2;
+        public System.Windows.Forms.Button button_save;
+        public System.Windows.Forms.Button button_load;
+        public System.Windows.Forms.Button button_addnew;
+        public System.Windows.Forms.Button button_repickpath;
+        public System.Windows.Forms.Label label_macro_name;
+        public System.Windows.Forms.Label label_macro_discr;
+        public System.Windows.Forms.TextBox textBox_macro_caption;
+        public System.Windows.Forms.ComboBox comboBox_macro_charbind;
+        public System.Windows.Forms.ComboBox comboBox_macro_keybind;
+        public System.Windows.Forms.Label label_macro_caption;
+        public System.Windows.Forms.Button button_remove;
+        public System.Windows.Forms.Button button_openineditor;
+        public System.Windows.Forms.Label label_macro_keybind;
+        public System.Windows.Forms.Label label_macro_charbind;
+        public System.Windows.Forms.TextBox textBox_caption;
+        public System.Windows.Forms.ComboBox comboBox_bdrate;
+        public System.Windows.Forms.ComboBox comboBox_portname;
+        public System.Windows.Forms.Label label_caption;
+        public System.Windows.Forms.RichTextBox richTextBox_discr;
+        public System.Windows.Forms.Label label_discr;
+        public System.Windows.Forms.TextBox textBox_name;
+        public System.Windows.Forms.Label label_name;
+        public System.Windows.Forms.Label label_portname;
+        public System.Windows.Forms.Label label_bdrate;
+        public System.Windows.Forms.Label label_macro_elemcount;
+        public System.Windows.Forms.Label label_samples;
+        public System.Windows.Forms.Button button_samples_add;
+        public System.Windows.Forms.Button button_samples_remove;
+        public System.Windows.Forms.ListBox listBox_samples;
+        public System.Windows.Forms.TextBox textBox_sample_value;
+        public System.Windows.Forms.Label label_macro_path;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage tabPage_main;
+        public System.Windows.Forms.TabPage tabPage_connection;
+        public System.Windows.Forms.TabPage tabPage_macro;
+        public System.Windows.Forms.TabPage tabPage_sample;
+        public System.Windows.Forms.CheckBox checkBox_isHidden;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Button button_preset;
+        public System.Windows.Forms.Button button_macro;
+        public System.Windows.Forms.Button button_conn;
+        public System.Windows.Forms.Button button_close;
+        public System.Windows.Forms.Button button_main;
+        public System.Windows.Forms.Label label_sample_title;
+        public System.Windows.Forms.Label label_main_title;
+        public System.Windows.Forms.Label label_conn_title;
+        public System.Windows.Forms.Label label_macro_title;
+        public ImageListBox listBox_macroses;
+        public System.Windows.Forms.Panel panel_macroMain;
+        public System.Windows.Forms.OpenFileDialog openFileDialog_macro;
+        public System.Windows.Forms.OpenFileDialog openFileDialog_mpack;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog_mpack;
+        public System.Windows.Forms.OpenFileDialog openFileDialog_macro2;
     }
 }

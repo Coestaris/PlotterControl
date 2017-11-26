@@ -10,13 +10,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CnC_WFA
@@ -50,7 +45,7 @@ namespace CnC_WFA
         {
             InitializeComponent();
             Object = editing;
-            Text = string.Format("Редактирование \"{0}\"", Object.Name);
+            Text = string.Format(TB.L.Phrase["Form_Graph.Editing"], Object.Name);
         }
 
         private void Form_Dialog_EditGraph_Load(object sender, EventArgs e)
@@ -141,7 +136,7 @@ namespace CnC_WFA
             {
                 panel_data_formula_status.Visible = true;
                 panel_data_formula_status.BackColor = Color.FromArgb(255, 74, 74);
-                label_data_formula_status.Text = string.Format("Найдено {0} ошибок.", (GlobalErrors?.Count == null ? 0 : GlobalErrors?.Count) + (GlobalErrorsLims?.Count == null ? 0 : GlobalErrorsLims?.Count));
+                label_data_formula_status.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.FoundErrors"], (GlobalErrors?.Count == null ? 0 : GlobalErrors?.Count) + (GlobalErrorsLims?.Count == null ? 0 : GlobalErrorsLims?.Count));
                 button_data_formula_status_more.Visible = true;
                 ds.Formula = LastCompString;
                 ds.Formula = LastCompString;
@@ -155,7 +150,7 @@ namespace CnC_WFA
             {
                 panel_data_formula_status.Visible = true;
                 panel_data_formula_status.BackColor = Color.FromArgb(0, 255, 0);
-                label_data_formula_status.Text = string.Format("OK! Собрано за {0} миллисекунд.", (DateTime.Now - startTime).TotalMilliseconds);
+                label_data_formula_status.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.OKBuiltIn"], (DateTime.Now - startTime).TotalMilliseconds);
                 button_data_formula_status_more.Visible = false;
                 Object.ResetPreRender();
                 if (Object.Markers.UsePeriodic && Object.Markers.AutoLims)
@@ -174,12 +169,12 @@ namespace CnC_WFA
         {
             var ds = Object.DataSource as FormulaDataSource;
             string[] messages = new string[] {
-                "Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:\n",
-                "\n1.Ошибок при компиляции формулы не было найдено.\n",
-                "\n1.Найдено {0} ошибок при компиляции строки формулы \"{1}\":\n{2}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{3}\"\n",
-                "\n{1}.Ошибок при компиляции строки {0} предела не было найдено.\n",
-                "\n{5}.Найдено {0} ошибок при компиляции строки {1} предела \"{2}\":\n{3}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{4}\"\n"
-            };
+                TB.L.Phrase["Form_Graph.Log.1"],
+                TB.L.Phrase["Form_Graph.Log.2"],
+                TB.L.Phrase["Form_Graph.Log.3"],
+                TB.L.Phrase["Form_Graph.Log.4"],
+                TB.L.Phrase["Form_Graph.Log.5"]
+            }; ;
             string res = "";
             res += string.Format(messages[0], startTime, endTime, (endTime - startTime).TotalSeconds, (GlobalErrors?.Count == null ? 0 : GlobalErrors?.Count) + (GlobalErrorsLims?.Count == null ? 0 : GlobalErrorsLims?.Count));
             if (GlobalErrors == null) res += messages[1];
@@ -187,25 +182,25 @@ namespace CnC_WFA
 
             if (GlobalErrorsLims == null)
             {
-                res += string.Format(messages[3], "нижнего", 2);
-                res += string.Format(messages[3], "верхнего", 3);
+                res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Word.Bottom"], 2);
+                res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Word.Upper"], 3);
             }
             else
             {
-                if (GlobalErrorsLims.FindAll(p => p.StartsWith("/")).Count() == 0) res += string.Format(messages[3], "нижнего", 2);
+                if (GlobalErrorsLims.FindAll(p => p.StartsWith("/")).Count() == 0) res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Word.Bottom"], 2);
                 else
                 {
                     var a = GlobalErrorsLims.FindAll(p => p.StartsWith("/")).ToArray();
-                    res += string.Format(messages[4], a.Length, "нижнего", CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('/'))), ds.LowLimFormula, 2);
+                    res += string.Format(messages[4], a.Length, TB.L.Phrase["Form_Dialog_EditElement.Word.Bottom"], CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('/'))), ds.LowLimFormula, 2);
                 }
-                if (GlobalErrorsLims.FindAll(p => p.StartsWith("\\")).Count() == 0) res += string.Format(messages[3], "верхнего" ,3);
+                if (GlobalErrorsLims.FindAll(p => p.StartsWith("\\")).Count() == 0) res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Word.Upper"], 3);
                 else
                 {
                     var a = GlobalErrorsLims.FindAll(p => p.StartsWith("\\")).ToArray();
-                    res += string.Format(messages[4], a.Length, "верхнего", CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('\\'))), ds.HighLimFormula, 3);
+                    res += string.Format(messages[4], a.Length, TB.L.Phrase["Form_Dialog_EditElement.Word.Upper"], CurrentCompStringLow, string.Join("\n", a.Select(p => "   - " + p.Trim('\\'))), ds.HighLimFormula, 3);
                 }
             }
-            MessageBox.Show(res, "Отчет об ошибках", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(res, TB.L.Phrase["Form_Dialog_EditElement.Report"], MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void timer_data_forumla_expire_Tick(object sender, EventArgs e)
@@ -233,7 +228,7 @@ namespace CnC_WFA
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
             Object.Name = textBox_name.Text;
-            Text = string.Format("Редактирование \"{0}\"", Object.Name);
+            Text = string.Format(TB.L.Phrase["Form_Graph.Editing"], Object.Name);
         }
 
         private void HighLightButton(int index)
@@ -249,13 +244,13 @@ namespace CnC_WFA
             {
                 var ds = Object.DataSource as FormulaDataSource;
                 string res = "";
-                if (CurrentCompString != ds.Formula) res += string.Format("Введенная формула \"{0}\" не совпадает с удачной \"{1}\"", CurrentCompString, ds.Formula);
-                if (CurrentCompStringHigh != ds.HighLimFormula) res += string.Format("Введенная формула нижнего правого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringLow, ds.HighLimFormula);
-                if (CurrentCompStringLow != ds.LowLimFormula) res += string.Format("Введенная формула нижнего левого предела функции \"{0}\" не совпадает с удачной \"{1}\"\n", CurrentCompStringHigh, ds.LowLimFormula);
-                if (textBox_markers_period.Text != Object.Markers.PeriodFormula) res += string.Format("Введенная формула периода маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period.Text, Object.Markers.PeriodFormula);
-                if (textBox_markers_period_start.Text != Object.Markers.LowLimFormula) res += string.Format("Введенная формула левого предела маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period_start.Text, Object.Markers.LowLimFormula);
-                if (textBox_markers_period_end.Text != Object.Markers.HighLimFormula) res += string.Format("Введенная формула левого правого маркеров \"{0}\" не совпадает с удачной \"{1}\"\n", textBox_markers_period_end.Text, Object.Markers.HighLimFormula);
-                if(res.Length != 0) MessageBox.Show(res, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (CurrentCompString != ds.Formula) res += string.Format(TB.L.Phrase["Form_Graph.ExitLog.1"], CurrentCompString, ds.Formula);
+                if (CurrentCompStringHigh != ds.HighLimFormula) res += string.Format(TB.L.Phrase["Form_Graph.ExitLog.2"], CurrentCompStringLow, ds.HighLimFormula);
+                if (CurrentCompStringLow != ds.LowLimFormula) res += string.Format(TB.L.Phrase["Form_Graph.ExitLog.3"], CurrentCompStringHigh, ds.LowLimFormula);
+                if (textBox_markers_period.Text != Object.Markers.PeriodFormula) res += string.Format(TB.L.Phrase["Form_Graph.ExitLog.4"], textBox_markers_period.Text, Object.Markers.PeriodFormula);
+                if (textBox_markers_period_start.Text != Object.Markers.LowLimFormula) res += string.Format(TB.L.Phrase["Form_Graph.ExitLog.5"], textBox_markers_period_start.Text, Object.Markers.LowLimFormula);
+                if (textBox_markers_period_end.Text != Object.Markers.HighLimFormula) res += string.Format(TB.L.Phrase["Form_Graph.ExitLog.6"], textBox_markers_period_end.Text, Object.Markers.HighLimFormula);
+                if(res.Length != 0) MessageBox.Show(res, TB.L.Phrase["Form_Graph.Word.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Object.DataSource = ds;
             }
             Object.MainPen = new Pen(colorDialog1.Color, float.Parse(textBox_display_width.Text));
@@ -272,7 +267,7 @@ namespace CnC_WFA
             if(colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 SetDisplayColorProbe();
-                label_display_color_rgb.Text = string.Format("RGB ({0}, {1}, {2})", colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
+                label_display_color_rgb.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.RGB"], colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B);
             }
         }
 
@@ -303,11 +298,11 @@ namespace CnC_WFA
 
             var ds = Object.DataSource as FormulaDataSource;
             string[] messages = new string[] {
-                "Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:\n",
-                "\n1.Ошибок при компиляции периода не было найдено.\n",
-                "\n1.Найдено {0} ошибок при компиляции строки периода \"{1}\":\n{2}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{3}\"\n",
-                "\n{1}.Ошибок при компиляции строки {0} предела не было найдено.\n",
-                "\n{5}.Найдено {0} ошибок при компиляции строки {1} предела \"{2}\":\n{3}\nДля продолжения работы была возвращена предыдущая успешная формула: \"{4}\"\n"
+                TB.L.Phrase["Form_Graph.Log1.1"],
+                TB.L.Phrase["Form_Graph.Log1.2"],
+                TB.L.Phrase["Form_Graph.Log1.3"],
+                TB.L.Phrase["Form_Graph.Log1.4"],
+                TB.L.Phrase["Form_Graph.Log1.5"]
             };
             string res = "";
             res += string.Format(messages[0], startTimePeriod, endTimePeriod, (endTimePeriod - startTimePeriod).TotalSeconds, GlobalErrorsPeriod.Count);
@@ -315,13 +310,13 @@ namespace CnC_WFA
             if (periodErrors.Count == 0) res += messages[1];
             else res += string.Format(messages[2], periodErrors.Count, textBox_markers_period.Text, string.Join("\n", periodErrors.Select(p => "   - " + p.Trim('|'))), Object.Markers.PeriodFormula);
 
-            if (lowErrors.Count == 0) res += string.Format(messages[3], "нижнего", 2);
-            else res += string.Format(messages[4], lowErrors.Count, "нижнего", textBox_markers_period_end.Text, string.Join("\n", lowErrors.Select(p => "   - " + p.Trim('/'))), Object.Markers.LowLimFormula, 2);
+            if (lowErrors.Count == 0) res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Word.Bottom"], 2);
+            else res += string.Format(messages[4], lowErrors.Count, TB.L.Phrase["Form_Dialog_EditElement.Word.Bottom"], textBox_markers_period_end.Text, string.Join("\n", lowErrors.Select(p => "   - " + p.Trim('/'))), Object.Markers.LowLimFormula, 2);
 
-            if (highErrors.Count == 0) res += string.Format(messages[3], "верхнего", 3);
-            else res += string.Format(messages[4], highErrors.Count, "верхнего", textBox_markers_period_start.Text, string.Join("\n", highErrors.Select(p => "   - " + p.Trim('\\'))), Object.Markers.HighLimFormula, 3);
+            if (highErrors.Count == 0) res += string.Format(messages[3], TB.L.Phrase["Form_Dialog_EditElement.Word.Upper"], 3);
+            else res += string.Format(messages[4], highErrors.Count, TB.L.Phrase["Form_Dialog_EditElement.Word.Upper"], textBox_markers_period_start.Text, string.Join("\n", highErrors.Select(p => "   - " + p.Trim('\\'))), Object.Markers.HighLimFormula, 3);
 
-            MessageBox.Show(res, "Отчет об ошибках", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(res, TB.L.Phrase["Form_Dialog_EditElement.Report"], MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void timer_markers_expire_Tick(object sender, EventArgs e)
@@ -353,7 +348,7 @@ namespace CnC_WFA
                 {
                     panel_markers_status.Visible = true;
                     panel_markers_status.BackColor = Color.FromArgb(255, 74, 74);
-                    label_markers_status.Text = string.Format("Найдено {0} ошибок.", (GlobalErrorsPeriod?.Count == null ? 0 : GlobalErrorsPeriod?.Count));
+                    label_markers_status.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.FoundErrors"], (GlobalErrorsPeriod?.Count == null ? 0 : GlobalErrorsPeriod?.Count));
                     button_markers_status.Visible = true;
                     Object.Markers.LowLimFormula = LowCompString;
                     Object.Markers.HighLimFormula = HighCompString;
@@ -365,7 +360,7 @@ namespace CnC_WFA
                 {
                     panel_markers_status.Visible = true;
                     panel_markers_status.BackColor = Color.FromArgb(0, 255, 0);
-                    label_markers_status.Text = string.Format("OK! Собрано за {0} миллисекунд.", (DateTime.Now - startTimePeriod).TotalMilliseconds);
+                    label_markers_status.Text = string.Format(TB.L.Phrase["Form_Dialog_EditElement.OKBuiltIn"], (DateTime.Now - startTimePeriod).TotalMilliseconds);
                     button_markers_status.Visible = false;
                     Object.Markers.CompilePeriod();
                 }

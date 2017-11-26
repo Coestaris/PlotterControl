@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 17.06.2017 21:04
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 namespace CnC_WFA
@@ -135,10 +135,10 @@ namespace CnC_WFA
         }
 
         #endregion
-        internal System.Windows.Forms.Button button_exit;
-        internal System.Windows.Forms.Button button_save;
-        internal System.Windows.Forms.Button button_selectAll;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label_discr;
+        public System.Windows.Forms.Button button_exit;
+        public System.Windows.Forms.Button button_save;
+        public System.Windows.Forms.Button button_selectAll;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label label_discr;
     }
 }

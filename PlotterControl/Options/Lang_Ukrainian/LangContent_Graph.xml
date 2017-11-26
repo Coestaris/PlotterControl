@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+
+
+  <!-- Graph Menus -->
+  <menu id="Form_Graph.button_add">Добавить</menu>
+  <menu id="Form_Graph.button_copy">Дублировать</menu>
+  <menu id="Form_Graph.button_del">Удалить</menu>
+  <menu id="Form_Graph.button_edit">Редактировать</menu>
+  <menu id="Form_Graph.button_loaderr_close">Закрiть</menu>
+  <menu id="Form_Graph.button_loaderr_more">Подробнее</menu>
+  <menu id="Form_Graph.button1">С</menu>
+  <menu id="Form_Graph.button2">Сохр</menu>
+  <menu id="Form_Graph.button3">Загр</menu>
+  <menu id="Form_Graph.checkBox_use_addPoints">Точки на графике</menu>
+  <menu id="Form_Graph.checkBox_use_axis">Оси</menu>
+  <menu id="Form_Graph.checkBox_use_axisNames">Название осей</menu>
+  <menu id="Form_Graph.checkBox_use_docName">Название документа</menu>
+  <menu id="Form_Graph.checkBox_use_Grid">Сетка</menu>
+  <menu id="Form_Graph.checkBox_use_legend">Легенда</menu>
+  <menu id="Form_Graph.groupBox1">Графики</menu>
+  <menu id="Form_Graph.groupBox2">Элементы</menu>
+  <menu id="Form_Graph.label_load">Подождите, пока идет загрузка и &#009;&#xA;обработка данных. Это может занять&#009;&#xA;до пары мин +</menu>
+  <menu id="Form_Graph.label_x">label1</menu>
+  <menu id="Form_Graph.label_y">label2</menu>
+  <menu id="Form_Graph.label1">Обнаружены ошибки при загрузке документа.</menu>
+  <menu id="Form_Graph.labelHint">Добавьте графики для начала работы...&#009;&#xA;</menu>
+  <menu id="Form_Graph.loadingCircle_tab1">loadingCircle2</menu>
+  <menu id="Form_Graph.Text">Построение графиков</menu>
+
+</content>

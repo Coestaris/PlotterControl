@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_MacroPack));
             this.button_create = new System.Windows.Forms.Button();
@@ -448,33 +448,33 @@ namespace CnC_WFA
 
         #endregion
 
-        internal System.Windows.Forms.Button button_create;
-        internal System.Windows.Forms.Button button_load;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox_macro;
-        private System.Windows.Forms.GroupBox groupBox_presets;
-        private System.Windows.Forms.ComboBox comboBox_presets;
-        private System.Windows.Forms.Button button_preset_run;
-        private System.Windows.Forms.Button button_info;
-        private System.Windows.Forms.Label label_caption;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.GroupBox groupBox_connection;
-        private System.Windows.Forms.Button button_connect;
-        private System.Windows.Forms.ComboBox comboBox_bd;
-        private System.Windows.Forms.ComboBox comboBox_port;
-        private System.Windows.Forms.GroupBox groupBox_info;
-        private System.Windows.Forms.RichTextBox richTextBox_discr;
-        private System.Windows.Forms.Label label_name;
-        internal System.Windows.Forms.Button button_exit1;
-        internal System.Windows.Forms.Button button_exit_3;
-        internal System.Windows.Forms.Button button_back_3;
-        internal System.Windows.Forms.Button button_reopen;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private MRG.Controls.UI.LoadingCircle loadingCircle_previewLoad;
+        public System.Windows.Forms.Button button_create;
+        public System.Windows.Forms.Button button_load;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.GroupBox groupBox_macro;
+        public System.Windows.Forms.GroupBox groupBox_presets;
+        public System.Windows.Forms.ComboBox comboBox_presets;
+        public System.Windows.Forms.Button button_preset_run;
+        public System.Windows.Forms.Button button_info;
+        public System.Windows.Forms.Label label_caption;
+        public System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.OpenFileDialog openFileDialog2;
+        public System.Windows.Forms.GroupBox groupBox_connection;
+        public System.Windows.Forms.Button button_connect;
+        public System.Windows.Forms.ComboBox comboBox_bd;
+        public System.Windows.Forms.ComboBox comboBox_port;
+        public System.Windows.Forms.GroupBox groupBox_info;
+        public System.Windows.Forms.RichTextBox richTextBox_discr;
+        public System.Windows.Forms.Label label_name;
+        public System.Windows.Forms.Button button_exit1;
+        public System.Windows.Forms.Button button_exit_3;
+        public System.Windows.Forms.Button button_back_3;
+        public System.Windows.Forms.Button button_reopen;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Panel panel1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public MRG.Controls.UI.LoadingCircle loadingCircle_previewLoad;
     }
 }

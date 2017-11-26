@@ -17,24 +17,31 @@
   <phrase id="VectorViewer.OldVectorFormat">Устаревший формат вектора</phrase>
 
   <!-- Vector Viewer Menus -->
-  <menu id="Form_ViewVect.Caption">Просмотрщик векторов</menu>
-  <menu id="Form_ViewVect.button_begindraw">Начать</menu>
-  <menu id="Form_ViewVect.button_exit">Выйти</menu>
-  <menu id="Form_ViewVect.button_load">Загрузить</menu>
-  <menu id="Form_ViewVect.button_outter">Вн. просмотр</menu>
-  <menu id="Form_ViewVect.button_pause">Пауза</menu>
-  <menu id="Form_ViewVect.button_pick2ndcolor">Фон</menu>
-  <menu id="Form_ViewVect.button_pickcolor">Линии</menu>
-  <menu id="Form_ViewVect.button_pick_onecolordraw">...</menu>
-  <menu id="Form_ViewVect.button_print">Печать</menu>
-  <menu id="Form_ViewVect.button_redraw">Перерисовать</menu>
-  <menu id="Form_ViewVect.groupBox_contours">Контуры</menu>
-  <menu id="Form_ViewVect.groupBox_main">Отрисовка</menu>
-  <menu id="Form_ViewVect.groupBox_realtime">Отрисовка в реальном времени</menu>
-  <menu id="Form_ViewVect.label_latency">Задержка: </menu>
-  <menu id="Form_ViewVect.label_ms">мс.</menu>
-  <menu id="Form_ViewVect.label_pathtofile">Путь к файлу: </menu>
-  <menu id="Form_ViewVect.checkBox_randomcolor">Случайный цвет линий</menu>
-  <menu id="Form_ViewVect.checkBox_onecolor">Одно-цветная</menu>
+  <menu id="Form_ViewVect.contoursToolStripMenuItem">Contours</menu>
+  <menu id="Form_ViewVect.fileToolStripMenuItem">File</menu>
+  <menu id="Form_ViewVect.infoStripToolStripMenuItem">Info strip</menu>
+  <menu id="Form_ViewVect.label">Для просмотра выберите файл</menu>
+  <menu id="Form_ViewVect.label_status">Отрисовка...</menu>
+  <menu id="Form_ViewVect.label_zoom_max">label2</menu>
+  <menu id="Form_ViewVect.label_zoom_min">label1</menu>
+  <menu id="Form_ViewVect.label3">label3</menu>
+  <menu id="Form_ViewVect.loadingCircle1">loadingCircle2</menu>
+  <menu id="Form_ViewVect.menuStrip1">menuStrip1</menu>
+  <menu id="Form_ViewVect.statusStrip1">statusStrip1</menu>
+  <menu id="Form_ViewVect.Text">View vector</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_backgroundColor">Background Color</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_close">Close</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_color">Cotour Color</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_defDisp">Default display</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_edit">Edit</menu>
+  <menu id="Form_ViewVect.ToolStripMenuItem_exit">Exit</menu>
+  <menu id="Form_ViewVect.ToolStripMenuItem_open">Open</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_print">Print</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_resetZoom">Reset Zoom</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_saveAs">Save As</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_selectedColor">Selected Color</menu>
+  <menu id="Form_ViewVect.viewToolStripMenuItem">View</menu>
+  <menu id="Form_ViewVect.windowsToolStripMenuItem">Windows</menu>
+  <menu id="Form_ViewVect.zoomToolStripMenuItem">Zoom</menu>
 
 </content>

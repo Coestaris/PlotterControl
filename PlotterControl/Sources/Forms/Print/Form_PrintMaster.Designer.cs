@@ -15,7 +15,7 @@ namespace CnC_WFA
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,7 +36,7 @@ namespace CnC_WFA
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_PrintMaster));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -1080,81 +1080,81 @@ namespace CnC_WFA
         }
 
         #endregion
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.ColorDialog colorDialog2;
-        private System.Windows.Forms.Label label_1;
-        private System.Windows.Forms.Label label_2;
-        private System.Windows.Forms.Label label_3;
-        private System.Windows.Forms.Label label_4;
-        private System.Windows.Forms.Label label_title_2;
-        private System.Windows.Forms.Label label_5;
-        private System.Windows.Forms.Button button_help;
+        public System.Windows.Forms.ColorDialog colorDialog1;
+        public System.Windows.Forms.ColorDialog colorDialog2;
+        public System.Windows.Forms.Label label_1;
+        public System.Windows.Forms.Label label_2;
+        public System.Windows.Forms.Label label_3;
+        public System.Windows.Forms.Label label_4;
+        public System.Windows.Forms.Label label_title_2;
+        public System.Windows.Forms.Label label_5;
+        public System.Windows.Forms.Button button_help;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TabPage tabPage_main;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label_bd;
-        private System.Windows.Forms.Label label_com;
-        private System.Windows.Forms.Button button_open;
-        private System.Windows.Forms.ComboBox comboBox_bdrate;
-        private System.Windows.Forms.ComboBox comboBox_com;
-        private System.Windows.Forms.Button button_tab1_exit;
-        private System.Windows.Forms.Button button_tab1_next;
-        private System.Windows.Forms.Label label_discr;
-        private System.Windows.Forms.Label label_title;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage_pickVect;
-        private System.Windows.Forms.TabPage tabPage_print;
-        private System.Windows.Forms.Button button_refresh;
-        private System.Windows.Forms.Button button_upload;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.ListBox listBox_fileList;
-        private System.Windows.Forms.PictureBox pictureBox_preview;
-        private MRG.Controls.UI.LoadingCircle loadingCircle_previewLoad;
-        private System.Windows.Forms.Button button_tab2_back;
-        private System.Windows.Forms.Button button_tab2_next;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label label_type;
-        private System.Windows.Forms.Label label_resol;
-        private System.Windows.Forms.TabPage tabPage_opts;
-        private System.Windows.Forms.Button button_tab3_back;
-        private System.Windows.Forms.Button button_tab3_next;
-        private System.Windows.Forms.GroupBox groupBox_size;
-        private System.Windows.Forms.TextBox textBox_xsize;
-        private System.Windows.Forms.Label label_measure_xsize;
-        private System.Windows.Forms.TextBox textBox_ysize;
-        private System.Windows.Forms.Label label_measure_ysize;
-        private System.Windows.Forms.Label label_maxx;
-        private System.Windows.Forms.Label label_maxy;
-        private System.Windows.Forms.Label label_ysize;
-        private System.Windows.Forms.Label label_xsize;
-        private System.Windows.Forms.RadioButton radioButton_ysize;
-        private System.Windows.Forms.RadioButton radioButton_xsize;
-        private System.Windows.Forms.GroupBox groupBox_pens;
-        private System.Windows.Forms.ComboBox comboBox_pens;
-        private System.Windows.Forms.TextBox textBox_elev_corr;
-        private System.Windows.Forms.Label label_elev_corr_1;
-        private System.Windows.Forms.Label label_elev_corr;
-        private System.Windows.Forms.TextBox textBox_elev_delta;
-        private System.Windows.Forms.Label label_elev_delta_1;
-        private System.Windows.Forms.Label label_elev_delta;
-        private System.Windows.Forms.Label label_color;
-        private System.Windows.Forms.PictureBox pictureBox_color;
-        private System.Windows.Forms.Label label_progress;
-        private System.Windows.Forms.Label label_speed;
-        private System.Windows.Forms.Label label_leftTime;
-        private System.Windows.Forms.Label label_spendTme;
-        private System.Windows.Forms.Button button_abort;
-        private System.Windows.Forms.Button button_pause;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button_deviceInfo;
-        private System.Windows.Forms.Label label_percentage;
-        private System.Windows.Forms.TabPage tabPage_end;
-        private System.Windows.Forms.Button button_tab5_exit;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TabPage tabPage_end1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button_tab4_close;
+        public System.Windows.Forms.TabPage tabPage_main;
+        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.Label label_bd;
+        public System.Windows.Forms.Label label_com;
+        public System.Windows.Forms.Button button_open;
+        public System.Windows.Forms.ComboBox comboBox_bdrate;
+        public System.Windows.Forms.ComboBox comboBox_com;
+        public System.Windows.Forms.Button button_tab1_exit;
+        public System.Windows.Forms.Button button_tab1_next;
+        public System.Windows.Forms.Label label_discr;
+        public System.Windows.Forms.Label label_title;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage tabPage_pickVect;
+        public System.Windows.Forms.TabPage tabPage_print;
+        public System.Windows.Forms.Button button_refresh;
+        public System.Windows.Forms.Button button_upload;
+        public System.Windows.Forms.Button button_delete;
+        public System.Windows.Forms.ListBox listBox_fileList;
+        public System.Windows.Forms.PictureBox pictureBox_preview;
+        public MRG.Controls.UI.LoadingCircle loadingCircle_previewLoad;
+        public System.Windows.Forms.Button button_tab2_back;
+        public System.Windows.Forms.Button button_tab2_next;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.Label label_type;
+        public System.Windows.Forms.Label label_resol;
+        public System.Windows.Forms.TabPage tabPage_opts;
+        public System.Windows.Forms.Button button_tab3_back;
+        public System.Windows.Forms.Button button_tab3_next;
+        public System.Windows.Forms.GroupBox groupBox_size;
+        public System.Windows.Forms.TextBox textBox_xsize;
+        public System.Windows.Forms.Label label_measure_xsize;
+        public System.Windows.Forms.TextBox textBox_ysize;
+        public System.Windows.Forms.Label label_measure_ysize;
+        public System.Windows.Forms.Label label_maxx;
+        public System.Windows.Forms.Label label_maxy;
+        public System.Windows.Forms.Label label_ysize;
+        public System.Windows.Forms.Label label_xsize;
+        public System.Windows.Forms.RadioButton radioButton_ysize;
+        public System.Windows.Forms.RadioButton radioButton_xsize;
+        public System.Windows.Forms.GroupBox groupBox_pens;
+        public System.Windows.Forms.ComboBox comboBox_pens;
+        public System.Windows.Forms.TextBox textBox_elev_corr;
+        public System.Windows.Forms.Label label_elev_corr_1;
+        public System.Windows.Forms.Label label_elev_corr;
+        public System.Windows.Forms.TextBox textBox_elev_delta;
+        public System.Windows.Forms.Label label_elev_delta_1;
+        public System.Windows.Forms.Label label_elev_delta;
+        public System.Windows.Forms.Label label_color;
+        public System.Windows.Forms.PictureBox pictureBox_color;
+        public System.Windows.Forms.Label label_progress;
+        public System.Windows.Forms.Label label_speed;
+        public System.Windows.Forms.Label label_leftTime;
+        public System.Windows.Forms.Label label_spendTme;
+        public System.Windows.Forms.Button button_abort;
+        public System.Windows.Forms.Button button_pause;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.Button button_deviceInfo;
+        public System.Windows.Forms.Label label_percentage;
+        public System.Windows.Forms.TabPage tabPage_end;
+        public System.Windows.Forms.Button button_tab5_exit;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TabPage tabPage_end1;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Button button_tab4_close;
     }
 }

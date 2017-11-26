@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 25.08.2017 22:27
-* Last Edited: 26.08.2017 21:29:06
+* Last Edited: 27.08.2017 14:30:47
 *=================================*/
 
 using CWA;
@@ -556,7 +556,7 @@ namespace CnC_WFA
         {
             if(string.IsNullOrEmpty(main.PicFileName))
             {
-                var f = new Form_Dialog_MacroAddImage();
+                var f = FormTranslator.Translate(new Form_Dialog_MacroAddImage());
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     main.PicFileName = f.Path;
@@ -565,12 +565,12 @@ namespace CnC_WFA
                 };
             } else
             {
-                var f = new Form_Dialog_MacroAddImage()
+                var f = FormTranslator.Translate(new Form_Dialog_MacroAddImage()
                 {
                     Path = main.PicFileName,
                     XSize = main.PicSize.Width,
                     YSize = main.PicSize.Height
-                };
+                });
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     main.PicFileName = f.Path;
