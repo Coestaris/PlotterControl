@@ -754,10 +754,6 @@
       <Project>{e8e3a87a-490a-4701-9d1b-83bc6ac2b568}</Project>
       <Name>CWA_Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tools\VectorThumbnailHandler\VectorThumbnailHandler.csproj">
-      <Project>{ea4a0c65-6a12-4d47-aee5-b2faa4566016}</Project>
-      <Name>VectorThumbnailHandler</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
