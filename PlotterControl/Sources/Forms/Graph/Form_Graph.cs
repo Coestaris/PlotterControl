@@ -8,19 +8,13 @@
 * Last Edited: 28.08.2017 23:36:45
 *=================================*/
 
-using CWA;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace CnC_WFA
 {
@@ -113,7 +107,7 @@ namespace CnC_WFA
         private void UpdateListBox()
         {
             listBox_Main.Items.Clear();
-            listBox_Main.Items.AddRange(Main.Graphs.Select(p => p.Name + (!p.Display ? "[hide]" : "")).ToArray());
+            listBox_Main.Items.AddRange(Main.Graphs.Select(p => p.Name + (!p.Display ? TB.L.Phrase["Form_Graph.Hidden"] : "")).ToArray());
 
             trackBar1.Enabled = Main.Graphs.Count != 0;
             panel1.Visible = Main.Graphs.Count != 0;
@@ -127,9 +121,9 @@ namespace CnC_WFA
                 {
                     LowLim = -(float)Math.PI * 2,
                     HighLim = (float)Math.PI * 2,
-                    Formula = "Math.Cos(x)",
-                    HighLimFormula = "Math.PI * 2",
-                    LowLimFormula = "-Math.PI * 2"
+                    Formula = TB.L.Phrase["Form_Graph.DefaultFormula"],
+                    HighLimFormula = TB.L.Phrase["Form_Graph.DefaultHighLimFormula"],
+                    LowLimFormula = TB.L.Phrase["Form_Graph.DefaultLowLimFormula"],
 
                 },
                 Markers = new GraphMarkers()
@@ -137,16 +131,16 @@ namespace CnC_WFA
                     UsePeriodic = true,
                     Use = true,
                     AutoLims = true,
-                    PeriodFormula = "Math.PI",
-                    LowLimFormula = "-Math.PI * 2",
-                    HighLimFormula = "Math.PI * 2",
+                    PeriodFormula = TB.L.Phrase["Form_Graph.DefaultPeriodFormula"],
+                    HighLimFormula = TB.L.Phrase["Form_Graph.DefaultHighLimFormula"],
+                    LowLimFormula = TB.L.Phrase["Form_Graph.DefaultLowLimFormula"],
                     Type = MarkerType.Circle,
                     Size = 5,
                     Color = Color.Red
                 }               
             };
 
-            el.Name = "graph" + Main.Graphs.Count;
+            el.Name = TB.L.Phrase["Form_Graph.Graph"] + Main.Graphs.Count;
             
             el.Markers.CompilePeriod();
             (el.DataSource as FormulaDataSource).Compile();
@@ -182,9 +176,9 @@ namespace CnC_WFA
                     LowLim = -(float)Math.PI * 2,
                     HighLim = (float)Math.PI * 2,
                     Period = (float)Math.PI,
-                    PeriodFormula = "Math.PI",
-                    HighLimFormula = "Math.PI * 2",
-                    LowLimFormula = "-Math.PI * 2",
+                    PeriodFormula = TB.L.Phrase["Form_Graph.DefaultPeriodFormula"],
+                    HighLimFormula = TB.L.Phrase["Form_Graph.DefaultHighLimFormula"],
+                    LowLimFormula = TB.L.Phrase["Form_Graph.DefaultLowLimFormula"],
                     DisplayXAxisName = false,
                     DisplayYAxisName = false,
                     isIndependence = false,
@@ -239,7 +233,7 @@ namespace CnC_WFA
             dy = (int)((float)dy * oldVal / trackBar1.Value);
 
             Zoom = trackBar1.Value;
-            label_zoom.Text = string.Format("Увеличение на {0}%", Zoom);
+            label_zoom.Text = string.Format(TB.L.Phrase["Form_Graph.Zoom"], Zoom);
             RedrawLow(pictureBox1.Width / 2 - oldDeltas.X, pictureBox1.Height / 2 - oldDeltas.Y);
             
             timer_redraw.Stop();
@@ -261,8 +255,8 @@ namespace CnC_WFA
                     dy = startPoint.Y - e.Y;
                     RedrawLow(pictureBox1.Width / 2 - dx, pictureBox1.Height / 2 - dy);
                 }
-                label_x.Text = string.Format("MouseX: {0 : 0.####}", (e.X - ZeroPoint.X) / Zoom);
-                label_y.Text = string.Format("MouseY: {0 : 0.####}", (e.Y - ZeroPoint.Y) / Zoom);
+                label_x.Text = string.Format(TB.L.Phrase["Form_Graph.MouseX"], (e.X - ZeroPoint.X) / Zoom);
+                label_y.Text = string.Format(TB.L.Phrase["Form_Graph.MouseY"], (e.Y - ZeroPoint.Y) / Zoom);
             }
         }
 
@@ -315,7 +309,7 @@ namespace CnC_WFA
         private void button3_Click(object sender, EventArgs e)
         {
             if (listBox_Main.SelectedIndex != -1)
-                if(MessageBox.Show(string.Format("Вы действительно хотите удалить график {0}?", Main.Graphs[listBox_Main.SelectedIndex].Name), "Удалeние", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(MessageBox.Show(string.Format(TB.L.Phrase["Form_Graph.SureDelete"], Main.Graphs[listBox_Main.SelectedIndex].Name), TB.L.Phrase["Form_Graph.Deleting"], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Main.Graphs.RemoveAt(listBox_Main.SelectedIndex);
                     UpdateListBox();
@@ -334,7 +328,7 @@ namespace CnC_WFA
             if (listBox_Main.SelectedIndex != -1)
             {
                 Main.Graphs.Add((Graph)Main.Graphs[listBox_Main.SelectedIndex].Clone());
-                Main.Graphs[Main.Graphs.Count - 1].Name += "_Copy";
+                Main.Graphs[Main.Graphs.Count - 1].Name += TB.L.Phrase["Form_Graph.Copy"];
                 UpdateListBox();
             }
         }

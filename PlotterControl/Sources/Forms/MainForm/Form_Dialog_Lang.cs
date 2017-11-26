@@ -23,6 +23,20 @@ namespace CnC_WFA
 
         ImageListBox glb;
 
+        private void Fill()
+        {
+            glb.Items.Clear();
+            int i = 0;
+            ImageList il = new ImageList();
+            foreach (var item in TranslateBase.LoadedLangs)
+            {
+                il.Images.Add(item.Icon);
+                if (TranslateBase.CurrentLang.Name == item.Name) glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Green, item.Name));
+                else glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Black, item.Name));
+            }
+            glb.ImageList = il;
+        }
+
         private void Form_Dialog_Lang_Load(object sender, EventArgs e)
         {
             glb = new ImageListBox()
@@ -33,16 +47,8 @@ namespace CnC_WFA
                 BackColor = Color.White,
                 ItemHeight = 15
             };
-            int i = 0;
-            ImageList il = new ImageList();
-            foreach (var item in TranslateBase.LoadedLangs)
-            {
-                il.Images.Add(item.Icon);
-                if(TranslateBase.CurrentLang.Name == item.Name) glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Green, item.Name));
-                else glb.Items.Add(new ImageListBox.ImageListBoxItem(i++, Color.Black, item.Name));
-            }
-            glb.ImageList = il;
             glb.SelectedIndexChanged += Glb_SelectedIndexChanged;
+            Fill();
             Controls.Add(glb);
         }
 
@@ -55,6 +61,16 @@ namespace CnC_WFA
         private void button_exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button_select_Click(object sender, EventArgs e)
+        {
+            string name = (string)(glb.Items[glb.SelectedIndex] as ImageListBox.ImageListBoxItem).Item;
+            CWA.GlobalOptions.Lang = name;
+            CWA.GlobalOptions.Save();
+            TranslateBase.CurrentLangName = name;
+            TranslateBase.ProceedLang();
+            Fill();
         }
     }
 }

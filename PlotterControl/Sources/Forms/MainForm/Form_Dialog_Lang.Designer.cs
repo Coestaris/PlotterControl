@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 06.08.2017 19:55
-* Last Edited: 26.08.2017 16:30:55
+* Last Edited: 27.08.2017 14:30:46
 *=================================*/
 
 namespace CnC_WFA
@@ -72,6 +72,7 @@ namespace CnC_WFA
             this.button_select.TabIndex = 120;
             this.button_select.Text = "Выбрать";
             this.button_select.UseVisualStyleBackColor = false;
+            this.button_select.Click += new System.EventHandler(this.button_select_Click);
             // 
             // button_edit
             // 
