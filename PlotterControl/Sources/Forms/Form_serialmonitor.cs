@@ -1,11 +1,11 @@
 /*=================================\
-* PlotterControl\Form_SerialMonitor.cs
+* PlotterControl\Form_serialmonitor.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 16.09.2017 13:35:35
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:04:46
 *=================================*/
 
 using System;

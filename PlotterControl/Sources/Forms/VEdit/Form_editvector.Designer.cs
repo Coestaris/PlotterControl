@@ -1,11 +1,11 @@
 /*=================================\
-* PlotterControl\Form_EditVector.Designer.cs
+* PlotterControl\Form_editvector.Designer.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 27.08.2017 14:30:46
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:04:46
 *=================================*/
 
 using CWA_Resources;

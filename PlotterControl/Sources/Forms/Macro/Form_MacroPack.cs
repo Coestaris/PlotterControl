@@ -4,8 +4,8 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 25.08.2017 22:27
-* Last Edited: 28.08.2017 14:52:28
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:04:46
 *=================================*/
 
 using CWA.Connection;
@@ -49,30 +49,27 @@ namespace CnC_WFA
 
                 if (!Main.IsEveryMacroCorrect)
                 {
-                    MessageBox.Show("Не удалось загрузить 1 или несколько макросов.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        TB.L.Phrase["Form_MacroPack.UnableToLoadSomeMacro"], 
+                        TB.L.Phrase["Form_MacroPack.Error"], 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 tabControl1.SelectedIndex = 1;
-
                 comboBox_presets.Items.Clear();
                 comboBox_presets.Items.AddRange(Main.Samples.ToArray());
-
                 comboBox_bd.Items.Clear();
                 comboBox_bd.Items.AddRange(BdRate.GetNamesInt().Select(p => p.ToString()).ToArray());
                 comboBox_port.Items.Clear();
                 comboBox_port.Items.AddRange(SerialPort.GetPortNames());
-
                 comboBox_bd.SelectedItem = Main.PortBD.Num.ToString();
                 comboBox_port.SelectedItem = Main.PortName.ToString();
-
                 groupBox_presets.Enabled = false;
                 groupBox_macro.Enabled = false;
-
                 richTextBox_discr.Text = Main.Discr;
                 label_caption.Text = Main.Caption;
                 label_name.Text = Main.Name;
-
                 CreateButtons();
             }
         }
@@ -141,12 +138,12 @@ namespace CnC_WFA
 
         private void button_connect_Click(object sender, EventArgs e)
         {
-            if (button_connect.Text == "Отключить")
+            if (button_connect.Text == TB.L.Phrase["Connection.Disconnect"])
             {
                 Master?.CloseConnection();
                 groupBox_presets.Enabled = false;
                 groupBox_macro.Enabled = false;
-                button_connect.Text = "Подключится";
+                button_connect.Text = TB.L.Phrase["Connection.Connect"];
                 comboBox_bd.Enabled = true;
                 comboBox_port.Enabled = true;
 
@@ -155,7 +152,10 @@ namespace CnC_WFA
             {
                 if (comboBox_bd.Text == "")
                 {
-                    MessageBox.Show("Укажите скорость соеденения", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        TB.L.Phrase["Connection.EnterBDRate"], 
+                        TB.L.Phrase["Connection.Error"], 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 Master?.CloseConnection();
@@ -168,7 +168,10 @@ namespace CnC_WFA
                 }
                 catch
                 {
-                    MessageBox.Show(string.Format("Не удалось открыть порт {0}", comboBox_port.Text), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        string.Format(TB.L.Phrase["Connection.UnableToOpenPort"], comboBox_port.Text),
+                        TB.L.Phrase["Connection.Error"], 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 Master = new DTPMaster(
@@ -178,20 +181,26 @@ namespace CnC_WFA
                 {
                     if (!Master.Device.Test())
                     {
-                        MessageBox.Show("Устройство не ответило на первичный опрос", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+                            TB.L.Phrase["Connection.DeviceNotAnswered"],
+                            TB.L.Phrase["Connection.Error"],
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Устройство не ответило на первичный опрос", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        TB.L.Phrase["Connection.DeviceNotAnswered"],
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 groupBox_presets.Enabled = true;
                 groupBox_macro.Enabled = true;
                 comboBox_bd.Enabled = false;
                 comboBox_port.Enabled = false;
-                button_connect.Text = "Отключить";
+                button_connect.Text = TB.L.Phrase["Connection.Disconnect"];
                 ContentMaster = new PlotterContent(Master);
                 tabControl1.Enabled = false;
                 loadingCircle_previewLoad.Visible = true;
@@ -207,7 +216,10 @@ namespace CnC_WFA
         private void button_exit_3_Click(object sender, EventArgs e)
         {
             if (groupBox_presets.Enabled)
-                if(MessageBox.Show("В данный момент активна сессия подключения. Прервать ее и выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(MessageBox.Show(
+                    TB.L.Phrase["Form_MacroPack.SessianAlreadyActive"],
+                    TB.L.Phrase["Form_MacroPack.Exit"],
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Master.CloseConnection();
                     Close();
@@ -218,15 +230,21 @@ namespace CnC_WFA
         private void Form_MacroPack_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (groupBox_presets.Enabled)
-                if (MessageBox.Show("В данный момент активна сессия подключения. Прервать ее и выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    Master.CloseConnection();
+                if (MessageBox.Show(
+                    TB.L.Phrase["Form_MacroPack.SessianAlreadyActive"],
+                    TB.L.Phrase["Form_MacroPack.Exit"],
+                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Master.CloseConnection();
                 else e.Cancel = true;
         }
 
         private void button_reopen_Click(object sender, EventArgs e)
         {
             if (groupBox_presets.Enabled)
-                if (MessageBox.Show("В данный момент активна сессия подключения. Прервать ее и загрузить другой пак?", "Загрузка", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(
+                    TB.L.Phrase["Form_MacroPack.SessianAlreadyActive"],
+                    TB.L.Phrase["Form_MacroPack.Exit"],
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Master.CloseConnection();
                     button_connect_Click(null, null);

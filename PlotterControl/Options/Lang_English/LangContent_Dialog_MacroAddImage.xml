@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Dialog_MacroAddImage.SizeX">Заднный размер по ширине имеет некорентный формат</phrase>
+  <phrase id="Form_Dialog_MacroAddImage.SizeY">Заднный размер по высоте имеет некорентный формат</phrase>
+  <phrase id="Form_Dialog_MacroAddImage.FileNotExists">Не удалось найти заданный файл</phrase>
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_Dialog_MacroAddImage.button_cancel">Отмена</menu>
+  <menu id="Form_Dialog_MacroAddImage.button_ok">Ок</menu>
+  <menu id="Form_Dialog_MacroAddImage.button_pick"> </menu>
+  <menu id="Form_Dialog_MacroAddImage.label_height">Высота</menu>
+  <menu id="Form_Dialog_MacroAddImage.label_height_mm">мм</menu>
+  <menu id="Form_Dialog_MacroAddImage.label_path">Путь</menu>
+  <menu id="Form_Dialog_MacroAddImage.label_width">Ширина</menu>
+  <menu id="Form_Dialog_MacroAddImage.label_width_mm">мм</menu>
+  <menu id="Form_Dialog_MacroAddImage.Text">Form_Dialog_MacroAddImage</menu>
+  <menu id="Form_Dialog_MacroAddImage.textBox_height">30</menu>
+  <menu id="Form_Dialog_MacroAddImage.textBox_width">30</menu>
+
+</content>

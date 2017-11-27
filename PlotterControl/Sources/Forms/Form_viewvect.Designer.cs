@@ -1,11 +1,11 @@
 /*=================================\
-* PlotterControl\Form_ViewVect.Designer.cs
+* PlotterControl\Form_viewvect.Designer.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 09.10.2017 13:07:03
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:04:46
 *=================================*/
 
 namespace CnC_WFA

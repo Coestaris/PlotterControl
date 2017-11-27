@@ -4,21 +4,16 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 06.10.2017 20:19
-* Last Edited: 06.10.2017 20:19:53
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:10:35
 *=================================*/
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CnC_WFA
@@ -32,17 +27,17 @@ namespace CnC_WFA
         {
             if (!float.TryParse(textBox_width.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out XSize))
             {
-                MessageBox.Show("XSize Wrong");
+                MessageBox.Show(TB.L.Phrase["Form_Dialog_MacroAddImage.SizeX"]);
                 return;
             }
             if (!float.TryParse(textBox_height.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out YSize))
             {
-                MessageBox.Show("YSize Wrs;adf");
+                MessageBox.Show(TB.L.Phrase["Form_Dialog_MacroAddImage.SizeY"]);
                 return;
             }
             if (!File.Exists(textBox_path.Text))
             {
-                MessageBox.Show("Not exists file");
+                MessageBox.Show(TB.L.Phrase["Form_Dialog_MacroAddImage.FileNotExists"]);
                 return;
             }
 
@@ -75,7 +70,7 @@ namespace CnC_WFA
             {
                 textBox_path.Text = Path;
                 if (!File.Exists(textBox_path.Text))
-                    MessageBox.Show("Not exists file");
+                    MessageBox.Show(TB.L.Phrase["Form_Dialog_MacroAddImage.FileNotExists"]);
                 else LoadPic();
             }
         }

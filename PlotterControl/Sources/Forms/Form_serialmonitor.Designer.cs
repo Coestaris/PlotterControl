@@ -1,11 +1,11 @@
 /*=================================\
-* PlotterControl\Form_SerialMonitor.Designer.cs
+* PlotterControl\Form_serialmonitor.Designer.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 17.06.2017 21:04
-* Last Edited: 11.09.2017 21:13:11
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:04:46
 *=================================*/
 
 namespace CnC_WFA

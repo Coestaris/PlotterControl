@@ -4,11 +4,10 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 25.08.2017 22:27
-* Last Edited: 27.08.2017 21:30:51
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:12:27
 *=================================*/
 
-using CWA;
 using CWA.Connection;
 using CWA.Printing.Macro;
 using CWA.Vectors.Document;
@@ -54,21 +53,21 @@ namespace CnC_WFA
                 {
                     gr.FillRectangle(new SolidBrush(Color.FromArgb(224, 224, 224)), new RectangleF(0, 0, width, height));
                     var font = new Font("Cambria", 15f, FontStyle.Regular);
-                    var size = gr.MeasureString("Nothing to\n  preview", font);
-                    gr.DrawString("Nothing to\n  preview", font, Brushes.Red, new Point((int)(width / 2 - size.Width / 2), (int)(height / 2 - size.Height / 2)));
+                    var size = gr.MeasureString(TB.L.Phrase["Form_MacroPack.NothingToPreview"], font);
+                    gr.DrawString(TB.L.Phrase["Form_MacroPack.NothingToPreview"], font, Brushes.Red, new Point((int)(width / 2 - size.Width / 2), (int)(height / 2 - size.Height / 2)));
                 }
                 Image img = pictureBox1.Image;
                 pictureBox1.Image = bmp;
                 img?.Dispose();
                 return;
             }
-            label_macro_name.Text = "Name: " + ExOperators.CutString(a.GetMacro().Name, 15);
-            label_macro_path.Text = "Path: " + new FileInfo(a.Path).Directory.Name + "\\" + new FileInfo(a.Path).Name;
-            label_macro_discr.Text = "Discr: " + ExOperators.CutString(a.GetMacro().Discr, 15);
+            label_macro_name.Text = TB.L.Phrase["Form_MacroPack.Name"] + ExOperators.CutString(a.GetMacro().Name, 15);
+            label_macro_path.Text = TB.L.Phrase["Form_MacroPack.Path"] + new FileInfo(a.Path).Directory.Name + "\\" + new FileInfo(a.Path).Name;
+            label_macro_discr.Text = TB.L.Phrase["Form_MacroPack.Discr"] + ExOperators.CutString(a.GetMacro().Discr, 15);
             textBox_macro_caption.Text = a.Options.Caption;
             comboBox_macro_keybind.SelectedItem = a.Options.KeyBind.ToString();
             comboBox_macro_charbind.Text = a.Options.CharBind.ToString();
-            label_macro_elemcount.Text = "Elements: " + a.GetMacro().Elems.Count;
+            label_macro_elemcount.Text = TB.L.Phrase["Form_MacroPack.Elements"] + a.GetMacro().Elems.Count;
             checkBox_isHidden.Checked = a.Options.Hidden;
             RenderGR(i);
             Render();
@@ -76,13 +75,13 @@ namespace CnC_WFA
 
         private void UpDateGeneralSettings()
         {
-            Text = string.Format("Пак макросов: \"{0}\"", main.Name);
+            Text = string.Format(TB.L.Phrase["Form_MacroPack.MacroPack"], main.Name);
             textBox_caption.Text = main.Caption;
             textBox_name.Text = main.Name;
             richTextBox_discr.Text = main.Discr;
             comboBox_portname.SelectedItem = main.PortName.ToString();
             comboBox_bdrate.SelectedItem = main.PortBD.ToString();
-            label_samples.Text = string.Format("Сємплов: {0}", main.Samples.Count);
+            label_samples.Text = string.Format(TB.L.Phrase["Form_MacroPack.Samples"], main.Samples.Count);
             listBox_samples.Items.AddRange(main.Samples.ToArray());
         }
 
@@ -96,7 +95,10 @@ namespace CnC_WFA
             comboBox_portname.Items.AddRange(ComPortName.GetNamesStrings());
             comboBox_macro_keybind.Items.AddRange(Enum.GetNames(typeof(Key)));
             for (int i = 30; i <= 256; i++) comboBox_macro_charbind.Items.Add((char)i);
-            main = new MacroPack("NoName", "NoDiscr", "NoName");
+            main = new MacroPack(
+                TB.L.Phrase["Form_MacroPack.NoName"],
+                TB.L.Phrase["Form_MacroPack.NoDiscr"], 
+                TB.L.Phrase["Form_MacroPack.NoName"]);
             UpDateGeneralSettings();
         }
 
@@ -238,7 +240,7 @@ namespace CnC_WFA
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
             main.Name = textBox_name.Text;
-            Text = string.Format("Пак макросов: \"{0}\"", main.Name);
+            Text = string.Format(TB.L.Phrase["Form_MacroPack.MacroPack"], main.Name);
         }
 
         private void textBox_caption_TextChanged(object sender, EventArgs e)
@@ -253,7 +255,10 @@ namespace CnC_WFA
                 main.Elems.RemoveAt(listBox_macroses.SelectedIndex);
                 listBox_macroses.Items.RemoveAt(listBox_macroses.SelectedIndex);
             }
-            else MessageBox.Show("Select Macros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show(
+                TB.L.Phrase["Form_MacroPack.SelectMacro"], 
+                TB.L.Phrase["Form_MacroPack.Error"],
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button_openineditor_Click(object sender, EventArgs e)
@@ -262,7 +267,10 @@ namespace CnC_WFA
             {
                 FormTranslator.Translate(new Form_Macro(main.Elems[listBox_macroses.SelectedIndex].Path)).Show();
             }
-            else MessageBox.Show("Select Macros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show(
+                TB.L.Phrase["Form_MacroPack.SelectMacro"], 
+                TB.L.Phrase["Form_MacroPack.Error"],
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void textBox_sample_value_TextChanged(object sender, EventArgs e)
@@ -275,7 +283,7 @@ namespace CnC_WFA
             listBox_samples.Items.Add(textBox_sample_value.Text);
             main.Samples.Add(textBox_sample_value.Text);
             textBox_sample_value.Text = "";
-            label_samples.Text = string.Format("Сємплов: {0}", main.Samples.Count);
+            label_samples.Text = string.Format(TB.L.Phrase["Form_MacroPack.Samples"], main.Samples.Count);
         }
 
         private void button_samples_remove_Click(object sender, EventArgs e)
@@ -337,8 +345,14 @@ namespace CnC_WFA
                 }
                 catch
                 {
-                    MessageBox.Show("Ошибка при загрузке -_-");
-                    main = new MacroPack("NoName", "NoDiscr", "NoName");
+                    MessageBox.Show(
+                        TB.L.Phrase["Form_MacroPack.ErrorWhileLoading"],
+                        TB.L.Phrase["Form_MacroPack.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    main = new MacroPack(
+                        TB.L.Phrase["Form_MacroPack.NoName"],
+                        TB.L.Phrase["Form_MacroPack.NoDiscr"],
+                        TB.L.Phrase["Form_MacroPack.NoName"]);
                 }
                 UpDateGeneralSettings();
                 UpDateListbox();

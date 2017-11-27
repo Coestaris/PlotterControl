@@ -3,8 +3,16 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Macro.OlderVersionOfFile">File Was created in old version of the program.&#xA;It may cause some errors or problems. Resave now?</phrase>
+  <phrase id="Form_Macro.Warning">Warning</phrase>
+  <phrase id="Form_Macro.AlreadyUpped">Уже поднято, куда еще поднимать?</phrase>
+  <phrase id="Form_Macro.AlreadyDown">Уже опущено, куда еще опускать?"</phrase>
+  <phrase id="Form_Macro.Macro">Макрос: "{0}"</phrase>
+  <phrase id="Form_Macro.WrongFloatInput">"' its wrong float number input"</phrase>
 
 
+  <phrase id="Form_Macro.Status">GLobalX: {0}, GlobalY: {1};   LocalX: {2:0.##}, LocalY: {3:0.##};   XMM: {4:0.###}, YMM: {5:0.###};   XSteps: {6:0.##}, YSteps: {7:0.##};</phrase>
+  
   <!-- Serial Monitor Menus -->
   <menu id="Form_Macro.button_100percent">100%</menu>
   <menu id="Form_Macro.button_addel">Add New Element</menu>

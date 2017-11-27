@@ -3,8 +3,14 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-
-
+  <phrase id="Connection.Connect">Подключится</phrase>
+  <phrase id="Connection.Disconnect">Отключить</phrase>
+  <phrase id="Connection.Error">Ошибка</phrase>
+  <phrase id="Connection.EnterBDRate">Укажите скорость соеденения</phrase>
+  <phrase id="Connection.EnterPort">Укажите порт</phrase>
+  <phrase id="Connection.UnableToOpenPort">Не удалось открыть порт {0}</phrase>
+  <phrase id="Connection.DeviceNotAnswered">Устройство не ответило на первичный опрос</phrase>
+  
   <!-- Serial Monitor Menus -->
   <menu id="Form_PrintMaster.button_abort">Прервать печать</menu>
   <menu id="Form_PrintMaster.button_delete">Удалить</menu>

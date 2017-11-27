@@ -3,8 +3,24 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_MacroPack.NothingToPreview">Нечего отображать</phrase>
 
+  <phrase id="Form_MacroPack.Name">Имя: </phrase>
+  <phrase id="Form_MacroPack.Path">Путь: </phrase>
+  <phrase id="Form_MacroPack.Discr">Описание: </phrase>
+  <phrase id="Form_MacroPack.Elements">Элементов: </phrase>
+  <phrase id="Form_MacroPack.MacroPack">Пак макросов: "{0}"</phrase>
+  <phrase id="Form_MacroPack.Samples">Семплов: "{0}"</phrase>
+ 
+  <phrase id="Form_MacroPack.SessianAlreadyActive">В данный момент активна сессия подключения. Прервать ее и выйти?</phrase>
+  <phrase id="Form_MacroPack.Exit">Выход</phrase>
 
+  <phrase id="Form_MacroPack.NoName">Безымянный</phrase>
+  <phrase id="Form_MacroPack.NoDiscr">Пустое описание</phrase>
+  <phrase id="Form_MacroPack.ErrorWhileLoading">Ошибка при загрузке (-_-")</phrase>
+ 
+  <phrase id="Form_MacroPack.UnableToLoadSomeMacro"> Не удалось загрузить 1 или несколько макросов</phrase>
+ 
   <!-- Serial Monitor Menus -->
   <menu id="Form_MacroPack.button_back_3">Назад</menu>
   <menu id="Form_MacroPack.button_connect">Подключится</menu>

@@ -4,20 +4,19 @@
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
 *
-* Created: 25.08.2017 22:27
-* Last Edited: 27.08.2017 14:30:47
+* Created: 27.11.2017 14:04
+* Last Edited: 27.11.2017 14:04:46
 *=================================*/
 
 using CWA;
-using CWA.Connection;
 using CWA.Printing.Macro;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
-using System.Windows.Forms;
 using System.Linq;
-using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace CnC_WFA
 {
@@ -46,7 +45,10 @@ namespace CnC_WFA
             main = new Macro(filename);
             if (main.CreatedVersion < new Version(GlobalOptions.Ver))
             {
-                var h = MessageBox.Show("File Was created in old version of the program.\nIt may cause some errors or problems. Resave now?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var h = MessageBox.Show(
+                    TB.L.Phrase["Form_Macro.OlderVersionOfFile"],
+                    TB.L.Phrase["Form_Macro.Warning"],
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (h == DialogResult.Yes)
                 {
                     main.CreatedVersion = new Version(GlobalOptions.Ver);
@@ -55,8 +57,10 @@ namespace CnC_WFA
             }
             radioButton_elt_none.Checked = true;
             Form_macroses_Resize(null, null);
-            PenRectangle = new Pen(Color.Black, 1);
-            PenRectangle.DashStyle = DashStyle.Dash;
+            PenRectangle = new Pen(Color.Black, 1)
+            {
+                DashStyle = DashStyle.Dash
+            };
             Zoom = (float)trackBar_zoom.Value / 100;
             label_zoom.Text = trackBar_zoom.Value + "%";
             IsLoad = true;
@@ -69,7 +73,7 @@ namespace CnC_WFA
         public Form_Macro()
         {
             InitializeComponent();
-            main = new Macro("NoName", "NoName");
+            main = new Macro(TB.L.Phrase["Form_MacroPack.NoName"], TB.L.Phrase["Form_MacroPack.NoDiscr"]);
         }
 
         private void RenderGR()
@@ -163,12 +167,12 @@ namespace CnC_WFA
         private void UpDateListBox()
         {
             if (IsLoad) toolStripMenuItem_saveas.Enabled = true;
-            Text = string.Format("Макрос: \"{0}\"", main.Name);
+            Text = string.Format(TB.L.Phrase["Form_Macro.Macro"], main.Name);
             listBox_elements.Items.Clear();
             toolStripTextBox_discr.Text = main.Discr;
             toolStripTextBox_name.Text = main.Name;
             foreach (var a in main.Elems) listBox_elements.Items.Add(a.StringType);
-            label_elements.Text = string.Format("Элементов: {0}", listBox_elements.Items.Count);
+            label_elements.Text = string.Format(TB.L.Phrase["Form_MacroPack.Elements"], listBox_elements.Items.Count);
         }
 
         private void Form_macroses_Load(object sender, EventArgs e)
@@ -235,7 +239,10 @@ namespace CnC_WFA
             {
                 if(IsUpped)
                 {
-                    MessageBox.Show("Уже поднято, куда еще поднимать?");
+                    MessageBox.Show(
+                        TB.L.Phrase["Form_Macro.AlreadyUpped"],
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 IsUpped = false;
@@ -245,7 +252,10 @@ namespace CnC_WFA
             {
                 if(!IsUpped)
                 {
-                    MessageBox.Show("Уже опущено, куда еще опускать?");
+                    MessageBox.Show(
+                        TB.L.Phrase["Form_Macro.AlreadyDown"],
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 IsUpped = true;
@@ -286,7 +296,7 @@ namespace CnC_WFA
             {
                 pictureBox1.Refresh();
             }
-            string s = "GLobalX: {0}, GlobalY: {1};   LocalX: {2:0.##}, LocalY: {3:0.##};   XMM: {4:0.###}, YMM: {5:0.###};   XSteps: {6:0.##}, YSteps: {7:0.##};";
+            string s = TB.L.Phrase["Form_Macro.Status"];
             float locx = (pictureBox1.PointToClient(MousePosition).X / Zoom);
             float locy = (pictureBox1.PointToClient(MousePosition).Y / Zoom);
             float xmm = locx * GlobalOptions.MaxHeightSteps / scrw;
@@ -372,7 +382,10 @@ namespace CnC_WFA
                 main = new Macro(openFileDialog1.FileName);
                 if (main.CreatedVersion < new Version(GlobalOptions.Ver))
                 {
-                    var h = MessageBox.Show("File Was created in old version of the program.\nIt may cause some errors or problems. Resave now?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var h = MessageBox.Show(
+                        TB.L.Phrase["Form_Macro.OlderVersionOfFile"],
+                        TB.L.Phrase["Form_Macro.Warning"],
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (h == DialogResult.Yes)
                     {
                         main.CreatedVersion = new Version(GlobalOptions.Ver);
@@ -442,9 +455,15 @@ namespace CnC_WFA
                 ForcePaint = true;
                 float a, b;
                 string s1 = textBox_move_topointx.Text;
-                if (!float.TryParse(s1, out a)) MessageBox.Show("'" + s1 + "' its wrong float number input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!float.TryParse(s1, out a)) MessageBox.Show(
+                    "'" + s1 + TB.L.Phrase["Connection.WrongFloatInput"], 
+                    TB.L.Phrase["Connection.Error"], 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string s2 = textBox_move_topointy.Text;
-                if (!float.TryParse(s2, out b)) MessageBox.Show("'" + s2 + "' its wrong float number input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!float.TryParse(s2, out b)) MessageBox.Show(
+                    "'" + s2 + TB.L.Phrase["Connection.WrongFloatInput"],
+                    TB.L.Phrase["Connection.Error"], 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ForcePaintPoint = new PointF(a, b);
                 pictureBox1.Refresh();
             }
@@ -457,9 +476,15 @@ namespace CnC_WFA
                 ForcePaint = true;
                 float a, b;
                 string s1 = textBox_move_topointx.Text;
-                if (!float.TryParse(s1, out a)) MessageBox.Show("'" + s1 + "' its wrong float number input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!float.TryParse(s1, out a)) MessageBox.Show(
+                    "'" + s1 + TB.L.Phrase["Connection.WrongFloatInput"],
+                    TB.L.Phrase["Connection.Error"],
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string s2 = textBox_move_topointy.Text;
-                if (!float.TryParse(s2, out b)) MessageBox.Show("'" + s2 + "' its wrong float number input", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!float.TryParse(s2, out b)) MessageBox.Show(
+                    "'" + s2 + TB.L.Phrase["Connection.WrongFloatInput"],
+                    TB.L.Phrase["Connection.Error"],
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ForcePaintPoint = new PointF(a, b);
                 pictureBox1.Refresh();
             }
@@ -525,13 +550,13 @@ namespace CnC_WFA
         private void textBox_name_TextChanged(object sender, EventArgs e)
         {
             main.Name = toolStripTextBox_name.Text;
-            Text = string.Format("Макрос: \"{0}\"", main.Name);
+            Text = string.Format(TB.L.Phrase["Form_Macro.Macro"], main.Name);
         }
 
         private void textBox_descr_TextChanged(object sender, EventArgs e)
         {
             main.Discr = toolStripTextBox_discr.Text;
-            Text = string.Format("Макрос: \"{0}\"", main.Name);
+            Text = string.Format(TB.L.Phrase["Form_Macro.Macro"], main.Name);
         }
 
         private void button3_Click(object sender, EventArgs e)
