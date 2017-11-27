@@ -3308,7 +3308,7 @@ namespace CnC_WFA
         internal System.Windows.Forms.Button button_print_viewer_help;
         internal System.Windows.Forms.Button button_vect_editor_help;
         internal System.Windows.Forms.Button button_main_curve;
-        private System.Windows.Forms.TabPage tabPage_vect_curve;
+        internal System.Windows.Forms.TabPage tabPage_vect_curve;
         internal System.Windows.Forms.Button button_vect_curve_help;
         internal System.Windows.Forms.Label label_vect_curve_discr;
         internal System.Windows.Forms.Button button_vect_curve_start;
@@ -3322,15 +3322,15 @@ namespace CnC_WFA
         internal System.Windows.Forms.CheckBox checkBox_main_config_preload;
         internal System.Windows.Forms.Button button_main_other;
         internal System.Windows.Forms.Button button_main_graph;
-        private System.Windows.Forms.TabPage tabPage_vect_graph;
-        private System.Windows.Forms.TabPage tabPage_vect_other;
+        internal System.Windows.Forms.TabPage tabPage_vect_graph;
+        internal System.Windows.Forms.TabPage tabPage_vect_other;
         internal System.Windows.Forms.Button button_vect_graph_help;
         internal System.Windows.Forms.Label label_vect_graph_discr;
         internal System.Windows.Forms.Button button_vect_graph_open;
         internal System.Windows.Forms.Label label_vect_graph_title;
-        private System.Windows.Forms.Label label_print_macro_mpack;
+        internal System.Windows.Forms.Label label_print_macro_mpack;
         internal System.Windows.Forms.Button button_print_macro_mpack;
-        private System.Windows.Forms.Label label_print_macro_new;
+        internal System.Windows.Forms.Label label_print_macro_new;
         internal System.Windows.Forms.Button button_print_macro_new;
         internal System.Windows.Forms.TextBox textBox1;
         internal System.Windows.Forms.TextBox textBox2;

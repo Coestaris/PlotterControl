@@ -5,7 +5,7 @@
 * See the LICENSE file in the project root for more information.
 *
 * Created: 06.10.2017 20:19
-* Last Edited: 06.10.2017 20:19:53
+* Last Edited: 26.11.2017 23:21:50
 *=================================*/
 
 using System;
@@ -692,16 +692,20 @@ namespace CnC_WFA
 
         public static MainWindow Translate(MainWindow form)
         {
-            var a = TB.L.Menu;
+            var a = TranslateBase.CurrentLang.Menu;
             form.button_about.Text = a["MainWindow.button_about"];
             form.button_config.Text = a["MainWindow.button_config"];
             form.button_device.Text = a["MainWindow.button_device"];
             form.button_help.Text = a["MainWindow.button_help"];
             form.button_home.Text = a["MainWindow.button_home"];
             form.button_main_about_help.Text = a["MainWindow.button_main_about_help"];
+            form.button_main_config_assoc.Text = a["MainWindow.button_main_config_assoc"];
+            form.button_main_config_clearcache.Text = a["MainWindow.button_main_config_clearcache"];
             form.button_main_config_def.Text = a["MainWindow.button_main_config_def"];
             form.button_main_config_help.Text = a["MainWindow.button_main_config_help"];
+            form.button_main_config_lang.Text = a["MainWindow.button_main_config_lang"];
             form.button_main_config_save.Text = a["MainWindow.button_main_config_save"];
+            form.button_main_curve.Text = a["MainWindow.button_main_curve"];
             form.button_main_device_col.Text = a["MainWindow.button_main_device_col"];
             form.button_main_device_def.Text = a["MainWindow.button_main_device_def"];
             form.button_main_device_driver.Text = a["MainWindow.button_main_device_driver"];
@@ -711,6 +715,7 @@ namespace CnC_WFA
             form.button_main_device_save.Text = a["MainWindow.button_main_device_save"];
             form.button_main_device_scetch.Text = a["MainWindow.button_main_device_scetch"];
             form.button_main_editor.Text = a["MainWindow.button_main_editor"];
+            form.button_main_graph.Text = a["MainWindow.button_main_graph"];
             form.button_main_macro.Text = a["MainWindow.button_main_macro"];
             form.button_main_manual.Text = a["MainWindow.button_main_manual"];
             form.button_main_memory_connect.Text = a["MainWindow.button_main_memory_connect"];
@@ -718,6 +723,7 @@ namespace CnC_WFA
             form.button_main_memory_get.Text = a["MainWindow.button_main_memory_get"];
             form.button_main_memory_help.Text = a["MainWindow.button_main_memory_help"];
             form.button_main_memory_load.Text = a["MainWindow.button_main_memory_load"];
+            form.button_main_other.Text = a["MainWindow.button_main_other"];
             form.button_main_print.Text = a["MainWindow.button_main_print"];
             form.button_main_ser.Text = a["MainWindow.button_main_ser"];
             form.button_main_vect.Text = a["MainWindow.button_main_vect"];
@@ -727,6 +733,8 @@ namespace CnC_WFA
             form.button_pd.Text = a["MainWindow.button_pd"];
             form.button_print.Text = a["MainWindow.button_print"];
             form.button_print_help.Text = a["MainWindow.button_print_help"];
+            form.button_print_macro_mpack.Text = a["MainWindow.button_print_macro_mpack"];
+            form.button_print_macro_new.Text = a["MainWindow.button_print_macro_new"];
             form.button_print_mc_help.Text = a["MainWindow.button_print_mc_help"];
             form.button_print_mc_start.Text = a["MainWindow.button_print_mc_start"];
             form.button_print_mc_start1.Text = a["MainWindow.button_print_mc_start1"];
@@ -736,11 +744,16 @@ namespace CnC_WFA
             form.button_vb.Text = a["MainWindow.button_vb"];
             form.button_vd.Text = a["MainWindow.button_vd"];
             form.button_vect.Text = a["MainWindow.button_vect"];
+            form.button_vect_curve_help.Text = a["MainWindow.button_vect_curve_help"];
+            form.button_vect_curve_start.Text = a["MainWindow.button_vect_curve_start"];
             form.button_vect_editor_help.Text = a["MainWindow.button_vect_editor_help"];
             form.button_vect_editor_start.Text = a["MainWindow.button_vect_editor_start"];
+            form.button_vect_graph_help.Text = a["MainWindow.button_vect_graph_help"];
+            form.button_vect_graph_open.Text = a["MainWindow.button_vect_graph_open"];
             form.button_vect_pr_start.Text = a["MainWindow.button_vect_pr_start"];
             form.button_vect_vect_help.Text = a["MainWindow.button_vect_vect_help"];
             form.button_vect_viewer_start.Text = a["MainWindow.button_vect_viewer_start"];
+            form.checkBox_main_config_preload.Text = a["MainWindow.checkBox_main_config_preload"];
             form.checkBox_main_memory_com.Text = a["MainWindow.checkBox_main_memory_com"];
             form.checkBox_main_memory_pause.Text = a["MainWindow.checkBox_main_memory_pause"];
             form.checkBox_main_memory_readonly.Text = a["MainWindow.checkBox_main_memory_readonly"];
@@ -765,6 +778,8 @@ namespace CnC_WFA
             form.label_main_config_6.Text = a["MainWindow.label_main_config_6"];
             form.label_main_config_7.Text = a["MainWindow.label_main_config_7"];
             form.label_main_config_title.Text = a["MainWindow.label_main_config_title"];
+            form.label_main_config_vertCorrection.Text = a["MainWindow.label_main_config_vertCorrection"];
+            form.label_main_config_vertCorrection_dicsr.Text = a["MainWindow.label_main_config_vertCorrection_dicsr"];
             form.label_main_device_1.Text = a["MainWindow.label_main_device_1"];
             form.label_main_device_2.Text = a["MainWindow.label_main_device_2"];
             form.label_main_device_3.Text = a["MainWindow.label_main_device_3"];
@@ -797,6 +812,8 @@ namespace CnC_WFA
             form.label_pb.Text = a["MainWindow.label_pb"];
             form.label_pd.Text = a["MainWindow.label_pd"];
             form.label_peo.Text = a["MainWindow.label_peo"];
+            form.label_print_macro_mpack.Text = a["MainWindow.label_print_macro_mpack"];
+            form.label_print_macro_new.Text = a["MainWindow.label_print_macro_new"];
             form.label_print_macro_title.Text = a["MainWindow.label_print_macro_title"];
             form.label_print_mc_discr.Text = a["MainWindow.label_print_mc_discr"];
             form.label_print_mc_title.Text = a["MainWindow.label_print_mc_title"];
@@ -812,8 +829,12 @@ namespace CnC_WFA
             form.label_title3.Text = a["MainWindow.label_title3"];
             form.label_vb.Text = a["MainWindow.label_vb"];
             form.label_vd.Text = a["MainWindow.label_vd"];
+            form.label_vect_curve_discr.Text = a["MainWindow.label_vect_curve_discr"];
+            form.label_vect_curve_title.Text = a["MainWindow.label_vect_curve_title"];
             form.label_vect_editor_discr.Text = a["MainWindow.label_vect_editor_discr"];
             form.label_vect_editor_title.Text = a["MainWindow.label_vect_editor_title"];
+            form.label_vect_graph_discr.Text = a["MainWindow.label_vect_graph_discr"];
+            form.label_vect_graph_title.Text = a["MainWindow.label_vect_graph_title"];
             form.label_vect_title.Text = a["MainWindow.label_vect_title"];
             form.label_vect_vect_discr.Text = a["MainWindow.label_vect_vect_discr"];
             form.label_vect_vect_title.Text = a["MainWindow.label_vect_vect_title"];
@@ -821,7 +842,28 @@ namespace CnC_WFA
             form.label_vect_viewr_discr.Text = a["MainWindow.label_vect_viewr_discr"];
             form.label_xmm.Text = a["MainWindow.label_xmm"];
             form.label_ymm.Text = a["MainWindow.label_ymm"];
+            form.label1.Text = a["MainWindow.label1"];
+            form.label2.Text = a["MainWindow.label2"];
+            form.tabPage_about.Text = a["MainWindow.tabPage_about"];
+            form.tabPage_config.Text = a["MainWindow.tabPage_config"];
+            form.tabPage_device.Text = a["MainWindow.tabPage_device"];
+            form.tabPage_main_help.Text = a["MainWindow.tabPage_main_help"];
+            form.tabPage_main_main.Text = a["MainWindow.tabPage_main_main"];
+            form.tabPage_main_print.Text = a["MainWindow.tabPage_main_print"];
+            form.tabPage_main_vect.Text = a["MainWindow.tabPage_main_vect"];
+            form.tabPage_memory.Text = a["MainWindow.tabPage_memory"];
+            form.tabPage_print_macro.Text = a["MainWindow.tabPage_print_macro"];
+            form.tabPage_print_manual.Text = a["MainWindow.tabPage_print_manual"];
+            form.tabPage_print_print.Text = a["MainWindow.tabPage_print_print"];
+            form.tabPage_print_serial.Text = a["MainWindow.tabPage_print_serial"];
+            form.tabPage_vect_curve.Text = a["MainWindow.tabPage_vect_curve"];
+            form.tabPage_vect_editor.Text = a["MainWindow.tabPage_vect_editor"];
+            form.tabPage_vect_graph.Text = a["MainWindow.tabPage_vect_graph"];
+            form.tabPage_vect_other.Text = a["MainWindow.tabPage_vect_other"];
+            form.tabPage_vect_pr.Text = a["MainWindow.tabPage_vect_pr"];
+            form.tabPage_vect_viewer.Text = a["MainWindow.tabPage_vect_viewer"];
             form.Text = a["MainWindow.Text"];
+            form.textBox_main_config_vertCorrection.Text = a["MainWindow.textBox_main_config_vertCorrection"];
             form.textBox_maxstepheight.Text = a["MainWindow.textBox_maxstepheight"];
             form.textBox_MaxStepWidth.Text = a["MainWindow.textBox_MaxStepWidth"];
             form.textBox_md.Text = a["MainWindow.textBox_md"];
