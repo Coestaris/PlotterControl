@@ -62,16 +62,12 @@ namespace CnC_WFA
             comboBox_conv.Items.AddRange(new string[] {
                 "UInt16 To Bytes",
                 "Int16 To Bytes",
-
                 "UInt32 To Bytes",
                 "Int32 To Bytes",
-
                 "UInt64 To Bytes",
                 "Int64 To Bytes",
-
                 "Float To Bytes",
                 "Double To Bytes",
-
                 "String To Bytes",
             });
             comboBox_port.Items.Clear();
@@ -120,7 +116,12 @@ namespace CnC_WFA
             }
             catch(Exception e)
             {
-                MessageBox.Show(string.Format("Произошла ошибка типа {0}.\n{2}\n\n. Стек вызовов:\n{1}", e.GetType().FullName, e.StackTrace, e.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    string.Format(
+                        TB.L.Phrase["Form_PrintMaster.ErrorText"],
+                        e.GetType().FullName, e.StackTrace, e.Message),
+                     TB.L.Phrase["Connection.Error"],
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
             }
         }
@@ -154,7 +155,10 @@ namespace CnC_WFA
         {
             if (textBox_fill.Text.Length != 7)
             {
-                MessageBox.Show("Enter 7 char string!");
+                MessageBox.Show(
+                     TB.L.Phrase["Connection.Enter7CharString"],
+                     TB.L.Phrase["Connection.Error"],
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             textBox_sender_b2.Text = ((byte)textBox_fill.Text[0]).ToString();
@@ -177,7 +181,7 @@ namespace CnC_WFA
             byte[] Sender;
             byte[] DataBytes = new byte[0];
             try { Command = BitConverter.ToUInt16(new byte[] { byte.Parse(textBox_command_b1.Text), byte.Parse(textBox_command_b2.Text) }, 0); }
-            catch { label_err.Text = "Error: Command"; return; }
+            catch { label_err.Text = TB.L.Phrase["Connection.Error"] + ": " + TB.L.Phrase["Connection.Error.Command"]; return; }
             try
             {
                 Sender = new byte[8]
@@ -192,14 +196,14 @@ namespace CnC_WFA
                     byte.Parse(textBox_sender_b8.Text),
                 };
             }
-            catch { label_err.Text = "Error: Sender Bytes";  return; }
+            catch { label_err.Text = TB.L.Phrase["Connection.Error"] + ": " + TB.L.Phrase["Connection.Error.SenderBytes"]; return; }
             if (textBox_data.Text != "")
             try { DataBytes = textBox_data.Text.Split(',').Select(p => byte.Parse(p)).ToArray(); }
-            catch { label_err.Text = "Error: Data";  return; }
+            catch { label_err.Text = label_err.Text = TB.L.Phrase["Connection.Error"] + ": " + TB.L.Phrase["Connection.Error.Data"];  return; }
             UInt16 Length = (UInt16)(DataBytes.Length + 14 + 255);
             byte[] lengthBytes;
             try {  lengthBytes = checkBox_size.Checked ? new byte[] { byte.Parse(textBox_size_b1.Text), byte.Parse(textBox_size_b2.Text) } : BitConverter.GetBytes(Length); }
-            catch  {  label_err.Text = "Error: Size"; return; }
+            catch  {  label_err.Text = label_err.Text = TB.L.Phrase["Connection.Error"] + ": " + TB.L.Phrase["Connection.Error.Size"]; ; return; }
             if (!checkBox_size.Checked)
             {
                 textBox_size_b1.Text = lengthBytes[0].ToString();
@@ -216,7 +220,7 @@ namespace CnC_WFA
             else
             {
                 try {  crc = new byte[] { byte.Parse(textBox_hash_b1.Text), byte.Parse(textBox_hash_b2.Text) }; }
-                catch  { label_err.Text = "Error: Hash"; return; }
+                catch  { label_err.Text = label_err.Text = TB.L.Phrase["Connection.Error"] + ": " + TB.L.Phrase["Connection.Error.Hash"]; return; }
             }
             if (action)
             {
@@ -235,16 +239,21 @@ namespace CnC_WFA
                     Size = (Int16)(Length - 255)
                 });
 
-                listBox.Items.Add($"R{Requests.Count}. Command: ({textBox_command_b1.Text}, {textBox_command_b2.Text})");
+                listBox.Items.Add($"R{Requests.Count}. ${TB.L.Phrase["Connection.Error.Command"]}: ({textBox_command_b1.Text}, {textBox_command_b2.Text})");
                 try
                 {
                     Answers.Add(GetResult(totalBytes));
-                    listBox.Items.Add($"A{Answers.Count}. Status: {Answers.Last().Status}. Answer To: {Answers.Last().Command}");
+                    listBox.Items.Add($"A{Answers.Count}. ${TB.L.Phrase["Connection.Status"]}: {Answers.Last().Status}. ${TB.L.Phrase["Connection.AnswerTo"]}: {Answers.Last().Command}");
                 }
                 catch (Exception e)
                 {
-                    label_err.Text = "Sending Error";
-                    MessageBox.Show(string.Format("Произошла ошибка типа {0}.\n{2}\n\n. Стек вызовов:\n{1}", e.GetType().FullName, e.StackTrace, e.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    label_err.Text = TB.L.Phrase["Connection.Error.SendingError"];
+                    MessageBox.Show(
+                        string.Format(
+                            TB.L.Phrase["Form_PrintMaster.ErrorText"],
+                            e.GetType().FullName, e.StackTrace, e.Message),
+                            TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 label_err.Text = "Sended";
@@ -300,7 +309,7 @@ namespace CnC_WFA
 
         private void button_conn_Click(object sender, EventArgs e)
         {
-            if(button_conn.Text != "Disconect")
+            if(button_conn.Text != TB.L.Phrase["Connection.Disconnect"])
             try
             {
                 port = new SerialPort(comboBox_port.Text, int.Parse(comboBox_bd.Text.Remove(0, 2)));
@@ -308,21 +317,26 @@ namespace CnC_WFA
 
                 Listener = new PacketListener(new SerialPacketReader(port, 3000), new SerialPacketWriter(port));
 
-                button_conn.Text = "Disconect";
+                button_conn.Text = TB.L.Phrase["Connection.Disconnect"];
                 button_send.Enabled = true;
                 comboBox_bd.Enabled = false;
                 comboBox_port.Enabled = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Произошла ошибка типа {0}.\n{2}\n\n. Стек вызовов:\n{1}", ex.GetType().FullName, ex.StackTrace, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    string.Format(
+                        TB.L.Phrase["Form_PrintMaster.ErrorText"],
+                        ex.GetType().FullName, ex.StackTrace, ex.Message),
+                        TB.L.Phrase["Connection.Error"],
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
                 port.Close();
                 button_send.Enabled = false;
-                button_conn.Text = "Connect";
+                button_conn.Text = TB.L.Phrase["Connection.Connect"];
                 comboBox_bd.Enabled = true;
                 comboBox_port.Enabled = true;
             }
@@ -350,21 +364,23 @@ namespace CnC_WFA
         private void ShowInfoAboutAnswer(int index)
         {
             var ob = Answers[index-1];
-            string s = $"Отправитель ответа: {ob.Sender.ToString()}\nСтатус ответа: {ob.Status}\nОтвет пришел на команду: {ob.Command}\n\nТип данных ответа: {ob.DataType}\n";
+            string s = $"${TB.L.Phrase["Connection.Sender"]}: {ob.Sender.ToString()}\n${TB.L.Phrase["Connection.AnswStatus"]}: {ob.Status}\n${TB.L.Phrase["Connection.AnswCommand"]}: {ob.Command}\n\n${TB.L.Phrase["Connection.AnswerDataType"]}: {ob.DataType}\n";
             if (ob.DataType == AnswerDataType.CODE)
-                s += $"   Код ответа: {ob.Code}";
+                s += $"   ${TB.L.Phrase["Connection.AnswerCode"]}: {ob.Code}";
             else if(ob.DataType == AnswerDataType.DATA)
             {
-                s += $"   Данные ответа: {string.Join(",", ob.Data)}\n";
-                s += $"   или: {string.Join("", ob.Data.Select(p=>(char)p))}";
+                s += $"   ${TB.L.Phrase["Connection.AnswerData"]}: {string.Join(",", ob.Data)}\n";
+                s += $"   ${TB.L.Phrase["Connection.Or"]}: {string.Join("", ob.Data.Select(p=>(char)p))}";
             }
-            MessageBox.Show(s, "Answer Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(s, TB.L.Phrase["Connectio.AnswerData"], MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ShowInfoAboutRequest(int index)
         {
             var ob = Requests[index - 1];
-            MessageBox.Show($"Отправитель пакета: {ob.Sender.ToString()}\nКоманда пакета: {ob.Command}\nДанные пакета: {string.Join(",", ob.Data)}", "Packet Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"${TB.L.Phrase["Connection.PacketSender"]}: {ob.Sender.ToString()}\n${TB.L.Phrase["Connection.PacketCommand"]}: {ob.Command}\n${TB.L.Phrase["Connection.PacketData"]}: {string.Join(",", ob.Data)}", 
+                TB.L.Phrase["Connection.PacketInfo"],
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

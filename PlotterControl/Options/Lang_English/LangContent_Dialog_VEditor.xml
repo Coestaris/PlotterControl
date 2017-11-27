@@ -3,7 +3,18 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-
+  <phrase id="Form_Dialog_Edit.Editing">Редактированние</phrase>
+  <phrase id="Form_Dialog_Edit.Resolution">Разрешение</phrase>
+  <phrase id="Form_Dialog_Edit.NameCurrent">Имя (текущ.)</phrase>
+  <phrase id="Form_Dialog_Edit.Name">Имя</phrase>
+  <phrase id="Form_Dialog_Edit.Cont">Cnt#{0}, {1}pnts</phrase>
+  <phrase id="Form_Dialog_Edit.Point">Pnt#{0}, X: {1}|Y: {2}"</phrase>
+  
+  <!--Must starts as Form_Dialog_Edit.Cont!-->
+  <phrase id="Form_Dialog_Edit.StartOfCont">Cnt</phrase>
+  
+  <phrase id="Form_Dialog_Edit.SelectContour">Укажите контур!</phrase>
+  
 
   <!-- Serial Monitor Menus -->
   <menu id="Form_Dialog_Edit.button_cancel">Cancel</menu>

@@ -44,13 +44,13 @@ namespace CnC_WFA
             DocumentData d = (DocumentData)ii;
             dat = (DocumentData)d.Clone();
             bkp = (DocumentData)d.Clone();
-            Text = "Editing '" + dat.Name + "'";
+            Text = TB.L.Phrase["Form_Dialog_Edit.Editing"] + " '" + dat.Name + "'";
             dat.BaseData.Save("Temp\\backup" + cc.ToString() + ".pcv");
             d.BaseData.RawData = d.BaseData.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
             RefillTree();
             gr2 = dat.BaseData.GrPath;
-            label_ndresol.Text = "Resolution: " + dat.BaseData.Resolution;
-            label_2ndname.Text = "Name (Currect): " + new FileInfo(dat.BaseData.Filename).Directory.Name + "\\" + new FileInfo(dat.BaseData.Filename).Name;
+            label_ndresol.Text = TB.L.Phrase["Form_Dialog_Edit.Resolution"] + ": " + dat.BaseData.Resolution;
+            label_2ndname.Text = TB.L.Phrase["Form_Dialog_Edit.NameCurrent"] + ": " + new FileInfo(dat.BaseData.Filename).Directory.Name + "\\" + new FileInfo(dat.BaseData.Filename).Name;
         }
 
         private void RefillTree()
@@ -58,10 +58,10 @@ namespace CnC_WFA
             treeView_points.Nodes.Clear();
             for (int c = 0; c <= dat.BaseData.RawData.Length - 1; c++)
             {
-                treeView_points.Nodes.Add(string.Format("Cnt#{0}, {1}pnts", c, dat.BaseData.RawData[c].Length));
+                treeView_points.Nodes.Add(string.Format(TB.L.Phrase["Form_Dialog_Edit.Cont"], c, dat.BaseData.RawData[c].Length));
                 for (int i = 0; i <= dat.BaseData.RawData[c].Length - 1; i++)
                 {
-                    treeView_points.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, dat.BaseData.RawData[c][i].BasePoint.X, dat.BaseData.RawData[c][i].BasePoint.Y));
+                    treeView_points.Nodes[c].Nodes.Add(string.Format(TB.L.Phrase["Form_Dialog_Edit.Point"], i, dat.BaseData.RawData[c][i].BasePoint.X, dat.BaseData.RawData[c][i].BasePoint.Y));
                 }
             }
             treeView_points.CollapseAll();
@@ -83,14 +83,14 @@ namespace CnC_WFA
                 Width = 547;
                 for (int c = 0; c <= dat.BaseData.RawData.Length - 1; c++)
                 {
-                    treeView_pointsex.Nodes.Add(string.Format("Cnt#{0}, {1}pnts", c, dat.BaseData.RawData[c].Length));
+                    treeView_pointsex.Nodes.Add(string.Format(TB.L.Phrase["Form_Dialog_Edit.Cont"], c, dat.BaseData.RawData[c].Length));
                     for (int i = 0; i <= dat.BaseData.RawData[c].Length - 1; i++) treeView_pointsex.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, dat.BaseData.RawData[c][i].BasePoint.X, dat.BaseData.RawData[c][i].BasePoint.Y));
                 }
                 treeView_pointsex.CollapseAll();
                 gr2 = dat.BaseData.GrPath;
                 sndvect = dat.BaseData;
-                label_ndresol.Text = "Resolution: " + dat.BaseData.Resolution;
-                label_2ndname.Text = "Name (Currect): " +  new FileInfo(dat.BaseData.Filename).Directory.Name + "\\" + new FileInfo(dat.BaseData.Filename).Name;
+                label_ndresol.Text = TB.L.Phrase["Form_Dialog_Edit.Resolution"] + ": " + dat.BaseData.Resolution;
+                label_2ndname.Text = TB.L.Phrase["Form_Dialog_Edit.NameCurrent"] + ": " +  new FileInfo(dat.BaseData.Filename).Directory.Name + "\\" + new FileInfo(dat.BaseData.Filename).Name;
                 pictureBox1.Image = Vector.ToBitmapByGrPath(dat.BaseData.Size, Color.White, Color.Black, Color.Blue, 0, gr2, dat.BaseData.RawData);
 
             } else { Width = 906; }
@@ -101,7 +101,7 @@ namespace CnC_WFA
             treeView_pointsex.Nodes.Clear();
             for (int c = 0; c <= sndvect.RawData.Length - 1; c++)
             {
-                treeView_pointsex.Nodes.Add(string.Format("Cnt#{0}, {1}pnts", c, sndvect.RawData[c].Length));
+                treeView_pointsex.Nodes.Add(string.Format(TB.L.Phrase["Form_Dialog_Edit.Cont"], c, sndvect.RawData[c].Length));
                 for (int i = 0; i <= sndvect.RawData[c].Length - 1; i++) treeView_pointsex.Nodes[c].Nodes.Add(string.Format("Pnt#{0}, X: {1}|Y: {2}", i, sndvect.RawData[c][i].BasePoint.X, sndvect.RawData[c][i].BasePoint.Y));
             }
             treeView_pointsex.CollapseAll();
@@ -115,8 +115,8 @@ namespace CnC_WFA
                 sndvect = new Vector(openFileDialog1.FileName);
                 sndvect.RawData = sndvect.RawData.ToList().OrderByDescending(p => p.Length).ToArray();
                 loadingCircle1.Visible = true;
-                label_ndresol.Text = "Resolution: " + sndvect.Resolution;
-                label_2ndname.Text = "Name: " + new FileInfo(openFileDialog1.FileName).Directory.Name + "\\" + new FileInfo(openFileDialog1.FileName).Name;
+                label_ndresol.Text = TB.L.Phrase["Form_Dialog_Edit.Resolution"] + ": " + sndvect.Resolution;
+                label_2ndname.Text = TB.L.Phrase["Form_Dialog_Edit.Name"] + ": " + new FileInfo(openFileDialog1.FileName).Directory.Name + "\\" + new FileInfo(openFileDialog1.FileName).Name;
                 gr2 = (GraphicsPath)sndvect.GrPath.Clone();
                 loadingCircle1.Active = true;
                 backgroundWorker1.RunWorkerAsync();
@@ -137,7 +137,7 @@ namespace CnC_WFA
         {
             try
             {
-                if (e.Node.Text.StartsWith("Cnt"))
+                if (e.Node.Text.StartsWith(TB.L.Phrase["Form_Dialog_Edit.StartOfCont"]))
                 {
                     var a = new GraphicsPath(FillMode.Winding);
                     a.AddPolygon(Vector.PointexToPoint(dat.BaseData.RawData[e.Node.Index]));
@@ -162,7 +162,7 @@ namespace CnC_WFA
         {
             if(SelectedContour == -1)
             {
-                MessageBox.Show("Select Contour!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(TB.L.Phrase["Form_Dialog_Edit.SelectContour"], TB.L.Phrase["Connection.Error"], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             var tm = dat.BaseData.RawData.ToList();
@@ -213,7 +213,7 @@ namespace CnC_WFA
         {
             try
             {
-                if (e.Node.Text.StartsWith("Cnt"))
+                if (e.Node.Text.StartsWith(TB.L.Phrase["Form_Dialog_Edit.StartOfCont"]))
                 {
                     var a = new GraphicsPath(FillMode.Winding);
                     SelectedContour1 = e.Node.Index;

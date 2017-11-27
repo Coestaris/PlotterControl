@@ -501,7 +501,7 @@ namespace CnC_WFA
 
         private void trackBar_hardbwthreshold_Scroll(object sender, EventArgs e)
         {
-            label_harbw.Text = "??????????: " + trackBar_hardbwthreshold.Value;
+            label_harbw.Text = TB.L.Phrase["VectorMaster.Word.Threshold"] + trackBar_hardbwthreshold.Value;
             UpdateImage_tab2();
         }
 
@@ -766,7 +766,9 @@ namespace CnC_WFA
             if(saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (new FileInfo(saveFileDialog1.FileName).Extension == ".pcv") pr.Save(saveFileDialog1.FileName);
+#pragma warning disable CS0612 // Тип или член устарел
                 else pr.Save(saveFileDialog1.FileName, VectorFileFormat.PRRES);
+#pragma warning restore CS0612 // Тип или член устарел
             }
         }
 

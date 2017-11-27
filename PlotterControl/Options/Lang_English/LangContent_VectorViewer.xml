@@ -15,6 +15,9 @@
   <phrase id="VectorViewer.ContourDiscr">Контур№{0}, {1} точек.</phrase>
   <phrase id="VectorViewer.Label">Просмотрщик векторов | Просмотр</phrase>
   <phrase id="VectorViewer.OldVectorFormat">Устаревший формат вектора</phrase>
+  <phrase id="VectorViewer.WrongFileExt">Неизвестный формат файла</phrase>
+  <phrase id="VectorViewer.Error">Error</phrase>
+  <phrase id="VectorViewer.OpenSomeVectForCont">Откройте вектор для выполнения данной операции</phrase>
 
   <!-- Vector Viewer Menus -->
   <menu id="Form_ViewVect.contoursToolStripMenuItem">Contours</menu>

@@ -47,12 +47,12 @@ namespace CnC_WFA
 
         private void button_mc_Click(object sender, EventArgs e)
         {
-            if (button_mc.Text == "Откл.")
+            if (button_mc.Text == TB.L.Phrase["Form_PrintMaster.Disconnect"])
             {
                 combobox_bdrate.Enabled = true;
                 combobox_com.Enabled = true;
                 master?.CloseConnection();
-                button_mc.Text = "Подкл.";
+                button_mc.Text = TB.L.Phrase["Form_PrintMaster.Connect"];
                 return;
             }
             try
@@ -69,7 +69,7 @@ namespace CnC_WFA
                 //Control.Enabled = true;
                 combobox_bdrate.Enabled = false;
                 combobox_com.Enabled = false;
-                button_mc.Text = "Откл.";
+                button_mc.Text = TB.L.Phrase["Form_PrintMaster.Disconnect"];
 
                 if (master.SecurityManager.IsValidationRequired)
                     if (new ValidateForm(master).ShowDialog() != DialogResult.OK)
@@ -77,31 +77,47 @@ namespace CnC_WFA
                         combobox_bdrate.Enabled = true;
                         combobox_com.Enabled = true;
                         master?.CloseConnection();
-                        button_mc.Text = "Подкл.";
+                        button_mc.Text = TB.L.Phrase["Form_PrintMaster.Connect"];
                     }
             }
-            catch { MessageBox.Show(string.Format("Can`t open port {0} on {1}", combobox_com.Text, int.Parse(combobox_bdrate.Text))); }
+            catch { MessageBox.Show(
+                        string.Format(TB.L.Phrase["Connection.UnableToOpenPort"], combobox_com.Text),
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button_dmove_Click(object sender, EventArgs e)
         {
             if (!Int16.TryParse(textBox_xmove.Text, out short dx))
             {
-                MessageBox.Show("Invalid X value");
+                MessageBox.Show(
+                     TB.L.Phrase["Form_ManualControl.XValue"],
+                     TB.L.Phrase["Connection.Error"],
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!Int16.TryParse(textBox_ymove.Text, out short dy))
             {
-                MessageBox.Show("Invalid Y value");
+                MessageBox.Show(
+                    TB.L.Phrase["Form_ManualControl.YValue"],
+                    TB.L.Phrase["Connection.Error"],
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!Int16.TryParse(textBox_zmove.Text, out short dz))
             {
-                MessageBox.Show("Invalid Z value");
+                MessageBox.Show(
+                     TB.L.Phrase["Form_ManualControl.ZValue"],
+                     TB.L.Phrase["Connection.Error"],
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!movingControl.MoveTool(dx, dy, dz))
-                MessageBox.Show("Unable to move tool");
+                MessageBox.Show(
+                     TB.L.Phrase["Form_ManualControl.UnableToMove"],
+                     TB.L.Phrase["Connection.Error"],
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button_startmc_Click(object sender, EventArgs e)

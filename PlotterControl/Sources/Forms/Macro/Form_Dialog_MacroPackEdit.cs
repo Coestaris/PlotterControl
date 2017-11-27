@@ -36,8 +36,8 @@ namespace CnC_WFA
         {
             listBox_macroses.Items.Clear();
             listBox_macroses.Items.AddRange(main.Elems.Select(p =>
-                 p.GetMacro() == null ? new ImageListBox.ImageListBoxItem(0, Color.Red, string.Format("{0} -- Cant Load Macro", new FileInfo(p.Path).Directory.Name + "\\" + new FileInfo(p.Path).Name)) :
-                 p.Options.Hidden ? new ImageListBox.ImageListBoxItem(0, Color.Gray, string.Format("{0} [hidden]", p.GetMacro().Name)) :
+                 p.GetMacro() == null ? new ImageListBox.ImageListBoxItem(0, Color.Red, string.Format(TB.L.Phrase["Form_MacroPack.UnableToLoadMacro"], new FileInfo(p.Path).Directory.Name + "\\" + new FileInfo(p.Path).Name)) :
+                 p.Options.Hidden ? new ImageListBox.ImageListBoxItem(0, Color.Gray, string.Format(TB.L.Phrase["Form_MacroPack.Hidden"], p.GetMacro().Name)) :
                  new ImageListBox.ImageListBoxItem(0, Color.Black, p.GetMacro().Name)).ToArray());
         }
 

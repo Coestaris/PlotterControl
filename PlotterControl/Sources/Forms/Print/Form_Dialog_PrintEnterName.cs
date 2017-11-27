@@ -88,10 +88,13 @@ namespace CnC_WFA
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    string.Format("?????????????????? ???????????? ???????? {0}.\n{2}\n\n???????? ??????????????:\n{1}", 
-                    ex.GetType().FullName, 
-                    ex.StackTrace,
-                    ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string.Format(
+                        TB.L.Phrase["Form_Dialog_PrintEnterNames.ErrorWhileUploading"], 
+                        ex.GetType().FullName, 
+                        ex.StackTrace,
+                        ex.Message),
+                    TB.L.Phrase["Form_Dialog_PrintEnterNames.Error"], 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Abort;
             }
 }

@@ -308,7 +308,10 @@ namespace CnC_WFA
         {
             string[] fn =  (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (fn[0].EndsWith(".pcv") || fn[0].EndsWith(".prres")) Proceed(fn[0]);
-            else MessageBox.Show("Wrong file format");
+            else MessageBox.Show(
+                TB.L.Phrase["VectorViewer.Word.WrongFileExt"],
+                TB.L.Phrase["VectorViewer.Word.Error"],
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             FillListBox();
         }
 
@@ -426,7 +429,10 @@ namespace CnC_WFA
         {
             if (vect == null)
             {
-                MessageBox.Show("ќткройте какой-нибить вектор дл€ продолжени€.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    TB.L.Phrase["VectorViewer.Word.OpenSomeVectForCont"],
+                    TB.L.Phrase["VectorViewer.Word.Error"],
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

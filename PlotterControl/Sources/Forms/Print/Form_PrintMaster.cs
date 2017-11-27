@@ -76,19 +76,22 @@ namespace CnC_WFA
 
         private void button_open_Click(object sender, EventArgs e)
         {
-            if (button_open.Text == "Откл.")
+            if (button_open.Text == TB.L.Phrase["Form_PrintMaster.Disonnect"])
             {
                 ResetConntection();
                 button_tab1_next.Enabled = false;
                 comboBox_bdrate.Enabled = true;
                 comboBox_com.Enabled = true;
-                button_open.Text = "Подкл.";
+                button_open.Text = TB.L.Phrase["Form_PrintMaster.Connect"];
             }
             else
             {
                 if(comboBox_bdrate.Text == "")
                 {
-                    MessageBox.Show("Укажите скорость соеденения", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        TB.L.Phrase["Connection.EnterBDRate"],  
+                        TB.L.Phrase["Connection.Error"], 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 ResetConntection();
@@ -96,7 +99,10 @@ namespace CnC_WFA
 
                 if(comboBox_com.Text == "")
                 {
-                    MessageBox.Show("Укажите порт соеденения", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        TB.L.Phrase["Connection.EnterPort"],
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -107,7 +113,10 @@ namespace CnC_WFA
                 }
                 catch
                 {
-                    MessageBox.Show(string.Format("Не удалось открыть порт {0}", comboBox_com.Text), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        string.Format(TB.L.Phrase["Connection.UnableToOpenPort"], comboBox_com.Text),
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 master = new DTPMaster(
@@ -117,19 +126,25 @@ namespace CnC_WFA
                 {
                     if (!master.Device.Test())
                     {
-                        MessageBox.Show("Устройство не ответило на первичный опрос", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+                            TB.L.Phrase["Connection.DeviceNotAnswered"],
+                            TB.L.Phrase["Connection.Error"],
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Устройство не ответило на первичный опрос", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        TB.L.Phrase["Connection.DeviceNotAnswered"],
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 button_tab1_next.Enabled = true;
                 comboBox_bdrate.Enabled = false;
                 comboBox_com.Enabled = false;
-                button_open.Text = "Откл.";
+                button_open.Text = TB.L.Phrase["Form_PrintMaster.Disonnect"];
 
                 if (!master.SecurityManager.IsValidated)
                     if(new ValidateForm(master).ShowDialog() != DialogResult.OK)
@@ -139,7 +154,7 @@ namespace CnC_WFA
                         button_tab1_next.Enabled = false;
                         comboBox_bdrate.Enabled = true;
                         comboBox_com.Enabled = true;
-                        button_open.Text = "Подкл.";
+                        button_open.Text = TB.L.Phrase["Form_PrintMaster.Connect"];
                     };
             }
         }
@@ -218,8 +233,8 @@ namespace CnC_WFA
                 int index = listBox_fileList.SelectedIndex;
                 Bitmap preview = Metas[index].Preview;
                 pictureBox_preview.Image = preview;
-                label_resol.Text = string.Format("Разрешение: {0} x {1}", Metas[index].Width, Metas[index].Height);
-                label_type.Text = string.Format("Тип вектора: {0}", Metas[index].Type);
+                label_resol.Text = string.Format(TB.L.Phrase["Form_PrintMaster.Resoulution"], Metas[index].Width, Metas[index].Height);
+                label_type.Text = string.Format(TB.L.Phrase["Form_PrintMaster.VectorType"], Metas[index].Type);
             }
             button_tab2_next.Enabled = listBox_fileList.SelectedIndex != -1;
         }
@@ -264,14 +279,19 @@ namespace CnC_WFA
                 catch (Exception ex)
                 {
                     MessageBox.Show(
-                        string.Format("Произошла ошибка типа {0}.\n{2}\n\nСтек вызовов:\n{1}",
-                        ex.GetType().FullName,
-                        ex.StackTrace,
-                        ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string.Format(TB.L.Phrase["Form_PrintMaster.ErrorText"],
+                            ex.GetType().FullName,
+                            ex.StackTrace,
+                            ex.Message),
+                        TB.L.Phrase["Connection.Error"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.Abort;
                 }
             }
-            else MessageBox.Show("Select item!");
+            else MessageBox.Show(
+                     TB.L.Phrase["Form_PrintMaster.SelectItem"], 
+                     TB.L.Phrase["Connection.Error"],
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public static float GetYsize(float imgWidth, float imgHeight, float xSize)
         {
@@ -291,7 +311,7 @@ namespace CnC_WFA
             configMaster = new PlotterConfig(master);
             comboBox_pens.Items.Clear();
             comboBox_pens.Items.AddRange(configMaster.Pens.Select(p => p.Name).ToArray());
-            comboBox_pens.Items.Add("<польз. перо>");
+            comboBox_pens.Items.Add(TB.L.Phrase["Form_PrintMaster.CustomPen"]);
             comboBox_pens.SelectedIndex = 0;
             RecalcSize();
         }
@@ -304,14 +324,24 @@ namespace CnC_WFA
             {
                 if(!float.TryParse(textBox_xsize.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float xsize))
                 {
-                    MessageBox.Show(string.Format("\"{0}\" некорректное число", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        string.Format(
+                            TB.L.Phrase["Form_PrintMaster.UncorrectNumber"],
+                            textBox_xsize.Text),
+                        TB.L.Phrase["Form_PrintMaster.WrongInput"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_xsize.Text = lastCorrectStrings[0];
                     return;
                 }
                 float ysize = GetYsize(SelectedMetadata.Width, SelectedMetadata.Height, xsize);
                 if(xsize <= 0 || ysize <= 0 || xsize >= 297 || ysize >= 210)
                 {
-                    MessageBox.Show(string.Format("Размер по Х должен быть в диапазоне от 0мм о 297мм, а по Y должен быть в диапазоне от 0мм о 210мм.", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                        string.Format(
+                              TB.L.Phrase["Form_PrintMaster.SizeXY"],
+                            textBox_xsize.Text),
+                        TB.L.Phrase["Form_PrintMaster.WrongInput"],
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_xsize.Text = lastCorrectStrings[0];
                     return;
                 }
@@ -321,14 +351,23 @@ namespace CnC_WFA
             {
                 if (!float.TryParse(textBox_ysize.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float ysize))
                 {
-                    MessageBox.Show(string.Format("\"{0}\" некорректное число", textBox_ysize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBox_ysize.Text = lastCorrectStrings[1];
+                    MessageBox.Show(
+                      string.Format(
+                          TB.L.Phrase["Form_PrintMaster.UncorrectNumber"],
+                          textBox_xsize.Text),
+                      TB.L.Phrase["Form_PrintMaster.WrongInput"],
+                      MessageBoxButtons.OK, MessageBoxIcon.Error); textBox_ysize.Text = lastCorrectStrings[1];
                     return;
                 }
                 float xsize = GetXsize(SelectedMetadata.Width, SelectedMetadata.Height, ysize);
                 if (xsize <= 0 || ysize <= 0 || xsize >= 297 || ysize >= 210)
                 {
-                    MessageBox.Show(string.Format("Размер по Х должен быть в диапазоне от 0мм о 297мм, а по Y должен быть в диапазоне от 0мм о 210мм.", textBox_xsize.Text), "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(
+                      string.Format(
+                            TB.L.Phrase["Form_PrintMaster.SizeXY"],
+                          textBox_xsize.Text),
+                      TB.L.Phrase["Form_PrintMaster.WrongInput"],
+                      MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox_ysize.Text = lastCorrectStrings[1];
                     return;
                 }
@@ -410,11 +449,11 @@ namespace CnC_WFA
             {
                 progressBar1.Maximum = (int)MaxPosition;
                 progressBar1.Value = (int)CurrentPosition;
-                label_spendTme.Text = string.Format("Затрачено времени: {0:0.#} секунд", TimeArgs.SecondsSpend);
-                label_leftTime.Text = string.Format("Осалось времени(примерно): {0:0.#} секунд.", TimeArgs.SecondsLeft);
-                label_speed.Text = string.Format("Скорость: {0:0.##} операций/сек", TimeArgs.Speed);
-                label_progress.Text = string.Format("{0}/{1}", CurrentPosition, MaxPosition);
-                label_percentage.Text = string.Format("{0:0.##}%", (float)CurrentPosition / MaxPosition * 100f);
+                label_spendTme.Text = string.Format(TB.L.Phrase["Form_PrintMaster.TimeSpend"], TimeArgs.SecondsSpend);
+                label_leftTime.Text = string.Format(TB.L.Phrase["Form_PrintMaster.EstimatedTime"], TimeArgs.SecondsLeft);
+                label_speed.Text = string.Format(TB.L.Phrase["Form_PrintMaster.Speed"], TimeArgs.Speed);
+                label_progress.Text = string.Format(TB.L.Phrase["Form_PrintMaster.Progress"], CurrentPosition, MaxPosition);
+                label_percentage.Text = string.Format(TB.L.Phrase["Form_PrintMaster.Percentage"], (float)CurrentPosition / MaxPosition * 100f);
             }
         }
 
@@ -427,7 +466,14 @@ namespace CnC_WFA
             }
             else
             {
-                MessageBox.Show(string.Format("Произошл ошибка типа {0}.", arg.ToString()), "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                         string.Format(TB.L.Phrase["Form_PrintMaster.ErrorText"],
+                             arg.GetType().FullName,
+                             //ex.StackTrace,
+                             "null",
+                             arg.ToString()),
+                         TB.L.Phrase["Connection.Error"],
+                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 printMaster.Master.CloseConnection();
                 tabControl1.SelectedIndex = 4;
                 CheckState(4);

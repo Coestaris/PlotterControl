@@ -3,7 +3,9 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-
+  <phrase id="Form_CurvePlugins.Busy">Дыши, бобер. Я занят</phrase>
+  <phrase id="Form_CurvePlugins.VisitLink">Перейти по внешней ссылке "{0}"?</phrase>
+  <phrase id="Form_CurvePlugins.Plugins">Плагины</phrase>
 
   <!-- Serial Monitor Menus -->
   <menu id="Form_CurvePlugins.button1">Построить</menu>

@@ -18,7 +18,10 @@
   <phrase id="Form_MacroPack.NoName">Безымянный</phrase>
   <phrase id="Form_MacroPack.NoDiscr">Пустое описание</phrase>
   <phrase id="Form_MacroPack.ErrorWhileLoading">Ошибка при загрузке (-_-")</phrase>
- 
+
+  <phrase id="Form_MacroPack.UnableToLoadMacro">{0} -- Cant Load Macro</phrase>
+  <phrase id="Form_MacroPack.Hidden">{0} [hidden]</phrase>
+
   <phrase id="Form_MacroPack.UnableToLoadSomeMacro"> Не удалось загрузить 1 или несколько макросов</phrase>
  
   <!-- Serial Monitor Menus -->

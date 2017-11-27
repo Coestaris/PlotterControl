@@ -3,6 +3,8 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Dialog_PrintEnterNames.ErrorWhileUploading">Во время загрузки вектора на устройство произошла не предведенная ошибка типа {0}.&#xA;{2}&#xA;Стек вызовов: {1}</phrase>
+  <phrase id="Form_Dialog_PrintEnterNames.Error">Error</phrase>
 
 
   <!-- Serial Monitor Menus -->

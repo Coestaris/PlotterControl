@@ -12,15 +12,15 @@
   <phrase id="VectorMaster.Word.MBytes">МБ</phrase>
   <phrase id="VectorMaster.Word.Size">Размеры</phrase>
   <phrase id="VectorMaster.Word.Dpi">DPI</phrase>
-  <phrase id="VectorMaster.CantCalculateDPI">Невозможно расчитать.</phrase>
   <phrase id="VectorMaster.Word.PixelFormat">Формат пикс.: </phrase>
   <phrase id="VectorMaster.Word.TimeSpend">Прошло времени:</phrase>
   <phrase id="VectorMaster.Word.Complete">Завершено!</phrase>
   <phrase id="VectorMaster.Word.Update">Обновить</phrase>
   <phrase id="VectorMaster.Word.Scale">Scale</phrase>
   <phrase id="VectorMaster.Word.Stop">Стоп</phrase>
-  <phrase id="VectorMaster.Word.Threshold">Порог</phrase>
+  <phrase id="VectorMaster.Word.Threshold">Порог: </phrase>
   <phrase id="VectorMaster.Word.Sigma">Сигма</phrase>
+  <phrase id="VectorMaster.CantCalculateDPI">Невозможно расчитать.</phrase>
   <phrase id="VectorMaster.AllImageFiles">Все форматы изображений</phrase>
   <phrase id="VectorMaster.AllFiles">Все файлы</phrase>
 
