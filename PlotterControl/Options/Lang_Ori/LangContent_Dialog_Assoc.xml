@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Dialog_Assoc.PCV"></phrase>
+  <phrase id="Form_Dialog_Assoc.VDOC"></phrase>
+  <phrase id="Form_Dialog_Assoc.PRRES"></phrase>
+  <phrase id="Form_Dialog_Assoc.PCMACROS"></phrase>
+  <phrase id="Form_Dialog_Assoc.PCMPACK"></phrase>
+  <phrase id="Form_Dialog_Assoc.PCGRAPH"></phrase>
+
+  <phrase id="Form_Dialog_Assoc.SelectAll">Выделить все</phrase>
+  <phrase id="Form_Dialog_Assoc.DeSelectAll">Удалить все</phrase>
+
+  <phrase id="Form_Dialog_Assoc.QuitWithOutSaving">Вы уверены что хотите выйти, не сохранив измененные настройки?</phrase>
+
+  <phrase id="Form_Dialog_Assoc.Assoc">Асоциации</phrase>
+  <phrase id="Form_Dialog_Assoc.Success">Успешно удалено/установленно {0} асоциаций</phrase>
+  <phrase id="Form_Dialog_Assoc.UnableToAssoc">Не удалось установить асоциацию {0}</phrase>
+  <phrase id="Form_Dialog_Assoc.UnableToDelAssoc">Не удалось установить асоциацию {0}. Причина: {1}</phrase>
+
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_Dialog_Assoc.button_exit">Выйти</menu>
+  <menu id="Form_Dialog_Assoc.button_save">Сохранить</menu>
+  <menu id="Form_Dialog_Assoc.button_selectAll">Выделить все</menu>
+  <menu id="Form_Dialog_Assoc.label_discr">Выделете элемент для просмотра описания</menu>
+  <menu id="Form_Dialog_Assoc.Text">Мастер ассоциаций</menu>
+
+</content>

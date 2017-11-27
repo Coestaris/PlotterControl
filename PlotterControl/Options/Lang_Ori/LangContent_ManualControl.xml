@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_ManualControl.XValue">Invalid X value</phrase>
+  <phrase id="Form_ManualControl.YValue">Invalid Y value</phrase>
+  <phrase id="Form_ManualControl.ZValue">Invalid Z value</phrase>
+  <phrase id="Form_ManualControl.UnableToMove">Unable to move tool</phrase>
+  
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_ManualControl.button_dmove">Send</menu>
+  <menu id="Form_ManualControl.button_down">Down</menu>
+  <menu id="Form_ManualControl.button_exit">Exit</menu>
+  <menu id="Form_ManualControl.button_mc">Start</menu>
+  <menu id="Form_ManualControl.button_startmc">Start</menu>
+  <menu id="Form_ManualControl.button_turnOff">Turn off</menu>
+  <menu id="Form_ManualControl.button_turnOn">Turn on</menu>
+  <menu id="Form_ManualControl.button_up">Up</menu>
+  <menu id="Form_ManualControl.checkBox_savemove">Save</menu>
+  <menu id="Form_ManualControl.label_bdrate">Bdrate: </menu>
+  <menu id="Form_ManualControl.label_com">ComPort: </menu>
+  <menu id="Form_ManualControl.label_mcinfo">Стрелки - XY&#009;&#xA;W - поднять перо&#009;&#xA; S - опустить перо&#009;&#xA;</menu>
+  <menu id="Form_ManualControl.label_mcstep">Steps per action: </menu>
+  <menu id="Form_ManualControl.label_x">X:</menu>
+  <menu id="Form_ManualControl.label_y">Y:</menu>
+  <menu id="Form_ManualControl.label_z">Z:</menu>
+  <menu id="Form_ManualControl.label1">steps.</menu>
+  <menu id="Form_ManualControl.label2">steps.</menu>
+  <menu id="Form_ManualControl.label3">steps.</menu>
+  <menu id="Form_ManualControl.label4">steps.</menu>
+  <menu id="Form_ManualControl.tabPage1">tabPage1</menu>
+  <menu id="Form_ManualControl.tabPage2">tabPage2</menu>
+  <menu id="Form_ManualControl.tabPage3">tabPage3</menu>
+  <menu id="Form_ManualControl.tabPage4">tabPage4</menu>
+  <menu id="Form_ManualControl.Text">Manual Control</menu>
+  <menu id="Form_ManualControl.textBox_step">50</menu>
+  <menu id="Form_ManualControl.textBox_xmove">0</menu>
+  <menu id="Form_ManualControl.textBox_ymove">0</menu>
+  <menu id="Form_ManualControl.textBox_zmove">0</menu>
+
+</content>

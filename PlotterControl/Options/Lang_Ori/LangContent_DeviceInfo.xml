@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_DeviceInfo.Tip">Красный - свободное пространство({0}MB)&#xA;Синий - использованное пространство({1}MB)</phrase>
+  <phrase id="Form_DeviceInfo.MainData">===========&#xA;CARD IFNO:&#xA;&#xA;{0}&#xA;===========&#xA;DEVICE INFO:&#xA;&#xA;{1}</phrase>
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_DeviceInfo.button_tab2_back">Назад</menu>
+  <menu id="Form_DeviceInfo.label1">Red - Free Space, Blue - Used Space</menu>
+  <menu id="Form_DeviceInfo.richTextBox1"></menu>
+  <menu id="Form_DeviceInfo.Text">Информация об устройстве</menu>
+
+</content>

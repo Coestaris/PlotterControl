@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Macro.OlderVersionOfFile">File Was created in old version of the program.&#xA;It may cause some errors or problems. Resave now?</phrase>
+  <phrase id="Form_Macro.Warning">Warning</phrase>
+  <phrase id="Form_Macro.AlreadyUpped">Уже поднято, куда еще поднимать?</phrase>
+  <phrase id="Form_Macro.AlreadyDown">Уже опущено, куда еще опускать?"</phrase>
+  <phrase id="Form_Macro.Macro">Макрос: "{0}"</phrase>
+  <phrase id="Form_Macro.WrongFloatInput">"' its wrong float number input"</phrase>
+
+
+  <phrase id="Form_Macro.Status">GLobalX: {0}, GlobalY: {1};   LocalX: {2:0.##}, LocalY: {3:0.##};   XMM: {4:0.###}, YMM: {5:0.###};   XSteps: {6:0.##}, YSteps: {7:0.##};</phrase>
+  
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_Macro.button_100percent">100%</menu>
+  <menu id="Form_Macro.button_addel">Add New Element</menu>
+  <menu id="Form_Macro.button1">Reset</menu>
+  <menu id="Form_Macro.groupBox_addel">Add Element</menu>
+  <menu id="Form_Macro.groupBox_eltype">Element Type</menu>
+  <menu id="Form_Macro.groupBox_main">Macros</menu>
+  <menu id="Form_Macro.groupBox_zoom">Zoom</menu>
+  <menu id="Form_Macro.label_addstatus">Result Element: </menu>
+  <menu id="Form_Macro.label_delay">Delay:</menu>
+  <menu id="Form_Macro.label_elements">Elements: </menu>
+  <menu id="Form_Macro.label_move_horvertlen">Length: </menu>
+  <menu id="Form_Macro.label_move_offangleangle">Angle: </menu>
+  <menu id="Form_Macro.label_move_offanglelength">Length: </menu>
+  <menu id="Form_Macro.label_move_offcoorx">X Offset: </menu>
+  <menu id="Form_Macro.label_move_offcoory">Y Offset: </menu>
+  <menu id="Form_Macro.label_move_topointx">Point X: </menu>
+  <menu id="Form_Macro.label_move_topointy">Point Y: </menu>
+  <menu id="Form_Macro.label_zoom">100 %</menu>
+  <menu id="Form_Macro.menuStrip">Файл</menu>
+  <menu id="Form_Macro.radioButton_elt_move">Move</menu>
+  <menu id="Form_Macro.radioButton_elt_none">None</menu>
+  <menu id="Form_Macro.radioButton_elt_tdown">Tool Down</menu>
+  <menu id="Form_Macro.radioButton_elt_tup">Tool Up</menu>
+  <menu id="Form_Macro.radioButton_move_hor">Horizontal</menu>
+  <menu id="Form_Macro.radioButton_move_vetr">Veritcal</menu>
+  <menu id="Form_Macro.statusStrip1">statusStrip1</menu>
+  <menu id="Form_Macro.tabPage1">To Point</menu>
+  <menu id="Form_Macro.tabPage2">Offset Tool Coordinats</menu>
+  <menu id="Form_Macro.tabPage3">Offset Tool Angle</menu>
+  <menu id="Form_Macro.tabPage4">Offset Tool Hor\\Vert</menu>
+  <menu id="Form_Macro.Text">Form_macroses</menu>
+  <menu id="Form_Macro.textBox_move_topointx">0</menu>
+  <menu id="Form_Macro.textBox_move_topointy">0</menu>
+  <menu id="Form_Macro.toolStripMenuItem_addimg">Добавить изобр.</menu>
+  <menu id="Form_Macro.toolStripMenuItem_close">Закрыть</menu>
+  <menu id="Form_Macro.toolStripMenuItem_file">Файл</menu>
+  <menu id="Form_Macro.toolStripMenuItem_load">Загрузить</menu>
+  <menu id="Form_Macro.toolStripMenuItem_macro">Макрос</menu>
+  <menu id="Form_Macro.toolStripMenuItem_new">Новый</menu>
+  <menu id="Form_Macro.toolStripMenuItem_save">Сохранить</menu>
+  <menu id="Form_Macro.toolStripMenuItem_saveas">Сохранить как</menu>
+  <menu id="Form_Macro.toolStripMenuItem_tocorner">Переместить</menu>
+  <menu id="Form_Macro.toolStripStatusLabel_xglobal">toolStripStatusLabel1</menu>
+  <menu id="Form_Macro.toolStripTextBox_discr">Описание</menu>
+  <menu id="Form_Macro.toolStripTextBox_name">Имя</menu>
+
+</content>

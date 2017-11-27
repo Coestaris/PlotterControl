@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_CurvePlugins.Busy">Дыши, бобер. Я занят</phrase>
+  <phrase id="Form_CurvePlugins.VisitLink">Перейти по внешней ссылке "{0}"?</phrase>
+  <phrase id="Form_CurvePlugins.Plugins">Плагины</phrase>
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_CurvePlugins.button1">Построить</menu>
+  <menu id="Form_CurvePlugins.button2">Подробнее&#009;&#xA;(Wikipedia)</menu>
+  <menu id="Form_CurvePlugins.button3">Обновить</menu>
+  <menu id="Form_CurvePlugins.label_cantFindPlugins">Не найдено плагинов</menu>
+  <menu id="Form_CurvePlugins.label_creator_content">label2</menu>
+  <menu id="Form_CurvePlugins.label_creator_name">История</menu>
+  <menu id="Form_CurvePlugins.label_discr_content">label2</menu>
+  <menu id="Form_CurvePlugins.label_discr_title">Описание</menu>
+  <menu id="Form_CurvePlugins.label_load">Подождите, пока компилируются и&#009;&#xA;подготавливаются плагины. Это может занять&#009;&#xA;до п +</menu>
+  <menu id="Form_CurvePlugins.label_prev_1">label1</menu>
+  <menu id="Form_CurvePlugins.label_prev_2">label1</menu>
+  <menu id="Form_CurvePlugins.label_Title">title</menu>
+  <menu id="Form_CurvePlugins.label_usage_content">label2</menu>
+  <menu id="Form_CurvePlugins.label_usage_discr">Применение</menu>
+  <menu id="Form_CurvePlugins.loadingCircle_tab1">loadingCircle2</menu>
+  <menu id="Form_CurvePlugins.Text">Мастер кривых</menu>
+
+</content>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== VECTOR EDITOR ===- -->
+
+  <!-- Vector Editor phrases -->
+  <phrase id="VectorEditor.Word.Resolution">Разрешение</phrase>
+  <phrase id="VectorEditor.Word.Hide">Скр.</phrase>
+  <phrase id="VectorEditor.Word.Path">Путь</phrase>
+  <phrase id="VectorEditor.Word.Contours">Контуров</phrase>
+  <phrase id="VectorEditor.Word.Points">Точек</phrase>
+  <phrase id="VectorEditor.Word.Name">Имя</phrase>
+  <phrase id="VectorEditor.Word.Error">Ошибка</phrase>
+  <phrase id="VectorEditor.Word.Objects">Объектов</phrase>
+  <phrase id="VectorEditor.Word.SubType">Подтип</phrase>
+  <phrase id="VectorEditor.Word.None">none</phrase>
+  <phrase id="VectorEditor.Word.Type">Тип</phrase>
+  <phrase id="VectorEditor.Word.Edit">Редакт.</phrase>
+  <phrase id="VectorEditor.Word.Delete">Удалить</phrase>
+  <phrase id="VectorEditor.Word.Clone">Клонировать</phrase>
+  <phrase id="VectorEditor.Word.Warning">Внимание</phrase>
+  <phrase id="VectorEditor.UsedDocumentVersion">Версия формата документа</phrase>
+
+  <!-- Vector Editor Errors -->
+  <error id="VectorEditor.FloatInputError">Это дробное число с плавающей запятой, оно не может содержать '{0}'</error>
+  <error id="VectorEditor.WrongWidthValue">Указанна ширина в неверном формате.</error>
+  <error id="VectorEditor.WrongHeightValue">Указано высота в неверном формате.</error>
+  <error id="VectorEditor.FoundObjectWithSameName">Найдено {0} объектов с таким же именем ("{1}"). Поправте это. Так как это может стать причиной ошибок.</error>
+  <error id="VectorEditor.WrongBordOffsetInput">Указанное смещение имеет не верный формат.</error>
+
+  <!-- Vector Editor Messages -->
+  <message id="VectorEditor.EnterTheNameOfDocument">Укажите имя документа.</message>
+  <message id="VectorEditor.OldPCVdocVersion">Файл был создан в более ранней версии программы чем эта. Это может привести к ошибкам, так как в программе не ставилась задача совместимости с предыдущими версиями. Пересохранить сейчас (не исключено возникновение ошибки)?</message>
+
+  <!-- Vector Editor Menus -->
+  <menu id="Form_EditVector.button_angle_0deg">0</menu>
+  <menu id="Form_EditVector.button_angle_m90deg">-90</menu>
+  <menu id="Form_EditVector.button_angle_p90deg">+90</menu>
+  <menu id="Form_EditVector.button_delete">Delete</menu>
+  <menu id="Form_EditVector.button_dideprop">Hide</menu>
+  <menu id="Form_EditVector.button_drcolor">Dr. Color</menu>
+  <menu id="Form_EditVector.button_edit">Edit</menu>
+  <menu id="Form_EditVector.button_hidezoom">Hide</menu>
+  <menu id="Form_EditVector.button_loaddata_load">Load</menu>
+  <menu id="Form_EditVector.button_newdoc_brouse">Browse:</menu>
+  <menu id="Form_EditVector.button_newdoc_cancel">Cancel</menu>
+  <menu id="Form_EditVector.button_newdoc_ok">Ok</menu>
+  <menu id="Form_EditVector.button_pickfont">Font</menu>
+  <menu id="Form_EditVector.button_rename">Rename</menu>
+  <menu id="Form_EditVector.checkBox_useborder">Use Border</menu>
+  <menu id="Form_EditVector.cirlceToolStripMenuItem1">Cirlce</menu>
+  <menu id="Form_EditVector.cloneToolStripMenuItem">Clone</menu>
+  <menu id="Form_EditVector.dataToolStripMenuItem1">Data</menu>
+  <menu id="Form_EditVector.deleteToolStripMenuItem">Delete</menu>
+  <menu id="Form_EditVector.editToolStripMenuItem">Edit</menu>
+  <menu id="Form_EditVector.groupBox1"> Border</menu>
+  <menu id="Form_EditVector.groupBox2">File Info</menu>
+  <menu id="Form_EditVector.label_addtext">Add text options</menu>
+  <menu id="Form_EditVector.label_bordoffset">Border Offset: </menu>
+  <menu id="Form_EditVector.label_bordstyle">Border Style:</menu>
+  <menu id="Form_EditVector.label_dataload_xpos">X Position: </menu>
+  <menu id="Form_EditVector.label_dataload_ypos">Y Position: </menu>
+  <menu id="Form_EditVector.label_fileautor">File Autor:</menu>
+  <menu id="Form_EditVector.label_filediscr">File Discription:</menu>
+  <menu id="Form_EditVector.label_fileinfo">File Name:</menu>
+  <menu id="Form_EditVector.label_help_height">Height:</menu>
+  <menu id="Form_EditVector.label_hint_text">Text: </menu>
+  <menu id="Form_EditVector.label_loaddata_cont">Contours: 100, Points: 1000</menu>
+  <menu id="Form_EditVector.label_loaddata_hint">Add data options</menu>
+  <menu id="Form_EditVector.label_loaddata_path">Path: </menu>
+  <menu id="Form_EditVector.label_loaddata_resolution">Resolution: </menu>
+  <menu id="Form_EditVector.label_newdoc_height">Height:</menu>
+  <menu id="Form_EditVector.label_newdoc_lab">Create New Document</menu>
+  <menu id="Form_EditVector.label_newdoc_name">Name: </menu>
+  <menu id="Form_EditVector.label_newdoc_path">Path: </menu>
+  <menu id="Form_EditVector.label_newdoc_width">Width: </menu>
+  <menu id="Form_EditVector.label_obcount">Objects: 0</menu>
+  <menu id="Form_EditVector.label_subtype">Subtype: none</menu>
+  <menu id="Form_EditVector.label_text_anglevalue">0</menu>
+  <menu id="Form_EditVector.label_text_highanglelim">180</menu>
+  <menu id="Form_EditVector.label_text_hint_x">X Position: </menu>
+  <menu id="Form_EditVector.label_text_hint_y">Y Position: </menu>
+  <menu id="Form_EditVector.label_text_lowanglelim">-180</menu>
+  <menu id="Form_EditVector.label_text_width">Width:</menu>
+  <menu id="Form_EditVector.label_type">Type: Text</menu>
+  <menu id="Form_EditVector.label_zoom">100%</menu>
+  <menu id="Form_EditVector.label1">pt.</menu>
+  <menu id="Form_EditVector.label2">pt.</menu>
+  <menu id="Form_EditVector.label3">pt.</menu>
+  <menu id="Form_EditVector.labelHint">Create new Document to start Work...</menu>
+  <menu id="Form_EditVector.lineToolStripMenuItem1">Line</menu>
+  <menu id="Form_EditVector.radioButton_newdoc_usesize">New Document:</menu>
+  <menu id="Form_EditVector.radioButton_newdoc_usevector">From Vector: </menu>
+  <menu id="Form_EditVector.rasterImageToolStripMenuItem">Raster Image</menu>
+  <menu id="Form_EditVector.richTextBox_filediscr"></menu>
+  <menu id="Form_EditVector.richTextBox_texteditor_text">Sample Text</menu>
+  <menu id="Form_EditVector.shapeToolStripMenuItem1">Shape</menu>
+  <menu id="Form_EditVector.squareToolStripMenuItem">Square</menu>
+  <menu id="Form_EditVector.statusStrip1">statusStrip1</menu>
+  <menu id="Form_EditVector.Text">Editor</menu>
+  <menu id="Form_EditVector.textBox_loaddata_x">0</menu>
+  <menu id="Form_EditVector.textBox_loaddata_y">0</menu>
+  <menu id="Form_EditVector.textBox_newdoc_height">400</menu>
+  <menu id="Form_EditVector.textBox_newdoc_name">newdoc</menu>
+  <menu id="Form_EditVector.textBox_newdoc_width">800</menu>
+  <menu id="Form_EditVector.textToolStripMenuItem1">Text</menu>
+  <menu id="Form_EditVector.toolStrip1">toolStrip1</menu>
+  <menu id="Form_EditVector.toolStripButton_docopts_">toolStripButton6</menu>
+  <menu id="Form_EditVector.toolStripButton_new">New Document</menu>
+  <menu id="Form_EditVector.toolStripButton_open">Open Document</menu>
+  <menu id="Form_EditVector.toolStripButton_render_">toolStripButton5</menu>
+  <menu id="Form_EditVector.toolStripButton_save">Save Document</menu>
+  <menu id="Form_EditVector.toolStripButton_save_">toolStripButton4</menu>
+  <menu id="Form_EditVector.toolStripButton_theme">toolStripButton7</menu>
+  <menu id="Form_EditVector.toolStripButton1">Render</menu>
+  <menu id="Form_EditVector.toolStripButton2">toolStripButton2</menu>
+  <menu id="Form_EditVector.toolStripButton3">toolStripButton3</menu>
+  <menu id="Form_EditVector.toolStripSplitButton_additems">toolStripSplitButton2</menu>
+  <menu id="Form_EditVector.toolStripStatusLabel_fileversion">  </menu>
+  <menu id="Form_EditVector.toolStripStatusLabel2">Doc Size: 1000x1000</menu>
+  <menu id="Form_EditVector.toolStripStatusLabel4">X</menu>
+  <menu id="Form_EditVector.toolStripStatusLabel5">Y</menu>
+  <menu id="Form_EditVector.toolStripStatusLabel6"> </menu>
+  <menu id="Form_EditVector.triangleToolStripMenuItem1">Triangle</menu>
+
+</content>
+    

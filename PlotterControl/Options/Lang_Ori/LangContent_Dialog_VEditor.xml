@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Dialog_Edit.Editing">Редактированние</phrase>
+  <phrase id="Form_Dialog_Edit.Resolution">Разрешение</phrase>
+  <phrase id="Form_Dialog_Edit.NameCurrent">Имя (текущ.)</phrase>
+  <phrase id="Form_Dialog_Edit.Name">Имя</phrase>
+  <phrase id="Form_Dialog_Edit.Cont">Cnt#{0}, {1}pnts</phrase>
+  <phrase id="Form_Dialog_Edit.Point">Pnt#{0}, X: {1}|Y: {2}"</phrase>
+  
+  <!--Must starts as Form_Dialog_Edit.Cont!-->
+  <phrase id="Form_Dialog_Edit.StartOfCont">Cnt</phrase>
+  
+  <phrase id="Form_Dialog_Edit.SelectContour">Укажите контур!</phrase>
+  
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_Dialog_Edit.button_cancel">Cancel</menu>
+  <menu id="Form_Dialog_Edit.button_delete">Delete</menu>
+  <menu id="Form_Dialog_Edit.button_flip">Flip</menu>
+  <menu id="Form_Dialog_Edit.button_flip_cancel">Cancel</menu>
+  <menu id="Form_Dialog_Edit.button_flip_ok">Ok</menu>
+  <menu id="Form_Dialog_Edit.button_merge">Merge</menu>
+  <menu id="Form_Dialog_Edit.button_move">Move</menu>
+  <menu id="Form_Dialog_Edit.button_ok">Ok</menu>
+  <menu id="Form_Dialog_Edit.button_openvector">Browse</menu>
+  <menu id="Form_Dialog_Edit.button_resize">New Size</menu>
+  <menu id="Form_Dialog_Edit.button_resize_cansel">Cancel</menu>
+  <menu id="Form_Dialog_Edit.button_resize_ok">Ok</menu>
+  <menu id="Form_Dialog_Edit.button_rot_cancel">Cancel</menu>
+  <menu id="Form_Dialog_Edit.button_rot_ok">Ok</menu>
+  <menu id="Form_Dialog_Edit.button_rotate">Rotate</menu>
+  <menu id="Form_Dialog_Edit.button_rotatec">Rotate C.</menu>
+  <menu id="Form_Dialog_Edit.button_rotc_cancel">Cancel</menu>
+  <menu id="Form_Dialog_Edit.button_rotc_ok">Ok</menu>
+  <menu id="Form_Dialog_Edit.button_sd_cancel">Cancel</menu>
+  <menu id="Form_Dialog_Edit.button_sd_ok">Ok</menu>
+  <menu id="Form_Dialog_Edit.button_smdelete">Smart Delete</menu>
+  <menu id="Form_Dialog_Edit.button_vectinfo">Info</menu>
+  <menu id="Form_Dialog_Edit.button1">Prev.</menu>
+  <menu id="Form_Dialog_Edit.checkBox_keepratio">Keep Aspect Ratio</menu>
+  <menu id="Form_Dialog_Edit.groupBox1">Transform</menu>
+  <menu id="Form_Dialog_Edit.groupBox2">Points</menu>
+  <menu id="Form_Dialog_Edit.label_2ndname">Name: </menu>
+  <menu id="Form_Dialog_Edit.label_angle">Angle: </menu>
+  <menu id="Form_Dialog_Edit.label_ndresol">Resolution: </menu>
+  <menu id="Form_Dialog_Edit.label_newheight">New height: </menu>
+  <menu id="Form_Dialog_Edit.label_newwidth">New width: </menu>
+  <menu id="Form_Dialog_Edit.label_rotatecenter">Rotate Center: </menu>
+  <menu id="Form_Dialog_Edit.label_sd_threshold">Delete Threshold: </menu>
+  <menu id="Form_Dialog_Edit.label1">Current Vector</menu>
+  <menu id="Form_Dialog_Edit.label4">2nd Vect preview</menu>
+  <menu id="Form_Dialog_Edit.loadingCircle1">loadingCircle2</menu>
+  <menu id="Form_Dialog_Edit.loadingCircle2">loadingCircle2</menu>
+  <menu id="Form_Dialog_Edit.radioButton_180deg">Rotate by 180 deg</menu>
+  <menu id="Form_Dialog_Edit.radioButton_270deg">Rotate by 270 deg</menu>
+  <menu id="Form_Dialog_Edit.radioButton_90deg">Rotate by 90 deg</menu>
+  <menu id="Form_Dialog_Edit.radioButton_xflip">X Flip</menu>
+  <menu id="Form_Dialog_Edit.radioButton_yflip">Y Flip</menu>
+  <menu id="Form_Dialog_Edit.tabPage1">Main</menu>
+  <menu id="Form_Dialog_Edit.tabPage2">Info</menu>
+  <menu id="Form_Dialog_Edit.tabPage3">Help</menu>
+  <menu id="Form_Dialog_Edit.Text">Edit</menu>
+  <menu id="Form_Dialog_Edit.textBox_sd_threshold">0</menu>
+
+</content>
