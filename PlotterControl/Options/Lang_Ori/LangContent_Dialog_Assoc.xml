@@ -9,12 +9,9 @@
   <phrase id="Form_Dialog_Assoc.PCMACROS"></phrase>
   <phrase id="Form_Dialog_Assoc.PCMPACK"></phrase>
   <phrase id="Form_Dialog_Assoc.PCGRAPH"></phrase>
-
   <phrase id="Form_Dialog_Assoc.SelectAll">Выделить все</phrase>
   <phrase id="Form_Dialog_Assoc.DeSelectAll">Удалить все</phrase>
-
   <phrase id="Form_Dialog_Assoc.QuitWithOutSaving">Вы уверены что хотите выйти, не сохранив измененные настройки?</phrase>
-
   <phrase id="Form_Dialog_Assoc.Assoc">Асоциации</phrase>
   <phrase id="Form_Dialog_Assoc.Success">Успешно удалено/установленно {0} асоциаций</phrase>
   <phrase id="Form_Dialog_Assoc.UnableToAssoc">Не удалось установить асоциацию {0}</phrase>

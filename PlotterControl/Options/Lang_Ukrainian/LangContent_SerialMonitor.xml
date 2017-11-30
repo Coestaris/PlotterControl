@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Connection.Enter7CharString">Enter 7 char string!</phrase>
+  <phrase id="Connection.Error.Command">Command</phrase>
+  <phrase id="Connection.Error.SenderBytes">Sender Bytes</phrase>
+  <phrase id="Connection.Error.Data">Data</phrase>
+  <phrase id="Connection.Error.Size">Size</phrase>
+  <phrase id="Connection.Error.Hash">Hash</phrase>
+  <phrase id="Connection.Error.SendingError">Sending Error</phrase>
+
+  <phrase id="Connection.Status">Status</phrase>
+  <phrase id="Connection.AnswerTo">AnswerTo</phrase>
+  <phrase id="Connection.Sent">Sent</phrase>
+  <phrase id="Connection.Ok">Ok</phrase>
+
+  <phrase id="Connection.Sender">Отправитель ответа</phrase>
+  <phrase id="Connection.AnswStatus">Статус ответа</phrase>
+  <phrase id="Connection.AnswCommand">Ответ пришел на команду</phrase>
+  <phrase id="Connection.AsnwerDataType">Тип данных ответа</phrase>
+  <phrase id="Connection.AnswerCode">Код ответа</phrase>
+  <phrase id="Connection.AnswerData">Данные ответа</phrase>
+  <phrase id="Connection.Or">или</phrase>
+  <phrase id="Connection.AnswerInfo">Answer Info</phrase>
+  <phrase id="Connection.PacketSender">Отправитель пакета</phrase>
+  <phrase id="Connection.PacketCommand">Команда пакета</phrase>
+  <phrase id="Connection.PacketData">Данные пакета</phrase>
+  <phrase id="Connection.PacketInfo">Packet Info</phrase>
+  
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_SerialMonitor.button_conn">Подключить</menu>
+  <menu id="Form_SerialMonitor.button_exit">Exit</menu>
+  <menu id="Form_SerialMonitor.button_fill">Fill</menu>
+  <menu id="Form_SerialMonitor.button_send">Combine and Send</menu>
+  <menu id="Form_SerialMonitor.button1">Convert</menu>
+  <menu id="Form_SerialMonitor.checkBox_hash">Change (Cause an Error)</menu>
+  <menu id="Form_SerialMonitor.checkBox_size">Change (Cause an Error)</menu>
+  <menu id="Form_SerialMonitor.label_bd">Bd</menu>
+  <menu id="Form_SerialMonitor.label_command">Command</menu>
+  <menu id="Form_SerialMonitor.label_command_send">Set From Default</menu>
+  <menu id="Form_SerialMonitor.label_conv">Converter</menu>
+  <menu id="Form_SerialMonitor.label_conv_arr">-></menu>
+  <menu id="Form_SerialMonitor.label_data">Data</menu>
+  <menu id="Form_SerialMonitor.label_data_sep">Separate bytes with space</menu>
+  <menu id="Form_SerialMonitor.label_fill">Fill by 7 char string</menu>
+  <menu id="Form_SerialMonitor.label_hash">Hash</menu>
+  <menu id="Form_SerialMonitor.label_list">Double click to view details</menu>
+  <menu id="Form_SerialMonitor.label_port">Port</menu>
+  <menu id="Form_SerialMonitor.label_sender">Sender</menu>
+  <menu id="Form_SerialMonitor.label_sender_type">Type</menu>
+  <menu id="Form_SerialMonitor.label_size">Size of Packet</menu>
+  <menu id="Form_SerialMonitor.Text">Serial Monitor</menu>
+
+</content>

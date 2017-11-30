@@ -3,8 +3,31 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Connection.Connect">Подключится</phrase>
+  <phrase id="Connection.Disconnect">Отключить</phrase>
+  <phrase id="Connection.Error">Ошибка</phrase>
+  <phrase id="Connection.EnterBDRate">Укажите скорость соеденения</phrase>
+  <phrase id="Connection.EnterPort">Укажите порт</phrase>
+  <phrase id="Connection.UnableToOpenPort">Не удалось открыть порт {0}</phrase>
+  <phrase id="Connection.DeviceNotAnswered">Устройство не ответило на первичный опрос</phrase>
 
-
+  <phrase id="Form_PrintMaster.Connect">Подкл.</phrase>
+  <phrase id="Form_PrintMaster.Disonnect">Откл.</phrase>
+  <phrase id="Form_PrintMaster.Resoulution">Разрешение: {0} x {1}</phrase>
+  <phrase id="Form_PrintMaster.VectorType">Тип вектора: {0}</phrase>
+  <phrase id="Form_PrintMaster.ErrorText">Произошла ошибка типа {0}.&#xA;{2}&#xA;&#xA;Стек вызовов:&#xA;{1}</phrase>
+  <phrase id="Form_PrintMaster.SelectItem">Select item!</phrase>
+  <phrase id="Form_PrintMaster.CustomPen">&#60;польз перо&#62;</phrase>
+  <phrase id="Form_PrintMaster.UncorrectNumber">"{0}" некорректное число</phrase>
+  <phrase id="Form_PrintMaster.WrongInput">Wrong Input</phrase>
+  <phrase id="Form_PrintMaster.SizeXY">Размер по Х должен быть в диапазоне от 0мм о 297мм, а по Y должен быть в диапазоне от 0мм о 210мм.</phrase>
+  <phrase id="Form_PrintMaster.TimeSpend">Затрачено времени: {0:0.#} секунд</phrase>
+  <phrase id="Form_PrintMaster.EstimatedTime">Осалось времени(примерно): {0:0.#} секунд.</phrase>
+  <phrase id="Form_PrintMaster.Speed">Скорость: {0:0.##} операций/сек</phrase>
+  <phrase id="Form_PrintMaster.Progress">{0}/{1}</phrase>
+  <phrase id="Form_PrintMaster.Percentage">{0:0.##}%</phrase>
+  
+  
   <!-- Serial Monitor Menus -->
   <menu id="Form_PrintMaster.button_abort">Прервать печать</menu>
   <menu id="Form_PrintMaster.button_delete">Удалить</menu>

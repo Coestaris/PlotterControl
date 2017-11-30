@@ -3,7 +3,11 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-
+  <phrase id="Form_ManualControl.XValue">Invalid X value</phrase>
+  <phrase id="Form_ManualControl.YValue">Invalid Y value</phrase>
+  <phrase id="Form_ManualControl.ZValue">Invalid Z value</phrase>
+  <phrase id="Form_ManualControl.UnableToMove">Unable to move tool</phrase>
+  
   <!-- Serial Monitor Menus -->
   <menu id="Form_ManualControl.button_dmove">Send</menu>
   <menu id="Form_ManualControl.button_down">Down</menu>

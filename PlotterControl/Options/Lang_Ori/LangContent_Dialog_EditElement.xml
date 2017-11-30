@@ -7,10 +7,8 @@
   <phrase id="Form_Dialog_EditElement.FoundErrors">Найдено {0} ошибок.</phrase>
   <phrase id="Form_Dialog_EditElement.OKBuiltIn">OK! Собрано за {0} миллисекунд.</phrase>
   <phrase id="Form_Dialog_EditElement.Report">Отчет об ошибках</phrase>
-
   <phrase id="Form_Dialog_EditElement.Word.Upper">верхнего</phrase>
   <phrase id="Form_Dialog_EditElement.Word.Bottom">нижнего</phrase>
-
   <phrase id="Form_Dialog_EditElement.Log.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;</phrase>
   <phrase id="Form_Dialog_EditElement.Log.2">&#xA;1.Ошибок при компиляции периода не было найдено.&#xA;</phrase>
   <phrase id="Form_Dialog_EditElement.Log.3">&#xA;1.Найдено {0} ошибок при компиляции строки периода "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;</phrase>

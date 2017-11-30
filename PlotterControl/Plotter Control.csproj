@@ -389,16 +389,7 @@
     <Content Include="Options\Lang_Ori\LangContent_Dialog_EditElement.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Options\Lang_Ori\LangContent_Dialog_EnterName.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ori\LangContent_Dialog_Lang.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Options\Lang_Ori\LangContent_Dialog_MacroAddImage.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ori\LangContent_Dialog_MacroPackEdit.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_Ori\LangContent_Dialog_VEditor.xml">
@@ -438,6 +429,60 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_Ori\LangContent_VectorViewer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_EditElement.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ori\LangContent_Dialog_EnterName.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ori\LangContent_Dialog_Lang.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_MacroAddImage.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ori\LangContent_Dialog_MacroPackEdit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_VEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dilaog_EditGraph.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Graph.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Macro.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_MacroPack.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_MainWindow.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_ManualControl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_PrintMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_SerialMonitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectEditor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectorMaster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Options\Lang_Ukrainian\LangContent_VectorViewer.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_Ori\Lang_Ori.xml">
@@ -708,61 +753,16 @@
     <Content Include="Options\Lang_Ukrainian\LangContent_DeviceInfo.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_DialogAssoc.xml">
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_Assoc.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_DialogEditGraph.xml">
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_MacroPackEdit.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_DialogEnterName.xml">
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_EnterName.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_DialogLang.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_DialogVEditor.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_FormDialogEditElement.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_FormDialogMacroAddImage.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_FormDilaogEditGraph.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_Graph.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_Macro.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_MacroPack.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_MainWindow.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_ManualControl.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_PrintMaster.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_Sample.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_SerialMonitorl.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_VectEditor.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_VectorMaster.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_VectorViewer.xml">
+    <Content Include="Options\Lang_Ukrainian\LangContent_Dialog_Lang.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Properties\main.ico" />

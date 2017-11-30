@@ -564,6 +564,7 @@ namespace CnC_WFA
             form.textBox_data_formula_start.Text = a["Form_Dialog_EditGraph.textBox_data_formula_start"];
             return form;
         }
+        
 
         public static Form_Dialog_EditElement Translate(Form_Dialog_EditElement form)
         {

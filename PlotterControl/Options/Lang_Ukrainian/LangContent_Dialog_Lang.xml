@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Don`t EDIT this FILE! -->
+<content>
+
+  <!-- -=== MANUAL CONTROL ===- -->
+
+
+  <!-- Serial Monitor Menus -->
+  <menu id="Form_Dialog_Lang.button_edit">Редагувати</menu>
+  <menu id="Form_Dialog_Lang.button_exit">Вийти</menu>
+  <menu id="Form_Dialog_Lang.button_select">Вибрати</menu>
+  <menu id="Form_Dialog_Lang.Text">Вибір мови</menu>
+
+</content>

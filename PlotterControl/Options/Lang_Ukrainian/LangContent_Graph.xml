@@ -3,8 +3,44 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
+  <phrase id="Form_Graph.Editing">Редактирование "{0}"</phrase>
 
+  <phrase id="Form_Graph.Hidden">[hide]</phrase>
+  <phrase id="Form_Graph.Graph">graph</phrase>
+  <phrase id="Form_Graph.Zoom">Увеличение на {0}%</phrase>
 
+  <phrase id="Form_Graph.Copy">_copy</phrase>
+  <phrase id="Form_Graph.Deleting">Удалeние</phrase>
+  <phrase id="Form_Graph.SureDelete">Вы действительно хотите удалить график {0}?</phrase>
+  
+  <phrase id="Form_Graph.MouseX">MouseX: {0 : 0.####}</phrase>
+  <phrase id="Form_Graph.MouseY">MouseY: {0 : 0.####}</phrase>
+  
+  <phrase id="Form_Graph.DefaultFormula">Math.Cos(x)</phrase>
+  <phrase id="Form_Graph.DefaultPeriodFormula">Math.PI</phrase>
+  <phrase id="Form_Graph.DefaultHighLimFormula">Math.PI * 2</phrase>
+  <phrase id="Form_Graph.DefaultLowLimFormula">- Math.PI * 2</phrase>
+
+  <phrase id="Form_Graph.Log.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;</phrase>
+  <phrase id="Form_Graph.Log.2">&#xA;1.Ошибок при компиляции формулы не было найдено.&#xA;</phrase>
+  <phrase id="Form_Graph.Log.3">&#xA;1.Найдено {0} ошибок при компиляции строки формулы "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;</phrase>
+  <phrase id="Form_Graph.Log.4">&#xA;{1}.Ошибок при компиляции строки {0} предела не было найдено.&#xA;</phrase>
+  <phrase id="Form_Graph.Log.5">&#xA;{5}.Найдено {0} ошибок при компиляции строки {1} предела "{2}":&#xA;{3}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{4}"&#xA;</phrase>
+
+  <phrase id="Form_Graph.Log1.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.2">&#xA;1.Ошибок при компиляции периода не было найдено.&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.3">&#xA;1.Найдено {0} ошибок при компиляции строки периода "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.4">&#xA;{1}.Ошибок при компиляции строки {0} предела не было найдено.&#xA;",</phrase>
+  <phrase id="Form_Graph.Log1.5">&#xA;{5}.Найдено {0} ошибок при компиляции строки {1} предела "{2}":&#xA;{3}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{4}"&#xA;</phrase>
+
+  <phrase id="Form_Graph.Word.Error">Ошибка</phrase>
+  <phrase id="Form_Graph.ExitLog.1">Введенная формула "{0}" не совпадает с удачной "{1}"</phrase>
+  <phrase id="Form_Graph.ExitLog.2">Введенная формула нижнего правого предела функции "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.3">Введенная формула нижнего левого предела функции "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.4">Введенная формула периода маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.5">Введенная формула левого предела маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.6">Введенная формула левого правого маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  
   <!-- Graph Menus -->
   <menu id="Form_Graph.button_add">Добавить</menu>
   <menu id="Form_Graph.button_copy">Дублировать</menu>
