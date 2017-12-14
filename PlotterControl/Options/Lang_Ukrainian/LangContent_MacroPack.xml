@@ -3,41 +3,41 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Form_MacroPack.NothingToPreview">Нечего отображать</phrase>
+  <phrase id="Form_MacroPack.NothingToPreview">Нічого відображати</phrase>
 
-  <phrase id="Form_MacroPack.Name">Имя: </phrase>
+  <phrase id="Form_MacroPack.Name">Ім'я: </phrase>
   <phrase id="Form_MacroPack.Path">Путь: </phrase>
-  <phrase id="Form_MacroPack.Discr">Описание: </phrase>
-  <phrase id="Form_MacroPack.Elements">Элементов: </phrase>
-  <phrase id="Form_MacroPack.MacroPack">Пак макросов: "{0}"</phrase>
-  <phrase id="Form_MacroPack.Samples">Семплов: "{0}"</phrase>
+  <phrase id="Form_MacroPack.Discr">Опис: </phrase>
+  <phrase id="Form_MacroPack.Elements">Елементів: </phrase>
+  <phrase id="Form_MacroPack.MacroPack">Пак макросів: "{0}"</phrase>
+  <phrase id="Form_MacroPack.Samples">Семплів: "{0}"</phrase>
  
-  <phrase id="Form_MacroPack.SessianAlreadyActive">В данный момент активна сессия подключения. Прервать ее и выйти?</phrase>
-  <phrase id="Form_MacroPack.Exit">Выход</phrase>
+  <phrase id="Form_MacroPack.SessianAlreadyActive">На даний момент активна сесія з'єднання. Перервати її і вийти?</phrase>
+  <phrase id="Form_MacroPack.Exit">Вихід</phrase>
 
-  <phrase id="Form_MacroPack.NoName">Безымянный</phrase>
-  <phrase id="Form_MacroPack.NoDiscr">Пустое описание</phrase>
-  <phrase id="Form_MacroPack.ErrorWhileLoading">Ошибка при загрузке (-_-")</phrase>
+  <phrase id="Form_MacroPack.NoName">Безіменний</phrase>
+  <phrase id="Form_MacroPack.NoDiscr">Пустий опис</phrase>
+  <phrase id="Form_MacroPack.ErrorWhileLoading">Помилка під час завантаження (-_-")</phrase>
 
-  <phrase id="Form_MacroPack.UnableToLoadMacro">{0} -- Cant Load Macro</phrase>
-  <phrase id="Form_MacroPack.Hidden">{0} [hidden]</phrase>
+  <phrase id="Form_MacroPack.UnableToLoadMacro">{0} -- Не вдалося загрузити</phrase>
+  <phrase id="Form_MacroPack.Hidden">{0} [схований]</phrase>
 
-  <phrase id="Form_MacroPack.UnableToLoadSomeMacro"> Не удалось загрузить 1 или несколько макросов</phrase>
+  <phrase id="Form_MacroPack.UnableToLoadSomeMacro"> Не вдалося загрузити 1 або декілька макросів</phrase>
  
   <!-- Serial Monitor Menus -->
   <menu id="Form_MacroPack.button_back_3">Назад</menu>
-  <menu id="Form_MacroPack.button_connect">Подключится</menu>
-  <menu id="Form_MacroPack.button_create">Создать новый пак&#009;&#xA;</menu>
-  <menu id="Form_MacroPack.button_exit_3">Выйти</menu>
-  <menu id="Form_MacroPack.button_exit1">Выйти</menu>
-  <menu id="Form_MacroPack.button_info">Информация</menu>
-  <menu id="Form_MacroPack.button_load">Загрузить существующий пак&#009;&#xA;&#009;&#xA;&#009;&#xA;</menu>
-  <menu id="Form_MacroPack.button_preset_run">Выполнить</menu>
-  <menu id="Form_MacroPack.button_reopen">Открыть другой пак</menu>
-  <menu id="Form_MacroPack.groupBox_connection">Подключение</menu>
-  <menu id="Form_MacroPack.groupBox_info">Информация</menu>
+  <menu id="Form_MacroPack.button_connect">Підключитися</menu>
+  <menu id="Form_MacroPack.button_create">Створити новий пак&#009;&#xA;</menu>
+  <menu id="Form_MacroPack.button_exit_3">Вийти</menu>
+  <menu id="Form_MacroPack.button_exit1">Вийти</menu>
+  <menu id="Form_MacroPack.button_info">Інформація</menu>
+  <menu id="Form_MacroPack.button_load">Загрузити існуючий пак&#009;&#xA;&#009;&#xA;&#009;&#xA;</menu>
+  <menu id="Form_MacroPack.button_preset_run">Виконати</menu>
+  <menu id="Form_MacroPack.button_reopen">Відкрити інший пак</menu>
+  <menu id="Form_MacroPack.groupBox_connection">Підключення</menu>
+  <menu id="Form_MacroPack.groupBox_info">Інформація</menu>
   <menu id="Form_MacroPack.groupBox_macro">groupBox2</menu>
-  <menu id="Form_MacroPack.groupBox_presets">Пресеты</menu>
+  <menu id="Form_MacroPack.groupBox_presets">Пресети</menu>
   <menu id="Form_MacroPack.label_caption">{caption}</menu>
   <menu id="Form_MacroPack.label_name">{name}</menu>
   <menu id="Form_MacroPack.label1">label1</menu>
@@ -46,6 +46,6 @@
   <menu id="Form_MacroPack.tabPage1">tabPage1</menu>
   <menu id="Form_MacroPack.tabPage2">tabPage2</menu>
   <menu id="Form_MacroPack.tabPage3">tabPage3</menu>
-  <menu id="Form_MacroPack.Text">Form_fromvector</menu>
+  <menu id="Form_MacroPack.Text">Редагування макропаків</menu>
 
 </content>

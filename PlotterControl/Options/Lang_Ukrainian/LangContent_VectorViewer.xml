@@ -5,46 +5,46 @@
   <!-- -=== VECTOR VIEWER ===- -->
 
   <!-- Vector Viewer phrases -->
-  <phrase id="VectorViewer.Word.Resolution">Разрешение</phrase>
-  <phrase id="VectorViewer.Word.Points">Точек</phrase>
-  <phrase id="VectorViewer.Word.Loading">Загрузка....</phrase>
-  <phrase id="VectorViewer.Word.Filename">Имя файла</phrase>
-  <phrase id="VectorViewer.Word.Contours">Контуров</phrase>
-  <phrase id="VectorViewer.Word.Drawing">Отрисовка...</phrase>
-  <phrase id="VectorViewer.PathToFile">Путь к файлу</phrase>
-  <phrase id="VectorViewer.ContourDiscr">Контур№{0}, {1} точек.</phrase>
-  <phrase id="VectorViewer.Label">Просмотрщик векторов | Просмотр</phrase>
-  <phrase id="VectorViewer.OldVectorFormat">Устаревший формат вектора</phrase>
-  <phrase id="VectorViewer.WrongFileExt">Неизвестный формат файла</phrase>
-  <phrase id="VectorViewer.Error">Error</phrase>
-  <phrase id="VectorViewer.OpenSomeVectForCont">Откройте вектор для выполнения данной операции</phrase>
+  <phrase id="VectorViewer.Word.Resolution">Розд. здатність</phrase>
+  <phrase id="VectorViewer.Word.Points">Точок</phrase>
+  <phrase id="VectorViewer.Word.Loading">Завантаження....</phrase>
+  <phrase id="VectorViewer.Word.Filename">Ім'я файлу</phrase>
+  <phrase id="VectorViewer.Word.Contours">Контурів</phrase>
+  <phrase id="VectorViewer.Word.Drawing">Рендер вектору...</phrase>
+  <phrase id="VectorViewer.PathToFile">Путь до файлу</phrase>
+  <phrase id="VectorViewer.ContourDiscr">Контур№{0}, {1} точок.</phrase>
+  <phrase id="VectorViewer.Label">Переглядач векторів | Перегляд</phrase>
+  <phrase id="VectorViewer.OldVectorFormat">Застарілий формат вектору</phrase>
+  <phrase id="VectorViewer.WrongFileExt">Невідомий формат файлу</phrase>
+  <phrase id="VectorViewer.Error">Помилка</phrase>
+  <phrase id="VectorViewer.OpenSomeVectForCont">Відкрийте вектор для виконання цієї операції</phrase>
 
   <!-- Vector Viewer Menus -->
-  <menu id="Form_ViewVect.contoursToolStripMenuItem">Contours</menu>
-  <menu id="Form_ViewVect.fileToolStripMenuItem">File</menu>
-  <menu id="Form_ViewVect.infoStripToolStripMenuItem">Info strip</menu>
-  <menu id="Form_ViewVect.label">Для просмотра выберите файл</menu>
-  <menu id="Form_ViewVect.label_status">Отрисовка...</menu>
+  <menu id="Form_ViewVect.contoursToolStripMenuItem">Контурів</menu>
+  <menu id="Form_ViewVect.fileToolStripMenuItem">Файл</menu>
+  <menu id="Form_ViewVect.infoStripToolStripMenuItem">Стрічка інформації</menu>
+  <menu id="Form_ViewVect.label">Для перегляду виберіть файл</menu>
+  <menu id="Form_ViewVect.label_status">Рендер вектору...</menu>
   <menu id="Form_ViewVect.label_zoom_max">label2</menu>
   <menu id="Form_ViewVect.label_zoom_min">label1</menu>
   <menu id="Form_ViewVect.label3">label3</menu>
   <menu id="Form_ViewVect.loadingCircle1">loadingCircle2</menu>
   <menu id="Form_ViewVect.menuStrip1">menuStrip1</menu>
   <menu id="Form_ViewVect.statusStrip1">statusStrip1</menu>
-  <menu id="Form_ViewVect.Text">View vector</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_backgroundColor">Background Color</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_close">Close</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_color">Cotour Color</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_defDisp">Default display</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_edit">Edit</menu>
-  <menu id="Form_ViewVect.ToolStripMenuItem_exit">Exit</menu>
-  <menu id="Form_ViewVect.ToolStripMenuItem_open">Open</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_print">Print</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_resetZoom">Reset Zoom</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_saveAs">Save As</menu>
-  <menu id="Form_ViewVect.toolStripMenuItem_selectedColor">Selected Color</menu>
-  <menu id="Form_ViewVect.viewToolStripMenuItem">View</menu>
-  <menu id="Form_ViewVect.windowsToolStripMenuItem">Windows</menu>
-  <menu id="Form_ViewVect.zoomToolStripMenuItem">Zoom</menu>
+  <menu id="Form_ViewVect.Text">Перегляд вектору</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_backgroundColor">Колір фону</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_close">Закрити</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_color">Колір контурів</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_defDisp">Звичайне відображення</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_edit">Редагувати</menu>
+  <menu id="Form_ViewVect.ToolStripMenuItem_exit">Вийти</menu>
+  <menu id="Form_ViewVect.ToolStripMenuItem_open">Відкрити</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_print">Друкувати</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_resetZoom">Скинути масштабування</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_saveAs">Зберегти як</menu>
+  <menu id="Form_ViewVect.toolStripMenuItem_selectedColor">Колір вибраного</menu>
+  <menu id="Form_ViewVect.viewToolStripMenuItem">Рендер</menu>
+  <menu id="Form_ViewVect.windowsToolStripMenuItem">Вигляд</menu>
+  <menu id="Form_ViewVect.zoomToolStripMenuItem">Масштаб</menu>
 
 </content>

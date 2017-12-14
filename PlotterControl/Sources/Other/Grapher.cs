@@ -355,7 +355,11 @@ namespace CnC_WFA
     [Serializable]
     public class Graph: ICloneable
     {
+        //Странным, непонятным мне образом, он не сериализовал их.
+        //И даже не выдавал ошибок, которые он так любит кидать.
+        [NonSerialized]
         private GraphicsPath preRenderedGraph;
+        [NonSerialized]
         private GraphicsPath prerenderedMarkers;
         public SerializablePen MainPen { get; set; }
         public PenStyles PStyle { get; set; }

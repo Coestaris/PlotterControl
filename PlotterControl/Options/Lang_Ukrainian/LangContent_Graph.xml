@@ -3,68 +3,68 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Form_Graph.Editing">Редактирование "{0}"</phrase>
+  <phrase id="Form_Graph.Editing">Редагування "{0}"</phrase>
 
-  <phrase id="Form_Graph.Hidden">[hide]</phrase>
+  <phrase id="Form_Graph.Hidden">[схов.]</phrase>
   <phrase id="Form_Graph.Graph">graph</phrase>
-  <phrase id="Form_Graph.Zoom">Увеличение на {0}%</phrase>
+  <phrase id="Form_Graph.Zoom">Збільшення на {0}%</phrase>
 
   <phrase id="Form_Graph.Copy">_copy</phrase>
-  <phrase id="Form_Graph.Deleting">Удалeние</phrase>
-  <phrase id="Form_Graph.SureDelete">Вы действительно хотите удалить график {0}?</phrase>
+  <phrase id="Form_Graph.Deleting">Видалення</phrase>
+  <phrase id="Form_Graph.SureDelete">Ви дійсно хочете видалити графік {0}?</phrase>
   
-  <phrase id="Form_Graph.MouseX">MouseX: {0 : 0.####}</phrase>
-  <phrase id="Form_Graph.MouseY">MouseY: {0 : 0.####}</phrase>
+  <phrase id="Form_Graph.MouseX">MouseX: {0:0.####}</phrase>
+  <phrase id="Form_Graph.MouseY">MouseY: {0:0.####}</phrase>
   
   <phrase id="Form_Graph.DefaultFormula">Math.Cos(x)</phrase>
   <phrase id="Form_Graph.DefaultPeriodFormula">Math.PI</phrase>
   <phrase id="Form_Graph.DefaultHighLimFormula">Math.PI * 2</phrase>
   <phrase id="Form_Graph.DefaultLowLimFormula">- Math.PI * 2</phrase>
 
-  <phrase id="Form_Graph.Log.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;</phrase>
-  <phrase id="Form_Graph.Log.2">&#xA;1.Ошибок при компиляции формулы не было найдено.&#xA;</phrase>
-  <phrase id="Form_Graph.Log.3">&#xA;1.Найдено {0} ошибок при компиляции строки формулы "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;</phrase>
-  <phrase id="Form_Graph.Log.4">&#xA;{1}.Ошибок при компиляции строки {0} предела не было найдено.&#xA;</phrase>
-  <phrase id="Form_Graph.Log.5">&#xA;{5}.Найдено {0} ошибок при компиляции строки {1} предела "{2}":&#xA;{3}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{4}"&#xA;</phrase>
+  <phrase id="Form_Graph.Log.1">Початок компіляції: {0}, кінець: {1}. Виконано за {2:0.#} секунд. В цілому було знайдено{3} помилок:&#xA;</phrase>
+  <phrase id="Form_Graph.Log.2">&#xA;1. Помилок при компіляції формули не було знайдено.&#xA;</phrase>
+  <phrase id="Form_Graph.Log.3">&#xA;1. Знайдено {0} помилок при компіляції строки формули "{1}":&#xA;{2}&#xA;Для продовження роботи була повернена попередня успішна формула: "{3}"&#xA;</phrase>
+  <phrase id="Form_Graph.Log.4">&#xA;{1}. Помилок при компіляції строки {0} межі не було знайдено.&#xA;</phrase>
+  <phrase id="Form_Graph.Log.5">&#xA;{5}. Найдено {0} помилок при компіляції строки {1} межі "{2}":&#xA;{3}&#xA;Для продовження роботи була повернена попередня успішна формула: "{4}"&#xA;</phrase>
 
-  <phrase id="Form_Graph.Log1.1">Начало компиляции: {0}, конец: {1}. Выполнено за {2:0.#} секунд. В общем было найдено {3} ошибок:&#xA;,</phrase>
-  <phrase id="Form_Graph.Log1.2">&#xA;1.Ошибок при компиляции периода не было найдено.&#xA;,</phrase>
-  <phrase id="Form_Graph.Log1.3">&#xA;1.Найдено {0} ошибок при компиляции строки периода "{1}":&#xA;{2}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{3}"&#xA;,</phrase>
-  <phrase id="Form_Graph.Log1.4">&#xA;{1}.Ошибок при компиляции строки {0} предела не было найдено.&#xA;",</phrase>
-  <phrase id="Form_Graph.Log1.5">&#xA;{5}.Найдено {0} ошибок при компиляции строки {1} предела "{2}":&#xA;{3}&#xA;Для продолжения работы была возвращена предыдущая успешная формула: "{4}"&#xA;</phrase>
+  <phrase id="Form_Graph.Log1.1">Початок компіляції: {0}, кінець: {1}. Виконано за {2:0.#} секунд. В цілому було знайдено{3} помилок:&#xA;</phrase>
+  <phrase id="Form_Graph.Log1.2">&#xA;1. Помилок при компіляції періоду не було знайдено.&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.3">&#xA;1. Знайдено {0} помилок при компіляції строки періоду "{1}":&#xA;{2}&#xA;Для продовження роботи була повернена попередня успішна формула: "{3}"&#xA;,</phrase>
+  <phrase id="Form_Graph.Log1.4">&#xA;{1}. Помилок при компіляції строки {0} межі не було знайдено.&#xA;",</phrase>
+  <phrase id="Form_Graph.Log1.5">&#xA;{5}. Знайдено {0} помилок при компіляції строки {1} межі "{2}":&#xA;{3}&#xA;Для продовження роботи була повернена попередня успішна формула: "{4}"&#xA;</phrase>
 
-  <phrase id="Form_Graph.Word.Error">Ошибка</phrase>
-  <phrase id="Form_Graph.ExitLog.1">Введенная формула "{0}" не совпадает с удачной "{1}"</phrase>
-  <phrase id="Form_Graph.ExitLog.2">Введенная формула нижнего правого предела функции "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
-  <phrase id="Form_Graph.ExitLog.3">Введенная формула нижнего левого предела функции "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
-  <phrase id="Form_Graph.ExitLog.4">Введенная формула периода маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
-  <phrase id="Form_Graph.ExitLog.5">Введенная формула левого предела маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
-  <phrase id="Form_Graph.ExitLog.6">Введенная формула левого правого маркеров "{0}" не совпадает с удачной "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.Word.Error">Помилка</phrase>
+  <phrase id="Form_Graph.ExitLog.1">Введена формула "{0}" не співпадає с вдалою "{1}"</phrase>
+  <phrase id="Form_Graph.ExitLog.2">Введена формула нижнього правого межі функції "{0}" не співпадає с вдалою "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.3">Введена формула нижнього лівого межі функції "{0}" не співпадає с вдалою "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.4">Введена формула періоду маркерів "{0}" не співпадає с вдалою "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.5">Введена формула лівого межі маркерів "{0}" не співпадає с вдалою "{1}"&#xA;</phrase>
+  <phrase id="Form_Graph.ExitLog.6">Введена формула лівого правого маркерів "{0}" не співпадає с вдалою "{1}"&#xA;</phrase>
   
   <!-- Graph Menus -->
-  <menu id="Form_Graph.button_add">Добавить</menu>
-  <menu id="Form_Graph.button_copy">Дублировать</menu>
-  <menu id="Form_Graph.button_del">Удалить</menu>
-  <menu id="Form_Graph.button_edit">Редактировать</menu>
-  <menu id="Form_Graph.button_loaderr_close">Закрiть</menu>
-  <menu id="Form_Graph.button_loaderr_more">Подробнее</menu>
+  <menu id="Form_Graph.button_add">Додати</menu>
+  <menu id="Form_Graph.button_copy">Дублювати</menu>
+  <menu id="Form_Graph.button_del">Видалити</menu>
+  <menu id="Form_Graph.button_edit">Редагувати</menu>
+  <menu id="Form_Graph.button_loaderr_close">Закрити</menu>
+  <menu id="Form_Graph.button_loaderr_more">Детальніше</menu>
   <menu id="Form_Graph.button1">С</menu>
-  <menu id="Form_Graph.button2">Сохр</menu>
-  <menu id="Form_Graph.button3">Загр</menu>
-  <menu id="Form_Graph.checkBox_use_addPoints">Точки на графике</menu>
-  <menu id="Form_Graph.checkBox_use_axis">Оси</menu>
-  <menu id="Form_Graph.checkBox_use_axisNames">Название осей</menu>
-  <menu id="Form_Graph.checkBox_use_docName">Название документа</menu>
-  <menu id="Form_Graph.checkBox_use_Grid">Сетка</menu>
+  <menu id="Form_Graph.button2">Збер.</menu>
+  <menu id="Form_Graph.button3">Загр.</menu>
+  <menu id="Form_Graph.checkBox_use_addPoints">Точки на графіку</menu>
+  <menu id="Form_Graph.checkBox_use_axis">Осі</menu>
+  <menu id="Form_Graph.checkBox_use_axisNames">Назви осей</menu>
+  <menu id="Form_Graph.checkBox_use_docName">Назва документу</menu>
+  <menu id="Form_Graph.checkBox_use_Grid">Сітка</menu>
   <menu id="Form_Graph.checkBox_use_legend">Легенда</menu>
-  <menu id="Form_Graph.groupBox1">Графики</menu>
-  <menu id="Form_Graph.groupBox2">Элементы</menu>
-  <menu id="Form_Graph.label_load">Подождите, пока идет загрузка и &#009;&#xA;обработка данных. Это может занять&#009;&#xA;до пары мин +</menu>
+  <menu id="Form_Graph.groupBox1">Графіки</menu>
+  <menu id="Form_Graph.groupBox2">Елементи</menu>
+  <menu id="Form_Graph.label_load">Зачекайте поки йде завантаження и &#009;&#xA;обробка даних. Це може зайняти&#009;&#xA;до пари хвилин</menu>
   <menu id="Form_Graph.label_x">label1</menu>
   <menu id="Form_Graph.label_y">label2</menu>
-  <menu id="Form_Graph.label1">Обнаружены ошибки при загрузке документа.</menu>
-  <menu id="Form_Graph.labelHint">Добавьте графики для начала работы...&#009;&#xA;</menu>
+  <menu id="Form_Graph.label1">Виявлено помилки при завантаженні документу</menu>
+  <menu id="Form_Graph.labelHint">Додайте графіки для початку роботи...&#009;&#xA;</menu>
   <menu id="Form_Graph.loadingCircle_tab1">loadingCircle2</menu>
-  <menu id="Form_Graph.Text">Построение графиков</menu>
+  <menu id="Form_Graph.Text">Побудова графіків</menu>
 
 </content>

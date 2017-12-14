@@ -3,13 +3,13 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Form_Dialog_PrintEnterNames.ErrorWhileUploading">Во время загрузки вектора на устройство произошла не предведенная ошибка типа {0}.&#xA;{2}&#xA;Стек вызовов: {1}</phrase>
-  <phrase id="Form_Dialog_PrintEnterNames.Error">Error</phrase>
+  <phrase id="Form_Dialog_PrintEnterNames.ErrorWhileUploading">Під час завантаження вектора на пристрій виникла не передбачена помилка типа {0}.&#xA;{2}&#xA;Стек викликів: {1}</phrase>
+  <phrase id="Form_Dialog_PrintEnterNames.Error">Помилка</phrase>
 
   <!-- Serial Monitor Menus -->
-  <menu id="Form_Dialog_PrintEnterNames.button_cancel">Cancel</menu>
-  <menu id="Form_Dialog_PrintEnterNames.button_ok">Ok</menu>
-  <menu id="Form_Dialog_PrintEnterNames.button1">P</menu>
+  <menu id="Form_Dialog_PrintEnterNames.button_cancel">Скасувати</menu>
+  <menu id="Form_Dialog_PrintEnterNames.button_ok">Добре</menu>
+  <menu id="Form_Dialog_PrintEnterNames.button1">Р</menu>
   <menu id="Form_Dialog_PrintEnterNames.label_name">Ім'я вектора: </menu>
   <menu id="Form_Dialog_PrintEnterNames.label_pc">Шлях до вектору:</menu>
   <menu id="Form_Dialog_PrintEnterNames.loadingCircle_previewLoad">loadingCircle2</menu>

@@ -146,6 +146,10 @@ namespace CnC_WFA
             this.label_main_about_discr = new System.Windows.Forms.Label();
             this.label_main_about_about = new System.Windows.Forms.Label();
             this.tabPage_memory = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.button_main_memory_def = new System.Windows.Forms.Button();
             this.label_main_memory_bd = new System.Windows.Forms.Label();
             this.label_main_memory_port = new System.Windows.Forms.Label();
@@ -252,10 +256,6 @@ namespace CnC_WFA
             this.tabPage_main_help = new System.Windows.Forms.TabPage();
             this.panel_main_help_tools = new System.Windows.Forms.Panel();
             this.label_help_title = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel_main_tools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -313,7 +313,7 @@ namespace CnC_WFA
             this.button_help.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_help.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_help.Image = ((System.Drawing.Image)(resources.GetObject("button_help.Image")));
-            this.button_help.Location = new System.Drawing.Point(-2, 297);
+            this.button_help.Location = new System.Drawing.Point(-2, 314);
             this.button_help.Name = "button_help";
             this.button_help.Size = new System.Drawing.Size(229, 81);
             this.button_help.TabIndex = 7;
@@ -332,7 +332,7 @@ namespace CnC_WFA
             this.button_vect.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_vect.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_vect.Image = ((System.Drawing.Image)(resources.GetObject("button_vect.Image")));
-            this.button_vect.Location = new System.Drawing.Point(0, 217);
+            this.button_vect.Location = new System.Drawing.Point(0, 230);
             this.button_vect.Name = "button_vect";
             this.button_vect.Size = new System.Drawing.Size(227, 81);
             this.button_vect.TabIndex = 6;
@@ -351,7 +351,7 @@ namespace CnC_WFA
             this.button_print.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_print.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_print.Image = ((System.Drawing.Image)(resources.GetObject("button_print.Image")));
-            this.button_print.Location = new System.Drawing.Point(0, 139);
+            this.button_print.Location = new System.Drawing.Point(0, 146);
             this.button_print.Name = "button_print";
             this.button_print.Size = new System.Drawing.Size(227, 81);
             this.button_print.TabIndex = 5;
@@ -432,7 +432,7 @@ namespace CnC_WFA
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(15, 319);
+            this.pictureBox2.Location = new System.Drawing.Point(17, 337);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -446,7 +446,7 @@ namespace CnC_WFA
             this.button_memory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_memory.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_memory.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_memory.Location = new System.Drawing.Point(-6, 297);
+            this.button_memory.Location = new System.Drawing.Point(-6, 314);
             this.button_memory.Name = "button_memory";
             this.button_memory.Size = new System.Drawing.Size(237, 81);
             this.button_memory.TabIndex = 13;
@@ -459,7 +459,7 @@ namespace CnC_WFA
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 236);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 241);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -474,13 +474,12 @@ namespace CnC_WFA
             this.button_device.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_device.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_device.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button_device.Location = new System.Drawing.Point(-6, 217);
+            this.button_device.Location = new System.Drawing.Point(-6, 230);
             this.button_device.Name = "button_device";
             this.button_device.Size = new System.Drawing.Size(237, 81);
             this.button_device.TabIndex = 11;
             this.button_device.Text = "  Настройки\r\n   устройтсва\r\n ";
-            this.button_device.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button_device.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button_device.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_device.UseVisualStyleBackColor = true;
             this.button_device.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -492,7 +491,7 @@ namespace CnC_WFA
             this.button_config.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_config.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_config.Image = ((System.Drawing.Image)(resources.GetObject("button_config.Image")));
-            this.button_config.Location = new System.Drawing.Point(-6, 139);
+            this.button_config.Location = new System.Drawing.Point(0, 146);
             this.button_config.Name = "button_config";
             this.button_config.Size = new System.Drawing.Size(237, 81);
             this.button_config.TabIndex = 10;
@@ -624,9 +623,9 @@ namespace CnC_WFA
             this.button_main_device_def.FlatAppearance.BorderSize = 2;
             this.button_main_device_def.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_device_def.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_device_def.Location = new System.Drawing.Point(666, 607);
+            this.button_main_device_def.Location = new System.Drawing.Point(641, 607);
             this.button_main_device_def.Name = "button_main_device_def";
-            this.button_main_device_def.Size = new System.Drawing.Size(157, 35);
+            this.button_main_device_def.Size = new System.Drawing.Size(182, 35);
             this.button_main_device_def.TabIndex = 154;
             this.button_main_device_def.Text = "По умолчанию";
             this.button_main_device_def.UseVisualStyleBackColor = true;
@@ -1072,9 +1071,9 @@ namespace CnC_WFA
             this.button_main_config_def.FlatAppearance.BorderSize = 2;
             this.button_main_config_def.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_config_def.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_config_def.Location = new System.Drawing.Point(666, 607);
+            this.button_main_config_def.Location = new System.Drawing.Point(641, 607);
             this.button_main_config_def.Name = "button_main_config_def";
-            this.button_main_config_def.Size = new System.Drawing.Size(157, 35);
+            this.button_main_config_def.Size = new System.Drawing.Size(182, 35);
             this.button_main_config_def.TabIndex = 153;
             this.button_main_config_def.Text = "Поумолчанию";
             this.button_main_config_def.UseVisualStyleBackColor = true;
@@ -1671,6 +1670,46 @@ namespace CnC_WFA
             this.tabPage_memory.TabIndex = 3;
             this.tabPage_memory.Text = "tabPage1";
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(574, 262);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 154;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(200, 262);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 25);
+            this.textBox2.TabIndex = 155;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 265);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 17);
+            this.label1.TabIndex = 157;
+            this.label1.Text = "Пин шага по оси Z (ZStep):";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(338, 265);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(233, 17);
+            this.label2.TabIndex = 156;
+            this.label2.Text = "Пин направления по оси Z (ZDir):";
+            // 
             // button_main_memory_def
             // 
             this.button_main_memory_def.BackColor = System.Drawing.Color.White;
@@ -1679,9 +1718,9 @@ namespace CnC_WFA
             this.button_main_memory_def.FlatAppearance.BorderSize = 2;
             this.button_main_memory_def.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_memory_def.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_memory_def.Location = new System.Drawing.Point(666, 513);
+            this.button_main_memory_def.Location = new System.Drawing.Point(641, 513);
             this.button_main_memory_def.Name = "button_main_memory_def";
-            this.button_main_memory_def.Size = new System.Drawing.Size(157, 35);
+            this.button_main_memory_def.Size = new System.Drawing.Size(182, 35);
             this.button_main_memory_def.TabIndex = 152;
             this.button_main_memory_def.Text = "Поумолчанию";
             this.button_main_memory_def.UseVisualStyleBackColor = false;
@@ -1796,9 +1835,9 @@ namespace CnC_WFA
             this.button_main_memory_get.FlatAppearance.BorderSize = 2;
             this.button_main_memory_get.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_memory_get.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_memory_get.Location = new System.Drawing.Point(666, 595);
+            this.button_main_memory_get.Location = new System.Drawing.Point(641, 595);
             this.button_main_memory_get.Name = "button_main_memory_get";
-            this.button_main_memory_get.Size = new System.Drawing.Size(157, 35);
+            this.button_main_memory_get.Size = new System.Drawing.Size(182, 35);
             this.button_main_memory_get.TabIndex = 140;
             this.button_main_memory_get.Text = "Обновить";
             this.button_main_memory_get.UseVisualStyleBackColor = false;
@@ -1812,9 +1851,9 @@ namespace CnC_WFA
             this.button_main_memory_load.FlatAppearance.BorderSize = 2;
             this.button_main_memory_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_main_memory_load.Font = new System.Drawing.Font("Cambria", 14.25F);
-            this.button_main_memory_load.Location = new System.Drawing.Point(666, 554);
+            this.button_main_memory_load.Location = new System.Drawing.Point(641, 554);
             this.button_main_memory_load.Name = "button_main_memory_load";
-            this.button_main_memory_load.Size = new System.Drawing.Size(157, 35);
+            this.button_main_memory_load.Size = new System.Drawing.Size(182, 35);
             this.button_main_memory_load.TabIndex = 118;
             this.button_main_memory_load.Text = "Отправить";
             this.button_main_memory_load.UseVisualStyleBackColor = false;
@@ -2119,7 +2158,7 @@ namespace CnC_WFA
             this.button_main_macro.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_macro.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_macro.Image = ((System.Drawing.Image)(resources.GetObject("button_main_macro.Image")));
-            this.button_main_macro.Location = new System.Drawing.Point(-12, 139);
+            this.button_main_macro.Location = new System.Drawing.Point(-12, 146);
             this.button_main_macro.Name = "button_main_macro";
             this.button_main_macro.Size = new System.Drawing.Size(237, 81);
             this.button_main_macro.TabIndex = 13;
@@ -2138,7 +2177,7 @@ namespace CnC_WFA
             this.button_main_ser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_ser.Image = ((System.Drawing.Image)(resources.GetObject("button_main_ser.Image")));
             this.button_main_ser.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button_main_ser.Location = new System.Drawing.Point(-1, 216);
+            this.button_main_ser.Location = new System.Drawing.Point(-2, 230);
             this.button_main_ser.Name = "button_main_ser";
             this.button_main_ser.Size = new System.Drawing.Size(237, 81);
             this.button_main_ser.TabIndex = 11;
@@ -2156,7 +2195,7 @@ namespace CnC_WFA
             this.button_main_manual.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_manual.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_manual.Image = ((System.Drawing.Image)(resources.GetObject("button_main_manual.Image")));
-            this.button_main_manual.Location = new System.Drawing.Point(-5, 297);
+            this.button_main_manual.Location = new System.Drawing.Point(-5, 314);
             this.button_main_manual.Name = "button_main_manual";
             this.button_main_manual.Size = new System.Drawing.Size(237, 81);
             this.button_main_manual.TabIndex = 10;
@@ -2515,7 +2554,7 @@ namespace CnC_WFA
             this.button_main_other.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_other.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_other.Image = ((System.Drawing.Image)(resources.GetObject("button_main_other.Image")));
-            this.button_main_other.Location = new System.Drawing.Point(-9, 461);
+            this.button_main_other.Location = new System.Drawing.Point(-9, 482);
             this.button_main_other.Name = "button_main_other";
             this.button_main_other.Size = new System.Drawing.Size(237, 81);
             this.button_main_other.TabIndex = 14;
@@ -2534,7 +2573,7 @@ namespace CnC_WFA
             this.button_main_graph.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_graph.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_graph.Image = ((System.Drawing.Image)(resources.GetObject("button_main_graph.Image")));
-            this.button_main_graph.Location = new System.Drawing.Point(-5, 383);
+            this.button_main_graph.Location = new System.Drawing.Point(-12, 398);
             this.button_main_graph.Name = "button_main_graph";
             this.button_main_graph.Size = new System.Drawing.Size(237, 81);
             this.button_main_graph.TabIndex = 13;
@@ -2553,7 +2592,7 @@ namespace CnC_WFA
             this.button_main_curve.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_curve.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_curve.Image = ((System.Drawing.Image)(resources.GetObject("button_main_curve.Image")));
-            this.button_main_curve.Location = new System.Drawing.Point(-5, 301);
+            this.button_main_curve.Location = new System.Drawing.Point(-9, 314);
             this.button_main_curve.Name = "button_main_curve";
             this.button_main_curve.Size = new System.Drawing.Size(237, 81);
             this.button_main_curve.TabIndex = 12;
@@ -2572,7 +2611,7 @@ namespace CnC_WFA
             this.button_main_editor.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_editor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_editor.Image = ((System.Drawing.Image)(resources.GetObject("button_main_editor.Image")));
-            this.button_main_editor.Location = new System.Drawing.Point(-1, 217);
+            this.button_main_editor.Location = new System.Drawing.Point(-7, 230);
             this.button_main_editor.Name = "button_main_editor";
             this.button_main_editor.Size = new System.Drawing.Size(237, 81);
             this.button_main_editor.TabIndex = 11;
@@ -2590,7 +2629,7 @@ namespace CnC_WFA
             this.button_main_vectview.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_vectview.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_vectview.Image = ((System.Drawing.Image)(resources.GetObject("button_main_vectview.Image")));
-            this.button_main_vectview.Location = new System.Drawing.Point(-5, 139);
+            this.button_main_vectview.Location = new System.Drawing.Point(-5, 146);
             this.button_main_vectview.Name = "button_main_vectview";
             this.button_main_vectview.Size = new System.Drawing.Size(237, 81);
             this.button_main_vectview.TabIndex = 10;
@@ -2620,7 +2659,7 @@ namespace CnC_WFA
             this.button_main_vect.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_main_vect.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_main_vect.Image = ((System.Drawing.Image)(resources.GetObject("button_main_vect.Image")));
-            this.button_main_vect.Location = new System.Drawing.Point(-1, 62);
+            this.button_main_vect.Location = new System.Drawing.Point(-4, 62);
             this.button_main_vect.Name = "button_main_vect";
             this.button_main_vect.Size = new System.Drawing.Size(237, 81);
             this.button_main_vect.TabIndex = 8;
@@ -3008,46 +3047,6 @@ namespace CnC_WFA
             this.label_help_title.Size = new System.Drawing.Size(153, 43);
             this.label_help_title.TabIndex = 9;
             this.label_help_title.Text = "Главная";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(574, 262);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 154;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(200, 262);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
-            this.textBox2.TabIndex = 155;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Enabled = false;
-            this.label1.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 265);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 17);
-            this.label1.TabIndex = 157;
-            this.label1.Text = "Пин шага по оси Z (ZStep):";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(338, 265);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(233, 17);
-            this.label2.TabIndex = 156;
-            this.label2.Text = "Пин направления по оси Z (ZDir):";
             // 
             // MainWindow
             // 

@@ -51,7 +51,7 @@ namespace CnC_WFA
                 {
                     MessageBox.Show(
                         TB.L.Phrase["Form_MacroPack.UnableToLoadSomeMacro"], 
-                        TB.L.Phrase["Form_MacroPack.Error"], 
+                        TB.L.Phrase["Connection.Error"], 
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

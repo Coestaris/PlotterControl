@@ -591,11 +591,11 @@ namespace CnC_WFA
 
         // .NET wrapper to native call of 'memcpy'. Requires Microsoft Visual C++ Runtime installed
         [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
-        public static extern IntPtr memcpy(IntPtr dest, IntPtr src, ulong count);
+        internal static extern IntPtr memcpy(IntPtr dest, IntPtr src, ulong count);
 
         // .NET wrapper to native call of 'memcpy'. Requires Microsoft Visual C++ Runtime installed
         [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
-        public static extern IntPtr memcpy(void* dest, void* src, ulong count);
+        internal static extern IntPtr memcpy(void* dest, void* src, ulong count);
 
         public object Clone()
         {

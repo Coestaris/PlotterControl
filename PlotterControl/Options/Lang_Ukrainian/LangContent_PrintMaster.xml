@@ -3,64 +3,64 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Connection.Connect">Подключится</phrase>
-  <phrase id="Connection.Disconnect">Отключить</phrase>
-  <phrase id="Connection.Error">Ошибка</phrase>
-  <phrase id="Connection.EnterBDRate">Укажите скорость соеденения</phrase>
-  <phrase id="Connection.EnterPort">Укажите порт</phrase>
-  <phrase id="Connection.UnableToOpenPort">Не удалось открыть порт {0}</phrase>
-  <phrase id="Connection.DeviceNotAnswered">Устройство не ответило на первичный опрос</phrase>
+  <phrase id="Connection.Connect">Підключитися</phrase>
+  <phrase id="Connection.Disconnect">Відключитись</phrase>
+  <phrase id="Connection.Error">Помилка</phrase>
+  <phrase id="Connection.EnterBDRate">Вкажіть швидкість з'єднання</phrase>
+  <phrase id="Connection.EnterPort">Вкажіть ім'я порту</phrase>
+  <phrase id="Connection.UnableToOpenPort">Не вдалося відкрити порт {0}</phrase>
+  <phrase id="Connection.DeviceNotAnswered">Пристрій не відповів на первинне опитування</phrase>
 
-  <phrase id="Form_PrintMaster.Connect">Подкл.</phrase>
+  <phrase id="Form_PrintMaster.Connect">Підкл.</phrase>
   <phrase id="Form_PrintMaster.Disonnect">Откл.</phrase>
-  <phrase id="Form_PrintMaster.Resoulution">Разрешение: {0} x {1}</phrase>
+  <phrase id="Form_PrintMaster.Resoulution">Роздільна здатність: {0} x {1}</phrase>
   <phrase id="Form_PrintMaster.VectorType">Тип вектора: {0}</phrase>
-  <phrase id="Form_PrintMaster.ErrorText">Произошла ошибка типа {0}.&#xA;{2}&#xA;&#xA;Стек вызовов:&#xA;{1}</phrase>
-  <phrase id="Form_PrintMaster.SelectItem">Select item!</phrase>
-  <phrase id="Form_PrintMaster.CustomPen">&#60;польз перо&#62;</phrase>
-  <phrase id="Form_PrintMaster.UncorrectNumber">"{0}" некорректное число</phrase>
-  <phrase id="Form_PrintMaster.WrongInput">Wrong Input</phrase>
-  <phrase id="Form_PrintMaster.SizeXY">Размер по Х должен быть в диапазоне от 0мм о 297мм, а по Y должен быть в диапазоне от 0мм о 210мм.</phrase>
-  <phrase id="Form_PrintMaster.TimeSpend">Затрачено времени: {0:0.#} секунд</phrase>
-  <phrase id="Form_PrintMaster.EstimatedTime">Осалось времени(примерно): {0:0.#} секунд.</phrase>
-  <phrase id="Form_PrintMaster.Speed">Скорость: {0:0.##} операций/сек</phrase>
+  <phrase id="Form_PrintMaster.ErrorText">Виникла помилку типу {0}.&#xA;{2}&#xA;&#xA;Стек викликів:&#xA;{1}</phrase>
+  <phrase id="Form_PrintMaster.SelectItem">Виберіть елемент!</phrase>
+  <phrase id="Form_PrintMaster.CustomPen">&#60;корист. перо&#62;</phrase>
+  <phrase id="Form_PrintMaster.UncorrectNumber">"{0}" некоректне число</phrase>
+  <phrase id="Form_PrintMaster.WrongInput">Некоректний введення</phrase>
+  <phrase id="Form_PrintMaster.SizeXY">Розмір по Х має бути в діапазоні від 0мм до 297мм, а по Y має бути в діапазоні від 0мм о 210мм.</phrase>
+  <phrase id="Form_PrintMaster.TimeSpend">Затрачено часу: {0:0.#} секунд</phrase>
+  <phrase id="Form_PrintMaster.EstimatedTime">Залишилося часу (приблизно): {0:0.#} секунд.</phrase>
+  <phrase id="Form_PrintMaster.Speed">Швидкість: {0:0.##} операцій/сек</phrase>
   <phrase id="Form_PrintMaster.Progress">{0}/{1}</phrase>
   <phrase id="Form_PrintMaster.Percentage">{0:0.##}%</phrase>
   
   
   <!-- Serial Monitor Menus -->
-  <menu id="Form_PrintMaster.button_abort">Прервать печать</menu>
-  <menu id="Form_PrintMaster.button_delete">Удалить</menu>
-  <menu id="Form_PrintMaster.button_deviceInfo">Инфо</menu>
-  <menu id="Form_PrintMaster.button_help">Справка</menu>
-  <menu id="Form_PrintMaster.button_open">Подкл.</menu>
+  <menu id="Form_PrintMaster.button_abort">Перервати друк</menu>
+  <menu id="Form_PrintMaster.button_delete">Видалити</menu>
+  <menu id="Form_PrintMaster.button_deviceInfo">Інфо</menu>
+  <menu id="Form_PrintMaster.button_help">Поміч</menu>
+  <menu id="Form_PrintMaster.button_open">Підкл.</menu>
   <menu id="Form_PrintMaster.button_pause">Пауза</menu>
-  <menu id="Form_PrintMaster.button_refresh">Обновить</menu>
-  <menu id="Form_PrintMaster.button_tab1_exit">Выйти</menu>
-  <menu id="Form_PrintMaster.button_tab1_next">Далее</menu>
+  <menu id="Form_PrintMaster.button_refresh">Обновити</menu>
+  <menu id="Form_PrintMaster.button_tab1_exit">Вийти</menu>
+  <menu id="Form_PrintMaster.button_tab1_next">Далі</menu>
   <menu id="Form_PrintMaster.button_tab2_back">Назад</menu>
-  <menu id="Form_PrintMaster.button_tab2_next">Далее</menu>
+  <menu id="Form_PrintMaster.button_tab2_next">Далі</menu>
   <menu id="Form_PrintMaster.button_tab3_back">Назад</menu>
-  <menu id="Form_PrintMaster.button_tab3_next">Далее</menu>
-  <menu id="Form_PrintMaster.button_tab4_close">Выйти</menu>
-  <menu id="Form_PrintMaster.button_tab5_exit">Выход</menu>
-  <menu id="Form_PrintMaster.button_upload">Загрузить</menu>
-  <menu id="Form_PrintMaster.groupBox_pens">Параметры пера</menu>
-  <menu id="Form_PrintMaster.groupBox_size">Размер</menu>
-  <menu id="Form_PrintMaster.groupBox4">Соеденение</menu>
-  <menu id="Form_PrintMaster.label_1">      Приветствие</menu>
-  <menu id="Form_PrintMaster.label_2">     Выбор файла</menu>
-  <menu id="Form_PrintMaster.label_3">        Настройка&#009;&#xA;        печати</menu>
-  <menu id="Form_PrintMaster.label_4">        Печать</menu>
-  <menu id="Form_PrintMaster.label_5">        Завершение</menu>
-  <menu id="Form_PrintMaster.label_bd">Скорость соед.: </menu>
-  <menu id="Form_PrintMaster.label_color">Цвет: </menu>
-  <menu id="Form_PrintMaster.label_com">Имя порта:</menu>
-  <menu id="Form_PrintMaster.label_discr">Следуйте интрукциям указанным в мастере, и в результате вы получите напечатаный в +</menu>
-  <menu id="Form_PrintMaster.label_elev_corr">Корректировка&#009;&#xA;поднятия пера:&#009;&#xA;</menu>
-  <menu id="Form_PrintMaster.label_elev_corr_1">шагов.</menu>
-  <menu id="Form_PrintMaster.label_elev_delta">Дельта &#009;&#xA;поднятия пера:</menu>
-  <menu id="Form_PrintMaster.label_elev_delta_1">шагов.</menu>
+  <menu id="Form_PrintMaster.button_tab3_next">Далі</menu>
+  <menu id="Form_PrintMaster.button_tab4_close">Вийти</menu>
+  <menu id="Form_PrintMaster.button_tab5_exit">Вихід</menu>
+  <menu id="Form_PrintMaster.button_upload">Загрузити</menu>
+  <menu id="Form_PrintMaster.groupBox_pens">Параметри пера</menu>
+  <menu id="Form_PrintMaster.groupBox_size">Розмір</menu>
+  <menu id="Form_PrintMaster.groupBox4">З'єднання</menu>
+  <menu id="Form_PrintMaster.label_1">      Вітання    </menu>
+  <menu id="Form_PrintMaster.label_2">     Вибір файлу</menu>
+  <menu id="Form_PrintMaster.label_3">        Настройка&#009;&#xA;        друку </menu>
+  <menu id="Form_PrintMaster.label_4">        Друк  </menu>
+  <menu id="Form_PrintMaster.label_5">        Завершення</menu>
+  <menu id="Form_PrintMaster.label_bd">Шв. з'єднання: </menu>
+  <menu id="Form_PrintMaster.label_color">Колір: </menu>
+  <menu id="Form_PrintMaster.label_com">Ім'я порту:</menu>
+  <menu id="Form_PrintMaster.label_discr">Дотримуйтесь інструкціям вказаним в майстрі і в результаті ви отримаєте надрукований вектор</menu>
+  <menu id="Form_PrintMaster.label_elev_corr">Коригування&#009;&#xA;підняття пера:&#009;&#xA;</menu>
+  <menu id="Form_PrintMaster.label_elev_corr_1">кроків.</menu>
+  <menu id="Form_PrintMaster.label_elev_delta">Дельта &#009;&#xA;підняття пера:</menu>
+  <menu id="Form_PrintMaster.label_elev_delta_1">кроків.</menu>
   <menu id="Form_PrintMaster.label_leftTime"> </menu>
   <menu id="Form_PrintMaster.label_maxx">Макс.: 297mm</menu>
   <menu id="Form_PrintMaster.label_maxy">Макс.: 210mm</menu>
@@ -70,24 +70,28 @@
   <menu id="Form_PrintMaster.label_progress"> </menu>
   <menu id="Form_PrintMaster.label_speed"> </menu>
   <menu id="Form_PrintMaster.label_spendTme"> </menu>
-  <menu id="Form_PrintMaster.label_title">Вас приветствует мастер печати&#009;&#xA;</menu>
-  <menu id="Form_PrintMaster.label_title_2">Печать вектора</menu>
+  <menu id="Form_PrintMaster.label_title">Вас вітає майстер друку&#009;&#xA;</menu>
+  <menu id="Form_PrintMaster.label_title_2">Друк вектора</menu>
   <menu id="Form_PrintMaster.label_xsize">Ширина:</menu>
-  <menu id="Form_PrintMaster.label_ysize">Высота:</menu>
+  <menu id="Form_PrintMaster.label_ysize">Висота:</menu>
+  
+  <!--?!??!?!-->
   <menu id="Form_PrintMaster.label1">resources.GetString(label1.Text)</menu>
   <menu id="Form_PrintMaster.label2">???? ???????????? ?????????????? ???????????? ????????????.&#009;&#xA;</menu>
   <menu id="Form_PrintMaster.label3">???????????? ??????????????????&#009;&#xA;</menu>
-  <menu id="Form_PrintMaster.label4">Печать завершена. Вы можете закрыть данную форму</menu>
+  <!--?!??!?!-->
+  
+  <menu id="Form_PrintMaster.label4">Друк закінчений. Ви можете закрити дану форму</menu>
   <menu id="Form_PrintMaster.loadingCircle_previewLoad">loadingCircle2</menu>
   <menu id="Form_PrintMaster.radioButton_xsize">Задать ширину</menu>
-  <menu id="Form_PrintMaster.radioButton_ysize">Задать высоту</menu>
+  <menu id="Form_PrintMaster.radioButton_ysize">Задать висоту</menu>
   <menu id="Form_PrintMaster.tabPage_end">tabPage_end</menu>
   <menu id="Form_PrintMaster.tabPage_end1">tabPage_end1</menu>
   <menu id="Form_PrintMaster.tabPage_main">tabPage_main</menu>
   <menu id="Form_PrintMaster.tabPage_opts">tabPage_opts</menu>
   <menu id="Form_PrintMaster.tabPage_pickVect">tabPage1</menu>
   <menu id="Form_PrintMaster.tabPage_print">tabPage_setSize</menu>
-  <menu id="Form_PrintMaster.Text">Мастер Печати</menu>
+  <menu id="Form_PrintMaster.Text">Майстер друку</menu>
   <menu id="Form_PrintMaster.textBox_xsize">100</menu>
 
 </content>

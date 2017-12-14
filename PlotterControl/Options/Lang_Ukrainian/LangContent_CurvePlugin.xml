@@ -3,9 +3,9 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Form_CurvePlugins.Busy">Дыши, бобер. Я занят</phrase>
-  <phrase id="Form_CurvePlugins.VisitLink">Перейти по внешней ссылке "{0}"?</phrase>
-  <phrase id="Form_CurvePlugins.Plugins">Плагины</phrase>
+  <phrase id="Form_CurvePlugins.Busy">Зачекайте, виконується інша операція</phrase>
+  <phrase id="Form_CurvePlugins.VisitLink">Перейти по зовнішньому посиланню "{0}"?</phrase>
+  <phrase id="Form_CurvePlugins.Plugins">Плагіни</phrase>
 
 
   <!-- Serial Monitor Menus -->
@@ -17,7 +17,7 @@
   <menu id="Form_CurvePlugins.label_creator_name">Історія</menu>
   <menu id="Form_CurvePlugins.label_discr_content">label2</menu>
   <menu id="Form_CurvePlugins.label_discr_title">Опис</menu>
-  <menu id="Form_CurvePlugins.label_load">Зачекайте, поки компілюються и&#009;&#xA;підготовлюються плагіны. Це може зайняти&#009;&#xA;до декількох хвилин</menu>
+  <menu id="Form_CurvePlugins.label_load">Зачекайте, поки компілюються и&#009;&#xA;підготовлюються плагіни. Це може зайняти&#009;&#xA;до декількох хвилин</menu>
   <menu id="Form_CurvePlugins.label_prev_1">label1</menu>
   <menu id="Form_CurvePlugins.label_prev_2">label1</menu>
   <menu id="Form_CurvePlugins.label_Title">title</menu>

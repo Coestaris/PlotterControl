@@ -3,15 +3,15 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Form_Dialog_MacroAddImage.SizeX">Заднный размер по ширине имеет некорентный формат</phrase>
-  <phrase id="Form_Dialog_MacroAddImage.SizeY">Заднный размер по высоте имеет некорентный формат</phrase>
-  <phrase id="Form_Dialog_MacroAddImage.FileNotExists">Не удалось найти заданный файл</phrase>
+  <phrase id="Form_Dialog_MacroAddImage.SizeX">Вказаний розмір по ширині має некоректний формат</phrase>
+  <phrase id="Form_Dialog_MacroAddImage.SizeY">Вказаний розмір по висоті має некоректний формат</phrase>
+  <phrase id="Form_Dialog_MacroAddImage.FileNotExists">Не вдалося найти вказаний файл</phrase>
 
   <!-- Serial Monitor Menus -->
-  <menu id="Form_Dialog_MacroAddImage.button_cancel">Отмена</menu>
-  <menu id="Form_Dialog_MacroAddImage.button_ok">Ок</menu>
+  <menu id="Form_Dialog_MacroAddImage.button_cancel">Скасувати</menu>
+  <menu id="Form_Dialog_MacroAddImage.button_ok">Добре</menu>
   <menu id="Form_Dialog_MacroAddImage.button_pick"> </menu>
-  <menu id="Form_Dialog_MacroAddImage.label_height">Высота</menu>
+  <menu id="Form_Dialog_MacroAddImage.label_height">Висота</menu>
   <menu id="Form_Dialog_MacroAddImage.label_height_mm">мм</menu>
   <menu id="Form_Dialog_MacroAddImage.label_path">Путь</menu>
   <menu id="Form_Dialog_MacroAddImage.label_width">Ширина</menu>

@@ -6,42 +6,42 @@
 
 
   <!-- Serial Monitor Menus -->
-  <menu id="Form_Dialog_MacroPackEdit.button_addnew">Add new</menu>
+  <menu id="Form_Dialog_MacroPackEdit.button_addnew">Додати нов.</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_close">Закрити</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_conn">З'єднання</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_load">Завантажити</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_macro">Макроси</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_main">Основні параметри</menu>
-  <menu id="Form_Dialog_MacroPackEdit.button_openineditor">Open in editor</menu>
+  <menu id="Form_Dialog_MacroPackEdit.button_openineditor">Відкр. в редакторі</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_preset">Пресети</menu>
-  <menu id="Form_Dialog_MacroPackEdit.button_remove">Remove</menu>
-  <menu id="Form_Dialog_MacroPackEdit.button_repickpath">Pick again</menu>
-  <menu id="Form_Dialog_MacroPackEdit.button_samples_add">Add</menu>
-  <menu id="Form_Dialog_MacroPackEdit.button_samples_remove">Remove</menu>
+  <menu id="Form_Dialog_MacroPackEdit.button_remove">Видалити</menu>
+  <menu id="Form_Dialog_MacroPackEdit.button_repickpath">Перевибрати</menu>
+  <menu id="Form_Dialog_MacroPackEdit.button_samples_add">Додати</menu>
+  <menu id="Form_Dialog_MacroPackEdit.button_samples_remove">Видалити</menu>
   <menu id="Form_Dialog_MacroPackEdit.button_save">Зберегти</menu>
   <menu id="Form_Dialog_MacroPackEdit.checkBox_isHidden">Приховати</menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_bdrate">Bd Rate: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_caption">Caption: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_bdrate">Шв. з'єдн.: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_caption">Назва: </menu>
   <menu id="Form_Dialog_MacroPackEdit.label_conn_title">Параметри з'єднання</menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_discr">Discription: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_caption">Caption: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_charbind">Char Bind: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_discr">Discr</menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_elemcount">Elements: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_keybind">Key Bind: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_name">Name: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_macro_path">Path: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_discr">Опис: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_caption">Назва: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_charbind">Зв'язаний сивмол: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_discr">Опис</menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_elemcount">Елементів: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_keybind">Зв'язана клавіша: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_name">Ім'я: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_macro_path">Путь: </menu>
   <menu id="Form_Dialog_MacroPackEdit.label_macro_title">Параметри макросів</menu>
   <menu id="Form_Dialog_MacroPackEdit.label_main_title">Основні параметри</menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_name">Name: </menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_portname">Port Name: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_name">Ім'я: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_portname">Ім'я порту: </menu>
   <menu id="Form_Dialog_MacroPackEdit.label_sample_title">Параметри семплів</menu>
-  <menu id="Form_Dialog_MacroPackEdit.label_samples">Samples: </menu>
+  <menu id="Form_Dialog_MacroPackEdit.label_samples">Семплів: </menu>
   <menu id="Form_Dialog_MacroPackEdit.richTextBox_discr"></menu>
   <menu id="Form_Dialog_MacroPackEdit.tabPage_connection">tabPage2</menu>
   <menu id="Form_Dialog_MacroPackEdit.tabPage_macro">Макроси</menu>
   <menu id="Form_Dialog_MacroPackEdit.tabPage_main">tabPage1</menu>
   <menu id="Form_Dialog_MacroPackEdit.tabPage_sample">tabPage4</menu>
-  <menu id="Form_Dialog_MacroPackEdit.Text">Edit Macro-Pack</menu>
+  <menu id="Form_Dialog_MacroPackEdit.Text">Редагування макропаків</menu>
 
 </content>

@@ -3,54 +3,54 @@
 <content>
 
   <!-- -=== MANUAL CONTROL ===- -->
-  <phrase id="Connection.Enter7CharString">Enter 7 char string!</phrase>
-  <phrase id="Connection.Error.Command">Command</phrase>
-  <phrase id="Connection.Error.SenderBytes">Sender Bytes</phrase>
-  <phrase id="Connection.Error.Data">Data</phrase>
-  <phrase id="Connection.Error.Size">Size</phrase>
-  <phrase id="Connection.Error.Hash">Hash</phrase>
-  <phrase id="Connection.Error.SendingError">Sending Error</phrase>
+  <phrase id="Connection.Enter7CharString">Введіть 7-символьну строку!</phrase>
+  <phrase id="Connection.Error.Command">Команда</phrase>
+  <phrase id="Connection.Error.SenderBytes">Байти відправнику</phrase>
+  <phrase id="Connection.Error.Data">Дані</phrase>
+  <phrase id="Connection.Error.Size">Розмір</phrase>
+  <phrase id="Connection.Error.Hash">Хеш</phrase>
+  <phrase id="Connection.Error.SendingError">Помилка відправлення</phrase>
 
-  <phrase id="Connection.Status">Status</phrase>
-  <phrase id="Connection.AnswerTo">AnswerTo</phrase>
-  <phrase id="Connection.Sent">Sent</phrase>
-  <phrase id="Connection.Ok">Ok</phrase>
+  <phrase id="Connection.Status">Статус</phrase>
+  <phrase id="Connection.AnswerTo">Відповідь на</phrase>
+  <phrase id="Connection.Sent">Відправленно</phrase>
+  <phrase id="Connection.Ok">OК</phrase>
 
-  <phrase id="Connection.Sender">Отправитель ответа</phrase>
-  <phrase id="Connection.AnswStatus">Статус ответа</phrase>
-  <phrase id="Connection.AnswCommand">Ответ пришел на команду</phrase>
-  <phrase id="Connection.AsnwerDataType">Тип данных ответа</phrase>
-  <phrase id="Connection.AnswerCode">Код ответа</phrase>
-  <phrase id="Connection.AnswerData">Данные ответа</phrase>
-  <phrase id="Connection.Or">или</phrase>
-  <phrase id="Connection.AnswerInfo">Answer Info</phrase>
-  <phrase id="Connection.PacketSender">Отправитель пакета</phrase>
-  <phrase id="Connection.PacketCommand">Команда пакета</phrase>
-  <phrase id="Connection.PacketData">Данные пакета</phrase>
-  <phrase id="Connection.PacketInfo">Packet Info</phrase>
+  <phrase id="Connection.Sender">Відправник відповіді</phrase>
+  <phrase id="Connection.AnswStatus">Статус відповіді</phrase>
+  <phrase id="Connection.AnswCommand">Відповідь прийшов на команду</phrase>
+  <phrase id="Connection.AsnwerDataType">Тип даних відповіді</phrase>
+  <phrase id="Connection.AnswerCode">Код відповіді</phrase>
+  <phrase id="Connection.AnswerData">Дані відповіді</phrase>
+  <phrase id="Connection.Or">або</phrase>
+  <phrase id="Connection.AnswerInfo">Інформація о відповіді</phrase>
+  <phrase id="Connection.PacketSender">Відправник пакету</phrase>
+  <phrase id="Connection.PacketCommand">Команда пакету</phrase>
+  <phrase id="Connection.PacketData">Дані пакету</phrase>
+  <phrase id="Connection.PacketInfo">Інформація о пакеті</phrase>
   
   <!-- Serial Monitor Menus -->
-  <menu id="Form_SerialMonitor.button_conn">Подключить</menu>
-  <menu id="Form_SerialMonitor.button_exit">Exit</menu>
-  <menu id="Form_SerialMonitor.button_fill">Fill</menu>
-  <menu id="Form_SerialMonitor.button_send">Combine and Send</menu>
-  <menu id="Form_SerialMonitor.button1">Convert</menu>
-  <menu id="Form_SerialMonitor.checkBox_hash">Change (Cause an Error)</menu>
-  <menu id="Form_SerialMonitor.checkBox_size">Change (Cause an Error)</menu>
-  <menu id="Form_SerialMonitor.label_bd">Bd</menu>
-  <menu id="Form_SerialMonitor.label_command">Command</menu>
+  <menu id="Form_SerialMonitor.button_conn">Підкл.</menu>
+  <menu id="Form_SerialMonitor.button_exit">Вийти</menu>
+  <menu id="Form_SerialMonitor.button_fill">Заповн.</menu>
+  <menu id="Form_SerialMonitor.button_send">Зібр. і відпр.</menu>
+  <menu id="Form_SerialMonitor.button1">Перетворити</menu>
+  <menu id="Form_SerialMonitor.checkBox_hash">Змінити (призведе до помили)</menu>
+  <menu id="Form_SerialMonitor.checkBox_size">Змінити (призведе до помили)</menu>
+  <menu id="Form_SerialMonitor.label_bd">Шв. з'єдн.</menu>
+  <menu id="Form_SerialMonitor.label_command">Команда</menu>
   <menu id="Form_SerialMonitor.label_command_send">Set From Default</menu>
-  <menu id="Form_SerialMonitor.label_conv">Converter</menu>
+  <menu id="Form_SerialMonitor.label_conv">Конвертер</menu>
   <menu id="Form_SerialMonitor.label_conv_arr">-></menu>
-  <menu id="Form_SerialMonitor.label_data">Data</menu>
-  <menu id="Form_SerialMonitor.label_data_sep">Separate bytes with space</menu>
-  <menu id="Form_SerialMonitor.label_fill">Fill by 7 char string</menu>
-  <menu id="Form_SerialMonitor.label_hash">Hash</menu>
-  <menu id="Form_SerialMonitor.label_list">Double click to view details</menu>
-  <menu id="Form_SerialMonitor.label_port">Port</menu>
-  <menu id="Form_SerialMonitor.label_sender">Sender</menu>
-  <menu id="Form_SerialMonitor.label_sender_type">Type</menu>
-  <menu id="Form_SerialMonitor.label_size">Size of Packet</menu>
-  <menu id="Form_SerialMonitor.Text">Serial Monitor</menu>
+  <menu id="Form_SerialMonitor.label_data">Дані</menu>
+  <menu id="Form_SerialMonitor.label_data_sep">Розділяйте байти пробілами</menu>
+  <menu id="Form_SerialMonitor.label_fill">Заповнити з 7-символьної строки</menu>
+  <menu id="Form_SerialMonitor.label_hash">Хеш</menu>
+  <menu id="Form_SerialMonitor.label_list">Клацніть двічі для подробиць</menu>
+  <menu id="Form_SerialMonitor.label_port">Порт</menu>
+  <menu id="Form_SerialMonitor.label_sender">Відправник</menu>
+  <menu id="Form_SerialMonitor.label_sender_type">Тип</menu>
+  <menu id="Form_SerialMonitor.label_size">Розмір пакету</menu>
+  <menu id="Form_SerialMonitor.Text">Монітор порту</menu>
 
 </content>

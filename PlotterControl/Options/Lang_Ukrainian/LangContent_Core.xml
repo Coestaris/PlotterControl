@@ -31,6 +31,7 @@
   <phrase id="Core.ProgID">ProgID розширення</phrase>
   <phrase id="Core.DataTree">Дерево даних розширення</phrase>
   
+  
   <!-- Core Errors -->
   <error id="Core.CantDeleteNextElems">Не вдалося видалити наступні елементи: </error>
   <error id="Core.CantFindCommandsSetupFile">Неможливо знайти файл ({0}) установок командної строки програми.</error>

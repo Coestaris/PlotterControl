@@ -17,7 +17,6 @@
   <phrase id="Form_Dialog_Assoc.UnableToAssoc">Не вдалося встановити асоціацію {0}</phrase>
   <phrase id="Form_Dialog_Assoc.UnableToDelAssoc">Не вдалося встановити асоціацію {0}. Причина: {1}</phrase>
 
-
   <!-- Serial Monitor Menus -->
   <menu id="Form_Dialog_Assoc.button_exit">Вийти</menu>
   <menu id="Form_Dialog_Assoc.button_save">Зберегти</menu>

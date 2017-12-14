@@ -85,6 +85,8 @@ namespace CnC_WFA
             this.button_exit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label_err = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_size_b1
@@ -251,9 +253,9 @@ namespace CnC_WFA
             // 
             // textBox_conv_input
             // 
-            this.textBox_conv_input.Location = new System.Drawing.Point(78, 351);
+            this.textBox_conv_input.Location = new System.Drawing.Point(94, 351);
             this.textBox_conv_input.Name = "textBox_conv_input";
-            this.textBox_conv_input.Size = new System.Drawing.Size(82, 20);
+            this.textBox_conv_input.Size = new System.Drawing.Size(66, 20);
             this.textBox_conv_input.TabIndex = 19;
             // 
             // comboBox_conv
@@ -347,12 +349,12 @@ namespace CnC_WFA
             // 
             // label_fill
             // 
-            this.label_fill.AutoSize = true;
-            this.label_fill.Location = new System.Drawing.Point(174, 249);
+            this.label_fill.Location = new System.Drawing.Point(105, 249);
             this.label_fill.Name = "label_fill";
-            this.label_fill.Size = new System.Drawing.Size(94, 13);
+            this.label_fill.Size = new System.Drawing.Size(199, 15);
             this.label_fill.TabIndex = 30;
             this.label_fill.Text = "Fill by 7 char string";
+            this.label_fill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label_data
             // 
@@ -393,16 +395,16 @@ namespace CnC_WFA
             // listBox
             // 
             this.listBox.FormattingEnabled = true;
-            this.listBox.Location = new System.Drawing.Point(315, 33);
+            this.listBox.Location = new System.Drawing.Point(315, 80);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(263, 407);
+            this.listBox.Size = new System.Drawing.Size(263, 368);
             this.listBox.TabIndex = 35;
             this.listBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox_MouseDoubleClick);
             // 
             // label_list
             // 
             this.label_list.AutoSize = true;
-            this.label_list.Location = new System.Drawing.Point(311, 12);
+            this.label_list.Location = new System.Drawing.Point(313, 451);
             this.label_list.Name = "label_list";
             this.label_list.Size = new System.Drawing.Size(136, 13);
             this.label_list.TabIndex = 36;
@@ -412,7 +414,7 @@ namespace CnC_WFA
             // 
             this.comboBox_bd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_bd.FormattingEnabled = true;
-            this.comboBox_bd.Location = new System.Drawing.Point(339, 472);
+            this.comboBox_bd.Location = new System.Drawing.Point(110, 40);
             this.comboBox_bd.Name = "comboBox_bd";
             this.comboBox_bd.Size = new System.Drawing.Size(88, 21);
             this.comboBox_bd.TabIndex = 37;
@@ -421,7 +423,7 @@ namespace CnC_WFA
             // 
             this.comboBox_port.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_port.FormattingEnabled = true;
-            this.comboBox_port.Location = new System.Drawing.Point(339, 446);
+            this.comboBox_port.Location = new System.Drawing.Point(110, 13);
             this.comboBox_port.Name = "comboBox_port";
             this.comboBox_port.Size = new System.Drawing.Size(88, 21);
             this.comboBox_port.TabIndex = 38;
@@ -429,7 +431,7 @@ namespace CnC_WFA
             // 
             // button_conn
             // 
-            this.button_conn.Location = new System.Drawing.Point(433, 457);
+            this.button_conn.Location = new System.Drawing.Point(207, 23);
             this.button_conn.Name = "button_conn";
             this.button_conn.Size = new System.Drawing.Size(67, 33);
             this.button_conn.TabIndex = 39;
@@ -439,21 +441,21 @@ namespace CnC_WFA
             // 
             // label_port
             // 
-            this.label_port.AutoSize = true;
-            this.label_port.Location = new System.Drawing.Point(307, 449);
+            this.label_port.Location = new System.Drawing.Point(16, 16);
             this.label_port.Name = "label_port";
-            this.label_port.Size = new System.Drawing.Size(26, 13);
+            this.label_port.Size = new System.Drawing.Size(89, 13);
             this.label_port.TabIndex = 40;
             this.label_port.Text = "Port";
+            this.label_port.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label_bd
             // 
-            this.label_bd.AutoSize = true;
-            this.label_bd.Location = new System.Drawing.Point(307, 475);
+            this.label_bd.Location = new System.Drawing.Point(13, 43);
             this.label_bd.Name = "label_bd";
-            this.label_bd.Size = new System.Drawing.Size(20, 13);
+            this.label_bd.Size = new System.Drawing.Size(91, 13);
             this.label_bd.TabIndex = 41;
             this.label_bd.Text = "Bd";
+            this.label_bd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button_send
             // 
@@ -468,7 +470,7 @@ namespace CnC_WFA
             // 
             // button_exit
             // 
-            this.button_exit.Location = new System.Drawing.Point(506, 457);
+            this.button_exit.Location = new System.Drawing.Point(511, 454);
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(67, 33);
             this.button_exit.TabIndex = 44;
@@ -494,21 +496,30 @@ namespace CnC_WFA
             this.label_err.Size = new System.Drawing.Size(0, 13);
             this.label_err.TabIndex = 46;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label_bd);
+            this.groupBox1.Controls.Add(this.label_port);
+            this.groupBox1.Controls.Add(this.button_conn);
+            this.groupBox1.Controls.Add(this.comboBox_port);
+            this.groupBox1.Controls.Add(this.comboBox_bd);
+            this.groupBox1.Location = new System.Drawing.Point(300, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(278, 68);
+            this.groupBox1.TabIndex = 47;
+            this.groupBox1.TabStop = false;
+            // 
             // Form_SerialMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(588, 499);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_err);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_send);
-            this.Controls.Add(this.label_bd);
-            this.Controls.Add(this.label_port);
-            this.Controls.Add(this.button_conn);
-            this.Controls.Add(this.comboBox_port);
-            this.Controls.Add(this.comboBox_bd);
             this.Controls.Add(this.label_list);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.label_hash);
@@ -553,6 +564,7 @@ namespace CnC_WFA
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Serial Monitor";
             this.Load += new System.EventHandler(this.Form_SerialMonitor_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,5 +618,6 @@ namespace CnC_WFA
         public System.Windows.Forms.Button button_exit;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label_err;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -476,7 +476,7 @@
     <Content Include="Options\Lang_Ukrainian\LangContent_SerialMonitor.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Options\Lang_Ukrainian\LangContent_VectEditor.xml">
+    <Content Include="Options\Lang_Ukrainian\_LangContent_VectEditor.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Options\Lang_Ukrainian\LangContent_VectorMaster.xml">

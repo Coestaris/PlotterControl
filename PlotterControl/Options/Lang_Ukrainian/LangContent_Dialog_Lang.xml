@@ -4,7 +4,6 @@
 
   <!-- -=== MANUAL CONTROL ===- -->
 
-
   <!-- Serial Monitor Menus -->
   <menu id="Form_Dialog_Lang.button_edit">Редагувати</menu>
   <menu id="Form_Dialog_Lang.button_exit">Вийти</menu>

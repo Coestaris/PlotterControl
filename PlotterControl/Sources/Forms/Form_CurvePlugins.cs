@@ -121,15 +121,88 @@ namespace CnC_WFA
                 Process.Start(CurvePluginHandler.LoadedPlugins[listBox1.SelectedIndex].Info.LearnMore);
         }
 
-        //TODO: NormalizeLink
+
         private string NormalizeLink(string learnMore)
         {
-            // while(learnMore.IndexOf('%')!=-1)
-            //{
-            //learnMore = learnMore.Replace(learnMore.Substring(learnMore.IndexOf('%'), 6), russianLinkTable[learnMore.Substring(learnMore.IndexOf('%'), 6)]);
-            // }
+            while (learnMore.IndexOf('%') != -1)
+            {
+                learnMore = learnMore.Replace(learnMore.Substring(learnMore.IndexOf('%'), 6), russianLinkTable[learnMore.Substring(learnMore.IndexOf('%'), 6)]);
+            }
             return learnMore;
         }
+
+        #region russianLinkTable
+        private readonly Dictionary<string, string> russianLinkTable = new Dictionary<string, string>()
+        {
+            { "%D0%B0" , "à" },
+            { "%D0%B1" , "á" },
+            { "%D0%B2" , "â" },
+            { "%D0%B3" , "ã" },
+            { "%D0%B4" , "ä" },
+            { "%D0%B5" , "å" },
+            { "%D1%91" , "¸" },
+            { "%D0%B6" , "æ" },
+            { "%D0%B7" , "ç" },
+            { "%D0%B8" , "è" },
+            { "%D0%B9" , "é" },
+            { "%D0%BA" , "ê" },
+            { "%D0%BB" , "ë" },
+            { "%D0%BC" , "ì" },
+            { "%D0%BD" , "í" },
+            { "%D0%BE" , "î" },
+            { "%D0%BF" , "ï" },
+            { "%D1%80" , "ð" },
+            { "%D1%81" , "ñ" },
+            { "%D1%82" , "ò" },
+            { "%D1%83" , "ó" },
+            { "%D1%84" , "ô" },
+            { "%D1%85" , "õ" },
+            { "%D1%86" , "ö" },
+            { "%D1%87" , "÷" },
+            { "%D1%88" , "ø" },
+            { "%D1%89" , "ù" },
+            { "%D1%8A" , "ú" },
+            { "%D1%8B" , "û" },
+            { "%D1%8C" , "ü" },
+            { "%D1%8D" , "ý" },
+            { "%D1%8E" , "þ" },
+            { "%D1%8F" , "ÿ" },
+            { "%D0%90" , "À" },
+            { "%D0%91" , "Á" },
+            { "%D0%92" , "Â" },
+            { "%D0%93" , "Ã" },
+            { "%D0%94" , "Ä" },
+            { "%D0%95" , "Å" },
+            { "%D0%81" , "¨" },
+            { "%D0%96" , "Æ" },
+            { "%D0%97" , "Ç" },
+            { "%D0%98" , "È" },
+            { "%D0%99" , "É" },
+            { "%D0%9A" , "Ê" },
+            { "%D0%9B" , "Ë" },
+            { "%D0%9C" , "Ì" },
+            { "%D0%9D" , "Í" },
+            { "%D0%9E" , "Î" },
+            { "%D0%9F" , "Ï" },
+            { "%D0%A0" , "Ð" },
+            { "%D0%A1" , "Ñ" },
+            { "%D0%A2" , "Ò" },
+            { "%D0%A3" , "Ó" },
+            { "%D0%A4" , "Ô" },
+            { "%D0%A5" , "Õ" },
+            { "%D0%A6" , "Ö" },
+            { "%D0%A7" , "×" },
+            { "%D0%A8" , "Ø" },
+            { "%D0%A9" , "Ù" },
+            { "%D0%AA" , "Ú" },
+            { "%D0%AB" , "Û" },
+            { "%D0%AC" , "Ü" },
+            { "%D0%AD" , "Ý" },
+            { "%D0%AE" , "Þ" },
+            { "%D0%AF" , "ß" }
+        };
+        #endregion;
+
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
