@@ -65,17 +65,17 @@ namespace CnC_WFA
             this.label_mcinfo = new System.Windows.Forms.Label();
             this.button_exit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button_turnOff = new System.Windows.Forms.Button();
             this.button_turnOn = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // combobox_com
@@ -84,7 +84,7 @@ namespace CnC_WFA
             this.combobox_com.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combobox_com.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.combobox_com.FormattingEnabled = true;
-            this.combobox_com.Location = new System.Drawing.Point(104, 22);
+            this.combobox_com.Location = new System.Drawing.Point(111, 37);
             this.combobox_com.Margin = new System.Windows.Forms.Padding(4);
             this.combobox_com.Name = "combobox_com";
             this.combobox_com.Size = new System.Drawing.Size(105, 25);
@@ -95,7 +95,7 @@ namespace CnC_WFA
             // label_com
             // 
             this.label_com.AutoSize = true;
-            this.label_com.Location = new System.Drawing.Point(17, 26);
+            this.label_com.Location = new System.Drawing.Point(24, 41);
             this.label_com.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_com.Name = "label_com";
             this.label_com.Size = new System.Drawing.Size(71, 17);
@@ -105,7 +105,7 @@ namespace CnC_WFA
             // label_bdrate
             // 
             this.label_bdrate.AutoSize = true;
-            this.label_bdrate.Location = new System.Drawing.Point(17, 58);
+            this.label_bdrate.Location = new System.Drawing.Point(24, 73);
             this.label_bdrate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_bdrate.Name = "label_bdrate";
             this.label_bdrate.Size = new System.Drawing.Size(57, 17);
@@ -132,7 +132,7 @@ namespace CnC_WFA
             "56000",
             "57600",
             "115200"});
-            this.combobox_bdrate.Location = new System.Drawing.Point(104, 55);
+            this.combobox_bdrate.Location = new System.Drawing.Point(111, 70);
             this.combobox_bdrate.Margin = new System.Windows.Forms.Padding(4);
             this.combobox_bdrate.Name = "combobox_bdrate";
             this.combobox_bdrate.Size = new System.Drawing.Size(105, 25);
@@ -146,10 +146,10 @@ namespace CnC_WFA
             this.button_mc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_mc.FlatAppearance.BorderSize = 2;
             this.button_mc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_mc.Location = new System.Drawing.Point(20, 102);
+            this.button_mc.Location = new System.Drawing.Point(27, 103);
             this.button_mc.Margin = new System.Windows.Forms.Padding(4);
             this.button_mc.Name = "button_mc";
-            this.button_mc.Size = new System.Drawing.Size(86, 36);
+            this.button_mc.Size = new System.Drawing.Size(113, 36);
             this.button_mc.TabIndex = 5;
             this.button_mc.Text = "Start";
             this.button_mc.UseVisualStyleBackColor = false;
@@ -159,7 +159,7 @@ namespace CnC_WFA
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(29, 65);
+            this.comboBox1.Location = new System.Drawing.Point(72, 67);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(107, 25);
             this.comboBox1.TabIndex = 11;
@@ -170,7 +170,7 @@ namespace CnC_WFA
             this.button_down.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_down.FlatAppearance.BorderSize = 2;
             this.button_down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_down.Location = new System.Drawing.Point(169, 37);
+            this.button_down.Location = new System.Drawing.Point(212, 39);
             this.button_down.Margin = new System.Windows.Forms.Padding(4);
             this.button_down.Name = "button_down";
             this.button_down.Size = new System.Drawing.Size(86, 38);
@@ -185,7 +185,7 @@ namespace CnC_WFA
             this.button_up.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_up.FlatAppearance.BorderSize = 2;
             this.button_up.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_up.Location = new System.Drawing.Point(169, 83);
+            this.button_up.Location = new System.Drawing.Point(212, 85);
             this.button_up.Margin = new System.Windows.Forms.Padding(4);
             this.button_up.Name = "button_up";
             this.button_up.Size = new System.Drawing.Size(86, 36);
@@ -197,7 +197,7 @@ namespace CnC_WFA
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(95, 19);
+            this.label3.Location = new System.Drawing.Point(119, 32);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 17);
@@ -207,7 +207,7 @@ namespace CnC_WFA
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 55);
+            this.label2.Location = new System.Drawing.Point(119, 68);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 17);
@@ -217,7 +217,7 @@ namespace CnC_WFA
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 89);
+            this.label1.Location = new System.Drawing.Point(119, 102);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
@@ -230,7 +230,7 @@ namespace CnC_WFA
             this.button_dmove.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_dmove.FlatAppearance.BorderSize = 2;
             this.button_dmove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_dmove.Location = new System.Drawing.Point(166, 79);
+            this.button_dmove.Location = new System.Drawing.Point(216, 92);
             this.button_dmove.Margin = new System.Windows.Forms.Padding(4);
             this.button_dmove.Name = "button_dmove";
             this.button_dmove.Size = new System.Drawing.Size(86, 36);
@@ -242,7 +242,7 @@ namespace CnC_WFA
             // textBox_zmove
             // 
             this.textBox_zmove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_zmove.Location = new System.Drawing.Point(42, 85);
+            this.textBox_zmove.Location = new System.Drawing.Point(66, 98);
             this.textBox_zmove.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_zmove.Name = "textBox_zmove";
             this.textBox_zmove.Size = new System.Drawing.Size(51, 25);
@@ -252,7 +252,7 @@ namespace CnC_WFA
             // textBox_xmove
             // 
             this.textBox_xmove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_xmove.Location = new System.Drawing.Point(42, 17);
+            this.textBox_xmove.Location = new System.Drawing.Point(66, 30);
             this.textBox_xmove.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_xmove.Name = "textBox_xmove";
             this.textBox_xmove.Size = new System.Drawing.Size(51, 25);
@@ -264,7 +264,7 @@ namespace CnC_WFA
             this.checkBox_savemove.AutoSize = true;
             this.checkBox_savemove.Checked = true;
             this.checkBox_savemove.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_savemove.Location = new System.Drawing.Point(177, 21);
+            this.checkBox_savemove.Location = new System.Drawing.Point(227, 34);
             this.checkBox_savemove.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_savemove.Name = "checkBox_savemove";
             this.checkBox_savemove.Size = new System.Drawing.Size(56, 21);
@@ -275,7 +275,7 @@ namespace CnC_WFA
             // label_y
             // 
             this.label_y.AutoSize = true;
-            this.label_y.Location = new System.Drawing.Point(15, 55);
+            this.label_y.Location = new System.Drawing.Point(39, 68);
             this.label_y.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_y.Name = "label_y";
             this.label_y.Size = new System.Drawing.Size(20, 17);
@@ -285,7 +285,7 @@ namespace CnC_WFA
             // textBox_ymove
             // 
             this.textBox_ymove.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_ymove.Location = new System.Drawing.Point(42, 51);
+            this.textBox_ymove.Location = new System.Drawing.Point(66, 64);
             this.textBox_ymove.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_ymove.Name = "textBox_ymove";
             this.textBox_ymove.Size = new System.Drawing.Size(51, 25);
@@ -295,7 +295,7 @@ namespace CnC_WFA
             // label_x
             // 
             this.label_x.AutoSize = true;
-            this.label_x.Location = new System.Drawing.Point(16, 19);
+            this.label_x.Location = new System.Drawing.Point(40, 32);
             this.label_x.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_x.Name = "label_x";
             this.label_x.Size = new System.Drawing.Size(21, 17);
@@ -305,7 +305,7 @@ namespace CnC_WFA
             // label_z
             // 
             this.label_z.AutoSize = true;
-            this.label_z.Location = new System.Drawing.Point(16, 89);
+            this.label_z.Location = new System.Drawing.Point(40, 102);
             this.label_z.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_z.Name = "label_z";
             this.label_z.Size = new System.Drawing.Size(20, 17);
@@ -315,7 +315,7 @@ namespace CnC_WFA
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(242, 36);
+            this.label4.Location = new System.Drawing.Point(267, 38);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 17);
@@ -328,7 +328,7 @@ namespace CnC_WFA
             this.button_startmc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_startmc.FlatAppearance.BorderSize = 2;
             this.button_startmc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_startmc.Location = new System.Drawing.Point(196, 80);
+            this.button_startmc.Location = new System.Drawing.Point(221, 82);
             this.button_startmc.Margin = new System.Windows.Forms.Padding(4);
             this.button_startmc.Name = "button_startmc";
             this.button_startmc.Size = new System.Drawing.Size(86, 36);
@@ -340,7 +340,7 @@ namespace CnC_WFA
             // label_mcstep
             // 
             this.label_mcstep.AutoSize = true;
-            this.label_mcstep.Location = new System.Drawing.Point(33, 36);
+            this.label_mcstep.Location = new System.Drawing.Point(58, 38);
             this.label_mcstep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mcstep.Name = "label_mcstep";
             this.label_mcstep.Size = new System.Drawing.Size(114, 17);
@@ -349,7 +349,7 @@ namespace CnC_WFA
             // 
             // textBox_step
             // 
-            this.textBox_step.Location = new System.Drawing.Point(196, 33);
+            this.textBox_step.Location = new System.Drawing.Point(221, 35);
             this.textBox_step.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_step.Name = "textBox_step";
             this.textBox_step.Size = new System.Drawing.Size(38, 25);
@@ -360,7 +360,7 @@ namespace CnC_WFA
             // 
             this.label_mcinfo.AutoSize = true;
             this.label_mcinfo.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label_mcinfo.Location = new System.Drawing.Point(34, 65);
+            this.label_mcinfo.Location = new System.Drawing.Point(59, 67);
             this.label_mcinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mcinfo.Name = "label_mcinfo";
             this.label_mcinfo.Size = new System.Drawing.Size(129, 51);
@@ -373,7 +373,7 @@ namespace CnC_WFA
             this.button_exit.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.button_exit.FlatAppearance.BorderSize = 2;
             this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_exit.Location = new System.Drawing.Point(261, 203);
+            this.button_exit.Location = new System.Drawing.Point(312, 199);
             this.button_exit.Margin = new System.Windows.Forms.Padding(4);
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(86, 36);
@@ -391,8 +391,57 @@ namespace CnC_WFA
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(340, 184);
+            this.tabControl1.Size = new System.Drawing.Size(390, 184);
             this.tabControl1.TabIndex = 11;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.tabPage4.Controls.Add(this.button_turnOff);
+            this.tabPage4.Controls.Add(this.button_turnOn);
+            this.tabPage4.Controls.Add(this.button_mc);
+            this.tabPage4.Controls.Add(this.combobox_bdrate);
+            this.tabPage4.Controls.Add(this.label_com);
+            this.tabPage4.Controls.Add(this.label_bdrate);
+            this.tabPage4.Controls.Add(this.combobox_com);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(382, 154);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            // 
+            // button_turnOff
+            // 
+            this.button_turnOff.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_turnOff.Enabled = false;
+            this.button_turnOff.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_turnOff.FlatAppearance.BorderSize = 2;
+            this.button_turnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_turnOff.Location = new System.Drawing.Point(242, 85);
+            this.button_turnOff.Margin = new System.Windows.Forms.Padding(4);
+            this.button_turnOff.Name = "button_turnOff";
+            this.button_turnOff.Size = new System.Drawing.Size(120, 36);
+            this.button_turnOff.TabIndex = 7;
+            this.button_turnOff.Text = "Turn off";
+            this.button_turnOff.UseVisualStyleBackColor = false;
+            this.button_turnOff.Click += new System.EventHandler(this.button_turnOff_Click);
+            // 
+            // button_turnOn
+            // 
+            this.button_turnOn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_turnOn.Enabled = false;
+            this.button_turnOn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button_turnOn.FlatAppearance.BorderSize = 2;
+            this.button_turnOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_turnOn.Location = new System.Drawing.Point(242, 41);
+            this.button_turnOn.Margin = new System.Windows.Forms.Padding(4);
+            this.button_turnOn.Name = "button_turnOn";
+            this.button_turnOn.Size = new System.Drawing.Size(120, 36);
+            this.button_turnOn.TabIndex = 6;
+            this.button_turnOn.Text = "Turn on";
+            this.button_turnOn.UseVisualStyleBackColor = false;
+            this.button_turnOn.Click += new System.EventHandler(this.button_turnOn_Click);
             // 
             // tabPage1
             // 
@@ -411,7 +460,7 @@ namespace CnC_WFA
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(332, 154);
+            this.tabPage1.Size = new System.Drawing.Size(382, 154);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -424,7 +473,7 @@ namespace CnC_WFA
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(332, 154);
+            this.tabPage2.Size = new System.Drawing.Size(382, 154);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -439,65 +488,16 @@ namespace CnC_WFA
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(332, 154);
+            this.tabPage3.Size = new System.Drawing.Size(382, 154);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.tabPage4.Controls.Add(this.button_turnOff);
-            this.tabPage4.Controls.Add(this.button_turnOn);
-            this.tabPage4.Controls.Add(this.button_mc);
-            this.tabPage4.Controls.Add(this.combobox_bdrate);
-            this.tabPage4.Controls.Add(this.label_com);
-            this.tabPage4.Controls.Add(this.label_bdrate);
-            this.tabPage4.Controls.Add(this.combobox_com);
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(332, 154);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "tabPage4";
-            // 
-            // button_turnOff
-            // 
-            this.button_turnOff.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_turnOff.Enabled = false;
-            this.button_turnOff.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_turnOff.FlatAppearance.BorderSize = 2;
-            this.button_turnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_turnOff.Location = new System.Drawing.Point(239, 70);
-            this.button_turnOff.Margin = new System.Windows.Forms.Padding(4);
-            this.button_turnOff.Name = "button_turnOff";
-            this.button_turnOff.Size = new System.Drawing.Size(86, 36);
-            this.button_turnOff.TabIndex = 7;
-            this.button_turnOff.Text = "Turn off";
-            this.button_turnOff.UseVisualStyleBackColor = false;
-            this.button_turnOff.Click += new System.EventHandler(this.button_turnOff_Click);
-            // 
-            // button_turnOn
-            // 
-            this.button_turnOn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_turnOn.Enabled = false;
-            this.button_turnOn.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button_turnOn.FlatAppearance.BorderSize = 2;
-            this.button_turnOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_turnOn.Location = new System.Drawing.Point(239, 26);
-            this.button_turnOn.Margin = new System.Windows.Forms.Padding(4);
-            this.button_turnOn.Name = "button_turnOn";
-            this.button_turnOn.Size = new System.Drawing.Size(86, 36);
-            this.button_turnOn.TabIndex = 6;
-            this.button_turnOn.Text = "Turn on";
-            this.button_turnOn.UseVisualStyleBackColor = false;
-            this.button_turnOn.Click += new System.EventHandler(this.button_turnOn_Click);
             // 
             // Form_ManualControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(369, 249);
+            this.ClientSize = new System.Drawing.Size(414, 245);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_exit);
             this.Font = new System.Drawing.Font("Cambria", 11.25F);
@@ -511,13 +511,13 @@ namespace CnC_WFA
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_ManualControl_FormClosing);
             this.Load += new System.EventHandler(this.Form_ManualControl_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }

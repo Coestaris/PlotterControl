@@ -1,5 +1,5 @@
-/*=================================\
-* PlotterControl\Curve_Fermats.cs
+п»ї/*=================================\
+* PlotterControl\Curve_Epicycloid.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
@@ -25,24 +25,24 @@ namespace Plugins
         public static void Init()
         {
             _info = new CurveInfo();
-            _info.Name = "Cпираль Ферма";
+            _info.Name = "РЎРїРёСЂР°Р»СЊ Р¤РµСЂРјР°";
             _info.LearnMore = "https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%80%D0%B0%D0%BB%D1%8C_%D0%A4%D0%B5%D1%80%D0%BC%D0%B0";
             _info.Discription =
-@"   Спираль Ферма (иногда параболическая спираль) — спираль, задаваемая на
-плоскости в полярных координатах уравнением r^2 = a^2 * phi. Является видом
-Архимедовой спирали.";
+@"   РЎРїРёСЂР°Р»СЊ Р¤РµСЂРјР° (РёРЅРѕРіРґР° РїР°СЂР°Р±РѕР»РёС‡РµСЃРєР°СЏ СЃРїРёСЂР°Р»СЊ) вЂ” СЃРїРёСЂР°Р»СЊ, Р·Р°РґР°РІР°РµРјР°СЏ РЅР°
+РїР»РѕСЃРєРѕСЃС‚Рё РІ РїРѕР»СЏСЂРЅС‹С… РєРѕРѕСЂРґРёРЅР°С‚Р°С… СѓСЂР°РІРЅРµРЅРёРµРј r^2 = a^2 * phi. РЇРІР»СЏРµС‚СЃСЏ РІРёРґРѕРј
+РђСЂС…РёРјРµРґРѕРІРѕР№ СЃРїРёСЂР°Р»Рё.";
             _info.Creator = "";
             _info.Usage = "";
         }
 
         public static CurveExample Exmpl1()
         {
-            return new CurveExample() { Discr = "Спираль Ферма при k = 20", image = PreviewImage(new Size(300, 300), 20, null, 10) };
+            return new CurveExample() { Discr = "РЎРїРёСЂР°Р»СЊ Р¤РµСЂРјР° РїСЂРё k = 20", image = PreviewImage(new Size(300, 300), 20, null, 10) };
         }
 
         public static CurveExample Exmpl2()
         {
-            return new CurveExample() { Discr = "Симетричная Спираль Ферма при\nk = 30", image = PreviewImage_(new Size(300, 300), 30, 30, true, null, 6) };
+            return new CurveExample() { Discr = "РЎРёРјРµС‚СЂРёС‡РЅР°СЏ РЎРїРёСЂР°Р»СЊ Р¤РµСЂРјР° РїСЂРё\nk = 30", image = PreviewImage_(new Size(300, 300), 30, 30, true, null, 6) };
         }
 
         public static Image PreviewImage(Size size, double k, object ob, double CountOfCls)

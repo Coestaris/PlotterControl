@@ -29,10 +29,10 @@
   <menu id="Form_ManualControl.label2">кроків.</menu>
   <menu id="Form_ManualControl.label3">кроків.</menu>
   <menu id="Form_ManualControl.label4">кроків.</menu>
-  <menu id="Form_ManualControl.tabPage1">tabPage1</menu>
-  <menu id="Form_ManualControl.tabPage2">tabPage2</menu>
-  <menu id="Form_ManualControl.tabPage3">tabPage3</menu>
-  <menu id="Form_ManualControl.tabPage4">tabPage4</menu>
+  <menu id="Form_ManualControl.tabPage1">Переміщення</menu>
+  <menu id="Form_ManualControl.tabPage2">Рух</menu>
+  <menu id="Form_ManualControl.tabPage3">Ручне керування</menu>
+  <menu id="Form_ManualControl.tabPage4">З'єднання</menu>
   <menu id="Form_ManualControl.Text">Ручне керування</menu>
   <menu id="Form_ManualControl.textBox_step">50</menu>
   <menu id="Form_ManualControl.textBox_xmove">0</menu>

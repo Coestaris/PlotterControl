@@ -18,6 +18,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CnC_WFA
@@ -127,7 +128,7 @@ namespace CnC_WFA
         public CurveScript(string Filename)
         {
             FileName = Filename;
-            ExecuteScript(File.ReadAllText(Filename));
+            ExecuteScript(File.ReadAllText(Filename, Encoding.ASCII));
             Init();
             Info = GetInfo();
             Name = Info.Name;

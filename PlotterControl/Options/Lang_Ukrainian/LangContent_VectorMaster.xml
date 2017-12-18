@@ -12,13 +12,13 @@
   <phrase id="VectorMaster.Word.MBytes">МБ</phrase>
   <phrase id="VectorMaster.Word.Size">Розміри</phrase>
   <phrase id="VectorMaster.Word.Dpi">DPI</phrase>
-  <phrase id="VectorMaster.Word.PixelFormat">Формат пікс.: </phrase>
+  <phrase id="VectorMaster.Word.PixelFormat">Формат пікс.</phrase>
   <phrase id="VectorMaster.Word.TimeSpend">Пройшло часу:</phrase>
   <phrase id="VectorMaster.Word.Complete">Завершено!</phrase>
-  <phrase id="VectorMaster.Word.Update">Обновити</phrase>
+  <phrase id="VectorMaster.Word.Update">Оновити</phrase>
   <phrase id="VectorMaster.Word.Scale">Розмір</phrase>
   <phrase id="VectorMaster.Word.Stop">Стоп</phrase>
-  <phrase id="VectorMaster.Word.Threshold">Поріг: </phrase>
+  <phrase id="VectorMaster.Word.Threshold">Поріг</phrase>
   <phrase id="VectorMaster.Word.Sigma">Сигма</phrase>
   <phrase id="VectorMaster.CantCalculateDPI">Неможливо підрахувати.</phrase>
   <phrase id="VectorMaster.AllImageFiles">Усі формати зображень</phrase>
@@ -26,7 +26,7 @@
 
   <!-- Vector Master Menus -->
   <menu id="Form_VectorMaster.label_colormod">Колір. модель:</menu>
-  <menu id="Form_VectorMaster.label_1"> Вітання    </menu>
+  <menu id="Form_VectorMaster.label_1">Вітання    </menu>
   <menu id="Form_VectorMaster.label_2">  Вибір файлу</menu>
   <menu id="Form_VectorMaster.label_3">     Первинна &#009;&#xA;     обробка  </menu>
   <menu id="Form_VectorMaster.label_4">     Чорно-білий &#009;&#xA;     формат</menu>
@@ -70,10 +70,10 @@
   <menu id="Form_VectorMaster.button_remove">Видалити</menu>
   <menu id="Form_VectorMaster.button_savepr">Зберегти</menu>
   <menu id="Form_VectorMaster.button_show">Показати</menu>
-  <menu id="Form_VectorMaster.button_update">Обновити</menu>
-  <menu id="Form_VectorMaster.button_update_tab2">Обновити</menu>
-  <menu id="Form_VectorMaster.button_update_tab3">Обновити</menu>
-  <menu id="Form_VectorMaster.checkBox_useflip">Використовувати&#009;&#xA;</menu>
+  <menu id="Form_VectorMaster.button_update">Оновити</menu>
+  <menu id="Form_VectorMaster.button_update_tab2">Оновити</menu>
+  <menu id="Form_VectorMaster.button_update_tab3">Оновити</menu>
+  <menu id="Form_VectorMaster.checkBox_useflip">Викор.&#009;&#xA;</menu>
   <menu id="Form_VectorMaster.groupBox_colormod">2х колірний формат</menu>
   <menu id="Form_VectorMaster.groupBox_flip">Відображення</menu>
   <menu id="Form_VectorMaster.groupBox_gauss">Розмиття по Гаусу</menu>

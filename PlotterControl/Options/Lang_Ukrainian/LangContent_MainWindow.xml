@@ -85,7 +85,7 @@
   <menu id="MainWindow.button_print"> Печать         </menu>
   <menu id="MainWindow.button_print_help">Довідка</menu>
   <menu id="MainWindow.button_print_macro_mpack">Відкрити&#xA;макрос</menu>
-  <menu id="MainWindow.button_print_macro_new">Новий;&#xA;макрос</menu>
+  <menu id="MainWindow.button_print_macro_new">Новий&#xA;макрос</menu>
   <menu id="MainWindow.button_print_mc_help">Довідка</menu>
   <menu id="MainWindow.button_print_mc_start">Відкрити консоль</menu>
   <menu id="MainWindow.button_print_mc_start1">Відкрити панель</menu>

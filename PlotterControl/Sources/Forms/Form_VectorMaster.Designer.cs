@@ -318,7 +318,7 @@ namespace CnC_WFA
             // radioButton_270deg
             // 
             this.radioButton_270deg.AutoSize = true;
-            this.radioButton_270deg.Location = new System.Drawing.Point(12, 97);
+            this.radioButton_270deg.Location = new System.Drawing.Point(23, 97);
             this.radioButton_270deg.Name = "radioButton_270deg";
             this.radioButton_270deg.Size = new System.Drawing.Size(54, 23);
             this.radioButton_270deg.TabIndex = 10;
@@ -330,7 +330,7 @@ namespace CnC_WFA
             // radioButton_90deg
             // 
             this.radioButton_90deg.AutoSize = true;
-            this.radioButton_90deg.Location = new System.Drawing.Point(12, 45);
+            this.radioButton_90deg.Location = new System.Drawing.Point(23, 45);
             this.radioButton_90deg.Name = "radioButton_90deg";
             this.radioButton_90deg.Size = new System.Drawing.Size(45, 23);
             this.radioButton_90deg.TabIndex = 9;
@@ -342,7 +342,7 @@ namespace CnC_WFA
             // radioButton_180deg
             // 
             this.radioButton_180deg.AutoSize = true;
-            this.radioButton_180deg.Location = new System.Drawing.Point(12, 71);
+            this.radioButton_180deg.Location = new System.Drawing.Point(23, 71);
             this.radioButton_180deg.Name = "radioButton_180deg";
             this.radioButton_180deg.Size = new System.Drawing.Size(54, 23);
             this.radioButton_180deg.TabIndex = 8;
@@ -354,7 +354,7 @@ namespace CnC_WFA
             // radioButton_0deg
             // 
             this.radioButton_0deg.AutoSize = true;
-            this.radioButton_0deg.Location = new System.Drawing.Point(12, 19);
+            this.radioButton_0deg.Location = new System.Drawing.Point(23, 19);
             this.radioButton_0deg.Name = "radioButton_0deg";
             this.radioButton_0deg.Size = new System.Drawing.Size(36, 23);
             this.radioButton_0deg.TabIndex = 7;
@@ -379,7 +379,7 @@ namespace CnC_WFA
             // checkBox_useflip
             // 
             this.checkBox_useflip.AutoSize = true;
-            this.checkBox_useflip.Location = new System.Drawing.Point(9, 26);
+            this.checkBox_useflip.Location = new System.Drawing.Point(15, 26);
             this.checkBox_useflip.Name = "checkBox_useflip";
             this.checkBox_useflip.Size = new System.Drawing.Size(129, 23);
             this.checkBox_useflip.TabIndex = 7;
@@ -391,7 +391,7 @@ namespace CnC_WFA
             // 
             this.radioButton_flipy.AutoSize = true;
             this.radioButton_flipy.Enabled = false;
-            this.radioButton_flipy.Location = new System.Drawing.Point(12, 99);
+            this.radioButton_flipy.Location = new System.Drawing.Point(25, 85);
             this.radioButton_flipy.Name = "radioButton_flipy";
             this.radioButton_flipy.Size = new System.Drawing.Size(89, 23);
             this.radioButton_flipy.TabIndex = 6;
@@ -404,7 +404,7 @@ namespace CnC_WFA
             // 
             this.radioButton_flipx.AutoSize = true;
             this.radioButton_flipx.Enabled = false;
-            this.radioButton_flipx.Location = new System.Drawing.Point(12, 70);
+            this.radioButton_flipx.Location = new System.Drawing.Point(25, 56);
             this.radioButton_flipx.Name = "radioButton_flipx";
             this.radioButton_flipx.Size = new System.Drawing.Size(89, 23);
             this.radioButton_flipx.TabIndex = 5;

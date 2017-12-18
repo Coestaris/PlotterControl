@@ -103,6 +103,15 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Plugins\Curve_Fermats.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\Curve_HyperbolicSpiral.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Plugins\Curve_Lituus.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Compile Include="Sources\Forms\Graph\Form_Dialog_EditElement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,13 +189,13 @@
     <None Include="Plugins\Curve_Epicycloid.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Fermats.cs">
+    <None Include="Plugins\_Curve_Fermats.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_HyperbolicSpiral.cs">
+    <None Include="Plugins\_Curve_HyperbolicSpiral.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Plugins\Curve_Lituus.cs">
+    <None Include="Plugins\_Curve_Lituus.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Plugins\Curve_Logarithmic.cs">

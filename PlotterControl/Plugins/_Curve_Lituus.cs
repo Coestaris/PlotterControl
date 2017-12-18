@@ -1,5 +1,5 @@
-п»ї/*=================================\
-* PlotterControl\Curve_Epicycloid.cs
+/*=================================\
+* PlotterControl\Curve_Lituus.cs
 *
 * The Coestaris licenses this file to you under the MIT license.
 * See the LICENSE file in the project root for more information.
@@ -25,30 +25,27 @@ namespace Plugins
         public static void Init()
         {
             _info = new CurveInfo();
-            _info.LearnMore = "https://ru.wikipedia.org/wiki/%D0%93%D0%B8%D0%BF%D0%B5%D1%80%D0%B1%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D1%81%D0%BF%D0%B8%D1%80%D0%B0%D0%BB%D1%8C";
-            _info.Name = "Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ РЎРїРёСЂР°Р»СЊ";
+            _info.LearnMore = "https://ru.wikipedia.org/wiki/%D0%96%D0%B5%D0%B7%D0%BB_(%D0%BF%D0%BB%D0%BE%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D1%80%D0%B8%D0%B2%D0%B0%D1%8F)";
+            _info.Name = "Кривая: Жезл";
             _info.Discription =
-@"   Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ СЃРїРёСЂР°Р»СЊ вЂ” РїР»РѕСЃРєР°СЏ С‚СЂР°РЅСЃС†РµРЅРґРµРЅС‚РЅР°СЏ РєСЂРёРІР°СЏ. РЈСЂР°РІРЅРµРЅРёРµ
-РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРѕР№ СЃРїРёСЂР°Р»Рё РІ РїРѕР»СЏСЂРЅРѕР№ СЃРёСЃС‚РµРј РєРѕРѕСЂРґРёРЅР°С‚ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЂР°С‚РЅС‹Рј 
-РґР»СЏ СѓСЂР°РІРЅРµРЅРёСЏ РђСЂС…РёРјРµРґРѕРІРѕР№ СЃРїРёСЂР°Р»Рё. РљСЂРёРІР°СЏ СЃРѕСЃС‚РѕРёС‚ РёР· РґРІСѓС… РІРµС‚РІРµР№, СЃРёРјРјРµС‚СЂРёС‡РЅС‹С…
-РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РїСЂСЏРјРѕР№ d. РќР°С‡Р°Р»Рѕ РєРѕРѕСЂРґРёРЅР°С‚ СЏРІР»СЏРµС‚СЃСЏ Р°СЃРёРјРїС‚РѕС‚РёС‡РµСЃРєРѕР№ 
-С‚РѕС‡РєРѕР№. РђСЃРёРјРїС‚РѕС‚Р° - РїСЂСЏРјР°СЏ, РїР°СЂР°Р»Р»РµР»СЊРЅР°СЏ РїРѕР»СЏСЂРЅРѕР№ РѕСЃРё Рё РѕС‚СЃС‚РѕСЏС‰Р°СЏ РѕС‚ РЅРµРµ РЅР° 
-СЂР°СЃСЃС‚РѕСЏРЅРёРё a. Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ СЃРїРёСЂР°Р»СЊ РїРѕР»СѓС‡Р°РµС‚СЃСЏ РїСЂРё РґРІРёР¶РµРЅРёРё С‚РѕС‡РєРё РїРѕ
-РІСЂР°С‰Р°СЋС‰РµР№СЃСЏ РїСЂСЏРјРѕР№ С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј, С‡С‚Рѕ РµРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ С†РµРЅС‚СЂР° РІСЂР°С‰РµРЅРёСЏ 
-РІСЃРµРіРґР° Р±СѓРґРµС‚ РѕР±СЂР°С‚РЅРѕ РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅРѕ СѓРіР»Сѓ РїРѕРІРѕСЂРѕС‚Р° РїСЂСЏРјРѕР№, РёР·РјРµСЂРµРЅРЅРѕРјСѓ РѕС‚
-РЅР°С‡Р°Р»СЊРЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ.";
+@"   Жезл — плоская трансцендентная кривая, определяемая уравнением (в 
+полярной системе) p = a / sqrt(phi). ривая стремится из бесконечности
+(где она асимптотически приближается к горизонтальной оси) к точке (0;0),
+закручиваясь вокруг неё по спирали против часовой стрелки. Размер спирали 
+определяется коэффициентом a. Имеет одну точку перегиба — (1/2; a*sqrt(2))";
             _info.Creator = "";
             _info.Usage = "";
             _info.MathematicalBasis = "p = k * phi";
         }
+
         public static CurveExample Exmpl1()
         {
-            return new CurveExample() { Discr = "Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ РЎРїРёСЂР°Р»СЊ РїСЂРё k = 30", image = PreviewImage(new Size(300, 300), 30, null, 25) };
+            return new CurveExample() { Discr = "Гиперболическая Спираль при k = 30", image = PreviewImage(new Size(300, 300), 30, null, 25) };
         }
 
         public static CurveExample Exmpl2()
         {
-            return new CurveExample() { Discr = "Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ РЎРїРёСЂР°Р»СЊ РїСЂРё k = 45,\nРµСЃР»Рё phi > 0 Рё k = 45, РµСЃР»Рё phi < 0", image = PreviewImage_(new Size(300, 300), 40, -40, true, null, 7) };
+            return new CurveExample() { Discr = "Гиперболическая Спираль при k = -20", image = PreviewImage(new Size(300, 300), -20, null, 25) };
         }
 
         public static Image PreviewImage(Size size, double k, object ob, double CountOfCls)
@@ -105,7 +102,7 @@ namespace Plugins
                 if (i == 0) p = double.MaxValue;
                 else
 
-                    p = k / alpha;
+                    p = k / Math.Sqrt(alpha);
 
                 var x = (int)(p * Math.Cos(i)) + centerX;
                 var y = -(int)(p * Math.Sin(i)) + centerY;

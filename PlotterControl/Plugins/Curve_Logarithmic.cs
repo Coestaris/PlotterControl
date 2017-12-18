@@ -109,6 +109,7 @@ namespace Plugins
             graphics.DrawLine(pen, 0, centerY, centerX * 2, centerY);
             graphics.DrawLine(pen, centerX, 0, centerX, centerY * 2);
             int oldX = centerX, oldY = centerY;
+            double ob_ = (double)ob;
             for (double i = usenegative ? (-(CountOfCls * TwoPi)) : 0; i < CountOfCls * TwoPi; i += Step)
             {
                 double p = 0;
@@ -117,11 +118,14 @@ namespace Plugins
                 if (i == 0) p = 0;
                 else
 
-                    p = k * Math.Exp(alpha * (double)ob);
+                    p = k * Math.Log(alpha * ob_, Math.E);
 
                 var x = (int)(p * Math.Cos(i)) + centerX;
                 var y = -(int)(p * Math.Sin(i)) + centerY;
-                try { graphics.DrawLine(pen, oldX, oldY, x, y); } catch { };
+                try { graphics.DrawLine(pen, oldX, oldY, x, y); } catch(Exception e)
+                {
+                    //Console.WriteLine("Err{0}. {1}", e.GetType().FullName, e.Message);
+                };
                 oldX = x;
                 oldY = y;
             }
