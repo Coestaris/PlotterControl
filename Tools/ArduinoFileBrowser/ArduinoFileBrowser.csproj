@@ -171,8 +171,9 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>move /Y  $(TargetDir)*.dll  $(TargetDir)Lib\
+    <PostBuildEvent>mkdir $(TargetDir)\Lib
 
+move /Y  $(TargetDir)*.dll  $(TargetDir)Lib\
 move /Y  $(TargetDir)CWA*.pdb  $(TargetDir)lib\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -110,6 +110,9 @@ namespace CnC_WFA
                 try
                 {
                     port.Open();
+                    port.DiscardInBuffer();
+                    port.DiscardOutBuffer();
+                    System.Threading.Thread.Sleep(200);
                 }
                 catch
                 {
@@ -119,11 +122,15 @@ namespace CnC_WFA
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                master = new DTPMaster(
-                    new SerialPacketReader(port),
-                    new SerialPacketWriter(port));
+
+                DTPMaster._this = null;
+
                 try
                 {
+                    master = new DTPMaster(
+                        new SerialPacketReader(port, 2500),
+                        new SerialPacketWriter(port));
+
                     if (!master.Device.Test())
                     {
                         MessageBox.Show(
@@ -133,12 +140,16 @@ namespace CnC_WFA
                         return;
                     }
                 }
-                catch
+                catch(TimeoutException)
                 {
                     MessageBox.Show(
                         TB.L.Phrase["Connection.DeviceNotAnswered"],
                         TB.L.Phrase["Connection.Error"],
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (port.IsOpen)
+                        port.Close();
+
                     return;
                 }
                 button_tab1_next.Enabled = true;
@@ -231,8 +242,7 @@ namespace CnC_WFA
                 var im = pictureBox_preview.Image;
                 im?.Dispose();
                 int index = listBox_fileList.SelectedIndex;
-                Bitmap preview = Metas[index].Preview;
-                pictureBox_preview.Image = preview;
+                pictureBox_preview.Image = (Bitmap)Metas[index].Preview.Clone();
                 label_resol.Text = string.Format(TB.L.Phrase["Form_PrintMaster.Resoulution"], Metas[index].Width, Metas[index].Height);
                 label_type.Text = string.Format(TB.L.Phrase["Form_PrintMaster.VectorType"], Metas[index].Type);
             }
